@@ -38,13 +38,19 @@ DATA_F659C1:
 DATA_F65DC1:
 	incbin "data/backgrounds/animated_graphics/ship_mast_level_rain_tiledata_frame8.bin"
 
+
+;START OF PATCH (new secret ending graphics)
+
 ;$F661C1
 DATA_F661C1:
-	incbin "data/screens/graphics/secret_ending_screen_layer_1_tiledata.bin"
+	incbin "kong_hack/dkc2_secret_ending_with_kiddy_gfx_comp_F661C1.bin"
+;	incbin "data/screens/graphics/secret_ending_screen_layer_1_tiledata.bin"
 
 ;$F67D1B
 DATA_F67D1B:
-	incbin "data/screens/8x8_tilemaps/secret_ending_screen_layer_1_8x8_tilemap.bin"
+	incbin "kong_hack/dkc2_secret_ending_with_kiddy_map_comp_F67D1B.bin"
+;	incbin "data/screens/8x8_tilemaps/secret_ending_screen_layer_1_8x8_tilemap.bin"
 	
+;END OF PATCH
 padbyte $00
 pad $F70000
