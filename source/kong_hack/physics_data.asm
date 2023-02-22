@@ -13,9 +13,9 @@ dw $0070	;gravity velocity
 donkey_physics_constants:
 kiddy_physics_constants:
 dw $0800	;terminal velocity
-dw $0040	;gravity velocity when jumping
+dw $004A	;gravity velocity when jumping
 	dw $0800
-dw $F980	;jump velocity
+dw $F8C0	;jump velocity
 	dw $0120
 dw $0200	;walk speed
 dw $0300	;run speed

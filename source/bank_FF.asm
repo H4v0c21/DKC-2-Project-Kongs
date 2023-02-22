@@ -1039,7 +1039,21 @@ DATA_FF0F5C:
 ;	dw !initcommand_set_palette, dixie_active_sprite_palette
 ;	dw !initcommand_set_animation, $0153
 ;	dw !initcommand_success
+
+donkey_ingame_init:
+	dw sprite.number, $0320
+	dw sprite.render_order, $00D8
+	dw sprite.unknown_54, #donkey_physics_constant_a
+	dw sprite.ground_y_position, $FFC0
+	dw sprite.unknown_1E, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $001C
+	dw !initcommand_set_oam_special, $2000
+	dw !initcommand_success
+
 ;END OF PATCH
+
+org $FF0FAC
 
 DATA_FF0FAC:
 	dw sprite.number, $008C
@@ -21028,16 +21042,7 @@ endif
 
 
 ;START OF PATCH
-donkey_ingame_init:
-	dw sprite.number, $0320
-	dw sprite.render_order, $00D8
-	dw sprite.unknown_54, #donkey_physics_constant_a
-	dw sprite.ground_y_position, $FFC0
-	dw sprite.unknown_1E, $0000
-	dw sprite.action, $0000
-	dw sprite.unknown_30, $001C
-	dw !initcommand_set_oam_special, $2000
-	dw !initcommand_success
+
 
 kiddy_ingame_init:
 	dw sprite.number, $0324

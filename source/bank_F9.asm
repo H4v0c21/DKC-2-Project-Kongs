@@ -6124,6 +6124,7 @@ DATA_F956BF:
 	db $04 : dw $0DDC
 	db $04 : dw $0DE0
 	db !animation_command_82 : dw DATA_F956BF
+DATA_F956E6:
 	db $02 : dw $0E08
 	db $02 : dw $0E0C
 	db $02 : dw $2C78
@@ -6199,6 +6200,7 @@ DATA_F95798:
 	db $02 : dw $0E0C
 	db !animation_command_8E, $17, $05
 	db !animation_command_82 : dw DATA_F95798
+DATA_F957AA:
 	db $01 : dw $0E08
 	db $01 : dw $0E0C
 	db $01 : dw $0E10
@@ -6945,6 +6947,7 @@ DATA_F95EE0:
 	db $04 : dw $21DC
 	db !animation_command_82 : dw DATA_F95EE0
 	db !animation_command_8E, $02, $05
+krook_anim_fix_pointer:
 	db $04 : dw $21E4
 	db $04 : dw $21E8
 	db $04 : dw $21EC
@@ -7283,6 +7286,7 @@ DATA_F9622E:
 	db $02 : dw $24AC
 	db $02 : dw $24A8
 	db !animation_command_82 : dw DATA_F9622E
+hot_air_balloon_anim_fix_pointer:
 	db $02 : dw $24AC
 	db $02 : dw $24B4
 	db !animation_command_84 : dw CODE_B9EADD
@@ -7329,6 +7333,7 @@ DATA_F9629F:
 	db $02 : dw $24BC
 	db $03 : dw $24C0
 	db !animation_command_82 : dw DATA_F9629F
+DATA_F962EC:
 	db $02 : dw $24BC
 	db $02 : dw $24B8
 	db $02 : dw $24B4
@@ -7566,6 +7571,7 @@ DATA_F96531:
 	db !animation_command_84 : dw CODE_B9EC36
 	db $18 : dw $2B60
 	db !animation_command_84 : dw CODE_B9EC4A
+DATA_F9654C:
 	db $03 : dw $2B5C
 	db $03 : dw $2B58
 	db $03 : dw $2B54
@@ -7651,6 +7657,7 @@ DATA_F96600:
 	db $08 : dw $2CB4
 	db $08 : dw $2CB0
 	db $08 : dw $2CAC
+DATA_F96609:
 	db !animation_command_82 : dw DATA_F96600
 	db !animation_command_80, $00
 
