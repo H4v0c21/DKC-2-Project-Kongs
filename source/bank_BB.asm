@@ -8945,6 +8945,7 @@ CODE_BBC776:
 	
 ;START OF PATCH
 	LDY #$00B3
+	BEQ saved_kong_status_0
 	LDA [$D9],y
 	LSR
 	LSR
@@ -8956,6 +8957,15 @@ CODE_BBC776:
 	LDA [$D9],y
 	AND #$0F
 	STA kong_status+1
+	BRA kong_status_load_done
+	
+saved_kong_status_0:
+	STA $08A4
+	REP #$20
+	LDA #$0100
+	STA kong_status
+	SEP #$20
+	
 ;END OF PATCH
 	
 	
@@ -8972,7 +8982,7 @@ CODE_BBC776:
 	;STA $08A4				;$BBC7B9   |
 
 
-
+kong_status_load_done:
 	LDY #$00E3				;$BBC7BC   |
 	LDX #$002F				;$BBC7BF   |
 CODE_BBC7C2:					;	   |

@@ -1400,7 +1400,9 @@ CODE_808D8A:
 	LDA #$8000				;$808D8A  \
 	ORA $08C2				;$808D8D   |
 	STA $08C2				;$808D90   |
-	LDA $08A4				;$808D93   |
+;START OF PATCH
+	LDA kong_status				;$808D93   |
+;END OF PATCH
 	JSL CODE_808837				;$808D96   |
 	LDA #$0020				;$808D9A   |
 	ORA $30,x				;$808D9D   |
@@ -1452,7 +1454,9 @@ CODE_808DFB:
 	LDA #$8000				;$808E08   |
 	ORA $08C2				;$808E0B   |
 	STA $08C2				;$808E0E   |
-	LDA #$0000				;$808E11   |
+;START OF PATCH (kong status)
+	LDA #$0100				;$808E11   |
+;END OF PATCH
 	JSL CODE_808837				;$808E14   |
 	JSR CODE_808E29				;$808E18   |
 	LDX $0593				;$808E1B   |
@@ -1563,7 +1567,9 @@ CODE_808EEA:
 	PHK					;$808EEE   |
 	PLB					;$808EEF   |
 	JSR CODE_808FFB				;$808EF0   |
-	LDA #$0000				;$808EF3   |
+;START OF PATCH (new game kong status)
+	LDA #$0100				;$808EF3   |
+;END OF PATCH
 	JSL CODE_808837				;$808EF6   |
 	JSR CODE_808F4A				;$808EFA   |
 	LDA #CODE_8087D9			;$808EFD   |
@@ -1647,7 +1653,9 @@ CODE_808FAE:					;	   |
 	STA screen_brightness			;$808FB7   |
 	LDA #$002C				;$808FBA   |
 	STA $78					;$808FBD   |
-	LDA $08A4				;$808FBF   |
+;START OF PATCH
+	LDA kong_status				;$808FBF   |
+;END OF PATCH
 	JSL CODE_808837				;$808FC2   |
 	JSL CODE_B48000				;$808FC6   |
 if !version == 1				;	   |
@@ -12874,7 +12882,9 @@ CODE_80F4EB:					;	   |
 
 CODE_80F50C:
 	PHY					;$80F50C  \
-	LDA #$0000				;$80F50D   |
+;START OF PATCH (kong status)
+	LDA #$0100				;$80F50D   |
+;END OF PATCH
 	JSL CODE_808837				;$80F510   |
 	JSL CODE_B8808E				;$80F514   |
 	BRA CODE_80F526				;$80F518  /
