@@ -4180,10 +4180,17 @@ DATA_FD6044:
 	dw kreepy_krow_dying_body_2_sprite_palette
 	dw kreepy_krow_dying_head_3_sprite_palette
 	dw kreepy_krow_dying_body_3_sprite_palette
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
+;START OF PATCH (kong dk barrel palettes)
+	dw diddy_dk_barrel_palette
+	dw dixie_dk_barrel_palette
+	dw donkey_dk_barrel_palette
+	dw kiddy_dk_barrel_palette
+	
+	;dw !null_pointer
+	;dw !null_pointer
+	;dw !null_pointer
+	;dw !null_pointer
+;END OF PATCH
 	dw !null_pointer
 	dw !null_pointer
 	dw !null_pointer
@@ -9651,6 +9658,15 @@ donkey_player_palette:
 	incbin "kong_hack/donkey_palette.bin"
 kiddy_player_palette:
 	incbin "kong_hack/kiddy_palette.bin"
+
+diddy_dk_barrel_palette:
+	incbin "kong_hack/diddy_dk_barrel_palette.bin"
+dixie_dk_barrel_palette:
+	incbin "kong_hack/dixie_dk_barrel_palette.bin"
+donkey_dk_barrel_palette:
+	incbin "kong_hack/donkey_dk_barrel_palette.bin"
+kiddy_dk_barrel_palette:
+	incbin "kong_hack/kiddy_dk_barrel_palette.bin"
 
 padbyte $00
 pad $FE0000

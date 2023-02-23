@@ -5244,6 +5244,7 @@ DATA_B9F0C5:
 
 ;START OF PATCH
 
+
 update_kong_barrel_number:
 	LDA $4C,x
 	INC
@@ -5290,11 +5291,10 @@ a_less_than_b:
 		JSR update_kong_barrel_number
 
 kong_barrel_check_done:
-	
-	EOR $4C,x		;temp for testing
-	ASL			;temp for testing
-	EOR $13,x		;temp for testing
-	STA $13,x		;temp for testing
+	LDA $4C,x
+	CLC
+	ADC #!kong_dk_barrel_palette_index
+	JSL CODE_BB8C44
 	
 	RTS
 	

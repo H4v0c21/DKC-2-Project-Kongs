@@ -6,6 +6,7 @@
 ;!donkey_animation_offset = $0000
 !kiddy_animation_offset = $0000
 
+!kong_dk_barrel_palette_index = $0088
 
 
 
