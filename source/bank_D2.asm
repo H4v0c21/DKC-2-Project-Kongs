@@ -605,6 +605,7 @@ SPRITE_GRAPHIC_D21051:
 	db $F8, $75, $D8, $C0, $DA, $D1, $C3, $18
 	db $F3, $00, $FC, $02
 
+;diddy life icon
 SPRITE_GRAPHIC_D212CD:
 	db $00, $04, $00, $00, $00, $04, $00, $00
 	db $79, $72, $7F, $72, $7A, $7A, $7D, $7A

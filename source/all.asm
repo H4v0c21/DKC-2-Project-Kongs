@@ -208,6 +208,7 @@ check bankcross on
 org $500000
 	incsrc "kong_hack/donkey_sprite_data.asm"
 	incsrc "kong_hack/kiddy_sprite_data.asm"
+	incsrc "kong_hack/kong_hack_sprite_data.asm"
 
 org $5FFFFF
 	db $00
