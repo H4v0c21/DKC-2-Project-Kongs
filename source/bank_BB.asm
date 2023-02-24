@@ -5560,9 +5560,9 @@ CODE_BBAEBD:
 CODE_BBAEC8:					;	   |
 	LDX current_sprite			;$BBAEC8   |
 	LDA $00,x				;$BBAECA   |
-	CMP #$00E4				;$BBAECC   |
+	CMP #$00E4				;$BBAECC   |		$00E4 = Diddy Kong object type
 	BNE CODE_BBAEE3				;$BBAECF   |
-	LDA #$0001				;$BBAED1   |
+	LDA #$0001				;$BBAED1   |		$0001 = Diddy palette ID
 	JSR CODE_BB8A69				;$BBAED4   |
 CODE_BBAED7:					;	   |
 	LDX current_sprite			;$BBAED7   |
@@ -5573,9 +5573,25 @@ CODE_BBAED7:					;	   |
 	RTS					;$BBAEE2  /
 
 CODE_BBAEE3:
-	LDA #$0004				;$BBAEE3  \
+;START OF PATCH (add branch to check Dixie Kong object type instead of assuming everyone who isn't Diddy is Dixie)
+	CMP #$00E8 									;$00E8 = Dixie Kong object type
+	BNE check_donkey_obj_type_for_init_pal_load	;If not Dixie, proceed to checking Donkey's object type
+;END OF PATCH
+	LDA #$0004				;$BBAEE3  \			$0004 = Dixie palette ID
 	JSR CODE_BB8A69				;$BBAEE6   |
 	BRA CODE_BBAED7				;$BBAEE9  /
+;START OF PATCH (check Donkey and Kiddy Kong object types, load palettes)
+check_donkey_obj_type_for_init_pal_load:
+	CMP #$0320									;$0320 = Donkey Kong object type
+	BNE load_kiddy_palette_id_for_init				;If not Donkey, Kiddy is the only other option
+	LDA #$008C									;$008C = Donkey palette ID
+	BRA load_donkey_kiddy_init_palette
+load_kiddy_palette_id_for_init:
+	LDA #$008D									;$008D = Kiddy palette ID
+load_donkey_kiddy_init_palette:
+	JSR CODE_BB8A69
+	BRA CODE_BBAED7
+;END OF PATCH
 
 CODE_BBAEEB:
 	STA $32					;$BBAEEB  \

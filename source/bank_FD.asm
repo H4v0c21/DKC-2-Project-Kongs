@@ -4042,255 +4042,257 @@ DATA_FD5FEC:
 
 
 DATA_FD5FEE:
-	dw global_sprite_palette
-	dw diddy_active_sprite_palette
-	dw barrel_sprite_palette
-	dw coin_sprite_palette
-	dw dixie_active_sprite_palette
-	dw squitter_sprite_palette
-	dw DATA_FD66BE
-	dw klomp_sprite_palette
-	dw kannon_sprite_palette
-	dw cannonball_sprite_palette
-	dw cannon_sprite_palette
-	dw shuri_orange_sprite_palette
-	dw kruncha_blue_sprite_palette
-	dw rattly_sprite_palette
-	dw lockjaw_sprite_palette
-	dw squawks_sprite_palette
-	dw click_clack_credits_sprite_palette
-	dw water_splash_sprite_palette
-	dw kutlass_yellow_sprite_palette
-	dw DATA_FD6428
-	dw coin_sprite_palette
-	dw loaded_cannon_sprite_palette
-	dw DATA_FD68F8
-	dw level_end_goal_sprite_palette
-	dw life_balloon_red_sprite_palette
-	dw life_balloon_green_sprite_palette
-	dw life_balloon_blue_sprite_palette
-	dw no_animals_sign_sprite_palette
-	dw neek_sprite_palette
-	dw cat_o_9_tails_sprite_palette
-	dw mini_necky_sprite_palette
-	dw klobber_green_sprite_palette
-	dw krow_egg_sprite_palette
-	dw krow_head_sprite_palette
-	dw krow_body_sprite_palette
-	dw funky_kong_sprite_palette
-	dw klank_orange_sprite_palette
-	dw DATA_FD7546
-	dw cranky_kong_sprite_palette
-	dw skull_cart_sprite_palette
-	dw barrel_good_bad_sprite_palette
-	dw klank_pink_sprite_palette
-	dw klobber_red_sprite_palette
+	dw global_sprite_palette					; 0000
+	dw diddy_active_sprite_palette				; 0001
+	dw barrel_sprite_palette					; 0002
+	dw coin_sprite_palette						; 0003
+	dw dixie_active_sprite_palette				; 0004
+	dw squitter_sprite_palette					; 0005
+	dw DATA_FD66BE								; 0006
+	dw klomp_sprite_palette						; 0007
+	dw kannon_sprite_palette					; 0008
+	dw cannonball_sprite_palette				; 0009
+	dw cannon_sprite_palette					; 000A
+	dw shuri_orange_sprite_palette				; 000B
+	dw kruncha_blue_sprite_palette				; 000C
+	dw rattly_sprite_palette					; 000D
+	dw lockjaw_sprite_palette					; 000E
+	dw squawks_sprite_palette					; 000F
+	dw click_clack_credits_sprite_palette		; 0010
+	dw water_splash_sprite_palette				; 0011
+	dw kutlass_yellow_sprite_palette			; 0012
+	dw DATA_FD6428								; 0013
+	dw coin_sprite_palette						; 0014
+	dw loaded_cannon_sprite_palette				; 0015
+	dw DATA_FD68F8								; 0016
+	dw level_end_goal_sprite_palette			; 0017
+	dw life_balloon_red_sprite_palette			; 0018
+	dw life_balloon_green_sprite_palette		; 0019
+	dw life_balloon_blue_sprite_palette			; 001A
+	dw no_animals_sign_sprite_palette			; 001B
+	dw neek_sprite_palette						; 001C
+	dw cat_o_9_tails_sprite_palette				; 001D
+	dw mini_necky_sprite_palette				; 001E
+	dw klobber_green_sprite_palette				; 001F
+	dw krow_egg_sprite_palette					; 0020
+	dw krow_head_sprite_palette					; 0021
+	dw krow_body_sprite_palette					; 0022
+	dw funky_kong_sprite_palette				; 0023
+	dw klank_orange_sprite_palette				; 0024
+	dw DATA_FD7546								; 0025
+	dw cranky_kong_sprite_palette				; 0026
+	dw skull_cart_sprite_palette				; 0027
+	dw barrel_good_bad_sprite_palette			; 0028
+	dw klank_pink_sprite_palette				; 0029
+	dw klobber_red_sprite_palette				; 002A
 
 DATA_FD6044:
-	dw DATA_FD7166
-	dw k_rool_letter_sprite_palette
-	dw roller_coaster_gate_sprite_palette
-	dw ghost_rope_sprite_palette
-	dw kaboing_grey_sprite_palette
-	dw haunted_hall_door_sprite_palette
-	dw DATA_FD6BAA
-	dw puftup_brown_sprite_palette
-	dw boom_box_sprite_palette
-	dw map_funky_barrel_sprite_palette
-	dw racing_flag_sprite_palette
-	dw traffic_light_sprite_palette
-	dw swanky_kong_sprite_palette
-	dw zinger_yellow_sprite_palette
-	dw wall_forest_right_sprite_palette
-	dw klinger_sprite_palette
-	dw flitter_sprite_palette
-	dw blue_flotsam_sprite_palette
-	dw flotsam_unused_1_sprite_palette
-	dw wall_ship_deck_sprite_palette
-	dw wall_wasp_hive_sprite_palette
-	dw wall_forest_left_sprite_palette
-	dw DATA_FD765A
-	dw kudgel_splash_sprite_palette
-	dw rambi_sprite_palette
-	dw flitter_unused_1_sprite_palette
-	dw flitter_unused_2_sprite_palette
-	dw flitter_unused_3_sprite_palette
-	dw flitter_unused_4_sprite_palette
-	dw zinger_red_sprite_palette
-	dw glimmer_sprite_palette
-	dw kruncha_red_sprite_palette
-	dw zinger_unused_sprite_palette
-	dw kruncha_angry_sprite_palette
-	dw kaboing_green_sprite_palette
-	dw flotsam_unused_2_sprite_palette
-	dw green_flotsam_sprite_palette
-	dw spiny_sprite_palette
-	dw kleever_1_sprite_palette
-	dw DATA_FD6E02
-	dw klampon_sprite_palette
-	dw quawks_sprite_palette
-	dw krook_sprite_palette
-	dw krockhead_green_sprite_palette
-	dw kleever_hurt_3_sprite_palette
-	dw bullrush_sprite_palette
-	dw DATA_FD6E7A
-	dw hot_air_balloon_sprite_palette
-	dw chest_dark_sprite_palette
-	dw kloak_sprite_palette
-	dw funky_barrel_wings_sprite_palette
-	dw klubba_club_sprite_palette
-	dw klubba_sprite_palette
-	dw enguarde_sprite_palette
-	dw mini_necky_ghost_sprite_palette
-	dw kleever_hurt_1_sprite_palette
-	dw kleever_hurt_2_sprite_palette
-	dw krockhead_brown_sprite_palette
-	dw klobber_yellow_sprite_palette
-	dw klobber_black_sprite_palette
-	dw DATA_FD6FA6
-	dw DATA_FD6FC4
-	dw k_rool_sprite_palette
-	dw k_rool_gun_sprite_palette
-	dw k_rool_burnt_sprite_palette
-	dw guitar_sprite_palette
-	dw klank_blue_sprite_palette
-	dw DATA_FD6242
-	dw clapper_sprite_palette
-	dw k_rool_vacuum_sprite_palette
-	dw k_rool_blue_gas_sprite_palette
-	dw k_rool_red_gas_sprite_palette
-	dw k_rool_purple_gas_sprite_palette
-	dw DATA_FD7274
-	dw yoshi_sprite_palette
-	dw mario_sprite_palette
-	dw screech_sprite_palette
-	dw wall_castle_sprite_palette
-	dw DATA_FD6354
-	dw wall_lava_sprite_palette
-	dw wall_ship_hold_high_sprite_palette
-	dw wall_ice_sprite_palette
-	dw DATA_FD63CC
-	dw DATA_FD63EA
-	dw DATA_FD6408
-	dw DATA_FD7800
-	dw link_sprite_palette
-	dw kreepy_krow_dying_head_1_sprite_palette
-	dw kreepy_krow_dying_body_1_sprite_palette
-	dw kreepy_krow_dying_head_2_sprite_palette
-	dw kreepy_krow_dying_body_2_sprite_palette
-	dw kreepy_krow_dying_head_3_sprite_palette
-	dw kreepy_krow_dying_body_3_sprite_palette
-;START OF PATCH (kong dk barrel palettes)
-	dw diddy_dk_barrel_palette
-	dw dixie_dk_barrel_palette
-	dw donkey_dk_barrel_palette
-	dw kiddy_dk_barrel_palette
-	
-	;dw !null_pointer
-	;dw !null_pointer
-	;dw !null_pointer
-	;dw !null_pointer
+	dw DATA_FD7166								; 002B
+	dw k_rool_letter_sprite_palette				; 002C
+	dw roller_coaster_gate_sprite_palette		; 002D
+	dw ghost_rope_sprite_palette				; 002E
+	dw kaboing_grey_sprite_palette				; 002F
+	dw haunted_hall_door_sprite_palette			; 0030
+	dw DATA_FD6BAA								; 0031
+	dw puftup_brown_sprite_palette				; 0032
+	dw boom_box_sprite_palette					; 0033
+	dw map_funky_barrel_sprite_palette			; 0034
+	dw racing_flag_sprite_palette				; 0035
+	dw traffic_light_sprite_palette				; 0036
+	dw swanky_kong_sprite_palette				; 0037
+	dw zinger_yellow_sprite_palette				; 0038
+	dw wall_forest_right_sprite_palette			; 0039
+	dw klinger_sprite_palette					; 003A
+	dw flitter_sprite_palette					; 003B
+	dw blue_flotsam_sprite_palette				; 003C
+	dw flotsam_unused_1_sprite_palette			; 003D
+	dw wall_ship_deck_sprite_palette			; 003E
+	dw wall_wasp_hive_sprite_palette			; 003F
+	dw wall_forest_left_sprite_palette			; 0040
+	dw DATA_FD765A								; 0041
+	dw kudgel_splash_sprite_palette				; 0042
+	dw rambi_sprite_palette						; 0043
+	dw flitter_unused_1_sprite_palette			; 0044
+	dw flitter_unused_2_sprite_palette			; 0045
+	dw flitter_unused_3_sprite_palette			; 0046
+	dw flitter_unused_4_sprite_palette			; 0047
+	dw zinger_red_sprite_palette				; 0048
+	dw glimmer_sprite_palette					; 0049
+	dw kruncha_red_sprite_palette				; 004A
+	dw zinger_unused_sprite_palette				; 004B
+	dw kruncha_angry_sprite_palette				; 004C
+	dw kaboing_green_sprite_palette				; 004D
+	dw flotsam_unused_2_sprite_palette			; 004E
+	dw green_flotsam_sprite_palette				; 004F
+	dw spiny_sprite_palette						; 0050
+	dw kleever_1_sprite_palette					; 0051
+	dw DATA_FD6E02								; 0052
+	dw klampon_sprite_palette					; 0053
+	dw quawks_sprite_palette					; 0054
+	dw krook_sprite_palette						; 0055
+	dw krockhead_green_sprite_palette			; 0056
+	dw kleever_hurt_3_sprite_palette			; 0057
+	dw bullrush_sprite_palette					; 0058
+	dw DATA_FD6E7A								; 0059
+	dw hot_air_balloon_sprite_palette			; 005A
+	dw chest_dark_sprite_palette				; 005B
+	dw kloak_sprite_palette						; 005C
+	dw funky_barrel_wings_sprite_palette		; 005D
+	dw klubba_club_sprite_palette				; 005E
+	dw klubba_sprite_palette					; 005F
+	dw enguarde_sprite_palette					; 0060
+	dw mini_necky_ghost_sprite_palette			; 0061
+	dw kleever_hurt_1_sprite_palette			; 0062
+	dw kleever_hurt_2_sprite_palette			; 0063
+	dw krockhead_brown_sprite_palette			; 0064
+	dw klobber_yellow_sprite_palette			; 0065
+	dw klobber_black_sprite_palette				; 0066
+	dw DATA_FD6FA6								; 0067
+	dw DATA_FD6FC4								; 0068
+	dw k_rool_sprite_palette					; 0069
+	dw k_rool_gun_sprite_palette				; 006A
+	dw k_rool_burnt_sprite_palette				; 006B
+	dw guitar_sprite_palette					; 006C
+	dw klank_blue_sprite_palette				; 006D
+	dw DATA_FD6242								; 006E
+	dw clapper_sprite_palette					; 006F
+	dw k_rool_vacuum_sprite_palette				; 0070
+	dw k_rool_blue_gas_sprite_palette			; 0071
+	dw k_rool_red_gas_sprite_palette			; 0072
+	dw k_rool_purple_gas_sprite_palette			; 0073
+	dw DATA_FD7274								; 0074
+	dw yoshi_sprite_palette						; 0075
+	dw mario_sprite_palette						; 0076
+	dw screech_sprite_palette					; 0077
+	dw wall_castle_sprite_palette				; 0078
+	dw DATA_FD6354								; 0079
+	dw wall_lava_sprite_palette					; 007A
+	dw wall_ship_hold_high_sprite_palette		; 007B
+	dw wall_ice_sprite_palette					; 007C
+	dw DATA_FD63CC								; 007D
+	dw DATA_FD63EA								; 007E
+	dw DATA_FD6408								; 007F
+	dw DATA_FD7800								; 0080
+	dw link_sprite_palette						; 0081
+	dw kreepy_krow_dying_head_1_sprite_palette	; 0082
+	dw kreepy_krow_dying_body_1_sprite_palette	; 0083
+	dw kreepy_krow_dying_head_2_sprite_palette	; 0084
+	dw kreepy_krow_dying_body_2_sprite_palette	; 0085
+	dw kreepy_krow_dying_head_3_sprite_palette	; 0086
+	dw kreepy_krow_dying_body_3_sprite_palette	; 0087
+;START OF PATCH (kong dk barrel/donkey/kiddy palettes)
+	dw diddy_dk_barrel_palette					; 0088
+	dw dixie_dk_barrel_palette					; 0089
+	dw donkey_dk_barrel_palette					; 008A
+	dw kiddy_dk_barrel_palette					; 008B
+	dw donkey_player_palette					; 008C
+	dw kiddy_player_palette						; 008D
+
+	;dw !null_pointer							; 0088
+	;dw !null_pointer							; 0089
+	;dw !null_pointer							; 008A
+	;dw !null_pointer							; 008B
+	;dw !null_pointer							; 008C
+	;dw !null_pointer							; 008D
 ;END OF PATCH
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw k_rool_fade_1_sprite_palette
-	dw k_rool_fade_2_sprite_palette
-	dw k_rool_fade_3_sprite_palette
-	dw k_rool_gun_fade_1_sprite_palette
-	dw k_rool_gun_fade_2_sprite_palette
-	dw k_rool_gun_fade_3_sprite_palette
-	dw kudgel_sprite_palette
-	dw kudgel_club_sprite_palette
-	dw king_zing_stinger_1_sprite_palette
-	dw king_zing_stinger_2_sprite_palette
-	dw king_zing_stinger_3_sprite_palette
-	dw king_zing_stinger_4_sprite_palette
-	dw king_zing_dark_1_sprite_palette
-	dw king_zing_dark_2_sprite_palette
-	dw king_zing_dark_3_sprite_palette
-	dw kleever_2_sprite_palette
-	dw kleever_5_sprite_palette
-	dw kleever_3_sprite_palette
-	dw kleever_4_sprite_palette
-	dw wrinkly_kong_sprite_palette
-	dw wrinkly_kong_book_sprite_palette
-	dw map_boss_sprite_palette
-	dw map_lost_world_step_sprite_palette
-	dw DATA_FD76B6
-	dw donkey_kong_sprite_palette
-	dw flopping_fish_sprite_palette
-	dw map_kong_and_text_sprite_palette
-	dw map_kremling_sprite_palette
-	dw roof_piece_sprite_palette
-	dw map_cranky_wrinkly_sprite_palette
-	dw map_funky_swanky_sprite_palette
-	dw DATA_FD776A
-	dw shuri_pink_sprite_palette
-	dw puftup_purple_sprite_palette
-	dw snapjaw_sprite_palette
-	dw wall_ship_hold_low_sprite_palette
-	dw kutlass_green_sprite_palette
-	dw giant_tire_sprite_palette
-	dw DATA_FD77C4
-	dw click_clack_sprite_palette
-	dw kreepy_krow_head_sprite_palette
-	dw kreepy_krow_body_sprite_palette
-	dw puftup_green_sprite_palette
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
+	dw !null_pointer							; 008E
+	dw !null_pointer							; 008F
+	dw k_rool_fade_1_sprite_palette				; 0090
+	dw k_rool_fade_2_sprite_palette				; 0091
+	dw k_rool_fade_3_sprite_palette				; 0092
+	dw k_rool_gun_fade_1_sprite_palette			; 0093
+	dw k_rool_gun_fade_2_sprite_palette			; 0094
+	dw k_rool_gun_fade_3_sprite_palette			; 0095
+	dw kudgel_sprite_palette					; 0096
+	dw kudgel_club_sprite_palette				; 0097
+	dw king_zing_stinger_1_sprite_palette		; 0098
+	dw king_zing_stinger_2_sprite_palette		; 0099
+	dw king_zing_stinger_3_sprite_palette		; 009A
+	dw king_zing_stinger_4_sprite_palette		; 009B
+	dw king_zing_dark_1_sprite_palette			; 009C
+	dw king_zing_dark_2_sprite_palette			; 009D
+	dw king_zing_dark_3_sprite_palette			; 009E
+	dw kleever_2_sprite_palette					; 009F
+	dw kleever_5_sprite_palette					; 00A0
+	dw kleever_3_sprite_palette					; 00A1
+	dw kleever_4_sprite_palette					; 00A2
+	dw wrinkly_kong_sprite_palette				; 00A3
+	dw wrinkly_kong_book_sprite_palette			; 00A4
+	dw map_boss_sprite_palette					; 00A5
+	dw map_lost_world_step_sprite_palette		; 00A6
+	dw DATA_FD76B6								; 00A7
+	dw donkey_kong_sprite_palette				; 00A8
+	dw flopping_fish_sprite_palette				; 00A9
+	dw map_kong_and_text_sprite_palette			; 00AA
+	dw map_kremling_sprite_palette				; 00AB
+	dw roof_piece_sprite_palette				; 00AC
+	dw map_cranky_wrinkly_sprite_palette		; 00AD
+	dw map_funky_swanky_sprite_palette			; 00AE
+	dw DATA_FD776A								; 00AF
+	dw shuri_pink_sprite_palette				; 00B0
+	dw puftup_purple_sprite_palette				; 00B1
+	dw snapjaw_sprite_palette					; 00B2
+	dw wall_ship_hold_low_sprite_palette		; 00B3
+	dw kutlass_green_sprite_palette				; 00B4
+	dw giant_tire_sprite_palette				; 00B5
+	dw DATA_FD77C4								; 00B6
+	dw click_clack_sprite_palette				; 00B7
+	dw kreepy_krow_head_sprite_palette			; 00B8
+	dw kreepy_krow_body_sprite_palette			; 00B9
+	dw puftup_green_sprite_palette				; 00BA
+	dw !null_pointer							; 00BB
+	dw !null_pointer							; 00BC
+	dw !null_pointer							; 00BD
+	dw !null_pointer							; 00BE
+	dw !null_pointer							; 00BF
 
 DATA_FD616E:
-	dw map_k_rool_sprite_palette
+	dw map_k_rool_sprite_palette				; 00C0
 
 DATA_FD6170:
-	dw map_k_rool_splash_sprite_palette
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
+	dw map_k_rool_splash_sprite_palette			; 00C1
+	dw !null_pointer							; 00C2
+	dw !null_pointer							; 00C3
+	dw !null_pointer							; 00C4
+	dw !null_pointer							; 00C5
+	dw !null_pointer							; 00C6
+	dw !null_pointer							; 00C7
+	dw !null_pointer							; 00C8
+	dw !null_pointer							; 00C9
+	dw !null_pointer							; 00CA
+	dw !null_pointer							; 00CB
+	dw !null_pointer							; 00CC
+	dw !null_pointer							; 00CD
+	dw !null_pointer							; 00CE
+	dw !null_pointer							; 00CF
 
 DATA_FD618E:
-	dw global_sprite_palette
-	dw global_sprite_palette
-	dw global_sprite_palette
-	dw global_sprite_palette
-	dw global_sprite_palette
-	dw barrel_sprite_palette
-	dw barrel_sprite_palette
-	dw barrel_sprite_palette
-	dw life_balloon_red_sprite_palette
-	dw life_balloon_green_sprite_palette
-	dw life_balloon_blue_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw cannonball_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw coin_sprite_palette
-	dw global_sprite_palette
+	dw global_sprite_palette					; 00D0
+	dw global_sprite_palette					; 00D1
+	dw global_sprite_palette					; 00D2
+	dw global_sprite_palette					; 00D3
+	dw global_sprite_palette					; 00D4
+	dw barrel_sprite_palette					; 00D5
+	dw barrel_sprite_palette					; 00D6
+	dw barrel_sprite_palette					; 00D7
+	dw life_balloon_red_sprite_palette			; 00D8
+	dw life_balloon_green_sprite_palette		; 00D9
+	dw life_balloon_blue_sprite_palette			; 00DA
+	dw coin_sprite_palette						; 00DB
+	dw coin_sprite_palette						; 00DC
+	dw coin_sprite_palette						; 00DD
+	dw coin_sprite_palette						; 00DE
+	dw coin_sprite_palette						; 00DF
+	dw coin_sprite_palette						; 00F0
+	dw coin_sprite_palette						; 00F1
+	dw cannonball_sprite_palette				; 00F2
+	dw coin_sprite_palette						; 00F3
+	dw coin_sprite_palette						; 00F4
+	dw coin_sprite_palette						; 00F5
+	dw coin_sprite_palette						; 00F6
+	dw coin_sprite_palette						; 00F7
+	dw coin_sprite_palette						; 00F8
+	dw global_sprite_palette					; 00F9
 
 DATA_FD61C2:
 	db $00, $00, $00, $0C, $00, $14, $00, $20
