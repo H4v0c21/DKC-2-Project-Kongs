@@ -2116,10 +2116,22 @@ CODE_BEC735:
 	STA $0979				;$BEC740   | update the y position of the life counter
 	BRA CODE_BEC748				;$BEC743  / since the life counter isnt in its final position dont decrement the timer
 
+;START OF PATCH (kong life icon)
+
+life_icon_pointers:
+	dw $20A8
+	dw !dixie_life_icon_graphic_number
+	dw !donkey_life_icon_graphic_number
+	dw !kiddy_life_icon_graphic_number
+
 CODE_BEC745:
 	DEC $0973				;$BEC745  \ decrement the timer
 CODE_BEC748:					;	   |
-	LDA #$20A8				;$BEC748   | load sprite image to display (/4 to get actual image number)
+	LDA $08A4
+	ASL
+	TAX
+	LDA.l life_icon_pointers,x	;life icon sprite number
+;END OF PATCH
 	STA $0975				;$BEC74B   |
 	LDX #$1D40				;$BEC74E   |
 	LDA $0979				;$BEC751   |

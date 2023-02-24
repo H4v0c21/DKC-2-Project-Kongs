@@ -741,7 +741,7 @@ CODE_80883B:
 
 	PLX
 	JSR CODE_808889
-	
+		
 	LDA kong_status
 	AND #$00FF
 	
@@ -773,7 +773,7 @@ update_kong_status_wrapper:
 
 update_kong_status:
 	LDA kong_status
-	BRA CODE_80883B
+	BRL CODE_80883B
 
 ;END OF PATCH
 

@@ -8,6 +8,10 @@
 
 !kong_dk_barrel_palette_index = $0088
 
+!dixie_life_icon_graphic_number = $4220
+!donkey_life_icon_graphic_number = $4224
+!kiddy_life_icon_graphic_number = $4228
+
 
 
 !null_pointer = $000000

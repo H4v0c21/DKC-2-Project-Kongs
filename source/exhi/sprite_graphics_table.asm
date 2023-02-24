@@ -2090,7 +2090,7 @@ DATA_BC8000:
 	dl SPRITE_GRAPHIC_D20C41 : db $00
 	dl SPRITE_GRAPHIC_D20E19 : db $00
 	dl SPRITE_GRAPHIC_D21051 : db $00
-	dl SPRITE_GRAPHIC_D212CD : db $00
+	dl SPRITE_GRAPHIC_D212CD : db $00	;diddy icon pointer
 	dl SPRITE_GRAPHIC_D2135D : db $00
 	dl SPRITE_GRAPHIC_D213A9 : db $00
 	dl SPRITE_GRAPHIC_D21417 : db $00
@@ -3434,3 +3434,4 @@ DATA_BC8000:
 	dl SPRITE_GRAPHIC_DEA908 : db $00
 	incsrc "donkey_sprite_pointers.asm"
 	incsrc "kiddy_sprite_pointers.asm"
+	incsrc "kong_hack_sprite_pointers.asm"
