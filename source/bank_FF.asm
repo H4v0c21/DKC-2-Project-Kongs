@@ -2672,6 +2672,10 @@ DATA_FF2216:
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_set_alt_palette, $0002
 	dw !initcommand_set_animation, $02E1
+
+;START OF PATCH (flag for dk barrel kong swap)
+	dw sprite.unknown_4E, $0001
+;END OF PATCH
 	dw !initcommand_success
 
 DATA_FF2238:
@@ -13723,6 +13727,9 @@ DATA_FFAB30:
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_set_alt_palette, $0002
 	dw !initcommand_set_animation, $02E1
+;START OF PATCH (flag for dk barrel kong swap)
+	dw sprite.unknown_4E, $0001
+;END OF PATCH
 	dw !initcommand_success
 
 DATA_FFAB5E:
@@ -13734,6 +13741,9 @@ DATA_FFAB5E:
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_set_alt_palette, $0002
 	dw !initcommand_set_animation, $02E1
+;START OF PATCH (flag for dk barrel kong swap)
+	dw sprite.unknown_4E, $0001
+;END OF PATCH
 	dw !initcommand_success
 
 DATA_FFAB80:

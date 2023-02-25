@@ -5242,84 +5242,10 @@ DATA_B9F0C5:
 	db $44, $19, $44, $19, $44, $19, $44, $19
 	db $44, $19, $08, $33, $CC, $0F, $CC, $0F
 
-;START OF PATCH
-
-
-update_kong_barrel_number:
-	LDA $4C,x
-	INC
-	CMP #$0004
-	BCC no_overflow
-	LDA #$0000
-no_overflow:
-	STA $4C,x
-	RTS
+;START OF PATCH (set flag if dk barrel kong swap)
 
 swap_kong_in_barrel:
-	
-	LDA #$061C
-	JSL queue_sound_effect
-	LDX $64
-	JSR update_kong_barrel_number
-	
-	SEP #$20
-	LDA kong_status
-	CMP kong_status+1
-	REP #$20
-	BCC a_less_than_b
-	BRA a_more_than_b
-
-a_less_than_b:
-	active_kong_barrel_check_a:
-		LDA kong_status
-		AND #$00FF
-		CMP $4C,x
-		BNE inactive_kong_alive_barrel_check_a
-		JSR update_kong_barrel_number
-
-	inactive_kong_alive_barrel_check_a:
-		LDA #$4000
-		BIT $08C2
-		BEQ kong_barrel_check_done
-		
-	inactive_kong_barrel_check_a:
-		LDA kong_status
-		XBA
-		AND #$00FF
-		CMP $4C,x
-		BNE kong_barrel_check_done
-		JSR update_kong_barrel_number
-
-kong_barrel_check_done:
-	LDA $4C,x
-	CLC
-	ADC #!kong_dk_barrel_palette_index
-	JSL CODE_BB8C44
-	
+	INC $4E,x
 	RTS
-	
-a_more_than_b:
-
-	inactive_kong_alive_barrel_check_b:
-		LDA #$4000
-		BIT $08C2
-		BEQ active_kong_barrel_check_b
-		
-	inactive_kong_barrel_check_b:
-		LDA kong_status
-		XBA
-		AND #$00FF
-		CMP $4C,x
-		BNE active_kong_barrel_check_b
-		JSR update_kong_barrel_number
-	
-	active_kong_barrel_check_b:
-		LDA kong_status
-		AND #$00FF
-		CMP $4C,x
-		BNE kong_barrel_check_done
-		JSR update_kong_barrel_number
-	
-		BRA kong_barrel_check_done
 
 ;END OF PATCH
