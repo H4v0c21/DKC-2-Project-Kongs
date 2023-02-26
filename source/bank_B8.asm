@@ -6597,11 +6597,14 @@ CODE_B8B307:
 	JSR CODE_B8B310				;$B8B30A   |
 	JMP CODE_B89979				;$B8B30D  /
 
+;under water swap code (contains swapping bug)
 CODE_B8B310:
 	LDX current_sprite			;$B8B310  \
 	LDA $00,x				;$B8B312   |
-	CMP #$00E8				;$B8B314   |
-	BNE CODE_B8B377				;$B8B317   |
+;START OF PATCH (fix underwater swap softlock)
+	;CMP #$00E8				;$B8B314   |
+	;BNE CODE_B8B377				;$B8B317   |
+;END OF PATCH
 	DEC $0D64				;$B8B319   |
 	BNE CODE_B8B377				;$B8B31C   |
 if !version == 1				;	   |
