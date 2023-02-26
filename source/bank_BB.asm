@@ -5597,13 +5597,13 @@ CODE_BBAEC8:					;	   |
 	AND #$0003								;Mask
 	JSL get_kong_sprite_address				;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
 	CMP current_sprite						;compare to pointer to current object struct
-	BNE CODE_BBAEE3							;this branch is followed if the kong being spawned isn't the first active one 
+	BNE CODE_BBAEE3							;this branch is followed if the Kong being spawned isn't the first enabled one 
 	;LDX current_sprite			;$BBAEC8   |
 	;LDA $00,x				;$BBAECA   |
 	;CMP #$00E4				;$BBAECC   |		$00E4 = Diddy Kong object type
 	;BNE CODE_BBAEE3				;$BBAECF   |
 ;END OF PATCH
-	LDA #$0001				;$BBAED1   |		$0001 = Diddy palette ID
+	LDA #$0001				;$BBAED1   |		$0001 = Second palette ID for Kongs (previously Diddy palette ID)
 	JSR CODE_BB8A69				;$BBAED4   |
 CODE_BBAED7:					;	   |
 	LDX current_sprite			;$BBAED7   |
@@ -5615,22 +5615,21 @@ CODE_BBAED7:					;	   |
 
 CODE_BBAEE3:
 ;START OF PATCH (add branch to check Dixie Kong object type instead of assuming everyone who isn't Diddy is Dixie)
-	CMP #$00E8 									;$00E8 = Dixie Kong object type
-	BNE check_donkey_obj_type_for_init_pal_load	;If not Dixie, proceed to checking Donkey's object type
+	;LDA kong_status+1						;Load value of second enabled Kong
+	LDA kong_palette_order+1				;get Kong value for first palette ($00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy)
+	AND #$0003								;Mask
+	JSL get_kong_sprite_address				;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
+	CMP current_sprite						;compare to pointer to current object struct
+	BNE disabled_kong_object_init_pal_load	;this branch is followed if the Kong being spawned isn't either of the enabled ones
 ;END OF PATCH
-	LDA #$0004				;$BBAEE3  \			$0004 = Dixie palette ID
+	LDA #$0004				;$BBAEE3  \			$0004 = Second palette ID for Kongs (previously Dixie palette ID)
 	JSR CODE_BB8A69				;$BBAEE6   |
 	BRA CODE_BBAED7				;$BBAEE9  /
 ;START OF PATCH (check Donkey and Kiddy Kong object types, load palettes)
-check_donkey_obj_type_for_init_pal_load:
-	CMP #$0320									;$0320 = Donkey Kong object type
-	BNE load_kiddy_palette_id_for_init				;If not Donkey, Kiddy is the only other option
-	LDA #$008C									;$008C = Donkey palette ID
-	BRA load_donkey_kiddy_init_palette
-load_kiddy_palette_id_for_init:
-	LDA #$008D									;$008D = Kiddy palette ID
-load_donkey_kiddy_init_palette:
+disabled_kong_object_init_pal_load:
+	LDA #$0004
 	JSR CODE_BB8A69
+	DEC $0B74,x								;Decrement number of references to this palette, so that the inactive Kongs don't prevent it from unloading
 	BRA CODE_BBAED7
 ;END OF PATCH
 
