@@ -5413,6 +5413,30 @@ CODE_B8A9BB:
 	SEP #$20
 	LDA $4C,x		;get current kong in barrel
 	STA kong_status+1
+
+;Start of code to assist with loading palettes
+	LDA kong_status						;Load leader Kong value
+	CMP kong_palette_order				;Compare to Kong who has sprite palette on line 1 ($90-$9F)
+	BEQ kong_pal_order_check_1_1_match	;If the same, we know leader Kong's palette is on palette line 1
+	CMP kong_palette_order+1			;Otherwise, compare to Kong who has sprite palette on line 2 ($A0-$AF)
+	BEQ kong_pal_order_check_1_2_match	;If the same, we know leader Kong's palette is on palette line 2
+
+kong_pal_order_check_1_1_match:
+	LDA kong_status+1					;Load follower Kong value
+	CMP kong_palette_order+1			;Compare to Kong who has sprite palette on line 2 ($A0-$AF)
+	BEQ kong_pal_order_check_done		;Both palettes match, so there's nothing to do, we're done checking
+	STA kong_palette_order+1			;Otherwise, replace Kong palette line 2 value
+	BRA kong_pal_order_check_done		;We're done checking now
+
+kong_pal_order_check_1_2_match:
+	LDA kong_status+1					;Load follower Kong value
+	CMP kong_palette_order				;Compare to Kong who has sprite palette on line 1 ($90-$9F)
+	BEQ kong_pal_order_check_done		;Both palettes match, so there's nothing to do, we're done checking
+	STA kong_palette_order				;Otherwise, replace Kong palette line 1 value
+	
+kong_pal_order_check_done:
+;End of code to assist with loading palettes
+
 	REP #$20
 	JSL update_kong_status_wrapper
 	
