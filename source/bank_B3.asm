@@ -82,7 +82,10 @@ CODE_B38090:					;	   |
 
 CODE_B380A1:
 	LDA current_sprite			;$B380A1  \
-	CMP #$0E9E				;$B380A3   |
+;START OF PATCH (fix time stop effect for donkey and kiddy)
+	;CMP #$0E9E				;$B380A3   |
+	CMP #$0F5A
+;END OF PATCH
 	BPL CODE_B380C1				;$B380A6   |
 	CMP $0597				;$B380A8   |
 	BEQ CODE_B380B7				;$B380AB   |
@@ -5333,9 +5336,9 @@ CODE_B3A76B:					;	   |
 
 CODE_B3A776:
 ;START OF PATCH (click clack 1 hit kill as big kongs)
-	LDY $08A4				;load active kong variable
-	CPY #$0002
-	BCS CODE_B3A7AD
+	;LDY $08A4				;load active kong variable
+	;CPY #$0002
+	;BCS CODE_B3A7AD
 ;END OF PATCH
 
 	BEQ CODE_B3A7AD				;$B3A776  \
