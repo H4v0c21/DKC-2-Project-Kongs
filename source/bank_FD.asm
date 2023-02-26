@@ -4180,21 +4180,19 @@ DATA_FD6044:
 	dw kreepy_krow_dying_body_2_sprite_palette	; 0085
 	dw kreepy_krow_dying_head_3_sprite_palette	; 0086
 	dw kreepy_krow_dying_body_3_sprite_palette	; 0087
-;START OF PATCH (kong dk barrel/donkey/kiddy palettes)
+;START OF PATCH (kong dk barrel palettes)
 	dw diddy_dk_barrel_palette					; 0088
 	dw dixie_dk_barrel_palette					; 0089
 	dw donkey_dk_barrel_palette					; 008A
 	dw kiddy_dk_barrel_palette					; 008B
-	dw donkey_player_palette					; 008C
-	dw kiddy_player_palette						; 008D
 
 	;dw !null_pointer							; 0088
 	;dw !null_pointer							; 0089
 	;dw !null_pointer							; 008A
 	;dw !null_pointer							; 008B
-	;dw !null_pointer							; 008C
-	;dw !null_pointer							; 008D
 ;END OF PATCH
+	dw !null_pointer							; 008C
+	dw !null_pointer							; 008D
 	dw !null_pointer							; 008E
 	dw !null_pointer							; 008F
 	dw k_rool_fade_1_sprite_palette				; 0090
