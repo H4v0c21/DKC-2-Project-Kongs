@@ -1595,6 +1595,9 @@ CODE_BB8A69:
 	TAX					;$BB8A6A   |
 	LDA.l DATA_FD5FEE,x			;$BB8A6B   |
 CODE_BB8A6F:					;	   |
+;START OF PATCH (add hijack to apply first and second Kong palettes in place of Diddy and Dixie palettes)
+	JSR first_and_second_kong_palette_override
+;END OF PATCH
 	STA $05A7				;$BB8A6F   |
 	LDX #$0000				;$BB8A72   |
 CODE_BB8A75:					;	   |
@@ -1665,6 +1668,9 @@ CODE_BB8AE3:					;	   |
 	RTL					;$BB8AE3  /
 
 CODE_BB8AE4:
+;START OF PATCH (add a second hijack to apply first and second Kong palettes in place of Diddy and Dixie palettes)
+	JSR first_and_second_kong_palette_override
+;END OF PATCH
 	STA $05A7				;$BB8AE4  \
 	LDA $12,x				;$BB8AE7   |
 	XBA					;$BB8AE9   |
@@ -1739,9 +1745,35 @@ CODE_BB8B30:
 
 ;START OF PATCH (kong palettes)
 
+first_and_second_kong_palette_override:
+	CMP #dixie_active_sprite_palette
+	BEQ override_second_kong_palette
+	CMP #diddy_active_sprite_palette
+	BNE f_s_kong_palette_override_return
+	;Diddy (leader Kong)
+	PHX							;push X register onto stack to preserve it
+	LDA kong_palette_order		;get Kong value for first palette ($00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy)
+	AND #$0003					;mask out bits which aren't a part of the value
+	ASL A
+	TAX					
+	LDA.l kong_palette_addresses,x
+	PLX							;pull X register from stack to restore it
+	BRA f_s_kong_palette_override_return
+override_second_kong_palette:
+	;Dixie (follower Kong)
+	PHX							;push X register onto stack to preserve it
+	LDA kong_palette_order+1	;get Kong value for second palette ($00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy)
+	AND #$0003					;mask out bits which aren't a part of the value
+	ASL A
+	TAX					
+	LDA.l kong_palette_addresses,x
+	PLX							;pull X register from stack to restore it
+f_s_kong_palette_override_return:
+	RTS
+
 kong_palette_addresses:
-dw $6484
-dw $6574
+dw diddy_active_sprite_palette
+dw dixie_active_sprite_palette
 dw donkey_player_palette
 dw kiddy_player_palette
 
@@ -2862,6 +2894,7 @@ endif						;	   |
 
 ;START OF PATCH
 	LDA kong_status
+	STA kong_palette_order	;Added to reset Kong palette order on level load -Mattrizzle
 ;END OF PATCH
 
 	JSL CODE_808837				;$BB9227   |
@@ -5558,10 +5591,18 @@ CODE_BBAEBD:
 	LDA $6E					;$BBAEC4   |
 	BNE CODE_BBAEEB				;$BBAEC6   |
 CODE_BBAEC8:					;	   |
-	LDX current_sprite			;$BBAEC8   |
-	LDA $00,x				;$BBAECA   |
-	CMP #$00E4				;$BBAECC   |		$00E4 = Diddy Kong object type
-	BNE CODE_BBAEE3				;$BBAECF   |
+;START OF PATCH (Use Kong status instead of object type to determine which palette ID to load)
+	;LDA kong_status						;Load value of first enabled Kong
+	LDA kong_palette_order					;get Kong value for first palette ($00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy)
+	AND #$0003								;Mask
+	JSL get_kong_sprite_address				;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
+	CMP current_sprite						;compare to pointer to current object struct
+	BNE CODE_BBAEE3							;this branch is followed if the kong being spawned isn't the first active one 
+	;LDX current_sprite			;$BBAEC8   |
+	;LDA $00,x				;$BBAECA   |
+	;CMP #$00E4				;$BBAECC   |		$00E4 = Diddy Kong object type
+	;BNE CODE_BBAEE3				;$BBAECF   |
+;END OF PATCH
 	LDA #$0001				;$BBAED1   |		$0001 = Diddy palette ID
 	JSR CODE_BB8A69				;$BBAED4   |
 CODE_BBAED7:					;	   |
@@ -8970,9 +9011,11 @@ CODE_BBC776:
 	AND #$0F
 	STA $08A4
 	STA kong_status
+	STA kong_palette_order		;Added to assist with palette loading -Mattrizzle
 	LDA [$D9],y
 	AND #$0F
 	STA kong_status+1
+	STA kong_palette_order+1	;Added to assist with palette loading -Mattrizzle
 	BRA kong_status_load_done
 	
 saved_kong_status_0:

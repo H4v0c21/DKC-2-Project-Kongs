@@ -7,9 +7,9 @@
 ;Temporaries are generally any addres used in multi contexts.
 
 ;custom quad kong variables
-kong_status = $19E0
+kong_status = $19E0			;byte 0 = Leader Kong, byte 1 = Follower Kong.  Values: $00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy
 
-
+kong_palette_order = $19E2	;byte 0 = value of Kong whose sprite palette will be loaded on line 1, byte 1 = value of Kong whose sprite palette will be loaded on line 2 . Values match kong_status
 
 
 spc_transaction = $00
