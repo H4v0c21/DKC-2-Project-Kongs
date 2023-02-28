@@ -149,3 +149,6 @@ namespace off
 
 working_palette = $7E8928
 primary_palette = $7E8C28
+
+sprite_pal_manipulation_block_start = $7F9650	;Starting location where RAM mirror for sprite palette block is loaded to be manipulated for certain levels (e.g. the inverted colors for Glimmer's Galleon)
+sprite_pal_manipulation_block_2_start = $7FE800	;A second location for a continuation of the above; this is used to manipulate the Donkey Kong, Kiddy Kong, and extra DK Barrel palettes (Specific to DKC2: Project Kongs)

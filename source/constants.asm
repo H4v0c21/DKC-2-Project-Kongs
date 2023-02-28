@@ -295,3 +295,9 @@
 !music_rigging		= $001D
 !music_credits		= $001E
 !music_krool		= $001F
+
+;palette-related constants
+!pal_block_upload_to_ram_manip_block_length = rom_palette_block_end_for_ram_mirror-rom_palette_block_start_for_ram_mirror
+!rom_pal_block_ram_manip_block_diff = (sprite_pal_manipulation_block_start-rom_palette_block_start_for_ram_mirror)&$FFFF
+!pal_block_2_upload_to_ram_manip_block_2_length = rom_palette_block_2_end_for_ram_mirror-rom_palette_block_2_start_for_ram_mirror	;Specific to DKC2: Project Kongs
+!rom_pal_block_2_ram_manip_block_2_diff = (sprite_pal_manipulation_block_2_start-rom_palette_block_2_start_for_ram_mirror)&$FFFF	;Specific to DKC2: Project Kongs
