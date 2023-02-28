@@ -4336,6 +4336,7 @@ klubba_sprite_palette:
 	db $14, $43, $FA, $57, $68, $04, $D1, $0C
 	db $57, $15, $B0, $2D, $FF, $7F
 
+rom_palette_block_start_for_ram_mirror:
 wall_ship_deck_sprite_palette:
 	db $21, $00, $43, $04, $65, $08, $87, $0C
 	db $C9, $10, $EB, $10, $2D, $15, $4F, $19
@@ -5055,6 +5056,7 @@ DATA_FD7166:
 	db $98, $00, $BC, $00, $DF, $00, $1F, $01
 	db $7F, $01, $BF, $01, $1F, $02, $7F, $02
 	db $BF, $02, $1F, $03, $7F, $03
+rom_palette_block_end_for_ram_mirror:
 
 racing_flag_sprite_palette:
 	db $B6, $1D, $11, $11, $8B, $04, $46, $08
@@ -9654,6 +9656,7 @@ DATA_FDDAD0:
 	db $20, $5B, $00, $01, $60, $5D, $00, $01
 	db $90, $5E, $00, $01, $FF, $FF
 
+rom_palette_block_2_start_for_ram_mirror:
 donkey_player_palette:
 	incbin "kong_hack/donkey_palette.bin"
 kiddy_player_palette:
@@ -9667,6 +9670,7 @@ donkey_dk_barrel_palette:
 	incbin "kong_hack/donkey_dk_barrel_palette.bin"
 kiddy_dk_barrel_palette:
 	incbin "kong_hack/kiddy_dk_barrel_palette.bin"
+rom_palette_block_2_end_for_ram_mirror:
 
 padbyte $00
 pad $FE0000

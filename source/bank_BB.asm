@@ -1323,136 +1323,164 @@ CODE_BB885F:					;	   |
 	INY					;$BB8869   |
 	JMP initscript_next			;$BB886A  /
 
+;Subroutine: Generate RAM mirror of inverted sprite palettes for Glimmer's Galleon)
 CODE_BB886D:
 	LDX #$0000				;$BB886D  \
 	JSR CODE_BB895A				;$BB8870   |
 	JSR CODE_BB896A				;$BB8873   |
 	LDX #$0000				;$BB8876   |
 CODE_BB8879:					;	   |
-	LDA.l $7F9650,x				;$BB8879   |
+	LDA.l sprite_pal_manipulation_block_start,x	;$BB8879   |
 	EOR #$FFFF				;$BB887D   |
-	STA $7F9650,x				;$BB8880   |
+	STA sprite_pal_manipulation_block_start,x	;$BB8880   |
 	INX					;$BB8884   |
 	INX					;$BB8885   |
-	CPX #$0EA8				;$BB8886   |
-	BNE CODE_BB8879				;$BB8889   |
+;START OF PATCH (expand ROM sprite palette block RAM mirror)
+;	CPX #$0EA8				;$BB8886   |
+;	BNE CODE_BB8879				;$BB8889   |
+	CPX.w #!pal_block_upload_to_ram_manip_block_length
+	BNE CODE_BB8879		;If not reached yet, continue loop
+	LDX #$0000
+invert_pal_block_2_in_ram_mirror:
+	LDA.l sprite_pal_manipulation_block_2_start,x
+	EOR #$FFFF
+	STA sprite_pal_manipulation_block_2_start,x
+	INX
+	INX
+	CPX.w #!pal_block_2_upload_to_ram_manip_block_2_length
+	BNE invert_pal_block_2_in_ram_mirror
+;END OF PATCH
 	RTS					;$BB888B  /
 
-	LDX #$0000				;$BB888C   |
-CODE_BB888F:					;	   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB888F   |
-	AND #$001F				;$BB8893   |
-	STA $32					;$BB8896   |
-	LSR A					;$BB8898   |
-	CLC					;$BB8899   |
-	ADC $32					;$BB889A   |
-	LSR A					;$BB889C   |
-	STA $34					;$BB889D   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB889F   |
-	AND #$03E0				;$BB88A3   |
-	STA $32					;$BB88A6   |
-	LSR A					;$BB88A8   |
-	LSR A					;$BB88A9   |
-	CLC					;$BB88AA   |
-	ADC $32					;$BB88AB   |
-	LSR A					;$BB88AD   |
-	AND #$03E0				;$BB88AE   |
-	TSB $34					;$BB88B1   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB88B3   |
-	AND #$7C00				;$BB88B7   |
-	STA $32					;$BB88BA   |
-	LSR A					;$BB88BC   |
-	LSR A					;$BB88BD   |
-	CLC					;$BB88BE   |
-	ADC $32					;$BB88BF   |
-	CMP #$7C00				;$BB88C1   |
-	BCC CODE_BB88C9				;$BB88C4   |
-	LDA #$7C00				;$BB88C6   |
-CODE_BB88C9:					;	   |
-	AND #$7C00				;$BB88C9   |
-	ORA $34					;$BB88CC   |
-	STA $7F9650,x				;$BB88CE   |
-	INX					;$BB88D2   |
-	INX					;$BB88D3   |
-	CPX #$0E8A				;$BB88D4   |
-	BNE CODE_BB888F				;$BB88D7   |
-	JSR CODE_BB895A				;$BB88D9   |
-	JSR CODE_BB896A				;$BB88DC   |
-	RTS					;$BB88DF  /
+;START OF PATCH (dummy out unused subroutines for generating RAM mirror of sprite palettes with leftover DKC1 sunset and nighttime effect)
+;	LDX #$0000				;$BB888C   |
+;CODE_BB888F:					;	   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB888F   |
+;	AND #$001F				;$BB8893   |
+;	STA $32					;$BB8896   |
+;	LSR A					;$BB8898   |
+;	CLC					;$BB8899   |
+;	ADC $32					;$BB889A   |
+;	LSR A					;$BB889C   |
+;	STA $34					;$BB889D   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB889F   |
+;	AND #$03E0				;$BB88A3   |
+;	STA $32					;$BB88A6   |
+;	LSR A					;$BB88A8   |
+;	LSR A					;$BB88A9   |
+;	CLC					;$BB88AA   |
+;	ADC $32					;$BB88AB   |
+;	LSR A					;$BB88AD   |
+;	AND #$03E0				;$BB88AE   |
+;	TSB $34					;$BB88B1   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB88B3   |
+;	AND #$7C00				;$BB88B7   |
+;	STA $32					;$BB88BA   |
+;	LSR A					;$BB88BC   |
+;	LSR A					;$BB88BD   |
+;	CLC					;$BB88BE   |
+;	ADC $32					;$BB88BF   |
+;	CMP #$7C00				;$BB88C1   |
+;	BCC CODE_BB88C9				;$BB88C4   |
+;	LDA #$7C00				;$BB88C6   |
+;CODE_BB88C9:					;	   |
+;	AND #$7C00				;$BB88C9   |
+;	ORA $34					;$BB88CC   |
+;	STA sprite_pal_mirror_block_start,x				;$BB88CE   |
+;	INX					;$BB88D2   |
+;	INX					;$BB88D3   |
+;	CPX #$0E8A				;$BB88D4   |
+;	BNE CODE_BB888F				;$BB88D7   |
+;	JSR CODE_BB895A				;$BB88D9   |
+;	JSR CODE_BB896A				;$BB88DC   |
+;	RTS					;$BB88DF  /
 
-	LDX #$0000				;$BB88E0   |
-CODE_BB88E3:					;	   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB88E3   |
-	AND #$001F				;$BB88E7   |
-	XBA					;$BB88EA   |
-	LSR A					;$BB88EB   |
-	LSR A					;$BB88EC   |
-	STA $34					;$BB88ED   |
-	LSR A					;$BB88EF   |
-	LSR A					;$BB88F0   |
-	CLC					;$BB88F1   |
-	ADC $34					;$BB88F2   |
-	XBA					;$BB88F4   |
-	AND #$001F				;$BB88F5   |
-	STA $32					;$BB88F8   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB88FA   |
-	AND #$03E0				;$BB88FE   |
-	LSR A					;$BB8901   |
-	STA $34					;$BB8902   |
-	LSR A					;$BB8904   |
-	LSR A					;$BB8905   |
-	CLC					;$BB8906   |
-	ADC $34					;$BB8907   |
-	AND #$01E0				;$BB8909   |
-	TSB $32					;$BB890C   |
-	ASL A					;$BB890E   |
-	ASL A					;$BB890F   |
-	ASL A					;$BB8910   |
-	ASL A					;$BB8911   |
-	ASL A					;$BB8912   |
-	ORA $32					;$BB8913   |
-	STA $7F9650,x				;$BB8915   |
-	INX					;$BB8919   |
-	INX					;$BB891A   |
-	CPX #$014A				;$BB891B   |
-	BNE CODE_BB88E3				;$BB891E   |
-CODE_BB8920:					;	   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB8920   |
-	AND #$001F				;$BB8924   |
-	LSR A					;$BB8927   |
-	STA $32					;$BB8928   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB892A   |
-	LSR A					;$BB892E   |
-	AND #$01E0				;$BB892F   |
-	TSB $32					;$BB8932   |
-	ASL A					;$BB8934   |
-	ASL A					;$BB8935   |
-	ASL A					;$BB8936   |
-	ASL A					;$BB8937   |
-	ASL A					;$BB8938   |
-	STA $34					;$BB8939   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB893B   |
-	LSR A					;$BB893F   |
-	AND #$3C00				;$BB8940   |
-	CLC					;$BB8943   |
-	ADC $34					;$BB8944   |
-	ORA $32					;$BB8946   |
-	STA $7F9650,x				;$BB8948   |
-	INX					;$BB894C   |
-	INX					;$BB894D   |
-	CPX #$0E8A				;$BB894E   |
-	BNE CODE_BB8920				;$BB8951   |
-	JSR CODE_BB895A				;$BB8953   |
-	JSR CODE_BB896A				;$BB8956   |
-	RTS					;$BB8959  /
+;	LDX #$0000				;$BB88E0   |
+;CODE_BB88E3:					;	   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB88E3   |
+;	AND #$001F				;$BB88E7   |
+;	XBA					;$BB88EA   |
+;	LSR A					;$BB88EB   |
+;	LSR A					;$BB88EC   |
+;	STA $34					;$BB88ED   |
+;	LSR A					;$BB88EF   |
+;	LSR A					;$BB88F0   |
+;	CLC					;$BB88F1   |
+;	ADC $34					;$BB88F2   |
+;	XBA					;$BB88F4   |
+;	AND #$001F				;$BB88F5   |
+;	STA $32					;$BB88F8   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB88FA   |
+;	AND #$03E0				;$BB88FE   |
+;	LSR A					;$BB8901   |
+;	STA $34					;$BB8902   |
+;	LSR A					;$BB8904   |
+;	LSR A					;$BB8905   |
+;	CLC					;$BB8906   |
+;	ADC $34					;$BB8907   |
+;	AND #$01E0				;$BB8909   |
+;	TSB $32					;$BB890C   |
+;	ASL A					;$BB890E   |
+;	ASL A					;$BB890F   |
+;	ASL A					;$BB8910   |
+;	ASL A					;$BB8911   |
+;	ASL A					;$BB8912   |
+;	ORA $32					;$BB8913   |
+;	STA sprite_pal_mirror_block_start,x				;$BB8915   |
+;	INX					;$BB8919   |
+;	INX					;$BB891A   |
+;	CPX #$014A				;$BB891B   |
+;	BNE CODE_BB88E3				;$BB891E   |
+;CODE_BB8920:					;	   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB8920   |
+;	AND #$001F				;$BB8924   |
+;	LSR A					;$BB8927   |
+;	STA $32					;$BB8928   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB892A   |
+;	LSR A					;$BB892E   |
+;	AND #$01E0				;$BB892F   |
+;	TSB $32					;$BB8932   |
+;	ASL A					;$BB8934   |
+;	ASL A					;$BB8935   |
+;	ASL A					;$BB8936   |
+;	ASL A					;$BB8937   |
+;	ASL A					;$BB8938   |
+;	STA $34					;$BB8939   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB893B   |
+;	LSR A					;$BB893F   |
+;	AND #$3C00				;$BB8940   |
+;	CLC					;$BB8943   |
+;	ADC $34					;$BB8944   |
+;	ORA $32					;$BB8946   |
+;	STA sprite_pal_mirror_block_start,x				;$BB8948   |
+;	INX					;$BB894C   |
+;	INX					;$BB894D   |
+;	CPX #$0E8A				;$BB894E   |
+;	BNE CODE_BB8920				;$BB8951   |
+;	JSR CODE_BB895A				;$BB8953   |
+;	JSR CODE_BB896A				;$BB8956   |
+;	RTS					;$BB8959  /
 
+;Fill the sprite palette RAM mirror starting from X index with unmodified sprite palettes
 CODE_BB895A:
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB895A  \
-	STA $7F9650,x				;$BB895E   |
+	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB895A  \
+	STA sprite_pal_manipulation_block_start,x		;$BB895E   |
 	INX					;$BB8962   |
 	INX					;$BB8963   |
-	CPX #$0EA8				;$BB8964   |
-	BNE CODE_BB895A				;$BB8967   |
+;START OF PATCH (expand ROM sprite palette block RAM mirror)
+;	CPX #$0EA8				;$BB8964   |
+;	BNE CODE_BB895A				;$BB8967   |
+	CPX.w #!pal_block_upload_to_ram_manip_block_length	;Check for the normal end of palette block copied to RAM (just before racing flag)
+	BNE CODE_BB895A										;If not reached yet, continue loop
+	LDX #$0000
+copy_extra_sprite_palette_block_to_ram_mirror:
+	LDA.l rom_palette_block_2_start_for_ram_mirror,x	;Start from custom palette block in ROM (Donkey, Kiddy, and extra DK Barrel colors)
+	STA sprite_pal_manipulation_block_2_start,x 				;Continue in RAM where we left off
+	INX
+	INX
+	CPX.w #!pal_block_2_upload_to_ram_manip_block_2_length	
+	BNE copy_extra_sprite_palette_block_to_ram_mirror	;If not reached yet, continue loop
+;END OF PATCH
 	RTS					;$BB8969  /
 
 CODE_BB896A:
@@ -1461,126 +1489,128 @@ CODE_BB896A:
 	STA $7F9904				;$BB8971   |
 	RTS					;$BB8975  /
 
-	LDX #$0000				;$BB8976   |
-CODE_BB8979:					;	   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB8979   |
-	AND #$001F				;$BB897D   |
-	LSR A					;$BB8980   |
-	LSR A					;$BB8981   |
-	STA $32					;$BB8982   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB8984   |
-	LSR A					;$BB8988   |
-	AND #$01E0				;$BB8989   |
-	TSB $32					;$BB898C   |
-	ASL A					;$BB898E   |
-	ASL A					;$BB898F   |
-	ASL A					;$BB8990   |
-	ASL A					;$BB8991   |
-	ASL A					;$BB8992   |
-	ORA $32					;$BB8993   |
-	STA $7F9650,x				;$BB8995   |
-	INX					;$BB8999   |
-	INX					;$BB899A   |
-	CPX #$014A				;$BB899B   |
-	BNE CODE_BB8979				;$BB899E   |
-CODE_BB89A0:					;	   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB89A0   |
-	AND #$001F				;$BB89A4   |
-	LSR A					;$BB89A7   |
-	STA $32					;$BB89A8   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB89AA   |
-	AND #$03E0				;$BB89AE   |
-	LSR A					;$BB89B1   |
-	STA $34					;$BB89B2   |
-	LSR A					;$BB89B4   |
-	CLC					;$BB89B5   |
-	ADC $34					;$BB89B6   |
-	LSR A					;$BB89B8   |
-	AND #$03E0				;$BB89B9   |
-	TSB $32					;$BB89BC   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB89BE   |
-	LSR A					;$BB89C2   |
-	STA $34					;$BB89C3   |
-	LSR A					;$BB89C5   |
-	CLC					;$BB89C6   |
-	ADC $34					;$BB89C7   |
-	LSR A					;$BB89C9   |
-	AND #$1C00				;$BB89CA   |
-	ORA $32					;$BB89CD   |
-	STA $7F9650,x				;$BB89CF   |
-	INX					;$BB89D3   |
-	INX					;$BB89D4   |
-	CPX #$0E8A				;$BB89D5   |
-	BNE CODE_BB89A0				;$BB89D8   |
-	JSR CODE_BB895A				;$BB89DA   |
-	JSR CODE_BB896A				;$BB89DD   |
-	RTS					;$BB89E0  /
+;START OF PATCH (dummy out unused code for generating RAM mirror of sprite palettes with leftover DKC1 Stop & Go Station and Misty Mine effect)
+;	LDX #$0000				;$BB8976   |
+;CODE_BB8979:					;	   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB8979   |
+;	AND #$001F				;$BB897D   |
+;	LSR A					;$BB8980   |
+;	LSR A					;$BB8981   |
+;	STA $32					;$BB8982   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB8984   |
+;	LSR A					;$BB8988   |
+;	AND #$01E0				;$BB8989   |
+;	TSB $32					;$BB898C   |
+;	ASL A					;$BB898E   |
+;	ASL A					;$BB898F   |
+;	ASL A					;$BB8990   |
+;	ASL A					;$BB8991   |
+;	ASL A					;$BB8992   |
+;	ORA $32					;$BB8993   |
+;	STA sprite_pal_mirror_block_start,x				;$BB8995   |
+;	INX					;$BB8999   |
+;	INX					;$BB899A   |
+;	CPX #$014A				;$BB899B   |
+;	BNE CODE_BB8979				;$BB899E   |
+;CODE_BB89A0:					;	   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB89A0   |
+;	AND #$001F				;$BB89A4   |
+;	LSR A					;$BB89A7   |
+;	STA $32					;$BB89A8   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB89AA   |
+;	AND #$03E0				;$BB89AE   |
+;	LSR A					;$BB89B1   |
+;	STA $34					;$BB89B2   |
+;	LSR A					;$BB89B4   |
+;	CLC					;$BB89B5   |
+;	ADC $34					;$BB89B6   |
+;	LSR A					;$BB89B8   |
+;	AND #$03E0				;$BB89B9   |
+;	TSB $32					;$BB89BC   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB89BE   |
+;	LSR A					;$BB89C2   |
+;	STA $34					;$BB89C3   |
+;	LSR A					;$BB89C5   |
+;	CLC					;$BB89C6   |
+;	ADC $34					;$BB89C7   |
+;	LSR A					;$BB89C9   |
+;	AND #$1C00				;$BB89CA   |
+;	ORA $32					;$BB89CD   |
+;	STA sprite_pal_mirror_block_start,x				;$BB89CF   |
+;	INX					;$BB89D3   |
+;	INX					;$BB89D4   |
+;	CPX #$0E8A				;$BB89D5   |
+;	BNE CODE_BB89A0				;$BB89D8   |
+;	JSR CODE_BB895A				;$BB89DA   |
+;	JSR CODE_BB896A				;$BB89DD   |
+;	RTS					;$BB89E0  /
 
-	LDX #$0000				;$BB89E1   |
-CODE_BB89E4:					;	   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB89E4   |
-	AND #$001F				;$BB89E8   |
-	LSR A					;$BB89EB   |
-	LSR A					;$BB89EC   |
-	STA $32					;$BB89ED   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB89EF   |
-	LSR A					;$BB89F3   |
-	AND #$01E0				;$BB89F4   |
-	TSB $32					;$BB89F7   |
-	ASL A					;$BB89F9   |
-	ASL A					;$BB89FA   |
-	ASL A					;$BB89FB   |
-	ASL A					;$BB89FC   |
-	ASL A					;$BB89FD   |
-	ORA $32					;$BB89FE   |
-	STA $7F9650,x				;$BB8A00   |
-	INX					;$BB8A04   |
-	INX					;$BB8A05   |
-	CPX #$014A				;$BB8A06   |
-	BNE CODE_BB89E4				;$BB8A09   |
-CODE_BB8A0B:					;	   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB8A0B   |
-	AND #$001F				;$BB8A0F   |
-	LSR A					;$BB8A12   |
-	STA $32					;$BB8A13   |
-	LSR A					;$BB8A15   |
-	LSR A					;$BB8A16   |
-	CLC					;$BB8A17   |
-	ADC $32					;$BB8A18   |
-	ADC #$0004				;$BB8A1A   |
-	STA $32					;$BB8A1D   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB8A1F   |
-	AND #$03E0				;$BB8A23   |
-	LSR A					;$BB8A26   |
-	STA $34					;$BB8A27   |
-	LSR A					;$BB8A29   |
-	LSR A					;$BB8A2A   |
-	CLC					;$BB8A2B   |
-	ADC $34					;$BB8A2C   |
-	CLC					;$BB8A2E   |
-	ADC #$0060				;$BB8A2F   |
-	AND #$03E0				;$BB8A32   |
-	TSB $32					;$BB8A35   |
-	LDA.l wall_ship_deck_sprite_palette,x	;$BB8A37   |
-	AND #$7C00				;$BB8A3B   |
-	LSR A					;$BB8A3E   |
-	STA $34					;$BB8A3F   |
-	LSR A					;$BB8A41   |
-	LSR A					;$BB8A42   |
-	CLC					;$BB8A43   |
-	ADC $34					;$BB8A44   |
-	CLC					;$BB8A46   |
-	ADC #$0C00				;$BB8A47   |
-	AND #$7C00				;$BB8A4A   |
-	ORA $32					;$BB8A4D   |
-	STA $7F9650,x				;$BB8A4F   |
-	INX					;$BB8A53   |
-	INX					;$BB8A54   |
-	CPX #$0E8A				;$BB8A55   |
-	BNE CODE_BB8A0B				;$BB8A58   |
-	JSR CODE_BB895A				;$BB8A5A   |
-	JSR CODE_BB896A				;$BB8A5D   |
-	RTS					;$BB8A60  /
+;	LDX #$0000				;$BB89E1   |
+;CODE_BB89E4:					;	   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB89E4   |
+;	AND #$001F				;$BB89E8   |
+;	LSR A					;$BB89EB   |
+;	LSR A					;$BB89EC   |
+;	STA $32					;$BB89ED   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB89EF   |
+;	LSR A					;$BB89F3   |
+;	AND #$01E0				;$BB89F4   |
+;	TSB $32					;$BB89F7   |
+;	ASL A					;$BB89F9   |
+;	ASL A					;$BB89FA   |
+;	ASL A					;$BB89FB   |
+;	ASL A					;$BB89FC   |
+;	ASL A					;$BB89FD   |
+;	ORA $32					;$BB89FE   |
+;	STA sprite_pal_mirror_block_start,x				;$BB8A00   |
+;	INX					;$BB8A04   |
+;	INX					;$BB8A05   |
+;	CPX #$014A				;$BB8A06   |
+;	BNE CODE_BB89E4				;$BB8A09   |
+;CODE_BB8A0B:					;	   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB8A0B   |
+;	AND #$001F				;$BB8A0F   |
+;	LSR A					;$BB8A12   |
+;	STA $32					;$BB8A13   |
+;	LSR A					;$BB8A15   |
+;	LSR A					;$BB8A16   |
+;	CLC					;$BB8A17   |
+;	ADC $32					;$BB8A18   |
+;	ADC #$0004				;$BB8A1A   |
+;	STA $32					;$BB8A1D   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB8A1F   |
+;	AND #$03E0				;$BB8A23   |
+;	LSR A					;$BB8A26   |
+;	STA $34					;$BB8A27   |
+;	LSR A					;$BB8A29   |
+;	LSR A					;$BB8A2A   |
+;	CLC					;$BB8A2B   |
+;	ADC $34					;$BB8A2C   |
+;	CLC					;$BB8A2E   |
+;	ADC #$0060				;$BB8A2F   |
+;	AND #$03E0				;$BB8A32   |
+;	TSB $32					;$BB8A35   |
+;	LDA.l rom_palette_block_start_for_ram_mirror,x	;$BB8A37   |
+;	AND #$7C00				;$BB8A3B   |
+;	LSR A					;$BB8A3E   |
+;	STA $34					;$BB8A3F   |
+;	LSR A					;$BB8A41   |
+;	LSR A					;$BB8A42   |
+;	CLC					;$BB8A43   |
+;	ADC $34					;$BB8A44   |
+;	CLC					;$BB8A46   |
+;	ADC #$0C00				;$BB8A47   |
+;	AND #$7C00				;$BB8A4A   |
+;	ORA $32					;$BB8A4D   |
+;	STA sprite_pal_mirror_block_start,x				;$BB8A4F   |
+;	INX					;$BB8A53   |
+;	INX					;$BB8A54   |
+;	CPX #$0E8A				;$BB8A55   |
+;	BNE CODE_BB8A0B				;$BB8A58   |
+;	JSR CODE_BB895A				;$BB8A5A   |
+;	JSR CODE_BB896A				;$BB8A5D   |
+;	RTS					;$BB8A60  /
+;END OF PATCH
 
 CODE_BB8A61:
 	JSR CODE_BB8A69				;$BB8A61  \
@@ -1712,8 +1742,20 @@ CODE_BB8B30:
 	ASL A					;$BB8B33   |
 	TAX					;$BB8B34   |
 	JSR CODE_BB8B66				;$BB8B35   |
+;START OF PATCH (adjust palette offset for custom palettes loaded from RAM mirror)
+	CMP #rom_palette_block_2_start_for_ram_mirror
+	BCC sprite_pal_not_in_rom_pal_block_2
+	CLC
+	ADC.w #!rom_pal_block_2_ram_manip_block_2_diff
+	BRA store_lower_word_of_sprite_pal_into_upload_queue
+;END OF PATCH
+sprite_pal_not_in_rom_pal_block_2:
 	CLC					;$BB8B38   |
-	ADC #$3374				;$BB8B39   |
+;START OF PATCH (calculate difference to add based on locations of palette data instead of hardcoding it)
+;	ADC #$3374				;$BB8B39   |
+	ADC.w #!rom_pal_block_ram_manip_block_diff
+;END OF PATCH
+store_lower_word_of_sprite_pal_into_upload_queue:
 	STA $0B24,x				;$BB8B3C   |
 	LDA $5E					;$BB8B3F   |
 	ASL A					;$BB8B41   |
