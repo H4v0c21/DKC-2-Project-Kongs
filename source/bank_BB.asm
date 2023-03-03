@@ -1802,13 +1802,6 @@ CODE_BB8B66:
 CODE_BB8B7C:					;	   |
 ;START OF PATCH (Kong dynamic color palette routine)
 	LDA $05A7				;$BB8B7C   |
-	CPY $0593
-	BEQ enabled_kong_dynamic_palette
-	CPY $0597
-	BEQ enabled_kong_dynamic_palette
-	RTS
-
-enabled_kong_dynamic_palette:
 	CMP #$6484				;$BB8B7F   |
 ;	BEQ palette_is_diddy_palette		;$BB8B82   |
 	BEQ palette_is_first_kong_palette	
@@ -5646,12 +5639,12 @@ CODE_BBAEE3:
 	CMP current_sprite						;compare to pointer to current object struct
 	BNE disabled_kong_object_init_pal_load	;this branch is followed if the Kong being spawned isn't either of the enabled ones
 ;END OF PATCH
-	LDA #$0004				;$BBAEE3  \			$0004 = Second palette ID for Kongs (previously Dixie palette ID)
+	LDA #$0004				;$BBAEE3  \		 $0004 = Second palette ID for Kongs (previously Dixie palette ID)
 	JSR CODE_BB8A69				;$BBAEE6   |
 	BRA CODE_BBAED7				;$BBAEE9  /
 ;START OF PATCH (check Donkey and Kiddy Kong object types, load palettes)
 disabled_kong_object_init_pal_load:
-	LDA #$0004
+	LDA #$0000								;$0000 = Global palette
 	JSR CODE_BB8A69
 	DEC $0B74,x								;Decrement number of references to this palette, so that the inactive Kongs don't prevent it from unloading
 	BRA CODE_BBAED7
@@ -5671,9 +5664,7 @@ CODE_BBAEEB:
 	BRA CODE_BBAED7				;$BBAF00  /
 
 DATA_BBAF02:
-	db $05, $00, $0D, $00, $0F, $00, $43, $00
-	db $60, $00
-
+	dw $0005, $000D, $000F, $0043, $0060
 
 CODE_BBAF0C:
 	LDX #$0515				;$BBAF0C  \

@@ -5436,11 +5436,29 @@ kong_pal_order_check_1_2_match:
 	
 kong_pal_order_check_done:
 ;End of code to assist with loading palettes
-
 	REP #$20
-	JSL update_kong_status_wrapper
-	
 	LDY $0597				;$B8A9BD   |
+;Start of code to get palette attribute from follower Kong to be "replaced" by Kong released from DK Barrel
+	LDA $0012,y				;Load OAM attributes of old follower Kong
+	AND #$0E00				;Isolate palette bits
+	STA temp_32				;Store to temporary variable
+;End of code to to get palette attribute from follower Kong to be "replaced" by Kong released from DK Barrel
+	JSL update_kong_status_wrapper
+;Start of code to swap palette attributes of old follower Kong with new follower Kong
+	CPY $0597				;Compare to object address of new follower Kong
+	BEQ .old_follower_kong_is_barrel_kong	;Skip ahead if equal
+	LDA $0012,y				;Load OAM attributes of old follower Kong
+	AND #$0E00				;Isolate palette bits
+	EOR $0012,y				;Flip all bits to get attributes without palette bits
+	STA $0012,y				;Store the result to the old Kong's OAM attributes (palette set to 0, the global palette slot)
+	LDY $0597				;Load object address of new follower Kong
+	LDA $0012,y				;Load OAM attributes of new follower Kong
+	AND #$0E00				;Clear palette bits
+	EOR $0012,y				;Flip all bits to get attributes without palette bits
+	EOR temp_32				;Apply stored palette bits of old follower Kong from temporary variable to accumulator
+	STA $0012,y				;Store the result to the new Kong's OAM attributes
+.old_follower_kong_is_barrel_kong:
+;End of code
 	LDA $06,x				;$B8A9C0   |
 	STA $0006,y				;$B8A9C2   |
 	LDA $0A,x				;$B8A9C5   |
