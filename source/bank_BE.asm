@@ -2032,12 +2032,27 @@ CODE_BEC694:					;	   |
 	RTL					;$BEC694  /
 
 CODE_BEC695:
-	LDA #$6484				;$BEC695  \
-	JSL CODE_BB8A65				;$BEC698   |
-	DEC $0B74,x				;$BEC69C   |
-	AND #$0E00				;$BEC69F   |
-	ORA #$3000				;$BEC6A2   |
-	STA $60					;$BEC6A5   |
+	;START OF PATCH: Load palette for life icon
+	LDA $6E					;Non-zero if controlling an animal
+	BEQ .NotAnimal
+	LDA $6C					;If a Kong is riding the animal, this is the pointer to the Kong object
+	BEQ .NotAnimal
+	TAX
+	BRA .LoadAttributeUpper
+.NotAnimal:
+	LDX $0593				;Get leader Kong's object address
+.LoadAttributeUpper:
+	LDA $13,x				;Get upper bits of attribute in lower byte
+	AND #$000E				;Isolate these bits
+	TAX						;Transfer the accumulator to the X index register
+	LDA $0B64,x				;Retrieve palette address from table where they are stored
+	;LDA #$6484				;$BEC695  \			;Load Diddy's palette for life icon
+	;END OF PATCH: Load palette for life icon
+	JSL CODE_BB8A65			;$BEC698   |
+	DEC $0B74,x				;$BEC69C   |		;Decrement number of references to this palette
+	AND #$0E00				;$BEC69F   |		;Get palette bits from attribute word in accumulator
+	ORA #$3000				;$BEC6A2   |		;Set priority bits
+	STA $60					;$BEC6A5   |		;Store into dp $60
 	LDA $0D2C				;$BEC6A7   |
 	AND #$0E00				;$BEC6AA   |
 	ORA #$3000				;$BEC6AD   |
