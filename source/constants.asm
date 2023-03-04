@@ -29,7 +29,8 @@
 !initcommand_setup_static = $8900
 !initcommand_bulk_set = $8A00
 !initcommand_set_oam_special = $8B00
-!initcommand_set_palette2 = $8C00
+;!initcommand_set_palette2 = $8C00
+!initcommand_match_leader_kong_palette = $8C00	;Unused command replaced with a different one for kong_hack
 !initcommand_set_alt_palette = $8D00
 !initcommand_setup_static2 = $8E00
 

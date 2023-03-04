@@ -5445,20 +5445,46 @@ kong_pal_order_check_done:
 ;End of code to to get palette attribute from follower Kong to be "replaced" by Kong released from DK Barrel
 	JSL update_kong_status_wrapper
 ;Start of code to swap palette attributes of old follower Kong with new follower Kong
+;	CPY $0597				;Compare to object address of new follower Kong
+;	BEQ .old_follower_kong_is_barrel_kong	;Skip ahead if equal
+;	LDA $0012,y				;Load OAM attributes of old follower Kong
+;	AND #$0E00				;Isolate palette bits
+;	EOR $0012,y				;Flip all bits to get attributes without palette bits
+;	STA $0012,y				;Store the result to the old Kong's OAM attributes (palette set to 0, the global palette slot)
+;	LDY $0597				;Load object address of new follower Kong
+;	LDA $0012,y				;Load OAM attributes of new follower Kong
+;	AND #$0E00				;Clear palette bits
+;	EOR $0012,y				;Flip all bits to get attributes without palette bits
+;	EOR temp_32				;Apply stored palette bits of old follower Kong from temporary variable to accumulator
+;	STA $0012,y				;Store the result to the new Kong's OAM attributes
+;.old_follower_kong_is_barrel_kong:
+;End of code
+;Start of code (alt)
 	CPY $0597				;Compare to object address of new follower Kong
 	BEQ .old_follower_kong_is_barrel_kong	;Skip ahead if equal
-	LDA $0012,y				;Load OAM attributes of old follower Kong
-	AND #$0E00				;Isolate palette bits
-	EOR $0012,y				;Flip all bits to get attributes without palette bits
-	STA $0012,y				;Store the result to the old Kong's OAM attributes (palette set to 0, the global palette slot)
-	LDY $0597				;Load object address of new follower Kong
-	LDA $0012,y				;Load OAM attributes of new follower Kong
-	AND #$0E00				;Clear palette bits
-	EOR $0012,y				;Flip all bits to get attributes without palette bits
-	EOR temp_32				;Apply stored palette bits of old follower Kong from temporary variable to accumulator
-	STA $0012,y				;Store the result to the new Kong's OAM attributes
+	LDA temp_32
+	XBA
+	TAX
+	XBA
+	EOR $0012,y
+	STA $0012,y
+	LDA $0B64,x
+	STA temp_34
+	LDA.w #global_sprite_palette
+	TYX
+	JSL CODE_BB8AE4	
+	LDY $0597
+	LDA $0012,y
+	AND #$0E00
+	EOR $0012,y
+	EOR temp_32
+	STA $0012,y
+	LDA temp_34
+	TYX
+	JSL CODE_BB8AE4
 .old_follower_kong_is_barrel_kong:
-;End of code
+	LDX $64
+;End of code (alt)
 	LDA $06,x				;$B8A9C0   |
 	STA $0006,y				;$B8A9C2   |
 	LDA $0A,x				;$B8A9C5   |

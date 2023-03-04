@@ -988,19 +988,27 @@ DATA_FF0F06:
 	dw sprite.unknown_1A, $000C
 	dw !initcommand_success
 
+;Dixie hurt tears init
 DATA_FF0F18:
 	dw sprite.number, $00FC
 	dw !initcommand_spawn_relative, $0000, $0000
-	dw !initcommand_set_palette, dixie_active_sprite_palette
+;START OF PATCH (fix Dixie hurt tears palette)
+;	dw !initcommand_set_palette, dixie_active_sprite_palette
+	dw !initcommand_match_leader_kong_palette
+;END OF PATCH
 	dw !initcommand_set_animation, $015C
 	dw !initcommand_success
 
+;Diddy hurt birds init
 DATA_FF0F2C:
 	dw sprite.number, $0100
 	dw !initcommand_spawn_relative, $FFFB, $FFE2
 	dw sprite.unknown_42, $0400
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_palette, diddy_active_sprite_palette
+;START OF PATCH (fix Diddy hurt birds palette)
+;	dw !initcommand_set_palette, diddy_active_sprite_palette
+	dw !initcommand_match_leader_kong_palette
+;END OF PATCH
 	dw !initcommand_set_animation, $015D
 	dw !initcommand_success
 
@@ -2088,12 +2096,13 @@ DATA_FF1AC6:
 DATA_FF1AE8:
 	dw !initcommand_success
 
+;Krow hurt birds
 DATA_FF1AEA:
 	dw sprite.number, $0100
 	dw !initcommand_spawn_relative, $FFFF, $FFDD
 	dw sprite.unknown_42, $002D
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_palette, diddy_active_sprite_palette
+;	dw !initcommand_set_palette, diddy_active_sprite_palette
 	dw !initcommand_set_animation, $015D
 	dw !initcommand_success
 
