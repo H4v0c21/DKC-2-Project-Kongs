@@ -998,16 +998,19 @@ DATA_FF0F18:
 ;END OF PATCH
 	dw !initcommand_set_animation, $015C
 	dw !initcommand_success
+;START OF PATCH (pad space left over from reduced size of Dixie tears init command)
+	padbyte $FF : pad $FF0F2C
+;END OF PATCH
 
-;Diddy hurt birds init
+;Diddy/Krow dizzy stars init
 DATA_FF0F2C:
 	dw sprite.number, $0100
 	dw !initcommand_spawn_relative, $FFFB, $FFE2
 	dw sprite.unknown_42, $0400
 	dw !initcommand_set_oam, $3000
-;START OF PATCH (fix Diddy hurt birds palette)
+;START OF PATCH (change dizzy stars to use global sprite palette instead of Diddy's)
 ;	dw !initcommand_set_palette, diddy_active_sprite_palette
-	dw !initcommand_match_leader_kong_palette
+	dw !initcommand_set_palette, global_sprite_palette
 ;END OF PATCH
 	dw !initcommand_set_animation, $015D
 	dw !initcommand_success
@@ -2096,13 +2099,16 @@ DATA_FF1AC6:
 DATA_FF1AE8:
 	dw !initcommand_success
 
-;Krow hurt birds
+;Cat O' 9 Tails dizzy stars init
 DATA_FF1AEA:
 	dw sprite.number, $0100
 	dw !initcommand_spawn_relative, $FFFF, $FFDD
 	dw sprite.unknown_42, $002D
 	dw !initcommand_set_oam, $3000
+;START OF PATCH (change dizzy stars to use global sprite palette instead of Diddy's)
 ;	dw !initcommand_set_palette, diddy_active_sprite_palette
+	dw !initcommand_set_palette, global_sprite_palette
+;END OF PATCH
 	dw !initcommand_set_animation, $015D
 	dw !initcommand_success
 
