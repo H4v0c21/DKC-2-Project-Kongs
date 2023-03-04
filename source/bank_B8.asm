@@ -2865,8 +2865,13 @@ CODE_B8966C:					;	   |
 
 clear_kong_data:
 	LDX $64
-	LDA #$030C
-	JSL set_sprite_animation
+	
+	LDA $1C,X
+	ORA #$C000
+	STA $1C,X
+
+	;LDA #$030C
+	;JSL set_sprite_animation
 	RTS
 
 
@@ -5408,11 +5413,31 @@ CODE_B8A997:
 	RTS					;$B8A9BA  /
 
 CODE_B8A9BB:
-	LDX current_sprite
+
+	LDA kong_status			;get old follower kong
+	XBA
+	AND #$00FF
 	
+	JSL get_kong_sprite_address	;get old follower kong sprite address
+	TAX	
+	LDA $1C,x			;hide old kong
+	ORA #$C000
+	STA $1C,x
+	
+	LDX current_sprite
+	LDA $4C,x			;get kong in barrel
+	JSL get_kong_sprite_address
+	
+	TAX
+	LDA $1C,x
+	AND #$3FFF			;make kong visible
+	STA $1C,x
+	
+	LDX current_sprite
 	SEP #$20
-	LDA $4C,x		;get current kong in barrel
+	LDA $4C,x			;get current kong in barrel
 	STA kong_status+1
+
 
 ;Start of code to assist with loading palettes
 	LDA kong_status						;Load leader Kong value
