@@ -2541,7 +2541,10 @@ CODE_BAA219:					;	   |
 
 DATA_BAA222:
 	%offset(DATA_BAA224, 2)
-	db $12, $00 : dw DATA_FF245C
+;START OF PATCH (fix kleever sprite overflow)
+	;db $12, $00 : dw DATA_FF245C
+	db $0C, $00 : dw DATA_FF245C	;reduce the number of fragments kleever spawns upon death
+;END OF PATCH
 	db $00, $00, $00, $00, $00, $FF, $80, $FE
 	db $00, $FE, $00, $05, $03, $00, $02, $00
 	db $00, $00

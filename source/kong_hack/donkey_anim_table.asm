@@ -42,9 +42,9 @@
 	dw donkey_hurt : db $00, $00
 	dw diddy_hurt_jump_off_screen : db $00, $00
 	dw diddy_honey_wall_idle : db $00, $00
-	dw diddy_honey_floor_idle : db $00, $00
-	dw diddy_honey_floor_walk : db $00, $00
-	dw diddy_honey_floor_carry_idle : db $00, $00
+	dw donkey_honey_floor_idle : db $00, $00
+	dw donkey_honey_floor_walk : db $00, $00
+	dw donkey_honey_floor_carry_idle : db $00, $00
 	dw donkey_rope_vertical_single_idle : db $00, $00
 	dw donkey_rope_vertical_single_up : db $00, $00
 	dw donkey_rope_vertical_single_down : db $00, $00
@@ -74,8 +74,8 @@
 	dw diddy_swap_to : db $00, $00
 	dw diddy_swap_idle : db $00, $00
 	dw donkey_barrel_cannon_air : db $00, $00
-	dw diddy_krockhead_bounce : db $00, $00
-	dw diddy_carry_krockhead_bounce : db $00, $00
+	dw donkey_krockhead_bounce : db $00, $00
+	dw donkey_carry_krockhead_bounce : db $00, $00
 	dw diddy_skull_cart : db $00, $00
 	dw diddy_squitter_mount : db $00, $00
 	dw diddy_rattly_idle : db $00, $00
