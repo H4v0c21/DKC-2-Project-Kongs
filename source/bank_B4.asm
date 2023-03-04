@@ -7518,10 +7518,13 @@ CODE_B4BF3A:					;	   |
 	JSL DMA_palette				;$B4BFA2   |
 	LDA #$0100				;$B4BFA6   |
 	JSL set_fade_global			;$B4BFA9   |
+;START OF PATCH ()
 	LDA $08A4				;$B4BFAD   |
 	STA $0660				;$B4BFB0   |
 	STZ $08A4				;$B4BFB3   |
+	LDA kong_status
 	JSL CODE_808D8A				;$B4BFB6   |
+;END OF PATCH
 	LDX $0597				;$B4BFBA   |
 	LDA #$C000				;$B4BFBD   |
 	STA $1C,x				;$B4BFC0   |
@@ -7608,7 +7611,10 @@ CODE_B4C07B:					;	   |
 	STA $064E				;$B4C087   |
 	LDA #CODE_B48E6C			;$B4C08A   |
 	STA $067D				;$B4C08D   |
-	LDA $0660				;$B4C090   |
+;START OF PATCH (hero screen fix)
+	;LDA $0660				;$B4C090   |
+	LDA kong_status
+;END OF PATCH
 	JSL CODE_808837				;$B4C093   |
 	JML CODE_808C84				;$B4C097  /
 

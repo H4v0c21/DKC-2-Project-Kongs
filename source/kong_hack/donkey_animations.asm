@@ -1049,9 +1049,11 @@ DONKEY_ANIM_BE9D7F:
 donkey_death:
 	db !animation_command_8E : dw $0046
 	db $08 : dw $3980
+	db !animation_command_81 : dw CODE_B9DA5C
 	;db !animation_command_81 : dw $BE9835	;needs rework
 	;db !animation_command_81 : dw $BE9CEA	;needs rework
 	db $02 : dw $3980
+	db !animation_command_83 : dw CODE_B9D55A
 	;db !animation_command_81 : dw $BE9956	;needs rework
 	;db !animation_command_81 : dw $BE9937	;needs rework
 	;db !animation_command_81 : dw $B6A856	;needs rework
@@ -1061,19 +1063,25 @@ donkey_death:
 	db $05 : dw $3958
 	db $05 : dw $395C
 	;db !animation_command_83 : dw $84DA	;needs rework
+	db !animation_command_83 : dw CODE_B9D5A4
 	db !animation_command_8E : dw $004E
+	db !animation_command_81 : dw CODE_B9DD21
 	;db !animation_command_81 : dw $BE9945	;needs rework
 	db $05 : dw $3960
 	db $05 : dw $3964
 	db $05 : dw $3968
 	;db !animation_command_83 : dw $84DA	;needs rework
+	db !animation_command_83 : dw CODE_B9D5A4
 	db !animation_command_8E : dw $004E
+	db !animation_command_81 : dw CODE_B9DA75
 	;db !animation_command_81 : dw $BE993E	;needs rework
 	db $06 : dw $396C
 	;db !animation_command_83 : dw $84DA	;needs rework
 	db !animation_command_8E : dw $004E
 	;db !animation_command_81 : dw $BE994C	;needs rework
+	db !animation_command_81 : dw CODE_B9DEBE
 	db $1C : dw $3970
+	;db !animation_command_81 : dw CODE_B9DA94
 	;db !animation_command_81 : dw $B6A868	;needs rework
 	db $06 : dw $3974
 	db $06 : dw $3978
@@ -1088,6 +1096,7 @@ donkey_death:
 	db $03 : dw $3790
 	db !animation_command_8E : dw $0016
 	db $03 : dw $3794
+donkey_death_loop:
 	db $03 : dw $3798
 	db $03 : dw $379C
 	db $03 : dw $3798
@@ -1115,6 +1124,7 @@ donkey_death:
 	db $03 : dw $3794
 	db $03 : dw $3790
 	db !animation_command_8E : dw $0016
+	db !animation_command_81 : dw CODE_B9DA61
 	db $03 : dw $3794
 	db $03 : dw $3798
 	db $03 : dw $379C
@@ -1122,8 +1132,7 @@ donkey_death:
 	db $03 : dw $3794
 	db !animation_command_81 : dw CODE_B9DA80
 	db !animation_command_83 : dw CODE_B9D12B
-	;db !animation_command_81 : dw $BE9932	;needs rework
-	;db !animation_command_82 : dw $8098B1	;needs rework
+	db !animation_command_82 : dw donkey_death_loop
 	db !animation_command_80, $00
 
 ;11
@@ -1316,6 +1325,7 @@ donkey_team_top_stunned:
 	db $03 : dw $3794
 	db $03 : dw $3790
 	db $03 : dw $3794
+donkey_team_top_stunned_loop:
 	db $03 : dw $3798
 	db $03 : dw $379C
 	db $03 : dw $3798
@@ -1344,6 +1354,7 @@ donkey_team_top_stunned:
 	db $03 : dw $379C
 	db $03 : dw $3798
 	db $03 : dw $3794
+	db !animation_command_82 : dw donkey_team_top_stunned_loop
 	db !animation_command_80, $00
 
 
@@ -3348,3 +3359,94 @@ DONKEY_ANIM_BE8642:
 	db $77 : dw $FFFF
 	db $77 : dw $FFFF
 	db !animation_command_91, $00
+
+
+donkey_honey_floor_idle:
+	db $03 : dw $35C8
+	db $03 : dw $35CC
+	db $03 : dw $35D0
+	db $03 : dw $35D4
+	db $03 : dw $35D8
+	db $0A : dw $35DC
+	db $03 : dw $35E0
+	db $03 : dw $35E4
+	db $03 : dw $35E8
+	db $03 : dw $35EC
+	db $0F : dw $35F0
+	db $03 : dw $35EC
+	db $03 : dw $35E8
+	db $03 : dw $35E4
+	db $03 : dw $35E0
+	db $05 : dw $35DC
+	db $03 : dw $35E0
+	db $03 : dw $35E4
+	db $03 : dw $35E8
+	db $03 : dw $35EC
+	db $0A : dw $35F0
+	db $03 : dw $35EC
+	db $03 : dw $35E8
+	db $03 : dw $35E4
+	db $03 : dw $35E0
+	db $0F : dw $35DC
+	db $03 : dw $35D8
+	db $03 : dw $35D4
+	db $03 : dw $35D0
+	db $03 : dw $35CC
+	db $19 : dw $35C8
+	db $03 : dw $35CC
+	db $03 : dw $35D0
+	db $03 : dw $35D4
+	db $03 : dw $35D8
+	db $0A : dw $35DC
+	db $03 : dw $35D8
+	db $03 : dw $35D4
+	db $03 : dw $35D0
+	db $03 : dw $35CC
+	;db $0C : dw $35C8
+	;db $04 : dw $35C4
+	;db $04 : dw $35C0
+	;db $04 : dw $35BC
+	;db $04 : dw $35B8
+	;db $04 : dw $35B4
+	;db $04 : dw $35B0
+	;db $04 : dw $35AC
+	;db $04 : dw $35A8
+	;db $04 : dw $35A4
+	;db $02 : dw $35A0
+	;db $04 : dw $3714
+	;db $04 : dw $3718
+	;db $04 : dw $371C
+	;db $04 : dw $3720
+	;db $04 : dw $3724
+	;db $04 : dw $3728
+	db !animation_command_80, $00
+
+donkey_honey_floor_walk:
+	db $03 : dw $3690
+	db $03 : dw $368C
+	db $04 : dw $3688
+	db $03 : dw $368C
+	db $03 : dw $3690
+	db !animation_command_81 : dw CODE_B9DAAF
+	db !animation_command_80, $00
+
+donkey_honey_floor_carry_idle:
+	db !animation_command_84 : dw CODE_B9E0A8
+donkey_honey_floor_carry_idle_loop:
+	db !animation_command_8B, $0C : dw $3BCC, $FFFE, $002A*-1
+	db !animation_command_8B, $09 : dw $3BD0, $FFFE, $0029*-1
+	db !animation_command_8B, $0C : dw $3BD4, $FFFF, $0028*-1
+	db !animation_command_8B, $09 : dw $3BD0, $FFFE, $0029*-1
+	db !animation_command_82 : dw donkey_honey_floor_carry_idle_loop
+	db !animation_command_80, $00
+
+donkey_krockhead_bounce:
+	db $03 : dw $35C8
+	db $03 : dw $35CC
+	db $03 : dw $35D0
+	db $03 : dw $35D4
+	db !animation_command_80, $00
+
+donkey_carry_krockhead_bounce:
+	db !animation_command_8B, $0C : dw $3BCC, $FFFE, $002A*-1
+	db !animation_command_80, $00
