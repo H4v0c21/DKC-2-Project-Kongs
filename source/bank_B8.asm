@@ -6617,12 +6617,16 @@ CODE_B8B307:
 
 ;under water swap code (contains swapping bug)
 CODE_B8B310:
-	LDX current_sprite			;$B8B310  \
-	LDA $00,x				;$B8B312   |
 ;START OF PATCH (fix underwater swap softlock)
+	;LDX current_sprite			;$B8B310  \
+	;LDA $00,x				;$B8B312   |
 	;CMP #$00E8				;$B8B314   |
-	;BNE CODE_B8B377				;$B8B317   |
+	LDA kong_palette_order+1		;Get second Kong value
+	AND #$00FF
+	JSL get_kong_sprite_address		;Get second Kong address
+	CMP current_sprite				;check if it matches current object address
 ;END OF PATCH
+	BNE CODE_B8B377				;$B8B317   |
 	DEC $0D64				;$B8B319   |
 	BNE CODE_B8B377				;$B8B31C   |
 if !version == 1				;	   |
