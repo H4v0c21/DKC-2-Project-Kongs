@@ -786,7 +786,10 @@ initscript_commands:
 	dw CODE_BB86D5
 	dw init_command_bulk_set
 	dw init_command_set_oam_special
-	dw init_command_set_palette_copy
+;START OF PATCH (Change init command $8C00 to one which sets palette of object to leader Kong's)
+;	dw init_command_set_palette_copy
+	dw init_command_use_leader_kong_pal
+;END OF PATCH
 	dw init_command_set_alt_palette
 	dw CODE_BB879E
 
@@ -1010,33 +1013,60 @@ CODE_BB8636:
 	STA $12,x				;$BB8641   |
 	JMP initscript_next			;$BB8643  /
 
-init_command_set_palette_copy:
-	JML init_command_set_palette		;$BB8646  /
+;START OF PATCH (Change init command $8C00 to one which sets palette of object to leader Kong's)
+;init_command_set_palette_copy:
+;	JML init_command_set_palette		;$BB8646  /
+init_command_use_leader_kong_pal:
+	LDA #$0000	
+	TCD			
+	LDA.l $000593
+	PHB
+	PHK
+	PLB
+	TAX
+	LDA $12,x
+	AND #$0E00
+	XBA
+	TAX
+	LDA $0B64,x
+	PHY			
+	JSR CODE_BB8A6F	
+	PLY
+	LDX alternate_sprite
+	EOR $12,x
+	AND #$0E00
+	EOR $12,x
+	STA $12,x
+	PLB
+	JMP initscript_next_no_operand
+;END OF PATCH
 
-	LDA #$0000				;$BB864A   |
-	TCD					;$BB864D   |
-	LDX #$0000				;$BB864E   |
-	LDA.l $000597				;$BB8651   |
-	CMP alternate_sprite			;$BB8655   |
-	BNE CODE_BB865C				;$BB8657   |
-	LDX #$001E				;$BB8659   |
-CODE_BB865C:					;	   |
-	TXA					;$BB865C   |
-	CLC					;$BB865D   |
-	ADC.w DATA_FF0002,y			;$BB865E   |
-	PHB					;$BB8661   |
-	PHK					;$BB8662   |
-	PLB					;$BB8663   |
-	PHY					;$BB8664   |
-	JSR CODE_BB8A6F				;$BB8665   |
-	PLY					;$BB8668   |
-	LDX alternate_sprite			;$BB8669   |
-	EOR $12,x				;$BB866B   |
-	AND #$0E00				;$BB866D   |
-	EOR $12,x				;$BB8670   |
-	STA $12,x				;$BB8672   |
-	PLB					;$BB8674   |
-	JMP initscript_next			;$BB8675  /
+;START OF PATCH (remove unreached code which appears to have been an early command to load the follower Kong's palette)
+;	LDA #$0000				;$BB864A   |
+;	TCD					;$BB864D   |
+;	LDX #$0000				;$BB864E   |
+;	LDA.l $000597				;$BB8651   |
+;	CMP alternate_sprite			;$BB8655   |
+;	BNE CODE_BB865C				;$BB8657   |
+;	LDX #$001E				;$BB8659   |
+;CODE_BB865C:					;	   |
+;	TXA					;$BB865C   |
+;	CLC					;$BB865D   |
+;	ADC.w DATA_FF0002,y			;$BB865E   |
+;	PHB					;$BB8661   |
+;	PHK					;$BB8662   |
+;	PLB					;$BB8663   |
+;	PHY					;$BB8664   |
+;	JSR CODE_BB8A6F				;$BB8665   |
+;	PLY					;$BB8668   |
+;	LDX alternate_sprite			;$BB8669   |
+;	EOR $12,x				;$BB866B   |
+;	AND #$0E00				;$BB866D   |
+;	EOR $12,x				;$BB8670   |
+;	STA $12,x				;$BB8672   |
+;	PLB					;$BB8674   |
+;	JMP initscript_next			;$BB8675  /
+;END OF PATCH
 
 init_command_set_alt_palette:
 	LDA #$0000				;$BB8678  \
