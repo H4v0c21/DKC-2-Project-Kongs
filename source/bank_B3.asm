@@ -1286,7 +1286,7 @@ CODE_B38AE4:
 	LDA $0515				;$B38AEE   |
 	CMP #$0001				;$B38AF1   |
 	BEQ CODE_B38AFD				;$B38AF4   |
-CODE_B38AF6:					;	   |
+CODE_B38AF6:					;	   | don't spawn squitter
 	LDX current_sprite			;$B38AF6   |
 	STZ $2E,x				;$B38AF8   |
 	BRL CODE_B38A6C				;$B38AFA  /
@@ -2521,12 +2521,19 @@ unknown_sprite_0104_main:
 	JSL CODE_B9D100				;$B3936F  \
 	JML [$05A9]				;$B39373  /
 
-
-
-
-
-
-
+;START OF PATCH (check if kong is animal)
+check_if_kong_is_animal:
+	LDA $6E
+	BEQ .not_animal
+	LDA $6C
+	BNE .not_animal
+	SEC
+	BRA .return
+.not_animal
+	CLC
+.return
+	RTL
+;END OF PATCH
 
 
 ;START OF PATCH (dk barrel kong number logic)
@@ -2628,6 +2635,10 @@ dkbarrel_main:
 	LDX current_sprite			;$B39376  \
 
 ;START OF PATCH (update kong in dk barrel)
+	
+	JSL check_if_kong_is_animal
+	BCS kong_barrel_swap_logic_done
+	
 	LDA $4E,x
 	BNE kong_dk_barrel_check_logic
 ;END OF PATCH
@@ -2733,9 +2744,13 @@ CODE_B3944D:
 	AND #$0001				;$B39450   |
 	BNE CODE_B39484				;$B39453   |
 ;START OF PATCH (always enable dk barrels)
-	;LDA $08C2				;$B39455   |
-	;AND #$4000				;$B39458   |
-	;BNE CODE_B3946A				;$B3945B   |
+	JSL check_if_kong_is_animal
+	BCC .not_animal
+	
+	LDA $08C2				;$B39455   |
+	AND #$4000				;$B39458   |
+	BNE CODE_B3946A				;$B3945B   |
+.not_animal
 	JSL CODE_BCFB58				;$B3945D   |
 	LDA #$0010				;$B39461   |
 	JSL CODE_BCFCB5				;$B39464   |
