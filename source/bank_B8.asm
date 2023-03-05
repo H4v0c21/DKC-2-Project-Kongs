@@ -5387,8 +5387,12 @@ CODE_B8A98A:
 
 ;START OF PATCH (always enable dk barrels)
 CODE_B8A98E:
-	;LDA $08C2				;$B8A98E  \
-	;AND #$4000				;$B8A991   |
+	JSL check_if_kong_is_animal
+	BCC .not_animal
+		
+	LDA $08C2				;$B8A98E  \
+	AND #$4000				;$B8A991   |
+.not_animal
 	BRA CODE_B8A997				;$B8A994   |
 CODE_B8A996:					;	   |
 	RTS					;$B8A996  /

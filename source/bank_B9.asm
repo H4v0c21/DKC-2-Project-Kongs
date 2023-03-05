@@ -4814,10 +4814,14 @@ CODE_B9EE40:
 
 ;START OF PATCH (always make DK barrels work)
 CODE_B9EE4B:
-	;LDA $08C2				;$B9EE4B  \
-	;AND #$4000				;$B9EE4E   |
-	BRA CODE_B9EE54				;$B9EE51   |
-	;RTS					;$B9EE53  /
+	JSL check_if_kong_is_animal
+	BCS .is_animal
+	BRA CODE_B9EE54
+.is_animal
+	LDA $08C2
+	AND #$4000
+	BEQ CODE_B9EE54
+	RTS
 ;END OF PATCH
 
 CODE_B9EE54:
