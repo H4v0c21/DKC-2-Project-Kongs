@@ -2534,9 +2534,24 @@ update_kong_barrel_number:
 	LDA $4C,x
 	INC
 	CMP #$0004
-	BCC no_overflow
+	BCC .no_overflow
+
+	LDA kong_status
+	AND #$00FF
+	BEQ .active_diddy_overflow
+	LDA kong_status
+	XBA
+	AND #$00FF
+	BEQ .active_diddy_overflow
+
+.no_diddy_overflow
 	LDA #$0000
-no_overflow:
+	BRA .no_overflow
+	
+.active_diddy_overflow
+	LDA #$0001
+
+.no_overflow
 	STA $4C,x
 	RTS
 
