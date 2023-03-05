@@ -842,6 +842,10 @@ clear_wram_tables:
 	dw aux_sprite_table, $092E
 	dw $16B2, $0026
 	dw $16D8, $0026
+;START OF PATCH (clear new kong variables)
+	dw !donkey_variables_address, $0026
+	dw !kiddy_variables_address, $0026
+;END OF PATCH
 	dw $0D7A, $0002
 	dw $0BA0, $0002
 	dw $0BA2, $0002
