@@ -5473,22 +5473,7 @@ kong_pal_order_check_done:
 	STA temp_32				;Store to temporary variable
 ;End of code to to get palette attribute from follower Kong to be "replaced" by Kong released from DK Barrel
 	JSL update_kong_status_wrapper
-;Start of code to swap palette attributes of old follower Kong with new follower Kong
-;	CPY $0597				;Compare to object address of new follower Kong
-;	BEQ .old_follower_kong_is_barrel_kong	;Skip ahead if equal
-;	LDA $0012,y				;Load OAM attributes of old follower Kong
-;	AND #$0E00				;Isolate palette bits
-;	EOR $0012,y				;Flip all bits to get attributes without palette bits
-;	STA $0012,y				;Store the result to the old Kong's OAM attributes (palette set to 0, the global palette slot)
-;	LDY $0597				;Load object address of new follower Kong
-;	LDA $0012,y				;Load OAM attributes of new follower Kong
-;	AND #$0E00				;Clear palette bits
-;	EOR $0012,y				;Flip all bits to get attributes without palette bits
-;	EOR temp_32				;Apply stored palette bits of old follower Kong from temporary variable to accumulator
-;	STA $0012,y				;Store the result to the new Kong's OAM attributes
-;.old_follower_kong_is_barrel_kong:
-;End of code
-;Start of code (alt)
+;Start of code to swap palette attributes of old follower Kong with new follower Kong and load palettes
 	CPY $0597				;Compare to object address of new follower Kong
 	BEQ .old_follower_kong_is_barrel_kong	;Skip ahead if equal
 	LDA temp_32
@@ -5513,7 +5498,7 @@ kong_pal_order_check_done:
 	JSL CODE_BB8AE4
 .old_follower_kong_is_barrel_kong:
 	LDX $64
-;End of code (alt)
+;End of code
 	LDA $06,x				;$B8A9C0   |
 	STA $0006,y				;$B8A9C2   |
 	LDA $0A,x				;$B8A9C5   |
@@ -5526,8 +5511,40 @@ kong_pal_order_check_done:
 	STA $001E,y				;$B8A9D9   |
 	LDA #$4000				;$B8A9DC   |
 	TSB $08C2				;$B8A9DF   |
+;Start of code to fix glitched state if the barrel breaks when teamed up
+	LDX $0593				;Load leader Kong's address into X
+	LDA $0D7A				;Load this variable to see if the leader is carrying something
+	BEQ .check_state		;If zero, we're not carrying a Kong, but still need to check some other states
+	CMP #$0F5A				;If not zero, check for first object slot after Kongs
+	BCC .reset_leader_state ;If value is less than this (which limits us to the Kongs being held), reset the leader's state
+.check_state:
+	LDA $2E,x				;Load leader Kong's state
+	CMP #$0020				;$0020 = Team throw (as leader)
+	BCC .do_not_reset_state	;If less than this value, stop checking (every status below this value would be caught by a check above, as $0D7A will be set to a Kong's object slot)
+	BEQ .reset_leader_state	;If matched, reset the state
+	CMP #$002C				;$002C = Team throw upward (as leader)
+	BEQ .reset_leader_state	;If matched, reset the state
+	CMP #$002E				;$002E = Leader/thrower Kong moves to follower/thrown Kong's location
+	BEQ .reset_leader_state	;If matched, reset the state
+	CMP #$007E				;$007E = Canceling team-up (as leader)
+	BNE .do_not_reset_state	;If not matched, don't reset the state
+.reset_leader_state:
+	LDA #$0001				;$0001 = falling
+	STA $2E,x				;Set Kong state
+	LDA current_sprite
+	PHA
+	JSR CODE_B88092
+	LDA #$0007				;$0007 = base ID for falling animation
+	JSL CODE_B9D0B8			;Set Kong animation
+	STZ $0D7A				;Clear object held pointer variable
+	BRA .do_not_push_current_sprite_to_stack
+.do_not_reset_state:
+;End of code
 	LDA current_sprite			;$B8A9E2   |
 	PHA					;$B8A9E4   |
+;Start of code
+.do_not_push_current_sprite_to_stack:
+;End of code
 	JSL CODE_B880A2				;$B8A9E5   |
 	LDA #$0006				;$B8A9E9   |
 	JSL CODE_B9D0B8				;$B8A9EC   |
