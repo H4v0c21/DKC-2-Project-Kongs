@@ -5253,3 +5253,29 @@ swap_kong_in_barrel:
 	RTS
 
 ;END OF PATCH
+
+;START OF PATCH (Change animation offsets of map sprites based on Kong status)
+anim_offsets_kongs_map:
+	dw diddy_map, dixie_map, donkey_map, kiddy_map
+
+check_kong_status_1_map:
+	LDX current_sprite
+	LDA kong_status
+	AND #$00FF
+	ASL A
+	TAY
+	LDA anim_offsets_kongs_map,y
+	STA $3C,x
+	RTS
+
+check_kong_status_2_map:
+	LDX current_sprite
+	LDA kong_status
+	XBA
+	AND #$00FF
+	ASL A
+	TAY
+	LDA anim_offsets_kongs_map,y
+	STA $3C,x
+	RTS
+;END OF PATCH

@@ -3436,8 +3436,20 @@ DATA_BCB600:
 	dw DATA_BCEDC8
 	incsrc "kong_hack/donkey_hitbox_pointers.asm"
 	incsrc "kong_hack/kiddy_hitbox_pointers.asm"
-
-
+;START OF PATCH (add hitboxes for extra sprites)
+	dw DATA_BCE318	;Dixie life counter icon
+	dw DATA_BCE318	;Donkey life counter icon
+	dw DATA_BCE318	;Kiddy life counter icon
+	dw DATA_BCD664	;Donkey map frame 1
+	dw DATA_BCD664	;Donkey map frame 2
+	dw DATA_BCD664	;Donkey map frame 3
+	dw DATA_BCD664	;Donkey map frame 4
+	dw DATA_BCD664	;Donkey map frame 5
+	dw DATA_BCD664	;Donkey map frame 6
+	dw DATA_BCD664	;Donkey map frame 7
+	dw DATA_BCD664	;Donkey map frame 8
+	dw DATA_BCD664	;Donkey map frame 9
+;END OF PATCH
 
 DATA_BCD100:
 	db $F8, $FF, $F8, $FF, $10, $00, $10, $00

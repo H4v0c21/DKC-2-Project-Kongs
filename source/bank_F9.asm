@@ -453,8 +453,12 @@ endif
 	dw water_surface_splash : db $00, $00
 	dw clapper_idle : db $00, $00
 	dw clapper_interact : db $00, $00
-	dw dixie_map : db $00, $00
-	dw diddy_map : db $00, $00
+;START OF PATCH (change animation pointers to Kong map sprites)
+;	dw dixie_map : db $00, $00
+	dw first_kong_map : db $00, $00
+;	dw diddy_map : db $00, $00
+	dw second_kong_map : db $00, $00
+;END OF PATCH
 	dw smoke_cloud : db $00, $00
 	dw fireball_explosion : db $00, $00
 	dw firework_1 : db $00, $00
@@ -11939,9 +11943,38 @@ empty_animation_script:
 
 incsrc "kong_hack/donkey_animations.asm"
 
+;START OF PATCH (New Kong map animations)
+first_kong_map:
+	db !animation_command_81 : dw check_kong_status_1_map
+	db !animation_command_80, $00
 
+second_kong_map:
+	db !animation_command_81 : dw check_kong_status_2_map
+	db !animation_command_80, $00
 
+donkey_map:
+	db $04 : dw !donkey_map_walk_gfx_num_base
+	db $04 : dw !donkey_map_walk_gfx_num_base+$04
+	db $04 : dw !donkey_map_walk_gfx_num_base+$08
+	db $04 : dw !donkey_map_walk_gfx_num_base+$0C
+	db $04 : dw !donkey_map_walk_gfx_num_base+$10
+	db $04 : dw !donkey_map_walk_gfx_num_base+$14
+	db $04 : dw !donkey_map_walk_gfx_num_base+$18
+	db $04 : dw !donkey_map_walk_gfx_num_base+$1C
+	db $04 : dw !donkey_map_walk_gfx_num_base+$20
+	db !animation_command_80, $00
 
+kiddy_map:
+	db $04 : dw !kiddy_map_walk_gfx_num_base
+	db $04 : dw !kiddy_map_walk_gfx_num_base+$04
+	db $04 : dw !kiddy_map_walk_gfx_num_base+$08
+	db $04 : dw !kiddy_map_walk_gfx_num_base+$0C
+	db $04 : dw !kiddy_map_walk_gfx_num_base+$10
+	db $04 : dw !kiddy_map_walk_gfx_num_base+$14
+	db $04 : dw !kiddy_map_walk_gfx_num_base+$18
+	db $04 : dw !kiddy_map_walk_gfx_num_base+$1C
+	db !animation_command_80, $00
+;END OF PATCH
 
 print pc
 padbyte $00
