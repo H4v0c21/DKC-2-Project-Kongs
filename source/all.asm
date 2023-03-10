@@ -143,8 +143,8 @@ org $FFFFFF
 ;
 org $410000
 	incsrc "exhi/bank_41.asm"
-;org $420000
-;	incsrc "exhi/bank_42.asm"
+org $420000
+	incsrc "exhi/bank_42.asm"
 ;org $430000
 ;	incsrc "exhi/bank_43.asm"
 ;org $440000
