@@ -78,9 +78,12 @@ lost_world_head_layer_1_8x8_tilemap:
 lost_world_head_layer_1_tiledata:
 	incbin "data/world_maps/8x8_tilemaps/lost_world_beam_layer_1_8x8_tilemap.bin"
 
+;START OF PATCH (replace boss icon tiledata with expanded version containing Wrinkly and Swanky)
 ;$FA443E
 DATA_FA443E:
-	incbin "data/misc_graphics/world_map_boss_icon_tiledata.bin"
+	incbin "kong_hack/world_map_boss_wrinkly_swanky_icons_tiledata.bin"
+;	incbin "data/misc_graphics/world_map_boss_icon_tiledata.bin"
+;END OF PATCH
 
 ;$FA4C3E	compressed
 DATA_FA4C3E:

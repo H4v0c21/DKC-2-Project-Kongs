@@ -78,3 +78,30 @@ kiddy_life_icon_graphic:
 	db $32, $40, $9D, $40, $EC, $1A, $E0, $18
 	db $60, $98, $04, $F8, $00, $FC, $02, $FC
 	db $7E, $81, $C1, $3E, $06, $00, $00, $00
+
+donkey_map_walking_frame1:
+	incbin "donkey_map_walking_frame1.bin"
+
+donkey_map_walking_frame2:
+	incbin "donkey_map_walking_frame2.bin"
+
+donkey_map_walking_frame3:
+	incbin "donkey_map_walking_frame3.bin"
+
+donkey_map_walking_frame4:
+	incbin "donkey_map_walking_frame4.bin"
+
+donkey_map_walking_frame5:
+	incbin "donkey_map_walking_frame5.bin"
+
+donkey_map_walking_frame6:
+	incbin "donkey_map_walking_frame6.bin"
+
+donkey_map_walking_frame7:
+	incbin "donkey_map_walking_frame7.bin"
+
+donkey_map_walking_frame8:
+	incbin "donkey_map_walking_frame8.bin"
+
+donkey_map_walking_frame9:
+	incbin "donkey_map_walking_frame9.bin"
