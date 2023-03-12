@@ -9104,7 +9104,7 @@ CODE_B5D96E:
 	BRA CODE_B5D9BD				;$B5D986  /
 
 CODE_B5D988:
-;START OF PATCH (Remove condition so Kong map objects are always loaded in same order, part 1 of 2)
+;START OF PATCH (Remove condition so Kong map objects are always loaded in same order and remove write to leader Kong pointer, part 1 of 2)
 ;	LDA $08A4				;$B5D988  \
 ;	BNE CODE_B5D99C				;$B5D98B   |
 ;	JSR CODE_B5D9BE				;$B5D98D   |
@@ -9115,16 +9115,16 @@ CODE_B5D988:
 ;	BRA CODE_B5D9A9				;$B5D99A  /
 
 ;CODE_B5D99C:
-;END OF PATCH
 	JSR CODE_B5D9CE				;$B5D99C  \
-	STX $0597				;$B5D99F   |
+;	STX $0597				;$B5D99F   |
+;END OF PATCH
 	JSR CODE_B5D9BE				;$B5D9A2   |
 	INC $02,x				;$B5D9A5   |
 	INC $02,x				;$B5D9A7   |
-;START OF PATCH (Remove condition so Kong map objects are always loaded in same order, part 2 of 2)
+;START OF PATCH (Remove condition so Kong map objects are always loaded in same order and remove write to follower Kong pointer, part 2 of 2)
 ;CODE_B5D9A9:					;	   |
+;	STX $0593				;$B5D9A9   |
 ;END OF PATCH
-	STX $0593				;$B5D9A9   |
 	LDA $08C2				;$B5D9AC   |
 	BIT #$4000				;$B5D9AF   |
 	BNE CODE_B5D9BD				;$B5D9B2   |
@@ -9138,7 +9138,8 @@ CODE_B5D9BE:
 	LDY #$0144				;$B5D9BE  \
 	JSL CODE_BB8412				;$B5D9C1   |
 	LDX alternate_sprite			;$B5D9C5   |
-;START OF PATCH (override Kong 2 map palette)
+;START OF PATCH (add write to leader Kong pointer and override Kong 2 map palette)
+	STX $0593
 	JSR override_kong_map_palette
 ;END OF PATCH
 	LDA $12,x				;$B5D9C7   |
@@ -9149,7 +9150,8 @@ CODE_B5D9CE:
 	LDY #$0146				;$B5D9CE  \
 	JSL CODE_BB8412				;$B5D9D1   |
 	LDX alternate_sprite			;$B5D9D5   |
-;START OF PATCH (override Kong 1 map palette)
+;START OF PATCH (dd write to follower Kong pointer and override Kong 1 map palette)
+	STX $0597
 	JSR override_kong_map_palette
 ;END OF PATCH
 	LDA $12,x				;$B5D9D7   |
@@ -9161,7 +9163,7 @@ override_kong_map_palette:
 	LDA #$0800
 	STA temp_32
 	LDA kong_status
-	CPX #$0DE2
+	CPX $0597
 	BNE .first_map_kong
 	XBA
 .first_map_kong:
