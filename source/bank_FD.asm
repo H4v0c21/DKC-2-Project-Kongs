@@ -4061,7 +4061,7 @@ DATA_FD5FEE:
 	dw click_clack_credits_sprite_palette		; 0010
 	dw water_splash_sprite_palette				; 0011
 	dw kutlass_yellow_sprite_palette			; 0012
-	dw DATA_FD6428								; 0013
+	dw map_kong_and_text_sprite_pal_no_index_0	; 0013
 	dw coin_sprite_palette						; 0014
 	dw loaded_cannon_sprite_palette				; 0015
 	dw DATA_FD68F8								; 0016
@@ -4079,7 +4079,10 @@ DATA_FD5FEE:
 	dw krow_body_sprite_palette					; 0022
 	dw funky_kong_sprite_palette				; 0023
 	dw klank_orange_sprite_palette				; 0024
-	dw DATA_FD7546								; 0025
+;START OF PATCH (replace unused Funky surfboard sprite palette label)
+;	dw funky_unused_surfboard_sprite_pal		; 0025
+	dw funky_surfboard_sprite_palette			; 0025
+;END OF PATCH
 	dw cranky_kong_sprite_palette				; 0026
 	dw skull_cart_sprite_palette				; 0027
 	dw barrel_good_bad_sprite_palette			; 0028
@@ -4154,7 +4157,10 @@ DATA_FD6044:
 	dw k_rool_burnt_sprite_palette				; 006B
 	dw guitar_sprite_palette					; 006C
 	dw klank_blue_sprite_palette				; 006D
-	dw DATA_FD6242								; 006E
+;START OF PATCH (replace unused rain sprite palette label)
+;	dw DATA_FD6242								; 006E
+	dw map_diddy_donkey_palette					; 006E
+;END OF PATCH
 	dw clapper_sprite_palette					; 006F
 	dw k_rool_vacuum_sprite_palette				; 0070
 	dw k_rool_blue_gas_sprite_palette			; 0071
@@ -4172,7 +4178,7 @@ DATA_FD6044:
 	dw DATA_FD63CC								; 007D
 	dw DATA_FD63EA								; 007E
 	dw DATA_FD6408								; 007F
-	dw DATA_FD7800								; 0080
+	dw map_kong_and_text_p2_sprite_palette		; 0080
 	dw link_sprite_palette						; 0081
 	dw kreepy_krow_dying_head_1_sprite_palette	; 0082
 	dw kreepy_krow_dying_body_1_sprite_palette	; 0083
@@ -4180,18 +4186,19 @@ DATA_FD6044:
 	dw kreepy_krow_dying_body_2_sprite_palette	; 0085
 	dw kreepy_krow_dying_head_3_sprite_palette	; 0086
 	dw kreepy_krow_dying_body_3_sprite_palette	; 0087
-;START OF PATCH (kong dk barrel palettes)
+;START OF PATCH (custom kong palettes)
 	dw diddy_dk_barrel_palette					; 0088
 	dw dixie_dk_barrel_palette					; 0089
 	dw donkey_dk_barrel_palette					; 008A
 	dw kiddy_dk_barrel_palette					; 008B
-
+	dw map_diddy_donkey_p2_palette				; 008C
+	
 	;dw !null_pointer							; 0088
 	;dw !null_pointer							; 0089
 	;dw !null_pointer							; 008A
 	;dw !null_pointer							; 008B
+	;dw !null_pointer							; 008C
 ;END OF PATCH
-	dw !null_pointer							; 008C
 	dw !null_pointer							; 008D
 	dw !null_pointer							; 008E
 	dw !null_pointer							; 008F
@@ -4297,28 +4304,48 @@ DATA_FD61C2:
 	db $00, $28, $00, $34, $00, $40, $10, $62
 	db $FF, $7F, $05, $00, $49, $08, $8D, $10
 	db $D1, $18, $16, $21, $9B, $52, $FF, $7F
-	db $00, $00, $00, $0C, $00, $14, $00, $20
-	db $00, $28, $00, $34, $00, $40, $10, $62
-	db $FF, $7F, $A0, $00, $22, $09, $A4, $11
-	db $26, $1A, $C8, $22, $74, $53, $FF, $7F
-	db $00, $00, $00, $0C, $00, $14, $00, $20
-	db $00, $28, $00, $34, $00, $40, $10, $62
-	db $FF, $7F, $00, $14, $42, $24, $84, $34
-	db $C6, $44, $08, $59, $94, $6E, $FF, $7F
+
+DATA_FD61E2:
 	db $00, $00, $00, $0C, $00, $14, $00, $20
 	db $00, $28, $00, $34, $00, $40, $10, $62
 	db $FF, $7F, $A0, $00, $22, $09, $A4, $11
 	db $26, $1A, $C8, $22, $74, $53, $FF, $7F
 
-DATA_FD6242:
-	db $63, $0C, $A5, $14, $E7, $1C, $29, $25
-	db $6B, $2D, $AD, $35, $EF, $3D, $31, $46
-	db $73, $4E, $B5, $56, $F7, $5E, $39, $67
-	db $7B, $6F, $BD, $77, $FF, $7F, $00, $00
-	db $C8, $00, $2E, $01, $B5, $1D, $7B, $02
-	db $F8, $63, $18, $63, $73, $4E, $AD, $35
-	db $08, $21, $09, $00, $0C, $00, $30, $04
-	db $34, $04, $5F, $08, $BF, $05, $00, $00
+DATA_FD6202:
+	db $00, $00, $00, $0C, $00, $14, $00, $20
+	db $00, $28, $00, $34, $00, $40, $10, $62
+	db $FF, $7F, $00, $14, $42, $24, $84, $34
+	db $C6, $44, $08, $59, $94, $6E, $FF, $7F
+
+DATA_FD6222:
+	db $00, $00, $00, $0C, $00, $14, $00, $20
+	db $00, $28, $00, $34, $00, $40, $10, $62
+	db $FF, $7F, $A0, $00, $22, $09, $A4, $11
+	db $26, $1A, $C8, $22, $74, $53, $FF, $7F
+
+;START OF PATCH (replace unused rain cloud palette and label with Diddy/DK map palette)
+;DATA_FD6242:
+;	db $63, $0C, $A5, $14, $E7, $1C, $29, $25
+;	db $6B, $2D, $AD, $35, $EF, $3D, $31, $46
+;	db $73, $4E, $B5, $56, $F7, $5E, $39, $67
+;	db $7B, $6F, $BD, $77, $FF, $7F, $00, $00
+
+map_diddy_donkey_palette:
+	incbin "kong_hack/map_diddy_donkey_palette.bin"
+;END OF PATCH
+
+;START OF PATCH (replace unused rain cloud palette and label with Diddy/DK P2 map palette)
+;DATA_FD6262:
+;	db $C8, $00, $2E, $01, $B5, $1D, $7B, $02
+;	db $F8, $63, $18, $63, $73, $4E, $AD, $35
+;	db $08, $21, $09, $00, $0C, $00, $30, $04
+;	db $34, $04, $5F, $08, $BF, $05, $00, $00
+
+map_diddy_donkey_p2_palette:
+	incbin "kong_hack/map_diddy_donkey_p2_palette.bin"
+;END OF PATCH
+
+DATA_FD6282:
 	db $C8, $00, $2E, $01, $B5, $1D, $7B, $02
 	db $7F, $07, $FF, $7F, $5A, $6B, $94, $52
 	db $EF, $39, $09, $00, $0C, $00, $30, $04
@@ -4404,13 +4431,14 @@ DATA_FD6408:
 	db $A0, $00, $80, $00, $63, $04
 
 map_kong_and_text_sprite_palette:
-	db $00, $7C
-
-DATA_FD6428:
-	db $FF, $03, $66, $04, $34, $11, $9D, $0D
-	db $1A, $32, $DF, $46, $BF, $5B, $F9, $30
-	db $BF, $51, $CC, $04, $E0, $02, $97, $04
-	db $BF, $0C, $EF, $3D, $FF, $7F
+%offset(map_kong_and_text_sprite_pal_no_index_0, 2)
+;START OF PATCH (overwrite Kong map sprite palette with one including Kiddy's colors instead of Diddy's)
+;	db $00, $7C, $FF, $03, $66, $04, $34, $11
+;	db $9D, $0D, $1A, $32, $DF, $46, $BF, $5B
+;	db $F9, $30, $BF, $51, $CC, $04, $E0, $02
+;	db $97, $04, $BF, $0C, $EF, $3D, $FF, $7F
+	incbin "kong_hack/map_dixie_kiddy_palette.bin"
+;END OF PATCH
 
 link_sprite_palette:
 	db $7F, $4B, $BC, $3A, $F8, $29, $50, $19
@@ -4423,7 +4451,6 @@ map_kremling_sprite_palette:
 	db $4F, $26, $14, $33, $9A, $5B, $1E, $00
 	db $1F, $42, $FF, $7F, $95, $56, $00, $00
 	db $09, $04, $7B, $0C, $CF, $39, $30, $04
-
 
 diddy_active_sprite_palette:
 	db $66, $04, $8A, $08, $CD, $0C, $12, $0D
@@ -5106,10 +5133,13 @@ DATA_FD7274:
 	db $10, $42, $52, $4A, $94, $52
 
 map_funky_barrel_sprite_palette:
-	db $00, $00, $39, $2A, $D5, $21, $91, $19
-	db $51, $11, $ED, $0C, $A9, $08, $43, $04
-	db $9B, $36, $1E, $43, $9C, $73, $94, $52
-	db $A5, $14, $1F, $00, $6A, $2D, $20, $70
+;START OF PATCH (correct palette of funky barrel map sprite; red and blue are incorrectly swapped in the original game)
+;	db $00, $00, $39, $2A, $D5, $21, $91, $19
+;	db $51, $11, $ED, $0C, $A9, $08, $43, $04
+;	db $9B, $36, $1E, $43, $9C, $73, $94, $52
+;	db $A5, $14, $1F, $00, $6A, $2D, $20, $70
+	incbin "kong_hack/map_funky_barrel_spr_pal_corrected.bin"
+;END OF PATCH
 
 yoshi_sprite_palette:
 	db $60, $04, $49, $25, $31, $46, $18, $63
@@ -5243,11 +5273,17 @@ funky_kong_sprite_palette:
 	db $5F, $43, $0F, $1C, $17, $2C, $1F, $40
 	db $9F, $18, $18, $63, $FF, $7F
 
-DATA_FD7546:
-	db $80, $04, $09, $01, $DF, $07, $B1, $01
-	db $F6, $12, $20, $12, $81, $06, $DF, $04
-	db $9C, $01, $7F, $05, $10, $42, $B6, $15
-	db $5A, $0B, $92, $05, $60, $01
+;START OF PATCH (replace unused Funky Kong surfboard palette with one that can be shared with Kong Family HUD)
+;funky_unused_surfboard_sprite_pal:
+;	db $80, $04, $09, $01, $DF, $07, $B1, $01
+;	db $F6, $12, $20, $12, $81, $06, $DF, $04
+;	db $9C, $01, $7F, $05, $10, $42, $B6, $15
+;	db $5A, $0B, $92, $05, $60, $01
+
+funky_surfboard_sprite_palette:
+%offset(funky_surfboard_sprite_pal_with_index_0, -2)
+	incbin "kong_hack/funky_board_kong_fam_hud_palette.bin"
+;END OF PATCH
 
 k_rool_letter_sprite_palette:
 	db $82, $11, $0C, $00, $D1, $10, $21, $04
@@ -5265,15 +5301,19 @@ wrinkly_kong_book_sprite_palette:
 	db $00, $00, $A3, $00, $27, $05, $CB, $09
 	db $6F, $0E, $13, $13, $B7, $17, $CB, $00
 	db $71, $01, $37, $02, $1C, $03, $08, $21
-	db $10, $42, $18, $63, $FF, $7F, $95, $00
-	db $96, $00, $98, $00, $9A, $00, $BC, $00
-	db $BE, $00, $DF, $00, $1F, $01, $7F, $01
-	db $BF, $01, $1F, $02, $7F, $02, $BF, $02
-	db $1F, $03, $7F, $03, $67, $00, $C8, $04
-	db $E7, $08, $07, $09, $26, $09, $45, $0D
-	db $64, $0D, $83, $0D, $6B, $11, $C2, $11
-	db $2A, $15, $E1, $15, $01, $1A, $20, $1A
-	db $40, $1E
+	db $10, $42, $18, $63, $FF, $7F
+
+unused_sprite_palette_FD75BE:
+	db $95, $00, $96, $00, $98, $00, $9A, $00
+	db $BC, $00, $BE, $00, $DF, $00, $1F, $01
+	db $7F, $01, $BF, $01, $1F, $02, $7F, $02
+	db $BF, $02, $1F, $03, $7F, $03
+
+unused_sprite_palette_FD75DC:
+	db $67, $00, $C8, $04, $E7, $08, $07, $09
+	db $26, $09, $45, $0D, $64, $0D, $83, $0D
+	db $6B, $11, $C2, $11, $2A, $15, $E1, $15
+	db $01, $1A, $20, $1A, $40, $1E
 
 map_cranky_wrinkly_sprite_palette:
 	db $00, $7C, $21, $00, $26, $00, $8A, $08
@@ -5377,11 +5417,14 @@ click_clack_sprite_palette:
 	db $66, $31, $88, $35, $2A, $3E, $CC, $46
 	db $6F, $4F, $19, $67, $FF, $7F
 
-DATA_FD7800:
-	db $00, $7C, $DF, $39, $66, $04, $34, $11
-	db $9D, $0D, $1A, $32, $DF, $46, $BF, $5B
-	db $CF, $50, $95, $69, $CC, $04, $1F, $7C
-	db $06, $7C, $C9, $7C, $EF, $3D, $1F, $63
+map_kong_and_text_p2_sprite_palette:
+;START OF PATCH (overwrite Kong map sprite palette with one including Kiddy's colors instead of Diddy's; correct Dixie's eye color)
+;	db $00, $7C, $DF, $39, $66, $04, $34, $11
+;	db $9D, $0D, $1A, $32, $DF, $46, $BF, $5B
+;	db $CF, $50, $95, $69, $CC, $04, $1F, $7C
+;	db $06, $7C, $C9, $7C, $EF, $3D, $1F, $63
+incbin 	"kong_hack/map_dixie_kiddy_p2_palette.bin"
+;END OF PATCH
 
 map_k_rool_sprite_palette:
 	db $20, $00, $08, $00, $8E, $00, $E6, $0C

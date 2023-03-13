@@ -8891,7 +8891,10 @@ CODE_B5D644:					;	   |
 	STA $1366				;$B5D74E   |
 	LDA #$01A0				;$B5D751   |
 	STA $136E				;$B5D754   |
-	LDA #$3822				;$B5D757   |
+;START OF PATCH (change palette bits of Crocodile Cauldron entrance's nose on Crocodile Isle map)
+;	LDA #$3822				;$B5D757   |
+	LDA #$3222
+;END OF PATCH
 	STA $1376				;$B5D75A   |
 	LDA #$0F50				;$B5D75D   |
 	STA $137E				;$B5D760   |
@@ -9101,23 +9104,27 @@ CODE_B5D96E:
 	BRA CODE_B5D9BD				;$B5D986  /
 
 CODE_B5D988:
-	LDA $08A4				;$B5D988  \
-	BNE CODE_B5D99C				;$B5D98B   |
-	JSR CODE_B5D9BE				;$B5D98D   |
-	STX $0597				;$B5D990   |
-	JSR CODE_B5D9CE				;$B5D993   |
-	INC $02,x				;$B5D996   |
-	INC $02,x				;$B5D998   |
-	BRA CODE_B5D9A9				;$B5D99A  /
+;START OF PATCH (Remove condition so Kong map objects are always loaded in same order and remove write to leader Kong pointer, part 1 of 2)
+;	LDA $08A4				;$B5D988  \
+;	BNE CODE_B5D99C				;$B5D98B   |
+;	JSR CODE_B5D9BE				;$B5D98D   |
+;	STX $0597				;$B5D990   |
+;	JSR CODE_B5D9CE				;$B5D993   |
+;	INC $02,x				;$B5D996   |
+;	INC $02,x				;$B5D998   |
+;	BRA CODE_B5D9A9				;$B5D99A  /
 
-CODE_B5D99C:
+;CODE_B5D99C:
 	JSR CODE_B5D9CE				;$B5D99C  \
-	STX $0597				;$B5D99F   |
+;	STX $0597				;$B5D99F   |
+;END OF PATCH
 	JSR CODE_B5D9BE				;$B5D9A2   |
 	INC $02,x				;$B5D9A5   |
 	INC $02,x				;$B5D9A7   |
-CODE_B5D9A9:					;	   |
-	STX $0593				;$B5D9A9   |
+;START OF PATCH (Remove condition so Kong map objects are always loaded in same order and remove write to follower Kong pointer, part 2 of 2)
+;CODE_B5D9A9:					;	   |
+;	STX $0593				;$B5D9A9   |
+;END OF PATCH
 	LDA $08C2				;$B5D9AC   |
 	BIT #$4000				;$B5D9AF   |
 	BNE CODE_B5D9BD				;$B5D9B2   |
@@ -9131,6 +9138,10 @@ CODE_B5D9BE:
 	LDY #$0144				;$B5D9BE  \
 	JSL CODE_BB8412				;$B5D9C1   |
 	LDX alternate_sprite			;$B5D9C5   |
+;START OF PATCH (add write to leader Kong pointer and override Kong 2 map palette)
+	STX $0593
+	JSR override_kong_map_palette
+;END OF PATCH
 	LDA $12,x				;$B5D9C7   |
 	STA $000790				;$B5D9C9   |
 	RTS					;$B5D9CD  /
@@ -9139,9 +9150,33 @@ CODE_B5D9CE:
 	LDY #$0146				;$B5D9CE  \
 	JSL CODE_BB8412				;$B5D9D1   |
 	LDX alternate_sprite			;$B5D9D5   |
+;START OF PATCH (dd write to follower Kong pointer and override Kong 1 map palette)
+	STX $0597
+	JSR override_kong_map_palette
+;END OF PATCH
 	LDA $12,x				;$B5D9D7   |
 	STA $000790				;$B5D9D9   |
 	RTS					;$B5D9DD  /
+
+;START OF PATCH (Check Kong status values, override palette attributes if Diddy or Donkey)
+override_kong_map_palette:
+	LDA #$0800
+	STA temp_32
+	LDA kong_status
+	CPX $0597
+	BNE .first_map_kong
+	XBA
+.first_map_kong:
+	AND #$0001
+	BNE .do_not_override
+	LDA $12,x
+	AND #$0E00
+	EOR $12,x
+	EOR temp_32
+	STA $12,x
+.do_not_override:
+	RTS
+;END OF PATCH
 
 DATA_B5D9DE:
 	db $00, $06, $0C, $12, $19, $1F, $25, $2B

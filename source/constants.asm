@@ -12,7 +12,9 @@
 !donkey_life_icon_graphic_number = $4224
 !kiddy_life_icon_graphic_number = $4228
 
-
+!donkey_map_walk_gfx_num_base = $422C
+;!kiddy_map_walk_gfx_num_base = $4250
+!kiddy_map_walk_gfx_num_base = $0F94
 
 !null_pointer = $000000
 

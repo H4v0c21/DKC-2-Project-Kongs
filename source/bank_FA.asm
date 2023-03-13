@@ -78,9 +78,12 @@ lost_world_head_layer_1_8x8_tilemap:
 lost_world_head_layer_1_tiledata:
 	incbin "data/world_maps/8x8_tilemaps/lost_world_beam_layer_1_8x8_tilemap.bin"
 
+;START OF PATCH (replace boss icon tiledata with expanded version containing Wrinkly and Swanky)
 ;$FA443E
 DATA_FA443E:
-	incbin "data/misc_graphics/world_map_boss_icon_tiledata.bin"
+	incbin "kong_hack/world_map_boss_wrinkly_swanky_icons_tiledata.bin"
+;	incbin "data/misc_graphics/world_map_boss_icon_tiledata.bin"
+;END OF PATCH
 
 ;$FA4C3E	compressed
 DATA_FA4C3E:
@@ -93,38 +96,6 @@ gameover_screen_8x8_tilemap:
 ;$FA5C41
 DATA_FA5C41:
 	incbin "data/screens/8x8_tilemaps/gameover_screen_text_layer_1_8x8_tilemap.bin"
-
-;$FA5FC1
-DATA_FA5FC1:
-	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame1.bin"
-
-;$FA6381
-DATA_FA6381:
-	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame2.bin"
-
-;$FA6741
-DATA_FA6741:
-	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame3.bin"
-
-;$FA6B01
-DATA_FA6B01:
-	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame4.bin"
-
-;$FA6EC1
-DATA_FA6EC1:
-	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame5.bin"
-
-;$FA7281
-DATA_FA7281:
-	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame6.bin"
-
-;$FA7641
-DATA_FA7641:
-	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame7.bin"
-
-;$FA7A01
-DATA_FA7A01:
-	incbin "data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame8.bin"
 
 padbyte $00
 pad $FB0000

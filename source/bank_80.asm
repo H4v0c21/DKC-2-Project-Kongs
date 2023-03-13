@@ -8758,7 +8758,7 @@ CODE_80CF21:
 	LDA #$1801				;$80CF43   |
 	STA DMA[1].settings			;$80CF46   |
 	SEP #$20				;$80CF49   |
-	LDA #$FA				;$80CF4B   |
+	LDA #DATA_FA5FC1>>16	;$80CF4B   |
 	STA DMA[1].source_bank			;$80CF4D   |
 	LDA #$02				;$80CF50   |
 	STA CPU.enable_dma			;$80CF52   |

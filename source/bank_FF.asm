@@ -3024,7 +3024,10 @@ DATA_FF263A:
 DATA_FF264C:
 	dw sprite.number, $0008
 	dw sprite.render_order, $0108
-	dw sprite.oam_property, $3E70
+;START OF PATCH (change starting tile value in Kong map sprite's oam attributes)
+;	dw sprite.oam_property, $3E70
+	dw sprite.oam_property, $3E68
+;END OF PATCH
 	dw !initcommand_set_animation, $01B9
 	dw !initcommand_success
 
