@@ -253,9 +253,9 @@ CODE_B9D152:
 	SBC #$0080				;$B9D158   |
 	ASL A					;$B9D15B   |
 	TAX					;$B9D15C   |
-	JMP (DATA_B9D4C5,x)			;$B9D15D  /
+	JMP (animation_command_jump_table,x)	;$B9D15D  /
 
-CODE_B9D160:
+animation_command_80_94:
 	LDX current_sprite			;$B9D160  \
 	LDA $36,x				;$B9D162   |
 	ASL A					;$B9D164   |
@@ -268,7 +268,7 @@ CODE_B9D160:
 	TAY					;$B9D16F   |
 	BRA CODE_B9D115				;$B9D170  /
 
-CODE_B9D172:
+animation_command_81:
 	LDX current_sprite			;$B9D172  \
 	INY					;$B9D174   |
 	LDA $0000,y				;$B9D175   |
@@ -278,12 +278,14 @@ CODE_B9D172:
 	TYA					;$B9D17C   |
 	PHA					;$B9D17D   |
 	STA $3C,x				;$B9D17E   |
+;START OF PATCH (add branch destination for DKC3 animation command $84)
+DKC3_CODE_B9A289:
+;END OF PATCH
 	PHB					;$B9D180   |
 	PHK					;$B9D181   |
 	PLB					;$B9D182   |
 	%return(CODE_B9D189)			;$B9D183   |
 	JMP ($0026)				;$B9D186  /
-
 CODE_B9D189:
 	PLB					;$B9D189  \
 	PLA					;$B9D18A   |
@@ -294,19 +296,18 @@ CODE_B9D189:
 	CMP $52					;$B9D192   |
 	BNE CODE_B9D199				;$B9D194   |
 	JMP CODE_B9D115				;$B9D196  /
-
 CODE_B9D199:
 	PLB					;$B9D199  \
 	RTL					;$B9D19A  /
 
-CODE_B9D19B:
+animation_command_82:
 	LDX current_sprite			;$B9D19B  \
 	INY					;$B9D19D   |
 	LDA $0000,y				;$B9D19E   |
 	TAY					;$B9D1A1   |
 	JMP CODE_B9D115				;$B9D1A2  /
 
-CODE_B9D1A5:
+animation_command_83:
 	LDX current_sprite			;$B9D1A5  \
 	TYA					;$B9D1A7   |
 	STA $3C,x				;$B9D1A8   |
@@ -317,7 +318,7 @@ CODE_B9D1A5:
 	INY					;$B9D1B1   |
 	JMP ($0026)				;$B9D1B2  /
 
-CODE_B9D1B5:
+animation_command_84:
 	LDX current_sprite			;$B9D1B5  \
 	INY					;$B9D1B7   |
 	LDA $0000,y				;$B9D1B8   |
@@ -326,7 +327,7 @@ CODE_B9D1B5:
 	INY					;$B9D1BE   |
 	JMP CODE_B9D115				;$B9D1BF  /
 
-CODE_B9D1C2:
+animation_command_8E:
 	LDX current_sprite			;$B9D1C2  \
 	INY					;$B9D1C4   |
 	LDA $0000,y				;$B9D1C5   |
@@ -338,7 +339,7 @@ CODE_B9D1C2:
 	LDX current_sprite			;$B9D1D0   |
 	JMP CODE_B9D115				;$B9D1D2  /
 
-CODE_B9D1D5:
+animation_command_93:
 	LDX current_sprite			;$B9D1D5  \
 	INY					;$B9D1D7   |
 	LDA $0000,y				;$B9D1D8   |
@@ -358,7 +359,7 @@ CODE_B9D1EC:					;	   |
 	LDX current_sprite			;$B9D1F0   |
 	JMP CODE_B9D115				;$B9D1F2  /
 
-CODE_B9D1F5:
+animation_command_8F:
 	LDX current_sprite			;$B9D1F5  \
 	INY					;$B9D1F7   |
 	LDA $0000,y				;$B9D1F8   |
@@ -372,7 +373,6 @@ CODE_B9D1F5:
 	PLB					;$B9D204   |
 	%return(CODE_B9D20B)			;$B9D205   |
 	JMP ($0026)				;$B9D208  /
-
 CODE_B9D20B:
 	PLB					;$B9D20B  \
 	LDX current_sprite			;$B9D20C   |
@@ -382,12 +382,11 @@ CODE_B9D20B:
 	INY					;$B9D215   |
 	INY					;$B9D216   |
 	JMP CODE_B9D115				;$B9D217  /
-
 CODE_B9D21A:
 	TAY					;$B9D21A  \
 	JMP CODE_B9D115				;$B9D21B  /
 
-CODE_B9D21E:
+animation_command_90:
 	LDX current_sprite			;$B9D21E  \
 	INY					;$B9D220   |
 	LDA $0000,y				;$B9D221   |
@@ -401,7 +400,6 @@ CODE_B9D21E:
 	PLB					;$B9D22D   |
 	%return(CODE_B9D234)			;$B9D22E   |
 	JMP ($0026)				;$B9D231  /
-
 CODE_B9D234:
 	PLB					;$B9D234  \
 	LDX current_sprite			;$B9D235   |
@@ -410,7 +408,7 @@ CODE_B9D234:
 	PLB					;$B9D23C   |
 	JMP set_sprite_animation		;$B9D23D  /
 
-CODE_B9D240:
+animation_command_91:
 	INY					;$B9D240  \
 	LDA $0000,y				;$B9D241   |
 	AND #$00FF				;$B9D244   |
@@ -426,7 +424,7 @@ CODE_B9D240:
 	LDX current_sprite			;$B9D254   |
 	JMP CODE_B9D115				;$B9D256  /
 
-CODE_B9D259:
+animation_command_92:
 	INY					;$B9D259  \
 	LDA $0000,y				;$B9D25A   |
 	AND #$00FF				;$B9D25D   |
@@ -437,7 +435,7 @@ CODE_B9D259:
 	LDX current_sprite			;$B9D266   |
 	JMP CODE_B9D115				;$B9D268  /
 
-CODE_B9D26B:
+animation_command_85:
 	LDX current_sprite			;$B9D26B  \
 	LDA $0000,y				;$B9D26D   |
 	AND #$FF00				;$B9D270   |
@@ -452,7 +450,6 @@ CODE_B9D26B:
 	INY					;$B9D27E   |
 	INY					;$B9D27F   |
 	JMP CODE_B9D115				;$B9D280  /
-
 CODE_B9D283:
 	LDA $0002,y				;$B9D283  \
 	STA $1A,x				;$B9D286   |
@@ -473,7 +470,7 @@ CODE_B9D29E:					;	   |
 	STA $3C,x				;$B9D2A5   |
 	JMP CODE_B9D13D				;$B9D2A7  /
 
-CODE_B9D2AA:
+animation_command_86:
 	LDX current_sprite			;$B9D2AA  \
 	LDA $0000,y				;$B9D2AC   |
 	AND #$FF00				;$B9D2AF   |
@@ -492,7 +489,6 @@ CODE_B9D2AA:
 	INY					;$B9D2C1   |
 	INY					;$B9D2C2   |
 	JMP CODE_B9D115				;$B9D2C3  /
-
 CODE_B9D2C6:
 	LDA $0002,y				;$B9D2C6  \
 	STA $1A,x				;$B9D2C9   |
@@ -521,7 +517,7 @@ CODE_B9D2F9:					;	   |
 	STA $3C,x				;$B9D300   |
 	JMP CODE_B9D13D				;$B9D302  /
 
-CODE_B9D305:
+animation_command_87:
 	LDX current_sprite			;$B9D305  \
 	LDA $0000,y				;$B9D307   |
 	AND #$FF00				;$B9D30A   |
@@ -538,7 +534,6 @@ CODE_B9D305:
 	INY					;$B9D31A   |
 	INY					;$B9D31B   |
 	JMP CODE_B9D115				;$B9D31C  /
-
 CODE_B9D31F:
 	LDA $0002,y				;$B9D31F  \
 	STA $1A,x				;$B9D322   |
@@ -563,7 +558,7 @@ CODE_B9D34A:					;	   |
 	STA $3C,x				;$B9D351   |
 	JMP CODE_B9D13D				;$B9D353  /
 
-CODE_B9D356:
+animation_command_88:
 	LDA.l $00006C				;$B9D356  \
 	BEQ CODE_B9D37C				;$B9D35A   |
 	LDA.l $000593				;$B9D35C   |
@@ -585,7 +580,7 @@ CODE_B9D37C:					;	   |
 	TAY					;$B9D383   |
 	JMP CODE_B9D115				;$B9D384  /
 
-CODE_B9D387:
+animation_command_89:
 	LDX current_sprite			;$B9D387  \
 	LDA $0000,y				;$B9D389   |
 	AND #$FF00				;$B9D38C   |
@@ -600,7 +595,6 @@ CODE_B9D387:
 	INY					;$B9D39A   |
 	INY					;$B9D39B   |
 	JMP CODE_B9D115				;$B9D39C  /
-
 CODE_B9D39F:
 	LDA $0002,y				;$B9D39F  \
 	STA $1A,x				;$B9D3A2   |
@@ -622,7 +616,7 @@ CODE_B9D3BE:					;	   |
 	STA $3C,x				;$B9D3C5   |
 	JMP CODE_B9D13D				;$B9D3C7  /
 
-CODE_B9D3CA:
+animation_command_8A:
 	LDX current_sprite			;$B9D3CA  \
 	LDA $0000,y				;$B9D3CC   |
 	AND #$FF00				;$B9D3CF   |
@@ -645,14 +639,12 @@ else						;	   |
 	JSR CODE_B9D3E7				;$B9D3D9   |
 endif						;	   |
 	JMP CODE_B9D115				;$B9D3DC  /
-
 CODE_B9D3DF:					;	  \
 if !version == 1				;	   |
 	JSR CODE_B9D3E7				;$B9D3DF   |
 	STA $3C,x				;$B9D3E2   |
 	JMP CODE_B9D13D				;$B9D3E4   |
 endif						;	  /
-
 CODE_B9D3E7:					;	  \
 	LDA $0002,y				;$B9D3E7   |
 	STA $1A,x				;$B9D3EA   |
@@ -683,7 +675,7 @@ else						;	   |
 	RTS					;$B9D41C  /
 endif
 
-CODE_B9D41D:
+animation_command_8B:
 	LDX current_sprite			;$B9D41D  \
 	LDA $0000,y				;$B9D41F   |
 	AND #$FF00				;$B9D422   |
@@ -700,7 +692,6 @@ CODE_B9D41D:
 	INY					;$B9D432   |
 	INY					;$B9D433   |
 	JMP CODE_B9D115				;$B9D434  /
-
 CODE_B9D437:
 	LDA $0002,y				;$B9D437  \
 	STA $1A,x				;$B9D43A   |
@@ -721,7 +712,7 @@ CODE_B9D458:					;	   |
 	STA $3C,x				;$B9D45F   |
 	JMP CODE_B9D13D				;$B9D461  /
 
-CODE_B9D464:
+animation_command_8C:
 	LDA.l $000D7A				;$B9D464  \
 	BEQ CODE_B9D480				;$B9D468   |
 	LDA.l $000593				;$B9D46A   |
@@ -739,7 +730,7 @@ CODE_B9D480:					;	   |
 	TAY					;$B9D487   |
 	JMP CODE_B9D115				;$B9D488  /
 
-CODE_B9D48B:
+animation_command_8D:
 	LDX current_sprite			;$B9D48B  \
 	LDA $0000,y				;$B9D48D   |
 	AND #$FF00				;$B9D490   |
@@ -756,7 +747,6 @@ CODE_B9D48B:
 	INY					;$B9D4A0   |
 	INY					;$B9D4A1   |
 	JMP CODE_B9D115				;$B9D4A2  /
-
 CODE_B9D4A5:
 	LDA $0002,y				;$B9D4A5  \
 	STA $1A,x				;$B9D4A8   |
@@ -775,28 +765,261 @@ CODE_B9D4BB:					;	   |
 	STA $3C,x				;$B9D4C0   |
 	JMP CODE_B9D13D				;$B9D4C2  /
 
-DATA_B9D4C5:
-	dw CODE_B9D160
-	dw CODE_B9D172
-	dw CODE_B9D19B
-	dw CODE_B9D1A5
-	dw CODE_B9D1B5
-	dw CODE_B9D26B
-	dw CODE_B9D2AA
-	dw CODE_B9D305
-	dw CODE_B9D356
-	dw CODE_B9D387
-	dw CODE_B9D3CA
-	dw CODE_B9D41D
-	dw CODE_B9D464
-	dw CODE_B9D48B
-	dw CODE_B9D1C2
-	dw CODE_B9D1F5
-	dw CODE_B9D21E
-	dw CODE_B9D240
-	dw CODE_B9D259
-	dw CODE_B9D1D5
-	dw CODE_B9D160
+;START OF PATCH (add DKC3-specific animation command code)
+dkc3_anim_command_84:
+	NOP
+	NOP
+	NOP
+	LDX current_sprite
+	INY
+	LDA $0000,y
+	STA $38,x
+	INY
+	INY
+	LDA $0000,y
+	INY
+	INY
+	STY $3C,x
+	PHY
+	BRL DKC3_CODE_B9A289
+
+dkc3_anim_command_87_89:
+	INY
+	LDA $0000,y
+	BMI .negative_operand
+	PLB
+	JMP set_sprite_animation
+.negative_operand:
+	AND #$7FFF				;Clear highest bit
+	PLB
+	JMP CODE_B9D0B8				;Set sprite animation with Kong offset
+
+dkc3_anim_command_8A:
+	LDX current_sprite
+	INY
+	LDA $0000,y
+	XBA
+	AND #$FF00
+	CLC
+	ADC $38,x
+	STA $38,x
+	LDA $1A,x
+	CLC
+	ADC #$0004
+	STA $1A,x
+	CMP $0001,y
+	BCS DKC3_CODE_B9A27D
+DKC3_CODE_B9A272:
+	LDA $38,x
+	BPL DKC3_CODE_B9A27A
+	DEY
+	JMP CODE_B9D115
+DKC3_CODE_B9A27A:
+	JMP CODE_B9D13D
+DKC3_CODE_B9A27D:
+	TYA
+	ADC #$0002
+	STA $3C,x
+	TAY
+	BRA DKC3_CODE_B9A272
+
+dkc3_anim_command_8B:
+	LDX current_sprite
+	INY
+	LDA $0000,y
+	XBA
+	AND #$FF00
+	CLC
+	ADC $38,x
+	STA $38,x
+	LDA $1A,x
+	SEC
+	SBC #$0004
+	STA $1A,x
+	DEC A
+	CMP $0001,y
+	BCC DKC3_CODE_B9A2AD
+DKC3_CODE_B9A2A2:
+	LDA $38,x
+	BPL DKC3_CODE_B9A2AA
+	DEY
+	JMP CODE_B9D115
+DKC3_CODE_B9A2AA:
+	JMP CODE_B9D13D
+DKC3_CODE_B9A2AD:
+	TYA
+	ADC #$0003
+	STA $3C,x
+	TAY
+	BRA DKC3_CODE_B9A2A2
+
+dkc3_anim_command_8F:
+	LDX current_sprite
+	INY
+	LDA $0000,y				;Load ZZzz operand of command
+	STA $50,x				;Set vertical shift of sprite (bits #$8001 of object variable $1C must be set to actually shift the sprite)
+	BEQ DKC3_CODE_B9A305			;If operand is zero, branch
+	LDA #$8001				;Setting these bits on object variable $1C allow the sprite to be shifted vertically using object variable $50
+	ORA $1C,x
+	STA $1C,x
+	BRA DKC3_CODE_B9A314
+DKC3_CODE_B9A305:
+	LDA $1C,x
+	AND #$CFF0
+	CMP #$CFF0
+	BCS DKC3_CODE_B9A312			;If greater than or equal to #$CFF0, branch directly to writing the value to object variable $1C
+	AND #$4FF0				;Otherwise, clear bits
+DKC3_CODE_B9A312:
+	STA $1C,x
+DKC3_CODE_B9A314:
+	INY
+	INY
+	JMP CODE_B9D115
+
+dkc3_anim_command_91:
+	LDA current_sprite
+	INY
+	CLC
+	ADC $0000,y
+	TAX
+	LDA $0002,y
+	STA $00,x
+	INY
+	INY
+	INY
+	INY
+	LDX current_sprite
+	JMP CODE_B9D115
+
+dkc3_anim_command_94:
+	LDX current_sprite			;A6 70 
+	INY
+	LDA $0000,y				;B9 00 00 	Frame duration
+	XBA					;EB 
+	AND #$FF00				;29 00 FF 
+	CLC					;18 
+	ADC $38,x				;75 42 
+	STA $38,x				;95 42 
+	LDA $0003,y				;B9 03 00 	
+	AND #$00FF				;29 FF 00 
+	CLC					;18 
+	ADC $0001,y				;79 01 00 
+	STA $26					;85 42 		Need to verify whether this address causes issues
+	LDA current_sprite			;A5 70 
+	CMP $000597				;CF FD 04 00 
+	BNE DKC3_CODE_B9A41E			;D0 04 
+	LDA $000593				;AF F9 04 00 
+DKC3_CODE_B9A41E:
+	STA $28					;85 44 		Store value of whichever Kong the animation is being processed for; Need to verify whether this address causes issues
+	LDA $0004,y				;B9 04 00 	Load kk operand of command
+	AND #$00FF				;29 FF 00   	Clear upper bits which are part of the next operand
+	CLC					;18 		Clear carry processor flag
+	ADC $28					;65 44 		Add Kong's object slot pointer to the accumulator; Need to verify whether this address causes issues
+	TAX					;AA 		Transfer accumulator to X register
+	LDA $00,x				;B5 00 		Load object variable
+	AND $0005,y				;39 05 00 	
+	AND #$00FF				;29 FF 00 
+	BNE DKC3_CODE_B9A445			;D0 11 
+	LDX current_sprite			;A6 70 
+	LDA $1A,x				;B5 24 
+	SEC					;38 
+	SBC #$0004				;E9 05 00 
+	CMP $0001,y				;D9 01 00 	Compare current object's sprite to value in SSss parameter
+	BCS DKC3_CODE_B9A456			;B0 15 
+	LDA $38,x				;A5 42 
+	BRA DKC3_CODE_B9A456			;80 11 
+DKC3_CODE_B9A445:
+	LDX current_sprite			;A6 70 
+	LDA $1A,x				;B5 24 
+	CLC					;18 
+	ADC #$0004				;69 05 00 
+	CMP $38,x				;C5 42 
+	BCC DKC3_CODE_B9A456			;90 05 
+	BEQ DKC3_CODE_B9A456			;F0 03 
+	LDA $0001,y				;B9 01 00 
+DKC3_CODE_B9A456:
+	STA $1A,x				;95 24 
+	TYA					;98 
+	CLC					;18 
+	ADC #$0006				;69 06 00 
+	STA $3C,x				;95 46 
+	JMP CODE_B9D13D				;4C 3A A1
+
+dkc3_anim_command_98:
+	LDA current_sprite			;A6 70 
+	INY
+	LDA $0000,y				;B9 00 00 
+	AND #$00FF				;29 FF 00 
+	XBA					;EB 
+	CLC					;18 
+	ADC $38,x				;75 42 
+	STA $38,x				;95 42 
+	BPL DKC3_CODE_B9A548			;10 09 
+	TYA					;98 
+	CLC					;18 
+	ADC #$000B				;69 0B 00 
+	TAY					;A8 
+	JMP CODE_B9D115				;4C 1A A1 
+DKC3_CODE_B9A548:
+	LDA $0001,y				;B9 01 00 
+	STA $1A,x				;95 24 
+	LDA $00006C				;AF 7C 00 00 
+	BEQ DKC3_CODE_B9A56B			;F0 18 
+	LDA $0003,y				;B9 03 00 
+	CLC					;18 
+	ADC $000D72				;6F 85 18 00 
+	STA $000D76				;8F 8D 18 00 
+	LDA $0005,y				;B9 05 00 
+	CLC					;18 
+	ADC $000D74				;6F 89 18 00 
+	STA $000D78				;8F 8F 18 00 
+DKC3_CODE_B9A56B:
+	LDA $000D7A				;AF 6B 18 00 
+	BEQ DKC3_CODE_B9A57F			;F0 0E 
+	LDA $0007,y				;B9 07 00 
+	STA $000D7C				;8F 6D 18 00 
+	LDA $0009,y				;B9 09 00 
+	STA $000D7E				;8F 6F 18 00 
+DKC3_CODE_B9A57F:
+	TYA					;98 
+	CLC					;18 
+	ADC #$000B				;69 0B 00 
+	STA $3C,x				;95 46 
+	JMP CODE_B9D13D				;4C 3A A1
+;END OF PATCH
+
+animation_command_jump_table:
+	dw animation_command_80_94	;80					- Loop back to start of animation
+	dw animation_command_81		;81 ll mm				- JSR to code at mmll
+	dw animation_command_82		;82 oo OO				- Jump to animation sequence at offset OOoo (used for looping the end part of an animation)
+	dw animation_command_83		;83 ll mm				- JSR to code at mmll (used in defeated animations)
+	dw animation_command_84		;84 ll mm				- JSL to code at mmll every frame from this point forward (84 00 00 cancels this)
+	dw animation_command_85		;85 tt ss SS ss SS			- Set two objects' sprites SSss simultaneously (same coordinates)
+	dw animation_command_86		;86 tt ss SS ss SS xx XX yy YY		- Set two objects' sprites SSss simultaneously and the second object's coordinates (relative to the first object's coordinates)
+	dw animation_command_87		;87 tt ss SS xx XX yy YY		- Set one object's sprite SSss and a second object's coordinates XXxx and YYyy (relative to the first object's coordinates)
+	dw animation_command_88		;88 xx XX yy YY				- Set object's coordinates XXxx and YYyy relative to its base coordinates
+	dw animation_command_89		;89 tt ss SS ss SS			- Identical to command $85, but loads from a different RAM address
+	dw animation_command_8A		;8A tt ss SS ss SS xx XX yy YY		- Identical to command $86, but loads from a different RAM address
+	dw animation_command_8B		;8B tt ss SS xx XX yy YY		- Identical to command $87, but loads from a different RAM address
+	dw animation_command_8C		;8C xx XX yy YY				- Identical to command $88, but loads from a different RAM address
+	dw animation_command_8D		;8D tt ss SS ss SS rr RR		- Set two objects' sprites SSss and unknown control code RRrr
+	dw animation_command_8E		;8E nn CC				- Play sound effect nn on channel CC on the following animation frame
+	dw animation_command_8F		;8F ll mm oo OO				- JSR to code at mmll, set animation offset to OOoo if a branch condition is met
+	dw animation_command_90		;90 ll mm vv VV				- JSR to code at mmll, set animation value to VVvv
+	dw animation_command_91		;91 kk oo OO				- Jump to animation sub-sequence at offset OOoo (able to return to main animation by storing animation return address in object entity variable kk)
+	dw animation_command_92		;92 kk					- Return to main animation sequence by retrieving animation script address stored in object entity variable kk
+	dw animation_command_93		;93 nn CC				- Play sound effect nn on channel CC on the following animation frame, and do something else?
+;START OF PATCH (add DKC3 animation commands to jump table)
+	dw dkc3_anim_command_84		;94 ll mm vv VV				- Load value VVvv into accumulator, JSR to code at mmll, and set animation value to VVvv
+;	dw animation_command_80_94	;94
+	dw dkc3_anim_command_87_89	;95 vv VV				- Set animation value of current object to VVvv; if bit #$8000 is set, it will be cleared and the current Kong's animation offset will be added to the value, otherwise, the value will be set as-is
+	dw dkc3_anim_command_8A		;96 tt ss SS				- Increment sprite value prior to this until it matches sprite value SSss
+	dw dkc3_anim_command_8B		;97 tt ss SS				- Decrement sprite value prior to this until it matches sprite value SSss
+	dw dkc3_anim_command_8F		;98 zz ZZ				- Adjust Y-offset of current sprite without affecting collision: object variable $50 (also sets bits #$8001 of $1C if VVvv is non-zero or clears them if zero)
+	dw dkc3_anim_command_91		;99 kk 00 zz ZZ 	 		- Set value at object entity variable kk to ZZzz
+	dw dkc3_anim_command_94		;9A tt ss SS uu kk ?? 			- tt = Frame duration (01-7F); SSss = Base sprite ID; uu = End sprite offset (added to base sprite ID); kk = object entity variable; ?? = unknown
+	dw dkc3_anim_command_98		;9B tt ss SS xx XX yy YY xx XX yy YY 	- Set one object's sprite SSss and two other objects' coordinates
+;END OF PATCH
 
 CODE_B9D4EF:
 	LDA.l $000515				;$B9D4EF   |

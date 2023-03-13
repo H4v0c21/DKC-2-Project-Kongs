@@ -3183,7 +3183,7 @@ SPRITE_GRAPHIC_C3606F:
 ;	db $18, $38, $80, $F0, $40, $70, $40, $40
 ;	db $00, $00, $00, $00, $00, $00
 
-	incbin "kong_hack/global_pal_dizzy_stars_frame1.bin"
+	incbin "kong_hack/objects/graphics/global_pal_dizzy_stars_frame1.bin"
 ;END OF PATCH
 
 SPRITE_GRAPHIC_C360DD:
@@ -3203,7 +3203,7 @@ SPRITE_GRAPHIC_C360DD:
 ;	db $14, $0C, $14, $1C, $10, $10, $00, $00
 ;	db $00, $00, $00, $00, $00, $00
 
-	incbin "kong_hack/global_pal_dizzy_stars_frame2.bin"
+	incbin "kong_hack/objects/graphics/global_pal_dizzy_stars_frame2.bin"
 ;END OF PATCH
 
 SPRITE_GRAPHIC_C3614B:
@@ -3223,7 +3223,7 @@ SPRITE_GRAPHIC_C3614B:
 ;	db $00, $00, $01, $01, $00, $01, $01, $00
 ;	db $01, $01, $01, $01, $00, $00
 
-	incbin "kong_hack/global_pal_dizzy_stars_frame3.bin"
+	incbin "kong_hack/objects/graphics/global_pal_dizzy_stars_frame3.bin"
 ;END OF PATCH
 
 SPRITE_GRAPHIC_C361B9:

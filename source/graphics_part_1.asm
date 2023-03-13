@@ -749,4 +749,4 @@ DATA_EDE653:
 padbyte $00
 pad $EE0000
 	
-check bankcross on
+check bankcross full

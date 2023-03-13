@@ -2621,7 +2621,7 @@ DATA_B89488:
 	db $0E, $00
 
 ;START OF PATCH (kong animal offset)
-	incsrc "kong_hack/kong_animal_offsets.asm"
+	incsrc "kong_hack/objects/source/kong_animal_offsets.asm"
 
 ;END OF PATCH
 

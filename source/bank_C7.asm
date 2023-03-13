@@ -1953,7 +1953,7 @@ SPRITE_GRAPHIC_C73A9A:
 ;	db $00, $00, $00, $00, $24, $00, $20, $00
 ;	db $7B, $00, $7F, $00, $3D, $00
 
-incbin "kong_hack/remapped_crocodile_cauldron_piece_frame.bin"
+incbin "kong_hack/world_map/graphics/remapped_crocodile_cauldron_piece_frame.bin"
 ;END OF PATCH
 
 SPRITE_GRAPHIC_C73B90:

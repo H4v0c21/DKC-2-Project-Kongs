@@ -43,12 +43,12 @@ DATA_F65DC1:
 
 ;$F661C1
 DATA_F661C1:
-	incbin "kong_hack/dkc2_secret_ending_with_kiddy_gfx_comp_F661C1.bin"
+	incbin "kong_hack/screens/graphics/dkc2_secret_ending_with_kiddy_gfx_comp_F661C1.bin"
 ;	incbin "data/screens/graphics/secret_ending_screen_layer_1_tiledata.bin"
 
 ;$F67D1B
 DATA_F67D1B:
-	incbin "kong_hack/dkc2_secret_ending_with_kiddy_map_comp_F67D1B.bin"
+	incbin "kong_hack/screens/graphics/dkc2_secret_ending_with_kiddy_map_comp_F67D1B.bin"
 ;	incbin "data/screens/8x8_tilemaps/secret_ending_screen_layer_1_8x8_tilemap.bin"
 	
 ;END OF PATCH

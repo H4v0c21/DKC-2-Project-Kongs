@@ -199,7 +199,7 @@ DATA_FF0224:
 	db $40, $00
 
 
-incsrc "kong_hack/physics_data.asm"
+incsrc "kong_hack/objects/source/physics_data.asm"
 
 ;init table
 
@@ -21086,6 +21086,6 @@ kiddy_ingame_init:
 
 DATA_FFFF6A:
 
-print pc
+print "Init Scripts End Address: ",pc
 padbyte $00
 pad $FFFFFF

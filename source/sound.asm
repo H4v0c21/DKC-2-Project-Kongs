@@ -5101,4 +5101,4 @@ DATA_F2F979:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00
 
-check bankcross on
+check bankcross full

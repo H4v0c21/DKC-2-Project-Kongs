@@ -3,8 +3,7 @@
 !kiddy_variables_address = $1A20
 
 !donkey_animation_offset = $030D
-;!donkey_animation_offset = $0000
-!kiddy_animation_offset = $0000
+!kiddy_animation_offset = $030D+$A4
 
 !kong_dk_barrel_palette_index = $0088
 
@@ -58,7 +57,16 @@
 !animation_command_91 = $91
 !animation_command_92 = $92
 !animation_command_93 = $93
-!animation_command_94 = $94
+;!animation_command_94 = $94
+!dkc3_anim_command_84 = $94
+!dkc3_anim_command_87 = $95
+!dkc3_anim_command_89 = $95
+!dkc3_anim_command_8A = $96
+!dkc3_anim_command_8B = $97
+!dkc3_anim_command_8F = $98
+!dkc3_anim_command_91 = $99
+!dkc3_anim_command_94 = $9A
+!dkc3_anim_command_98 = $9B
 
 !boss_command_fly_to = $00
 !boss_command_01 = $01
