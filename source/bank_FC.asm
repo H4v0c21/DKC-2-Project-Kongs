@@ -178,69 +178,87 @@ DATA_FC1460:
 DATA_FC14A0:
 	incbin "data/misc_graphics/world_map_arrows_tiledata.bin"
 
+;START OF PATCH (replace tile data for World map icons)
 ;$FC14E0
 DATA_FC14E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame1.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":0000-0400
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame1.bin"
 
 ;$FC18E0
 DATA_FC18E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame2.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":0400-0800
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame2.bin"
 
 ;$FC1CE0
 DATA_FC1CE0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame3.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":0800-0C00
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame3.bin"
 
 ;$FC20E0
 DATA_FC20E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame4.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":0C00-1000
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame4.bin"
 
 ;$FC24E0
 DATA_FC24E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame5.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":1000-1400
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame5.bin"
 
 ;$FC28E0
 DATA_FC28E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame6.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":1400-1800
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame6.bin"
 
 ;$FC2CE0
 DATA_FC2CE0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame7.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":1800-1C00
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame7.bin"
 
 ;$FC30E0
 DATA_FC30E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame8.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":1C00-2000
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame8.bin"
 
 ;$FC34E0
 DATA_FC34E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame9.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":2000-2400
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame9.bin"
 
 ;$FC38E0
 DATA_FC38E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame10.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":2400-2800
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame10.bin"
 
 ;$FC3CE0
 DATA_FC3CE0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame11.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":2800-2C00
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame11.bin"
 
 ;$FC40E0
 DATA_FC40E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame12.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":2C00-3000
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame12.bin"
 
 ;$FC44E0
 DATA_FC44E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame13.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":3000-3400
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame13.bin"
 
 ;$FC48E0
 DATA_FC48E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame14.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":3400-3800
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame14.bin"
 
 ;$FC4CE0
 DATA_FC4CE0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame15.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":3800-3C00
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame15.bin"
 
 ;$FC50E0
 DATA_FC50E0:
-	incbin "data/misc_graphics/world_map_icons_tiledata_frame16.bin"
+	incbin "kong_hack/world_map_icons_tiledata.bin":3C00-4000
+;	incbin "data/misc_graphics/world_map_icons_tiledata_frame16.bin"
+;END OF PATCH
 
 ;$FC54E0
 DATA_FC54E0:

@@ -236,140 +236,154 @@ CODE_B481E3:					;	   |
 
 CODE_B48203:
 	LDA #$0001				;$B48203  \
-	CMP current_song			;$B48206   |
-	BEQ CODE_B4821B				;$B48208   |
+	CMP current_song		;$B48206   |
+	BEQ CODE_B4821B			;$B48208   |
 CODE_B4820A:					;	   |
-	JSL play_song				;$B4820A   |
-	BRA CODE_B4821B				;$B4820E  /
+	JSL play_song			;$B4820A   |
+	BRA CODE_B4821B			;$B4820E  /
 
 CODE_B48210:
 	LDA #$0008				;$B48210  \
-	CMP current_song			;$B48213   |
-	BEQ CODE_B4821B				;$B48215   |
-	JSL play_song				;$B48217   |
+	CMP current_song		;$B48213   |
+	BEQ CODE_B4821B			;$B48215   |
+	JSL play_song			;$B48217   |
 CODE_B4821B:					;	   |
-	PHB					;$B4821B   |
-	PHK					;$B4821C   |
-	PLB					;$B4821D   |
+	PHB						;$B4821B   |
+	PHK						;$B4821C   |
+	PLB						;$B4821D   |
 	STZ $065E				;$B4821E   |
 	LDA #$0200				;$B48221   |
-	STA PPU.vram_address			;$B48224   |
+	STA PPU.vram_address	;$B48224   |
 	SEP #$20				;$B48227   |
 	LDA #$01				;$B48229   |
-	STA DMA[0].settings			;$B4822B   |
+	STA DMA[0].settings		;$B4822B   |
 	LDA #$18				;$B4822E   |
-	STA DMA[0].destination			;$B48230   |
-	LDX #DATA_FC14A0			;$B48233   |
-	STX DMA[0].source			;$B48236   |
-	LDA #DATA_FC14A0>>16			;$B48239   |
-	STA DMA[0].source_bank			;$B4823B   |
+	STA DMA[0].destination	;$B48230   |
+	LDX #DATA_FC14A0		;$B48233   |
+	STX DMA[0].source		;$B48236   |
+	LDA #DATA_FC14A0>>16	;$B48239   |
+	STA DMA[0].source_bank	;$B4823B   |
 	LDX #$0040				;$B4823E   |
-	STX DMA[0].size				;$B48241   |
-	STZ DMA[0].unused_1			;$B48244   |
+	STX DMA[0].size			;$B48241   |
+	STZ DMA[0].unused_1		;$B48244   |
 	LDA #$01				;$B48247   |
-	STA CPU.enable_dma			;$B48249   |
+	STA CPU.enable_dma		;$B48249   |
 	REP #$20				;$B4824C   |
 	STZ $0681				;$B4824E   |
 	LDA #$0001				;$B48251   |
 	STA $0697				;$B48254   |
-	LDA $060F				;$B48257   |
-	BEQ CODE_B48261				;$B4825A   |
-	LDX #$0080				;$B4825C   |
-	BRA CODE_B48264				;$B4825F  /
+	LDA $060F				;$B48257   |	Load current player
+	BEQ CODE_B48261			;$B4825A   |	Branch if Player 1
+	LDX #$0080				;$B4825C   |	0080 = Map Kongs and Text palette (Player 2 in 2P Contest)
+;START OF PATCH (load palette for Donkey/Diddy Map sprites, part 1 / 3)
+	LDA #$008C					;	   |	008C = Map Diddy and Donkey palette (Player 2 in 2P Contest)
+	PHA							;	   |
+;END OF PATCH
+	BRA CODE_B48264			;$B4825F  /
 
 CODE_B48261:
-	LDX #$00AA				;$B48261  \
+	LDX #$00AA				;$B48261  \		00AA = Map Kongs and Text palette
+;START OF PATCH (load palette for Donkey/Diddy Map sprites, part 2 / 3)
+	LDA #$006E					;	   |	006E = Map Diddy and Donkey palette
+	PHA							;	   |
+;END OF PATCH
 CODE_B48264:					;	   |
 	LDA $06A3				;$B48264   |
-	BIT #$1000				;$B48267   |
-	BEQ CODE_B4826F				;$B4826A   |
-	LDX #$0034				;$B4826C   |
+	BIT #$1000				;$B48267   |	If bit $1000 is set, using Funky Barrel
+	BEQ CODE_B4826F			;$B4826A   |	Branch if not (regular Kong sprites)
+	LDX #$0034				;$B4826C   |	0034 = Map Funky Barrel palette
 CODE_B4826F:					;	   |
-	TXA					;$B4826F   |
-	LDY #$00F0				;$B48270   |
-	LDX #$0004				;$B48273   |
-	JSL DMA_global_palette			;$B48276   |
-	LDA #$00AB				;$B4827A   |
-	LDY #$00D0				;$B4827D   |
-	LDX #$0004				;$B48280   |
-	JSL DMA_global_palette			;$B48283   |
-	LDA $060F				;$B48287   |
-	BEQ CODE_B48291				;$B4828A   |
-	LDA #$0080				;$B4828C   |
-	BRA CODE_B48294				;$B4828F  /
+	TXA						;$B4826F   |
+	LDY #$00F0				;$B48270   |	00F0 = Sprite palette line 7
+	LDX #$0004				;$B48273   |	0004 = 16 colors
+	JSL DMA_global_palette	;$B48276   |
+;START OF PATCH (load palette for Donkey/Diddy Map sprites, part 3 / 3)
+	PLA							;	   |	Pull map Diddy and Donkey palette ID from stack
+	LDY #$00C0					;	   |	00C0 = Sprite palette line 4
+	LDX #$0004					;	   |	0004 = 16 colors
+	JSL DMA_global_palette		;	   |
+;END OF PATCH
+	LDA #$00AB				;$B4827A   |	00AB = Map Kremling icon palette
+	LDY #$00D0				;$B4827D   |	00D0 = Sprite palette line 5
+	LDX #$0004				;$B48280   |	0004 = 16 colors
+	JSL DMA_global_palette	;$B48283   |
+	LDA $060F				;$B48287   |	Load current player
+	BEQ CODE_B48291			;$B4828A   |	Branch if Player 1
+	LDA #$0080				;$B4828C   |	0080 = Map Kongs and Text palette (Player 2 in 2P Contest)
+	BRA CODE_B48294			;$B4828F  /
 
 CODE_B48291:
-	LDA #$00AA				;$B48291  \
+	LDA #$00AA				;$B48291  \		00AA = Map Kongs and Text palette
 CODE_B48294:					;	   |
-	LDY #$00E0				;$B48294   |
-	LDX #$0004				;$B48297   |
-	JSL DMA_global_palette			;$B4829A   |
-	LDA $06B1				;$B4829E   |
-	BEQ CODE_B482D7				;$B482A1   |
-	LDA #$00AD				;$B482A3   |
-	LDY #$0080				;$B482A6   |
-	LDX #$0004				;$B482A9   |
-	JSL DMA_global_palette			;$B482AC   |
-	LDA #$00AE				;$B482B0   |
-	LDY #$0090				;$B482B3   |
-	LDX #$0004				;$B482B6   |
-	JSL DMA_global_palette			;$B482B9   |
-	LDA #$00A5				;$B482BD   |
-	LDY #$00A0				;$B482C0   |
-	LDX #$0004				;$B482C3   |
-	JSL DMA_global_palette			;$B482C6   |
-	LDA #$00A6				;$B482CA   |
-	LDY #$00B0				;$B482CD   |
-	LDX #$0004				;$B482D0   |
-	JSL DMA_global_palette			;$B482D3   |
+	LDY #$00E0				;$B48294   |	00E0 = Sprite palette line 6
+	LDX #$0004				;$B48297   |	0004 = 16 colors
+	JSL DMA_global_palette	;$B4829A   |
+	LDA $06B1				;$B4829E   |	Load map ID
+	BEQ CODE_B482D7			;$B482A1   |	Branch if 0 (Crocodile Isle)
+	LDA #$00AD				;$B482A3   |	00AD = Map Cranky/Wrinkly icon palette
+	LDY #$0080				;$B482A6   |	0080 = Sprite palette line 0
+	LDX #$0004				;$B482A9   |	0004 = 16 colors
+	JSL DMA_global_palette	;$B482AC   |
+	LDA #$00AE				;$B482B0   |	00AE = Map Funky/Swanky icon palette
+	LDY #$0090				;$B482B3   |	0090 = Sprite palette line 1
+	LDX #$0004				;$B482B6   |	0004 = 16 colors
+	JSL DMA_global_palette	;$B482B9   |
+	LDA #$00A5				;$B482BD   |	00A5 = Map Boss skull icon palette
+	LDY #$00A0				;$B482C0   |	00A0 = Sprite palette line 2
+	LDX #$0004				;$B482C3   |	0004 = 16 colors
+	JSL DMA_global_palette	;$B482C6   |
+	LDA #$00A6				;$B482CA   |	00A6 = Map Lost World stepping stone palette
+	LDY #$00B0				;$B482CD   |	00B0 = Sprite palette line 3
+	LDX #$0004				;$B482D0   |	0004 = 16 colors
+	JSL DMA_global_palette	;$B482D3   |
 CODE_B482D7:					;	   |
 	LDA #$000A				;$B482D7   |
 	STA $069F				;$B482DA   |
 	LDA #$006C				;$B482DD   |
-	JSR CODE_B4B18F				;$B482E0   |
+	JSR CODE_B4B18F			;$B482E0   |
 	LDA #$0078				;$B482E3   |
-	JSR CODE_B4B4D3				;$B482E6   |
-	JSL CODE_B489ED				;$B482E9   |
+	JSR CODE_B4B4D3			;$B482E6   |
+	JSL CODE_B489ED			;$B482E9   |
 	LDA $06B1				;$B482ED   |
 	CMP #$000A				;$B482F0   |
-	BCC CODE_B4832F				;$B482F3   |
+	BCC CODE_B4832F			;$B482F3   |
 	LDA $08F9				;$B482F5   |
 	AND #$00FF				;$B482F8   |
-	BEQ CODE_B4832F				;$B482FB   |
+	BEQ CODE_B4832F			;$B482FB   |
 	CMP #$0006				;$B482FD   |
-	BCC CODE_B48305				;$B48300   |
+	BCC CODE_B48305			;$B48300   |
 	LDA #$0005				;$B48302   |
 CODE_B48305:					;	   |
 	STA $0666				;$B48305   |
 	LDX #$0000				;$B48308   |
 CODE_B4830B:					;	   |
-	LDY DATA_B4CE1F,x			;$B4830B   |
-	PHX					;$B4830E   |
-	JSL CODE_BB8412				;$B4830F   |
-	PLX					;$B48313   |
-	LDY alternate_sprite			;$B48314   |
+	LDY DATA_B4CE1F,x		;$B4830B   |
+	PHX						;$B4830E   |
+	JSL CODE_BB8412			;$B4830F   |
+	PLX						;$B48313   |
+	LDY alternate_sprite	;$B48314   |
 	LDA #$0080				;$B48316   |
 	STA $0006,y				;$B48319   |
 	STA $000A,y				;$B4831C   |
-	TXA					;$B4831F   |
+	TXA						;$B4831F   |
 	ASL A					;$B48320   |
-	CLC					;$B48321   |
+	CLC						;$B48321   |
 	ADC $001A,y				;$B48322   |
 	STA $001A,y				;$B48325   |
-	INX					;$B48328   |
-	INX					;$B48329   |
+	INX						;$B48328   |
+	INX						;$B48329   |
 	DEC $0666				;$B4832A   |
-	BNE CODE_B4830B				;$B4832D   |
+	BNE CODE_B4830B			;$B4832D   |
 CODE_B4832F:					;	   |
-	PLB					;$B4832F   |
-	JSL CODE_B4AEAF				;$B48330   |
+	PLB						;$B4832F   |
+	JSL CODE_B4AEAF			;$B48330   |
 	LDA #$0733				;$B48334   |
 	STA $07A1				;$B48337   |
 if !version == 0				;	   |
 	LDA #$075F				;$B4833A   |
-else						;	   |
+else							;	   |
 	LDA #$075B				;$B4833A   |
-endif						;	   |
+endif							;	   |
 	STA $07A3				;$B4833D   |
 	LDA $06A1				;$B48340   |
 	AND #$022C				;$B48343   |
@@ -380,10 +394,10 @@ endif						;	   |
 	LDA $06A1				;$B48352   |
 	ORA #$0080				;$B48355   |
 	STA $06A1				;$B48358   |
-	JSR CODE_B4B8C6				;$B4835B   |
+	JSR CODE_B4B8C6			;$B4835B   |
 CODE_B4835E:					;	   |
-	PLB					;$B4835E   |
-	RTL					;$B4835F  /
+	PLB						;$B4835E   |
+	RTL						;$B4835F  /
 
 CODE_B48360:
 	STA $C8					;$B48360  \
@@ -524,7 +538,12 @@ CODE_B48435:					;	   |
 	SBC #DATA_FC14E0			;$B4846C   |
 	LSR A					;$B4846F   |
 	LSR A					;$B48470   |
+;START OF PATCH (An extra right shift and add to change increments of tiledata offset to $0180)
+	STA temp_32
 	LSR A					;$B48471   |
+	CLC
+	ADC temp_32
+;END OF PATCH
 	CLC					;$B48472   |
 	ADC #DATA_FA443E			;$B48473   | boss map icon tiledata offset
 	STA DMA[0].source			;$B48476   |
@@ -533,9 +552,12 @@ CODE_B48435:					;	   |
 	STA DMA[0].settings			;$B4847D   |
 	LDA #$18				;$B48480   |
 	STA DMA[0].destination			;$B48482   |
-	LDA #$FA				;$B48485   |
+	LDA #DATA_FA443E>>16			;$B48485   |
 	STA DMA[0].source_bank			;$B48487   |
-	LDX #$0040				;$B4848A   |
+;START OF PATCH (change length of boss icon DMA upload, part 1 of 2)
+	LDX #$00C0
+;	LDX #$0040				;$B4848A   |
+;END OF PATCH
 	STX DMA[0].size				;$B4848D   |
 	STZ DMA[0].unused_1			;$B48490   |
 	LDA #$01				;$B48493   |
@@ -548,7 +570,10 @@ CODE_B48435:					;	   |
 	STA DMA[0].settings			;$B484A4   |
 	LDA #$18				;$B484A7   |
 	STA DMA[0].destination			;$B484A9   |
-	LDX #$0040				;$B484AC   |
+;START OF PATCH (change length of boss icon DMA upload, part 2 of 2)
+	LDX #$00C0	
+;	LDX #$0040				;$B484AC   |
+;END OF PATCH
 	STX DMA[0].size				;$B484AF   |
 	STZ DMA[0].unused_1			;$B484B2   |
 	LDA #$01				;$B484B5   |
@@ -1555,11 +1580,23 @@ CODE_B48C9D:
 	LDY #$0000				;$B48D18   |
 	LDX #$0020				;$B48D1B   |
 	JSL DMA_palette				;$B48D1E   |
+;START OF PATCH (Load alternate palette for Kong icon cursor if Diddy or Donkey is the leader Kong)
+	LDA kong_status
+	AND #$0001
+	BNE .load_regular_palette
+	LDA #$006E								;Map Diddy and Donkey palette
+	BRA .skip_loading_regular_palette
+.load_regular_palette:
 	LDA #$00AA				;$B48D22   |
+.skip_loading_regular_palette:
+;END OF PATCH
 	LDY #$00E0				;$B48D25   |
 	LDX #$0004				;$B48D28   |
 	JSL DMA_global_palette			;$B48D2B   |
-	LDA #global_sprite_palette		;$B48D2F   |
+;START OF PATCH (change palette loaded for HUD numerals)
+	LDA #funky_surfboard_sprite_palette
+;	LDA #global_sprite_palette		;$B48D2F   |
+;END OF PATCH
 	LDY #$00F0				;$B48D32   |
 	LDX #$0004				;$B48D35   |
 	JSL DMA_palette				;$B48D38   |
@@ -7888,9 +7925,15 @@ DATA_B4C48C:
 	db $61, $65, $69, $6D, $71
 
 DATA_B4C491:
-	db $00, $3C, $02, $3C, $04, $30, $0A, $32
-	db $08, $32, $06, $30, $0C, $3A, $0E, $3A
-	db $80, $34
+;START OF PATCH (shuffle tile values/palette bits of map icons, add entries for Donkey and Kiddy)
+;	db $00, $3C, $02, $3C, $04, $30, $0A, $32
+;	db $08, $32, $06, $30, $0C, $3A, $0E, $3A
+;	db $80, $34
+
+	dw $3800, $3C02, $3008, $320A	;Diddy. Dixie, Cranky, Funky
+	dw $3284, $3082, $3A0C, $3A0E	;Swanky, Wrinkly, Klubba, Klomp
+	dw $3480, $3804, $3C06			;Boss Skull, Donkey, Kiddy
+;END OF PATCH
 
 DATA_B4C4A3:
 	db $04
