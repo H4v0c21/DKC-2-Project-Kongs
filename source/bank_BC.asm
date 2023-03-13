@@ -1,6 +1,4 @@
 
-print pc
-
 DATA_BCB600:
 	dw !null_pointer
 	dw DATA_BCD100
@@ -3434,8 +3432,8 @@ DATA_BCB600:
 	dw DATA_BCEDC8
 	dw DATA_BCEDC8
 	dw DATA_BCEDC8
-	incsrc "kong_hack/donkey_hitbox_pointers.asm"
-	incsrc "kong_hack/kiddy_hitbox_pointers.asm"
+	incsrc "kong_hack/objects/hitboxes/donkey_hitbox_pointers.asm"
+	incsrc "kong_hack/objects/hitboxes/kiddy_hitbox_pointers.asm"
 ;START OF PATCH (add hitboxes for extra sprites)
 	dw DATA_BCE318	;Dixie life counter icon
 	dw DATA_BCE318	;Donkey life counter icon
@@ -5911,8 +5909,10 @@ DATA_BCEDC8:
 	db $FB, $FF, $E4, $FF, $0D, $00, $1B, $00
 	db $D8, $00, $BF, $01
 	
-incsrc "kong_hack/donkey_hitboxes.asm"
-incsrc "kong_hack/kiddy_hitboxes.asm"
+;START OF PATCH (hitboxes)
+incsrc "kong_hack/objects/hitboxes/donkey_hitboxes.asm"
+incsrc "kong_hack/objects/hitboxes/kiddy_hitboxes.asm"
+;END OF PATCH
 	
 padbyte $00	
 pad $BCFA00
@@ -6631,5 +6631,3 @@ CODE_BCFF6E:
 	PLB					;$BCFF6E  \
 	CLC					;$BCFF6F   |
 	RTL					;$BCFF70  /
-
-print pc

@@ -81,7 +81,7 @@ lost_world_head_layer_1_tiledata:
 ;START OF PATCH (replace boss icon tiledata with expanded version containing Wrinkly and Swanky)
 ;$FA443E
 DATA_FA443E:
-	incbin "kong_hack/world_map_boss_wrinkly_swanky_icons_tiledata.bin"
+	incbin "kong_hack/world_map/graphics/world_map_boss_wrinkly_swanky_icons_tiledata.bin"
 ;	incbin "data/misc_graphics/world_map_boss_icon_tiledata.bin"
 ;END OF PATCH
 

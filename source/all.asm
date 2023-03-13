@@ -81,7 +81,7 @@ org $C10000
 ;org $DE0000
 	incsrc bank_DE.asm
 
-check bankcross on
+check bankcross full
 
 ;org $DEA932
 	incsrc graphics_part_1.asm
@@ -204,11 +204,11 @@ org $420000
 ;org $5F0000
 ;	incsrc "exhi/bank_5F.asm"
 
-check bankcross on
+check bankcross full
 org $500000
-	incsrc "kong_hack/donkey_sprite_data.asm"
-	incsrc "kong_hack/kiddy_sprite_data.asm"
-	incsrc "kong_hack/kong_hack_sprite_data.asm"
+	incsrc "kong_hack/objects/graphics/donkey_sprite_data.asm"
+	incsrc "kong_hack/objects/graphics/kiddy_sprite_data.asm"
+	incsrc "kong_hack/objects/graphics/kong_hack_sprite_data.asm"
 
 org $5FFFFF
 	db $00

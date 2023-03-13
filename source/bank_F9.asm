@@ -181,10 +181,7 @@ endif
 	dw dixie_death : db $00, $00
 	dw dixie_glide : db $00, $30
 	dw dixie_crouch_start : db $00, $00
-;START OF TEST
-	;dw test_animation_script : db $00, $00
 	dw dixie_crouch_loop : db $00, $00
-;END OF TEST
 	dw dixie_crouch_end : db $00, $00
 	dw dixie_carry_pickup : db $04, $00
 	dw dixie_carry_idle : db $00, $00
@@ -796,10 +793,11 @@ endif
 	dw rattly_credits : db $00, $00
 	dw klobber_barrel_credits : db $00, $00
 	dw dk_credits : db $00, $00
-;START OF PATCH
+;START OF PATCH (add new kong animations to table)
 	dw empty_animation_script : db $00, $00
+	incsrc "kong_hack/objects/animations/donkey_anim_table.asm"
+	incsrc "kong_hack/objects/animations/kiddy_anim_table.asm"
 ;END OF PATCH
-	incsrc "kong_hack/donkey_anim_table.asm"
 
 diddy_idle:
 	db !animation_command_84 : dw CODE_B9E0A8
@@ -11935,13 +11933,14 @@ lost_world_rock_step:
 	db !animation_command_80, $00
 
 
-;START OF PATCH
+;START OF PATCH (dummy animation script)
 empty_animation_script:
 	db $03 : dw $20E4
 	db !animation_command_80, $00
 ;END OF PATCH
 
-incsrc "kong_hack/donkey_animations.asm"
+incsrc "kong_hack/objects/animations/donkey_animations.asm"
+incsrc "kong_hack/objects/animations/kiddy_animations.asm"
 
 ;START OF PATCH (New Kong map animations)
 first_kong_map:
@@ -11976,9 +11975,6 @@ kiddy_map:
 	db !animation_command_80, $00
 ;END OF PATCH
 
-print pc
+print "Animation End Address: ",pc
 padbyte $00
 pad $F9D000
-
-;padbyte $00
-;pad $FA0000
