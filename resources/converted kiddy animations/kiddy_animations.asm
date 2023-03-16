@@ -1,10 +1,21 @@
 ;THIS FILE IS NOT INCLUDED DURING ASSEMBLY
 ;only to be used to assist in animation migration
 
+;constants to create:
+;	!anim_id_kong_walk = $0003 		;DKC3: $0002
+;	!anim_id_kong_air = $0006		;DKC3: $0009
+;	!anim_id_kong_carry_walk = $0011 	;DKC3: $0012
+;	!anim_id_kong_h_rope_idle = $0039	;DKC3: $0017
+;	!anim_id_kong_v_rope_idle = $002F 	;DKC3: $001B
+;	!anim_id_kong_carry_air = $0016 	;DKC3: $0025
+;	!anim_id_kong_swim_idle = $0043 	;DKC3: $0028
+;	!anim_id_kong_team_air = $0022 		;DKC3: $0030
+;	!anim_id_kong_follow_walk = $003B 	;DKC3: $007D
+
 ;0088 idle
 ;KIDDY_ANIM_F910B6:
-KIDDY_ANIM_F910B6:
-	;db !animation_command_84 : dw $A65D	;needs rework		;3910B6
+kiddy_idle:
+	db !animation_command_84 : dw CODE_B9E0A8			;3910B6
 	db !animation_command_91, $4E : dw ANIM_SUB_F911F9		;3910B9
 	db !animation_command_91, $4E : dw ANIM_SUB_F91131		;3910BD
 	db !animation_command_91, $4E : dw ANIM_SUB_F911AD		;3910C1
@@ -41,7 +52,7 @@ KIDDY_LOOP_F91110:
 
 ;0089 walk
 ;KIDDY_ANIM_F91322:
-KIDDY_ANIM_F91322:
+kiddy_walk:
 	db !animation_command_84 : dw CODE_B9E101			;391322
 	db $03 : dw $3D80						;391325
 	db $03 : dw $3D84						;391328
@@ -67,7 +78,7 @@ KIDDY_ANIM_F91322:
 
 ;008A turn
 ;KIDDY_ANIM_F91363:
-KIDDY_ANIM_F91363:
+kiddy_turn:
 	db $03 : dw $408C						;391363
 	db $03 : dw $4090						;391366
 	db !animation_command_81 : dw CODE_B9E019			;391369
@@ -78,8 +89,8 @@ KIDDY_ANIM_F91363:
 
 ;008B run
 ;KIDDY_ANIM_F91377:
-KIDDY_ANIM_F91377:
-	;db !animation_command_84 : dw $A6C7	;needs rework		;391377
+kiddy_run:
+	db !animation_command_84 : dw CODE_B9DCCA			;391377
 	db $03 : dw $3DF4						;39137A
 	db $03 : dw $3DF8						;39137D
 	db $03 : dw $3DFC						;391380
@@ -100,13 +111,13 @@ KIDDY_ANIM_F91377:
 
 ;008C roll
 ;KIDDY_ANIM_F913AC:
-KIDDY_ANIM_F913AC:
+kiddy_roll:
 	db $03 : dw $3E50						;3913AC
 	db $03 : dw $3E54						;3913AF
 	db !dkc3_anim_command_91 : dw $004E, KIDDY_LOOP_F913BA		;3913B2
 	;db !animation_command_84 : dw $AA07	;needs rework		;3913B7
 KIDDY_LOOP_F913BA:
-	;db !animation_command_81 : dw $AA84	;needs rework		;3913BA
+	db !animation_command_81 : CODE_B9DEAE				;3913BA
 	db $02 : dw $3E58						;3913BD
 	db $02 : dw $3E5C						;3913C0
 	db $02 : dw $3E60						;3913C3
@@ -132,7 +143,7 @@ KIDDY_LOOP_F913E3:
 	db $02 : dw $3E78						;3913FE
 	db $02 : dw $3E7C						;391401
 	db $02 : dw $3E80						;391404
-	;db !animation_command_8F : dw $A931, KIDDY_LOOP_F913E3		;391407
+	db !animation_command_8F : CODE_B9D6A5,	KIDDY_LOOP_F913E3	;391407
 KIDDY_LOOP_F9140C:
 	db $02 : dw $3E84						;39140C
 	;db !animation_command_81 : dw $AAA4	;needs rework		;39140F
@@ -152,12 +163,12 @@ KIDDY_LOOP_F9140C:
 KIDDY_ANIM_F9142F:
 	db $03 : dw $4134						;39142F
 	;db !animation_command_84 : dw $AA15	;needs rework		;391432
-	;db !dkc3_anim_command_8A, $03 : dw $4150			;391435
+	db !dkc3_anim_command_8A, $03 : dw $4150			;391435
 	db !animation_command_80, $00					;391439
 
 ;008E crouch
 ;KIDDY_ANIM_F9143B:
-KIDDY_ANIM_F9143B:
+kiddy_crouch:
 	db $02 : dw $4180						;39143B
 	db $02 : dw $4184						;39143E
 	db $02 : dw $4188						;391441
@@ -168,7 +179,7 @@ KIDDY_ANIM_F9143B:
 	;db !animation_command_84 : dw $AA24	;needs rework		;391452
 	db $02 : dw $4198						;391455
 	db $02 : dw $419C						;391458
-	;db !animation_command_83 : dw $A1B7	;needs rework		;39145B
+	db !animation_command_83 : dw CODE_B9D12B			;39145B
 KIDDY_LOOP_F9145E:
 	db $02 : dw $4198						;39145E
 	db $02 : dw $4190						;391461
@@ -179,15 +190,15 @@ KIDDY_LOOP_F9145E:
 
 ;008F jump
 ;KIDDY_ANIM_F916C6:
-KIDDY_ANIM_F916C6:
+kiddy_jump:
 	db $02 : dw $3E24						;3916C6
 	db $01 : dw $3E28						;3916C9
-	;db !animation_command_90 : dw $AB3F, $0090	;needs rework	;3916CC
+	;db !animation_command_90 : dw $AB3F, !kiddy_animation_offset+!anim_id_kong_air	;needs rework	;3916CC
 	db !animation_command_80, $00					;3916D1
 
 ;0090 air
 ;KIDDY_ANIM_F916D3:
-KIDDY_ANIM_F916D3:
+kiddy_air:
 	;db !animation_command_84 : dw $AB97	;needs rework		;3916D3
 	db $04 : dw $3E2C						;3916D6
 	db $04 : dw $3E30						;3916D9
@@ -206,23 +217,16 @@ KIDDY_LOOP_F916E2:
 	;db !animation_command_81 : dw $ABC8	;needs rework		;3916FD
 	db !animation_command_80, $00					;391700
 
-;0091 
+;0091, 0092 land
 ;KIDDY_ANIM_F91702:
-KIDDY_ANIM_F91702:
-	db $04 : dw $3E4C						;391702
-	;db !animation_command_81 : dw $ABD2	;needs rework		;391705
-	db !animation_command_80, $00					;391708
-
-;0092 land
-;KIDDY_ANIM_F91702:
-KIDDY_ANIM_F91702:
+kiddy_land:
 	db $04 : dw $3E4C						;391702
 	;db !animation_command_81 : dw $ABD2	;needs rework		;391705
 	db !animation_command_80, $00					;391708
 
 ;0093 fall
 ;KIDDY_ANIM_F9170A:
-KIDDY_ANIM_F9170A:
+kiddy_fall:
 	db $04 : dw $3E40						;39170A
 	;db !animation_command_83 : dw $A9CB	;needs rework		;39170D
 	;db !animation_command_84 : dw $ABA2	;needs rework		;391710
@@ -236,7 +240,7 @@ KIDDY_ANIM_F9170A:
 
 ;0094 bounce up
 ;KIDDY_ANIM_F91727:
-KIDDY_ANIM_F91727:
+kiddy_bounce_up:
 	db $02 : dw $3E58						;391727
 	db $02 : dw $3E5C						;39172A
 	db $02 : dw $3E60						;39172D
@@ -280,7 +284,7 @@ KIDDY_ANIM_F9175B:
 
 ;0097 carry pickup
 ;KIDDY_ANIM_F91D26:
-KIDDY_ANIM_F91D26:
+kiddy_carry_pickup:
 	db !animation_command_81 : dw CODE_B9D891			;391D26
 	;db !animation_command_81 : dw $AD2F	;needs rework		;391D29
 	db !animation_command_8B, $03 : dw $3E9C, $0011, $0000		;391D2C
@@ -293,15 +297,15 @@ KIDDY_ANIM_F91D26:
 
 ;0098 carry idle
 ;KIDDY_ANIM_F91D59:
-KIDDY_ANIM_F91D59:
+kiddy_carry_idle:
 	;db !animation_command_84 : dw $ADC7	;needs rework		;391D59
 	db !animation_command_8B, $03 : dw $3EB0, $0014, $FFF3		;391D5C
-	;db !animation_command_83 : dw $A1B7	;needs rework		;391D64
+	db !animation_command_83 : dw CODE_B9D12B			;391D64
 	db !animation_command_80, $00					;391D67
 
-;0099 
+;0099 carry walk
 ;KIDDY_ANIM_F91D69:
-KIDDY_ANIM_F91D69:
+kiddy_carry_walk:
 	;db !animation_command_84 : dw $AD41	;needs rework		;391D69
 	db !animation_command_8B, $04 : dw $3EB0, $0014, $FFF3		;391D6C
 	db !animation_command_8B, $04 : dw $3EB4, $0014, $FFF2		;391D74
@@ -321,18 +325,18 @@ KIDDY_ANIM_F91D69:
 	db !animation_command_8B, $04 : dw $3EDC, $0014, $FFF3		;391DD0
 	db !animation_command_80, $00					;391DD8
 
-;009A 
+;009A carry turn
 ;KIDDY_ANIM_F91DDA:
-KIDDY_ANIM_F91DDA:
+kiddy_carry_turn:
 	db !animation_command_8B, $06 : dw $3ED8, $0014, $FFF2		;391DDA
 	db !animation_command_81 : dw CODE_B9E019			;391DE2
 	db !animation_command_8B, $06 : dw $3EDC, $0014, $FFF3		;391DE5
-	;db !dkc3_anim_command_89 : dw $8012	;needs rework		;391DED
+	db !dkc3_anim_command_89 : dw !anim_id_kong_carry_walk+$8000	;391DED
 	db !animation_command_80, $00					;391DF0
 
 ;009B carry drop
 ;KIDDY_ANIM_F91DF2:
-KIDDY_ANIM_F91DF2:
+kiddy_carry_drop:
 	db !animation_command_81 : dw CODE_B9D891			;391DF2
 	;db !animation_command_81 : dw $AD6C	;needs rework		;391DF5
 	db !animation_command_8B, $02 : dw $3EAC, $0014, $FFF3		;391DF8
@@ -346,7 +350,7 @@ KIDDY_ANIM_F91DF2:
 
 ;009C carry throw
 ;KIDDY_ANIM_F91E28:
-KIDDY_ANIM_F91E28:
+kiddy_carry_throw:
 	;db !animation_command_81 : dw $ADD2	;needs rework		;391E28
 	db !animation_command_8B, $02 : dw $3F9C, $0014, $FFF5		;391E2B
 	db !animation_command_8B, $02 : dw $3FA0, $0016, $FFF4		;391E33
@@ -368,7 +372,7 @@ KIDDY_ANIM_F91E28:
 	;db !animation_command_81 : dw $A8A7	;needs rework		;391E8B
 	db !animation_command_80, $00					;391E8E
 
-;009D h rope grab
+;009D h rope grab **NO DKC2 EQUIVALENT**
 ;KIDDY_ANIM_F917FC:
 KIDDY_ANIM_F917FC:
 	;db !animation_command_8F : dw $AC95, KIDDY_LOOP_F9180D		;3917FC
@@ -378,12 +382,12 @@ KIDDY_ANIM_F917FC:
 	db $05 : dw $4048						;39180A
 KIDDY_LOOP_F9180D:
 	db !dkc3_anim_command_8F : dw $1300				;39180D
-	;db !dkc3_anim_command_87 : dw $009E	;needs rework		;391810
+	db !dkc3_anim_command_87 : dw !kiddy_animation_offset+!anim_id_kong_h_rope_idle		;391810
 	db !animation_command_80, $00					;391813
 
 ;009E h rope idle
 ;KIDDY_ANIM_F91815:
-KIDDY_ANIM_F91815:
+kiddy_rope_horizontal_idle:
 	db !dkc3_anim_command_8F : dw $1300				;391815
 	;db !animation_command_84 : dw $AC04	;needs rework		;391818
 	db $08 : dw $4024						;39181B
@@ -398,7 +402,7 @@ KIDDY_ANIM_F91815:
 
 ;009F h rope move
 ;KIDDY_ANIM_F91835:
-KIDDY_ANIM_F91835:
+kiddy_rope_horizontal_move:
 	db !dkc3_anim_command_8F : dw $1300				;391835
 	;db !animation_command_84 : dw $AC15	;needs rework		;391838
 	db $05 : dw $404C						;39183B
@@ -429,7 +433,7 @@ KIDDY_LOOP_F91841:
 	db !animation_command_82 : dw KIDDY_LOOP_F91841 		;391883
 	db !animation_command_80, $00					;391886
 
-;00A0 h rope jump
+;00A0 h rope jump **NO DKC2 EQUIVALENT**
 ;KIDDY_ANIM_F91888:
 KIDDY_ANIM_F91888:
 	db !dkc3_anim_command_8F : dw $0C00				;391888
@@ -441,7 +445,7 @@ KIDDY_ANIM_F91888:
 	db !animation_command_82 : dw KIDDY_LOOP_F916E2			;39189A
 	db !animation_command_80, $00					;39189D
 
-;00A1 h rope drop
+;00A1 h rope drop **NO DKC2 EQUIVALENT**
 ;KIDDY_ANIM_F9189F:
 KIDDY_ANIM_F9189F:
 	db !dkc3_anim_command_8F : dw $0C00				;39189F
@@ -455,7 +459,7 @@ KIDDY_ANIM_F9189F:
 
 ;00A2 v rope idle
 ;KIDDY_ANIM_F91991:
-KIDDY_ANIM_F91991:
+kiddy_rope_vertical_single_idle:
 	;db !animation_command_84 : dw $ACA9	;needs rework		;391991
 	db $30 : dw $40D4						;391994
 	db $08 : dw $40FC						;391997
@@ -512,25 +516,25 @@ KIDDY_ANIM_F91991:
 
 ;00A3 v rope move
 ;KIDDY_ANIM_F91A2F:
-KIDDY_ANIM_F91A2F:
+diddy_rope_vertical_single_move:
 	db $04 : dw $4094						;391A2F
 	;db !animation_command_84 : dw $ACD1	;needs rework		;391A32
 KIDDY_LOOP_F91A35:
-	;db !dkc3_anim_command_94, $04 : dw $4094 : db $4B, $2F, $80	;391A35
-	;db !dkc3_anim_command_94, $04 : dw $4094 : db $4B, $2F, $80	;391A3C
-	;db !dkc3_anim_command_94, $04 : dw $4094 : db $4B, $2F, $80	;391A43
-	;db !dkc3_anim_command_94, $04 : dw $4094 : db $4B, $2F, $80	;391A4A
+	;db !dkc3_anim_command_94, $04 : dw $4094 : db $3C, $2F, $80	;391A35
+	;db !dkc3_anim_command_94, $04 : dw $4094 : db $3C, $2F, $80	;391A3C
+	;db !dkc3_anim_command_94, $04 : dw $4094 : db $3C, $2F, $80	;391A43
+	;db !dkc3_anim_command_94, $04 : dw $4094 : db $3C, $2F, $80	;391A4A
 	;db !animation_command_81 : dw $AD05	;needs rework		;391A51
-	;db !dkc3_anim_command_94, $04 : dw $4094 : db $4B, $2F, $80	;391A54
-	;db !dkc3_anim_command_94, $04 : dw $4094 : db $4B, $2F, $80	;391A5B
-	;db !dkc3_anim_command_94, $04 : dw $4094 : db $4B, $2F, $80	;391A62
-	;db !dkc3_anim_command_94, $04 : dw $4094 : db $4B, $2F, $80	;391A69
+	;db !dkc3_anim_command_94, $04 : dw $4094 : db $3C, $2F, $80	;391A54
+	;db !dkc3_anim_command_94, $04 : dw $4094 : db $3C, $2F, $80	;391A5B
+	;db !dkc3_anim_command_94, $04 : dw $4094 : db $3C, $2F, $80	;391A62
+	;db !dkc3_anim_command_94, $04 : dw $4094 : db $3C, $2F, $80	;391A69
 	db !animation_command_82 : dw KIDDY_LOOP_F91A35			;391A70
 	db !animation_command_80, $00					;391A73
 
 ;00A4 v rope turn
 ;KIDDY_ANIM_F91A75:
-KIDDY_ANIM_F91A75:
+kiddy_rope_vertical_single_turn:
 	db $02 : dw $40D4						;391A75
 	db $02 : dw $40D8						;391A78
 	db $02 : dw $40DC						;391A7B
@@ -540,10 +544,10 @@ KIDDY_ANIM_F91A75:
 	db $02 : dw $40DC						;391A87
 	db $02 : dw $40D8						;391A8A
 	db $02 : dw $40D4						;391A8D
-	;db !dkc3_anim_command_89 : dw $801B	;needs rework		;391A90
+	db !dkc3_anim_command_89 : dw !anim_id_kong_v_rope_idle+$8000	;391A90
 	db !animation_command_80, $00					;391A93
 
-;00A5 v rope jump
+;00A5 v rope jump **NO DKC2 EQUIVALENT**
 ;KIDDY_ANIM_F91A95:
 KIDDY_ANIM_F91A95:
 	;db !animation_command_81 : dw $ABE6	;needs rework		;391A95
@@ -553,7 +557,7 @@ KIDDY_ANIM_F91A95:
 
 ;00A6 death
 ;KIDDY_ANIM_F92057:
-KIDDY_ANIM_F92057:
+kiddy_death:
 	;db !animation_command_8F : dw $B000, KIDDY_LOOP_F9207C		;392057
 	;db !animation_command_81 : dw $A602	;needs rework		;39205C
 	db $02 : dw $3F68						;39205F
@@ -572,10 +576,10 @@ KIDDY_LOOP_F9207C:
 	;db !dkc3_anim_command_84 : dw $A5A0, $0016			;392082
 	;db !animation_command_83 : dw $A96D	;needs rework		;392087
 KIDDY_LOOP_F9208A:
-	;db !dkc3_anim_command_8A, $04 : dw $3F7C			;39208A
+	db !dkc3_anim_command_8A, $04 : dw $3F7C			;39208A
 	;db !animation_command_83 : dw $A9C1	;needs rework		;39208E
 	;db !animation_command_81 : dw $AFDF	;needs rework		;392091
-	;db !dkc3_anim_command_8A, $03 : dw $3F94			;392094
+	db !dkc3_anim_command_8A, $03 : dw $3F94			;392094
 	;db !animation_command_83 : dw $A9C1	;needs rework		;392098
 	db $03 : dw $3F98						;39209B
 	db !dkc3_anim_command_91 : dw $0026, $0000			;39209E
@@ -597,14 +601,14 @@ KIDDY_LOOP_F9208A:
 	db !animation_command_91, $4E : dw ANIM_SUB_F920E9		;3920D9
 	db !animation_command_91, $4E : dw ANIM_SUB_F920E9		;3920DD
 	db $03 : dw $3F64						;3920E1
-	;db !animation_command_83 : dw $A1B7	;needs rework		;3920E4
+	db !animation_command_83 : dw CODE_B9D12B			;3920E4
 	db !animation_command_80, $00					;3920E7
 
 
 
 ;00A8 hurt
 ;KIDDY_ANIM_F92103:
-KIDDY_ANIM_F92103:
+kiddy_hurt:
 	;db !animation_command_8F : dw $B000, KIDDY_LOOP_F92125		;392103
 	;db !animation_command_81 : dw $AFA4	;needs rework		;392108
 	db $02 : dw $3F68						;39210B
@@ -636,7 +640,7 @@ KIDDY_ANIM_F9213B:
 	db $04 : dw $3E38						;39214A
 	db $04 : dw $3E3C						;39214D
 	db $04 : dw $3E40						;392150
-	;db !animation_command_83 : dw $A1B7	;needs rework		;392153
+	db !animation_command_83 : dw CODE_B9D12B			;392153
 	db !animation_command_80, $00					;392156
 
 ;00AA 
@@ -644,19 +648,19 @@ KIDDY_ANIM_F9213B:
 KIDDY_ANIM_F92158:
 	;db !dkc3_anim_command_84 : dw $A59B, $0016			;392158
 	db $04 : dw $3F68						;39215D
-	;db !animation_command_83 : dw $A1B7	;needs rework		;392160
+	db !animation_command_83 : dw CODE_B9D12B			;392160
 	db !animation_command_80, $00					;392163
 
 ;00AB carry jump
 ;KIDDY_ANIM_F91E90:
-KIDDY_ANIM_F91E90:
+kiddy_carry_jump:
 	db !animation_command_8B, $06 : dw $3EC0, $0014, $FFF3		;391E90
-	;db !animation_command_90 : dw $AB3F, $00AC	;needs rework	;391E98
+	;db !animation_command_90 : dw $AB3F, !kiddy_animation_offset+!anim_id_kong_carry_air	;needs rework	;391E98
 	db !animation_command_80, $00					;391E9D
 
 ;00AC carry air
 ;KIDDY_ANIM_F91E9F:
-KIDDY_ANIM_F91E9F:
+kiddy_carry_air:
 	db !animation_command_8B, $06 : dw $3EC0, $0014, $FFF3		;391E9F
 	;db !animation_command_83 : dw $A9B3	;needs rework		;391EA7
 KIDDY_LOOP_F91EAA:
@@ -667,7 +671,7 @@ KIDDY_LOOP_F91EAA:
 
 ;00AD carry land
 ;KIDDY_ANIM_F91EBA:
-KIDDY_ANIM_F91EBA:
+kiddy_carry_land:
 	db !animation_command_8B, $06 : dw $3EC0, $0014, $FFF3		;391EBA
 	;db !animation_command_81 : dw $ABD2	;needs rework		;391EC2
 	db !animation_command_80, $00					;391EC5
@@ -680,7 +684,7 @@ KIDDY_ANIM_F91EC7:
 
 ;00AF swim idle
 ;KIDDY_ANIM_F91ED1:
-KIDDY_ANIM_F91ED1:
+kiddy_swim_idle:
 	db $03 : dw $3FDC						;391ED1
 	;db !animation_command_84 : dw $ADAA	;needs rework		;391ED4
 	db $03 : dw $3FE0						;391ED7
@@ -702,13 +706,13 @@ KIDDY_ANIM_F91ED1:
 
 ;00B0 swim turn
 ;KIDDY_ANIM_F91F06:
-KIDDY_ANIM_F91F06:
+kiddy_swim_turn:
 	db $03 : dw $401C						;391F06
 	db $03 : dw $4020						;391F09
 	db !animation_command_81 : dw CODE_B9E019			;391F0C
 	db $03 : dw $4020						;391F0F
 	db $03 : dw $401C						;391F12
-	;db !dkc3_anim_command_89 : dw $8028	;needs rework		;391F15
+	db !dkc3_anim_command_89 : dw !anim_id_kong_swim_idle+$8000	;391F15
 	db !animation_command_80, $00					;391F18
 
 ;00B1 
@@ -723,8 +727,8 @@ KIDDY_ANIM_F9252E:
 
 ;00B2 team idle
 ;KIDDY_ANIM_F92548:
-KIDDY_ANIM_F92548:
-	;db !animation_command_84 : dw $A65D	;needs rework		;392548
+kiddy_team_bottom_idle:
+	db !animation_command_84 : dw CODE_B9E0A8			;392548
 	db !animation_command_91, $4E : dw ANIM_SUB_F9257D		;39254B
 	db !animation_command_91, $4E : dw ANIM_SUB_F9257D		;39254F
 	db !animation_command_91, $4E : dw ANIM_SUB_F9257D		;392553
@@ -741,7 +745,7 @@ KIDDY_ANIM_F92548:
 
 ;00B3 team walk
 ;KIDDY_ANIM_F92635:
-KIDDY_ANIM_F92635:
+kiddy_team_bottom_walk:
 	db !animation_command_84 : dw CODE_B9E021			;392635
 	db !animation_command_8A, $03 : dw $3CE4, $3BDC, $0000, $0000	;392638
 	db !animation_command_8A, $03 : dw $3CE8, $3BE0, $0000, $0000	;392642
@@ -767,7 +771,7 @@ KIDDY_ANIM_F92635:
 
 ;00B4 team turn
 ;KIDDY_ANIM_F926E6:
-KIDDY_ANIM_F926E6:
+kiddy_team_bottom_turn:
 	db !animation_command_8A, $02 : dw $3CE4, $3BDC, $0000, $0002	;3926E6
 	db !animation_command_8A, $02 : dw $3CE4, $3BDC, $0000, $0004	;3926F0
 	db !animation_command_81 : dw CODE_B9E019			;3926FA
@@ -779,19 +783,19 @@ KIDDY_ANIM_F926E6:
 ;00B5 
 ;KIDDY_ANIM_F92716:
 KIDDY_ANIM_F92716:
-	;db !animation_command_83 : dw $A1B7	;needs rework		;392716
+	db !animation_command_83 : dw CODE_B9D12B			;392716
 	db !animation_command_80, $00					;392719
 
 ;00B6 team jump
 ;KIDDY_ANIM_F9271B:
-KIDDY_ANIM_F9271B:
+kiddy_team_bottom_jump:
 	db !animation_command_8A, $04 : dw $3CD4, $3BCC, $0000, $0000	;39271B
-	;db !animation_command_90 : dw $AB3F, $00B7	;needs rework	;392725
+	;db !animation_command_90 : dw $AB3F, !kiddy_animation_offset+!anim_id_kong_team_air	;needs rework	;392725
 	db !animation_command_80, $00					;39272A
 
 ;00B7 team air
 ;KIDDY_ANIM_F9272C:
-KIDDY_ANIM_F9272C:
+kiddy_team_bottom_air:
 	db !animation_command_8A, $04 : dw $3CD4, $3BCC, $0000, $0000	;39272C
 	;db !animation_command_83 : dw $A9C1	;needs rework		;392736
 	;db !animation_command_81 : dw $ABC8	;needs rework		;392739
@@ -807,7 +811,7 @@ KIDDY_ANIM_F9273E:
 
 ;00B9 team throw
 ;KIDDY_ANIM_F92750:
-KIDDY_ANIM_F92750:
+kiddy_team_bottom_throw:
 	db !animation_command_8A, $02 : dw $3D24, $3C24, $0000, $0000	;392750
 	db !animation_command_8A, $02 : dw $3D28, $3C28, $0000, $0000	;39275A
 	db !animation_command_8A, $02 : dw $3D2C, $3C2C, $0000, $0000	;392764
@@ -832,7 +836,7 @@ KIDDY_ANIM_F92750:
 
 ;00BA team stomp
 ;KIDDY_ANIM_F927CF:
-KIDDY_ANIM_F927CF:
+kiddy_team_bottom_bounce_up:
 	db $03 : dw $3E60						;3927CF
 	;db !animation_command_84 : dw $B0A2	;needs rework		;3927D2
 KIDDY_LOOP_F927D5:
@@ -852,7 +856,7 @@ KIDDY_LOOP_F927D5:
 	db $01 : dw $3E40						;3927FC
 	db !dkc3_anim_command_91 : dw $0024, $0800			;3927FF
 	db $01 : dw $3E40						;392804
-	;db !animation_command_83 : dw $A1B7	;needs rework		;392807
+	db !animation_command_83 : dw CODE_B9D12B			;392807
 	db !animation_command_80, $00					;39280A
 
 
@@ -927,9 +931,9 @@ KIDDY_LOOP_F92891:
 
 ;00BE barrel cannon air
 ;KIDDY_ANIM_F928C6:
-KIDDY_ANIM_F928C6:
+kiddy_barrel_cannon_air:
 	db $02 : dw $3E58						;3928C6
-	;db !dkc3_anim_command_8A, $02 : dw $3E84			;3928C9
+	db !dkc3_anim_command_8A, $02 : dw $3E84			;3928C9
 	db !animation_command_80, $00					;3928CD
 
 ;00BF 
@@ -960,13 +964,13 @@ KIDDY_ANIM_F91674:
 	db $03 : dw $3D8C						;391674
 	;db !animation_command_8F : dw $AB2F, KIDDY_LOOP_F916A1		;391677
 	db $03 : dw $3DC0						;39167C
-	;db !dkc3_anim_command_8A, $02 : dw $3DD0			;39167F
+	db !dkc3_anim_command_8A, $02 : dw $3DD0			;39167F
 	db $06 : dw $3DD4						;391683
 	db $06 : dw $3DD8						;391686
 	db $06 : dw $3DD4						;391689
 	db $06 : dw $3DD8						;39168C
 	db $06 : dw $3DD4						;39168F
-	;db !dkc3_anim_command_8B, $02 : dw $3DC0			;391692
+	db !dkc3_anim_command_8B, $02 : dw $3DC0			;391692
 	db $02 : dw $3D8C						;391696
 	;db !dkc3_anim_command_91 : dw $0060, $0000			;391699
 	db !animation_command_82 : dw KIDDY_LOOP_F916AC			;39169E
@@ -975,7 +979,7 @@ KIDDY_LOOP_F916A1:
 	db $02 : dw $3D8C						;3916A4
 	;db !dkc3_anim_command_91 : dw $0060, $0000			;3916A7
 KIDDY_LOOP_F916AC:
-	;db !dkc3_anim_command_8A, $02 : dw $3DBC			;3916AC
+	db !dkc3_anim_command_8A, $02 : dw $3DBC			;3916AC
 	db $02 : dw $3D80						;3916B0
 	db !animation_command_82 : dw KIDDY_LOOP_F916AC			;3916B3
 	db !animation_command_80, $00					;3916B6
@@ -984,7 +988,7 @@ KIDDY_LOOP_F916AC:
 ;KIDDY_ANIM_F916B8:
 KIDDY_ANIM_F916B8:
 	db $03 : dw $3FDC						;3916B8
-	;db !dkc3_anim_command_8A, $03 : dw $4018			;3916BB
+	db !dkc3_anim_command_8A, $03 : dw $4018			;3916BB
 	;db !dkc3_anim_command_91 : dw $0060, $0000			;3916BF
 	db !animation_command_80, $00					;3916C4
 
@@ -1008,7 +1012,7 @@ KIDDY_LOOP_F9401F:
 
 ;00C3 swap to
 ;KIDDY_ANIM_F9295A:
-KIDDY_ANIM_F9295A:
+kiddy_swap_to:
 	;db !animation_command_81 : dw $AD21	;needs rework		;39295A
 	db !animation_command_8A, $04 : dw $3D34, $3730, $001C, $0000	;39295D
 	db !animation_command_8A, $04 : dw $3D38, $3730, $001C, $0000	;392967
@@ -1026,18 +1030,18 @@ KIDDY_ANIM_F9295A:
 	db $03 : dw $3D60						;3929BC
 	;db !animation_command_81 : dw $A60B	;needs rework		;3929BF
 	db $03 : dw $3DAC						;3929C2
-	;db !dkc3_anim_command_8A, $03 : dw $3DBC			;3929C5
+	db !dkc3_anim_command_8A, $03 : dw $3DBC			;3929C5
 	db $03 : dw $3D80						;3929C9
-	;db !dkc3_anim_command_8A, $03 : dw $3DBC			;3929CC
-	;db !animation_command_83 : dw $A1B7	;needs rework		;3929D0
+	db !dkc3_anim_command_8A, $03 : dw $3DBC			;3929CC
+	db !animation_command_83 : dw CODE_B9D12B			;3929D0
 	db !animation_command_80, $00					;3929D3
 
 ;00C4 swap idle
 ;KIDDY_ANIM_F929D5:
-KIDDY_ANIM_F929D5:
+kiddy_swap_idle:
 	db $03 : dw $4180						;3929D5
 	db $03 : dw $3DC0						;3929D8
-	;db !animation_command_83 : dw $A1B7	;needs rework		;3929DB
+	db !animation_command_83 : dw CODE_B9D12B			;3929DB
 	db !animation_command_80, $00					;3929DE
 
 ;00C5 swap from
@@ -1062,7 +1066,7 @@ KIDDY_ANIM_F929E0:
 	db $03 : dw $3D64						;392A10
 	db !dkc3_anim_command_91 : dw $0002, $00D8			;392A13
 	;db !animation_command_81 : dw $A60B	;needs rework		;392A18
-	;db !animation_command_83 : dw $A1B7	;needs rework		;392A1B
+	db !animation_command_83 : dw CODE_B9D12B			;392A1B
 	db !animation_command_80, $00					;392A1E
 
 ;00C6 
@@ -1160,7 +1164,7 @@ KIDDY_ANIM_F938A5:
 
 ;0104 follow walk
 ;KIDDY_ANIM_F92B19:
-KIDDY_ANIM_F92B19:
+kiddy_follow_walk:
 	db $03 : dw $3D80						;392B19
 	db $03 : dw $3D84						;392B1C
 	db $03 : dw $3D88						;392B1F
@@ -1181,7 +1185,7 @@ KIDDY_ANIM_F92B19:
 
 ;0105 follow run
 ;KIDDY_ANIM_F92B4B:
-KIDDY_ANIM_F92B4B:
+kiddy_follow_run:
 	db $03 : dw $3DF4						;392B4B
 	db $03 : dw $3DF8						;392B4E
 	db $03 : dw $3DFC						;392B51
@@ -1198,18 +1202,18 @@ KIDDY_ANIM_F92B4B:
 
 ;0106 follow turn
 ;KIDDY_ANIM_F92B71:
-KIDDY_ANIM_F92B71:
+kiddy_follow_turn:
 	db $04 : dw $408C						;392B71
 	db $04 : dw $4090						;392B74
 	db !animation_command_81 : dw CODE_B9E019			;392B77
 	db $04 : dw $4090						;392B7A
 	db $04 : dw $408C						;392B7D
-	;db !dkc3_anim_command_89 : dw $807D	;needs rework		;392B80
+	db !dkc3_anim_command_89 : dw !anim_id_kong_follow_walk+$8000	;392B80
 	db !animation_command_80, $00					;392B83
 
 ;0107 follow jump
 ;KIDDY_ANIM_F92B85:
-KIDDY_ANIM_F92B85:
+kiddy_follow_jump:
 	db $04 : dw $3E2C						;392B85
 	db $04 : dw $3E30						;392B88
 	db $04 : dw $3E34						;392B8B
@@ -1219,17 +1223,17 @@ KIDDY_ANIM_F92B85:
 	db $04 : dw $3E44						;392B97
 	db $04 : dw $3E48						;392B9A
 	db $04 : dw $3E4C						;392B9D
-	;db !animation_command_83 : dw $A1B7	;needs rework		;392BA0
+	db !animation_command_83 : dw CODE_B9D12B			;392BA0
 	db !animation_command_80, $00					;392BA3
 
 ;0108 follow air
 ;KIDDY_ANIM_F92BA5:
-KIDDY_ANIM_F92BA5:
+kiddy_follow_air:
 	db $04 : dw $3E40						;392BA5
 	db $04 : dw $3E44						;392BA8
 	db $04 : dw $3E48						;392BAB
 	db $04 : dw $3E4C						;392BAE
-	;db !animation_command_83 : dw $A1B7	;needs rework		;392BB1
+	db !animation_command_83 : dw CODE_B9D12B			;392BB1
 	db !animation_command_80, $00					;392BB4
 
 ;0109 follow roll
@@ -1291,7 +1295,7 @@ KIDDY_LOOP_F96CFA:
 KIDDY_ANIM_F96D02:
 	db $04 : dw $3E48						;396D02
 	db $04 : dw $3E4C						;396D05
-	;db !dkc3_anim_command_87 : dw $0089	;needs rework		;396D08
+	db !dkc3_anim_command_87 : dw !kiddy_animation_offset+!anim_id_kong_walk		;396D08
 	db !animation_command_80, $00					;396D0B
 
 ;010D 
