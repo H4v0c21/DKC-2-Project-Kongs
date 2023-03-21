@@ -516,7 +516,7 @@ kiddy_rope_vertical_single_idle:
 
 ;00A3 v rope move
 ;KIDDY_ANIM_F91A2F:
-diddy_rope_vertical_single_move:
+kiddy_rope_vertical_single_move:
 	db $04 : dw $4094						;391A2F
 	;db !animation_command_84 : dw $ACD1	;needs rework		;391A32
 KIDDY_LOOP_F91A35:
