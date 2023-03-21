@@ -288,33 +288,39 @@ with open('output.asm', 'a') as output_file:
 			command = int.from_bytes(rom_data[index:index+1], byteorder='big')
 			index += 1
 			if command > 0x7F:
-				match command:
-					case 0x80:	#end of animation
+				#match command:
+					if command == 0x80:	#end of animation
+					#case 0x80:	#end of animation
 						print('end')
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $00\n'
 						animation_complete = True
 						
-					case 0x81:	#jsr/jsl
+					elif command == 0x81:	#jsr/jsl
+					#case 0x81:	#jsr/jsl
 						routine_pointer = int.from_bytes(rom_data[index:index+3], byteorder='little')
 						index += 3
 						line = '	;db !animation_command_' + str(format(command, '02x').upper()[0:]) + ' : dw $' + str(format(routine_pointer, '06x').upper()[0:] + '	;needs rework\n')
 						
-					case 0x82:	#goto animation address
+					elif command == 0x82:	#goto animation address
+					#case 0x82:	#goto animation address
 						animation_pointer = int.from_bytes(rom_data[index:index+3], byteorder='little')
 						index += 2
 						line = '	;db !animation_command_' + str(format(command, '02x').upper()[0:]) + ' : dw $' + str(format(animation_pointer, '04x').upper()[0:] + '	;needs rework\n')
 					
-					case 0x83:	#jsr
+					elif command == 0x83:	#jsr
+					#case 0x83:	#jsr
 						routine_pointer = int.from_bytes(rom_data[index:index+2], byteorder='little')
 						index += 2
 						line = '	;db !animation_command_' + str(format(command, '02x').upper()[0:]) + ' : dw $' + str(format(routine_pointer, '04x').upper()[0:] + '	;needs rework\n')
 					
-					case 0x84:	#jsr/jsl
+					elif command == 0x84:	#jsr/jsl
+					#case 0x84:	#jsr/jsl
 						routine_pointer = int.from_bytes(rom_data[index:index+3], byteorder='little')
 						index += 3
 						line = '	;db !animation_command_' + str(format(command, '02x').upper()[0:]) + ' : dw $' + str(format(routine_pointer, '06x').upper()[0:] + '	;needs rework\n')
 					
-					case 0x85:	#draw sprites for specified time
+					elif command == 0x85:	#draw sprites for specified time
+					#case 0x85:	#draw sprites for specified time
 						duration = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						
 						graphic_1_number = int.from_bytes(rom_data[index+1:index+3], byteorder='little')
@@ -325,7 +331,8 @@ with open('output.asm', 'a') as output_file:
 						index += 5
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $' + str(format(duration, '02x').upper()[0:]) + ' : dw $' + str(format(graphic_1_number, '04x').upper()[0:]) + ', $' + str(format(graphic_2_number, '04x').upper()[0:]) + '\n'
 					
-					case 0x86:	#draw sprites for specified time with offset
+					elif command == 0x86:	#draw sprites for specified time with offset
+					#case 0x86:	#draw sprites for specified time with offset
 						duration = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						
 						graphic_1_number = int.from_bytes(rom_data[index+1:index+3], byteorder='little')
@@ -338,7 +345,8 @@ with open('output.asm', 'a') as output_file:
 						index += 9
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $' + str(format(duration, '02x').upper()[0:]) + ' : dw $' + str(format(graphic_1_number, '04x').upper()[0:]) + ', $' + str(format(graphic_2_number, '04x').upper()[0:]) + ', $' + str(format(x_offset, '04x').upper()[0:]) + ', $' + str(format(y_offset, '04x').upper()[0:]) + '\n'
 				
-					case 0x87:	#draw sprite for specified time with offset
+					elif command == 0x87:	#draw sprite for specified time with offset
+					#case 0x87:	#draw sprite for specified time with offset
 						duration = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						
 						graphic_number = int.from_bytes(rom_data[index+1:index+3], byteorder='little')
@@ -349,13 +357,15 @@ with open('output.asm', 'a') as output_file:
 						index += 7
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $' + str(format(duration, '02x').upper()[0:]) + ' : dw $' + str(format(graphic_number, '04x').upper()[0:]) + ', $' + str(format(x_offset, '04x').upper()[0:]) + ', $' + str(format(y_offset, '04x').upper()[0:]) + '\n'
 					
-					case 0x88:	#move current sprite to offset
+					elif command == 0x88:	#move current sprite to offset
+					#case 0x88:	#move current sprite to offset
 						x_offset = int.from_bytes(rom_data[index:index+2], byteorder='little')
 						y_offset = int.from_bytes(rom_data[index+2:index+4], byteorder='little')
 						index += 4
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ' : dw $' + str(format(x_offset, '04x').upper()[0:]) + ', $' + str(format(y_offset, '04x').upper()[0:]) + '\n'
 					
-					case 0x89:	#draw sprites for specified time
+					elif command == 0x89:	#draw sprites for specified time
+					#case 0x89:	#draw sprites for specified time
 						duration = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						
 						graphic_1_number = int.from_bytes(rom_data[index+1:index+3], byteorder='little')
@@ -366,7 +376,8 @@ with open('output.asm', 'a') as output_file:
 						index += 5
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $' + str(format(duration, '02x').upper()[0:]) + ' : dw $' + str(format(graphic_1_number, '04x').upper()[0:]) + ', $' + str(format(graphic_2_number, '04x').upper()[0:]) + '\n'
 						
-					case 0x8A:	#draw sprites for specified time with offset
+					elif command == 0x8A:	#draw sprites for specified time with offset
+					#case 0x8A:	#draw sprites for specified time with offset
 						duration = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						
 						graphic_1_number = int.from_bytes(rom_data[index+1:index+3], byteorder='little')
@@ -379,7 +390,8 @@ with open('output.asm', 'a') as output_file:
 						index += 9
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $' + str(format(duration, '02x').upper()[0:]) + ' : dw $' + str(format(graphic_1_number, '04x').upper()[0:]) + ', $' + str(format(graphic_2_number, '04x').upper()[0:]) + ', $' + str(format(x_offset, '04x').upper()[0:]) + ', $' + str(format(y_offset, '04x').upper()[0:]) + '\n'
 				
-					case 0x8B:	#draw sprite for specified time with offset
+					elif command == 0x8B:	#draw sprite for specified time with offset
+					#case 0x8B:	#draw sprite for specified time with offset
 						duration = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						
 						graphic_number = int.from_bytes(rom_data[index+1:index+3], byteorder='little')
@@ -390,14 +402,16 @@ with open('output.asm', 'a') as output_file:
 						index += 7
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $' + str(format(duration, '02x').upper()[0:]) + ' : dw $' + str(format(graphic_number, '04x').upper()[0:]) + ', $' + str(format(x_offset, '04x').upper()[0:]) + ', $' + str(format(y_offset, '04x').upper()[0:]) + '\n'
 						
-					case 0x8C:	#move current sprite to offset with unknown extra word
+					elif command == 0x8C:	#move current sprite to offset with unknown extra word
+					#case 0x8C:	#move current sprite to offset with unknown extra word
 						x_offset = int.from_bytes(rom_data[index:index+2], byteorder='little')
 						y_offset = int.from_bytes(rom_data[index+2:index+4], byteorder='little')
 						unknown = int.from_bytes(rom_data[index+4:index+6], byteorder='little')
 						index += 6
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ' : dw $' + str(format(x_offset, '04x').upper()[0:]) + ', $' + str(format(y_offset, '04x').upper()[0:]) + ', $' + str(format(unknown, '04x').upper()[0:]) + '\n'
 						
-					case 0x8D:	#draw sprites for specified time with control param
+					elif command == 0x8D:	#draw sprites for specified time with control param
+					#case 0x8D:	#draw sprites for specified time with control param
 						duration = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						
 						graphic_1_number = int.from_bytes(rom_data[index+1:index+3], byteorder='little')
@@ -408,22 +422,26 @@ with open('output.asm', 'a') as output_file:
 						index += 5
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $' + str(format(duration, '02x').upper()[0:]) + ' : dw $' + str(format(graphic_1_number, '04x').upper()[0:]) + ', $' + str(format(graphic_2_number, '04x').upper()[0:]) + '\n'
 	
-					case 0x8E:	#play sound
+					elif command == 0x8E:	#play sound
+					#case 0x8E:	#play sound
 						sound_number = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						index += 1
-						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ' : dw $' + str(format(sound_number, '04x').upper()[0:]) + '\n'
+						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ' : db $' + str(format(sound_number, '02x').upper()[0:]) + ', $05\n'
 					
-					case 0x8F:	#play sound
+					elif command == 0x8F:	#play sound
+					#case 0x8F:	#play sound
 						sound_number = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						index += 1
-						line = '	db !animation_command_8E' + ' : dw $' + str(format(sound_number, '04x').upper()[0:]) + '\n'
+						line = '	db !animation_command_8E' + ' : db $' + str(format(sound_number, '02x').upper()[0:]) + ', $06\n'
 						
-					case 0x90:	#play sound
+					elif command == 0x90:	#play sound
+					#case 0x90:	#play sound
 						sound_number = int.from_bytes(rom_data[index:index+1], byteorder='big')
 						index += 1
-						line = '	db !animation_command_8E' + ' : dw $' + str(format(sound_number, '04x').upper()[0:]) + '\n'
+						line = '	db !animation_command_8E' + ' : db $' + str(format(sound_number, '02x').upper()[0:]) + ', $07\n'
 						
-					case 0x91:	#end of animation
+					elif command == 0x91:	#end of animation
+					#case 0x91:	#end of animation
 						print('end')
 						line = '	db !animation_command_' + str(format(command, '02x').upper()[0:]) + ', $00\n'
 						animation_complete = True

@@ -1594,7 +1594,7 @@ CODE_B48C9D:
 	LDX #$0004				;$B48D28   |
 	JSL DMA_global_palette			;$B48D2B   |
 ;START OF PATCH (change palette loaded for HUD numerals)
-	LDA #funky_surfboard_sprite_palette
+	LDA #funky_surfboard_sprite_pal_with_index_0
 ;	LDA #global_sprite_palette		;$B48D2F   |
 ;END OF PATCH
 	LDY #$00F0				;$B48D32   |

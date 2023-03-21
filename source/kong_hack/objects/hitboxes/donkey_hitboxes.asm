@@ -1,90 +1,95 @@
 HITBOX_BB9846:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB984E:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB9856:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB985E:
-	db $F4, $FF, $CC, $FF, $15, $00, $1E, $00
+	dw $FFF4, $FFCC, $0015, $001E
 HITBOX_BB9866:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB986E:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB9876:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB987E:
-	db $EE, $FF, $D9, $FF, $11, $00, $25, $00
+	dw $FFEE, $FFD9, $0011, $0025
 HITBOX_BB9886:
-	db $EC, $FF, $DE, $FF, $13, $00, $20, $00
+	dw $FFEC, $FFDE, $0013, $0020
 HITBOX_BB988E:
-	db $F6, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFF6, $FFDD, $0012, $0022
 HITBOX_BB9896:
-	db $F6, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFF6, $FFDD, $0012, $0022
 HITBOX_BB989E:
-	db $F6, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFF6, $FFDD, $0012, $0022
 HITBOX_BB98A6:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB98AE:
-	db $F5, $FF, $EB, $FF, $1B, $00, $15, $00
+	dw $FFF5, $FFEB, $001B, $0015
 HITBOX_BB98B6:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB98BE:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB98C6:
-	db $F1, $FF, $DD, $FF, $18, $00, $22, $00
+	dw $FFF1, $FFDD, $0018, $0022
 HITBOX_BB98CE:
-	db $EB, $FF, $DE, $FF, $20, $00, $20, $00
+	dw $FFEB, $FFDE, $0020, $0020
 HITBOX_BB98D6:
-	db $F1, $FF, $DF, $FF, $16, $00, $1C, $00
+	dw $FFF1, $FFDF, $0016, $001C
 HITBOX_BB98DE:
-	db $F0, $FF, $E6, $FF, $24, $00, $12, $00
-HITBOX_BB98E6:
-	db $F8, $FF, $E5, $FF, $1D, $00, $11, $00
+	dw $FFF0, $FFE6, $0024, $0012
+
+;changed from DKC1; unused frames repurposed for Rattly riding animations
+donkey_rattly_hitbox:
+	dw $FFF9, $FFB9, $000D, $001F
+;HITBOX_BB98E6:
+;	dw $FFF8, $FFE5, $001D, $0011
+
 HITBOX_BB98EE:
-	db $F8, $FF, $CF, $FF, $13, $00, $26, $00
+	dw $FFF8, $FFCF, $0013, $0026
 HITBOX_BB98F6:
-	db $F8, $FF, $CF, $FF, $13, $00, $26, $00
+	dw $FFF8, $FFCF, $0013, $0026
 HITBOX_BB98FE:
-	db $F0, $FF, $CF, $FF, $13, $00, $26, $00
+	dw $FFF0, $FFCF, $0013, $0026
 HITBOX_BB9906:
-	db $F8, $FF, $CF, $FF, $13, $00, $26, $00
+	dw $FFF8, $FFCF, $0013, $0026
 HITBOX_BB990E:
-	db $FA, $FF, $E6, $FF, $12, $00, $1D, $00
+	dw $FFFA, $FFE6, $0012, $001D
 HITBOX_BB9916:
-	db $F6, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFF6, $FFDD, $0012, $0022
 HITBOX_BB991E:
-	db $FE, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFFE, $FFDD, $0012, $0022
 HITBOX_BB9926:
-	db $F6, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFF6, $FFDD, $0012, $0022
 HITBOX_BB992E:
-	db $DC, $FF, $D2, $FF, $15, $00, $2B, $00
+	dw $FFDC, $FFD2, $0015, $002B
 HITBOX_BB9936:
-	db $E5, $FF, $CB, $FF, $17, $00, $2D, $00
+	dw $FFE5, $FFCB, $0017, $002D
 HITBOX_BB993E:
-	db $EF, $FF, $C9, $FF, $18, $00, $2B, $00
+	dw $FFEF, $FFC9, $0018, $002B
 HITBOX_BB9946:
-	db $F9, $FF, $CA, $FF, $1A, $00, $2A, $00
+	dw $FFF9, $FFCA, $001A, $002A
 HITBOX_BB994E:
-	db $08, $00, $D1, $FF, $19, $00, $25, $00
+	dw $0008, $FFD1, $0019, $0025
 HITBOX_BB9956:
-	db $10, $00, $DB, $FF, $17, $00, $25, $00
+	dw $0010, $FFDB, $0017, $0025
 HITBOX_BB995E:
-	db $12, $00, $E3, $FF, $1C, $00, $23, $00
+	dw $0012, $FFE3, $001C, $0023
 HITBOX_BB9966:
-	db $19, $00, $EB, $FF, $18, $00, $25, $00
+	dw $0019, $FFEB, $0018, $0025
 HITBOX_BB996E:
-	db $01, $00, $CC, $FF, $18, $00, $27, $00
+	dw $0001, $FFCC, $0018, $0027
 HITBOX_BB9976:
-	db $EB, $FF, $D3, $FF, $12, $00, $2C, $00
+	dw $FFEB, $FFD3, $0012, $002C
 HITBOX_BB997E:
-	db $EC, $FF, $D2, $FF, $1C, $00, $2E, $00
+	dw $FFEC, $FFD2, $001C, $002E
 HITBOX_BB9986:
-	db $F1, $FF, $D2, $FF, $16, $00, $2E, $00
+	dw $FFF1, $FFD2, $0016, $002E
 HITBOX_BB998E:
-	db $EB, $FF, $D3, $FF, $12, $00, $2C, $00
+	dw $FFEB, $FFD3, $0012, $002C
 HITBOX_BB9996:
-	db $FE, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFFE, $FFDD, $0012, $0022
 HITBOX_BB999E:
-	db $F6, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFF6, $FFDD, $0012, $0022
 HITBOX_BB99A6:
-	db $F6, $FF, $DD, $FF, $12, $00, $22, $00
+	dw $FFF6, $FFDD, $0012, $0022

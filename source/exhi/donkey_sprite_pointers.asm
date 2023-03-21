@@ -196,21 +196,21 @@
 	dl DONKEY_SPRITE_FD468A : db $00	;38AC
 	dl DONKEY_SPRITE_FD4906 : db $00	;38B0
 	dl DONKEY_SPRITE_FD4B60 : db $00	;38B4
-	dl DONKEY_SPRITE_FD4DBA : db $00	;38B8
-	dl DONKEY_SPRITE_FD5014 : db $00	;38BC
-	dl DONKEY_SPRITE_FD5290 : db $00	;38C0
-	dl DONKEY_SPRITE_FD5550 : db $00	;38C4
-	dl DONKEY_SPRITE_FD580A : db $00	;38C8
-	dl DONKEY_SPRITE_FD5AA2 : db $00	;38CC
-	dl DONKEY_SPRITE_FD5D1E : db $00	;38D0
-	dl DONKEY_SPRITE_FD5F9A : db $00	;38D4
-	dl DONKEY_SPRITE_FD6216 : db $00	;38D8
-	dl DONKEY_SPRITE_FD6470 : db $00	;38DC
-	dl DONKEY_SPRITE_FD66CA : db $00	;38E0
-	dl DONKEY_SPRITE_FD6924 : db $00	;38E4
-	dl DONKEY_SPRITE_FD6B7E : db $00	;38E8
-	dl DONKEY_SPRITE_FD6DD8 : db $00	;38EC
-	dl DONKEY_SPRITE_FD7054 : db $00	;38F0
+	dl DONKEY_SPRITE_D0D34E : db $00	;38B8	;swim turn frame 1, previously crawl frame 10 (DONKEY_SPRITE_FD4DBA)
+	dl DONKEY_SPRITE_D0D60E : db $00	;38BC	;swim turn frame 2, previously crawl frame 11 (DONKEY_SPRITE_FD5014)
+	dl DONKEY_SPRITE_FD5290 : db $00	;38C0	;crawl frame 12
+	dl DONKEY_SPRITE_FD5550 : db $00	;38C4	;crawl frame 13
+	dl DONKEY_SPRITE_FD580A : db $00	;38C8	;crawl frame 14
+	dl DONKEY_SPRITE_FD5AA2 : db $00	;38CC	;crawl frame 15
+	dl DONKEY_SPRITE_FD5D1E : db $00	;38D0	;crawl frame 16
+	dl DONKEY_SPRITE_FD5F9A : db $00	;38D4	;crawl frame 17
+	dl DONKEY_SPRITE_FD6216 : db $00	;38D8	;crawl frame 18
+	dl DONKEY_SPRITE_FD6470 : db $00	;38DC	;crawl frame 19
+	dl DONKEY_SPRITE_FD66CA : db $00	;38E0	;crawl frame 20
+	dl DONKEY_SPRITE_FD6924 : db $00	;38E4	;crawl frame 21
+	dl DONKEY_SPRITE_FD6B7E : db $00	;38E8	;crawl frame 22
+	dl DONKEY_SPRITE_FD6DD8 : db $00	;38EC	;crawl frame 23
+	dl DONKEY_SPRITE_FD7054 : db $00	;38F0	;crawl frame 24
 	dl DONKEY_SPRITE_E89A2A : db $00	;38F4
 	dl DONKEY_SPRITE_E89D28 : db $00	;38F8
 	dl DONKEY_SPRITE_E8A048 : db $00	;38FC
@@ -294,9 +294,9 @@
 	dl DONKEY_SPRITE_CC2A7C : db $00	;3A34
 	dl DONKEY_SPRITE_CC2DB8 : db $00	;3A38
 	dl DONKEY_SPRITE_CC30FA : db $00	;3A3C
-	dl DONKEY_SPRITE_D483EC : db $00	;3A40
-	dl DONKEY_SPRITE_D48608 : db $00	;3A44
-	dl DONKEY_SPRITE_D48846 : db $00	;3A48
+	dl donkey_rattly_frame_1 : db $00	;3A40	;custom Rattly riding frame 1, previously unused unknown animal riding frame 1 (DONKEY_SPRITE_D483EC)
+	dl donkey_rattly_frame_2 : db $00	;3A44	;custom Rattly riding frame 2, previously unused unknown animal riding frame 2 (DONKEY_SPRITE_D48608)
+	dl donkey_rattly_frame_3 : db $00	;3A48	;custom Rattly riding frame 3, previously unused unknown animal riding frame 3 (DONKEY_SPRITE_D48846)
 	dl DONKEY_SPRITE_F3A8E4 : db $00	;3A4C
 	dl DONKEY_SPRITE_F3AB82 : db $00	;3A50
 	dl DONKEY_SPRITE_F3AE20 : db $00	;3A54

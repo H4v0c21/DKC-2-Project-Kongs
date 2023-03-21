@@ -1004,7 +1004,7 @@ animation_command_jump_table:
 	dw animation_command_8C		;8C xx XX yy YY				- Identical to command $88, but loads from a different RAM address
 	dw animation_command_8D		;8D tt ss SS ss SS rr RR		- Set two objects' sprites SSss and unknown control code RRrr
 	dw animation_command_8E		;8E nn CC				- Play sound effect nn on channel CC on the following animation frame
-	dw animation_command_8F		;8F ll mm oo OO				- JSR to code at mmll, set animation offset to OOoo if a branch condition is met
+	dw animation_command_8F		;8F ll mm oo OO				- JSR to code at mmll, set animation offset to OOoo if carry processor flag is met
 	dw animation_command_90		;90 ll mm vv VV				- JSR to code at mmll, set animation value to VVvv
 	dw animation_command_91		;91 kk oo OO				- Jump to animation sub-sequence at offset OOoo (able to return to main animation by storing animation return address in object entity variable kk)
 	dw animation_command_92		;92 kk					- Return to main animation sequence by retrieving animation script address stored in object entity variable kk
@@ -3300,6 +3300,9 @@ CODE_B9E329:					;	   |
 
 CODE_B9E331:
 	LDA $08A4				;$B9E331  \
+;START OF PATCH (Allow Kong animation to play when Animal Buddy is attacking if Diddy OR Donkey; previously $08A4 was only non-zero for Dixie)
+	AND #$0001				;Bit $0001 is set when Dixie or Kiddy and clear when Diddy or Donkey
+;END OF PATCH
 	BNE CODE_B9E33D				;$B9E334   |
 	LDA #$0059				;$B9E336   |
 	JSL CODE_B9D04B				;$B9E339   |
@@ -5500,5 +5503,68 @@ check_kong_status_2_map:
 	TAY
 	LDA anim_offsets_kongs_map,y
 	STA $3C,x
+	RTS
+;END OF PATCH
+
+;START OF PATCH (custom animation routines for Donkey Kong)
+set_donkey_walk_anim_speed:
+	LDA $20,x
+	BPL CUST_CODE_B98FBB
+	EOR #$FFFF
+	INC A
+CUST_CODE_B98FBB:
+	LSR A
+	LSR A
+	STA $32
+	LSR A
+	CLC
+	ADC $32
+	SEC
+	SBC #$0020
+	CMP #$0060
+	BPL CUST_CODE_B98FCF
+	LDA #$0060
+CUST_CODE_B98FCF:
+	STA $3A,x
+	JMP CODE_B9E101
+
+set_donkey_run_anim_speed:
+	JSR CODE_B9E06F
+	LDX current_sprite
+	LDA $20,x
+	BPL CUST_CODE_B98FE1
+	EOR #$FFFF
+	INC A
+CUST_CODE_B98FE1:
+	LSR A
+	LSR A
+	LSR A
+	STA $32
+	LSR A
+	STA $34 
+	LSR A
+	CLC
+	ADC $32
+	CLC
+	ADC $34
+	CMP #$0060
+	BCS CUST_CODE_B98FF8
+	LDA #$0060
+CUST_CODE_B98FF8:
+	STA $3A,x
+	RTS
+
+sec_if_leader_x_speed_not_zero:
+	LDA $6E
+	CMP #$01A0		;check if Enguarde
+	BEQ CUST_CODE_B9F107	;if so, branch to clc and rts
+	LDA $000593
+	TAX
+	LDA $26,x
+	BEQ CUST_CODE_B9F107
+	SEC
+	RTS
+CUST_CODE_B9F107:
+	CLC
 	RTS
 ;END OF PATCH
