@@ -1,15 +1,15 @@
 donkey_animal_offset_a:
-	db $F6, $FF
-
-donkey_animal_offset_b:
-	db $0E, $00, $FC, $FF, $E8, $FF, $FD, $FF
-	db $12, $00, $00, $00, $00, $00, $FC, $FF
-	db $0E, $00
+%offset(donkey_animal_offset_b, 2)
+	dw $FFF9, $0009		;Squitter
+	dw $FFF8, $000E		;Rattly
+	dw $FFFD, $0012		;Squawks
+	dw $0000, $0000		;Rambi
+	dw $FFFA, $000E		;Enguarde
 
 kiddy_animal_offset_a:
-	db $F6, $FF
-
-kiddy_animal_offset_b:
-	db $0E, $00, $FC, $FF, $E8, $FF, $FD, $FF
-	db $12, $00, $00, $00, $00, $00, $FC, $FF
-	db $0E, $00
+%offset(kiddy_animal_offset_b, 2)
+	dw $FFF6, $000E		;Squitter
+	dw $FFFC, $FFE8		;Rattly
+	dw $FFFD, $0012		;Squawks
+	dw $0000, $0000		;Rambi
+	dw $FFFC, $000E		;Enguarde

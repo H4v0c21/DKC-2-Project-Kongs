@@ -2542,16 +2542,16 @@ donkey_active_animal_offset:
 	BRA CODE_B89417
 	
 dixie_active_animal_offset:
-	LDA.l DATA_B89472,x			;$B893F9   |
+	LDA.l dixie_animal_offset_a,x			;$B893F9   |
 	STA $0D72				;$B893FD   |
-	LDA.l DATA_B89474,x			;$B89400   |
+	LDA.l dixie_animal_offset_b,x			;$B89400   |
 	STA $0D74				;$B89404   |
 	BRA CODE_B89417				;$B89407  /
 
 diddy_active_animal_offset:
-	LDA.l DATA_B89486,x			;$B89409  \
+	LDA.l diddy_animal_offset_a,x			;$B89409  \
 	STA $0D72				;$B8940D   |
-	LDA.l DATA_B89488,x			;$B89410   |
+	LDA.l diddy_animal_offset_b,x			;$B89410   |
 	STA $0D74				;$B89414   |
 
 ;END OF PATCH
@@ -2604,21 +2604,21 @@ DATA_B89462:
 	dw CODE_B8941D
 	dw CODE_B8941D
 
-DATA_B89472:
-	db $FB, $FF
+dixie_animal_offset_a:
+%offset(dixie_animal_offset_b, 2)
+	dw $FFFB, $FFFF		;Squitter
+	dw $FFFC, $FFDD		;Rattly
+	dw $FFFD, $0018		;Squawks
+	dw $0001, $FFF2		;Rambi
+	dw $0000, $0000		;Enguarde
 
-DATA_B89474:
-	db $FF, $FF, $FC, $FF, $DD, $FF, $FD, $FF
-	db $18, $00, $01, $00, $F2, $FF, $00, $00
-	db $00, $00
-
-DATA_B89486:
-	db $F6, $FF
-
-DATA_B89488:
-	db $0E, $00, $FC, $FF, $E8, $FF, $FD, $FF
-	db $12, $00, $00, $00, $00, $00, $FC, $FF
-	db $0E, $00
+diddy_animal_offset_a:
+%offset(diddy_animal_offset_b, 2)
+	dw $FFF6, $000E		;Squitter
+	dw $FFFC, $FFE8		;Rattly
+	dw $FFFD, $0012		;Squawks
+	dw $0000, $0000		;Rambi
+	dw $FFFC, $000E		;Enguarde
 
 ;START OF PATCH (kong animal offset)
 	incsrc "kong_hack/objects/source/kong_animal_offsets.asm"
