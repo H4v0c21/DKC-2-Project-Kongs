@@ -1847,14 +1847,21 @@ CODE_BB8B7C:					;	   |
 palette_is_first_kong_palette:
 	PHX
 	LDA kong_palette_order
-	AND #$0003									;Mask
+	AND #$0003				;Mask
 	PHA
 	ASL A
 	TAX
 	LDA.l kong_palette_addresses,x
 	STA temp_32
 	PLA
-	JSL get_kong_sprite_address					;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
+	LDX $0662
+	CPX #$0000				;Non-zero if in Kong family/Klubba's kiosk area, zero if not
+	BNE .in_kong_family_area
+	JSL get_kong_sprite_address		;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
+	BRA .skip_load
+.in_kong_family_area:
+	LDA #$0DE2
+.skip_load:
 	PLX
 	CMP $0593
 	BEQ first_kong_palette_current_kong_leader
@@ -1886,14 +1893,21 @@ inactive_palette_effect:
 palette_is_second_kong_palette:
 	PHX
 	LDA kong_palette_order+1
-	AND #$0003									;Mask
+	AND #$0003				;Mask
 	PHA
 	ASL A
 	TAX
 	LDA.l kong_palette_addresses,x
 	STA temp_32
 	PLA
-	JSL get_kong_sprite_address					;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
+	LDX $0662
+	CPX #$0000				;Non-zero if in Kong family/Klubba's kiosk area, zero if not
+	BNE .in_kong_family_area
+	JSL get_kong_sprite_address		;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
+	BRA .skip_load
+.in_kong_family_area:
+	LDA #$0E40
+.skip_load:
 	PLX
 	CMP $0597
 	BEQ second_kong_palette_current_kong_leader
@@ -5631,6 +5645,25 @@ CODE_BBAEB0:
 	STA $0A,x				;$BBAEBA   |
 	RTS					;$BBAEBC  /
 
+;START OF PATCH (added Kong palette loading code for Kong Family screens)
+kong_pal_load_kong_fam_screens_global:
+	JSR kong_pal_load_kong_fam_screens
+	RTL
+
+kong_pal_load_kong_fam_screens:
+	LDA current_sprite
+	CMP $0593
+	BNE .handle_second_kong_pal_ID
+	LDA #$0001
+	BRA .load_pal_or_set_pal_ID
+.handle_second_kong_pal_ID:
+	LDA #$0004
+.load_pal_or_set_pal_ID:
+	JSR CODE_BB8A69
+	BRA CODE_BBAED7
+	RTS
+;END OF PATCH
+
 CODE_BBAEBD:
 	LDA current_sprite			;$BBAEBD  \
 	CMP $0593				;$BBAEBF   |
@@ -5638,19 +5671,19 @@ CODE_BBAEBD:
 	LDA $6E					;$BBAEC4   |
 	BNE CODE_BBAEEB				;$BBAEC6   |
 CODE_BBAEC8:					;	   |
-;START OF PATCH (Use Kong status instead of object type to determine which palette ID to load)
-	;LDA kong_status						;Load value of first enabled Kong
-	LDA kong_palette_order					;get Kong value for first palette ($00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy)
-	AND #$0003								;Mask
-	JSL get_kong_sprite_address				;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
-	CMP current_sprite						;compare to pointer to current object struct
-	BNE CODE_BBAEE3							;this branch is followed if the Kong being spawned isn't the first enabled one 
+;START OF PATCH (Use Kong status instead of object type to determine which palette ID to load; this block was previously for Diddy)
+	;LDA kong_status			;Load value of first enabled Kong
+	LDA kong_palette_order			;get Kong value for first palette ($00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy)
+	AND #$0003				;Mask
+	JSL get_kong_sprite_address		;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
+	CMP current_sprite			;compare to pointer to current object struct
+	BNE CODE_BBAEE3				;this branch is followed if the Kong being spawned isn't the first enabled one 
 	;LDX current_sprite			;$BBAEC8   |
 	;LDA $00,x				;$BBAECA   |
 	;CMP #$00E4				;$BBAECC   |		$00E4 = Diddy Kong object type
-	;BNE CODE_BBAEE3				;$BBAECF   |
+	;BNE CODE_BBAEE3			;$BBAECF   |
 ;END OF PATCH
-	LDA #$0001				;$BBAED1   |		$0001 = Second palette ID for Kongs (previously Diddy palette ID)
+	LDA #$0001				;$BBAED1   |		$0001 = First palette ID for Kongs (previously Diddy palette ID)
 	JSR CODE_BB8A69				;$BBAED4   |
 CODE_BBAED7:					;	   |
 	LDX current_sprite			;$BBAED7   |
@@ -5661,22 +5694,22 @@ CODE_BBAED7:					;	   |
 	RTS					;$BBAEE2  /
 
 CODE_BBAEE3:
-;START OF PATCH (add branch to check Dixie Kong object type instead of assuming everyone who isn't Diddy is Dixie)
-	;LDA kong_status+1						;Load value of second enabled Kong
-	LDA kong_palette_order+1				;get Kong value for first palette ($00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy)
-	AND #$0003								;Mask
-	JSL get_kong_sprite_address				;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
-	CMP current_sprite						;compare to pointer to current object struct
+;START OF PATCH (add branch to check second enabled Kong's object type; this block was previously for Dixie)
+	;LDA kong_status+1			;Load value of second enabled Kong
+	LDA kong_palette_order+1		;get Kong value for first palette ($00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy)
+	AND #$0003				;Mask
+	JSL get_kong_sprite_address		;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
+	CMP current_sprite			;compare to pointer to current object struct
 	BNE disabled_kong_object_init_pal_load	;this branch is followed if the Kong being spawned isn't either of the enabled ones
 ;END OF PATCH
 	LDA #$0004				;$BBAEE3  \		 $0004 = Second palette ID for Kongs (previously Dixie palette ID)
 	JSR CODE_BB8A69				;$BBAEE6   |
 	BRA CODE_BBAED7				;$BBAEE9  /
-;START OF PATCH (check Donkey and Kiddy Kong object types, load palettes)
+;START OF PATCH (code to NOT load palettes for either of the two disabled Kongs)
 disabled_kong_object_init_pal_load:
-	LDA #$0000								;$0000 = Global palette
+	LDA #$0000				;$0000 = Global palette
 	JSR CODE_BB8A69
-	DEC $0B74,x								;Decrement number of references to this palette, so that the inactive Kongs don't prevent it from unloading
+	DEC $0B74,x				;Decrement number of references to this palette, so that the inactive Kongs don't prevent it from unloading
 	BRA CODE_BBAED7
 ;END OF PATCH
 

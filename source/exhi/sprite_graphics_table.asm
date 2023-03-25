@@ -2966,25 +2966,25 @@ DATA_BC8000:
 	dl SPRITE_GRAPHIC_DA40DB : db $00
 	dl SPRITE_GRAPHIC_DA4461 : db $00
 	dl SPRITE_GRAPHIC_DA484D : db $00
-	dl SPRITE_GRAPHIC_DA5323 : db $00
-	dl SPRITE_GRAPHIC_DA53F7 : db $00
-	dl SPRITE_GRAPHIC_DA54CB : db $00
-	dl SPRITE_GRAPHIC_DA559F : db $00
-	dl SPRITE_GRAPHIC_DA5673 : db $00
-	dl SPRITE_GRAPHIC_DA5769 : db $00
-	dl SPRITE_GRAPHIC_DA585F : db $00
-	dl SPRITE_GRAPHIC_DA5955 : db $00
-	dl SPRITE_GRAPHIC_DA5A4B : db $00
-	dl SPRITE_GRAPHIC_DA5B41 : db $00
-	dl SPRITE_GRAPHIC_DA5C37 : db $00
-	dl SPRITE_GRAPHIC_DA5D2D : db $00
-	dl SPRITE_GRAPHIC_DA5E23 : db $00
-	dl SPRITE_GRAPHIC_DA5F19 : db $00
-	dl SPRITE_GRAPHIC_DA600F : db $00
-	dl SPRITE_GRAPHIC_DA6149 : db $00
-	dl SPRITE_GRAPHIC_DA6261 : db $00
-	dl SPRITE_GRAPHIC_DA63D9 : db $00
-	dl SPRITE_GRAPHIC_DA6513 : db $00
+	dl SPRITE_GRAPHIC_DA5323 : db $00	;Funky surfboard frame 1 pointer
+	dl SPRITE_GRAPHIC_DA53F7 : db $00	;Funky surfboard frame 2 pointer
+	dl SPRITE_GRAPHIC_DA54CB : db $00	;Funky surfboard frame 3 pointer
+	dl SPRITE_GRAPHIC_DA559F : db $00	;Funky surfboard frame 4 pointer
+	dl SPRITE_GRAPHIC_DA5673 : db $00	;Funky surfboard frame 5 pointer
+	dl SPRITE_GRAPHIC_DA5769 : db $00	;Funky surfboard frame 6 pointer
+	dl SPRITE_GRAPHIC_DA585F : db $00	;Funky surfboard frame 7 pointer
+	dl SPRITE_GRAPHIC_DA5955 : db $00	;Funky surfboard frame 8 pointer
+	dl SPRITE_GRAPHIC_DA5A4B : db $00	;Funky surfboard frame 9 pointer
+	dl SPRITE_GRAPHIC_DA5B41 : db $00	;Funky surfboard frame 10 pointer
+	dl SPRITE_GRAPHIC_DA5C37 : db $00	;Funky surfboard frame 11 pointer
+	dl SPRITE_GRAPHIC_DA5D2D : db $00	;Funky surfboard frame 12 pointer
+	dl SPRITE_GRAPHIC_DA5E23 : db $00	;Funky surfboard frame 13 pointer
+	dl SPRITE_GRAPHIC_DA5F19 : db $00	;Funky surfboard frame 14 pointer
+	dl SPRITE_GRAPHIC_DA600F : db $00	;Funky surfboard frame 15 pointer
+	dl SPRITE_GRAPHIC_DA6149 : db $00	;Funky surfboard frame 16 pointer
+	dl SPRITE_GRAPHIC_DA6261 : db $00	;Funky surfboard frame 17 pointer
+	dl SPRITE_GRAPHIC_DA63D9 : db $00	;Funky surfboard frame 18 pointer
+	dl SPRITE_GRAPHIC_DA6513 : db $00	;Funky surfboard frame 19 pointer
 	dl SPRITE_GRAPHIC_DA6609 : db $00
 	dl SPRITE_GRAPHIC_DA6989 : db $00
 	dl SPRITE_GRAPHIC_DA6D09 : db $00

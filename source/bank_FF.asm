@@ -2898,9 +2898,16 @@ DATA_FF24BC:
 	dw sprite.render_order, $00F0
 	dw sprite.unknown_42, $0000
 	dw sprite.unknown_44, DATA_BAC28D
-	dw !initcommand_set_oam, $6000
-	dw !initcommand_set_alt_palette, $0004
+;START OF PATCH (alter Funky surfboard to use a unique palette instead of Dixie's)
+	dw sprite.oam_property, $6F60
+	;dw !initcommand_set_oam, $6000
+	;dw !initcommand_set_alt_palette, $0004
+;END OF PATCH
 	dw !initcommand_success
+
+;START OF PATCH (pad space left over from reduced size of Funky surfboard init command)
+	db $FF, $FF, $FF, $FF
+;END OF PATCH
 
 DATA_FF24DE:
 	dw sprite.number, $018C
