@@ -726,6 +726,8 @@ CODE_80883B:
 	XBA
 	AND #$00FF
 	JSL get_kong_sprite_address
+
+get_kong_spr_and_var_addrs_common:
 	STA $0597
 	LDA kong_status
 	XBA
@@ -747,6 +749,19 @@ CODE_80883B:
 	
 	RTS
 
+get_kong_spr_and_var_addrs_kong_fam_scrns:
+	PHX
+
+	LDA #$0DE2
+	STA $0593
+	LDA kong_status
+	AND #$00FF
+	JSL get_kong_variable_addresses
+	STA $0595	
+
+	LDA #$0E40
+	BRA get_kong_spr_and_var_addrs_common
+
 CODE_808889:
 	PHX					;$808889  \
 	LDX $0593				;$80888A   |
@@ -765,7 +780,7 @@ CODE_80889C:
 CODE_8088A0:
 	LDA kong_status
 	XBA
-	BRA CODE_80883B				;$8088A6  /
+	BRL CODE_80883B				;$8088A6  /
 
 update_kong_status_wrapper:
 	JSR update_kong_status
@@ -1400,30 +1415,83 @@ CODE_808D7D:
 	JSL CODE_B49B63				;$808D83   |
 	BRL CODE_808D1C				;$808D87  /
 
+;START OF PATCH (add table for Kong init script pointers and physics constants, and subroutine to load the latter)
+kong_init_script_addresses:
+	dw DATA_FF1330
+	dw DATA_FF136E
+	dw donkey_ingame_init
+	dw kiddy_ingame_init
+
+kong_physics_const_base_addresses:
+	dw DATA_FF0040
+	dw DATA_FF012A
+	dw donkey_physics_constant_a
+	dw kiddy_physics_constant_a
+
+load_current_kong_phys_const:
+	ASL A
+	TAX
+	LDA.l kong_physics_const_base_addresses,x
+	STA temp_32
+	SEP #$20
+	LDA #$FF
+	STA temp_34
+	REP #$20
+	RTS
+;END OF PATCH
+
 CODE_808D8A:
 	LDA #$8000				;$808D8A  \
 	ORA $08C2				;$808D8D   |
 	STA $08C2				;$808D90   |
 ;START OF PATCH
-	LDA kong_status				;$808D93   |
+	LDA kong_status
+	STA kong_palette_order
+	JSR get_kong_spr_and_var_addrs_kong_fam_scrns
+;	LDA $08A4				;$808D93   |
+;	JSL CODE_808837				;$808D96   |
 ;END OF PATCH
-	JSL CODE_808837				;$808D96   |
 	LDA #$0020				;$808D9A   |
 	ORA $30,x				;$808D9D   |
 	STA $30,x				;$808D9F   |
-	JSR CODE_808E29				;$808DA1   |
-	LDA #$16D8				;$808DA4   |
+	JSR CODE_808E29				;$808DA1   |	Subroutine: Set Diddy attributes for Kong Family screens (now first Kong)
+;START OF PATCH (make code to load Dixie's data for Kong Family screens handle the second Kong instead, part 1 of 2)
+	LDA $0599
+	;LDA #$16D8				;$808DA4   |
 	STA $66					;$808DA7   |
-	LDY #DATA_FF136E			;$808DA9   |
+	LDA kong_status
+	XBA
+	AND #$00FF
+	ASL A
+	TAX
+	LDA.l kong_init_script_addresses,x
+	TAY
+	;LDY #DATA_FF136E			;$808DA9   |	Dixie's object init script
+;END OF PATCH
 	JSL CODE_BB8432				;$808DAC   |
 	LDX alternate_sprite			;$808DB0   |
 	STX current_sprite			;$808DB2   |
 	LDA #$0004				;$808DB4   |
 	JSL CODE_B9D0B8				;$808DB7   |
-	LDA.l DATA_FF012A			;$808DBB   |
-	STA $16E0				;$808DBF   |
-	LDA.l DATA_FF012C			;$808DC2   |
-	STA $16E2				;$808DC6   |
+;START OF PATCH (make code to load Dixie's data for Kong Family screens handle the second Kong instead, part 2 of 2)
+	JSL kong_pal_load_kong_fam_screens_global
+	LDA kong_status
+	XBA
+	AND #$00FF
+	JSR load_current_kong_phys_const
+	LDY #$0000
+	LDA [temp_32],y
+	LDX $0599
+	STA $08,x
+	INY
+	INY
+	LDA [temp_32],y	
+	STA $0A,x
+	;LDA.l DATA_FF012A			;$808DBB   |	;Dixie physics constant
+	;STA $16E0				;$808DBF   |
+	;LDA.l DATA_FF012C			;$808DC2   |	;Dixie physics constant
+	;STA $16E2				;$808DC6   |
+;END OF PATCH
 	LDX $0593				;$808DC9   |
 	LDA #$001D				;$808DCC   |
 	STA $2E,x				;$808DCF   |
@@ -1471,18 +1539,41 @@ CODE_808DFB:
 	RTL					;$808E28  /
 
 CODE_808E29:
-	LDA #main_sprite_table_end		;$808E29  \
+;START OF PATCH (make code to load Diddy's data for Kong Family screens dynamic, part 1 of 2)
+	LDA $0595
+	;LDA #main_sprite_table_end		;$808E29  \
 	STA $66					;$808E2C   |
-	LDY.w #DATA_FF1330			;$808E2E   |
+	LDA kong_status
+	AND #$00FF
+	ASL A
+	TAX
+	LDA.l kong_init_script_addresses,x
+	TAY
+	;LDY.w #DATA_FF1330			;$808E2E   |	Diddy's object init script
+;END OF PATCH
 	JSL CODE_BB8432				;$808E31   |
 	LDX alternate_sprite			;$808E35   |
 	STX current_sprite			;$808E37   |
 	LDA #$0001				;$808E39   |
 	JSL CODE_B9D0B8				;$808E3C   |
-	LDA.l DATA_FF0040			;$808E40   |
-	STA $16BA				;$808E44   |
-	LDA.l DATA_FF0042			;$808E47   |
-	STA $16BC				;$808E4B   |
+;START OF PATCH (make code to load Diddy's data for Kong Family screens dynamic, part 2 of 2)
+	JSL kong_pal_load_kong_fam_screens_global
+	LDA kong_status
+	AND #$00FF
+	JSR load_current_kong_phys_const
+	LDY #$0000
+	LDA [temp_32],y
+	LDX $0595
+	STA $08,x
+	INY
+	INY
+	LDA [temp_32],y		
+	STA $0A,x
+	;LDA.l DATA_FF0040			;$808E40   |
+	;STA $16BA				;$808E44   |
+	;LDA.l DATA_FF0042			;$808E47   |
+	;STA $16BC				;$808E4B   |
+;END OF PATCH
 	RTS					;$808E4E  /
 
 CODE_808E4F:
