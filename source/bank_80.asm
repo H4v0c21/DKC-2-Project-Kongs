@@ -686,6 +686,10 @@ CODE_808837:
 	RTL					;$80883A  /
 
 ;START OF PATCH
+get_kong_spr_and_var_addrs_kong_fam_scr_global:
+	JSR get_kong_spr_and_var_addrs_kong_fam_scrns
+	RTL
+
 kong_sprite_addresses:
 	dw $0DE2
 	dw $0E40
@@ -1444,7 +1448,7 @@ CODE_808D8A:
 	LDA #$8000				;$808D8A  \
 	ORA $08C2				;$808D8D   |
 	STA $08C2				;$808D90   |
-;START OF PATCH
+;START OF PATCH (adjustments for Kong Family/Klubba screens)
 	LDA kong_status
 	STA kong_palette_order
 	JSR get_kong_spr_and_var_addrs_kong_fam_scrns
