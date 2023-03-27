@@ -7555,11 +7555,13 @@ CODE_B4BF3A:					;	   |
 	JSL DMA_palette				;$B4BFA2   |
 	LDA #$0100				;$B4BFA6   |
 	JSL set_fade_global			;$B4BFA9   |
-;START OF PATCH ()
-	LDA $08A4				;$B4BFAD   |
-	STA $0660				;$B4BFB0   |
+;START OF PATCH (make it so that kong status is stored to $0660 for the Cranky's Video Game Heroes screen)
+	LDA kong_status						;Load values of currently active Kongs
+	;LDA $08A4				;$B4BFAD   |
+	STA $0660				;$B4BFB0   |	store to $0660 to be retrieved later
+	LDA #$0100						;$0100 in kong_status = Diddy leading, Dixie following
+	STA kong_status
 	STZ $08A4				;$B4BFB3   |
-	LDA kong_status
 	JSL CODE_808D8A				;$B4BFB6   |
 ;END OF PATCH
 	LDX $0597				;$B4BFBA   |
@@ -7648,11 +7650,12 @@ CODE_B4C07B:					;	   |
 	STA $064E				;$B4C087   |
 	LDA #CODE_B48E6C			;$B4C08A   |
 	STA $067D				;$B4C08D   |
-;START OF PATCH (hero screen fix)
-	;LDA $0660				;$B4C090   |
-	LDA kong_status
+;START OF PATCH (hero screen fix: properly restore kong_status value)
+	JSL get_kong_spr_and_var_addrs_kong_fam_scr_global
+	LDA $0660				;$B4C090   |	$0660 should contain backup of kong_status
+	STA kong_status						;restore this to kong_status
+	;JSL CODE_808837			;$B4C093   |
 ;END OF PATCH
-	JSL CODE_808837				;$B4C093   |
 	JML CODE_808C84				;$B4C097  /
 
 CODE_B4C09B:
