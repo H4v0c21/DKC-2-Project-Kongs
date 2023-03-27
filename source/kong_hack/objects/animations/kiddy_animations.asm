@@ -3,37 +3,37 @@
 kiddy_idle:
 	;db !animation_command_84 : dw $8CA65D	;needs rework				;3910B6
 	db !animation_command_84 : dw CODE_B9E0A8
-	db !animation_command_91, $6C : dw ANIM_SUB_F911F9				;3910B9
-	db !animation_command_91, $6C : dw ANIM_SUB_F91131				;3910BD
-	db !animation_command_91, $6C : dw ANIM_SUB_F911AD				;3910C1
-	db !animation_command_91, $6C : dw ANIM_SUB_F91169				;3910C5
-	db !animation_command_91, $6C : dw ANIM_SUB_F9120D				;3910C9
-	db !animation_command_91, $6C : dw ANIM_SUB_F91169				;3910CD
-	db !animation_command_91, $6C : dw ANIM_SUB_F9121A				;3910D1
-	db !animation_command_91, $6C : dw ANIM_SUB_F91131				;3910D5
+	db !animation_command_91, $4E : dw ANIM_SUB_F911F9				;3910B9
+	db !animation_command_91, $4E : dw ANIM_SUB_F91131				;3910BD
+	db !animation_command_91, $4E : dw ANIM_SUB_F911AD				;3910C1
+	db !animation_command_91, $4E : dw ANIM_SUB_F91169				;3910C5
+	db !animation_command_91, $4E : dw ANIM_SUB_F9120D				;3910C9
+	db !animation_command_91, $4E : dw ANIM_SUB_F91169				;3910CD
+	db !animation_command_91, $4E : dw ANIM_SUB_F9121A				;3910D1
+	db !animation_command_91, $4E : dw ANIM_SUB_F91131				;3910D5
 	;db !animation_command_8F : dw $AA34, kiddy_idle_loop				;3910D9
-	db !animation_command_91, $6C : dw ANIM_SUB_F91253				;3910DE
-	db !animation_command_91, $6C : dw ANIM_SUB_F912FD				;3910E2
+	db !animation_command_91, $4E : dw ANIM_SUB_F91253				;3910DE
+	db !animation_command_91, $4E : dw ANIM_SUB_F912FD				;3910E2
 	db $02 : dw $3EE0				;3910E6
 	db $02 : dw $4154				;3910E9
 	db $02 : dw $4158				;3910EC
-	db !animation_command_91, $6C : dw ANIM_SUB_F911CD				;3910EF
-	db !animation_command_91, $6C : dw ANIM_SUB_F911CD				;3910F3
-	db !animation_command_91, $6C : dw ANIM_SUB_F911CD				;3910F7
-	db !animation_command_91, $6C : dw ANIM_SUB_F911CD				;3910FB
+	db !animation_command_91, $4E : dw ANIM_SUB_F911CD				;3910EF
+	db !animation_command_91, $4E : dw ANIM_SUB_F911CD				;3910F3
+	db !animation_command_91, $4E : dw ANIM_SUB_F911CD				;3910F7
+	db !animation_command_91, $4E : dw ANIM_SUB_F911CD				;3910FB
 	db $02 : dw $4158				;3910FF
 	db $02 : dw $4154				;391102
 	db $02 : dw $3EE0				;391105
-	db !animation_command_91, $6C : dw ANIM_SUB_F9130B				;391108
-	db !animation_command_91, $6C : dw ANIM_SUB_F911F9				;39110C
+	db !animation_command_91, $4E : dw ANIM_SUB_F9130B				;391108
+	db !animation_command_91, $4E : dw ANIM_SUB_F911F9				;39110C
 kiddy_idle_loop:
-	db !animation_command_91, $6C : dw ANIM_SUB_F91131				;391110
-	db !animation_command_91, $6C : dw ANIM_SUB_F911AD				;391114
-	db !animation_command_91, $6C : dw ANIM_SUB_F91169				;391118
-	db !animation_command_91, $6C : dw ANIM_SUB_F9120D				;39111C
-	db !animation_command_91, $6C : dw ANIM_SUB_F91169				;391120
-	db !animation_command_91, $6C : dw ANIM_SUB_F9121A				;391124
-	db !animation_command_91, $6C : dw ANIM_SUB_F91131				;391128
+	db !animation_command_91, $4E : dw ANIM_SUB_F91131				;391110
+	db !animation_command_91, $4E : dw ANIM_SUB_F911AD				;391114
+	db !animation_command_91, $4E : dw ANIM_SUB_F91169				;391118
+	db !animation_command_91, $4E : dw ANIM_SUB_F9120D				;39111C
+	db !animation_command_91, $4E : dw ANIM_SUB_F91169				;391120
+	db !animation_command_91, $4E : dw ANIM_SUB_F9121A				;391124
+	db !animation_command_91, $4E : dw ANIM_SUB_F91131				;391128
 	db !animation_command_82 : dw kiddy_idle_loop
 	db !animation_command_80, $00				;39112F
 
@@ -423,7 +423,7 @@ ANIM_SUB_F91131:
 	db $04 : dw $415C
 	db $04 : dw $4158
 	db $04 : dw $4154
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F91169:
 ANIM_SUB_F91169:
@@ -449,7 +449,7 @@ ANIM_SUB_F91169:
 	db $07 : dw $415C
 	db $07 : dw $4158
 	db $07 : dw $4154
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F911AD:
 ANIM_SUB_F911AD:
@@ -463,7 +463,7 @@ ANIM_SUB_F911AD:
 	db $18 : dw $415C
 	db $09 : dw $4158
 	db $09 : dw $4154
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F911CD:
 ANIM_SUB_F911CD:
@@ -481,7 +481,7 @@ ANIM_SUB_F911CD:
 	db $01 : dw $4164
 	db $01 : dw $4160
 	db $01 : dw $415C
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F911F9:
 ANIM_SUB_F911F9:
@@ -491,14 +491,14 @@ ANIM_SUB_F911F9:
 	db $04 : dw $3DE8
 	db $04 : dw $3DEC
 	db $04 : dw $3DF0
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F9120D:
 ANIM_SUB_F9120D:
 	db $04 : dw $3EE0
-	;db !dkc3_anim_command_8A, $04 : dw $3EFC
-	;db !dkc3_anim_command_8B, $04 : dw $3EE4
-	db !animation_command_92, $6C
+	db !dkc3_anim_command_8A, $04 : dw $3EFC
+	db !dkc3_anim_command_8B, $04 : dw $3EE4
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F9121A:
 ANIM_SUB_F9121A:
@@ -519,8 +519,8 @@ ANIM_SUB_F9121A:
 	db $04 : dw $3F18
 	db $04 : dw $3F1C
 	db $04 : dw $3F20
-	;db !dkc3_anim_command_8B, $04 : dw $3EE0
-	db !animation_command_92, $6C
+	db !dkc3_anim_command_8B, $04 : dw $3EE0
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F91253:
 ANIM_SUB_F91253:
@@ -580,7 +580,7 @@ ANIM_SUB_F91253:
 	db $03 : dw $3F34
 	db $02 : dw $3F38
 	db $20 : dw $3F3C
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F912FD:
 ANIM_SUB_F912FD:
@@ -588,7 +588,7 @@ ANIM_SUB_F912FD:
 	db $04 : dw $3F44
 	db $04 : dw $3F48
 	db $10 : dw $3EE0
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F9130B:
 ANIM_SUB_F9130B:
@@ -599,7 +599,7 @@ ANIM_SUB_F9130B:
 	db $04 : dw $3DE0
 	db $04 : dw $3DDC
 	db $10 : dw $3DC0
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F920E9:
 ANIM_SUB_F920E9:
@@ -611,14 +611,14 @@ ANIM_SUB_F920E9:
 	db $03 : dw $3F58
 	db $03 : dw $3F5C
 	db $03 : dw $3F60
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F920F8:
 ANIM_SUB_F920F8:
 	db $03 : dw $3F58
 	db $03 : dw $3F5C
 	db $03 : dw $3F60
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F9257D:
 ANIM_SUB_F9257D:
@@ -628,7 +628,7 @@ ANIM_SUB_F9257D:
 	db !animation_command_8A, $08 : dw $3D20, $3BF8, $0000, $0000
 	db !animation_command_8A, $08 : dw $3D1C, $3BF4, $0000, $0000
 	db !animation_command_8A, $08 : dw $3D18, $3BF0, $0000, $0000
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F925BB:
 ANIM_SUB_F925BB:
@@ -644,7 +644,7 @@ ANIM_SUB_F925BB:
 	db !animation_command_8A, $08 : dw $3D20, $3BF8, $0000, $0000
 	db !animation_command_8A, $08 : dw $3D1C, $3BF4, $0000, $0000
 	db !animation_command_8A, $08 : dw $3D18, $3BF0, $0000, $0000
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F92D06:
 ANIM_SUB_F92D06:
@@ -656,7 +656,7 @@ ANIM_SUB_F92D06:
 	db $03 : dw $4118
 	db $03 : dw $411C
 	db $03 : dw $4100
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F92D20:
 ANIM_SUB_F92D20:
@@ -665,7 +665,7 @@ ANIM_SUB_F92D20:
 	db $1A : dw $4128
 	db $04 : dw $4124
 	db $04 : dw $4120
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F92D31:
 ANIM_SUB_F92D31:
@@ -682,7 +682,7 @@ ANIM_SUB_F92D31:
 	db $04 : dw $4128
 	db $04 : dw $4124
 	db $04 : dw $4120
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F96D55:
 ANIM_SUB_F96D55:
@@ -692,7 +692,7 @@ ANIM_SUB_F96D55:
 	db $28 : dw $420C
 	db $06 : dw $4208
 	db $04 : dw $4204
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F96D69:
 ANIM_SUB_F96D69:
@@ -701,7 +701,7 @@ ANIM_SUB_F96D69:
 	db $04 : dw $4214
 	db $04 : dw $4210
 	db $04 : dw $420C
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
 
 ;ANIM_SUB_F96D7A:
 ANIM_SUB_F96D7A:
@@ -711,4 +711,4 @@ ANIM_SUB_F96D7A:
 	;db !dkc3_anim_command_84 : dw $A5A0, $004A
 	db $03 : dw $4218
 	db $03 : dw $4200
-	db !animation_command_92, $6C
+	db !animation_command_92, $4E
