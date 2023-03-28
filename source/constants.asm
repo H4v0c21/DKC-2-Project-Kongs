@@ -4,6 +4,7 @@
 
 !donkey_animation_offset = $030D
 !kiddy_animation_offset = $030D+$A4
+!teamup_animation_offset = !kiddy_animation_offset+$A4
 
 !kong_dk_barrel_palette_index = $0088
 

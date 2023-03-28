@@ -915,7 +915,7 @@ donkey_bounce_up_loop:
 	db !animation_command_80, $00		;393ACD
 
 ;00CA donkey_team_top_air
-donkey_team_top_air:
+donkey_team_top_thrown:
 	db $01 : dw $398C
 	db $01 : dw $3990
 	db $01 : dw $3994

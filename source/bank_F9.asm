@@ -39,7 +39,7 @@ DATA_F90000:
 	dw diddy_team_bottom_land : db $00, $00
 	dw diddy_team_bottom_bounce_up : db $00, $30
 	dw diddy_team_bottom_throw : db $00, $00
-	dw diddy_team_top_air : db $00, $98
+	dw diddy_team_top_thrown : db $00, $98
 	dw diddy_team_top_stunned : db $00, $00
 	dw diddy_hurt : db $00, $00
 	dw diddy_hurt_jump_off_screen : db $00, $00
@@ -64,7 +64,7 @@ DATA_F90000:
 	dw diddy_follow_run : db $00, $00
 	dw diddy_follow_jump : db $00, $00
 	dw diddy_follow_air : db $00, $00
-	dw diddy_team_top_air : db $00, $00
+	dw diddy_team_top_thrown : db $00, $00
 	dw diddy_turn : db $00, $00
 	dw diddy_hook_idle : db $00, $00
 	dw diddy_swim_idle : db $00, $00
@@ -207,7 +207,7 @@ endif
 	dw dixie_team_bottom_land : db $00, $00
 	dw dixie_team_bottom_bounce_up : db $00, $30
 	dw dixie_team_bottom_throw : db $00, $00
-	dw dixie_team_top_air : db $00, $98
+	dw dixie_team_top_thrown : db $00, $98
 	dw dixie_team_top_stunned : db $00, $00
 	dw dixie_hurt : db $00, $00
 	dw dixie_hurt_jump_off_screen : db $00, $00
@@ -797,6 +797,7 @@ endif
 	dw empty_animation_script : db $00, $00
 	incsrc "kong_hack/objects/animations/donkey_anim_table.asm"
 	incsrc "kong_hack/objects/animations/kiddy_anim_table.asm"
+	incsrc "kong_hack/objects/animations/teamup_anim_table.asm"
 ;END OF PATCH
 
 diddy_idle:
@@ -1307,57 +1308,6 @@ DATA_F91357:
 	db !animation_command_82 : dw DATA_F91357
 	db !animation_command_80, $00
 
-diddy_team_top_air:
-	db $01 : dw $1010
-	db $01 : dw $1014
-	db $01 : dw $1018
-	db $01 : dw $101C
-	db $01 : dw $1020
-	db $01 : dw $1024
-	db $01 : dw $1028
-	db $01 : dw $102C
-	db $01 : dw $0FF0
-	db $01 : dw $0FF4
-	db $01 : dw $0FF8
-	db $01 : dw $0FFC
-	db $01 : dw $1000
-	db $01 : dw $1004
-	db $01 : dw $1008
-	db $01 : dw $100C
-	db !animation_command_80, $00
-
-diddy_team_top_stunned:
-	db !animation_command_81 : dw CODE_B9DD21
-	db $05 : dw $0778
-	db $05 : dw $077C
-	db $05 : dw $0780
-	db $06 : dw $0784
-	db !animation_command_83 : dw CODE_B9D5A4
-	db $0C : dw $0788
-	db !animation_command_81 : dw CODE_B9DEBE
-	db $06 : dw $078C
-	db $06 : dw $0790
-	db $06 : dw $0794
-	db $06 : dw $0798
-	db $06 : dw $079C
-	db $06 : dw $07A0
-	db $05 : dw $07A0
-	db $05 : dw $079C
-	db $05 : dw $0798
-	db $05 : dw $0798
-	db $05 : dw $079C
-	db $05 : dw $07A0
-
-DATA_F913FA:
-	db $04 : dw $07A0
-	db $04 : dw $079C
-	db $04 : dw $0798
-	db $04 : dw $0798
-	db $04 : dw $079C
-	db $04 : dw $07A0
-	db !animation_command_82 : dw DATA_F913FA
-	db !animation_command_80, $00
-
 diddy_turn:
 	db $02 : dw $2090
 	db $02 : dw $2094
@@ -1365,214 +1315,6 @@ diddy_turn:
 	db $02 : dw $2094
 	db $02 : dw $2090
 	db !animation_command_81 : dw CODE_B9DFE5
-	db !animation_command_80, $00
-
-diddy_team_bottom_idle:
-	db !animation_command_84 : dw CODE_B9E0A8
-	db !animation_command_8A, $08 : dw $156C, $1578, $0000, $0000
-	db !animation_command_8A, $08 : dw $1570, $1578, $0000, $0001
-	db !animation_command_8A, $08 : dw $1574, $1578, $0000, $0002
-	db !animation_command_8A, $08 : dw $1570, $1578, $0000, $0001
-	db !animation_command_8A, $08 : dw $156C, $1578, $0000, $0000
-	db !animation_command_8A, $08 : dw $1570, $1578, $0000, $0001
-	db !animation_command_8A, $08 : dw $1574, $1578, $0000, $0002
-	db !animation_command_8A, $08 : dw $1570, $1578, $0000, $0001
-	db !animation_command_8A, $08 : dw $156C, $1578, $0000, $0000
-	db !animation_command_8A, $08 : dw $1570, $1578, $0000, $0001
-	db !animation_command_8A, $08 : dw $1574, $1578, $0000, $0002
-	db !animation_command_8A, $08 : dw $1570, $1578, $0000, $0001
-	db !animation_command_8A, $08 : dw $156C, $1578, $0000, $0000
-	db !animation_command_8A, $08 : dw $1570, $1578, $0000, $0001
-	db !animation_command_8A, $08 : dw $1574, $1578, $0000, $0002
-	db !animation_command_8A, $08 : dw $1570, $1578, $0000, $0001
-	db !animation_command_8A, $03 : dw $154C, $1578, $0000, $0000
-	db !animation_command_8A, $03 : dw $154C, $157C, $0000, $0000
-	db !animation_command_8A, $03 : dw $154C, $1580, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1584, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1588, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $158C, $0000, $0000
-	db !animation_command_8A, $03 : dw $154C, $1590, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $158C, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1588, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1584, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1588, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $158C, $0000, $0000
-	db !animation_command_8A, $04 : dw $154C, $1590, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $158C, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1588, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1584, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1588, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $158C, $0000, $0000
-	db !animation_command_8A, $05 : dw $154C, $1590, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $158C, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1588, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1584, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $1588, $0000, $0000
-	db !animation_command_8A, $01 : dw $154C, $158C, $0000, $0000
-	db !animation_command_8A, $08 : dw $154C, $1590, $0000, $0000
-	db !animation_command_8A, $05 : dw $1550, $1594, $0000, $0000
-	db !animation_command_8A, $05 : dw $1554, $1598, $0000, $0000
-	db !animation_command_8A, $0D : dw $1558, $159C, $0000, $0000
-	db !animation_command_8A, $03 : dw $155C, $15A0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1560, $15A4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1564, $15A8, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15AC, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15AC, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15AC, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15AC, $0000, $0000
-	db !animation_command_8A, $03 : dw $1564, $15A8, $0000, $0000
-	db !animation_command_8A, $09 : dw $1560, $15A4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1560, $15A4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1564, $15A8, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15AC, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15AC, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15AC, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B4, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15B0, $0000, $0000
-	db !animation_command_8A, $03 : dw $1568, $15AC, $0000, $0000
-	db !animation_command_8A, $03 : dw $1564, $15A8, $0000, $0000
-	db !animation_command_8A, $03 : dw $1560, $15A4, $0000, $0000
-	db !animation_command_8A, $04 : dw $155C, $15A0, $0000, $0000
-	db !animation_command_8A, $05 : dw $1558, $159C, $0000, $0000
-	db !animation_command_8A, $05 : dw $1554, $1598, $0000, $0000
-	db !animation_command_8A, $05 : dw $1550, $1594, $0000, $0000
-	db !animation_command_80, $00
-
-diddy_team_bottom_turn:
-	db !animation_command_8B, $02 : dw $1408, $0000, $0007
-	db !animation_command_8B, $02 : dw $1408, $0000, $0006
-	db !animation_command_81 : dw CODE_B9E019
-	db !animation_command_8B, $02 : dw $1408, $0000, $0006
-	db !animation_command_8B, $02 : dw $1408, $0000, $0007
-	db !animation_command_81 : dw CODE_B9DFE5
-	db !animation_command_80, $00
-
-diddy_team_bottom_walk:
-	db !animation_command_84 : dw CODE_B9E021
-	db !animation_command_8A, $03 : dw $13FC, $1428, $0000, $0000
-	db !animation_command_8A, $03 : dw $1400, $142C, $0000, $0000
-	db !animation_command_8A, $03 : dw $1404, $1430, $0000, $0000
-	db !animation_command_8A, $03 : dw $1408, $1434, $0000, $0000
-	db !animation_command_81 : dw CODE_B9E0E0
-	db !animation_command_8A, $03 : dw $140C, $1438, $0000, $0000
-	db !animation_command_8A, $03 : dw $1410, $143C, $0000, $0000
-	db !animation_command_8A, $03 : dw $1414, $1440, $0000, $0000
-	db !animation_command_8A, $03 : dw $1418, $1444, $0000, $0000
-	db !animation_command_8A, $03 : dw $141C, $1448, $0000, $0000
-	db !animation_command_8A, $03 : dw $1420, $144C, $0000, $0000
-	db !animation_command_81 : dw CODE_B9E0E0
-	db !animation_command_8A, $03 : dw $1424, $1450, $0000, $0000
-	db !animation_command_80, $00
-
-diddy_team_bottom_jump:
-	db !animation_command_8A, $03 : dw $1408, $1434, $0000, $0000
-	db !animation_command_81 : dw CODE_B9DF51
-	db !animation_command_80, $00
-
-diddy_team_bottom_air:
-	db !animation_command_8A, $03 : dw $1408, $1434, $0000, $0000
-	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_81 : dw CODE_B9DEEF
-	db !animation_command_80, $00
-
-diddy_team_bottom_fall:
-	db !animation_command_84 : dw CODE_B9DECC
-	db !animation_command_8A, $03 : dw $1408, $1434, $0000, $0000
-	db !animation_command_84 : dw !null_pointer
-	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_81 : dw CODE_B9DEEF
-	db !animation_command_80, $00
-
-diddy_team_bottom_land:
-	db !animation_command_8A, $03 : dw $1408, $1434, $0000, $0000
-	db !animation_command_81 : dw CODE_B9DA5B
-	db !animation_command_81 : dw CODE_B9DFE1
-	db !animation_command_80, $00
-
-diddy_team_bottom_bounce_up:
-	db !animation_command_8A, $03 : dw $1408, $1434, $0000, $0000
-	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_81 : dw CODE_B9DEEF
-	db !animation_command_80, $00
-
-diddy_team_bottom_throw:
-	db !animation_command_8A, $02 : dw $1770, $178C, $0000, $0000
-	db !animation_command_8A, $02 : dw $1774, $1790, $0000, $0000
-	db !animation_command_8A, $02 : dw $1778, $1794, $0000, $0000
-	db !animation_command_8A, $02 : dw $177C, $1798, $0000, $0000
-	db !animation_command_8A, $02 : dw $1780, $179C, $0000, $0000
-	db !animation_command_8A, $02 : dw $1784, $17A0, $0000, $0000
-	db !animation_command_8A, $01 : dw $1788, $17A4, $0000, $0000
-	db $02 : dw $0A80
-	db !animation_command_8B, $02 : dw $0A84, $0000, $0000
-	db !animation_command_8B, $02 : dw $0A88, $0000, $0000
-	db !animation_command_81 : dw CODE_B9DCE8
-	db !animation_command_8B, $02 : dw $0A8C, $0000, $FFF0
-	db !animation_command_81 : dw CODE_B9D8BC
-	db $02 : dw $0A90
-	db $02 : dw $0A94
-	db $02 : dw $0A98
-	db $02 : dw $0A9C
-	db $02 : dw $0AA0
-	db $02 : dw $0AA4
-	db $02 : dw $0AA8
-	db !animation_command_83 : dw CODE_B9D521
-	db !animation_command_81 : dw CODE_B9DFD3
-	db !animation_command_80, $00
-
-diddy_team_top_idle:
-	db $07 : dw $1340
-	db $07 : dw $1344
-	db $07 : dw $1348
-	db $07 : dw $134C
-	db $07 : dw $1348
-	db $07 : dw $134C
-	db $07 : dw $1348
-	db $07 : dw $134C
-	db $17 : dw $1348
-	db $07 : dw $1344
-	db $07 : dw $1340
-	db $07 : dw $1350
-	db $07 : dw $1354
-	db $17 : dw $1358
-	db $04 : dw $1354
-	db $03 : dw $1350
-	db $03 : dw $1340
-	db $03 : dw $135C
-	db $03 : dw $1360
-	db $04 : dw $1364
-	db $04 : dw $1368
-	db $07 : dw $136C
-	db $04 : dw $1368
-	db $17 : dw $1364
-	db $05 : dw $1368
-	db $27 : dw $136C
-	db $05 : dw $1368
-	db $05 : dw $1364
-	db $05 : dw $1360
-	db $05 : dw $135C
-	db $05 : dw $1340
-	db $07 : dw $1350
-	db $07 : dw $1354
-	db $17 : dw $1358
-	db $04 : dw $1354
-	db $04 : dw $1350
 	db !animation_command_80, $00
 
 diddy_carry_pickup:
@@ -4020,60 +3762,6 @@ dixie_bounce_up:
 	db $02 : dw $0B8C
 	db !animation_command_80, $00
 
-dixie_team_top_air:
-	db $02 : dw $0B50
-	db $02 : dw $0B54
-	db $02 : dw $0B58
-	db $02 : dw $0B5C
-	db $02 : dw $0B60
-	db $02 : dw $0B64
-	db $02 : dw $0B68
-	db $02 : dw $0B6C
-	db $02 : dw $0B70
-	db $02 : dw $0B74
-	db $02 : dw $0B78
-	db $02 : dw $0B7C
-	db $02 : dw $0B80
-	db $02 : dw $0B84
-	db $02 : dw $0B88
-	db $02 : dw $0B8C
-	db !animation_command_80, $00
-
-dixie_team_top_stunned:
-	db $04 : dw $0568
-	db !animation_command_83 : dw CODE_B9D55A
-	db $03 : dw $056C
-	db $03 : dw $0570
-	db $03 : dw $0574
-	db $03 : dw $0578
-	db $03 : dw $057C
-	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_81 : dw CODE_B9DD21
-	db $02 : dw $0580
-	db $02 : dw $0584
-	db $02 : dw $0588
-	db $02 : dw $058C
-	db $02 : dw $0590
-	db $03 : dw $0594
-	db $03 : dw $0598
-	db !animation_command_83 : dw CODE_B9D5A4
-	db $10 : dw $059C
-	db !animation_command_81 : dw CODE_B9DEBE
-	db $04 : dw $05A0
-	db $04 : dw $05A4
-	db $04 : dw $05A8
-	db $14 : dw $05AC
-	db $04 : dw $05B0
-	db $04 : dw $05B4
-
-DATA_F93BC0:
-	db $04 : dw $05B8
-	db $04 : dw $05BC
-	db $04 : dw $05C0
-	db $04 : dw $05BC
-	db !animation_command_82 : dw DATA_F93BC0
-	db !animation_command_80, $00
-
 dixie_turn:
 	db $03 : dw $0560
 	db $03 : dw $0564
@@ -4081,126 +3769,6 @@ dixie_turn:
 	db $03 : dw $0564
 	db $03 : dw $0560
 	db !animation_command_81 : dw CODE_B9DFE5
-	db !animation_command_80, $00
-
-dixie_team_bottom_idle:
-	db !animation_command_84 : dw CODE_B9E0A8
-	db !animation_command_8B, $07 : dw $13F0, $0000, $0007
-	db !animation_command_8B, $07 : dw $13F4, $0000, $0006
-	db !animation_command_8B, $07 : dw $13F8, $0000, $0005
-	db !animation_command_8B, $07 : dw $13F4, $0000, $0006
-	db !animation_command_80, $00
-
-dixie_team_bottom_turn:
-	db !animation_command_8B, $02 : dw $13F0, $0000, $0007
-	db !animation_command_8B, $02 : dw $13F4, $0000, $0006
-	db !animation_command_81 : dw CODE_B9E019
-	db !animation_command_8B, $02 : dw $13F4, $0000, $0006
-	db !animation_command_8B, $02 : dw $13F0, $0000, $0007
-	db !animation_command_81 : dw CODE_B9DFE5
-	db !animation_command_80, $00
-
-dixie_team_bottom_walk:
-	db !animation_command_84 : dw CODE_B9E021
-	db !animation_command_8B, $03 : dw $1320, $0000, $0003
-	db !animation_command_81 : dw CODE_B9E0E0
-	db !animation_command_8B, $03 : dw $1324, $0000, $0001
-	db !animation_command_8B, $03 : dw $1328, $0000, $0000
-	db !animation_command_8B, $03 : dw $132C, $0000, $0001
-	db !animation_command_8B, $03 : dw $1330, $0000, $0002
-	db !animation_command_8B, $03 : dw $1334, $0000, $0003
-	db !animation_command_8B, $03 : dw $1338, $0000, $0002
-	db !animation_command_81 : dw CODE_B9E0E0
-	db !animation_command_8B, $03 : dw $133C, $0000, $0001
-	db !animation_command_8B, $03 : dw $1314, $0000, $0000
-	db !animation_command_8B, $03 : dw $1318, $0000, $0001
-	db !animation_command_8B, $03 : dw $131C, $0000, $0002
-	db !animation_command_80, $00
-
-dixie_team_bottom_jump:
-	db !animation_command_8B, $03 : dw $132C, $0000, $0001
-	db !animation_command_81 : dw CODE_B9DF51
-	db !animation_command_80, $00
-
-dixie_team_bottom_air:
-	db !animation_command_8B, $03 : dw $132C, $0000, $0001
-	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_8B, $03 : dw $132C, $0000, $0001
-	db !animation_command_81 : dw CODE_B9DEEF
-	db !animation_command_80, $00
-
-dixie_team_bottom_fall:
-	db !animation_command_84 : dw CODE_B9DECC
-	db !animation_command_8B, $03 : dw $132C, $0000, $0001
-	db !animation_command_84 : dw !null_pointer
-	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_81 : dw CODE_B9DEEF
-	db !animation_command_80, $00
-
-dixie_team_bottom_land:
-	db !animation_command_8B, $03 : dw $132C, $0000, $0001
-	db !animation_command_81 : dw CODE_B9DA5B
-	db !animation_command_81 : dw CODE_B9DFE1
-	db !animation_command_80, $00
-
-dixie_team_bottom_bounce_up:
-	db !animation_command_8B, $01 : dw $1314, $0000, $0000
-	db !animation_command_8B, $01 : dw $1318, $0000, $0001
-	db !animation_command_8B, $01 : dw $131C, $0000, $0002
-	db !animation_command_8B, $01 : dw $1320, $0000, $0003
-	db !animation_command_8B, $01 : dw $1324, $0000, $0001
-	db !animation_command_8B, $01 : dw $1328, $0000, $0000
-	db !animation_command_8B, $01 : dw $132C, $0000, $0001
-	db !animation_command_8B, $01 : dw $1330, $0000, $0002
-	db !animation_command_8B, $01 : dw $1334, $0000, $0003
-	db !animation_command_8B, $01 : dw $1338, $0000, $0002
-	db !animation_command_8B, $01 : dw $133C, $0000, $0001
-	db !animation_command_80, $00
-
-dixie_team_bottom_throw:
-	db !animation_command_8A, $02 : dw $13C0, $13D8, $0000, $0000
-	db !animation_command_8A, $02 : dw $13C4, $13DC, $0000, $0000
-	db !animation_command_8A, $02 : dw $13C8, $13E0, $0000, $0000
-	db !animation_command_8A, $02 : dw $13CC, $13E4, $0000, $0000
-	db !animation_command_8A, $02 : dw $13D0, $13E8, $0000, $0000
-	db !animation_command_8A, $02 : dw $13D4, $13EC, $0000, $0000
-	db !animation_command_8A, $01 : dw $13D4, $1010, $FFDC, $FFEC
-	db $02 : dw $13D4
-	db !animation_command_8B, $02 : dw $09DC, $FFD7, $FFEF
-	db !animation_command_8B, $02 : dw $09E0, $FFD6, $FFF0
-	db !animation_command_81 : dw CODE_B9DCE8
-	db !animation_command_8B, $02 : dw $09E4, $FFD6, $FFF1
-	db !animation_command_8B, $02 : dw $09E8, $FFD9, $FFED
-	db !animation_command_8B, $02 : dw $09EC, $FFDE, $FFE6
-	db !animation_command_8B, $02 : dw $09F0, $FFE7, $FFE2
-	db !animation_command_8B, $02 : dw $09F4, $FFF9, $FFE0
-	db !animation_command_8B, $02 : dw $09F8, $000C, $FFE0
-	db !animation_command_8B, $00 : dw $09F8, $000C, $FFF4
-	db !animation_command_81 : dw CODE_B9D8BC
-	db $02 : dw $09FC
-	db $02 : dw $0A00
-	db $02 : dw $0A04
-	db $02 : dw $0A08
-	db $02 : dw $0A0C
-	db $02 : dw $0A10
-	db $02 : dw $0A14
-	db $02 : dw $0A18
-	db !animation_command_83 : dw CODE_B9D521
-	db !animation_command_81 : dw CODE_B9DFD3
-	db !animation_command_80, $00
-
-dixie_team_top_idle:
-	db $03 : dw $1428
-	db $03 : dw $142C
-	db $03 : dw $1430
-	db $03 : dw $1434
-	db $03 : dw $1438
-	db $03 : dw $143C
-	db $03 : dw $1440
-	db $03 : dw $1444
-	db $03 : dw $1448
-	db $03 : dw $144C
-	db $03 : dw $1450
 	db !animation_command_80, $00
 
 dixie_carry_pickup:
@@ -11974,6 +11542,8 @@ kiddy_map:
 	db $04 : dw !kiddy_map_walk_gfx_num_base+$1C
 	db !animation_command_80, $00
 ;END OF PATCH
+
+incsrc "kong_hack/objects/animations/teamup_animations.asm"
 
 print "Animation End Address: ",pc
 padbyte $00

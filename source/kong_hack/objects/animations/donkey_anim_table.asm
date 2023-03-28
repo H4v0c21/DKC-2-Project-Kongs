@@ -37,7 +37,7 @@
 	dw diddy_team_bottom_land : db $00, $00
 	dw diddy_team_bottom_bounce_up : db $00, $30
 	dw diddy_team_bottom_throw : db $00, $00
-	dw donkey_team_top_air : db $00, $98
+	dw donkey_team_top_thrown : db $00, $98
 	dw donkey_team_top_stunned : db $00, $00
 	dw donkey_hurt : db $00, $00
 	dw donkey_hurt_jump_off_screen : db $00, $00
@@ -62,7 +62,7 @@
 	dw donkey_follow_run : db $00, $00
 	dw donkey_follow_jump : db $00, $00
 	dw donkey_follow_air : db $00, $00
-	dw donkey_team_top_air : db $00, $00
+	dw donkey_team_top_thrown : db $00, $00
 	dw donkey_turn : db $00, $00
 	dw diddy_hook_idle : db $00, $00
 	dw donkey_swim_idle : db $00, $00

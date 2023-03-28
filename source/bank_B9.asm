@@ -1479,6 +1479,15 @@ CODE_B9D760:
 	STA $2E,x				;$B9D763   |
 	LDA #$001D				;$B9D765   |
 	JSL CODE_B9D0B8				;$B9D768   |
+	
+;START OF PATCH (team up animation tweaks)
+	JSL CODE_B880A2
+	LDA #$001D
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+	JSL CODE_B8808E
+;END OF PATCH
+	
 	RTS					;$B9D76C  /
 
 CODE_B9D76D:
@@ -1548,6 +1557,15 @@ CODE_B9D7D9:
 	STA $2E,x				;$B9D7DC   |
 	LDA #$001F				;$B9D7DE   |
 	JSL CODE_B9D0B8				;$B9D7E1   |
+	
+;START OF PATCH (team up animation tweaks)
+	JSL CODE_B880A2
+	LDA #$001F
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+	JSL CODE_B8808E
+;END OF PATCH
+	
 	RTS					;$B9D7E5  /
 
 CODE_B9D7E6:
@@ -1610,6 +1628,15 @@ CODE_B9D846:
 	STA $2E,x				;$B9D849   |
 	LDA #$001F				;$B9D84B   |
 	JSL CODE_B9D0B8				;$B9D84E   |
+
+;START OF PATCH (team up animation tweaks)
+	JSL CODE_B880A2
+	LDA #$001F
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+	JSL CODE_B8808E
+;END OF PATCH
+	
 	RTS					;$B9D852  /
 
 CODE_B9D853:
@@ -2679,6 +2706,15 @@ CODE_B9DF44:
 	STA $2E,x				;$B9DF47   |
 	LDA #$0024				;$B9DF49   |
 	JSL CODE_B9D0B8				;$B9DF4C   |
+	
+;START OF PATCH (team up animation tweaks)
+	JSL CODE_B880A2
+	LDA #$0024
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+	JSL CODE_B8808E
+;END OF PATCH
+	
 	RTS					;$B9DF50  /
 
 CODE_B9DF51:
@@ -2729,6 +2765,15 @@ CODE_B9DF9E:
 	STA $2E,x				;$B9DFA8   |
 	LDA #$0022				;$B9DFAA   |
 	JSL CODE_B9D0B8				;$B9DFAD   |
+	
+;START OF PATCH (team up animation tweaks)
+	JSL CODE_B880A2
+	LDA #$0022
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+	JSL CODE_B8808E
+;END OF PATCH
+	
 	RTS					;$B9DFB1  /
 
 CODE_B9DFB2:
@@ -5568,3 +5613,27 @@ CUST_CODE_B9F107:
 	CLC
 	RTS
 ;END OF PATCH
+
+;;START OF PATCH (swap animations)
+;;animation id defines
+;	!diddy_swap_from_anim_id = !swap_animation_offset
+;	!dixie_swap_from_anim_id = !swap_animation_offset+1
+;	!donkey_swap_from_anim_id = !swap_animation_offset+2
+;	!kiddy_swap_from_anim_id = !swap_animation_offset+3
+;
+;swap_sync_table:
+;	dw !diddy_swap_from_anim_id, !dixie_swap_from_anim_id, !donkey_swap_from_anim_id, !kiddy_swap_from_anim_id
+;
+;;START OF PATCH (team up animation lookup routine)
+;start_follow_kong_swap_anim:
+;	JSL CODE_B880A2
+;	LDA kong_status		;get follower kong
+;	XBA
+;	AND #$00FF
+;	ASL
+;	TAX
+;	LDA.l swap_sync_table,x
+;	JSL set_sprite_animation
+;	JSL CODE_B8808E
+;	RTS
+;;END OF PATCH
