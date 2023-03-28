@@ -1,3 +1,6 @@
+incsrc "kong_hack/objects/animations/animation_defines.asm"
+
+
 DATA_B88000:
 if !version == 0
 	db $12, $29, $DE, $B3
@@ -561,9 +564,17 @@ endif						;	   |
 	LDA $0006,y				;$B8845D   |
 	AND #$FFFB				;$B88460   |
 	STA $0006,y				;$B88463   |
-	LDA #$001F				;$B88466   |
-	JSL CODE_B9D0B8				;$B88469   |
-	JSR CODE_B880AB				;$B8846D   |
+
+	LDA #$001F				;bottom walk
+	JSL CODE_B9D0B8
+
+;START OF PATCH (team up animation tweaks)
+	JSR CODE_B880AB
+	LDA #$001F				;bottom walk
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+;END OF PATCH
+
 	LDX current_sprite			;$B88470   |
 	LDA #$0040				;$B88472   |
 	STA $2E,x				;$B88475   |
@@ -597,13 +608,20 @@ CODE_B8848E:
 	LDA $0006,y				;$B884B7   |
 	AND #$FFFB				;$B884BA   |
 	STA $0006,y				;$B884BD   |
-	LDA #$001F				;$B884C0   |
+	LDA #$001F				;bottom walk
 	JSL CODE_B9D0B8				;$B884C3   |
-	JSR CODE_B880AB				;$B884C7   |
+	
+;START OF PATCH (team up animation tweaks)
+	JSR CODE_B880AB				;swap current sprite to follower kong
+	LDA #$001F				;bottom walk
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+;END OF PATCH
+
 	LDA #$0018				;$B884CA   |
 	STA $2E,x				;$B884CD   |
-	LDA #$0020				;$B884CF   |
-	JSL CODE_B9D0B8				;$B884D2   |
+	;LDA #$0020				;$B884CF   |
+	;JSL CODE_B9D0B8				;$B884D2   |
 CODE_B884D6:					;	   |
 	RTS					;$B884D6  /
 
@@ -2878,9 +2896,6 @@ clear_kong_data:
 
 ;donkey main sprite
 donkey_kong_main_b8:
-	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
-	BNE process_donkey	;If non-zero, skip code which checks for Kong status to suspend Donkey
-
 	LDA kong_status
 	AND #$00FF
 	CMP #$0002
@@ -2906,9 +2921,6 @@ process_donkey:
 
 ;kiddy main sprite
 kiddy_kong_main_b8:
-	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
-	BNE process_kiddy	;If non-zero, skip code which checks for Kong status to suspend Kiddy
-
 	LDA kong_status
 	AND #$00FF
 	CMP #$0003
@@ -2934,9 +2946,6 @@ process_kiddy:
 
 ;dixie main sprite
 CODE_B89670:
-	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
-	BNE process_dixie	;If non-zero, skip code which checks for Kong status to suspend Dixie
-
 	LDA kong_status
 	AND #$00FF
 	CMP #$0001
@@ -2962,9 +2971,6 @@ process_dixie:
 
 ;diddy main sprite
 CODE_B8967D:
-	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
-	BNE process_diddy	;If non-zero, skip code which checks for Kong status to suspend Diddy
-
 	LDA kong_status
 	AND #$00FF
 	BEQ process_diddy
@@ -2972,7 +2978,7 @@ CODE_B8967D:
 	XBA
 	AND #$00FF
 	BEQ process_diddy
-
+	
 	JSR clear_kong_data
 	JML [$05A9]		;suspend diddy
 
@@ -7410,10 +7416,12 @@ CODE_B8B80A:					;	   |
 	CLC					;$B8B812   |
 	ADC $0D7E				;$B8B813   |
 	STA $000A,y				;$B8B816   |
-	LDA $02,x				;$B8B819   |
-	CLC					;$B8B81B   |
-	ADC $0D80				;$B8B81C   |
-	STA $0002,y				;$B8B81F   |
+;START OF PATCH (disable draw priority update for top kong)
+	;LDA $02,x				;$B8B819   |
+	;CLC					;$B8B81B   |
+	;ADC $0D80				;$B8B81C   |
+	;STA $0002,y				;$B8B81F   |
+;END OF PATCH
 	LDA $12,x				;$B8B822   |
 	EOR $0012,y				;$B8B824   |
 	AND #$4000				;$B8B827   |
@@ -9479,9 +9487,17 @@ CODE_B8C5D8:
 CODE_B8C5E5:
 	LDA #$0021				;$B8C5E5  \
 	JSL CODE_B9D0B8				;$B8C5E8   |
-	JSR CODE_B880AB				;$B8C5EC   |
-	LDA #$0020				;$B8C5EF   |
-	JSL CODE_B9D0B8				;$B8C5F2   |
+
+;START OF PATCH (team up animation tweaks)
+	JSR CODE_B880AB
+	LDA #$0021				;bottom jump
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+
+	;JSR CODE_B880AB				;$B8C5EC   |
+	;LDA #$0020				;$B8C5EF   |
+	;JSL CODE_B9D0B8				;$B8C5F2   |
+;END OF PATCH
 	JSR CODE_B88092				;$B8C5F6   |
 	RTS					;$B8C5F9  /
 
@@ -10240,6 +10256,15 @@ CODE_B8CB71:
 	STA $2E,x				;$B8CB76   |
 	LDA #$0026				;$B8CB78   |
 	JSL CODE_B9D0B8				;$B8CB7B   |
+	
+;START OF PATCH (team up animation tweaks)
+	JSL CODE_B880A2
+	LDA #$0026
+	JSL sync_teamup_anim
+	JSL set_sprite_animation
+	JSL CODE_B8808E
+;END OF PATCH
+
 	RTS					;$B8CB7F  /
 
 CODE_B8CB80:
@@ -13191,3 +13216,38 @@ CODE_B8DE56:					;	   |
 	JSR CODE_B8DA8F				;$B8DE71   |
 CODE_B8DE74:					;	   |
 	RTS					;$B8DE74  /
+
+
+
+teamup_sync_table:
+	dw !diddy_team_top_idle_anim_id, !dixie_team_top_idle_anim_id, !donkey_team_top_idle_anim_id, !kiddy_team_top_idle_anim_id
+	dw !diddy_team_top_idle_anim_id, !dixie_team_top_idle_anim_id, !donkey_team_top_idle_anim_id, !kiddy_team_top_idle_anim_id
+	dw !diddy_team_top_walk_anim_id, !dixie_team_top_walk_anim_id, !donkey_team_top_walk_anim_id, !kiddy_team_top_walk_anim_id
+	dw !null_pointer, !null_pointer, !null_pointer, !null_pointer
+	dw !diddy_team_top_air_anim_id, !dixie_team_top_air_anim_id, !donkey_team_top_air_anim_id, !kiddy_team_top_air_anim_id
+	dw !diddy_team_top_air_anim_id, !dixie_team_top_air_anim_id, !donkey_team_top_air_anim_id, !kiddy_team_top_air_anim_id
+	dw !diddy_team_top_air_anim_id, !dixie_team_top_air_anim_id, !donkey_team_top_air_anim_id, !kiddy_team_top_air_anim_id
+	dw !diddy_team_top_air_anim_id, !dixie_team_top_air_anim_id, !donkey_team_top_air_anim_id, !kiddy_team_top_air_anim_id
+	dw !diddy_team_top_air_anim_id, !dixie_team_top_air_anim_id, !donkey_team_top_air_anim_id, !kiddy_team_top_air_anim_id
+	dw !diddy_team_top_throw_anim_id, !dixie_team_top_throw_anim_id, !donkey_team_top_throw_anim_id, !kiddy_team_top_throw_anim_id
+
+;START OF PATCH (team up animation lookup routine)
+sync_teamup_anim:
+	PHX
+	SEC
+	SBC #$001D	;offset anim number for teamup
+	ASL
+	ASL
+	ASL
+	STA $32		;store teamup sync table index
+	
+	LDA kong_status	;get follower kong
+	XBA
+	AND #$00FF
+	ASL
+	CLC
+	ADC $32		;offset table index from kong number
+	TAX
+	LDA.l teamup_sync_table,x
+	PLX
+	RTL

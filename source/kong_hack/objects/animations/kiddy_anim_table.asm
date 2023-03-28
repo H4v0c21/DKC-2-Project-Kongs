@@ -27,17 +27,17 @@
 	dw kiddy_slope_slide : db $00, $30
 	dw kiddy_bounce_back : db $00, $30
 	dw kiddy_bounce_up : db $00, $30
-	dw diddy_team_bottom_idle : db $00, $00
-	dw diddy_team_bottom_turn : db $00, $00
-	dw diddy_team_bottom_walk : db $00, $00
-	dw diddy_team_top_idle : db $00, $00
-	dw diddy_team_bottom_jump : db $01, $00
-	dw diddy_team_bottom_air : db $00, $30
-	dw diddy_team_bottom_fall : db $00, $30
-	dw diddy_team_bottom_land : db $00, $00
-	dw diddy_team_bottom_bounce_up : db $00, $30
-	dw diddy_team_bottom_throw : db $00, $00
-	dw kiddy_team_top_air : db $00, $98
+	dw kiddy_team_bottom_idle : db $00, $00
+	dw kiddy_team_bottom_turn : db $00, $00
+	dw kiddy_team_bottom_walk : db $00, $00
+	dw kiddy_team_top_idle : db $00, $00
+	dw kiddy_team_bottom_jump : db $01, $00
+	dw kiddy_team_bottom_air : db $00, $30
+	dw kiddy_team_bottom_fall : db $00, $30
+	dw kiddy_team_bottom_land : db $00, $00
+	dw kiddy_team_bottom_bounce_up : db $00, $30
+	dw kiddy_team_bottom_throw : db $00, $00
+	dw kiddy_team_top_thrown : db $00, $98
 	dw diddy_team_top_stunned : db $00, $00
 	dw diddy_hurt : db $00, $00
 	dw kiddy_hurt_jump_off_screen : db $00, $00
@@ -62,7 +62,7 @@
 	dw kiddy_follow_run : db $00, $00
 	dw kiddy_follow_jump : db $00, $00
 	dw kiddy_follow_air : db $00, $00
-	dw kiddy_team_top_air : db $00, $00
+	dw kiddy_team_top_thrown : db $00, $00
 	dw kiddy_turn : db $00, $00
 	dw diddy_hook_idle : db $00, $00
 	dw kiddy_swim_idle : db $00, $00

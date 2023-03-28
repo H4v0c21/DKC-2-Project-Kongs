@@ -889,7 +889,7 @@ kiddy_bonus_exit_swim_loop:
 	db !animation_command_82 : dw kiddy_bonus_exit_swim_loop
 	db !animation_command_80, $00			;391F04
 
-kiddy_team_top_air:
+kiddy_team_top_thrown:
 	db $02 : dw $3E58
 	db $02 : dw $3E5C
 	db $02 : dw $3E60
@@ -1123,28 +1123,28 @@ ANIM_SUB_F920F8:
 
 ;ANIM_SUB_F9257D:
 ANIM_SUB_F9257D:
-	db !animation_command_8A, $08 : dw $3D14, $3BEC, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D18, $3BF0, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D1C, $3BF4, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D20, $3BF8, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D1C, $3BF4, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D18, $3BF0, $0000, $0000
+	db $08 : dw $3D14
+	db $08 : dw $3D18
+	db $08 : dw $3D1C
+	db $08 : dw $3D20
+	db $08 : dw $3D1C
+	db $08 : dw $3D18
 	db !animation_command_92, $4E
 
 ;ANIM_SUB_F925BB:
 ANIM_SUB_F925BB:
-	db !animation_command_8A, $08 : dw $3D14, $3BEC, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D18, $3BF0, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D1C, $3BF4, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D20, $3BF8, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D1C, $3BFC, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D18, $3C00, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D14, $3C04, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D18, $3C00, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D1C, $3BFC, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D20, $3BF8, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D1C, $3BF4, $0000, $0000
-	db !animation_command_8A, $08 : dw $3D18, $3BF0, $0000, $0000
+	db $08 : dw $3D14
+	db $08 : dw $3D18
+	db $08 : dw $3D1C
+	db $08 : dw $3D20
+	db $08 : dw $3D1C
+	db $08 : dw $3D18
+	db $08 : dw $3D14
+	db $08 : dw $3D18
+	db $08 : dw $3D1C
+	db $08 : dw $3D20
+	db $08 : dw $3D1C
+	db $08 : dw $3D18
 	db !animation_command_92, $4E
 
 ;ANIM_SUB_F92D06:
