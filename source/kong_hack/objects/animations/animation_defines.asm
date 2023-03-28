@@ -1,0 +1,9 @@
+!anim_id_kong_walk = $0003 		;DKC3: $0002
+!anim_id_kong_air = $0006		;DKC3: $0009
+!anim_id_kong_carry_walk = $0011 	;DKC3: $0012
+!anim_id_kong_h_rope_idle = $0039	;DKC3: $0017
+!anim_id_kong_v_rope_idle = $002F 	;DKC3: $001B
+!anim_id_kong_carry_air = $0016 	;DKC3: $0025
+!anim_id_kong_swim_idle = $0043 	;DKC3: $0028
+!anim_id_kong_team_air = $0022 		;DKC3: $0030
+!anim_id_kong_follow_walk = $003B 	;DKC3: $007D
