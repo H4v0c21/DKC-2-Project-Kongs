@@ -13,19 +13,19 @@
 	dw kiddy_crouch_start : db $00, $00
 	dw kiddy_crouch_loop : db $00, $00
 	dw kiddy_crouch_end : db $00, $00
-	dw diddy_carry_pickup : db $04, $00
-	dw diddy_carry_idle : db $00, $00
-	dw diddy_carry_walk : db $00, $00
-	dw diddy_carry_turn : db $00, $00
-	dw diddy_carry_drop : db $04, $00
-	dw diddy_carry_throw : db $04, $20
-	dw diddy_carry_jump : db $01, $00
-	dw diddy_carry_air : db $00, $30
-	dw diddy_carry_fall : db $00, $30
-	dw diddy_carry_land : db $00, $00
-	dw diddy_barrel_cannon_air : db $00, $30
-	dw diddy_slope_slide : db $00, $30
-	dw diddy_bounce_back : db $00, $30
+	dw kiddy_carry_pickup : db $04, $00
+	dw kiddy_carry_idle : db $00, $00
+	dw kiddy_carry_walk : db $00, $00
+	dw kiddy_carry_turn : db $00, $00
+	dw kiddy_carry_drop : db $04, $00
+	dw kiddy_carry_throw : db $04, $20
+	dw kiddy_carry_jump : db $01, $00
+	dw kiddy_carry_air : db $00, $30
+	dw kiddy_carry_fall : db $00, $30
+	dw kiddy_carry_land : db $00, $00
+	dw kiddy_barrel_cannon_air : db $00, $30
+	dw kiddy_slope_slide : db $00, $30
+	dw kiddy_bounce_back : db $00, $30
 	dw kiddy_bounce_up : db $00, $30
 	dw diddy_team_bottom_idle : db $00, $00
 	dw diddy_team_bottom_turn : db $00, $00
@@ -37,45 +37,45 @@
 	dw diddy_team_bottom_land : db $00, $00
 	dw diddy_team_bottom_bounce_up : db $00, $30
 	dw diddy_team_bottom_throw : db $00, $00
-	dw diddy_team_top_air : db $00, $98
+	dw kiddy_team_top_air : db $00, $98
 	dw diddy_team_top_stunned : db $00, $00
 	dw diddy_hurt : db $00, $00
-	dw diddy_hurt_jump_off_screen : db $00, $00
+	dw kiddy_hurt_jump_off_screen : db $00, $00
 	dw diddy_honey_wall_idle : db $00, $00
-	dw diddy_honey_floor_idle : db $00, $00
-	dw diddy_honey_floor_walk : db $00, $00
-	dw diddy_honey_floor_carry_idle : db $00, $00
-	dw diddy_rope_vertical_single_idle : db $00, $00
-	dw diddy_rope_vertical_single_up : db $00, $00
-	dw diddy_rope_vertical_single_down : db $00, $00
-	dw diddy_rope_vertical_single_turn : db $00, $00
+	dw kiddy_honey_floor_idle : db $00, $00
+	dw kiddy_honey_floor_walk : db $00, $00
+	dw kiddy_honey_floor_carry_idle : db $00, $00
+	dw kiddy_rope_vertical_single_idle : db $00, $00
+	dw kiddy_rope_vertical_single_up : db $00, $00
+	dw kiddy_rope_vertical_single_down : db $00, $00
+	dw kiddy_rope_vertical_single_turn : db $00, $00
 	dw DATA_F92093 : db $00, $00
 	dw diddy_rope_vertical_single_to_double : db $00, $00
 	dw diddy_rope_vertical_double_to_single : db $00, $00
 	dw diddy_rope_vertical_double_idle : db $00, $00
 	dw diddy_rope_vertical_double_up : db $00, $00
 	dw diddy_rope_vertical_double_down : db $00, $00
-	dw diddy_rope_horizontal_idle : db $00, $00
-	dw diddy_rope_horizontal_move : db $00, $00
+	dw kiddy_rope_horizontal_idle : db $00, $00
+	dw kiddy_rope_horizontal_move : db $00, $00
 	dw kiddy_follow_walk : db $00, $00
 	dw kiddy_follow_walk : db $00, $00
 	dw kiddy_follow_run : db $00, $00
 	dw kiddy_follow_jump : db $00, $00
 	dw kiddy_follow_air : db $00, $00
-	dw diddy_team_top_air : db $00, $00
+	dw kiddy_team_top_air : db $00, $00
 	dw kiddy_turn : db $00, $00
 	dw diddy_hook_idle : db $00, $00
 	dw kiddy_swim_idle : db $00, $00
 	dw kiddy_swim_turn : db $00, $00
 	dw diddy_celebrate : db $00, $00
-	dw diddy_level_end_run : db $00, $00
+	dw kiddy_level_end_run : db $00, $00
 	dw DATA_F91309 : db $00, $00
 	dw DATA_F9130E : db $00, $00
 	dw diddy_swap_to : db $00, $00
 	dw diddy_swap_idle : db $00, $00
-	dw diddy_barrel_cannon_air : db $00, $00
-	dw diddy_krockhead_bounce : db $00, $00
-	dw diddy_carry_krockhead_bounce : db $00, $00
+	dw kiddy_barrel_cannon_air : db $00, $00
+	dw kiddy_krockhead_bounce : db $00, $00
+	dw kiddy_carry_krockhead_bounce : db $00, $00
 	dw diddy_skull_cart : db $00, $00
 	dw diddy_squitter_mount : db $00, $00
 	dw diddy_rattly_idle : db $00, $00
@@ -163,6 +163,6 @@ endif
 	dw enguarde_exit : db $00, $00
 	dw diddy_scared : db $00, $00
 	dw diddy_stunned : db $00, $00
-	dw diddy_bonus_exit : db $00, $00
+	dw kiddy_bonus_exit : db $00, $00
 	dw diddy_wind_float : db $00, $00
-	dw diddy_bonus_exit_swim : db $00, $00
+	dw kiddy_bonus_exit_swim : db $00, $00

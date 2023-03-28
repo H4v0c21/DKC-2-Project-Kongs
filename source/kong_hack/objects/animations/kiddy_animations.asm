@@ -1,3 +1,5 @@
+incsrc "animation_defines.asm"
+
 ;0088 idle
 ;KIDDY_ANIM_F910B6:
 kiddy_idle:
@@ -129,8 +131,8 @@ kiddy_roll:
 	db $02 : dw $3E7C				;3913D8
 	db $02 : dw $3E80				;3913DB
 	;db !animation_command_8F : dw $A928, $140C				;3913DE
-	db !animation_command_8F : dw CODE_B9D674, kiddy_roll_end
 kiddy_roll_loop:
+	db !animation_command_8F : dw CODE_B9D674, kiddy_roll_end
 	db $02 : dw $3E84				;3913E3
 	db $02 : dw $3E58				;3913E6
 	db $02 : dw $3E5C				;3913E9
@@ -161,7 +163,6 @@ kiddy_roll_end:
 	;db !animation_command_81 : dw $A8B0	;needs rework				;39142A
 	db !animation_command_81 : dw CODE_B9DFE5
 	db !animation_command_80, $00				;39142D
-
 
 ;008E crouch
 ;KIDDY_ANIM_F9143B:
@@ -207,12 +208,14 @@ kiddy_air:
 	db $04 : dw $3E30				;3916D9
 	db $04 : dw $3E34				;3916DC
 	db $04 : dw $3E38				;3916DF
+KIDDY_LOOP_F916E2:
 	db $04 : dw $3E3C				;3916E2
 	db $04 : dw $3E40				;3916E5
 	;db !animation_command_83 : dw $A9CB	;needs rework				;3916E8
 	;db !animation_command_84 : dw $04ABA2	;needs rework				;3916EB
 	db !animation_command_83 : dw CODE_B9D56E
 	db !animation_command_84 : dw CODE_B9DECC
+kiddy_air_loop:
 	db $04 : dw $3E44				;3916EE
 	db $04 : dw $3E48				;3916F1
 	;db !animation_command_83 : dw $A9C1	;needs rework				;3916F4
@@ -223,7 +226,6 @@ kiddy_air:
 	;db !animation_command_81 : dw $ABC8	;needs rework				;3916FD
 	db !animation_command_81 : dw CODE_B9DEEF
 	db !animation_command_80, $00				;391700
-
 
 ;0092 land
 ;KIDDY_ANIM_F91702:
@@ -270,7 +272,6 @@ kiddy_bounce_up:
 	db $02 : dw $3E84				;391748
 	;db !animation_command_84 : dw $9AAB24	;needs rework				;39174B
 	db !animation_command_80, $00				;39174E
-
 
 ;0104 follow walk
 ;KIDDY_ANIM_F92B19:
@@ -366,7 +367,6 @@ KIDDY_ANIM_F92BB6:
 	;db !animation_command_82 : dw $9A2BBC	;needs rework				;392BE0
 	db !animation_command_80, $00				;392BE3
 
-
 ;00AF swim idle
 ;KIDDY_ANIM_F91ED1:
 kiddy_swim_idle:
@@ -402,6 +402,507 @@ kiddy_swim_turn:
 	;db !dkc3_anim_command_89 : dw $008028	;needs rework				;391F15
 	db !animation_command_81 : dw CODE_B9DB64
 	db !animation_command_80, $00				;391F18
+
+;0097 carry pickup
+;KIDDY_ANIM_F91D26:
+kiddy_carry_pickup:
+	db !animation_command_81 : dw CODE_B9D891			;391D26
+	;db !animation_command_81 : dw $AD2F	;needs rework		;391D29
+	db !animation_command_81 : dw CODE_B9D891
+	db !animation_command_8B, $03 : dw $3E9C, $0011, $0000		;391D2C
+	db !animation_command_8B, $03 : dw $3EA0, $0012, $FFFD		;391D34
+	db !animation_command_8B, $03 : dw $3EA4, $0014, $FFF9		;391D3C
+	db !animation_command_8B, $03 : dw $3EA8, $0014, $FFF5		;391D44
+	db !animation_command_8B, $03 : dw $3EAC, $0014, $FFF3		;391D4C
+	;db !animation_command_81 : dw $A6F2	;needs rework		;391D54
+	db !animation_command_81 : dw CODE_B9D705
+	db !animation_command_80, $00					;391D57
+
+;0098 carry idle
+;KIDDY_ANIM_F91D59:
+kiddy_carry_idle:
+	;db !animation_command_84 : dw $ADC7	;needs rework		;391D59
+	db !animation_command_84 : dw CODE_B9E0A8
+	db !animation_command_8B, $03 : dw $3EB0, $0014, $FFF3		;391D5C
+	db !animation_command_83 : dw CODE_B9D12B			;391D64
+	db !animation_command_80, $00					;391D67
+
+;0099 carry walk
+;KIDDY_ANIM_F91D69:
+kiddy_carry_walk:
+	;db !animation_command_84 : dw $AD41	;needs rework		;391D69
+	db !animation_command_84 : dw CODE_B9E021
+	db !animation_command_8B, $03 : dw $3EB0, $0014, $FFF3		;391D6C
+	db !animation_command_8B, $03 : dw $3EB4, $0014, $FFF2		;391D74
+	db !animation_command_81 : dw CODE_B9E0E0			;391D7C
+	db !animation_command_8B, $03 : dw $3EB8, $0014, $FFF2		;391D7F
+	db !animation_command_8B, $03 : dw $3EBC, $0014, $FFF2		;391D87
+	db !animation_command_8B, $03 : dw $3EC0, $0014, $FFF3		;391D8F
+	db !animation_command_81 : dw CODE_B9E0E0			;391D97
+	db !animation_command_8B, $03 : dw $3EC4, $0014, $FFF4		;391D9A
+	db !animation_command_8B, $03 : dw $3EC8, $0014, $FFF4		;391DA2
+	db !animation_command_8B, $03 : dw $3ECC, $0014, $FFF4		;391DAA
+	db !animation_command_81 : dw CODE_B9E0E0			;391DB2
+	db !animation_command_8B, $03 : dw $3ED0, $0014, $FFF3		;391DB5
+	db !animation_command_8B, $03 : dw $3ED4, $0014, $FFF2		;391DBD
+	db !animation_command_8B, $03 : dw $3ED8, $0014, $FFF2		;391DC5
+	db !animation_command_81 : dw CODE_B9E0E0			;391DCD
+	db !animation_command_8B, $03 : dw $3EDC, $0014, $FFF3		;391DD0
+	db !animation_command_80, $00					;391DD8
+
+;009A carry turn
+;KIDDY_ANIM_F91DDA:
+kiddy_carry_turn:
+	db !animation_command_8B, $06 : dw $3ED8, $0014, $FFF2		;391DDA
+	db !animation_command_81 : dw CODE_B9E019			;391DE2
+	db !animation_command_8B, $06 : dw $3EDC, $0014, $FFF3		;391DE5
+	db !dkc3_anim_command_89 : dw !anim_id_kong_carry_walk+$8000	;391DED
+	db !animation_command_80, $00					;391DF0
+
+;009B carry drop
+;KIDDY_ANIM_F91DF2:
+kiddy_carry_drop:
+	db !animation_command_81 : dw CODE_B9D891			;391DF2
+	;db !animation_command_81 : dw $AD6C	;needs rework		;391DF5
+	db !animation_command_8B, $02 : dw $3EAC, $0014, $FFF3		;391DF8
+	db !animation_command_8B, $02 : dw $3EA8, $0014, $FFF5		;391E00
+	db !animation_command_8B, $02 : dw $3EA4, $0014, $FFF9		;391E08
+	db !animation_command_8B, $02 : dw $3EA0, $0012, $FFFD		;391E10
+	db !animation_command_8B, $02 : dw $3E9C, $0011, $0000		;391E18
+	;db !animation_command_83 : dw $AD9E	;needs rework		;391E20
+	db !animation_command_81 : dw CODE_B9D896
+	db !animation_command_81 : dw CODE_B9DFE5			;391E23
+	db !animation_command_80, $00					;391E26
+
+;009C carry throw
+;KIDDY_ANIM_F91E28:
+kiddy_carry_throw:
+	;db !animation_command_81 : dw $ADD2	;needs rework		;391E28
+	db !animation_command_81 : dw CODE_B9D8AA
+	db !animation_command_8B, $02 : dw $3F9C, $0014, $FFF5		;391E2B
+	db !animation_command_8B, $02 : dw $3FA0, $0016, $FFF4		;391E33
+	db !animation_command_8B, $02 : dw $3FA4, $0019, $FFF2		;391E3B
+	db !animation_command_8B, $02 : dw $3FA8, $001D, $FFF6		;391E43
+	db !animation_command_8B, $02 : dw $3FAC, $0018, $FFFC		;391E4B
+	db !animation_command_8B, $02 : dw $3FB0, $0016, $0001		;391E53
+	db !animation_command_8B, $02 : dw $3FB4, $0012, $0005		;391E5B
+	db !animation_command_8B, $02 : dw $3FB8, $0017, $0004		;391E63
+	db !animation_command_8B, $02 : dw $3FBC, $001F, $0003		;391E6B
+	;db !animation_command_81 : dw $ADFB	;needs rework		;391E73
+	db !animation_command_81 : dw CODE_B9D965
+	db $03 : dw $3FC0						;391E76
+	db $03 : dw $3FC4						;391E79
+	db $03 : dw $3FC8						;391E7C
+	db $07 : dw $3FCC						;391E7F
+	db $04 : dw $3FD0						;391E82
+	db $04 : dw $3FD4						;391E85
+	db $04 : dw $3FD8						;391E88
+	;db !animation_command_81 : dw $A8A7	;needs rework		;391E8B
+	db !animation_command_81 : dw CODE_B9DFD3
+	db !animation_command_80, $00					;391E8E
+
+;00AB carry jump
+;KIDDY_ANIM_F91E90:
+kiddy_carry_jump:
+	db !animation_command_8B, $03 : dw $3EC0, $0014, $FFF3		;391E90
+	;db !animation_command_90 : dw $AB3F, !kiddy_animation_offset+!anim_id_kong_carry_air	;needs rework	;391E98
+	db !animation_command_81 : dw CODE_B9DF51
+	db !animation_command_80, $00					;391E9D
+
+kiddy_carry_air:
+	db !animation_command_8B, $06 : dw $3EC0, $0014, $FFF3
+	db !animation_command_83 : dw CODE_B9D5A4
+	db !animation_command_8B, $06 : dw $3EC0, $0014, $FFF3
+	db !animation_command_81 : dw CODE_B9DEEF
+	db !animation_command_80, $00
+
+kiddy_carry_fall:
+	db !animation_command_84 : dw CODE_B9DECC
+	db !animation_command_8B, $06 : dw $3EC0, $0014, $FFF3
+	db !animation_command_84 : dw !null_pointer
+	db !animation_command_83 : dw CODE_B9D5A4
+	db !animation_command_81 : dw CODE_B9DEEF
+	db !animation_command_80, $00
+
+kiddy_carry_land:
+	db !animation_command_8B, $03 : dw $3EC0, $0014, $FFF3
+	db !animation_command_81 : dw CODE_B9DA5B
+	db !animation_command_81 : dw CODE_B9DFE1
+	db !animation_command_80, $00
+
+;00BE barrel cannon air
+;KIDDY_ANIM_F928C6:
+kiddy_barrel_cannon_air:
+	db $02 : dw $3E58						;3928C6
+	db !dkc3_anim_command_8A, $02 : dw $3E84			;3928C9
+	db !animation_command_80, $00					;3928CD
+
+kiddy_bounce_back:
+	db $04 : dw $3E2C						;3916D6
+	db $04 : dw $3E30						;3916D9
+	db $04 : dw $3E34						;3916DC
+	db $04 : dw $3E38						;3916DF
+	db !animation_command_82 : dw KIDDY_LOOP_F916E2
+	db !animation_command_80, $00
+
+kiddy_slope_slide:
+	db $04 : dw $3E2C						;3916D6
+	db $04 : dw $3E30						;3916D9
+	db $04 : dw $3E34						;3916DC
+	db $04 : dw $3E38						;3916DF
+	db !animation_command_83 : dw CODE_B9D5B1
+	db !animation_command_81 : dw CODE_B9DEEF
+	db !animation_command_80, $00
+
+;00EF donkey_krockhead_bounce
+;DONKEY_ANIM_F933DA:
+kiddy_krockhead_bounce:
+	db $02 : dw $3E58				;391727
+	db $02 : dw $3E5C				;39172A
+	db $02 : dw $3E60				;39172D
+	db $02 : dw $3E64				;391730
+	db $02 : dw $3E68				;391733
+	db $02 : dw $3E6C				;391736
+	db $02 : dw $3E70				;391739
+	db $02 : dw $3E74				;39173C
+	db $02 : dw $3E78				;39173F
+	db $02 : dw $3E7C				;391742
+	db $02 : dw $3E80				;391745
+	db $02 : dw $3E84				;391748
+	db !animation_command_80, $00		;3933E6
+
+;00F0 donkey_carry_krockhead_bounce
+;DONKEY_ANIM_F933E8:
+kiddy_carry_krockhead_bounce:
+	db !animation_command_8B, $06 : dw $3EC0, $0014, $FFF3
+	db !animation_command_80, $00		;3933F0
+
+;0092 land
+;KIDDY_ANIM_F91702:
+kiddy_honey_floor_idle:
+;	;db !animation_command_84 : dw $8CA65D	;needs rework				;3910B6
+;	db !animation_command_84 : dw CODE_B9E0A8
+;	db !animation_command_91, $4E : dw ANIM_SUB_F911F9				;3910B9
+;	db !animation_command_91, $4E : dw ANIM_SUB_F91131				;3910BD
+;	db !animation_command_91, $4E : dw ANIM_SUB_F911AD				;3910C1
+;	db !animation_command_91, $4E : dw ANIM_SUB_F91169				;3910C5
+;	db !animation_command_91, $4E : dw ANIM_SUB_F9120D				;3910C9
+;	db !animation_command_91, $4E : dw ANIM_SUB_F91169				;3910CD
+;	db !animation_command_91, $4E : dw ANIM_SUB_F9121A				;3910D1
+;	db !animation_command_91, $4E : dw ANIM_SUB_F91131				;3910D5
+;	;db !animation_command_8F : dw $AA34, kiddy_idle_loop				;3910D9
+;	db !animation_command_91, $4E : dw ANIM_SUB_F91253				;3910DE
+;	db !animation_command_91, $4E : dw ANIM_SUB_F912FD				;3910E2
+;	db $02 : dw $3EE0				;3910E6
+;	db $02 : dw $4154				;3910E9
+;	db $02 : dw $4158				;3910EC
+;	db !animation_command_91, $4E : dw ANIM_SUB_F911CD				;3910EF
+;	db !animation_command_91, $4E : dw ANIM_SUB_F911CD				;3910F3
+;	db !animation_command_91, $4E : dw ANIM_SUB_F911CD				;3910F7
+;	db !animation_command_91, $4E : dw ANIM_SUB_F911CD				;3910FB
+;	db $02 : dw $4158				;3910FF
+;	db $02 : dw $4154				;391102
+;	db $02 : dw $3EE0				;391105
+;	db !animation_command_91, $4E : dw ANIM_SUB_F9130B				;391108
+;	db !animation_command_91, $4E : dw ANIM_SUB_F911F9				;39110C
+;kiddy_idle_loop:
+	db !animation_command_91, $4E : dw ANIM_SUB_F91131				;391110
+	db !animation_command_91, $4E : dw ANIM_SUB_F911AD				;391114
+	db !animation_command_91, $4E : dw ANIM_SUB_F91169				;391118
+	db !animation_command_91, $4E : dw ANIM_SUB_F9120D				;39111C
+	db !animation_command_91, $4E : dw ANIM_SUB_F91169				;391120
+	db !animation_command_91, $4E : dw ANIM_SUB_F9121A				;391124
+	db !animation_command_91, $4E : dw ANIM_SUB_F91131				;391128
+	
+	;db $04 : dw $3E4C				;391702
+	;db !animation_command_81 : dw $ABD2	;needs rework				;391705
+	;db !animation_command_81 : dw CODE_B9DA5B
+	db !animation_command_81 : dw CODE_B9DFE1
+	db !animation_command_80, $00				;391708
+
+kiddy_honey_floor_walk:
+	db $02 : dw $3DF0
+	db $01 : dw $3DEC
+	db $02 : dw $3DE8
+	db $01 : dw $3DE4
+	db $02 : dw $3DE0
+	db $01 : dw $3DE4
+	db $02 : dw $3DE8
+	db !animation_command_81 : dw CODE_B9DAAF
+	db !animation_command_80, $00
+
+kiddy_honey_floor_carry_idle:
+	db !animation_command_8B, $03 : dw $3EB0, $0014, $FFF3
+	db !animation_command_80, $00
+
+kiddy_level_end_run:
+	db !animation_command_81 : dw CODE_B9D888
+	db !animation_command_81 : dw CODE_B9D88E
+	db $03 : dw $3DF4				;39137A
+	db $03 : dw $3DF8				;39137D
+	db $03 : dw $3DFC				;391380
+	db $03 : dw $3E00				;391386
+	db $03 : dw $3E04				;391389
+	db $03 : dw $3E08				;39138C
+	db $03 : dw $3E0C				;391392
+	db $03 : dw $3E10				;391395
+	db $03 : dw $3E14				;391398
+	db $03 : dw $3E18				;39139E
+	db $03 : dw $3E1C				;3913A1
+	db $03 : dw $3E20				;3913A4
+	db !animation_command_80, $00				;3913AA
+
+;009E h rope idle
+;KIDDY_ANIM_F91815:
+kiddy_rope_horizontal_idle:
+	db !dkc3_anim_command_8F : dw $1300				;391815
+	db !animation_command_84 : dw CODE_B9DDB7
+	;db !animation_command_84 : dw $AC04	;needs rework		;391818
+	db $08 : dw $4024						;39181B
+	db $08 : dw $4028						;39181E
+	db $08 : dw $402C						;391821
+	db $08 : dw $4030						;391824
+	db $08 : dw $4034						;391827
+	db $08 : dw $4038						;39182A
+	db $08 : dw $403C						;39182D
+	db $08 : dw $4040						;391830
+	db !animation_command_80, $00					;391833
+
+;009F h rope move
+;KIDDY_ANIM_F91835:
+kiddy_rope_horizontal_move:
+	db !dkc3_anim_command_8F : dw $1300				;391835
+	db !animation_command_84 : dw CODE_B9DDE8
+	;db !animation_command_84 : dw $AC15	;needs rework		;391838
+	db $04 : dw $404C						;39183B
+	db $04 : dw $4050						;39183E
+KIDDY_LOOP_F91841:
+	db $04 : dw $4054						;391841
+	db $04 : dw $4058						;391844
+	db $04 : dw $405C						;391847
+	db $04 : dw $4060						;39184A
+	db $04 : dw $4064						;39184D
+	db $04 : dw $4068						;391850
+	;db !animation_command_81 : dw $AC31	;needs rework		;391853
+	db !animation_command_81 : dw CODE_B9DDC9
+	db $04 : dw $406C						;391856
+	;db !animation_command_81 : dw $AC31	;needs rework		;391859
+	db !animation_command_81 : dw CODE_B9DDC9
+	db $04 : dw $4070						;39185C
+	db $04 : dw $4074						;39185F
+	db $04 : dw $4078						;391862
+	db $04 : dw $407C						;391865
+	db $04 : dw $4080						;391868
+	db $04 : dw $4084						;39186B
+	;db !animation_command_81 : dw $AC31	;needs rework		;39186E
+	db !animation_command_81 : dw CODE_B9DDC9
+	db $04 : dw $4088						;391871
+	;db !animation_command_81 : dw $AC31	;needs rework		;391874
+	db !animation_command_81 : dw CODE_B9DDC9
+	db $04 : dw $404C						;391877
+	;db !animation_command_81 : dw $AC31	;needs rework		;39187A
+	db !animation_command_81 : dw CODE_B9DDC9
+	db $04 : dw $4050						;39187D
+	;db !animation_command_81 : dw $AC31	;needs rework		;391880
+	db !animation_command_81 : dw CODE_B9DDC9
+	db !animation_command_82 : dw KIDDY_LOOP_F91841 		;391883
+	db !animation_command_80, $00					;391886
+
+
+;00A2 v rope idle
+;KIDDY_ANIM_F91991:
+kiddy_rope_vertical_single_idle:
+	;db !animation_command_84 : dw $ACA9	;needs rework		;391991
+	db !animation_command_84 : dw CODE_B9DAE0
+	db $30 : dw $40D4						;391994
+	db $08 : dw $40FC						;391997
+	db $08 : dw $40F8						;39199A
+	db $08 : dw $40F4						;39199D
+	db $18 : dw $40F0						;3919A0
+	db $06 : dw $40F4						;3919A3
+	db $06 : dw $40F8						;3919A6
+	db $06 : dw $40FC						;3919A9
+	db $40 : dw $40D4						;3919AC
+	db $08 : dw $40E4						;3919AF
+	db $08 : dw $40E8						;3919B2
+	db $18 : dw $40EC						;3919B5
+	db $08 : dw $40E8						;3919B8
+	db $08 : dw $40E4						;3919BB
+	db $30 : dw $40D4						;3919BE
+	db $08 : dw $40FC						;3919C1
+	db $08 : dw $40F8						;3919C4
+	db $08 : dw $40F4						;3919C7
+	db $28 : dw $40F0						;3919CA
+	db $08 : dw $40F4						;3919CD
+	db $08 : dw $40F8						;3919D0
+	db $08 : dw $40FC						;3919D3
+	db $40 : dw $40D4						;3919D6
+	db $08 : dw $40E4						;3919D9
+	db $08 : dw $40E8						;3919DC
+	db $10 : dw $40EC						;3919DF
+	db $08 : dw $40E8						;3919E2
+	db $08 : dw $40E4						;3919E5
+	db $02 : dw $40D4						;3919E8
+	db $02 : dw $40E4						;3919EB
+	db $02 : dw $40E8						;3919EE
+	db $30 : dw $40EC						;3919F1
+	db $08 : dw $40E8						;3919F4
+	db $08 : dw $40E4						;3919F7
+	db $30 : dw $40D4						;3919FA
+	db $08 : dw $40FC						;3919FD
+	db $08 : dw $40F8						;391A00
+	db $08 : dw $40F4						;391A03
+	db $18 : dw $40F0						;391A06
+	db $06 : dw $40F4						;391A09
+	db $06 : dw $40F8						;391A0C
+	db $06 : dw $40FC						;391A0F
+	db $20 : dw $40D4						;391A12
+	db $08 : dw $40FC						;391A15
+	db $08 : dw $40F8						;391A18
+	db $08 : dw $40F4						;391A1B
+	db $30 : dw $40F0						;391A1E
+	db $06 : dw $40F4						;391A21
+	db $06 : dw $40F8						;391A24
+	db $06 : dw $40FC						;391A27
+	db $20 : dw $40D4						;391A2A
+	db !animation_command_80, $00					;391A2D
+
+;00A3 v rope move
+;KIDDY_ANIM_F91A2F:
+kiddy_rope_vertical_single_up:
+	db !animation_command_84 : dw CODE_B9DB45
+	db $04 : dw $4094
+	db $04 : dw $4098
+	db $04 : dw $409C
+	db $04 : dw $40A0
+	db !animation_command_81 : dw CODE_B9DB19
+	db $04 : dw $40A4
+	db $04 : dw $40A8
+	db $04 : dw $40AC
+	db $04 : dw $40B0
+	db !animation_command_81 : dw CODE_B9DB19
+	db $04 : dw $40B4
+	db $04 : dw $40B8
+	db $04 : dw $40BC
+	db $04 : dw $40C0
+	db !animation_command_81 : dw CODE_B9DB19
+	db $04 : dw $40C4
+	db $04 : dw $40C8
+	db $04 : dw $40CC
+	db $04 : dw $40D0
+	db !animation_command_81 : dw CODE_B9DB19
+	db !animation_command_80, $00
+	
+kiddy_rope_vertical_single_down:
+	db !animation_command_84 : dw CODE_B9DB45
+	db $02 : dw $40D0
+	db $02 : dw $40CC
+	db $02 : dw $40C8
+	db $02 : dw $40C4
+	db !animation_command_81 : dw CODE_B9DB19
+	db $02 : dw $40C0
+	db $02 : dw $40BC
+	db $02 : dw $40B8
+	db $02 : dw $40B4
+	db !animation_command_81 : dw CODE_B9DB19
+	db $02 : dw $40B0
+	db $02 : dw $40AC
+	db $02 : dw $40A8
+	db $02 : dw $40A4
+	db !animation_command_81 : dw CODE_B9DB19
+	db $02 : dw $40A0
+	db $02 : dw $409C
+	db $02 : dw $4098
+	db $02 : dw $4094
+	db !animation_command_81 : dw CODE_B9DB19
+	db !animation_command_80, $00
+
+;00A4 v rope turn
+;KIDDY_ANIM_F91A75:
+kiddy_rope_vertical_single_turn:
+	db $02 : dw $40D4						;391A75
+	db $02 : dw $40D8						;391A78
+	db $02 : dw $40DC						;391A7B
+	db $02 : dw $40E0						;391A7E
+	db !animation_command_81 : dw CODE_B9E019			;391A81
+	db $02 : dw $40E0						;391A84
+	db $02 : dw $40DC						;391A87
+	db $02 : dw $40D8						;391A8A
+	db $02 : dw $40D4						;391A8D
+	db !dkc3_anim_command_89 : dw !anim_id_kong_v_rope_idle+$8000	;391A90
+	db !animation_command_80, $00					;391A93
+
+kiddy_hurt_jump_off_screen:
+	db $02 : dw $3E24
+	db $01 : dw $3E28
+	db !animation_command_81 : dw CODE_B9DA50
+	db $04 : dw $3E2C
+	db $04 : dw $3E30
+	db $04 : dw $3E34
+	db $04 : dw $3E38
+	db $04 : dw $3E3C
+	db $04 : dw $3E40
+	db !animation_command_83 : dw CODE_B9D12B
+	db !animation_command_80, $00
+
+kiddy_bonus_exit:
+	db !animation_command_81 : dw CODE_B9D9E6
+	db !animation_command_81 : dw CODE_B9D9FF
+	db !animation_command_81 : dw CODE_B9D9ED
+kiddy_bonus_exit_loop:
+	db $03 : dw $3DF4				;39137A
+	db $03 : dw $3DF8				;39137D
+	db $03 : dw $3DFC				;391380
+	db $03 : dw $3E00				;391386
+	db $03 : dw $3E04				;391389
+	db $03 : dw $3E08				;39138C
+	db $03 : dw $3E0C				;391392
+	db $03 : dw $3E10				;391395
+	db $03 : dw $3E14				;391398
+	db $03 : dw $3E18				;39139E
+	db $03 : dw $3E1C				;3913A1
+	db $03 : dw $3E20				;3913A4
+	db !animation_command_82 : dw kiddy_bonus_exit_loop
+	db !animation_command_80, $00			;3913AA
+
+kiddy_bonus_exit_swim:
+	db !animation_command_81 : dw CODE_B9D9E6
+	db !animation_command_81 : dw CODE_B9D9FF
+	db !animation_command_81 : dw CODE_B9D9ED
+kiddy_bonus_exit_swim_loop:
+	db $03 : dw $3FDC				;391ED1
+	db $03 : dw $3FE0				;391ED7
+	db $03 : dw $3FE4				;391EDA
+	db $03 : dw $3FE8				;391EDD
+	db $03 : dw $3FEC				;391EE0
+	db $03 : dw $3FF0				;391EE3
+	db $03 : dw $3FF4				;391EE6
+	db $03 : dw $3FF8				;391EE9
+	db $03 : dw $3FFC				;391EEC
+	db $03 : dw $4000				;391EEF
+	db $03 : dw $4004				;391EF2
+	db $03 : dw $4008				;391EF5
+	db $03 : dw $400C				;391EF8
+	db $03 : dw $4010				;391EFB
+	db $03 : dw $4014				;391EFE
+	db $03 : dw $4018				;391F01
+	db !animation_command_82 : dw kiddy_bonus_exit_swim_loop
+	db !animation_command_80, $00			;391F04
+
+kiddy_team_top_air:
+	db $02 : dw $3E58
+	db $02 : dw $3E5C
+	db $02 : dw $3E60
+	db $02 : dw $3E64
+	db $02 : dw $3E68
+	db $02 : dw $3E6C
+	db $02 : dw $3E70
+	db $02 : dw $3E74
+	db $02 : dw $3E78
+	db $02 : dw $3E7C
+	db $02 : dw $3E80
+	db $02 : dw $3E84
+	db !animation_command_80, $00
 
 ;ANIM_SUB_F91131:
 ANIM_SUB_F91131:
