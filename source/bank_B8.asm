@@ -5447,7 +5447,13 @@ CODE_B8A997:
 	RTS					;$B8A9BA  /
 
 CODE_B8A9BB:
+	LDX current_sprite
+	CPX #$0F5A			;-This check has been added to prevent a softlock because No-Animal Signs run this code along with DK Barrels
+	BCS .is_dk_barrel		;/
+	LDY $0597
+	BRL old_follower_kong_is_barrel_kong
 
+.is_dk_barrel:
 	LDA kong_status			;get old follower kong
 	XBA
 	AND #$00FF
@@ -5472,26 +5478,25 @@ CODE_B8A9BB:
 	LDA $4C,x			;get current kong in barrel
 	STA kong_status+1
 
-
 ;Start of code to assist with loading palettes
-	LDA kong_status						;Load leader Kong value
-	CMP kong_palette_order				;Compare to Kong who has sprite palette on line 1 ($90-$9F)
+	LDA kong_status				;Load leader Kong value
+	CMP kong_palette_order			;Compare to Kong who has sprite palette on line 1 ($90-$9F)
 	BEQ kong_pal_order_check_1_1_match	;If the same, we know leader Kong's palette is on palette line 1
-	CMP kong_palette_order+1			;Otherwise, compare to Kong who has sprite palette on line 2 ($A0-$AF)
+	CMP kong_palette_order+1		;Otherwise, compare to Kong who has sprite palette on line 2 ($A0-$AF)
 	BEQ kong_pal_order_check_1_2_match	;If the same, we know leader Kong's palette is on palette line 2
 
 kong_pal_order_check_1_1_match:
-	LDA kong_status+1					;Load follower Kong value
-	CMP kong_palette_order+1			;Compare to Kong who has sprite palette on line 2 ($A0-$AF)
+	LDA kong_status+1			;Load follower Kong value
+	CMP kong_palette_order+1		;Compare to Kong who has sprite palette on line 2 ($A0-$AF)
 	BEQ kong_pal_order_check_done		;Both palettes match, so there's nothing to do, we're done checking
-	STA kong_palette_order+1			;Otherwise, replace Kong palette line 2 value
+	STA kong_palette_order+1		;Otherwise, replace Kong palette line 2 value
 	BRA kong_pal_order_check_done		;We're done checking now
 
 kong_pal_order_check_1_2_match:
-	LDA kong_status+1					;Load follower Kong value
-	CMP kong_palette_order				;Compare to Kong who has sprite palette on line 1 ($90-$9F)
+	LDA kong_status+1			;Load follower Kong value
+	CMP kong_palette_order			;Compare to Kong who has sprite palette on line 1 ($90-$9F)
 	BEQ kong_pal_order_check_done		;Both palettes match, so there's nothing to do, we're done checking
-	STA kong_palette_order				;Otherwise, replace Kong palette line 1 value
+	STA kong_palette_order			;Otherwise, replace Kong palette line 1 value
 	
 kong_pal_order_check_done:
 ;End of code to assist with loading palettes
@@ -5505,7 +5510,7 @@ kong_pal_order_check_done:
 	JSL update_kong_status_wrapper
 ;Start of code to swap palette attributes of old follower Kong with new follower Kong and load palettes
 	CPY $0597				;Compare to object address of new follower Kong
-	BEQ .old_follower_kong_is_barrel_kong	;Skip ahead if equal
+	BEQ old_follower_kong_is_barrel_kong	;Skip ahead if equal
 	LDA temp_32
 	XBA
 	TAX
@@ -5526,7 +5531,7 @@ kong_pal_order_check_done:
 	LDA temp_34
 	TYX
 	JSL CODE_BB8AE4
-.old_follower_kong_is_barrel_kong:
+old_follower_kong_is_barrel_kong:
 	LDX $64
 ;End of code
 	LDA $06,x				;$B8A9C0   |
