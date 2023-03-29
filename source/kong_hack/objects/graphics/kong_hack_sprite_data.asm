@@ -105,3 +105,27 @@ donkey_map_walking_frame8:
 
 donkey_map_walking_frame9:
 	incbin "donkey_map/donkey_map_walking_frame9.bin"
+
+kiddy_map_walking_frame1:
+	incbin "kiddy_map/kiddy_map_walking_frame1.bin"
+
+kiddy_map_walking_frame2:
+	incbin "kiddy_map/kiddy_map_walking_frame2.bin"
+
+kiddy_map_walking_frame3:
+	incbin "kiddy_map/kiddy_map_walking_frame3.bin"
+
+kiddy_map_walking_frame4:
+	incbin "kiddy_map/kiddy_map_walking_frame4.bin"
+
+kiddy_map_walking_frame5:
+	incbin "kiddy_map/kiddy_map_walking_frame5.bin"
+
+kiddy_map_walking_frame6:
+	incbin "kiddy_map/kiddy_map_walking_frame6.bin"
+
+kiddy_map_walking_frame7:
+	incbin "kiddy_map/kiddy_map_walking_frame7.bin"
+
+kiddy_map_walking_frame8:
+	incbin "kiddy_map/kiddy_map_walking_frame8.bin"

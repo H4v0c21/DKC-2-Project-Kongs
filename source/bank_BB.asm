@@ -5432,7 +5432,7 @@ CODE_BBAD34:
 	JSR CODE_BBAEB0				;$BBAD4B   |
 	LDA #$0004				;$BBAD4E   |
 	JSL CODE_B9D0B8				;$BBAD51   | animation entry point
-	JSR CODE_BBAEBD				;$BBAD55   | animal buddy related?
+;	JSR CODE_BBAEBD				;$BBAD55   | animal buddy related?
 	LDA.l DATA_FF0040			;$BBAD58   |
 	STA $16BA				;$BBAD5C   | +8
 	LDA.l DATA_FF0042			;$BBAD5F   |
@@ -5447,7 +5447,7 @@ CODE_BBAD34:
 	JSR CODE_BBAEB0				;$BBAD76   |
 	LDA #$0004				;$BBAD79   |
 	JSL CODE_B9D0B8				;$BBAD7C   |
-	JSR CODE_BBAEBD				;$BBAD80   |
+;	JSR CODE_BBAEBD				;$BBAD80   |
 	LDA.l DATA_FF012A			;$BBAD83   |
 	STA $16E0				;$BBAD87   | +8
 	LDA.l DATA_FF012C			;$BBAD8A   |
@@ -5465,7 +5465,7 @@ CODE_BBAD34:
 	JSR CODE_BBAEB0
 	LDA #$0004
 	JSL CODE_B9D0B8
-	JSR CODE_BBAEBD
+;	JSR CODE_BBAEBD
 	LDA.l donkey_physics_constant_a
 	STA !donkey_variables_address+8
 	LDA.l donkey_physics_constants
@@ -5483,12 +5483,20 @@ CODE_BBAD34:
 	JSR CODE_BBAEB0
 	LDA #$0004
 	JSL CODE_B9D0B8
-	JSR CODE_BBAEBD
+;	JSR CODE_BBAEBD
 	LDA.l kiddy_physics_constant_a
 	STA !kiddy_variables_address+8
 	LDA.l kiddy_physics_constants
 	STA !kiddy_variables_address+10
-	
+
+;Kong palette loading moved here so that palettes load in a consistent order
+	LDA $0593
+	STA current_sprite
+	JSR CODE_BBAEBD
+	LDA $0597
+	STA current_sprite
+	JSR CODE_BBAEBD
+
 	JSR CODE_BBADDC				;$BBAD91   |
 	JSR CODE_BBAD98				;$BBAD94   |
 	RTS					;$BBAD97  /
@@ -5700,17 +5708,14 @@ CODE_BBAEE3:
 	AND #$0003				;Mask
 	JSL get_kong_sprite_address		;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
 	CMP current_sprite			;compare to pointer to current object struct
-	BNE disabled_kong_object_init_pal_load	;this branch is followed if the Kong being spawned isn't either of the enabled ones
+	BNE .do_not_assign_palette		;this branch is followed if the Kong being spawned isn't either of the enabled ones
 ;END OF PATCH
 	LDA #$0004				;$BBAEE3  \		 $0004 = Second palette ID for Kongs (previously Dixie palette ID)
 	JSR CODE_BB8A69				;$BBAEE6   |
 	BRA CODE_BBAED7				;$BBAEE9  /
 ;START OF PATCH (code to NOT load palettes for either of the two disabled Kongs)
-disabled_kong_object_init_pal_load:
-	LDA #$0000				;$0000 = Global palette
-	JSR CODE_BB8A69
-	DEC $0B74,x				;Decrement number of references to this palette, so that the inactive Kongs don't prevent it from unloading
-	BRA CODE_BBAED7
+.do_not_assign_palette:
+	RTS
 ;END OF PATCH
 
 CODE_BBAEEB:

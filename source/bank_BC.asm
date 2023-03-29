@@ -3447,6 +3447,14 @@ DATA_BCB600:
 	dw DATA_BCD664	;Donkey map frame 7
 	dw DATA_BCD664	;Donkey map frame 8
 	dw DATA_BCD664	;Donkey map frame 9
+	dw DATA_BCD658	;Kiddy map frame 1
+	dw DATA_BCD658	;Kiddy map frame 2
+	dw DATA_BCD658	;Kiddy map frame 3
+	dw DATA_BCD658	;Kiddy map frame 4
+	dw DATA_BCD658	;Kiddy map frame 5
+	dw DATA_BCD658	;Kiddy map frame 6
+	dw DATA_BCD658	;Kiddy map frame 7
+	dw DATA_BCD658	;Kiddy map frame 8
 ;END OF PATCH
 
 DATA_BCD100:

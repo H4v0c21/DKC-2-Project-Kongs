@@ -11532,14 +11532,14 @@ donkey_map:
 	db !animation_command_80, $00
 
 kiddy_map:
-	db $04 : dw !kiddy_map_walk_gfx_num_base
-	db $04 : dw !kiddy_map_walk_gfx_num_base+$04
-	db $04 : dw !kiddy_map_walk_gfx_num_base+$08
-	db $04 : dw !kiddy_map_walk_gfx_num_base+$0C
-	db $04 : dw !kiddy_map_walk_gfx_num_base+$10
-	db $04 : dw !kiddy_map_walk_gfx_num_base+$14
-	db $04 : dw !kiddy_map_walk_gfx_num_base+$18
-	db $04 : dw !kiddy_map_walk_gfx_num_base+$1C
+	db $05 : dw !kiddy_map_walk_gfx_num_base
+	db $05 : dw !kiddy_map_walk_gfx_num_base+$04
+	db $05 : dw !kiddy_map_walk_gfx_num_base+$08
+	db $05 : dw !kiddy_map_walk_gfx_num_base+$0C
+	db $05 : dw !kiddy_map_walk_gfx_num_base+$10
+	db $05 : dw !kiddy_map_walk_gfx_num_base+$14
+	db $05 : dw !kiddy_map_walk_gfx_num_base+$18
+	db $05 : dw !kiddy_map_walk_gfx_num_base+$1C
 	db !animation_command_80, $00
 ;END OF PATCH
 
