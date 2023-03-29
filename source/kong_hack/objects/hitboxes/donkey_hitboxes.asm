@@ -53,8 +53,13 @@ HITBOX_BB98FE:
 	dw $FFF0, $FFCF, $0013, $0026
 HITBOX_BB9906:
 	dw $FFF8, $FFCF, $0013, $0026
+	
+;changed from DKC1; reworked crouch hitbox so donkey crouch works in DKC 2 scenarios
 HITBOX_BB990E:
-	dw $FFFA, $FFE6, $0012, $001D
+	dw $FFF0, $FFEA, $0020, $0016
+;HITBOX_BB990E:
+;	dw $FFFA, $FFE6, $0012, $001D
+
 HITBOX_BB9916:
 	dw $FFF6, $FFDD, $0012, $0022
 HITBOX_BB991E:

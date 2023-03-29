@@ -2896,6 +2896,9 @@ clear_kong_data:
 
 ;donkey main sprite
 donkey_kong_main_b8:
+	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
+	BNE process_donkey	;If non-zero, skip code which checks for Kong status to suspend Donkey
+	
 	LDA kong_status
 	AND #$00FF
 	CMP #$0002
@@ -2921,6 +2924,9 @@ process_donkey:
 
 ;kiddy main sprite
 kiddy_kong_main_b8:
+	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
+	BNE process_kiddy	;If non-zero, skip code which checks for Kong status to suspend Kiddy
+	
 	LDA kong_status
 	AND #$00FF
 	CMP #$0003
@@ -2946,6 +2952,9 @@ process_kiddy:
 
 ;dixie main sprite
 CODE_B89670:
+	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
+	BNE process_dixie	;If non-zero, skip code which checks for Kong status to suspend Dixie
+	
 	LDA kong_status
 	AND #$00FF
 	CMP #$0001
@@ -2971,6 +2980,9 @@ process_dixie:
 
 ;diddy main sprite
 CODE_B8967D:
+	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
+	BNE process_diddy	;If non-zero, skip code which checks for Kong status to suspend Diddy
+	
 	LDA kong_status
 	AND #$00FF
 	BEQ process_diddy
