@@ -110,9 +110,9 @@ dw $000B	;jump velocity blend strength
 dw $000B	;walk velocity blend strength
 dw $000B	;run velocity blend strength
 	
-dw $0003	;ice walk velocity blend strength
-dw $0003	;ice run velocity blend strength
-dw $0003	;ice stand velocity blend strength
+dw $0002	;ice walk velocity blend strength
+dw $0005	;ice run velocity blend strength
+dw $0002	;ice stand velocity blend strength
 	dw $0002
 	
 dw $0120	;roll speed (from standing)
