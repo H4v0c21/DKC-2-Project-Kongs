@@ -13,8 +13,7 @@
 !kiddy_life_icon_graphic_number = $4228
 
 !donkey_map_walk_gfx_num_base = $422C
-;!kiddy_map_walk_gfx_num_base = $4250
-!kiddy_map_walk_gfx_num_base = $0F94
+!kiddy_map_walk_gfx_num_base = $4250
 
 !null_pointer = $000000
 
@@ -144,7 +143,7 @@
 !boss_command_set_projectiles = $48
 !boss_command_shoot_fish = $49
 
-;sounds
+;global sounds
 !sound_00 = $00				;0x00, "Nothing"
 !sound_01 = $01				;0x01, "Nothing?"
 !sound_02 = $02				;0x02, "Klomp walking"
@@ -241,6 +240,8 @@
 !sound_5D = $5D				;0x5D, "Krook jumped on"
 !sound_5E = $5E				;0x5E, "Pause/unpause game"
 !sound_5F = $5F				;0x5F, "Wrong/invalid selection"
+
+;non-global sounds
 !sound_60 = $60				;0x60, "Egg cracking sound"
 !sound_61 = $61				;0x61, "Krow flapping"
 !sound_62 = $62				;0x62, "Jumping in and out of water, or krow getting hit"
