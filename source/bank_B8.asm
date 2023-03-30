@@ -1438,10 +1438,14 @@ endif						;	   |
 	JSR CODE_B8CE99				;$B88B45   |
 	JSR CODE_B8CEBA				;$B88B48   |
 CODE_B88B4B:					;	   |
-	LDA #$0001				;$B88B4B   |
-	LDY $08A4				;$B88B4E   |
+	LDA #$0001				;$B88B4B   |	;Kong palette 1 (previously Diddy)
+;START OF PATCH (when crossing a No-Animal sign while transformed into an Animal Buddy, load/assign palette for active Kong based on kong_status and kong_palette_order instead of $08A4)
+	LDY kong_status
+	CPY kong_palette_order			;These will match if the leader Kong is using the first palette, and won't if using the second
+;	LDY $08A4				;$B88B4E   |
+;END OF PATCH
 	BEQ CODE_B88B56				;$B88B51   |
-	LDA #$0004				;$B88B53   |
+	LDA #$0004				;$B88B53   |	;Kong palette 2 (previously Dixie)
 CODE_B88B56:					;	   |
 	LDX $0593				;$B88B56   |
 	JSL CODE_BB8C44				;$B88B59   |
