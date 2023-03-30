@@ -2034,12 +2034,11 @@ CODE_BEC694:					;	   |
 CODE_BEC695:
 ;START OF PATCH: Load palette for life icon
 	LDA $6E					;Non-zero if controlling an animal
-	BEQ .NotAnimal				;Zero means we are controlling Kongs
+	BEQ .NotRidingAnimal			;Zero means we are controlling Kongs
 	LDA $6C					;If a Kong is riding the animal, this is the pointer to the Kong object
-	BEQ .TransformedIntoAnimal		;Zero here means we are transformed into an animal via an Animal Buddy Barrel
-	TAX					;Reached if riding an animal
-	BRA .LoadAttributeUpper
-.TransformedIntoAnimal:
+	BNE .RidingAnimal			;Non-zero here means we are riding an animal
+.NotRidingAnimal:
+	;This code is reached if Kongs or transformed into an animal
 	LDA kong_status				;-These will match if the leader Kong is using the first palette, and won't if using the second
 	CMP kong_palette_order			;/
 	BNE .LoadSecondKongPalette
@@ -2048,13 +2047,14 @@ CODE_BEC695:
 .LoadSecondKongPalette:
 	LDA #$6574							;Load Kong palette 2 for life icon (previously Dixie)
 	BRA .SkipToAssigningPalette
-.NotAnimal:
-	LDX $0593				;Get leader Kong's object address
-.LoadAttributeUpper:
+.RidingAnimal:
+	;This code is reached if riding an animal
+	TAX
 	LDA $13,x				;Get upper bits of attribute in lower byte
 	AND #$000E				;Isolate these bits
 	TAX					;Transfer the accumulator to the X index register
 	LDA $0B64,x				;Retrieve palette address from table where they are stored
+.SkipToAssigningPalette:
 ;END OF PATCH
 	JSL CODE_BB8A65				;$BEC698   |
 	DEC $0B74,x				;$BEC69C   |		;Decrement number of references to this palette
