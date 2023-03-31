@@ -2742,7 +2742,11 @@ CODE_B9DF7A:
 	CMP $0597				;$B9DF7A  \
 	BEQ CODE_B9DF9E				;$B9DF7D   |
 	LDA $08A4				;$B9DF7F   |
-	BEQ CODE_B9DF8A				;$B9DF82   |
+;START OF PATCH (sprite order fix for Donkey and Kiddy when jumping with a carried object)
+	CMP #$0001				;check if Dixie
+	BNE CODE_B9DF8A				;branch to skip setting carried object's sprite order if not Dixie
+	;BEQ CODE_B9DF8A			;$B9DF82   |
+;END OF PATCH
 	LDA #$0001				;$B9DF84   |
 	STA $0D80				;$B9DF87   |
 CODE_B9DF8A:					;	   |
