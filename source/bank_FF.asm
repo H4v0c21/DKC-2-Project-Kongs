@@ -1501,21 +1501,13 @@ DATA_FF1494:
 
 DATA_FF14A6:
 	dw sprite.number, $00B8
-if !version == 0
-	dw sprite.action, $151A
-else
-	dw sprite.action, $151E
-endif
+	dw sprite.action, DATA_FF151E
 	dw !initcommand_load_subconfig, DATA_FF14BC
 	dw !initcommand_success
 
 DATA_FF14B4:
 	dw sprite.number, $00B4
-if !version == 0
-	dw sprite.action, $1524
-else
-	dw sprite.action, $1528
-endif
+	dw sprite.action, DATA_FF1528
 DATA_FF14BC:
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.x_speed, $00C0
@@ -1529,21 +1521,14 @@ DATA_FF14BC:
 
 DATA_FF14E0:
 	dw sprite.number, $00B8
-if !version == 0
-	dw sprite.action, $151A
-else
-	dw sprite.action, $151E
-endif
+	dw sprite.action, DATA_FF151E
 	dw !initcommand_load_subconfig, DATA_FF14F6
 	dw !initcommand_success
 
 DATA_FF14EE:
 	dw sprite.number, $00B4
-if !version == 0
-	dw sprite.action, $1524
-else
-	dw sprite.action, $1528
-endif
+	dw sprite.action, DATA_FF1528
+
 DATA_FF14F6:
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.number, $00B4
@@ -2333,11 +2318,7 @@ DATA_FF1D8E:
 	dw !initcommand_set_alt_palette, $0009
 	dw !initcommand_set_animation, $02E3
 	dw sprite.unknown_52, $0020
-if !version == 0
-	dw sprite.unknown_4E, $1D50
-else
-	dw sprite.unknown_4E, $1D54
-endif
+	dw sprite.unknown_4E, DATA_FF1D54
 	dw !initcommand_success
 
 DATA_FF1DC8:
@@ -2760,11 +2741,7 @@ DATA_FF22DC:
 
 DATA_FF2308:
 	dw sprite.number, $00B4
-if !version == 0
-	dw sprite.action, $1524
-else
-	dw sprite.action, $1528
-endif
+	dw sprite.action, DATA_FF1528
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.x_speed, $00C0
 	dw sprite.y_speed, $0000
@@ -2777,11 +2754,7 @@ endif
 
 DATA_FF2334:
 	dw sprite.number, $00B4
-if !version == 0
-	dw sprite.action, $1524
-else
-	dw sprite.action, $1528
-endif
+	dw sprite.action, DATA_FF1528
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.number, $00B4
 	dw sprite.x_speed, $FF40
@@ -3359,13 +3332,8 @@ DATA_FF29E8:
 DATA_FF2A08:
 	dw sprite.number, $0088
 	dw sprite.action, $0000
-if !version == 0
-	dw sprite.unknown_54, $2A22
-	dw sprite.unknown_42, $B968
-else
-	dw sprite.unknown_54, $2A26
-	dw sprite.unknown_42, $B966
-endif
+	dw sprite.unknown_54, DATA_FF2A26
+	dw sprite.unknown_42, DATA_FFB966
 	dw sprite.unknown_44, $0004
 	dw sprite.unknown_46, $0019
 	dw sprite.unknown_48, $0010
@@ -20911,8 +20879,10 @@ DATA_FFFD7D:
 
 DATA_FFFD90:
 	db $52, $24, $00, $4A, $04, $04, $2A, $00
-	db $FF, $F9, $00, $86, $00, $00, $C0, $FF
+	db $FF, $F9
 
+DATA_FFFD9A:
+	dw !initcommand_spawn_relative, $0000, $FFC0
 DATA_FFFDA0:
 	dw !initcommand_load_subconfig, DATA_FFFDD2
 	dw sprite.unknown_52, $2827
@@ -20973,11 +20943,7 @@ DATA_FFFE44:
 	dw sprite.action, $0100
 	dw sprite.oam_property, $0000
 	dw sprite.unknown_44, $0000
-if !version == 0
-	dw sprite.unknown_48, $FD8A
-else
-	dw sprite.unknown_48, $FD9A
-endif
+	dw sprite.unknown_48, DATA_FFFD9A
 	dw sprite.unknown_4A, $0080
 	dw !initcommand_success
 
@@ -21015,11 +20981,7 @@ DATA_FFFEAC:
 	dw sprite.y_speed, $0100
 	dw sprite.x_speed, $FF80
 	dw sprite.max_x_speed, $FD00
-if !version == 0
-	dw sprite.unknown_48, $FD9A
-else
-	dw sprite.unknown_48, $FDAA
-endif
+	dw sprite.unknown_48, DATA_FFFDB0
 	dw !initcommand_success
 
 DATA_FFFECA:
@@ -21039,11 +21001,7 @@ DATA_FFFEE8:
 	dw sprite.y_speed, $0100
 	dw sprite.x_speed, $FF80
 	dw sprite.max_x_speed, $FD00
-if !version == 0
-	dw sprite.unknown_48, $FDAE
-else
-	dw sprite.unknown_48, $FDBE
-endif
+	dw sprite.unknown_48, DATA_FFFDBE
 	dw !initcommand_success
 
 DATA_FFFF06:
