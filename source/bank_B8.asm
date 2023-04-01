@@ -1438,10 +1438,14 @@ endif						;	   |
 	JSR CODE_B8CE99				;$B88B45   |
 	JSR CODE_B8CEBA				;$B88B48   |
 CODE_B88B4B:					;	   |
-	LDA #$0001				;$B88B4B   |
-	LDY $08A4				;$B88B4E   |
+	LDA #$0001				;$B88B4B   |	;Kong palette 1 (previously Diddy)
+;START OF PATCH (when crossing a No-Animal sign while transformed into an Animal Buddy, load/assign palette for active Kong based on kong_status and kong_palette_order instead of $08A4)
+	LDY kong_status				;-These will match if the leader Kong is using the first palette, and won't if using the second
+	CPY kong_palette_order			;/
+;	LDY $08A4				;$B88B4E   |
+;END OF PATCH
 	BEQ CODE_B88B56				;$B88B51   |
-	LDA #$0004				;$B88B53   |
+	LDA #$0004				;$B88B53   |	;Kong palette 2 (previously Dixie)
 CODE_B88B56:					;	   |
 	LDX $0593				;$B88B56   |
 	JSL CODE_BB8C44				;$B88B59   |
@@ -5505,24 +5509,26 @@ kong_pal_order_check_done:
 ;Start of code to get palette attribute from follower Kong to be "replaced" by Kong released from DK Barrel
 	LDA $0012,y				;Load OAM attributes of old follower Kong
 	AND #$0E00				;Isolate palette bits
-	STA temp_32				;Store to temporary variable
+	STA temp_32				;Store to temporary variable $32
 ;End of code to to get palette attribute from follower Kong to be "replaced" by Kong released from DK Barrel
 	JSL update_kong_status_wrapper
 ;Start of code to swap palette attributes of old follower Kong with new follower Kong and load palettes
 	CPY $0597				;Compare to object address of new follower Kong
 	BEQ old_follower_kong_is_barrel_kong	;Skip ahead if equal
-	LDA temp_32
-	XBA
-	TAX
-	XBA
-	EOR $0012,y
-	STA $0012,y
-	LDA $0B64,x
-	STA temp_34
+	LDA temp_32				;Load palette bits of old follower Kong from temp variable
+	XBA					;Swap high and low bytes
+	TAX					;Transfer result to X
+	XBA					;Swap high and low bytes back again
+	EOR $0012,y				;Exclusive OR new follower Kong's OAM attributes to apply the other bits to the palette bits
+	STA $0012,y				;Store the result to the new follower Kong's OAM attributes
+	LDA $0B64,x				;$0B64,x is palette value in table to overwrite
+	STA temp_34				;Store this to temporary variable $34
 	LDA.w #global_sprite_palette
 	TYX
 	JSL CODE_BB8AE4	
-	LDY $0597
+	LDY $0597				;Y now contains new follower Kong's object entity table offset
+	LDA #$00D8				;#$00D8 is sprite order value normally used by the follower Kong, this fixes an issue where a suspended Kong would sometimes overlap the leader Kong)
+	STA $0002,y				;Store to new follower Kong's sprite order value
 	LDA $0012,y
 	AND #$0E00
 	EOR $0012,y
@@ -5549,20 +5555,20 @@ old_follower_kong_is_barrel_kong:
 ;Start of code to fix glitched state if the barrel breaks when teamed up
 	LDX $0593				;Load leader Kong's address into X
 	LDA $0D7A				;Load this variable to see if the leader is carrying something
-	BEQ .check_state		;If zero, we're not carrying a Kong, but still need to check some other states
+	BEQ .check_state			;If zero, we're not carrying a Kong, but still need to check some other states
 	CMP #$0F5A				;If not zero, check for first object slot after Kongs
-	BCC .reset_leader_state ;If value is less than this (which limits us to the Kongs being held), reset the leader's state
+	BCC .reset_leader_state 		;If value is less than this (which limits us to the Kongs being held), reset the leader's state
 .check_state:
 	LDA $2E,x				;Load leader Kong's state
 	CMP #$0020				;$0020 = Team throw (as leader)
-	BCC .do_not_reset_state	;If less than this value, stop checking (every status below this value would be caught by a check above, as $0D7A will be set to a Kong's object slot)
-	BEQ .reset_leader_state	;If matched, reset the state
+	BCC .do_not_reset_state			;If less than this value, stop checking (every status below this value would be caught by a check above, as $0D7A will be set to a Kong's object slot)
+	BEQ .reset_leader_state			;If matched, reset the state
 	CMP #$002C				;$002C = Team throw upward (as leader)
-	BEQ .reset_leader_state	;If matched, reset the state
+	BEQ .reset_leader_state			;If matched, reset the state
 	CMP #$002E				;$002E = Leader/thrower Kong moves to follower/thrown Kong's location
-	BEQ .reset_leader_state	;If matched, reset the state
+	BEQ .reset_leader_state			;If matched, reset the state
 	CMP #$007E				;$007E = Canceling team-up (as leader)
-	BNE .do_not_reset_state	;If not matched, don't reset the state
+	BNE .do_not_reset_state			;If not matched, don't reset the state
 .reset_leader_state:
 	LDA #$0001				;$0001 = falling
 	STA $2E,x				;Set Kong state
@@ -5570,7 +5576,7 @@ old_follower_kong_is_barrel_kong:
 	PHA
 	JSR CODE_B88092
 	LDA #$0007				;$0007 = base ID for falling animation
-	JSL CODE_B9D0B8			;Set Kong animation
+	JSL CODE_B9D0B8				;Set Kong animation
 	STZ $0D7A				;Clear object held pointer variable
 	BRA .do_not_push_current_sprite_to_stack
 .do_not_reset_state:
