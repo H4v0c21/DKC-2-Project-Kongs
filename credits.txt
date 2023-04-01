@@ -11,4 +11,8 @@ Tools Included:
 	
 	Additional scripts created by H4v0c21
 	
-	Hack concept created by Mattrizzle
+Hack Contributors:
+	
+	Programmers and Designers: H4v0c21, Mattrizzle
+	
+	Verification on real hardware provided by: Sticky_Brush

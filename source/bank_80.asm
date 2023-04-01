@@ -13615,13 +13615,13 @@ DATA_80FFC0:
 	db "DIDDY'S KONG QUEST   "
 
 DATA_80FFD5:
-	db $31
+	db $35
 
 DATA_80FFD6:
 	db $02
 
 DATA_80FFD7:
-	db $0C
+	db $0D
 
 DATA_80FFD8:
 	db $01
