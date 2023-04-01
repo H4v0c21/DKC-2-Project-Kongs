@@ -547,6 +547,7 @@ DATA_FF0A06:
 	dw !initcommand_set_animation, $01D2
 	dw !initcommand_success
 
+;Funky Kong cast roll init
 DATA_FF0A20:
 	dw sprite.number, $0318
 	dw sprite.x_position, $00E0
@@ -558,13 +559,17 @@ DATA_FF0A20:
 	dw !initcommand_set_animation, $01CA
 	dw !initcommand_success
 
+;Funky's surfboard cast roll init
 DATA_FF0A42:
 	dw sprite.number, $0318
 	dw sprite.x_position, $00E0
 	dw sprite.y_position, $0180
 	dw sprite.unknown_42, $0000
 	dw sprite.unknown_44, DATA_BAC28D
-	dw !initcommand_set_alt_palette, $0004
+;START OF PATCH (alter Funky surfboard in cast roll to use a unique palette instead of Dixie's)
+	dw !initcommand_set_alt_palette, $0025
+;	dw !initcommand_set_alt_palette, $0004
+;END OF PATCH
 	dw !initcommand_set_oam, $3000
 	dw !initcommand_set_animation, $01CB
 	dw !initcommand_success
@@ -2909,22 +2914,30 @@ DATA_FF24BC:
 	db $FF, $FF, $FF, $FF
 ;END OF PATCH
 
+;Swanky Kong object init
 DATA_FF24DE:
 	dw sprite.number, $018C
 	dw sprite.x_position, $0080
 	dw sprite.y_position, $00A0
-	dw sprite.render_order, $00F0
+;START OF PATCH (adjust Swanky's render order so that he appears behind the other Kongs)
+	dw sprite.render_order, $00CC
+;	dw sprite.render_order, $00F0
+;END OF PATCH
 	dw sprite.unknown_42, $0000
 	dw sprite.unknown_44, DATA_BAC2AB
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_set_alt_palette, $0037
 	dw !initcommand_success
 
+;Swanky's tooth sparkle object init
 DATA_FF2500:
 	dw sprite.number, $018C
 	dw sprite.x_position, $0080
 	dw sprite.y_position, $00A0
-	dw sprite.render_order, $00F8
+;START OF PATCH (adjust render order of Swanky's tooth sparkle so it appears behind the other Kongs but still in front of Swanky)
+	dw sprite.render_order, $00D4
+;	dw sprite.render_order, $00F8
+;END OF PATCH
 	dw sprite.unknown_42, $0000
 	dw sprite.unknown_44, DATA_BAC2BD
 	dw sprite.unknown_1C, $C000
