@@ -8,52 +8,53 @@ else
 	db $B3, $DE, $12, $29
 endif
 
+;Jump table for various Kong-to-object interaction routines (RAM address $0A82)
 DATA_B88004:
-	dw CODE_B89197
-	dw CODE_B89220
-	dw CODE_B8852B
-	dw CODE_B8842B
-	dw CODE_B8848E
-	dw CODE_B884EC
-	dw CODE_B88623
-	dw CODE_B885B8
-	dw CODE_B8871B
-	dw CODE_B8865B
-	dw CODE_B8811E
-	dw CODE_B880D2
-	dw CODE_B89385
-	dw CODE_B88755
-	dw CODE_B89385
-	dw CODE_B89385
-	dw CODE_B886F3
-	dw CODE_B8869E
-	dw CODE_B89319
-	dw CODE_B8934A
-	dw CODE_B881E9
-	dw CODE_B88228
-	dw CODE_B893AA
-	dw CODE_B894C2
-	dw CODE_B88B15
-	dw CODE_B8874D
-	dw CODE_B887D2
-	dw CODE_B8857E
-	dw CODE_B88911
-	dw CODE_B88929
-	dw CODE_B885D5
-	dw CODE_B88A4C
-	dw CODE_B88A92
-	dw CODE_B88C9D
-	dw CODE_B88CA3
-	dw CODE_B8815F
-	dw CODE_B885F5
-	dw CODE_B8899C
-	dw CODE_B88269
-	dw CODE_B88340
-	dw CODE_B88379
-	dw CODE_B88864
-	dw CODE_B89385
-	dw CODE_B88421
-	dw CODE_B8841C
+	dw CODE_B89197	;0001: Swapping in water
+	dw CODE_B89220	;0002: Swapping on land
+	dw CODE_B8852B	;0003: Rejoining team-up after throwing partner upwards
+	dw CODE_B8842B	;0004: Initiating team-up
+	dw CODE_B8848E	;0005: Teamed up
+	dw CODE_B884EC	;0006: Canceling team-up
+	dw CODE_B88623	;0007: Getting stuck to honey on ground
+	dw CODE_B885B8	;0008: Getting stuck to honey on wall
+	dw CODE_B8871B	;0009: 14
+	dw CODE_B8865B	;000A: 16
+	dw CODE_B8811E	;000B: Stunned by enemy on ground (Kudgel)
+	dw CODE_B880D2	;000C: 1A
+	dw CODE_B89385	;000D: 1C
+	dw CODE_B88755	;000E: Bouncing off of tire
+	dw CODE_B89385	;000F: 20
+	dw CODE_B89385	;0010: Entering barrel/cannon
+	dw CODE_B886F3	;0011: Grabbing horizontal rope
+	dw CODE_B8869E	;0012: Grabbing vertical rope
+	dw CODE_B89319	;0013: 28
+	dw CODE_B8934A	;0014: 2A
+	dw CODE_B881E9	;0015: Mounting skull cart
+	dw CODE_B88228	;0016: Jumping off skull cart
+	dw CODE_B893AA	;0017: Mounting Animal Buddy
+	dw CODE_B894C2	;0018: Dismounting Animal Buddy
+	dw CODE_B88B15	;0019: Transforming Animal Buddy into item (crossing No-Animal sign)
+	dw CODE_B8874D	;001A: 36
+	dw CODE_B887D2	;001B: Defeating enemy by stomping
+	dw CODE_B8857E	;001C: Defeating enemy by rolling
+	dw CODE_B88911	;001D: Defeating enemy by team throw
+	dw CODE_B88929	;001E: Knocked back by enemy
+	dw CODE_B885D5	;001F: Stunned by K. Rool before being hit by his blunderbuss
+	dw CODE_B88A4C	;0020: 42
+	dw CODE_B88A92	;0021: 44
+	dw CODE_B88C9D	;0022: 46
+	dw CODE_B88CA3	;0023: Hurt by enemy/obstacle
+	dw CODE_B8815F	;0024: Frozen by K. Rool's blue gas cloud
+	dw CODE_B885F5	;0025: Slowed down by K. Rool's red gas cloud/reversed by K. Rool's purple gas cloud
+	dw CODE_B8899C	;0026: Hurt by being hit by K. Rool's blunderbuss
+	dw CODE_B88269	;0027: Collecting Kremkoin
+	dw CODE_B88340	;0028: 52
+	dw CODE_B88379	;0029: Falling into pit
+	dw CODE_B88864	;002A: Hitting goal target
+	dw CODE_B89385	;002B: Walking through an entrance/running off screen after hitting target
+	dw CODE_B88421	;002C: 5A
+	dw CODE_B8841C	;002D: Leaving level
 
 CODE_B8805E:
 	LDA $08C2				;$B8805E  \
@@ -72,6 +73,7 @@ CODE_B8806A:
 	JSR CODE_B8D8BE				;$B88078   |
 	BRA CODE_B88066				;$B8807B  /
 
+;Routine for objects the Kongs interact with?
 CODE_B8807D:
 	PHK					;$B8807D  \
 	PLB					;$B8807E   |
@@ -1101,8 +1103,12 @@ CODE_B8889A:					;	   |
 	ORA $0AB8				;$B888AC   |
 	STA $0AB8				;$B888AF   |
 	JSR CODE_B88092				;$B888B2   |
-	LDA #$009E				;$B888B5   |
-	ORA $30,x				;$B888B8   |
+;START OF PATCH (disable collision with barrel cannons after hitting a goal target)
+	LDA #$0088				;-This will toggle bits #$0080 (invulnerability to enemies; normally clear) and #$0008 (enable collision with barrel cannons; normally set)
+	EOR $30,x				;/
+;	LDA #$009E				;$B888B5   |
+;	ORA $30,x				;$B888B8   |
+;END OF PATCH
 	STA $30,x				;$B888BA   |
 	LDA $0006,y				;$B888BC   |
 	AND #$FFFB				;$B888BF   |
