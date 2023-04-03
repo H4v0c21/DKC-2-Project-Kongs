@@ -585,6 +585,17 @@ CODE_80876E:
 	STA $36					;$80877F   |
 	LDA #$00FE				;$808781   |
 	STA $38					;$808784   |
+;START OF PATCH (set Kong status for demo)
+	LDA.l $000605				;Load value of gameplay demo
+	CMP #$0003				;Compare to three (third demo in Parrot Chute Panic)
+	BEQ .demo_3				;If it matches, branch so that we can set Kong status differently
+	LDA #$0100				;Diddy/Dixie
+	BRA .set_kong_status
+.demo_3:
+	LDA #$0001				;Dixie/Diddy
+.set_kong_status:
+	STA kong_status
+;END OF PATCH
 	LDA $05FB				;$808786   |
 	CMP #$0001				;$808789   |
 	BNE CODE_8087B8				;$80878C   |

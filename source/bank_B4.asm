@@ -1686,20 +1686,39 @@ CODE_B48DB5:
 CODE_B48DF9:					;	   |
 	RTS					;$B48DF9  /
 
+;START OF PATCH (add routine to set leader Kong to Diddy and follower Kong to the previous leader for ending sequences)
+set_diddy_to_1st_and_leader_to_2nd:
+	SEP #$20
+	LDA kong_status				;Load value of Kong in first slot
+	BEQ .first_kong_diddy			;Branch if Diddy id already the leader (zero flag set)
+	STA kong_status+1			;otherwise, move first Kong into second Kong slot
+	STZ kong_status				;and zero out first Kong slot (set to Diddy)
+	STZ $08A4				;Zero out $08A4 as well (Diddy is the active Kong)
+.first_kong_diddy:
+	REP #$20				;If Diddy is already the leader, just reset the CPU flags and return
+	RTS
+;END OF PATCH
+
 CODE_B48DFA:
 	JSL disable_screen			;$B48DFA  \
 	LDA #$0040				;$B48DFE   |
 	TSB $08FB				;$B48E01   |
 	LDA #$0040				;$B48E04   |
 	TRB $06A5				;$B48E07   |
-	LDA $08A4				;$B48E0A   |
+;START OF PATCH (fix two-Diddy issue in normal ending and subsequent write of Diddy/Diddy Kong status to SRAM; part 1 of 2)
+	LDA kong_status
+	;LDA $08A4				;$B48E0A   |
 	STA $0660				;$B48E0D   |
 	LDA $08C2				;$B48E10   |
 	STA $0676				;$B48E13   |
 	LDA #$4000				;$B48E16   |
 	TSB $08C2				;$B48E19   |
-	LDA #$0000				;$B48E1C   |
-	JSL CODE_808837				;$B48E1F   |
+	JSR set_diddy_to_1st_and_leader_to_2nd
+	LDA kong_status
+	JSL get_kong_spr_and_var_addrs_kong_fam_scr_global
+;	LDA #$0000				;$B48E1C   |
+;	JSL CODE_808837				;$B48E1F   |
+;END OF PATCH
 	STZ $0689				;$B48E23   |
 	JSR CODE_B48C9D				;$B48E26   |
 	LDX #$0000				;$B48E29   |
@@ -1927,7 +1946,10 @@ CODE_B49043:
 	LDA $0676				;$B49043  \
 	STA $08C2				;$B49046   |
 	LDA $0660				;$B49049   |
-	STA $08A4				;$B4904C   |
+;START OF PATCH (fix two-Diddy issue in normal ending and subsequent write of Diddy/Diddy Kong status to SRAM; part 2 of 2)
+	STA kong_status				;restore Kong status in preparation for Cranky's Video Game Heroes screen in ending
+;	STA $08A4				;$B4904C   |
+;END OF PATCH
 	LDA #CODE_808CD9			;$B4904F   |
 	STA NMI_pointer				;$B49052   |
 	LDA #CODE_B4BEEF			;$B49054   |
@@ -2027,10 +2049,19 @@ CODE_B49122:
 	JML restart_rareware_logo		;$B49122  |
 
 CODE_B49126:
+;START OF PATCH (fix two-Diddy issue in secret ending and subsequent write of Diddy/Diddy Kong status to SRAM; part 1 of 2)
+	LDA kong_status
+	STA $0660
+	LDA $08C2
+	STA $0676
 	LDA #$4000				;$B49126  \
 	TSB $08C2				;$B49129   |
-	LDA #$0000				;$B4912C   |
-	JSL CODE_808837				;$B4912F   |
+	JSR set_diddy_to_1st_and_leader_to_2nd
+	LDA kong_status
+	JSL get_kong_spr_and_var_addrs_kong_fam_scr_global
+;	LDA #$0000				;$B4912C   |
+;	JSL CODE_808837				;$B4912F   |
+;END OF PATCH
 	STZ $0689				;$B49133   |
 	JSR CODE_B48C9D				;$B49136   |
 	LDX #$0000				;$B49139   |
@@ -2065,7 +2096,10 @@ CODE_B49188:
 	LDA $0676				;$B49188  \
 	STA $08C2				;$B4918B   |
 	LDA $0660				;$B4918E   |
-	STA $08A4				;$B49191   |
+;START OF PATCH (fix two-Diddy issue in secret ending and subsequent write of Diddy/Diddy Kong status to SRAM; part 2 of 2)
+	STA kong_status
+;	STA $08A4				;$B49191   |
+;END OF PATCH
 	LDA #CODE_808CD9			;$B49194   |
 	STA NMI_pointer				;$B49197   |
 	LDA #CODE_B4BEEF			;$B49199   |
