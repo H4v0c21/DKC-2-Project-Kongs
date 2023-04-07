@@ -129,3 +129,5 @@ kiddy_map_walking_frame7:
 
 kiddy_map_walking_frame8:
 	incbin "kiddy_map/kiddy_map_walking_frame8.bin"
+
+incsrc "custom_sprite_graphics.asm"

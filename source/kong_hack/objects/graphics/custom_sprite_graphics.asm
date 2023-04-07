@@ -1,0 +1,56 @@
+donkey_rope_double_down_frame_1:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_down_frame_1.bin"
+donkey_rope_double_down_frame_2:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_down_frame_2.bin"
+donkey_rope_double_down_frame_3:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_down_frame_3.bin"
+donkey_rope_double_down_frame_4:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_down_frame_4.bin"
+donkey_rope_double_down_frame_5:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_down_frame_5.bin"
+donkey_rope_double_down_frame_6:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_down_frame_6.bin"
+donkey_rope_double_down_frame_7:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_down_frame_7.bin"
+donkey_rope_double_down_frame_8:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_down_frame_8.bin"
+
+donkey_rope_double_up_frame_1:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_up_frame_1.bin"
+donkey_rope_double_up_frame_2:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_up_frame_2.bin"
+donkey_rope_double_up_frame_3:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_up_frame_3.bin"
+donkey_rope_double_up_frame_4:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_up_frame_4.bin"
+donkey_rope_double_up_frame_5:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_up_frame_5.bin"
+donkey_rope_double_up_frame_6:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_up_frame_6.bin"
+donkey_rope_double_up_frame_7:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_up_frame_7.bin"
+donkey_rope_double_up_frame_8:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_double_up_frame_8.bin"
+
+donkey_rope_single_to_double_frame_1:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_1.bin"
+donkey_rope_single_to_double_frame_2:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_2.bin"
+donkey_rope_single_to_double_frame_3:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_3.bin"
+donkey_rope_single_to_double_frame_4:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_4.bin"
+donkey_rope_single_to_double_frame_5:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_5.bin"
+donkey_rope_single_to_double_frame_6:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_6.bin"
+donkey_rope_single_to_double_frame_7:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_7.bin"
+donkey_rope_single_to_double_frame_8:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_8.bin"
+donkey_rope_single_to_double_frame_9:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_9.bin"
+donkey_rope_single_to_double_frame_10:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_10.bin"
+donkey_rope_single_to_double_frame_11:
+	incbin "custom_sprite_graphics/donkey/donkey_rope_single_to_double_frame_11.bin"

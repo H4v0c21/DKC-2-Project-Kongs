@@ -50,11 +50,11 @@
 	dw donkey_rope_vertical_single_down : db $00, $00
 	dw donkey_rope_vertical_single_turn : db $00, $00
 	dw DATA_F92093 : db $00, $00
-	dw diddy_rope_vertical_single_to_double : db $00, $00
-	dw diddy_rope_vertical_double_to_single : db $00, $00
-	dw diddy_rope_vertical_double_idle : db $00, $00
-	dw diddy_rope_vertical_double_up : db $00, $00
-	dw diddy_rope_vertical_double_down : db $00, $00
+	dw donkey_rope_vertical_single_to_double : db $00, $00
+	dw donkey_rope_vertical_double_to_single : db $00, $00
+	dw donkey_rope_vertical_double_idle : db $00, $00
+	dw donkey_rope_vertical_double_up : db $00, $00
+	dw donkey_rope_vertical_double_down : db $00, $00
 	dw diddy_rope_horizontal_idle : db $00, $00
 	dw diddy_rope_horizontal_move : db $00, $00
 	dw donkey_follow_walk : db $00, $00

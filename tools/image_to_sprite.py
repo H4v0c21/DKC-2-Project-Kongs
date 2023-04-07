@@ -1,5 +1,5 @@
-#import os
-#import math
+import os
+import math
 from struct import *
 from PIL import Image
 import cv2
@@ -11,11 +11,6 @@ tile_size = 8
 tile_size_large = 16
 preview_scale = 2
 
-#for preview image
-large_marked_tile = np.zeros((tile_size_large, tile_size_large, 3), np.uint8)
-large_marked_tile[:,0:tile_size_large] = (128, 128, 0)
-small_marked_tile = np.zeros((tile_size, tile_size, 3), np.uint8)
-small_marked_tile[:,0:tile_size] = (0, 128, 128)
 
 def split_tile(tile):
 	tile_a = tile[0:8,0:8]
@@ -25,20 +20,9 @@ def split_tile(tile):
 	return tile_a, tile_b, tile_c, tile_d
 
 def check_merge(positions):
-	a_x, a_y = positions[0]
-	b_x = a_x + 8
-	b_y = a_y
-	c_x = a_x
-	c_y = a_y + 8
-	d_x = a_x + 8
-	d_y = a_y + 8
-	
-	calculated_positions = [(a_x, a_y), (b_x, b_y), (c_x, c_y),(d_x, d_y)]
-
-	if positions == calculated_positions:
-		return True
-	else:
-		return False
+	x, y = positions[0]
+	calculated_positions = [(x, y), (x + 8, y), (x, y + 8),(x + 8, y + 8)]
+	return positions == calculated_positions
 
 def merge_adjacent_tiles(tile_positions, tile_images):
 	large_tile_positions = []
@@ -113,7 +97,20 @@ def index_pixels(image, palette):
 			if pixel in palette_map:
 				index = palette_map[pixel]
 			else:
-				index = 0  # use the first color in the palette as default
+				
+				color_diffs = []
+				for color in palette:
+					cr, cg, cb = color
+					color_diff = math.sqrt((r - cr)**2 + (g - cg)**2 + (b - cb)**2)
+					color_diffs.append((color_diff, color))
+				
+				best_color = min(color_diffs)[1]
+				index = palette_map[best_color] 
+
+				#for i in range(len(palette_map)):
+				#print(type(palette_map))
+				
+				#index = 0  # use the first color in the palette as default
 			indexed_pixels.append(index)
 
 	return indexed_pixels
@@ -162,11 +159,11 @@ def render_tile_preview(preview_image, tile_graphics, tile_positions, size):
 		tile_image = tile_graphics[tile_index]
 		tile_image = np.array(tile_image)
 		tile_image = cv2.cvtColor(tile_image, cv2.COLOR_RGB2BGR)
-		
+
 		if size == tile_size:
-			tile_image = cv2.subtract(tile_image, small_marked_tile)
+			tile_image = (tile_image + (0,255,0)) * 0.5
 		else:
-			tile_image = cv2.subtract(tile_image, large_marked_tile)
+			tile_image = (tile_image + (0,0,255)) * 0.5
 		
 		tile_x, tile_y = tile_positions[tile_index]
 		
@@ -176,10 +173,6 @@ def render_tile_preview(preview_image, tile_graphics, tile_positions, size):
 def image_to_sprite(input_image, background_color):
 	best_x_shift = 0
 	best_y_shift = 0
-	bounds_left = 0xFFFFFFFF
-	bounds_right = 0
-	bounds_top = 0xFFFFFFFF
-	bounds_bottom = 0
 	max_shift = 8
 	
 	input_width, input_height = input_image.size
@@ -258,6 +251,7 @@ def image_to_sprite(input_image, background_color):
 	return best_tile_graphics, best_tile_positions
 
 
+
 def main():
 	print('[DKC Image to Sprite Importer v0.32]\n[Created By: H4v0c21]\n')
 	
@@ -290,7 +284,8 @@ def main():
 		tile_images, tile_positions = image_to_sprite(source_image, background_color)
 		
 		print('Number of 8x8 tiles before merge: ' + str(len(tile_positions)))
-		
+		if len(tile_positions) > 0x20:
+			print('WARNING! Sprite exceeds VRAM size limit')
 		
 		print('Scanning for possible 16x16 tiles')
 		
@@ -302,7 +297,17 @@ def main():
 
 		print('Generating Output Data')
 		
-		with open(image_path +"-sprite.bin", "wb") as sprite_data_file:
+		file_name = os.path.basename(image_path).split('.')[0]
+		ext_file_name = os.path.basename(image_path)
+		output_path = os.path.dirname(os.path.dirname(os.path.dirname(ext_file_name))) + 'output/'
+		preview_path = os.path.dirname(os.path.dirname(os.path.dirname(ext_file_name))) + 'preview/'
+		
+		if not os.path.exists(output_path):
+			os.makedirs(output_path)
+		if not os.path.exists(preview_path):
+			os.makedirs(preview_path)
+		
+		with open(output_path + file_name + ".bin", "wb") as sprite_data_file:
 			
 			large_count = len(large_tile_positions)
 			small_count = len(small_tile_positions)
@@ -438,7 +443,7 @@ def main():
 				small_b_offset = 0
 				dma_a_count = (large_set_index * 8 * 4) + ((large_count % 8) * 2) + small_a_count
 				dma_b_count = (large_count % 8) * 2
-				dma_b_offset = 0
+				dma_b_offset = int(8 * math.ceil(large_count / 8)) * 2
 				
 				for small_tile_a_index in range(small_count):
 					tile = small_tile_images[small_tile_a_index]
@@ -455,9 +460,9 @@ def main():
 			header_data += pack('>B', small_b_count)
 			header_data += pack('>B', small_b_offset)
 			header_data += pack('>B', dma_a_count)
+			header_data += pack('>B', dma_b_offset)
 			header_data += pack('>B', dma_b_count)
-			header_data += pack('>B', dma_b_offset)	
-
+			
 			print('Saving full sprite data to file')
 			#write output data to file
 			
@@ -474,26 +479,38 @@ def main():
 		
 		print('Saving tile data to file')
 		
-		with open(image_path + "-tiledata.bin", "wb") as tile_data_file:
-			for large_tile_set in large_tile_sets:
-				tile_data_file.write(large_tile_set)
-					
-			tile_data_file.write(large_tile_top_data)
-			tile_data_file.write(small_tile_a_data)
-			tile_data_file.write(large_tile_bottom_data)
-			tile_data_file.write(small_tile_b_data)
+		#with open(image_path + "-tiledata.bin", "wb") as tile_data_file:
+		#	for large_tile_set in large_tile_sets:
+		#		tile_data_file.write(large_tile_set)
+		#			
+		#	tile_data_file.write(large_tile_top_data)
+		#	tile_data_file.write(small_tile_a_data)
+		#	tile_data_file.write(large_tile_bottom_data)
+		#	tile_data_file.write(small_tile_b_data)
 
 		print('Rendering Preview Image')
 		preview_image = np.zeros((image_height,image_width,3), np.uint8)
 		preview_image = render_tile_preview(preview_image, large_tile_images, large_tile_positions, tile_size_large)
 		preview_image = render_tile_preview(preview_image, small_tile_images, small_tile_positions, tile_size)
+		
+		
+		preview_image = cv2.putText(preview_image, '16x16: ' + str(large_count), (12,256 - 64 + 12), cv2.FONT_HERSHEY_SIMPLEX, 0.25, (255, 255, 255), 1, cv2.LINE_AA)
+		preview_image = cv2.putText(preview_image, '8x8 A: ' + str(small_a_count), (12,256 - 64 + 24), cv2.FONT_HERSHEY_SIMPLEX, 0.25, (255, 255, 255), 1, cv2.LINE_AA)
+		preview_image = cv2.putText(preview_image, '8x8 B: ' + str(small_b_count), (12,256 - 64 + 36), cv2.FONT_HERSHEY_SIMPLEX, 0.25, (255, 255, 255), 1, cv2.LINE_AA)
+		if dma_a_count + dma_b_count > 32:
+			preview_image = cv2.putText(preview_image, 'Total: ' + str(dma_a_count + dma_b_count), (12,256 - 64 + 48), cv2.FONT_HERSHEY_SIMPLEX, 0.33, (0, 0, 255), 1, cv2.LINE_AA)
+		else:
+			preview_image = cv2.putText(preview_image, 'Total: ' + str(dma_a_count + dma_b_count), (12,256 - 64 + 48), cv2.FONT_HERSHEY_SIMPLEX, 0.33, (0, 255, 0), 1, cv2.LINE_AA)
+		
+		cv2.imwrite(preview_path + file_name + "-preview.png", preview_image)
+		
 		preview_image = cv2.resize(preview_image, (image_width * preview_scale, image_height * preview_scale), interpolation = cv2.INTER_AREA)
 		
 		print('DONE!')
 
-		cv2.imshow('Preview', preview_image)
-		cv2.waitKey(0)
-		cv2.destroyAllWindows()
+		#cv2.imshow('Preview', preview_image)
+		#cv2.waitKey(0)
+		#cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
