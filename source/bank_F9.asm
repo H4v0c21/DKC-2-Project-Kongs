@@ -11509,6 +11509,7 @@ empty_animation_script:
 
 incsrc "kong_hack/objects/animations/donkey_animations.asm"
 incsrc "kong_hack/objects/animations/kiddy_animations.asm"
+incsrc "kong_hack/objects/animations/donkey_custom_animations.asm"
 
 ;START OF PATCH (New Kong map animations)
 first_kong_map:
