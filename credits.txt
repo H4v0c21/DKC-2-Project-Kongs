@@ -1,18 +1,19 @@
 Tools Included:
+
+Asar 1.90pre
+Originally developed by Alcaro, maintained by Asar devs, modeled after xkas v0.06 by byuu.
+Source: https://github.com/RPGHacker/asar
 	
-	Asar 1.90pre
-	Originally developed by Alcaro, maintained by Asar devs, modeled after xkas v0.06 by byuu.
-	Source: https://github.com/RPGHacker/asar
-	
-	p4plus2's DKC 2 Disassembly
-	Created by p4plus2
-	Branch edits by H4v0c21
-	https://github.com/p4plus2/DKC2-disassembly
-	
-	Additional scripts created by H4v0c21
-	
+p4plus2's DKC 2 Disassembly
+Created by p4plus2
+Branch edits by H4v0c21
+https://github.com/p4plus2/DKC2-disassembly
+
+Additional scripts created by H4v0c21
+
 Hack Contributors:
-	
-	Programmers and Designers: H4v0c21, Mattrizzle
-	
-	Verification on real hardware provided by: Sticky_Brush
+Programmers and Designers: H4v0c21, Mattrizzle
+
+Custom Sprite Graphics: Phyreburnz
+
+Verification on real hardware provided by: Sticky_Brush

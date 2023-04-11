@@ -27,21 +27,21 @@
 	dw donkey_slope_slide : db $00, $30
 	dw donkey_bounce_back : db $00, $30
 	dw donkey_bounce_up : db $00, $30
-	dw diddy_team_bottom_idle : db $00, $00
-	dw diddy_team_bottom_turn : db $00, $00
-	dw diddy_team_bottom_walk : db $00, $00
+	dw donkey_team_bottom_idle : db $00, $00
+	dw donkey_team_bottom_turn : db $00, $00
+	dw donkey_team_bottom_walk : db $00, $00
 	dw diddy_team_top_idle : db $00, $00
-	dw diddy_team_bottom_jump : db $01, $00
-	dw diddy_team_bottom_air : db $00, $30
-	dw diddy_team_bottom_fall : db $00, $30
-	dw diddy_team_bottom_land : db $00, $00
-	dw diddy_team_bottom_bounce_up : db $00, $30
-	dw diddy_team_bottom_throw : db $00, $00
+	dw donkey_team_bottom_jump : db $01, $00
+	dw donkey_team_bottom_air : db $00, $30
+	dw donkey_team_bottom_fall : db $00, $30
+	dw donkey_team_bottom_land : db $00, $00
+	dw donkey_team_bottom_bounce_up : db $00, $30
+	dw donkey_team_bottom_throw : db $00, $00
 	dw donkey_team_top_thrown : db $00, $98
 	dw donkey_team_top_stunned : db $00, $00
 	dw donkey_hurt : db $00, $00
 	dw donkey_hurt_jump_off_screen : db $00, $00
-	dw diddy_honey_wall_idle : db $00, $00
+	dw donkey_honey_wall_idle : db $00, $00
 	dw donkey_honey_floor_idle : db $00, $00
 	dw donkey_honey_floor_walk : db $00, $00
 	dw donkey_honey_floor_carry_idle : db $00, $00
@@ -55,8 +55,8 @@
 	dw donkey_rope_vertical_double_idle : db $00, $00
 	dw donkey_rope_vertical_double_up : db $00, $00
 	dw donkey_rope_vertical_double_down : db $00, $00
-	dw diddy_rope_horizontal_idle : db $00, $00
-	dw diddy_rope_horizontal_move : db $00, $00
+	dw donkey_rope_horizontal_idle : db $00, $00
+	dw donkey_rope_horizontal_move : db $00, $00
 	dw donkey_follow_walk : db $00, $00
 	dw donkey_follow_walk : db $00, $00
 	dw donkey_follow_run : db $00, $00
@@ -64,7 +64,7 @@
 	dw donkey_follow_air : db $00, $00
 	dw donkey_team_top_thrown : db $00, $00
 	dw donkey_turn : db $00, $00
-	dw diddy_hook_idle : db $00, $00
+	dw donkey_hook_idle : db $00, $00
 	dw donkey_swim_idle : db $00, $00
 	dw donkey_swim_turn : db $00, $00
 	dw diddy_celebrate : db $00, $00
@@ -76,10 +76,10 @@
 	dw donkey_barrel_cannon_air : db $00, $00
 	dw donkey_krockhead_bounce : db $00, $00
 	dw donkey_carry_krockhead_bounce : db $00, $00
-	dw diddy_skull_cart : db $00, $00
+	dw donkey_skull_cart : db $00, $00
 	dw donkey_animal_idle : db $00, $00
 	dw donkey_rattly_idle : db $00, $00
-	dw diddy_squawks_idle : db $00, $00
+	dw donkey_squawks_idle : db $00, $00
 	dw donkey_animal_mount : db $00, $00
 	dw donkey_animal_mount : db $00, $00
 	dw donkey_animal_idle : db $00, $00

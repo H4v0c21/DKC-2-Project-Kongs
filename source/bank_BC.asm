@@ -3456,6 +3456,7 @@ DATA_BCB600:
 	dw DATA_BCD658	;Kiddy map frame 7
 	dw DATA_BCD658	;Kiddy map frame 8
 ;END OF PATCH
+	incsrc "kong_hack/objects/hitboxes/custom_hitbox_pointers.asm"
 
 DATA_BCD100:
 	dw $FFF8, $FFF8, $0010, $0010
@@ -5920,6 +5921,7 @@ DATA_BCEDC8:
 ;START OF PATCH (hitboxes)
 incsrc "kong_hack/objects/hitboxes/donkey_hitboxes.asm"
 incsrc "kong_hack/objects/hitboxes/kiddy_hitboxes.asm"
+incsrc "kong_hack/objects/hitboxes/custom_hitboxes.asm"
 ;END OF PATCH
 	
 padbyte $00	

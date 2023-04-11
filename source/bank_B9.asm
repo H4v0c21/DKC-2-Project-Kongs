@@ -3442,6 +3442,61 @@ CODE_B9E3AF:
 	JSL queue_sound_effect			;$B9E3CE   |
 	RTS					;$B9E3D2  /
 
+
+;START OF PATCH (donkey cart animation code)
+donkey_cart_sub_a:
+	LDA #$4410				;$B9E40A  \	cart slope start graphic number
+	BRL CODE_B9E486				;$B9E40D  /
+
+donkey_cart_sub_b:
+	LDA #$01C0				;$B9E410  \
+	BRA donkey_cart_check_unknown_flag	;$B9E413  /
+
+donkey_cart_sub_c:
+	LDA #$02C0				;$B9E415  \
+donkey_cart_check_unknown_flag:			;	   |
+	BIT $4A,x				;$B9E418   |
+	BNE donkey_cart_get_rotated_graphic	;$B9E41A   |
+donkey_cart_sub_d:				;	   |
+	LDA $48,x				;$B9E41C   |
+	CMP #$0009				;$B9E41E   |
+	BEQ donkey_cart_sub_d_return		;$B9E421   |
+donkey_cart_get_rotated_graphic:		;	   |
+	LDA #donkey_skull_cart			;$B9E423   |
+	STA $3C,x				;$B9E426   |
+	STZ $3E,x				;$B9E428   |
+	STZ $38,x				;$B9E42A   |
+	LDA $48,x				;$B9E42C   |
+	AND #$00FF				;$B9E42E   |
+	ASL A					;$B9E431   |
+	ASL A					;$B9E432   |
+	ADC #$4410				;$B9E433   |	cart slope start graphic number
+	STA $1A,x				;$B9E436   |
+donkey_cart_sub_d_return:			;	   |
+	RTS					;$B9E438  /
+
+donkey_cart_sub_e:
+	LDA $0E,x				;$B9E439  \
+	BNE donkey_cart_get_rotated_graphic	;$B9E43B   |
+	RTS					;$B9E43D  /
+
+donkey_cart_sub_f:
+	LDA $46,x				;$B9E43E  \
+	CMP #$8005				;$B9E440   |
+	BNE CODE_B9E480_LONG			;$B9E443   |
+	LDA #$0040				;$B9E445   |
+	BIT $4A,x				;$B9E448   |
+	BNE CODE_B9E483_LONG			;$B9E44A   |
+	BRL CODE_B9D115				;$B9E44C  /
+
+CODE_B9E480_LONG:
+	BRL CODE_B9E480
+
+CODE_B9E483_LONG:
+	BRL CODE_B9E483
+;END OF PATCH
+
+
 CODE_B9E3D3:
 	LDA #$14EC				;$B9E3D3  \
 	BRL CODE_B9E486				;$B9E3D6  /

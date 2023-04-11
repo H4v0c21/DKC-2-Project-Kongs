@@ -369,50 +369,50 @@ donkey_idle_sub_2:
 	db !animation_command_92, $4E		;393371
 	db !animation_command_80, $00		;393373
 
-;0145 donkey_wind_float
-donkey_wind_float:
-	db $05 : dw $3A9C
-	db $05 : dw $3950
-	db $05 : dw $3954
-	db $05 : dw $3958
-
-donkey_wind_float_loop:
-	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
-	db !dkc3_anim_command_8F : dw $0000
-	db $03 : dw $395C
-	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
-	db !dkc3_anim_command_8F : dw $0100
-	db $03 : dw $395C
-	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
-	db !dkc3_anim_command_8F : dw $0200
-	db $03 : dw $395C
-	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
-	db !dkc3_anim_command_8F : dw $0100
-	db $03 : dw $395C
-	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
-	db !dkc3_anim_command_8F : dw $0000
-	db $03 : dw $395C
-	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
-	db !dkc3_anim_command_8F : dw $FF00
-	db $03 : dw $395C
-	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
-	db !dkc3_anim_command_8F : dw $FE00
-	db $03 : dw $395C
-	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
-	db !dkc3_anim_command_8F : dw $FF00
-	db $03 : dw $395C
-	db !animation_command_82 : dw donkey_wind_float_loop
-
-donkey_wind_float_end:
-	db !dkc3_anim_command_8F : dw $0000
-	db $03 : dw $3958
-	db $03 : dw $3954
-	db $03 : dw $3950
-	db $03 : dw $3A9C
-	db !animation_command_81 : dw CODE_B9D853
-	db !animation_command_80
-
-	db !animation_command_80, $00
+;;0145 donkey_wind_float
+;donkey_wind_float:
+;	db $05 : dw $3A9C
+;	db $05 : dw $3950
+;	db $05 : dw $3954
+;	db $05 : dw $3958
+;
+;donkey_wind_float_loop:
+;	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
+;	db !dkc3_anim_command_8F : dw $0000
+;	db $03 : dw $395C
+;	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
+;	db !dkc3_anim_command_8F : dw $0100
+;	db $03 : dw $395C
+;	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
+;	db !dkc3_anim_command_8F : dw $0200
+;	db $03 : dw $395C
+;	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
+;	db !dkc3_anim_command_8F : dw $0100
+;	db $03 : dw $395C
+;	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
+;	db !dkc3_anim_command_8F : dw $0000
+;	db $03 : dw $395C
+;	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
+;	db !dkc3_anim_command_8F : dw $FF00
+;	db $03 : dw $395C
+;	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
+;	db !dkc3_anim_command_8F : dw $FE00
+;	db $03 : dw $395C
+;	db !animation_command_8F : dw CODE_B9D67F, donkey_wind_float_end
+;	db !dkc3_anim_command_8F : dw $FF00
+;	db $03 : dw $395C
+;	db !animation_command_82 : dw donkey_wind_float_loop
+;
+;donkey_wind_float_end:
+;	db !dkc3_anim_command_8F : dw $0000
+;	db $03 : dw $3958
+;	db $03 : dw $3954
+;	db $03 : dw $3950
+;	db $03 : dw $3A9C
+;	db !animation_command_81 : dw CODE_B9D853
+;	db !animation_command_80
+;
+;	db !animation_command_80, $00
 
 ;00EF donkey_krockhead_bounce
 ;DONKEY_ANIM_F933DA:
