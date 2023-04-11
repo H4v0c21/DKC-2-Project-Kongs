@@ -95,6 +95,14 @@ dixie_team_bottom_idle:
 	db !animation_command_8B, $07 : dw $13F4, $0000, $0006
 	db !animation_command_80, $00
 
+donkey_team_bottom_idle:
+	db !animation_command_84 : dw CODE_B9E0A8
+	db $08 : dw $43AC
+	db $08 : dw $43B0
+	db $08 : dw $43B4
+	db $08 : dw $43B0
+	db !animation_command_80, $00
+
 ;00B2 team idle
 ;KIDDY_ANIM_F92548:
 kiddy_team_bottom_idle:
@@ -148,6 +156,22 @@ dixie_team_bottom_walk:
 	db !animation_command_8B, $03 : dw $131C, $0000, $0002
 	db !animation_command_80, $00
 
+donkey_team_bottom_walk:
+	db !animation_command_84 : dw CODE_B9E021
+	db $03 : dw $43B8
+	db $03 : dw $43BC
+	db $03 : dw $43C0
+	db $03 : dw $43C4
+	db !animation_command_81 : dw CODE_B9E0E0
+	db $03 : dw $43C8
+	db $03 : dw $43CC
+	db $03 : dw $43D0
+	db $03 : dw $43D4
+	db $03 : dw $43D8
+	db !animation_command_81 : dw CODE_B9E0E0
+	db $03 : dw $43DC
+	db !animation_command_80, $00
+
 ;00B3 team walk
 ;KIDDY_ANIM_F92635:
 kiddy_team_bottom_walk:
@@ -193,6 +217,16 @@ dixie_team_bottom_turn:
 	db !animation_command_81 : dw CODE_B9DFE5
 	db !animation_command_80, $00
 
+donkey_team_bottom_turn:
+	db !animation_command_8B, $02 : dw $43AC, $0000, $0007
+	db !animation_command_8B, $02 : dw $43AC, $0000, $0006
+	db !animation_command_81 : dw CODE_B9E019
+	db !animation_command_8B, $02 : dw $43AC, $0000, $0006
+	db !animation_command_8B, $02 : dw $43AC, $0000, $0007
+	db !animation_command_81 : dw CODE_B9DFE5
+	db !animation_command_80, $00
+
+
 ;00B4 team turn
 ;KIDDY_ANIM_F926E6:
 kiddy_team_bottom_turn:
@@ -215,6 +249,11 @@ dixie_team_bottom_jump:
 	db !animation_command_81 : dw CODE_B9DF51
 	db !animation_command_80, $00
 
+donkey_team_bottom_jump:
+	db $03 : dw $43E0
+	db !animation_command_81 : dw CODE_B9DF51
+	db !animation_command_80, $00
+
 kiddy_team_bottom_jump:
 	db $04 : dw $3CD4
 	db !animation_command_81 : dw CODE_B9DF51
@@ -232,6 +271,12 @@ dixie_team_bottom_air:
 	db !animation_command_8B, $03 : dw $132C, $0000, $0001
 	db !animation_command_83 : dw CODE_B9D5A4
 	db !animation_command_8B, $03 : dw $132C, $0000, $0001
+	db !animation_command_81 : dw CODE_B9DEEF
+	db !animation_command_80, $00
+
+donkey_team_bottom_air:
+	db $03 : dw $43E0
+	db !animation_command_83 : dw CODE_B9D5A4
 	db !animation_command_81 : dw CODE_B9DEEF
 	db !animation_command_80, $00
 
@@ -259,6 +304,14 @@ dixie_team_bottom_fall:
 	db !animation_command_81 : dw CODE_B9DEEF
 	db !animation_command_80, $00
 
+donkey_team_bottom_fall:
+	db !animation_command_84 : dw CODE_B9DECC
+	db $03 : dw $43E0
+	db !animation_command_84 : dw !null_pointer
+	db !animation_command_83 : dw CODE_B9D5A4
+	db !animation_command_81 : dw CODE_B9DEEF
+	db !animation_command_80, $00
+
 kiddy_team_bottom_fall:
 	db !animation_command_84 : dw CODE_B9DECC
 	db $04 : dw $3CD4
@@ -276,6 +329,12 @@ diddy_team_bottom_land:
 
 dixie_team_bottom_land:
 	db !animation_command_8B, $03 : dw $132C, $0000, $0001
+	db !animation_command_81 : dw CODE_B9DA5B
+	db !animation_command_81 : dw CODE_B9DFE1
+	db !animation_command_80, $00
+
+donkey_team_bottom_land:
+	db $03 : dw $43E0
 	db !animation_command_81 : dw CODE_B9DA5B
 	db !animation_command_81 : dw CODE_B9DFE1
 	db !animation_command_80, $00
@@ -305,6 +364,12 @@ dixie_team_bottom_bounce_up:
 	db !animation_command_8B, $01 : dw $1334, $0000, $0003
 	db !animation_command_8B, $01 : dw $1338, $0000, $0002
 	db !animation_command_8B, $01 : dw $133C, $0000, $0001
+	db !animation_command_80, $00
+
+donkey_team_bottom_bounce_up:
+	db $03 : dw $43E0
+	db !animation_command_83 : dw CODE_B9D5A4
+	db !animation_command_81 : dw CODE_B9DEEF
 	db !animation_command_80, $00
 
 kiddy_team_bottom_bounce_up:
@@ -367,6 +432,26 @@ dixie_team_bottom_throw:
 	db $02 : dw $0A10
 	db $02 : dw $0A14
 	db $02 : dw $0A18
+	db !animation_command_83 : dw CODE_B9D521
+	db !animation_command_81 : dw CODE_B9DFD3
+	db !animation_command_80, $00
+
+donkey_team_bottom_throw:
+	db $03 : dw $43E4
+	db $03 : dw $43E8
+	db $03 : dw $43EC
+	db $03 : dw $43F0
+	db $03 : dw $43F4
+	db !animation_command_81 : dw CODE_B9DCE8
+	db !animation_command_81 : dw CODE_B9D8BC
+	db $02 : dw $3824
+	db $02 : dw $3828
+	db $02 : dw $382C
+	db $02 : dw $3830
+	db $02 : dw $3834
+	db $02 : dw $3838
+	db $02 : dw $383C
+	db $08 : dw $3840
 	db !animation_command_83 : dw CODE_B9D521
 	db !animation_command_81 : dw CODE_B9DFD3
 	db !animation_command_80, $00

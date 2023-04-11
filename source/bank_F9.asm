@@ -4802,22 +4802,22 @@ enguarde_hurt:
 
 dixie_skull_cart:
 	db !animation_command_83 : dw CODE_B9E3D3
-	db !animation_command_82 : dw DATA_F94CA9
-	db !animation_command_82 : dw DATA_F94CE1
-	db !animation_command_82 : dw DATA_F94CFF
+	db !animation_command_82 : dw dixie_skull_cart_idle
+	db !animation_command_82 : dw dixie_skull_cart_duck_a
+	db !animation_command_82 : dw dixie_skull_cart_duck_b
 	db $02 : dw $14EC
 	db !animation_command_84 : dw CODE_B9E402
 
-DATA_F94C94:
+dixie_skull_cart_down_hill:
 	db $06 : dw $2AF0
 	db $06 : dw $2AF4
 	db $06 : dw $2AF8
 	db $06 : dw $2AFC
 	db $06 : dw $2B00
 	db $06 : dw $2B04
-	db !animation_command_82 : dw DATA_F94C94
+	db !animation_command_82 : dw dixie_skull_cart_down_hill
 
-DATA_F94CA9:
+dixie_skull_cart_idle:
 	db !animation_command_84 : dw CODE_B9E3D9
 	db $04 : dw $2AD0
 	db $04 : dw $2AD4
@@ -4837,7 +4837,7 @@ DATA_F94CA9:
 	db $04 : dw $2AD0
 	db !animation_command_82 : dw dixie_skull_cart
 
-DATA_F94CE1:
+dixie_skull_cart_duck_a:
 	db !animation_command_84 : dw CODE_B9E3DE
 	db $03 : dw $2AE0
 	db $02 : dw $2AE4
@@ -4849,7 +4849,7 @@ DATA_F94CE1:
 	db $03 : dw $2AE0
 	db !animation_command_82 : dw dixie_skull_cart
 
-DATA_F94CFF:
+dixie_skull_cart_duck_b:
 	db !animation_command_84 : dw CODE_B9E3E5
 	db $02 : dw $2AE0
 	db $02 : dw $2AE4
@@ -4862,10 +4862,12 @@ DATA_F94CFF:
 
 diddy_skull_cart:
 	db !animation_command_83 : dw CODE_B9E40A
-	db !animation_command_82 : dw DATA_F94D40
-	db !animation_command_82 : dw DATA_F94D78
-	db !animation_command_82 : dw DATA_F94D96
+	db !animation_command_82 : dw diddy_skull_cart_idle
+	db !animation_command_82 : dw diddy_skull_cart_duck_a
+	db !animation_command_82 : dw diddy_skull_cart_duck_b
 	db !animation_command_84 : dw CODE_B9E439
+
+diddy_skull_cart_down_hill:
 	db $04 : dw $2AC0
 	db $04 : dw $2AC4
 	db $04 : dw $2AC8
@@ -4875,7 +4877,7 @@ diddy_skull_cart:
 	db $02 : dw $1454
 	db !animation_command_82 : dw diddy_skull_cart
 
-DATA_F94D40:
+diddy_skull_cart_idle:
 	db !animation_command_84 : dw CODE_B9E410
 	db $04 : dw $2AA0
 	db $04 : dw $2AA4
@@ -4895,7 +4897,7 @@ DATA_F94D40:
 	db $04 : dw $2AA0
 	db !animation_command_82 : dw diddy_skull_cart
 
-DATA_F94D78:
+diddy_skull_cart_duck_a:
 	db !animation_command_84 : dw CODE_B9E415
 	db $02 : dw $2AB0
 	db $02 : dw $2AB4
@@ -4907,7 +4909,7 @@ DATA_F94D78:
 	db $04 : dw $2AB0
 	db !animation_command_82 : dw diddy_skull_cart
 
-DATA_F94D96:
+diddy_skull_cart_duck_b:
 	db !animation_command_84 : dw CODE_B9E41C
 	db $02 : dw $2AB0
 	db $02 : dw $2AB4
