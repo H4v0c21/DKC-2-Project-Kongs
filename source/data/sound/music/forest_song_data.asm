@@ -998,7 +998,7 @@ base $1300
 .unreached_1AB6:
 	db !loop_subsequence, $20 : dw .subseq_1BAB
 	db !loop_subsequence, $08 : dw .subseq_1BAB
-	db !jump_to_sequence : dw $1AB6
+	db !jump_to_sequence : dw .unreached_1AB6
 	db !end_sequence
 
 .subseq_1AC2:

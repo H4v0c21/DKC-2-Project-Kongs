@@ -1377,9 +1377,9 @@ base $1300
 	db !return_from_sub
 
 .unreached_1DD8:
-	db !loop_subsequence, $01 : dw $1DE9
+	db !loop_subsequence, $01 : dw .unreached_1DE9
 	db !loop_subsequence, $01 : dw .subseq_1DFA
-	db !loop_subsequence, $01 : dw $1DE9
+	db !loop_subsequence, $01 : dw .unreached_1DE9
 	db !loop_subsequence, $01 : dw .subseq_1E0B
 	db !return_from_sub
 

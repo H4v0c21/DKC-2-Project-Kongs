@@ -252,9 +252,10 @@ base $1300
 	db $9A, $18
 	db $9A, $18
 	db !set_adsr, $8F, $F8
+.unreached_14F7:
 	db $99, $08
 	db $97, $08
-	db !jump_to_sequence : dw $14F7
+	db !jump_to_sequence : dw .unreached_14F7
 
 .seq_14FE:
 	db !play_subsequence : dw .subseq_162B
@@ -490,7 +491,7 @@ base $1300
 	db !fine_tune, $00
 	db !set_volume_l_and_r, $28, $32
 	db !set_default_duration, $10
-	db !loop_subsequence, $0C : dw $16C1
+	db !loop_subsequence, $0C : dw .unreached_16C1
 	db !default_duration_off
 	db !end_sequence
 
@@ -1616,7 +1617,7 @@ base $1300
 	db !fine_tune, $AB
 	db !set_adsr, $8A, $EF
 	db !vibrato_with_delay, $03, $03, $11, $08
-	db !play_subsequence : dw $1FB3
+	db !play_subsequence : dw .unreached_1FB3
 	db !end_sequence
 
 .unreached_1FB3:
@@ -1660,7 +1661,7 @@ base $1300
 	db !set_adsr, $88, $E0
 	db !vibrato_with_delay, $04, $02, $17, $08
 	db $80, $0A
-	db !play_subsequence : dw $1FB3
+	db !play_subsequence : dw .unreached_1FB3
 	db !end_sequence
 
 base off
