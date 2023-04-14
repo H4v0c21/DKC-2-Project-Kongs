@@ -254,9 +254,9 @@ endif						;	   | |/
 	JSR .upload_spc_base_engine		;$B58191  \ Upload the core of the SPC engine
 	JSR .upload_spc_sound_engine		;$B58194   | Upload the sound processor of the SPC engine
 	JSR .upload_global_samples		;$B58197   |
-	LDA #sound_effect_data			;$B5819A   |\ Load pointer to sound effect data
+	LDA #global_sfx_data			;$B5819A   |\ Load pointer to sound effect data
 	STA $32					;$B5819D   | |
-	LDA.w #sound_effect_data>>16		;$B5819F   | |
+	LDA.w #global_sfx_data>>16		;$B5819F   | |
 	STA $34					;$B581A2   |/
 	JSR .upload_inline_spc_block		;$B581A4   | Upload the sound effect data
 	JSR .execute_spc_sound_engine		;$B581A7   | Jump to the sound engine entry
