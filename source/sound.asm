@@ -1,3 +1,5 @@
+	incsrc audio_constants.asm
+
 spc_base_engine:
 
 arch spc700
@@ -2095,514 +2097,444 @@ sample_table:
 
 song_data:
 	%offset(song_sample_sets, 3)
-	dl null_song_data
-	dl null_sample_set
-	dl island_map_song_data
-	dl island_map_sample_set
-	dl main_theme_song_data
-	dl main_theme_sample_set
-	dl swamp_song_data
-	dl swamp_sample_set
-	dl swanky_song_data
-	dl swanky_sample_set
-	dl forest_song_data
-	dl forest_sample_set
-	dl ship_deck_song_data
-	dl ship_deck_sample_set
-	dl mine_song_data
-	dl mine_sample_set
-	dl funky_song_data
-	dl funky_sample_set
-	dl brambles_song_data
-	dl brambles_sample_set
-	dl klubba_song_data
-	dl klubba_sample_set
-	dl wasp_hive_song_data
-	dl wasp_hive_sample_set
-	dl wrinkly_song_data
-	dl wrinkly_sample_set
-	dl lava_song_data
-	dl lava_sample_set
-	dl roller_coaster_song_data
-	dl roller_coaster_sample_set
-	dl bonus_song_data
-	dl bonus_sample_set
-	dl ship_hold_song_data
-	dl ship_hold_sample_set
-	dl fanfare_song_data
-	dl fanfare_sample_set
-	dl ship_deck_2_song_data
-	dl ship_deck_2_sample_set
-	dl rescue_kong_song_data
-	dl rescue_kong_sample_set
-	dl game_over_song_data
-	dl game_over_sample_set
-	dl big_boss_song_data
-	dl big_boss_sample_set
-	dl castle_song_data
-	dl castle_sample_set
-	dl haunted_song_data
-	dl haunted_sample_set
-	dl file_select_song_data
-	dl file_select_sample_set
-	dl cranky_song_data
-	dl cranky_sample_set
-	dl ice_song_data
-	dl ice_sample_set
-	dl jungle_song_data
-	dl jungle_sample_set
-	dl lost_world_song_data
-	dl lost_world_sample_set
-	dl rigging_song_data
-	dl rigging_sample_set
-	dl credits_song_data
-	dl credits_sample_set
-	dl k_rool_song_data
-	dl k_rool_sample_set
-	dl bonus_song_data
-	dl bonus_sample_set_2
-	dl big_boss_song_data
-	dl big_boss_sample_set_2
-	dl bonus_song_data
-	dl bonus_sample_set
-	dl bonus_song_data
-	dl bonus_sample_set_3
-	dl secret_ending_song_data
-	dl secret_ending_sample_set
-	dl bonus_song_data
-	dl bonus_sample_set_4
-	dl DATA_F2E728
-	dl DATA_EE1935
-	dl DATA_F2E72C
-	dl DATA_EE1937
-	dl !null_pointer
+	dl null_song_data, null_sample_set
+	dl island_map_song_data, island_map_sample_set
+	dl main_theme_song_data, main_theme_sample_set
+	dl swamp_song_data, swamp_sample_set
+	dl swanky_song_data, swanky_sample_set
+	dl forest_song_data, forest_sample_set
+	dl ship_deck_song_data, ship_deck_sample_set
+	dl mine_song_data, mine_sample_set
+	dl funky_song_data, funky_sample_set
+	dl brambles_song_data, brambles_sample_set
+	dl klubba_song_data, klubba_sample_set
+	dl wasp_hive_song_data, wasp_hive_sample_set
+	dl wrinkly_song_data, wrinkly_sample_set
+	dl lava_song_data, lava_sample_set
+	dl roller_coaster_song_data, roller_coaster_sample_set
+	dl bonus_song_data, bonus_sample_set
+	dl ship_hold_song_data, ship_hold_sample_set
+	dl fanfare_song_data, fanfare_sample_set
+	dl ship_deck_2_song_data, ship_deck_2_sample_set
+	dl rescue_kong_song_data, rescue_kong_sample_set
+	dl game_over_song_data, game_over_sample_set
+	dl big_boss_song_data, big_boss_sample_set
+	dl castle_song_data, castle_sample_set
+	dl haunted_song_data, haunted_sample_set
+	dl file_select_song_data, file_select_sample_set
+	dl cranky_song_data, cranky_sample_set
+	dl ice_song_data, ice_sample_set
+	dl jungle_song_data, jungle_sample_set
+	dl lost_world_song_data, lost_world_sample_set
+	dl rigging_song_data, rigging_sample_set
+	dl credits_song_data, credits_sample_set
+	dl k_rool_song_data, k_rool_sample_set
+	dl bonus_song_data, bonus_sample_set_2
+	dl big_boss_song_data, big_boss_sample_set_2
+	dl bonus_song_data, bonus_sample_set
+	dl bonus_song_data, bonus_sample_set_3
+	dl secret_ending_song_data, secret_ending_sample_set
+	dl bonus_song_data, bonus_sample_set_4
+	dl DATA_F2E728, DATA_EE1935
+	dl DATA_F2E72C, DATA_EE1937
+
+	db $00, $00, $00
 
 DATA_EE1179:
 	db $00, $00
 
 DATA_EE117B:
 	%offset(DATA_EE117D, 2)
-	dl DATA_F2F107
-	dl DATA_F2F107
-	dl DATA_F2F107
-	dl DATA_F2F559
-	dl DATA_F2F559
-	dl DATA_F2F559
-	dl DATA_F2F2F1
-	dl DATA_F2F559
-	dl DATA_F2F107
-	dl DATA_F2F559
-	dl DATA_F2F723
-	dl DATA_F2F559
-	dl DATA_F2F107
-	dl DATA_F2F979
-	dl DATA_F2F12F
-	dl DATA_F2F559
-	dl DATA_F2F2F1
-	dl DATA_F2F107
-	dl DATA_F2F2F1
-	dl DATA_F2F723
-	dl DATA_F2F107
-	dl DATA_F2F723
-	dl DATA_F2F979
-	dl DATA_F2F12F
-	dl DATA_F2F107
-	dl DATA_F2F107
-	dl DATA_F2F2F1
-	dl DATA_F2F6C6
-	dl DATA_F2F107
-	dl DATA_F2F2F1
-	dl DATA_F2F2F1
-	dl DATA_F2F723
-	dl DATA_F2F12F
-	dl DATA_F2F979
-	dl DATA_F2F979
-	dl DATA_F2F2F1
-	dl DATA_F2F2F1
-	dl DATA_F2F2F1
-	dl DATA_F2F107
-	dl DATA_F2F107
-	dl DATA_F2F107
+	dl dummy_sfx_data
+	dl dummy_sfx_data
+	dl dummy_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data
+	dl dummy_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data
+	dl boss_1_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data
+	dl dummy_sfx_data
+	dl lava_castle_boss_2_sfx_data
+	dl roller_coaster_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl dummy_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl boss_1_sfx_data
+	dl dummy_sfx_data
+	dl boss_1_sfx_data
+	dl lava_castle_boss_2_sfx_data
+	dl roller_coaster_sfx_data
+	dl dummy_sfx_data
+	dl dummy_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl jungle_sfx_data
+	dl dummy_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl boss_1_sfx_data
+	dl roller_coaster_sfx_data
+	dl lava_castle_boss_2_sfx_data
+	dl lava_castle_boss_2_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl ship_ice_ending_sfx_data
+	dl dummy_sfx_data
+	dl dummy_sfx_data
+	dl dummy_sfx_data
 
 DATA_EE11F6:
 	db $00, $00, $00
 
 global_sample_map:
-	db $01, $00, $02, $00, $03, $00, $04, $00
-	db $06, $00, $08, $00, $07, $00, $05, $00
-	db $00, $00, $A5, $00, $0C, $00, $09, $00
-	db $11, $00, $0A, $00, $8B, $00, $43, $00
-	db $47, $00, $49, $00, $4B, $00, $4D, $00
-	db $FF, $FF
+	dw $0001, $0002, $0003, $0004
+	dw $0006, $0008, $0007, $0005
+	dw $0000, $00A5, $000C, $0009
+	dw $0011, $000A, $008B, $0043
+	dw $0047, $0049, $004B, $004D
+	dw $FFFF
 
 null_sample_set:
-	db $94, $00, $15, $00, $AB, $00, $C4, $00
-	db $CD, $00, $D3, $00, $0D, $00, $0E, $00
-	db $0B, $00, $9A, $00, $0F, $00, $10, $00
-	db $2B, $00, $D8, $00, $BC, $00, $A1, $00
-	db $9F, $00, $C6, $00, $9D, $00, $CC, $00
-	db $FF, $FF
+	dw $0094, $0015, $00AB, $00C4
+	dw $00CD, $00D3, $000D, $000E
+	dw $000B, $009A, $000F, $0010
+	dw $002B, $00D8, $00BC, $00A1
+	dw $009F, $00C6, $009D, $00CC
+	dw $FFFF
 
 island_map_sample_set:
-	db $1D, $00, $1C, $00, $A2, $00, $A3, $00
-	db $A4, $00, $14, $00, $9A, $00, $94, $00
-	db $10, $00, $8F, $00, $FF, $FF
+	dw $001D, $001C, $00A2, $00A3
+	dw $00A4, $0014, $009A, $0094
+	dw $0010, $008F, $FFFF
 
 main_theme_sample_set:
-	db $1E, $00, $1F, $00, $20, $00, $21, $00
-	db $22, $00, $23, $00, $24, $00, $A2, $00
-	db $A4, $00, $A3, $00, $14, $00, $2B, $00
-	db $FF, $FF
+	dw $001E, $001F, $0020, $0021
+	dw $0022, $0023, $0024, $00A2
+	dw $00A4, $00A3, $0014, $002B
+	dw $FFFF
 
 swamp_sample_set:
-	db $14, $00, $15, $00, $88, $00, $89, $00
-	db $17, $00, $26, $00, $27, $00, $1C, $00
-	db $25, $00, $29, $00, $22, $00, $2B, $00
-	db $28, $00, $2A, $00, $2C, $00, $50, $00
-	db $15, $00, $18, $00, $8F, $00, $0E, $00
-	db $0B, $00, $9A, $00, $0D, $00, $0F, $00
-	db $9F, $00, $C6, $00, $D3, $00, $C4, $00
-	db $A1, $00, $D7, $00, $D8, $00, $94, $00
-	db $10, $00, $FF, $FF
+	dw $0014, $0015, $0088, $0089
+	dw $0017, $0026, $0027, $001C
+	dw $0025, $0029, $0022, $002B
+	dw $0028, $002A, $002C, $0050
+	dw $0015, $0018, $008F, $000E
+	dw $000B, $009A, $000D, $000F
+	dw $009F, $00C6, $00D3, $00C4
+	dw $00A1, $00D7, $00D8, $0094
+	dw $0010, $FFFF
 
 swanky_sample_set:
-	db $14, $00, $8C, $00, $A2, $00, $18, $00
-	db $19, $00, $8D, $00, $1B, $00, $8E, $00
-	db $2B, $00, $8F, $00, $FF, $FF
+	dw $0014, $008C, $00A2, $0018
+	dw $0019, $008D, $001B, $008E
+	dw $002B, $008F, $FFFF
 
 forest_sample_set:
-	db $37, $00, $39, $00, $3B, $00, $3D, $00
-	db $3F, $00, $41, $00, $45, $00, $48, $00
-	db $4A, $00, $4C, $00, $4E, $00, $4F, $00
-	db $2D, $00, $8A, $00, $14, $00, $8D, $00
-	db $32, $00, $A3, $00, $2F, $00, $2E, $00
-	db $21, $00, $29, $00, $15, $00, $8F, $00
-	db $50, $00, $51, $00, $52, $00, $53, $00
-	db $54, $00, $55, $00, $56, $00, $57, $00
-	db $58, $00, $59, $00, $C4, $00, $A1, $00
-	db $0B, $00, $9A, $00, $0E, $00, $C6, $00
-	db $0F, $00, $10, $00, $D3, $00, $9F, $00
-	db $0D, $00, $D7, $00, $9D, $00, $FF, $FF
+	dw $0037, $0039, $003B, $003D
+	dw $003F, $0041, $0045, $0048
+	dw $004A, $004C, $004E, $004F
+	dw $002D, $008A, $0014, $008D
+	dw $0032, $00A3, $002F, $002E
+	dw $0021, $0029, $0015, $008F
+	dw $0050, $0051, $0052, $0053
+	dw $0054, $0055, $0056, $0057
+	dw $0058, $0059, $00C4, $00A1
+	dw $000B, $009A, $000E, $00C6
+	dw $000F, $0010, $00D3, $009F
+	dw $000D, $00D7, $009D, $FFFF
 
 ship_deck_sample_set:
-	db $9E, $00, $A8, $00, $A7, $00, $8F, $00
-	db $1E, $00, $13, $00, $A0, $00, $21, $00
-	db $22, $00, $24, $00, $94, $00, $9F, $00
-	db $0B, $00, $9A, $00, $0D, $00, $9F, $00
-	db $C6, $00, $53, $00, $D8, $00, $FF, $FF
+	dw $009E, $00A8, $00A7, $008F
+	dw $001E, $0013, $00A0, $0021
+	dw $0022, $0024, $0094, $009F
+	dw $000B, $009A, $000D, $009F
+	dw $00C6, $0053, $00D8, $FFFF
 
 mine_sample_set:
-	db $B3, $00, $2F, $00, $B2, $00, $AD, $00
-	db $AE, $00, $8B, $00, $18, $00, $14, $00
-	db $B4, $00, $1A, $00, $2B, $00, $39, $00
-	db $3B, $00, $3D, $00, $3F, $00, $41, $00
-	db $43, $00, $45, $00, $47, $00, $48, $00
-	db $49, $00, $4A, $00, $4B, $00, $4C, $00
-	db $4D, $00, $4E, $00, $4F, $00, $8F, $00
-	db $9F, $00, $0F, $00, $10, $00, $A1, $00
-	db $BC, $00, $C6, $00, $0E, $00, $C4, $00
-	db $D7, $00, $0B, $00, $9A, $00, $0D, $00
-	db $9D, $00, $FF, $FF
+	dw $00B3, $002F, $00B2, $00AD
+	dw $00AE, $008B, $0018, $0014
+	dw $00B4, $001A, $002B, $0039
+	dw $003B, $003D, $003F, $0041
+	dw $0043, $0045, $0047, $0048
+	dw $0049, $004A, $004B, $004C
+	dw $004D, $004E, $004F, $008F
+	dw $009F, $000F, $0010, $00A1
+	dw $00BC, $00C6, $000E, $00C4
+	dw $00D7, $000B, $009A, $000D
+	dw $009D, $FFFF
 
 funky_sample_set:
-	db $7A, $00, $18, $00, $7B, $00, $7C, $00
-	db $7D, $00, $7E, $00, $7F, $00, $80, $00
-	db $81, $00, $82, $00, $83, $00, $84, $00
-	db $85, $00, $2B, $00, $8F, $00, $FF, $FF
+	dw $007A, $0018, $007B, $007C
+	dw $007D, $007E, $007F, $0080
+	dw $0081, $0082, $0083, $0084
+	dw $0085, $002B, $008F, $FFFF
 
 brambles_sample_set:
-	db $15, $00, $14, $00, $18, $00, $2E, $00
-	db $34, $00, $8E, $00, $1B, $00, $33, $00
-	db $35, $00, $B3, $00, $8F, $00, $28, $00
-	db $A6, $00, $50, $00, $51, $00, $52, $00
-	db $53, $00, $54, $00, $55, $00, $56, $00
-	db $57, $00, $58, $00, $59, $00, $37, $00
-	db $39, $00, $3B, $00, $3D, $00, $3F, $00
-	db $41, $00, $45, $00, $48, $00, $4A, $00
-	db $4C, $00, $4E, $00, $4F, $00, $0D, $00
-	db $A1, $00, $BC, $00, $C6, $00, $0E, $00
-	db $0B, $00, $9A, $00, $D3, $00, $C4, $00
-	db $9D, $00, $D8, $00, $9F, $00, $10, $00
-	db $0F, $00, $FF, $FF
+	dw $0015, $0014, $0018, $002E
+	dw $0034, $008E, $001B, $0033
+	dw $0035, $00B3, $008F, $0028
+	dw $00A6, $0050, $0051, $0052
+	dw $0053, $0054, $0055, $0056
+	dw $0057, $0058, $0059, $0037
+	dw $0039, $003B, $003D, $003F
+	dw $0041, $0045, $0048, $004A
+	dw $004C, $004E, $004F, $000D
+	dw $00A1, $00BC, $00C6, $000E
+	dw $000B, $009A, $00D3, $00C4
+	dw $009D, $00D8, $009F, $0010
+	dw $000F, $FFFF
 
 klubba_sample_set:
-	db $A2, $00, $21, $00, $14, $00, $1E, $00
-	db $B6, $00, $A4, $00, $A5, $00, $2B, $00
-	db $8F, $00, $FF, $FF
+	dw $00A2, $0021, $0014, $001E
+	dw $00B6, $00A4, $00A5, $002B
+	dw $008F, $FFFF
 
 wasp_hive_sample_set:
-	db $14, $00, $15, $00, $90, $00, $28, $00
-	db $8F, $00, $8E, $00, $91, $00, $92, $00
-	db $93, $00, $2E, $00, $D5, $00, $B5, $00
-	db $1C, $00, $0E, $00, $0D, $00, $0F, $00
-	db $C6, $00, $10, $00, $C6, $00, $A1, $00
-	db $D7, $00, $9F, $00, $A9, $00, $D8, $00
-	db $BC, $00, $FF, $FF
+	dw $0014, $0015, $0090, $0028
+	dw $008F, $008E, $0091, $0092
+	dw $0093, $002E, $00D5, $00B5
+	dw $001C, $000E, $000D, $000F
+	dw $00C6, $0010, $00C6, $00A1
+	dw $00D7, $009F, $00A9, $00D8
+	dw $00BC, $FFFF
 
 wrinkly_sample_set:
-	db $B8, $00, $D6, $00, $C0, $00, $D4, $00
-	db $D1, $00, $C5, $00, $88, $00, $89, $00
-	db $97, $00, $2B, $00, $8F, $00, $FF, $FF
+	dw $00B8, $00D6, $00C0, $00D4
+	dw $00D1, $00C5, $0088, $0089
+	dw $0097, $002B, $008F, $FFFF
 
 lava_sample_set:
-	db $8D, $00, $19, $00, $18, $00, $D4, $00
-	db $A0, $00, $14, $00, $8D, $00, $AF, $00
-	db $8E, $00, $21, $00, $39, $00, $3B, $00
-	db $3D, $00, $3F, $00, $41, $00, $45, $00
-	db $48, $00, $4A, $00, $4C, $00, $4E, $00
-	db $8F, $00, $A9, $00, $AA, $00, $0E, $00
-	db $0D, $00, $0B, $00, $9A, $00, $0F, $00
-	db $C6, $00, $10, $00, $D7, $00, $9F, $00
-	db $FF, $FF
+	dw $008D, $0019, $0018, $00D4
+	dw $00A0, $0014, $008D, $00AF
+	dw $008E, $0021, $0039, $003B
+	dw $003D, $003F, $0041, $0045
+	dw $0048, $004A, $004C, $004E
+	dw $008F, $00A9, $00AA, $000E
+	dw $000D, $000B, $009A, $000F
+	dw $00C6, $0010, $00D7, $009F
+	dw $FFFF
 
 roller_coaster_sample_set:
-	db $14, $00, $5A, $00, $5B, $00, $5C, $00
-	db $5D, $00, $5E, $00, $5F, $00, $60, $00
-	db $61, $00, $62, $00, $63, $00, $64, $00
-	db $65, $00, $66, $00, $67, $00, $68, $00
-	db $69, $00, $6A, $00, $6B, $00, $6C, $00
-	db $6D, $00, $6E, $00, $6F, $00, $70, $00
-	db $71, $00, $72, $00, $73, $00, $74, $00
-	db $75, $00, $76, $00, $77, $00, $78, $00
-	db $79, $00, $98, $00, $95, $00, $96, $00
-	db $97, $00, $88, $00, $89, $00, $85, $00
-	db $3D, $00, $3F, $00, $41, $00, $45, $00
-	db $48, $00, $4A, $00, $4F, $00, $8F, $00
-	db $C6, $00, $CC, $00, $D0, $00, $D1, $00
-	db $D2, $00, $FF, $FF
+	dw $0014, $005A, $005B, $005C
+	dw $005D, $005E, $005F, $0060
+	dw $0061, $0062, $0063, $0064
+	dw $0065, $0066, $0067, $0068
+	dw $0069, $006A, $006B, $006C
+	dw $006D, $006E, $006F, $0070
+	dw $0071, $0072, $0073, $0074
+	dw $0075, $0076, $0077, $0078
+	dw $0079, $0098, $0095, $0096
+	dw $0097, $0088, $0089, $0085
+	dw $003D, $003F, $0041, $0045
+	dw $0048, $004A, $004F, $008F
+	dw $00C6, $00CC, $00D0, $00D1
+	dw $00D2, $FFFF
 
 bonus_sample_set:
-	db $B5, $00, $B6, $00, $B7, $00, $B3, $00
-	db $B8, $00, $33, $00, $8D, $00, $36, $00
-	db $8D, $00, $A2, $00, $19, $00, $36, $00
-	db $2B, $00, $0D, $00, $0B, $00, $9A, $00
-	db $C6, $00, $0F, $00, $10, $00, $53, $00
-	db $0E, $00, $15, $00, $A1, $00, $BC, $00
-	db $8F, $00, $9F, $00, $D8, $00, $FF, $FF
+	dw $00B5, $00B6, $00B7, $00B3
+	dw $00B8, $0033, $008D, $0036
+	dw $008D, $00A2, $0019, $0036
+	dw $002B, $000D, $000B, $009A
+	dw $00C6, $000F, $0010, $0053
+	dw $000E, $0015, $00A1, $00BC
+	dw $008F, $009F, $00D8, $FFFF
 
 ship_hold_sample_set:
-	db $15, $00, $14, $00, $1D, $00, $24, $00
-	db $1E, $00, $1C, $00, $A6, $00, $37, $00
-	db $39, $00, $3B, $00, $3D, $00, $3F, $00
-	db $41, $00, $43, $00, $45, $00, $47, $00
-	db $4F, $00, $18, $00, $2E, $00, $8F, $00
-	db $0B, $00, $9A, $00, $0E, $00, $0D, $00
-	db $53, $00, $CD, $00, $99, $00, $0F, $00
-	db $10, $00, $9B, $00, $9F, $00, $BC, $00
-	db $50, $00, $DA, $00, $FF, $FF
+	dw $0015, $0014, $001D, $0024
+	dw $001E, $001C, $00A6, $0037
+	dw $0039, $003B, $003D, $003F
+	dw $0041, $0043, $0045, $0047
+	dw $004F, $0018, $002E, $008F
+	dw $000B, $009A, $000E, $000D
+	dw $0053, $00CD, $0099, $000F
+	dw $0010, $009B, $009F, $00BC
+	dw $0050, $00DA, $FFFF
 
 fanfare_sample_set:
-	db $14, $00, $BE, $00, $A2, $00, $A4, $00
-	db $B5, $00, $A0, $00, $2B, $00, $8F, $00
-	db $FF, $FF
+	dw $0014, $00BE, $00A2, $00A4
+	dw $00B5, $00A0, $002B, $008F
+	dw $FFFF
 
 ship_deck_2_sample_set:
-	db $14, $00, $8E, $00, $A5, $00, $18, $00
-	db $21, $00, $34, $00, $1B, $00, $33, $00
-	db $36, $00, $8D, $00, $2E, $00, $24, $00
-	db $8F, $00, $94, $00, $9F, $00, $0B, $00
-	db $9A, $00, $0D, $00, $9F, $00, $C6, $00
-	db $53, $00, $FF, $FF
+	dw $0014, $008E, $00A5, $0018
+	dw $0021, $0034, $001B, $0033
+	dw $0036, $008D, $002E, $0024
+	dw $008F, $0094, $009F, $000B
+	dw $009A, $000D, $009F, $00C6
+	dw $0053, $FFFF
 
 rescue_kong_sample_set:
-	db $1D, $00, $14, $00, $AF, $00, $B5, $00
-	db $1C, $00, $A5, $00, $33, $00, $BC, $00
-	db $FF, $FF
+	dw $001D, $0014, $00AF, $00B5
+	dw $001C, $00A5, $0033, $00BC
+	dw $FFFF
 
 game_over_sample_set:
-	db $8D, $00, $24, $00, $18, $00, $14, $00
-	db $33, $00, $2B, $00, $8F, $00, $FF, $FF
+	dw $008D, $0024, $0018, $0014
+	dw $0033, $002B, $008F, $FFFF
 
 big_boss_sample_set:
-	db $14, $00, $A5, $00, $A2, $00, $21, $00
-	db $22, $00, $23, $00, $1D, $00, $24, $00
-	db $A3, $00, $A4, $00, $1E, $00, $8F, $00
-	db $2E, $00, $2B, $00, $0D, $00, $AB, $00
-	db $A1, $00, $C4, $00, $BC, $00, $2B, $00
-	db $D7, $00, $86, $00, $9A, $00, $94, $00
-	db $FF, $FF
+	dw $0014, $00A5, $00A2, $0021
+	dw $0022, $0023, $001D, $0024
+	dw $00A3, $00A4, $001E, $008F
+	dw $002E, $002B, $000D, $00AB
+	dw $00A1, $00C4, $00BC, $002B
+	dw $00D7, $0086, $009A, $0094
+	dw $FFFF
 
 castle_sample_set:
-	db $AF, $00, $1D, $00, $A2, $00, $A4, $00
-	db $14, $00, $B0, $00, $24, $00, $B1, $00
-	db $22, $00, $AC, $00, $8F, $00, $2E, $00
-	db $9F, $00, $C6, $00, $0B, $00, $9A, $00
-	db $0D, $00, $C4, $00, $A1, $00, $BC, $00
-	db $0F, $00, $10, $00, $D7, $00, $53, $00
-	db $0E, $00, $D8, $00, $A9, $00, $FF, $FF
+	dw $00AF, $001D, $00A2, $00A4
+	dw $0014, $00B0, $0024, $00B1
+	dw $0022, $00AC, $008F, $002E
+	dw $009F, $00C6, $000B, $009A
+	dw $000D, $00C4, $00A1, $00BC
+	dw $000F, $0010, $00D7, $0053
+	dw $000E, $00D8, $00A9, $FFFF
 
 haunted_sample_set:
-	db $14, $00, $B8, $00, $BA, $00, $BE, $00
-	db $B6, $00, $A2, $00, $B9, $00, $BD, $00
-	db $1E, $00, $A4, $00, $3F, $00, $28, $00
-	db $BB, $00, $8F, $00, $2E, $00, $C6, $00
-	db $CC, $00, $D0, $00, $D1, $00, $D2, $00
-	db $C1, $00, $C2, $00, $C3, $00, $8E, $00
-	db $FF, $FF
+	dw $0014, $00B8, $00BA, $00BE
+	dw $00B6, $00A2, $00B9, $00BD
+	dw $001E, $00A4, $003F, $0028
+	dw $00BB, $008F, $002E, $00C6
+	dw $00CC, $00D0, $00D1, $00D2
+	dw $00C1, $00C2, $00C3, $008E
+	dw $FFFF
 
 file_select_sample_set:
-	db $0C, $00, $17, $00, $0D, $00, $19, $00
-	db $18, $00, $B7, $00, $28, $00, $87, $00
-	db $2B, $00, $8F, $00, $FF, $FF
+	dw $000C, $0017, $000D, $0019
+	dw $0018, $00B7, $0028, $0087
+	dw $002B, $008F, $FFFF
 
 cranky_sample_set:
-	db $B8, $00, $28, $00, $29, $00, $AF, $00
-	db $2B, $00, $16, $00, $17, $00, $19, $00
-	db $15, $00, $9F, $00, $2B, $00, $8F, $00
-	db $FF, $FF
+	dw $00B8, $0028, $0029, $00AF
+	dw $002B, $0016, $0017, $0019
+	dw $0015, $009F, $002B, $008F
+	dw $FFFF
 
 ice_sample_set:
-	db $12, $00, $88, $00, $37, $00, $39, $00
-	db $3B, $00, $3F, $00, $41, $00, $43, $00
-	db $45, $00, $47, $00, $48, $00, $4A, $00
-	db $AF, $00, $2C, $00, $C5, $00, $14, $00
-	db $C0, $00, $8F, $00, $2E, $00, $0B, $00
-	db $9A, $00, $0E, $00, $0F, $00, $10, $00
-	db $0D, $00, $9F, $00, $CD, $00, $99, $00
-	db $C6, $00, $2B, $00, $53, $00, $50, $00
-	db $D8, $00, $DA, $00, $FF, $FF
+	dw $0012, $0088, $0037, $0039
+	dw $003B, $003F, $0041, $0043
+	dw $0045, $0047, $0048, $004A
+	dw $00AF, $002C, $00C5, $0014
+	dw $00C0, $008F, $002E, $000B
+	dw $009A, $000E, $000F, $0010
+	dw $000D, $009F, $00CD, $0099
+	dw $00C6, $002B, $0053, $0050
+	dw $00D8, $00DA, $FFFF
 
 jungle_sample_set:
-	db $C8, $00, $C9, $00, $CA, $00, $0D, $00
-	db $31, $00, $29, $00, $CB, $00, $86, $00
-	db $C7, $00, $28, $00, $C0, $00, $A6, $00
-	db $31, $00, $96, $00, $8F, $00, $0F, $00
-	db $10, $00, $0E, $00, $0D, $00, $C6, $00
-	db $D7, $00, $0B, $00, $9A, $00, $9F, $00
-	db $D8, $00, $53, $00, $B8, $00, $FF, $FF
+	dw $00C8, $00C9, $00CA, $000D
+	dw $0031, $0029, $00CB, $0086
+	dw $00C7, $0028, $00C0, $00A6
+	dw $0031, $0096, $008F, $000F
+	dw $0010, $000E, $000D, $00C6
+	dw $00D7, $000B, $009A, $009F
+	dw $00D8, $0053, $00B8, $FFFF
 
 lost_world_sample_set:
-	db $CE, $00, $CF, $00, $14, $00, $1D, $00
-	db $21, $00, $A6, $00, $90, $00, $BF, $00
-	db $9F, $00, $FF, $FF
+	dw $00CE, $00CF, $0014, $001D
+	dw $0021, $00A6, $0090, $00BF
+	dw $009F, $FFFF
 
 rigging_sample_set:
-	db $13, $00, $1E, $00, $36, $00, $24, $00
-	db $21, $00, $86, $00, $A1, $00, $9C, $00
-	db $9D, $00, $14, $00, $8F, $00, $0B, $00
-	db $9A, $00, $99, $00, $0F, $00, $10, $00
-	db $0E, $00, $0D, $00, $C6, $00, $53, $00
-	db $D8, $00, $9F, $00, $DA, $00, $FF, $FF
+	dw $0013, $001E, $0036, $0024
+	dw $0021, $0086, $00A1, $009C
+	dw $009D, $0014, $008F, $000B
+	dw $009A, $0099, $000F, $0010
+	dw $000E, $000D, $00C6, $0053
+	dw $00D8, $009F, $00DA, $FFFF
 
 credits_sample_set:
-	db $CE, $00, $CF, $00, $C0, $00, $A6, $00
-	db $90, $00, $B8, $00, $2E, $00, $34, $00
-	db $8E, $00, $B6, $00, $5A, $00, $5B, $00
-	db $5C, $00, $5D, $00, $5E, $00, $5F, $00
-	db $60, $00, $61, $00, $62, $00, $63, $00
-	db $64, $00, $65, $00, $66, $00, $67, $00
-	db $68, $00, $69, $00, $6A, $00, $6B, $00
-	db $6C, $00, $6D, $00, $6E, $00, $6F, $00
-	db $70, $00, $71, $00, $72, $00, $73, $00
-	db $74, $00, $75, $00, $76, $00, $77, $00
-	db $78, $00, $79, $00, $37, $00, $39, $00
-	db $3B, $00, $3D, $00, $3F, $00, $41, $00
-	db $45, $00, $48, $00, $4A, $00, $4C, $00
-	db $4E, $00, $4F, $00, $2B, $00, $0D, $00
-	db $50, $00, $53, $00, $A1, $00, $C6, $00
-	db $9F, $00, $0F, $00, $10, $00, $CD, $00
-	db $D7, $00, $99, $00, $FF, $FF
+	dw $00CE, $00CF, $00C0, $00A6
+	dw $0090, $00B8, $002E, $0034
+	dw $008E, $00B6, $005A, $005B
+	dw $005C, $005D, $005E, $005F
+	dw $0060, $0061, $0062, $0063
+	dw $0064, $0065, $0066, $0067
+	dw $0068, $0069, $006A, $006B
+	dw $006C, $006D, $006E, $006F
+	dw $0070, $0071, $0072, $0073
+	dw $0074, $0075, $0076, $0077
+	dw $0078, $0079, $0037, $0039
+	dw $003B, $003D, $003F, $0041
+	dw $0045, $0048, $004A, $004C
+	dw $004E, $004F, $002B, $000D
+	dw $0050, $0053, $00A1, $00C6
+	dw $009F, $000F, $0010, $00CD
+	dw $00D7, $0099, $FFFF
 
 k_rool_sample_set:
-	db $CE, $00, $CF, $00, $21, $00, $A2, $00
-	db $BE, $00, $2E, $00, $90, $00, $A6, $00
-	db $96, $00, $8F, $00, $14, $00, $0D, $00
-	db $D9, $00, $9D, $00, $53, $00, $BC, $00
-	db $D2, $00, $86, $00, $AD, $00, $88, $00
-	db $94, $00, $FF, $FF
+	dw $00CE, $00CF, $0021, $00A2
+	dw $00BE, $002E, $0090, $00A6
+	dw $0096, $008F, $0014, $000D
+	dw $00D9, $009D, $0053, $00BC
+	dw $00D2, $0086, $00AD, $0088
+	dw $0094, $FFFF
 
 bonus_sample_set_2:
-	db $B5, $00, $B6, $00, $B7, $00, $B3, $00
-	db $B8, $00, $33, $00, $8D, $00, $36, $00
-	db $8D, $00, $A2, $00, $19, $00, $36, $00
-	db $8F, $00, $0D, $00, $C6, $00, $CC, $00
-	db $D0, $00, $D1, $00, $D2, $00, $67, $00
-	db $C1, $00, $C2, $00, $C3, $00, $8E, $00
-	db $FF, $FF
+	dw $00B5, $00B6, $00B7, $00B3
+	dw $00B8, $0033, $008D, $0036
+	dw $008D, $00A2, $0019, $0036
+	dw $008F, $000D, $00C6, $00CC
+	dw $00D0, $00D1, $00D2, $0067
+	dw $00C1, $00C2, $00C3, $008E
+	dw $FFFF
 
 big_boss_sample_set_2:
-	db $14, $00, $A5, $00, $A2, $00, $21, $00
-	db $22, $00, $23, $00, $1D, $00, $24, $00
-	db $A3, $00, $A4, $00, $1E, $00, $8F, $00
-	db $2E, $00, $0D, $00, $D7, $00, $86, $00
-	db $BD, $00, $A9, $00, $AA, $00, $2B, $00
-	db $C6, $00, $A1, $00, $2F, $00, $D9, $00
-	db $BC, $00, $FF, $FF, $FF, $FF
+	dw $0014, $00A5, $00A2, $0021
+	dw $0022, $0023, $001D, $0024
+	dw $00A3, $00A4, $001E, $008F
+	dw $002E, $000D, $00D7, $0086
+	dw $00BD, $00A9, $00AA, $002B
+	dw $00C6, $00A1, $002F, $00D9
+	dw $00BC, $FFFF, $FFFF
 
 bonus_sample_set_3:
-	db $B5, $00, $B6, $00, $B7, $00, $B3, $00
-	db $B8, $00, $33, $00, $8D, $00, $36, $00
-	db $8D, $00, $A2, $00, $19, $00, $36, $00
-	db $0D, $00, $C6, $00, $8F, $00, $50, $00
-	db $99, $00, $DA, $00, $FF, $FF
+	dw $00B5, $00B6, $00B7, $00B3
+	dw $00B8, $0033, $008D, $0036
+	dw $008D, $00A2, $0019, $0036
+	dw $000D, $00C6, $008F, $0050
+	dw $0099, $00DA, $FFFF
 
 secret_ending_sample_set:
-	db $A7, $00, $9D, $00, $D9, $00, $88, $00
-	db $D3, $00, $C1, $00, $C2, $00, $C3, $00
-	db $FF, $FF
+	dw $00A7, $009D, $00D9, $0088
+	dw $00D3, $00C1, $00C2, $00C3
+	dw $FFFF
 
 bonus_sample_set_4:
-	db $B5, $00, $B6, $00, $B7, $00, $B3, $00
-	db $B8, $00, $33, $00, $8D, $00, $36, $00
-	db $8D, $00, $A2, $00, $19, $00, $36, $00
-	db $0D, $00, $0B, $00, $9A, $00, $C6, $00
-	db $0F, $00, $10, $00, $53, $00, $0E, $00
-	db $8F, $00, $9F, $00, $D8, $00, $94, $00
-	db $FF, $FF
+	dw $00B5, $00B6, $00B7, $00B3
+	dw $00B8, $0033, $008D, $0036
+	dw $008D, $00A2, $0019, $0036
+	dw $000D, $000B, $009A, $00C6
+	dw $000F, $0010, $0053, $000E
+	dw $008F, $009F, $00D8, $0094
+	dw $FFFF
 
 DATA_EE1935:
-	db $FF, $FF
+	dw $FFFF
 
 DATA_EE1937:
-	db $FF, $FF
+	dw $FFFF
 
-null_song_data:
-	incbin "data/sound/music/null_song_data.bin"
-
-island_map_song_data:
-	incbin "data/sound/music/island_map_song_data.bin"
-
-main_theme_song_data:
-	incbin "data/sound/music/main_theme_song_data.bin"
-
-swamp_song_data:
-	incbin "data/sound/music/swamp_song_data.bin"
-
-swanky_song_data:
-	incbin "data/sound/music/swanky_song_data.bin"
-
-forest_song_data:
-	incbin "data/sound/music/forest_song_data.bin"
-
-ship_deck_song_data:
-	incbin "data/sound/music/ship_deck_song_data.bin"
-
-mine_song_data:
-	incbin "data/sound/music/mine_song_data.bin"
-
-funky_song_data:
-	incbin "data/sound/music/funky_song_data.bin"
-
-brambles_song_data:
-	incbin "data/sound/music/brambles_song_data.bin"
-
-klubba_song_data:
-	incbin "data/sound/music/klubba_song_data.bin"
-
-wasp_hive_song_data:
-	incbin "data/sound/music/wasp_hive_song_data.bin"
-
-wrinkly_song_data:
-	incbin "data/sound/music/wrinkly_song_data.bin"
-
-lava_song_data:
-	incbin "data/sound/music/lava_song_data.bin"
-
-roller_coaster_song_data:
-	incbin "data/sound/music/roller_coaster_song_data.bin"
-
-bonus_song_data:
-	incbin "data/sound/music/bonus_song_data.bin"
+	incsrc "data/sound/music/null_song_data.asm"
+	incsrc "data/sound/music/island_map_song_data.asm"
+	incsrc "data/sound/music/main_theme_song_data.asm"
+	incsrc "data/sound/music/swamp_song_data.asm"
+	incsrc "data/sound/music/swanky_song_data.asm"
+	incsrc "data/sound/music/forest_song_data.asm"
+	incsrc "data/sound/music/ship_deck_song_data.asm"
+	incsrc "data/sound/music/mine_song_data.asm"
+	incsrc "data/sound/music/funky_song_data.asm"
+	incsrc "data/sound/music/brambles_song_data.asm"
+	incsrc "data/sound/music/klubba_song_data.asm"
+	incsrc "data/sound/music/wasp_hive_song_data.asm"
+	incsrc "data/sound/music/wrinkly_song_data.asm"
+	incsrc "data/sound/music/lava_song_data.asm"
+	incsrc "data/sound/music/roller_coaster_song_data.asm"
+	incsrc "data/sound/music/bonus_song_data.asm"
 
 check bankcross off
 ;$EECE62
@@ -3919,1186 +3851,80 @@ brr_sample_F232D2:
 	dw datasize(brr_sample_F232D2)-4
 	incbin "data/sound/samples/sample_F232D2.brr"
 
-ship_hold_song_data:
-	incbin "data/sound/music/ship_hold_song_data.bin"
+	incsrc "data/sound/music/ship_hold_song_data.asm"
+	incsrc "data/sound/music/fanfare_song_data.asm"
+	incsrc "data/sound/music/ship_deck_2_song_data.asm"
+	incsrc "data/sound/music/rescue_kong_song_data.asm"
+	incsrc "data/sound/music/game_over_song_data.asm"
+	incsrc "data/sound/music/big_boss_song_data.asm"
+	incsrc "data/sound/music/castle_song_data.asm"
+	incsrc "data/sound/music/haunted_song_data.asm"
+	incsrc "data/sound/music/file_select_song_data.asm"
+	incsrc "data/sound/music/cranky_song_data.asm"
+	incsrc "data/sound/music/ice_song_data.asm"
+	incsrc "data/sound/music/jungle_song_data.asm"
+	incsrc "data/sound/music/lost_world_song_data.asm"
+	incsrc "data/sound/music/rigging_song_data.asm"
+	incsrc "data/sound/music/credits_song_data.asm"
+	incsrc "data/sound/music/k_rool_song_data.asm"
 
-fanfare_song_data:
-	incbin "data/sound/music/fanfare_song_data.bin"
+DATA_F2E691:
+	dw $1300, $0000		;Unused placeholder for track $20 (reuses track $0F data instead)
 
-ship_deck_2_song_data:
-if !version == 1
-	incbin "data/sound/music/ship_deck_2_song_data_v1.bin"
-else
-	incbin "data/sound/music/ship_deck_2_song_data_v0.bin"
-endif
+DATA_F2E695:
+	dw $1300, $0000		;Unused placeholder for track $21 (reuses track $15 data instead)
 
-rescue_kong_song_data:
-	incbin "data/sound/music/rescue_kong_song_data.bin"
+DATA_F2E699:
+	dw $1300, $0000		;Unused placeholder for track $22 (reuses track $0F data instead)
 
-game_over_song_data:
-	incbin "data/sound/music/game_over_song_data.bin"
+DATA_F2E69D:
+	dw $1300, $0000		;Unused placeholder for track $23 (reuses track $0F data instead)
 
-big_boss_song_data:
-	incbin "data/sound/music/big_boss_song_data.bin"
+	incsrc "data/sound/music/secret_ending_song_data.asm"
 
-castle_song_data:
-	incbin "data/sound/music/castle_song_data.bin"
-
-haunted_song_data:
-	incbin "data/sound/music/haunted_song_data.bin"
-
-file_select_song_data:
-	incbin "data/sound/music/file_select_song_data.bin"
-
-cranky_song_data:
-	incbin "data/sound/music/cranky_song_data.bin"
-
-ice_song_data:
-	incbin "data/sound/music/ice_song_data.bin"
-
-jungle_song_data:
-	incbin "data/sound/music/jungle_song_data.bin"
-
-lost_world_song_data:
-	incbin "data/sound/music/lost_world_song_data.bin"
-
-rigging_song_data:
-	incbin "data/sound/music/rigging_song_data.bin"
-
-credits_song_data:
-	incbin "data/sound/music/credits_song_data.bin"
-
-k_rool_song_data:
-	incbin "data/sound/music/k_rool_song_data.bin"
-
-secret_ending_song_data:
-	incbin "data/sound/music/secret_ending_song_data.bin"
+DATA_F2E724:
+	dw $1300, $0000		;Unused placeholder for track $25 (reuses track $0F data instead)
 
 DATA_F2E728:
-	db $00, $13, $00, $00
+	dw $1300, $0000		;Placeholder for track $26
 
 DATA_F2E72C:
-	db $00, $13, $00, $00
+	dw $1300, $0000		;Placeholder for track $27
 
-sound_effect_data:
-	dw $2410
-	dw $04EC
+	incsrc "data/sound/sound_effects/global_sfx_data.asm"
+	incsrc "data/sound/sound_effects/dummy_sfx_data.asm"
+	incsrc "data/sound/sound_effects/roller_coaster_sfx_data.asm"
+	incsrc "data/sound/sound_effects/ship_ice_ending_sfx_data.asm"
+	incsrc "data/sound/sound_effects/swamp_forest_mine_brambles_hive_sfx_data.asm"
+	incsrc "data/sound/sound_effects/unused_krockhead_sfx_data.asm"
+	incsrc "data/sound/sound_effects/jungle_sfx_data.asm"
+	incsrc "data/sound/sound_effects/boss_1_sfx_data.asm"
+	incsrc "data/sound/sound_effects/lava_castle_boss_2_sfx_data.asm"
 
-arch spc700
-base $2410
-	dw $0060
-
-	dw DATA_2DDA
-	dw DATA_2DDB
-	dw DATA_2DCB
-	dw DATA_2DB6
-	dw DATA_2DA1
-	dw DATA_2D75
-	dw DATA_2D6E
-	dw DATA_2D67
-	dw DATA_2D56
-	dw DATA_2D2D
-	dw DATA_2CE9
-	dw DATA_2CD4
-	dw DATA_2CC2
-	dw DATA_2CB2
-	dw DATA_2C9C
-	dw DATA_2C8E
-	dw DATA_2C7E
-	dw DATA_2C77
-	dw DATA_2C60
-	dw DATA_2C52
-	dw DATA_2C40
-	dw DATA_2C0E
-	dw DATA_2C07
-	dw DATA_2BFD
-	dw DATA_2BF6
-	dw DATA_2BAA
-	dw DATA_2B9C
-	dw DATA_2B60
-	dw DATA_2B48
-	dw DATA_2B36
-	dw DATA_2B28
-	dw DATA_2B18
-	dw DATA_2B0B
-	dw DATA_2AFB
-	dw DATA_2AC9
-	dw DATA_2AB9
-	dw DATA_2AAD
-	dw DATA_2A9D
-	dw DATA_2A89
-	dw DATA_2A07
-	dw DATA_29FF
-	dw DATA_29F7
-	dw DATA_29EF
-	dw DATA_29DD
-	dw DATA_29A9
-	dw DATA_297F
-	dw DATA_295F
-	dw DATA_2951
-	dw DATA_2942
-	dw DATA_2933
-	dw DATA_291F
-	dw DATA_2910
-	dw DATA_28FB
-	dw DATA_28CF
-	dw DATA_28C9
-	dw DATA_28B0
-	dw DATA_289F
-	dw DATA_2857
-	dw DATA_2806
-	dw DATA_27EF
-	dw DATA_27D8
-	dw DATA_27C3
-	dw DATA_27C0
-	dw DATA_27AB
-	dw DATA_279D
-	dw DATA_2787
-	dw DATA_2775
-	dw DATA_275D
-	dw DATA_2747
-	dw DATA_2738
-	dw DATA_2730
-	dw DATA_271F
-	dw DATA_2705
-	dw DATA_26EB
-	dw DATA_26D3
-	dw DATA_26B1
-	dw DATA_26A2
-	dw DATA_2681
-	dw DATA_2665
-	dw DATA_2656
-	dw DATA_2628
-	dw DATA_2621
-	dw DATA_2609
-	dw DATA_25F8
-	dw DATA_25E9
-	dw DATA_258B
-	dw DATA_2580
-	dw DATA_2575
-	dw DATA_2566
-	dw DATA_2557
-	dw DATA_2539
-	dw DATA_252F
-	dw DATA_2523
-	dw DATA_2516
-	dw DATA_24E5
-	dw DATA_24D2
+DATA_F2FB66:
+	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $08
 	
-DATA_24D2:
-	db $01, $8F, $23, $6E, $85, $09, $23, $32
-	db $85, $03, $23, $6E, $81, $10, $23, $32
-	db $81, $08, $00
+DATA_F2FB6A:
+	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $09
 
-DATA_24E5:
-	db $01, $8B, $10, $8F, $FA, $13, $14, $12
-	db $F2, $23, $32, $81, $06, $21, $05, $25
-	db $23, $14, $21, $05, $25, $23, $0A, $21
-	db $05, $25, $23, $06, $21, $05, $25, $00
-	db $88, $06, $8D, $06, $94, $06, $A0, $06
-	db $94, $06, $8D, $06, $88, $06, $81, $06
-	db $05
+DATA_F2FB6E:
+	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0A
 
-DATA_2516:
-	db $01, $08, $23, $64, $08, $00, $02, $16
-	db $16, $00, $90, $20, $00
+DATA_F2FB72:
+	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0B
 
-DATA_2523:
-	db $01, $94, $23, $7F, $10, $8F, $EB, $80
-	db $08, $8F, $58, $00
+DATA_F2FB76:
+	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0C
 
-DATA_252F:
-	db $01, $94, $23, $7F, $10, $8F, $EB, $8E
-	db $60, $00
+DATA_F2FB7A:
+	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0D
 
-DATA_2539:
-	db $01, $08, $10, $8D, $E0, $23, $78, $90
-	db $14, $23, $28, $90, $14, $23, $14, $90
-	db $14, $23, $0A, $90, $14, $23, $06, $90
-	db $14, $23, $03, $90, $14, $00
+DATA_F2FB7E:
+	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0E
 
-DATA_2557:
-	db $01, $9A, $23, $6E, $81, $2A, $23, $32
-	db $81, $2A, $23, $19, $81, $2A, $00
+DATA_F2FB82:
+	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0F
 
-DATA_2566:
-	db $01, $06, $23, $5A, $09, $00, $02, $0B
-	db $16, $00, $14, $FC, $81, $18, $00
-
-DATA_2575:
-	db $01, $C4, $23, $78, $86, $14, $23, $28
-	db $86, $14, $00
-
-DATA_2580:
-	db $13, $09, $21, $85, $29, $13, $0C, $21
-	db $85, $29, $00
-
-DATA_258B:
-	db $16, $23, $14, $01, $01, $99, $06, $01
-	db $00, $91, $06, $23, $1E, $01, $06, $90
-	db $06, $01, $00, $8E, $06, $23, $28, $01
-	db $02, $99, $06, $01, $00, $8E, $06, $23
-	db $32, $01, $03, $99, $06, $01, $00, $8E
-	db $06, $23, $3C, $01, $02, $99, $06, $01
-	db $00, $8E, $06, $23, $46, $01, $01, $99
-	db $06, $01, $00, $91, $06, $01, $04, $99
-	db $08, $98, $08, $01, $00, $90, $06, $91
-	db $06, $01, $04, $98, $08, $97, $08, $01
-	db $00, $90, $06, $8F, $06, $01, $04, $9A
-	db $08, $99, $08, $98, $08, $00
-
-DATA_25E9:
-	db $01, $00, $23, $3C, $10, $AD, $B4, $99
-	db $02, $10, $8D, $EA, $8E, $06, $00
-
-DATA_25F8:
-	db $01, $07, $23, $78, $08, $00, $01, $16
-	db $16, $00, $13, $FB, $81, $11, $85, $10
-	db $00
-
-DATA_2609:
-	db $01, $A5, $23, $55, $10, $88, $E0, $09
-	db $00, $01, $21, $21, $07, $85, $1A, $81
-	db $1A, $85, $1A, $82, $1A, $03, $16, $26
-
-DATA_2621:
-	db $01, $9A, $23, $7F, $81, $2A, $00
-
-DATA_2628:
-	db $13, $08, $12, $E9, $23, $78, $10, $ED
-	db $5C, $06, $09, $01, $43, $99, $01, $47
-	db $94, $01, $49, $99, $01, $4B, $A0, $01
-	db $4D, $A5, $01, $4D, $8D, $01, $49, $94
-	db $01, $4B, $A5, $01, $43, $A0, $01, $47
-	db $94, $07, $03, $31, $26, $00
-
-DATA_2656:
-	db $01, $BC, $23, $78, $8A, $0A, $89, $0B
-	db $88, $0C, $87, $0D, $86, $0E, $00
-
-DATA_2665:
-	db $01, $01, $13, $00, $23, $7E, $10, $85
-	db $C0, $12, $00, $8A, $20, $12, $E2, $8A
-	db $20, $12, $0A, $8A, $20, $12, $EC, $8A
-	db $20, $03, $6E, $26
-
-DATA_2681:
-	db $23, $50, $10, $8B, $E0, $01, $00, $AB
-	db $03, $AC, $03, $AD, $03, $AE, $03, $01
-	db $8F, $23, $1E, $13, $F4, $10, $AD, $59
-	db $08, $00, $01, $21, $16, $00, $8D, $18
-	db $00
-
-DATA_26A2:
-	db $01, $00, $23, $78, $8D, $0E, $23, $28
-	db $8D, $0E, $23, $14, $8D, $0E, $00
-
-DATA_26B1:
-	db $01, $0A, $12, $AB, $10, $8F, $F7, $02
-	db $64, $3C, $8E, $04, $8D, $06, $85, $06
-	db $02, $32, $50, $8F, $04, $8C, $06, $86
-	db $06, $02, $64, $64, $10, $8F, $E0, $81
-	db $40, $00
-
-DATA_26D3:
-	db $01, $0D, $13, $F2, $10, $8F, $C6, $23
-	db $7F, $87, $08, $85, $08, $86, $10, $23
-	db $28, $85, $10, $23, $14, $84, $10, $00
-
-DATA_26EB:
-	db $01, $53, $10, $8E, $EE, $08, $00, $01
-	db $2C, $42, $02, $13, $F4, $0D, $0B, $02
-	db $13, $23, $32, $83, $18, $23, $08, $83
-	db $18, $00
-
-DATA_2705:
-	db $01, $53, $10, $8E, $EE, $08, $00, $01
-	db $2C, $42, $02, $13, $F4, $0D, $0B, $02
-	db $13, $23, $1E, $83, $11, $23, $05, $83
-	db $11, $00
-
-DATA_271F:
-	db $01, $0E, $13, $FB, $23, $64, $84, $0E
-	db $23, $1E, $84, $0E, $23, $0F, $84, $0E
-	db $00
-
-DATA_2730:
-	db $01, $0E, $10, $FD, $80, $03, $23, $27
-
-DATA_2738:
-	db $01, $9F, $23, $78, $13, $F0, $09, $00
-	db $01, $16, $02, $00, $94, $20, $00
-
-DATA_2747:
-	db $01, $8F, $13, $F8, $12, $FC, $23, $32
-	db $09, $00, $03, $16, $21, $00, $0F, $03
-	db $02, $0B, $01, $8D, $30, $00
-
-DATA_275D:
-	db $01, $8F, $13, $F8, $12, $FC, $23, $16
-	db $80, $0E, $09, $00, $03, $16, $21, $00
-	db $0F, $03, $02, $0B, $01, $8D, $30, $00
-
-DATA_2775:
-	db $01, $0A, $23, $5A, $10, $8B, $E0, $13
-	db $F4, $08, $00, $05, $0B, $0B, $00, $81
-	db $40, $00
-
-DATA_2787:
-	db $01, $A5, $23, $5A, $10, $8D, $E0, $13
-	db $00, $80, $04, $8D, $06, $8E, $08, $85
-	db $08, $84, $08, $83, $08, $00
-
-DATA_279D:
-	db $23, $50, $10, $8F, $E0, $01, $04, $99
-	db $0C, $01, $02, $99, $0C, $00
-
-DATA_27AB:
-	db $16, $01, $C6, $23, $28, $0F, $02, $02
-	db $0F, $05, $10, $98, $E0, $2B, $85, $FF
-	db $FF, $2C, $17, $0E, $00
-
-DATA_27C0:
-	db $0C, $05, $00
-
-DATA_27C3:
-	db $16, $01, $C6, $23, $28, $0F, $02, $04
-	db $12, $05, $10, $98, $E0, $2B, $8D, $FF
-	db $FF, $2C, $17, $0E, $00
-
-DATA_27D8:
-	db $01, $4D, $13, $05, $12, $E9, $16, $02
-	db $5A, $6E, $10, $8E, $F2, $08, $02, $02
-	db $0F, $2D, $00, $94, $48, $0A, $00
-
-DATA_27EF:
-	db $01, $4D, $13, $05, $12, $E9, $16, $02
-	db $6E, $5A, $10, $8E, $F1, $08, $02, $02
-	db $0F, $2C, $00, $8D, $48, $0A, $00
-
-DATA_2806:
-	db $01, $0A, $02, $64, $64, $92, $02, $81
-	db $0E, $13, $05, $12, $E9, $10, $DE, $5C
-	db $16, $02, $04, $14, $01, $43, $06, $06
-	db $99, $02, $14, $04, $01, $49, $A0, $02
-	db $04, $14, $01, $47, $A5, $02, $14, $04
-	db $01, $4D, $AC, $02, $04, $14, $01, $4B
-	db $99, $02, $14, $04, $01, $43, $A0, $02
-	db $03, $10, $01, $49, $A5, $02, $0C, $02
-	db $01, $47, $AC, $02, $01, $08, $01, $4D
-	db $A5, $02, $04, $00, $01, $4B, $AC, $07
-	db $00
-
-DATA_2857:
-	db $13, $05, $12, $E9, $10, $DE, $5C, $16
-	db $06, $06, $02, $3C, $0A, $01, $43, $99
-	db $02, $0A, $3C, $01, $49, $A0, $02, $3C
-	db $0A, $01, $47, $A5, $02, $0A, $3C, $01
-	db $4D, $AC, $02, $3C, $0A, $01, $4B, $99
-	db $02, $0A, $3C, $01, $43, $A0, $02, $32
-	db $08, $01, $49, $A5, $02, $06, $28, $01
-	db $47, $AC, $02, $1E, $04, $01, $4D, $A5
-	db $02, $02, $14, $01, $4B, $AC, $07, $00
-
-DATA_289F:
-	db $01, $8B, $10, $8F, $FA, $13, $08, $12
-	db $F2, $13, $0C, $12, $E9, $21, $BA, $29
-	db $00
-
-DATA_28B0:
-	db $01, $0D, $10, $EF, $AB, $06, $04, $23
-	db $50, $8D, $94, $99, $A0, $A5, $23, $1E
-	db $99, $A0, $A5, $23, $04, $A0, $A5, $07
-	db $00
-
-DATA_28C9:
-	db $13, $0A, $21, $85, $29, $00
-
-DATA_28CF:
-	db $01, $8F, $13, $F8, $12, $FC, $23, $64
-	db $10, $AD, $B2, $08, $00, $02, $16, $17
-	db $00, $0F, $03, $02, $0B, $01, $8D, $20
-	db $0A, $10, $EE, $31, $14, $10, $23, $28
-	db $06, $06, $99, $94, $91, $8D, $91, $94
-	db $07, $99, $10, $00
-
-DATA_28FB:
-	db $01, $2B, $23, $19, $10, $9F, $B3, $0F
-	db $06, $02, $11, $03, $A0, $05, $A4, $05
-	db $A7, $05, $AC, $23, $00
-
-DATA_2910:
-	db $01, $2B, $23, $1E, $10, $9F, $B3, $0F
-	db $06, $02, $11, $03, $A2, $30, $00
-
-DATA_291F:
-	db $01, $C4, $10, $8E, $F4, $23, $78, $87
-	db $16, $23, $28, $87, $16, $23, $14, $87
-	db $16, $03, $33, $29
-
-DATA_2933:
-	db $01, $A1, $23, $7F, $98, $0B, $23, $2C
-	db $98, $0B, $23, $17, $98, $0B, $00
-
-DATA_2942:
-	db $01, $A1, $23, $78, $9A, $0A, $23, $28
-	db $9A, $0A, $23, $14, $9A, $0A, $00
-
-DATA_2951:
-	db $01, $BC, $10, $8F, $EB, $23, $64, $8E
-	db $0A, $23, $1E, $8E, $0A, $00
-
-DATA_295F:
-	db $01, $8F, $13, $F8, $12, $FC, $23, $28
-	db $10, $8D, $E1, $0F, $03, $01, $02, $0F
-	db $16, $A2, $0B, $80, $01, $9F, $07, $80
-	db $01, $A2, $03, $80, $01, $A7, $10, $00
-
-DATA_297F:
-	db $13, $08, $21, $85, $29, $00, $23, $48
-	db $01, $8B, $10, $8F, $FA, $12, $F2, $10
-	db $AF, $91, $06, $06, $97, $9B, $9E, $A0
-	db $A3, $23, $1B, $9E, $A0, $A3, $23, $12
-	db $9E, $A0, $A3, $23, $09, $9E, $A0, $A3
-	db $07, $05
-
-DATA_29A9:
-	db $01, $8B, $10, $8F, $FA, $13, $08, $12
-	db $F2, $13, $07, $12, $E9, $21, $BA, $29
-	db $00, $10, $AF, $91, $02, $50, $50, $01
-	db $43, $06, $07, $A0, $AC, $02, $1E, $1E
-	db $01, $47, $A0, $AC, $02, $14, $14, $01
-	db $49, $A0, $AC, $02, $0A, $0A, $01, $4B
-	db $A0, $AC, $07, $05
-
-DATA_29DD:
-	db $01, $0A, $10, $8F, $E0, $23, $64, $99
-	db $0A, $23, $28, $99, $0A, $23, $14, $99
-	db $0A, $00
-
-DATA_29EF:
-	db $13, $1A, $12, $E9, $03, $0E, $2A, $00
-
-DATA_29F7:
-	db $13, $17, $12, $E9, $03, $0E, $2A, $00
-
-DATA_29FF:
-	db $13, $14, $12, $E9, $03, $0E, $2A, $00
-
-DATA_2A07:
-	db $13, $11, $12, $E9, $03, $0E, $2A, $0A
-	db $0E, $23, $28, $01, $43, $96, $04, $01
-	db $47, $06, $02, $9A, $23, $0F, $01, $43
-	db $96, $23, $28, $01, $49, $9D, $23, $0F
-	db $01, $47, $9A, $23, $28, $01, $4B, $9F
-	db $23, $0F, $01, $49, $9D, $23, $28, $01
-	db $47, $96, $23, $0F, $01, $4B, $9F, $23
-	db $28, $01, $49, $9A, $23, $0F, $01, $47
-	db $96, $23, $28, $01, $4B, $9D, $23, $0F
-	db $01, $49, $9A, $23, $28, $01, $4D, $A2
-	db $23, $0F, $01, $4B, $9D, $23, $14, $01
-	db $47, $96, $23, $08, $01, $4B, $A2, $23
-	db $14, $01, $49, $9A, $23, $07, $01, $47
-	db $96, $23, $14, $01, $4B, $9D, $23, $07
-	db $01, $49, $9A, $23, $14, $01, $4D, $A2
-	db $07, $23, $07, $01, $4B, $9D, $04, $A2
-	db $04, $00
-
-DATA_2A89:
-	db $01, $0A, $10, $87, $E0, $08, $00, $01
-	db $2C, $2C, $01, $23, $3C, $95, $14, $23
-	db $14, $95, $14, $00
-
-DATA_2A9D:
-	db $01, $0A, $23, $7F, $10, $85, $E0, $08
-	db $00, $01, $37, $37, $02, $9A, $0B, $00
-
-DATA_2AAD:
-	db $01, $9F, $10, $8F, $E0, $23, $3C, $9E
-	db $0A, $9E, $0A, $00
-
-DATA_2AB9:
-	db $01, $0A, $23, $46, $10, $85, $E0, $08
-	db $00, $01, $4D, $4D, $01, $90, $0A, $00
-
-DATA_2AC9:
-	db $01, $8F, $13, $F8, $12, $FC, $23, $21
-	db $10, $AD, $B2, $80, $0E, $08, $00, $02
-	db $16, $17, $00, $0F, $03, $02, $0B, $01
-	db $8D, $20, $0A, $10, $EE, $31, $14, $10
-	db $23, $0F, $99, $06, $94, $06, $91, $06
-	db $8D, $06, $91, $06, $94, $06, $99, $10
-	db $00, $00
-
-DATA_2AFB:
-	db $01, $43, $1A, $16, $10, $88, $D3, $23
-	db $07, $19, $1A, $99, $20, $1B, $00, $00
-
-DATA_2B0B:
-	db $01, $11, $23, $50, $95, $18, $94, $18
-	db $93, $18, $93, $18, $00
-
-DATA_2B18:
-	db $01, $D8, $23, $7F, $10, $8B, $EF, $09
-	db $14, $01, $21, $05, $00, $89, $38, $00
-
-DATA_2B28:
-	db $01, $D7, $10, $8F, $E0, $23, $64, $90
-	db $10, $23, $1E, $92, $10, $00
-
-DATA_2B36:
-	db $01, $D8, $13, $E8, $23, $7F, $10, $8E
-	db $F1, $08, $00, $03, $0B, $0B, $01, $8C
-	db $28, $00
-
-DATA_2B48:
-	db $01, $A5, $0F, $03, $01, $16, $08, $23
-	db $32, $B4, $04, $23, $14, $B4, $0C, $23
-	db $28, $B2, $04, $23, $11, $B2, $0C, $00
-
-DATA_2B60:
-	db $16, $01, $00, $13, $FB, $23, $3C, $06
-	db $08, $AA, $23, $14, $AA, $23, $3C, $AA
-	db $23, $14, $AA, $23, $3C, $AA, $23, $14
-	db $AA, $07, $80, $0E, $13, $00, $01, $04
-	db $23, $32, $06, $0A, $9E, $23, $14, $9E
-	db $23, $32, $9D, $23, $14, $9D, $23, $32
-	db $9D, $23, $14, $9D, $23, $32, $9C, $23
-	db $14, $9C, $07, $00
-
-DATA_2B9C:
-	db $01, $0A, $23, $50, $10, $8F, $EB, $8E
-	db $06, $23, $41, $85, $28, $00
-
-DATA_2BAA:
-	db $01, $0A, $13, $F4, $12, $AB, $23, $7F
-	db $08, $05, $08, $21, $21, $00, $81, $38
-	db $0A, $13, $00, $23, $64, $01, $0C, $81
-	db $06, $01, $0D, $81, $06, $01, $00, $8D
-	db $06, $01, $A5, $81, $06, $23, $3C, $01
-	db $0C, $85, $04, $82, $04, $01, $0D, $81
-	db $06, $01, $00, $8D, $06, $01, $A5, $82
-	db $06, $23, $1E, $01, $0C, $81, $06, $01
-	db $0D, $84, $06, $01, $00, $8D, $06, $01
-	db $A5, $83, $18, $00
-
-DATA_2BF6:
-	db $01, $08, $23, $64, $8F, $1D, $00
-
-DATA_2BFD:
-	db $01, $0F, $10, $8F, $E0, $23, $50, $90
-	db $0C, $00
-
-DATA_2C07:
-	db $01, $10, $23, $66, $8D, $1C, $00
-
-DATA_2C0E:
-	db $01, $0A, $12, $AB, $10, $8F, $F7, $02
-	db $5A, $3C, $8E, $04, $8D, $06, $85, $06
-	db $02, $32, $50, $8F, $04, $8C, $06, $86
-	db $06, $02, $46, $28, $8D, $04, $8A, $06
-	db $89, $06, $02, $64, $64, $10, $8F, $EA
-	db $81, $10, $85, $10, $10, $8F, $E0, $81
-	db $40, $00
-
-DATA_2C40:
-	db $01, $0A, $13, $F4, $12, $AB, $23, $6E
-	db $08, $05, $08, $21, $21, $00, $81, $90
-	db $0A, $00
-
-DATA_2C52:
-	db $01, $00, $10, $8B, $E0, $23, $3C, $A8
-	db $04, $23, $50, $A8, $08, $00
-
-DATA_2C60:
-	db $01, $9A, $23, $78, $88, $16, $23, $50
-	db $88, $16, $23, $32, $88, $16, $23, $1E
-	db $88, $16, $23, $0F, $88, $16, $00
-
-DATA_2C77:
-	db $01, $0B, $23, $32, $89, $2E, $00
-
-DATA_2C7E:
-	db $01, $0E, $23, $64, $10, $BF, $EC, $08
-	db $00, $01, $16, $16, $01, $8E, $18, $00
-
-DATA_2C8E:
-	db $01, $0D, $23, $14, $10, $DF, $32, $AA
-	db $0A, $12, $E2, $AA, $0A, $00
-
-DATA_2C9C:
-	db $16, $01, $C6, $23, $7F, $0F, $02, $04
-	db $12, $05, $10, $AE, $AB, $09, $02, $03
-	db $16, $2C, $01, $91, $28, $00
-
-DATA_2CB2:
-	db $01, $43, $23, $7F, $08, $00, $01, $2C
-	db $2C, $03, $10, $AE, $F5, $92, $1A, $00
-
-DATA_2CC2:
-	db $01, $0A, $23, $78, $10, $8F, $EF, $08
-	db $0C, $01, $0B, $17, $01, $85, $06, $81
-	db $30, $00
-
-DATA_2CD4:
-	db $01, $43, $1A, $19, $18, $23, $12, $10
-	db $89, $E0, $8E, $07, $23, $05, $10, $8F
-	db $F2, $8E, $10, $1B, $00
-
-DATA_2CE9:
-	db $01, $09, $02, $7F, $7F, $10, $9E, $D7
-	db $08, $00, $01, $07, $0B, $00, $06, $04
-	db $8A, $9A, $8A, $8A, $06, $08, $8D, $8D
-	db $8F, $8A, $8D, $8D, $8F, $8A, $23, $70
-	db $93, $93, $8F, $9A, $23, $60, $91, $92
-	db $8A, $8E, $23, $50, $8D, $8D, $8F, $8A
-	db $23, $40, $8D, $8D, $8F, $8A, $23, $30
-	db $93, $93, $8F, $8A, $23, $20, $91, $92
-	db $8A, $8E, $07, $00
-
-DATA_2D2D:
-	db $01, $0C, $23, $60, $06, $04, $8F, $96
-	db $9B, $A2, $A7, $23, $28, $8F, $96, $9B
-	db $A2, $A7, $23, $14, $8F, $96, $9B, $A2
-	db $A7, $23, $0A, $8F, $96, $9B, $A2, $A7
-	db $23, $05, $8F, $96, $9B, $A2, $A7, $07
-	db $00
-
-DATA_2D56:
-	db $01, $0C, $23, $3C, $06, $04, $8D, $23
-	db $5A, $99, $A5, $23, $19, $99, $A5, $07
-	db $00
-
-DATA_2D67:
-	db $01, $06, $23, $50, $8F, $18, $00
-
-DATA_2D6E:
-	db $01, $06, $23, $50, $88, $1C, $00
-
-DATA_2D75:
-	db $01, $0D, $23, $28, $10, $8F, $F4, $06
-	db $04, $A0, $A5, $A0, $A5, $07, $80, $10
-	db $23, $3C, $10, $8F, $E0, $01, $00, $92
-	db $02, $01, $01, $90, $0C, $80, $0C, $01
-	db $03, $99, $07, $9A, $06, $98, $07, $98
-	db $07, $96, $08, $00
-
-DATA_2DA1:
-	db $01, $0D, $10, $8F, $F4, $09, $01, $01
-	db $21, $21, $00, $23, $64, $85, $0E, $23
-	db $1E, $85, $0E, $0A, $00
-
-DATA_2DB6:
-	db $23, $3C, $06, $10, $01, $01, $99, $99
-	db $01, $02, $99, $01, $03, $99, $01, $04
-	db $99, $98, $98, $07, $00
-
-DATA_2DCB:
-	db $01, $A5, $23, $50, $10, $AF, $B4, $8D
-	db $04, $10, $8F, $EA, $82, $06, $00
-
-DATA_2DDA:
-	db $00
-
-DATA_2DDB:
-	db $02, $00, $00, $80, $08, $03, $DE, $2D
-	
-base off
-arch 65816
-
-DATA_F2F107:
-	db $94, $2E, $14, $00, $02, $00, $9A, $2E
-	db $9B, $2E, $00, $02, $3C, $3C, $10, $8F
-	db $E0, $01, $01, $99, $10, $99, $10, $01
-	db $02, $99, $10, $01, $03, $99, $10, $01
-	db $04, $99, $10, $98, $10, $98, $10, $00
-
-DATA_F2F12F:
-	db $94, $2E, $E1, $00, $0F, $00, $3D, $30
-	db $19, $30, $F5, $2F, $B9, $2F, $A2, $2F
-	db $8D, $2F, $74, $2F, $4C, $2F, $3B, $2F
-	db $31, $2F, $1E, $2F, $0F, $2F, $00, $2F
-	db $D6, $2E, $B4, $2E, $23, $7F, $01, $A5
-	db $88, $04, $81, $12, $01, $8E, $10, $85
-	db $E0, $08, $00, $01, $3E, $3E, $04, $23
-	db $32, $AF, $10, $AE, $10, $23, $14, $AE
-	db $10, $23, $0A, $AE, $10, $00, $16, $01
-	db $C1, $23, $50, $10, $8F, $E0, $8A, $0C
-	db $89, $0E, $88, $0E, $01, $C3, $8A, $0E
-	db $8A, $0E, $8A, $0C, $01, $C2, $8A, $10
-	db $02, $19, $32, $01, $C3, $88, $0E, $88
-	db $0E, $88, $0C, $01, $C2, $88, $10, $00
-	db $01, $8F, $23, $2C, $10, $EE, $30, $0F
-	db $05, $02, $17, $01, $A4, $1E, $00, $01
-	db $8F, $23, $32, $10, $EE, $30, $0F, $04
-	db $02, $15, $01, $98, $1E, $00, $01, $D2
-	db $10, $8F, $E0, $08, $01, $01, $03, $05
-	db $00, $23, $3C, $10, $8F, $F3, $90, $30
-	db $00, $01, $0A, $23, $7F, $10, $DF, $40
-	db $81, $28, $00, $16, $01, $67, $09, $00
-	db $01, $58, $2C, $01, $10, $8C, $F1, $23
-	db $11, $B8, $24, $00, $01, $00, $10, $8D
-	db $E0, $23, $0A, $8B, $03, $23, $28, $8B
-	db $03, $10, $8F, $E0, $23, $50, $8B, $08
-	db $10, $8D, $E0, $23, $32, $8B, $08, $23
-	db $14, $8B, $08, $23, $0A, $8B, $08, $23
-	db $05, $8B, $08, $00, $16, $01, $0A, $09
-	db $00, $01, $78, $78, $05, $10, $88, $E0
-	db $23, $1E, $99, $10, $10, $88, $EB, $0A
-	db $23, $08, $99, $10, $00, $01, $CC, $13
-	db $00, $02, $F0, $1E, $10, $88, $E0, $0F
-	db $0B, $0B, $0E, $05, $2B, $90, $FF, $FF
-	db $2C, $00, $01, $D2, $23, $64, $10, $8F
-	db $E0, $08, $00, $01, $02, $02, $00, $8E
-	db $12, $23, $1E, $10, $8F, $F1, $8E, $40
-	db $00, $01, $D1, $23, $1E, $10, $8F, $EE
-	db $23, $32, $8B, $18, $23, $3C, $8B, $18
-	db $23, $46, $8B, $18, $23, $50, $8B, $18
-	db $23, $5A, $8B, $18, $23, $64, $8B, $18
-	db $23, $6E, $8B, $18, $23, $64, $8B, $18
-	db $23, $5A, $8B, $18, $23, $50, $8B, $18
-	db $23, $46, $8B, $18, $23, $3C, $8B, $18
-	db $23, $32, $8B, $18, $00, $01, $0A, $23
-	db $6E, $10, $8F, $E0, $82, $12, $16, $01
-	db $D0, $10, $8F, $E0, $23, $7F, $84, $0E
-	db $23, $28, $84, $06, $23, $7F, $82, $0E
-	db $23, $28, $82, $0E, $23, $14, $82, $0E
-	db $00, $01, $0A, $23, $5A, $10, $8F, $E0
-	db $85, $11, $16, $01, $D0, $10, $8F, $E0
-	db $23, $78, $86, $0E, $23, $28, $86, $06
-	db $23, $78, $86, $0E, $23, $28, $86, $0E
-	db $23, $14, $86, $0E, $00, $01, $CC, $13
-	db $00, $02, $D2, $32, $10, $88, $E0, $0F
-	db $0B, $0B, $0E, $05, $2B, $90, $FF, $FF
-	db $2C, $00
-
-DATA_F2F2F1:
-	db $94, $2E, $34, $01, $17, $00, $EE, $30
-	db $E4, $30, $CD, $30, $BB, $30, $BA, $30
-	db $A2, $30, $A2, $2F, $8A, $30, $35, $30
-	db $18, $30, $E1, $2F, $B6, $2F, $72, $30
-	db $5F, $30, $52, $30, $8F, $2F, $75, $2F
-	db $61, $2F, $4F, $2F, $3D, $2F, $2D, $2F
-	db $EC, $2E, $C4, $2E, $80, $0E, $10, $8F
-	db $E0, $16, $23, $1E, $21, $0A, $2F, $80
-	db $03, $23, $10, $21, $0A, $2F, $80, $03
-	db $23, $08, $21, $0A, $2F, $80, $03, $23
-	db $04, $21, $0A, $2F, $80, $03, $23, $02
-	db $21, $0A, $2F, $00, $10, $8F, $E0, $16
-	db $23, $50, $21, $0A, $2F, $23, $28, $21
-	db $0A, $2F, $23, $14, $21, $0A, $2F, $23
-	db $0A, $21, $0A, $2F, $23, $05, $21, $0A
-	db $2F, $00, $01, $C1, $8A, $0C, $89, $0E
-	db $88, $0E, $01, $C3, $8A, $0E, $8A, $0E
-	db $8A, $0C, $01, $C2, $8A, $10, $01, $C3
-	db $88, $0E, $88, $0E, $88, $0C, $01, $C2
-	db $88, $10, $80, $30, $05, $01, $D9, $23
-	db $3C, $10, $8E, $F4, $08, $00, $01, $16
-	db $4D, $00, $8F, $20, $00, $01, $88, $23
-	db $64, $13, $F4, $10, $8E, $F4, $08, $00
-	db $01, $16, $4D, $00, $83, $20, $00, $01
-	db $D9, $0F, $03, $01, $0B, $01, $23, $3C
-	db $10, $88, $E0, $2B, $8F, $FF, $FF, $2C
-	db $00, $01, $88, $0F, $07, $03, $3C, $01
-	db $23, $64, $13, $F4, $10, $88, $E0, $2B
-	db $83, $FF, $FF, $2C, $00, $01, $0A, $23
-	db $46, $10, $8B, $E0, $0F, $03, $02, $17
-	db $01, $13, $F4, $82, $20, $01, $D9, $23
-	db $78, $10, $88, $EB, $8F, $80, $00, $01
-	db $0A, $23, $46, $10, $8B, $E0, $0F, $03
-	db $02, $17, $01, $13, $F4, $80, $10, $82
-	db $40, $00, $01, $06, $23, $46, $10, $8F
-	db $E0, $0F, $03, $02, $17, $01, $16, $86
-	db $06, $80, $02, $86, $14, $00, $16, $01
-	db $DA, $10, $F8, $E0, $23, $5A, $8C, $08
-	db $8D, $08, $8E, $08, $8F, $05, $90, $05
-	db $23, $21, $8E, $08, $8F, $05, $90, $05
-	db $23, $16, $8E, $08, $8F, $05, $90, $05
-	db $23, $0B, $8E, $08, $8F, $05, $90, $05
-	db $00, $10, $86, $E0, $01, $0A, $08, $00
-	db $02, $0B, $0B, $02, $23, $64, $81, $10
-	db $10, $8F, $E0, $23, $6E, $8A, $18, $01
-	db $2B, $10, $AF, $B4, $06, $12, $23, $1E
-	db $AA, $A8, $AA, $AC, $23, $0A, $AA, $A8
-	db $AA, $AC, $23, $05, $AA, $A8, $AA, $AC
-	db $23, $02, $AA, $A8, $AA, $AC, $07, $00
-	db $01, $0A, $23, $7F, $10, $86, $E0, $08
-	db $00, $03, $21, $21, $02, $23, $7F, $06
-	db $1E, $81, $23, $1E, $81, $23, $14, $81
-	db $23, $0A, $81, $07, $00, $01, $99, $13
-	db $F8, $12, $FC, $16, $10, $87, $C1, $23
-	db $50, $96, $30, $23, $3C, $96, $30, $23
-	db $28, $96, $30, $23, $14, $96, $30, $03
-	db $47, $30, $01, $43, $1A, $19, $1A, $23
-	db $08, $10, $8B, $CF, $8D, $38, $00, $01
-	db $0A, $10, $8F, $E0, $23, $0C, $9B, $02
-	db $16, $23, $28, $9B, $08, $23, $08, $9B
-	db $08, $00, $01, $99, $13, $F8, $12, $FC
-	db $16, $23, $3A, $10, $88, $E1, $06, $0E
-	db $A6, $A8, $A6, $A8, $A6, $A8, $A6, $A8
-	db $07, $00, $01, $A5, $0F, $03, $01, $16
-	db $08, $23, $32, $B4, $04, $23, $14, $B4
-	db $0C, $23, $28, $B2, $04, $23, $11, $B2
-	db $0C, $00, $01, $50, $10, $88, $C0, $08
-	db $00, $01, $26, $44, $03, $23, $28, $9A
-	db $10, $23, $10, $9A, $10, $23, $08, $9A
-	db $10, $00, $00, $01, $CD, $23, $64, $10
-	db $8F, $E0, $8B, $11, $23, $1E, $8B, $11
-	db $23, $0A, $8B, $11, $00, $01, $99, $13
-	db $F8, $12, $FC, $16, $10, $8F, $F1, $23
-	db $7F, $A0, $1A, $23, $2A, $A0, $1A, $23
-	db $0E, $A0, $1A, $00, $01, $94, $23, $7F
-	db $10, $8F, $EE, $8E, $50, $00, $01, $94
-	db $23, $78, $10, $8F, $F2, $92, $30, $00
-
-DATA_F2F559:
-	db $94, $2E, $9F, $00, $15, $00, $2C, $2F
-	db $22, $2F, $C0, $2E, $C0, $2E, $49, $2F
-	db $36, $2F, $2C, $2F, $22, $2F, $12, $2F
-	db $11, $2F, $11, $2F, $02, $2F, $F3, $2E
-	db $E3, $2E, $D2, $2E, $C1, $2E, $B8, $2F
-	db $A0, $2F, $8A, $2F, $72, $2F, $C0, $2E
-	db $00, $01, $4B, $23, $64, $10, $8E, $EE
-	db $08, $00, $01, $2C, $6F, $08, $16, $90
-	db $21, $00, $01, $4B, $23, $64, $10, $8E
-	db $E0, $08, $00, $01, $2C, $6F, $08, $16
-	db $90, $10, $00, $01, $94, $23, $62, $10
-	db $F1, $EB, $08, $00, $01, $21, $0B, $00
-	db $8E, $78, $00, $01, $8F, $23, $2C, $10
-	db $EE, $30, $0F, $05, $02, $17, $01, $A4
-	db $1E, $00, $01, $8F, $23, $32, $10, $EE
-	db $30, $0F, $04, $02, $15, $01, $98, $1E
-	db $00, $00, $01, $A9, $23, $21, $10, $8F
-	db $E1, $09, $00, $01, $2C, $2C, $00, $A0
-	db $0F, $00, $01, $94, $23, $7F, $10, $8F
-	db $EE, $8E, $50, $00, $01, $94, $23, $78
-	db $10, $8F, $F2, $92, $30, $00, $01, $9D
-	db $02, $D3, $32, $10, $81, $E0, $0F, $0B
-	db $0B, $0E, $05, $2B, $87, $FF, $FF, $2C
-	db $00, $01, $D3, $13, $00, $12, $00, $10
-	db $8E, $E0, $16, $12, $0A, $23, $3C, $8A
-	db $0B, $23, $14, $8A, $0B, $12, $E2, $23
-	db $3C, $8A, $0B, $23, $14, $8A, $0B, $12
-	db $C4, $23, $3C, $8A, $0B, $23, $14, $8A
-	db $0B, $00, $80, $1C, $01, $15, $10, $F5
-	db $B5, $0F, $04, $02, $17, $01, $09, $00
-	db $06, $58, $37, $02, $02, $14, $14, $9A
-	db $60, $00, $01, $15, $10, $F5, $B5, $0F
-	db $04, $02, $17, $01, $09, $00, $06, $58
-	db $37, $02, $02, $32, $32, $9A, $60, $00
-	db $80, $14, $01, $15, $10, $F2, $BC, $0F
-	db $04, $02, $17, $01, $08, $00, $06, $58
-	db $37, $00, $02, $1E, $1E, $8E, $54, $00
-	db $01, $15, $10, $F2, $BC, $0F, $04, $02
-	db $17, $01, $08, $00, $06, $58, $37, $00
-	db $02, $46, $46, $8E, $54, $00, $94, $2E
-	db $18, $00, $03, $00, $AE, $2E, $9D, $2E
-	db $9C, $2E, $00, $01, $4B, $23, $64, $10
-	db $8E, $EE, $08, $00, $01, $2C, $6F, $08
-	db $16, $90, $21, $00, $01, $4B, $23, $64
-	db $10, $8E, $E0, $08, $00, $01, $2C, $6F
-	db $08, $16, $90, $10, $00
-
-DATA_F2F6C6:
-	db $94, $2E, $2F, $00, $04, $00, $D9, $2E
-	db $C3, $2E, $AF, $2E, $9E, $2E, $01, $B8
-	db $23, $50, $0D, $08, $03, $42, $10, $88
-	db $E0, $2B, $8E, $FF, $FF, $2C, $00, $01
-	db $B8, $23, $5A, $0D, $03, $03, $42, $09
-	db $00, $01, $28, $42, $08, $10, $9E, $CF
-	db $9F, $24, $00, $01, $B8, $23, $5A, $0D
-	db $03, $03, $42, $08, $00, $01, $21, $3A
-	db $08, $10, $9E, $D1, $9A, $08, $9A, $20
-	db $00, $01, $B8, $23, $5A, $0D, $03, $03
-	db $42, $08, $00, $01, $21, $3A, $08, $10
-	db $9E, $D1, $A0, $20, $00
-
-DATA_F2F723:
-	db $94, $2E, $2B, $01, $1D, $00, $B6, $30
-	db $AF, $30, $92, $30, $4A, $30, $3E, $30
-	db $2E, $30, $23, $30, $15, $30, $42, $2F
-	db $67, $2F, $56, $2F, $49, $2F, $02, $30
-	db $EC, $2F, $EB, $2F, $D5, $2F, $C9, $2F
-	db $B8, $2F, $B1, $2F, $A6, $2F, $9C, $2F
-	db $8B, $2F, $72, $2F, $71, $2F, $1F, $2F
-	db $9E, $30, $0F, $2F, $D3, $30, $D0, $2E
-	db $23, $78, $10, $8E, $F4, $01, $0A, $23
-	db $78, $10, $8F, $EA, $81, $10, $85, $10
-	db $10, $8F, $E0, $81, $10, $14, $FE, $23
-	db $50, $81, $10, $85, $10, $10, $8F, $E0
-	db $81, $25, $01, $2B, $06, $08, $23, $32
-	db $AA, $A8, $AA, $AC, $23, $14, $AA, $A8
-	db $AA, $AC, $23, $0A, $AA, $A8, $AA, $AC
-	db $23, $05, $AA, $A8, $AA, $AC, $00, $23
-	db $30, $01, $49, $10, $8B, $E8, $09, $00
-	db $02, $63, $0C, $09, $A0, $90, $00, $16
-	db $23, $3C, $21, $35, $2F, $23, $1E, $21
-	db $35, $2F, $23, $14, $21, $35, $2F, $23
-	db $0A, $21, $35, $2F, $00, $01, $02, $96
-	db $0A, $96, $0A, $01, $04, $99, $0C, $98
-	db $08, $05, $01, $D9, $23, $7F, $90, $40
-	db $00, $01, $0D, $23, $7F, $08, $00, $01
-	db $04, $2C, $01, $81, $14, $00, $01, $D2
-	db $23, $32, $10, $88, $E0, $0F, $08, $04
-	db $2C, $01, $2B, $92, $FF, $FF, $00, $01
-	db $D2, $23, $64, $10, $86, $E0, $9A, $20
-	db $00, $00, $10, $87, $E0, $23, $64, $01
-	db $53, $13, $E8, $08, $00, $08, $06, $16
-	db $00, $0F, $04, $01, $08, $01, $2B, $89
-	db $FF, $FF, $00, $23, $50, $01, $05, $06
-	db $0A, $88, $01, $BC, $88, $01, $07, $88
-	db $01, $01, $88, $00, $01, $0A, $23, $64
-	db $10, $DF, $40, $82, $28, $00, $01, $BC
-	db $23, $64, $85, $12, $23, $19, $85, $12
-	db $00, $01, $05, $23, $78, $90, $14, $00
-	db $01, $90, $10, $86, $E0, $23, $7F, $94
-	db $0B, $01, $AD, $10, $EF, $E8, $8F, $20
-	db $00, $01, $9D, $23, $3C, $10, $8B, $E0
-	db $2B, $8E, $FF, $FF, $00, $01, $0A, $10
-	db $88, $E0, $09, $00, $01, $21, $21, $05
-	db $06, $11, $23, $64, $95, $23, $1E, $95
-	db $23, $0F, $95, $00, $01, $A4, $10, $DF
-	db $C0, $23, $64, $8A, $0A, $06, $10, $8A
-	db $23, $28, $8A, $23, $14, $8A, $23, $0A
-	db $8A, $00, $01, $D9, $23, $50, $10, $8B
-	db $E0, $13, $00, $2B, $0F, $02, $02, $02
-	db $02, $94, $FF, $FF, $00, $01, $86, $06
-	db $0A, $23, $3C, $8D, $23, $14, $8D, $23
-	db $0F, $8D, $00, $01, $D7, $23, $78, $8D
-	db $0A, $23, $28, $9E, $08, $00, $01, $2B
-	db $10, $8B, $E0, $23, $50, $09, $00, $01
-	db $4D, $0B, $00, $90, $40, $00, $01, $AB
-	db $02, $75, $89, $98, $08, $23, $28, $98
-	db $08, $00, $01, $0A, $23, $64, $23, $28
-	db $8E, $04, $23, $64, $8A, $18, $01, $C4
-	db $10, $8E, $F4, $23, $78, $8B, $15, $23
-	db $28, $8B, $15, $23, $14, $8B, $17, $12
-	db $E2, $23, $78, $8B, $15, $23, $28, $8B
-	db $15, $23, $14, $8B, $17, $12, $C4, $23
-	db $78, $8B, $15, $23, $28, $8B, $15, $23
-	db $14, $8B, $17, $12, $A6, $23, $78, $8B
-	db $15, $23, $28, $8B, $15, $23, $14, $8B
-	db $17, $00, $01, $0A, $23, $64, $23, $28
-	db $8E, $04, $23, $64, $8A, $18, $01, $C4
-	db $10, $8E, $F4, $06, $14, $23, $78, $8A
-	db $23, $28, $89, $23, $14, $88, $00, $01
-	db $A1, $23, $80, $8E, $18, $00, $01, $AB
-	db $02, $75, $89, $96, $12, $23, $28, $96
-	db $0A, $02, $89, $75, $97, $10, $23, $28
-	db $97, $06, $02, $75, $89, $98, $10, $23
-	db $28, $98, $0A, $01, $0A, $23, $28, $8E
-	db $04, $23, $64, $8A, $12, $23, $1E, $8A
-	db $12, $23, $0A, $8A, $14, $00
-
-DATA_F2F979:
-	db $94, $2E, $F7, $00, $20, $00, $46, $2F
-	db $46, $2F, $46, $2F, $46, $2F, $46, $2F
-	db $46, $2F, $6F, $30, $5D, $30, $42, $30
-	db $2E, $30, $0E, $30, $EA, $2F, $D6, $2F
-	db $D6, $2E, $12, $2F, $01, $2F, $46, $2F
-	db $46, $2F, $46, $2F, $46, $2F, $46, $2F
-	db $46, $2F, $46, $2F, $46, $2F, $23, $2F
-	db $B1, $2F, $9D, $2F, $90, $2F, $57, $2F
-	db $47, $2F, $C1, $2F, $EB, $2E, $01, $A9
-	db $23, $7F, $A2, $0A, $A2, $0B, $A0, $0C
-	db $9F, $0D, $9E, $0E, $9D, $0F, $9C, $10
-	db $9B, $11, $00, $01, $C6, $23, $6F, $10
-	db $8C, $E5, $0F, $03, $04, $12, $05, $09
-	db $05, $08, $6F, $32, $00, $16, $9A, $F0
-	db $00, $01, $4B, $23, $64, $10, $8E, $EE
-	db $08, $00, $01, $2C, $6F, $08, $16, $90
-	db $21, $00, $01, $4B, $23, $64, $10, $8E
-	db $E0, $08, $00, $01, $2C, $6F, $08, $16
-	db $90, $10, $00, $16, $23, $3C, $21, $39
-	db $2F, $23, $1E, $21, $39, $2F, $23, $14
-	db $21, $39, $2F, $23, $0A, $21, $39, $2F
-	db $00, $01, $02, $96, $0A, $96, $0A, $01
-	db $04, $99, $0C, $98, $08, $05, $00, $01
-	db $24, $10, $8E, $F3, $23, $46, $08, $00
-	db $01, $16, $16, $01, $92, $18, $00, $10
-	db $86, $E0, $01, $0A, $08, $00, $02, $0B
-	db $0B, $02, $23, $64, $81, $10, $10, $8F
-	db $E0, $23, $6E, $8A, $18, $23, $7F, $01
-	db $C6, $10, $AF, $F3, $06, $12, $23, $1E
-	db $AA, $A8, $AA, $AC, $23, $0A, $AA, $A8
-	db $AA, $AC, $23, $05, $AA, $A8, $AA, $AC
-	db $23, $02, $AA, $A8, $AA, $AC, $07, $00
-	db $01, $D9, $23, $7F, $08, $00, $04, $11
-	db $2C, $00, $81, $40, $00, $01, $C6, $10
-	db $9D, $E8, $08, $00, $01, $11, $2C, $00
-	db $23, $7F, $85, $20, $23, $28, $85, $20
-	db $00, $01, $D9, $10, $AE, $F3, $08, $00
-	db $01, $11, $2C, $02, $23, $7F, $95, $30
-	db $00, $01, $AA, $23, $7F, $8F, $12, $23
-	db $5A, $01, $A9, $A0, $0A, $A1, $0B, $A2
-	db $0C, $A3, $0D, $A4, $0A, $00, $01, $D9
-	db $23, $50, $10, $8B, $E0, $13, $00, $2B
-	db $0F, $02, $02, $02, $02, $94, $FF, $FF
-	db $2C, $00, $01, $2F, $23, $7E, $10, $CF
-	db $F1, $0F, $03, $02, $17, $08, $85, $20
-	db $01, $08, $10, $8D, $E0, $88, $08, $87
-	db $08, $86, $08, $85, $0E, $23, $1E, $85
-	db $0E, $23, $0F, $85, $0E, $00, $01, $AA
-	db $23, $6E, $10, $FF, $E0, $95, $14, $92
-	db $14, $23, $78, $01, $A9, $94, $16, $93
-	db $16, $92, $16, $91, $18, $94, $16, $93
-	db $16, $92, $16, $91, $18, $00, $01, $A9
-	db $23, $6E, $10, $FF, $E0, $92, $12, $93
-	db $12, $92, $12, $94, $12, $01, $AA, $94
-	db $18, $00, $01, $0A, $23, $78, $10, $BF
-	db $C8, $86, $11, $01, $BD, $23, $64, $10
-	db $F8, $E0, $0F, $07, $03, $21, $01, $2B
-	db $8D, $FF, $FF, $2C, $00, $01, $86, $10
-	db $8F, $E0, $23, $3C, $8D, $0A, $23, $14
-	db $8D, $0A, $23, $0F, $8D, $0A, $00, $01
-	db $D7, $23, $78, $10, $8F, $E0, $8D, $0A
-	db $23, $28, $9E, $08, $00, $94, $2E, $02
-	db $00, $94, $2E, $02, $00, $94, $2E, $02
-	db $00, $94, $2E, $02, $00, $94, $2E, $02
-	db $00, $94, $2E, $02, $00, $94, $2E, $02
-	db $00, $94, $2E, $02, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00
+	padbyte $00 : pad $F30000
 
 check bankcross full
