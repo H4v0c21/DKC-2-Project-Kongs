@@ -142,19 +142,20 @@ org $FFFFFF
 ;org $408000
 ;
 org $410000
-	incsrc "exhi/bank_41.asm"
+	incsrc "exhi/bank_41.asm"	;sprite graphics table
 org $420000
-	incsrc "exhi/bank_42.asm"
-;org $430000
-;	incsrc "exhi/bank_43.asm"
-;org $440000
-;	incsrc "exhi/bank_44.asm"
-;org $450000
-;	incsrc "exhi/bank_45.asm"
-;org $460000
-;	incsrc "exhi/bank_46.asm"
-;org $470000
-;	incsrc "exhi/bank_47.asm"
+	incsrc "exhi/bank_42.asm"	;relocated game data
+org $430000
+	incsrc "exhi/bank_43.asm"	;reserved for relocated/custom game data
+org $440000
+	incsrc "exhi/bank_44.asm"	;reserved for relocated/custom game data
+org $450000
+	incsrc "exhi/bank_45.asm"	;reserved for relocated/custom game data
+org $460000
+	incsrc "exhi/bank_46.asm"	;reserved for relocated/custom game data
+org $470000
+	incsrc "exhi/bank_47.asm"	;reserved for relocated/custom game data
+
 ;org $480000
 ;	incsrc "exhi/bank_48.asm"
 ;org $490000
@@ -205,10 +206,11 @@ org $420000
 ;	incsrc "exhi/bank_5F.asm"
 
 check bankcross full
-org $500000
+org $480000
 	incsrc "kong_hack/objects/graphics/donkey_sprite_data.asm"
 	incsrc "kong_hack/objects/graphics/kiddy_sprite_data.asm"
 	incsrc "kong_hack/objects/graphics/kong_hack_sprite_data.asm"
-
+	
+	print "Exhi Graphics End Address: ",pc
 org $5FFFFF
 	db $00

@@ -1461,3 +1461,27 @@ rattly_donkey_charge:
 	db !animation_command_86, $02 : dw $0D54, $3A40, $0000, $FFFC		;394C44
 	db !animation_command_86, $02 : dw $0D50, $3A40, $0000, $FFFE		;394C4E
 	db !animation_command_80, $00		;394C58
+
+donkey_scared:
+	db !animation_command_8E, $78, $06
+	db $02 : dw $448C
+	db $03 : dw $4490
+	db $02 : dw $4494
+	db $03 : dw $4498
+	db $02 : dw $449C
+	db $03 : dw $44A0
+	db $02 : dw $44A4
+	db $03 : dw $44A8
+	db $02 : dw $44AC
+	db $04 : dw $44B0
+	db $04 : dw $44B4
+	db $04 : dw $44B8
+	db $04 : dw $44BC
+donkey_scared_loop:
+	db $04 : dw $44C0
+	db $04 : dw $44C4
+	db $04 : dw $44C8
+	db $04 : dw $44CC
+	db $04 : dw $44D0
+	db !animation_command_82 : dw donkey_scared_loop
+	db !animation_command_80, $00

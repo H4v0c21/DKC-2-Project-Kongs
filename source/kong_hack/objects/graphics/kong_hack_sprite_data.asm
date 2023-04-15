@@ -80,54 +80,55 @@ kiddy_life_icon_graphic:
 	db $7E, $81, $C1, $3E, $06, $00, $00, $00
 
 donkey_map_walking_frame1:
-	incbin "donkey_map/donkey_map_walking_frame1.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame1.bin"
 
 donkey_map_walking_frame2:
-	incbin "donkey_map/donkey_map_walking_frame2.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame2.bin"
 
 donkey_map_walking_frame3:
-	incbin "donkey_map/donkey_map_walking_frame3.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame3.bin"
 
 donkey_map_walking_frame4:
-	incbin "donkey_map/donkey_map_walking_frame4.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame4.bin"
 
 donkey_map_walking_frame5:
-	incbin "donkey_map/donkey_map_walking_frame5.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame5.bin"
 
 donkey_map_walking_frame6:
-	incbin "donkey_map/donkey_map_walking_frame6.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame6.bin"
 
 donkey_map_walking_frame7:
-	incbin "donkey_map/donkey_map_walking_frame7.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame7.bin"
 
 donkey_map_walking_frame8:
-	incbin "donkey_map/donkey_map_walking_frame8.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame8.bin"
 
 donkey_map_walking_frame9:
-	incbin "donkey_map/donkey_map_walking_frame9.bin"
+	incbin "custom_sprite_graphics/map/donkey/donkey_map_walking_frame9.bin"
 
 kiddy_map_walking_frame1:
-	incbin "kiddy_map/kiddy_map_walking_frame1.bin"
+	incbin "custom_sprite_graphics/map/kiddy/kiddy_map_walking_frame1.bin"
 
 kiddy_map_walking_frame2:
-	incbin "kiddy_map/kiddy_map_walking_frame2.bin"
+	incbin "custom_sprite_graphics/map/kiddy/kiddy_map_walking_frame2.bin"
 
 kiddy_map_walking_frame3:
-	incbin "kiddy_map/kiddy_map_walking_frame3.bin"
+	incbin "custom_sprite_graphics/map/kiddy/kiddy_map_walking_frame3.bin"
 
 kiddy_map_walking_frame4:
-	incbin "kiddy_map/kiddy_map_walking_frame4.bin"
+	incbin "custom_sprite_graphics/map/kiddy/kiddy_map_walking_frame4.bin"
 
 kiddy_map_walking_frame5:
-	incbin "kiddy_map/kiddy_map_walking_frame5.bin"
+	incbin "custom_sprite_graphics/map/kiddy/kiddy_map_walking_frame5.bin"
 
 kiddy_map_walking_frame6:
-	incbin "kiddy_map/kiddy_map_walking_frame6.bin"
+	incbin "custom_sprite_graphics/map/kiddy/kiddy_map_walking_frame6.bin"
 
 kiddy_map_walking_frame7:
-	incbin "kiddy_map/kiddy_map_walking_frame7.bin"
+	incbin "custom_sprite_graphics/map/kiddy/kiddy_map_walking_frame7.bin"
 
 kiddy_map_walking_frame8:
-	incbin "kiddy_map/kiddy_map_walking_frame8.bin"
+	incbin "custom_sprite_graphics/map/kiddy/kiddy_map_walking_frame8.bin"
 
-incsrc "custom_sprite_graphics.asm"
+incsrc "custom_sprite_data.asm"
+incsrc "extra_kong_sprite_data.asm"

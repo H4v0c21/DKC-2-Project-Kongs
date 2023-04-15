@@ -25,22 +25,15 @@ DATA_FF0000:
 ;	db $00, $00, $00, $00, $00, $00, $00, $00
 ;	db $00, $00, $00
 
-
 ;physics constants
-
 
 padbyte $00
 pad $FF0040
 
-
-;donkey_physics_constant_a:
-;kiddy_physics_constant_a:
 ;diddy_physics_constant_a:
 DATA_FF0040:
 	db $70, $00
 	
-;donkey_physics_constants:
-;kiddy_physics_constants:
 ;diddy_physics_constants:
 DATA_FF0042:
 	db $00, $08, $5A, $00, $00, $08, $C8, $F7
@@ -108,13 +101,6 @@ DATA_FF012C:
 	db $00, $02, $00, $02, $40, $03, $00, $03
 	db $80, $04, $00, $03, $00, $03, $09, $00
 	db $0A, $00, $02, $00, $07, $00, $07, $00
-
-
-;donkey_physics_constant_a:
-;donkey_physics_constants:
-;kiddy_physics_constant_a:
-;kiddy_physics_constants:
-
 
 DATA_FF0214:
 	db $50, $00, $00, $08, $07, $00, $00, $04
@@ -198,12 +184,7 @@ DATA_FF0224:
 	db $00, $08, $90, $00, $00, $0C, $08, $00
 	db $40, $00
 
-
 incsrc "kong_hack/objects/source/physics_data.asm"
-
-;init table
-
-org $FF0690
 
 DATA_FF0690:
 	dw sprite.number, $0314
@@ -1056,20 +1037,7 @@ DATA_FF0F5C:
 ;	dw !initcommand_set_animation, $0153
 ;	dw !initcommand_success
 
-donkey_ingame_init:
-	dw sprite.number, $0320
-	dw sprite.render_order, $00D8
-	dw sprite.unknown_54, #donkey_physics_constant_a
-	dw sprite.ground_y_position, $FFC0
-	dw sprite.unknown_1E, $0000
-	dw sprite.action, $0000
-	dw sprite.unknown_30, $001C
-	dw !initcommand_set_oam_special, $2000
-	dw !initcommand_success
-
 ;END OF PATCH
-
-org $FF0FAC
 
 DATA_FF0FAC:
 	dw sprite.number, $008C
@@ -21046,9 +21014,17 @@ DATA_FFFF4C:
 
 endif
 
-
-;START OF PATCH
-
+;START OF PATCH (new kong init scripts)
+donkey_ingame_init:
+	dw sprite.number, $0320
+	dw sprite.render_order, $00D8
+	dw sprite.unknown_54, #donkey_physics_constant_a
+	dw sprite.ground_y_position, $FFC0
+	dw sprite.unknown_1E, $0000
+	dw sprite.action, $0000
+	dw sprite.unknown_30, $001C
+	dw !initcommand_set_oam_special, $2000
+	dw !initcommand_success
 
 kiddy_ingame_init:
 	dw sprite.number, $0324

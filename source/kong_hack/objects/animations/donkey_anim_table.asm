@@ -161,7 +161,7 @@ endif
 	dw squawks_exit : db $00, $00
 	dw rambi_exit : db $00, $00
 	dw enguarde_exit : db $00, $00
-	dw diddy_scared : db $00, $00
+	dw donkey_scared : db $00, $00
 	dw donkey_stunned : db $00, $00
 	dw donkey_bonus_exit : db $00, $00
 	dw donkey_wind_float : db $00, $00

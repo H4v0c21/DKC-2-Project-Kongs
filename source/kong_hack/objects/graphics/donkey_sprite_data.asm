@@ -8364,7 +8364,7 @@ DONKEY_SPRITE_C4C19A:
 	db $BC, $2A, $FF, $01, $00, $00, $80, $00
 	db $00, $00
 
-org $510000
+org $490000
 DONKEY_SPRITE_C4C438:
 	db $03, $04, $06, $00, $00, $0A, $10, $06
 	db $7B, $46, $74, $55, $74, $65, $78, $41
@@ -16610,7 +16610,7 @@ DONKEY_SPRITE_FB507C:
 	db $FF, $00, $7F, $80, $FF, $00, $43, $F4
 	db $00, $00, $00, $00, $00, $00, $00, $00
 
-org $520000
+org $4A0000
 
 DONKEY_SPRITE_FB5314:
 	db $04, $04, $08, $00, $00, $0C, $10, $08
@@ -25145,7 +25145,7 @@ DONKEY_SPRITE_E8A5C2:
 	db $FF, $3E, $E4, $0E, $F6, $0F, $FF, $00
 	db $FC, $02, $2D, $13, $2D, $10
 
-org $530000 
+org $4B0000 
 
 DONKEY_SPRITE_E8A81C:
 	db $03, $05, $06, $00, $00, $0B, $10, $06
@@ -33483,7 +33483,7 @@ DONKEY_SPRITE_CC279A:
 	db $0D, $1F, $1F, $0F, $1F, $0F, $1F, $0F
 	db $02, $0F
 
-org $540000
+org $4C0000
 
 DONKEY_SPRITE_CC2A7C:
 	db $05, $05, $0A, $00, $00, $0F, $10, $0A
@@ -33840,7 +33840,7 @@ DONKEY_SPRITE_CC30FA:
 	db $04, $03, $00, $00
 
 donkey_rattly_frame_1:
-	incbin "donkey_rattly_frame1.bin"
+	incbin "custom_sprite_graphics/ingame/donkey/donkey_rattly_frame1.bin"
 
 ;DONKEY_SPRITE_D483EC:
 ;	db $02, $08, $04, $00, $00, $0C, $10, $04
@@ -33930,7 +33930,7 @@ donkey_rattly_frame_1:
 ;	db $EC, $F8, $96, $94
 
 donkey_rattly_frame_2:
-	incbin "donkey_rattly_frame2.bin"
+	incbin "custom_sprite_graphics/ingame/donkey/donkey_rattly_frame2.bin"
 
 ;DONKEY_SPRITE_D48608:
 ;	db $02, $09, $04, $00, $00, $0D, $10, $04
@@ -34024,7 +34024,7 @@ donkey_rattly_frame_2:
 ;	db $F8, $F0, $74, $68, $26, $18
 
 donkey_rattly_frame_3:
-	incbin "donkey_rattly_frame3.bin"
+	incbin "custom_sprite_graphics/ingame/donkey/donkey_rattly_frame3.bin"
 
 ;DONKEY_SPRITE_D48846:
 ;	db $02, $09, $04, $00, $00, $0D, $10, $04
@@ -41791,7 +41791,7 @@ DONKEY_SPRITE_D75336:
 	db $C0, $20, $F0, $E8, $00, $00, $00, $00
 	db $00, $00, $00, $50
 
-org $550000
+org $4D0000
 
 DONKEY_SPRITE_D75612:
 	db $05, $03, $0A, $00, $00, $0D, $10, $0A
@@ -50163,7 +50163,7 @@ DONKEY_SPRITE_E571BF:
 	db $7D, $83, $E7, $18, $2F, $F0, $BB, $F8
 	db $FB, $FE, $8B, $F2
 
-org $560000
+org $4E0000
 
 DONKEY_SPRITE_E5747F:
 	db $04, $06, $08, $00, $00, $0E, $10, $08

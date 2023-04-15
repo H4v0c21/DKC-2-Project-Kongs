@@ -37,3 +37,39 @@ donkey_team_bottom_hitbox:
 donkey_squawks_idle_hitbox:
 	dw -24, -16
 	dw 36, 24
+
+;donkey_skull_cart_hitbox:
+;	dw -8, -20
+;	dw 24, 36
+;
+;donkey_skull_cart_45_hitbox:
+;	dw 0, -16
+;	dw 32, 32
+
+donkey_scared_hitbox:
+	dw $FFF7, $FFE2
+	dw $0011, $001B
+
+donkey_dance_hitbox:
+	dw $FFF7, $FFE2
+	dw $0011, $001B
+
+diddy_keg_roll_hitbox:
+	dw $FFFB, $FFCF
+	dw $0013, $0026
+
+diddy_swap_donkey_hitbox:
+	dw $FFFE, $FFDD
+	dw $0012, $0022
+
+dixie_keg_roll_hitbox:
+	dw $FFFB, $FFDC
+	dw $0012, $0024
+
+dixie_team_bottom_big_kong_hitbox:
+	dw $FFF7, $FFE2
+	dw $0011, $001B
+
+dixie_swap_kiddy_hitbox:
+	dw $FFF7, $FFE2
+	dw $0011, $001B
