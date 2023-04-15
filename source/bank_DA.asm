@@ -2478,61 +2478,61 @@ krazy_kremland_top_8x8_tilemap:
 
 ;START OF PATCH (remap Funky Kong surfboard frames to different palette)
 SPRITE_GRAPHIC_DA5323:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame1.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame1.bin"
 
 SPRITE_GRAPHIC_DA53F7:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame2.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame2.bin"
 
 SPRITE_GRAPHIC_DA54CB:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame3.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame3.bin"
 
 SPRITE_GRAPHIC_DA559F:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame4.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame4.bin"
 
 SPRITE_GRAPHIC_DA5673:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame5.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame5.bin"
 
 SPRITE_GRAPHIC_DA5769:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame6.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame6.bin"
 
 SPRITE_GRAPHIC_DA585F:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame7.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame7.bin"
 
 SPRITE_GRAPHIC_DA5955:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame8.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame8.bin"
 
 SPRITE_GRAPHIC_DA5A4B:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame9.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame9.bin"
 
 SPRITE_GRAPHIC_DA5B41:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame10.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame10.bin"
 
 SPRITE_GRAPHIC_DA5C37:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame11.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame11.bin"
 
 SPRITE_GRAPHIC_DA5D2D:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame12.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame12.bin"
 
 SPRITE_GRAPHIC_DA5E23:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame13.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame13.bin"
 
 SPRITE_GRAPHIC_DA5F19:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame14.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame14.bin"
 
 SPRITE_GRAPHIC_DA600F:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame15.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame15.bin"
 
 SPRITE_GRAPHIC_DA6149:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame16.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame16.bin"
 
 SPRITE_GRAPHIC_DA6261:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame17.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame17.bin"
 
 SPRITE_GRAPHIC_DA63D9:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame18.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame18.bin"
 
 SPRITE_GRAPHIC_DA6513:
-	incbin "kong_hack/objects/graphics/funky_surfboard_remapped/funky_surfboard_frame19.bin"
+	incbin "kong_hack/objects/graphics/custom_sprite_graphics/other/funky_surfboard_frame19.bin"
 ;END OF PATCH
 
 SPRITE_GRAPHIC_DA6609:

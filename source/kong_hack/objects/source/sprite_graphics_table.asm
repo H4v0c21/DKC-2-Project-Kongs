@@ -3432,6 +3432,8 @@ DATA_BC8000:
 	dl SPRITE_GRAPHIC_DEA8B4 : db $00
 	dl SPRITE_GRAPHIC_DEA8DE : db $00
 	dl SPRITE_GRAPHIC_DEA908 : db $00
-	incsrc "donkey_sprite_pointers.asm"
-	incsrc "kiddy_sprite_pointers.asm"
-	incsrc "kong_hack_sprite_pointers.asm"
+	
+	;WARNING: Always insert new entries AFTER existing ones.
+	incsrc "../graphics/donkey_sprite_graphics_table.asm"
+	incsrc "../graphics/kiddy_sprite_graphics_table.asm"
+	incsrc "../graphics/kong_hack_sprite_graphics_table.asm"

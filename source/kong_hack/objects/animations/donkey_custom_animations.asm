@@ -195,10 +195,10 @@ donkey_skull_cart:
 	db !animation_command_84 : dw donkey_cart_sub_e
 
 donkey_skull_cart_down_hill:
-	db $04 : dw $445C
-	db $04 : dw $4460
-	db $04 : dw $4464     
+	db $02 : dw $445C
+	db $02 : dw $4460
 	db !animation_command_83 : dw donkey_cart_sub_f
+	db $02 : dw $4464     
 	db $02 : dw $4468
 	db $02 : dw $446C
 	db !animation_command_82 : dw donkey_skull_cart

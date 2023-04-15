@@ -1,6 +1,12 @@
-;padbyte $00
-;pad $420040
-;incsrc "data/physics_data.bin"
+incsrc "../kong_hack/objects/source/sprite_init_script_table.asm"
+
+;$F99400
+DATA_F99400:
+	incbin "../data/screens/graphics/secret_ending_screen_layer_2_tiledata.bin"
+
+;$F9C775
+DATA_F9C775:
+	incbin "../data/screens/8x8_tilemaps/secret_ending_screen_layer_2_8x8_tilemap.bin"
 
 ;$FA5FC1
 DATA_FA5FC1:
@@ -33,3 +39,5 @@ DATA_FA7641:
 ;$FA7A01
 DATA_FA7A01:
 	incbin "../data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame8.bin"
+
+print "Relocated Game Data End Address: ",pc

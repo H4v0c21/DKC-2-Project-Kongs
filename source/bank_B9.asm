@@ -5696,3 +5696,5 @@ CUST_CODE_B9F107:
 ;	JSL CODE_B8808E
 ;	RTS
 ;;END OF PATCH
+
+print "Animation Code End Address: ",pc

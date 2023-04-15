@@ -596,7 +596,7 @@ endif
 	dw donkey_rope_idle : db $00, $00
 	dw donkey_captured_hurt : db $00, $00
 	dw donkey_rope_hurt : db $00, $00
-	dw donkey_scared : db $00, $00
+	dw donkey_captured_scared : db $00, $00
 	dw donkey_rope_scared : db $00, $00
 	dw donkey_free : db $00, $00
 	dw donkey_punch : db $00, $00
@@ -9124,7 +9124,7 @@ donkey_rope_hurt:
 	db !animation_command_90 : dw CODE_B9E575, $0244
 	db !animation_command_80, $00
 
-donkey_scared:
+donkey_captured_scared:
 	db $03 : dw $3328
 	db $03 : dw $332C
 	db $03 : dw $3330
@@ -11548,6 +11548,6 @@ kiddy_map:
 
 incsrc "kong_hack/objects/animations/teamup_animations.asm"
 
-print "Animation End Address: ",pc
+print "Animation Script End Address: ",pc
 padbyte $00
 pad $F9D000
