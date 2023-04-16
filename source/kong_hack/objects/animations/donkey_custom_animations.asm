@@ -132,7 +132,6 @@ donkey_hook_idle_loop:
 	db !animation_command_82 : dw donkey_hook_idle_loop
 	db !animation_command_80, $00
 
-
 donkey_rope_horizontal_idle:
 	db !animation_command_84 : dw CODE_B9DDB7
 	db $08 : dw $4350
@@ -238,3 +237,4 @@ donkey_skull_cart_duck_b:
 	db $04 : dw $4470
 	db !animation_command_82 : dw donkey_skull_cart
 	db !animation_command_80, $00
+

@@ -5740,17 +5740,33 @@ CODE_B4B131:					;	   |
 	STA $CE					;$B4B149   |
 	LDY #$0000				;$B4B14B   |
 CODE_B4B14E:					;	   |
+;START OF PATCH (extra map icons)
 	LDA $3200,x				;$B4B14E   |
+	AND #$0003
 	ROR A					;$B4B151   |
 	ROR $0652				;$B4B152   |
 	ROR A					;$B4B155   |
 	ROR $0652				;$B4B156   |
+	
+	LDA $3200,x
+	LSR
+	LSR
+	AND #$0001
+	ROR A
+	ROR map_icon_upper_temp
+	ROR A
+	ROR map_icon_upper_temp
+	
 	DEC $0650				;$B4B159   |
 	BNE CODE_B4B16B				;$B4B15C   |
 	LDA #$0008				;$B4B15E   |
 	STA $0650				;$B4B161   |
 	LDA $0652				;$B4B164   |
 	STA [$CE],y				;$B4B167   |
+	
+	LDA map_icon_upper_temp
+	STA map_icon_buffer_b,y
+;END OF PATCH
 	INY					;$B4B169   |
 	INY					;$B4B16A   |
 CODE_B4B16B:					;	   |
@@ -6199,9 +6215,13 @@ CODE_B4B4D3:
 	LDA #$5972				;$B4B4DF   |
 	STA $CE					;$B4B4E2   |
 	STZ $0656				;$B4B4E4   |
+;START OF PATCH (extra map icons)
 	LDY #$0000				;$B4B4E7   |
 	LDA [$CE],y				;$B4B4EA   |
 	STA $0652				;$B4B4EC   |
+	LDA map_icon_buffer_b, y
+	STA map_icon_upper_bits
+;END OF PATCH
 	STY $064E				;$B4B4EF   |
 	LDY #DATA_B4CF4B			;$B4B4F2   |
 	SEP #$20				;$B4B4F5   |
@@ -6228,27 +6248,61 @@ CODE_B4B508:
 	STY $064E				;$B4B519   |
 	LDA [$CE],y				;$B4B51C   |
 	STA $0652				;$B4B51E   |
+	
+	LDA map_icon_buffer_b, y
+	STA map_icon_upper_bits
+	
 	PLY					;$B4B521   |
 CODE_B4B522:					;	   |
+;START OF PATCH (extra map icons)
 	LDA $0652				;$B4B522   |
 	SEP #$20				;$B4B525   |
 	AND #$03				;$B4B527   |
+	
+	STA map_icon_full
+	LDA map_icon_upper_bits
+	AND #$03
+	ASL
+	ASL
+	ORA map_icon_full
+	
 	CMP #$02				;$B4B529   |
-	BCC CODE_B4B53D				;$B4B52B   |
-	CMP #$02				;$B4B52D   |
-	BEQ CODE_B4B537				;$B4B52F   |
-	XBA					;$B4B531   |
-	LDA #$02				;$B4B532   |
-	XBA					;$B4B534   |
-	BRA CODE_B4B546				;$B4B535  /
+	BCC not_kong_icon			;$B4B52B   |
 
-CODE_B4B537:
+	CMP #$02
+	BEQ is_diddy_icon
+	CMP #$03
+	BEQ is_dixie_icon
+	CMP #$06
+	BEQ is_donkey_icon
+;is_kiddy_icon:
+	XBA
+	LDA #$14
+	XBA
+	BRA CODE_B4B546
+
+is_donkey_icon:
+	XBA
+	LDA #$12
+	XBA
+	BRA CODE_B4B546
+
+is_dixie_icon:
+	XBA
+	LDA #$02
+	XBA
+	BRA CODE_B4B546
+
+is_diddy_icon:
 	XBA					;$B4B537  \
 	LDA #$00				;$B4B538   |
 	XBA					;$B4B53A   |
 	BRA CODE_B4B546				;$B4B53B  /
 
-CODE_B4B53D:
+CODE_B4B508_LONG:
+	BRA CODE_B4B508
+
+not_kong_icon:
 	XBA					;$B4B53D  \
 	PHB					;$B4B53E   |
 	PHK					;$B4B53F   |
@@ -6262,6 +6316,11 @@ CODE_B4B546:					;	   |
 	STA $0000,x				;$B4B549   |
 	LSR $0652				;$B4B54C   |
 	LSR $0652				;$B4B54F   |
+
+	LSR map_icon_upper_bits
+	LSR map_icon_upper_bits
+;END OF PATCH
+
 	INX					;$B4B552   |
 	INX					;$B4B553   |
 	LDA $0658				;$B4B554   |
@@ -6277,7 +6336,7 @@ CODE_B4B546:					;	   |
 	INY					;$B4B566   |
 	INC $0656				;$B4B567   |
 	DEC $0650				;$B4B56A   |
-	BNE CODE_B4B508				;$B4B56D   |
+	BNE CODE_B4B508_LONG			;$B4B56D   |
 	PLB					;$B4B56F   |
 	RTS					;$B4B570  /
 
