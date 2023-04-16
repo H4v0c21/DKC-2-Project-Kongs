@@ -8049,10 +8049,27 @@ CODE_BBBF30:
 	LDA $08A8				;$BBBF46   |
 	CMP $08C8				;$BBBF49   |
 	BEQ CODE_BBBF65				;$BBBF4C   |
-	LDA $08A4				;$BBBF4E   |
-	CLC					;$BBBF51   |
-	ADC #$0002				;$BBBF52   |
-	STA $0006CF				;$BBBF55   |
+	
+;START OF PATCH (map icon from kong number)
+	LDA $08A4
+	AND #$0002
+	BNE .new_kong_number
+;diddy or dixie
+	LDA $08A4
+	CLC
+	ADC #$0002
+	BRA .kong_number_calc_done
+	
+.new_kong_number:
+	LDA $08A4
+	AND #$0001
+	CLC
+	ADC #$0006
+
+.kong_number_calc_done:
+	STA $0006CF
+;END OF PATCH
+
 	LDY $08A8				;$BBBF59   |
 	LDA $08C8				;$BBBF5C   |
 	JSR CODE_BBC0DD				;$BBBF5F   |
@@ -8158,10 +8175,27 @@ CODE_BBBFE6:					;	   |
 endif						;	  /
 
 CODE_BBC019:
-	LDA $08A4				;$BBC019  \
-	CLC					;$BBC01C   |
-	ADC #$0002				;$BBC01D   |
-	STA $0006CF				;$BBC020   |
+	
+;START OF PATCH (extra map icons)
+	LDA $08A4
+	AND #$0002
+	BNE .new_kong_number
+;diddy or dixie
+	LDA $08A4
+	CLC
+	ADC #$0002
+	BRA .kong_number_calc_done
+	
+.new_kong_number:
+	LDA $08A4
+	AND #$0001
+	CLC
+	ADC #$0006
+
+.kong_number_calc_done:
+	STA $0006CF
+;END OF PATCH
+	
 	LDA #$0001				;$BBC024   |
 	STA $0006D1				;$BBC027   |
 	STZ $6E					;$BBC02B   |
@@ -9014,6 +9048,20 @@ CODE_BBC718:					;	   |
 	DEX					;$BBC720   |
 	DEX					;$BBC721   |
 	BPL CODE_BBC718				;$BBC722   |
+
+;START OF PATCH (save extra map icon bits)
+	LDY #$00E8+$1E				;icon data sram offset
+	LDX #$001E				;size of icon block
+.copy:
+	LDA.l map_icon_buffer_b,x
+	STA [$D9],y
+	DEY
+	DEY
+	DEX
+	DEX
+	BPL .copy
+;END OF PATCH
+
 	JSR calculate_checksum			;$BBC724   |
 	LDY #$0000				;$BBC727   |
 	LDA $5E					;$BBC72A   |
@@ -9082,10 +9130,10 @@ CODE_BBC776:
 	LDA [$D9],y				;$BBC7B0   |
 	STA level_number			;$BBC7B2   |
 	
-;START OF PATCH
+;START OF PATCH (initialize kong status from sram)
 	LDY #$00B3
-	BEQ saved_kong_status_0
 	LDA [$D9],y
+	BEQ saved_kong_status_0
 	LSR
 	LSR
 	LSR
@@ -9196,6 +9244,20 @@ CODE_BBC841:					;	   |
 	DEX					;$BBC849   |
 	DEX					;$BBC84A   |
 	BPL CODE_BBC841				;$BBC84B   |
+
+;START OF PATCH (load extra map icon bits)
+	LDY #$00E8+$1E				;icon data sram offset
+	LDX #$001E				;size of icon block
+.copy:
+	LDA [$D9],y
+	STA map_icon_buffer_b,x
+	DEY
+	DEY
+	DEX
+	DEX
+	BPL .copy
+;END OF PATCH
+
 	LDA #$0040				;$BBC84D   |
 	TSB $06A3				;$BBC850   |
 ;START OF PATCH
