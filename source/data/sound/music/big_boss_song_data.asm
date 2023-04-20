@@ -1,13 +1,13 @@
 ;15,21 Boss Bossanova
 ;325FC2
 big_boss_song_data:
-	dw $1300, $07CB
+	dw !bgm_loc, $07CB
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_19C3, .seq_1AF0, .seq_1C3D, .seq_2125, .seq_1E73, .seq_1F80, .seq_2042, .seq_1D42

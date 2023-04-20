@@ -1,13 +1,13 @@
 ;08 Funky the Main Monkey
 ;2E6F47
 funky_song_data:
-	dw $1300, $02A1
+	dw !bgm_loc, $02A1
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1352, .seq_13E0, .seq_1442, .seq_15CB, .seq_168E, .seq_1802, .seq_1764, .seq_165E

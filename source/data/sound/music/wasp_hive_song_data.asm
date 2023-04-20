@@ -1,13 +1,13 @@
 ;0B Flight of the Zinger
 ;2E8BC0
 wasp_hive_song_data:
-	dw $1300, $080E
+	dw !bgm_loc, $080E
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1EB2, .seq_1EF3, .seq_21D3, .seq_1FA2, .seq_2172, .seq_22C6, .seq_20C9, .seq_2273

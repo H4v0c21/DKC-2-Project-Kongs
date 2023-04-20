@@ -1,9 +1,9 @@
 ;Global Sound Effects
 ;32E730
 global_sfx_data:
-	dw !snd_loc, $04EC
+;	dw !snd_loc, $04EC
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw !snd_loc, ((.end-.start)+((.end-.start)&$0001))>>1
+	dw !snd_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
@@ -11,7 +11,7 @@ base !snd_loc
 	dw (.pointers_end-.pointers_start)>>1	;quantity of sound effects (default $0060)
 ;sound effect pointers
 .pointers_start:
-	dw .seq_2DDA	;00: 
+	dw .seq_2DDA	;00: -Nothing-
 	dw .seq_2DDB	;01: 
 	dw .seq_2DCB	;02: Klomp walking, bumped by Klobber
 	dw .seq_2DB6	;03: Kong chant (unused)
@@ -19,8 +19,8 @@ base !snd_loc
 	dw .seq_2D75	;05: Tagging partner
 	dw .seq_2D6E	;06: Diddy hit
 	dw .seq_2D67	;07: Dixie hit
-	dw .seq_2D56	;08: Collecting Banana
-	dw .seq_2D2D	;09: Collecting Banana Bunch (UNUSED)
+	dw .seq_2D56	;08: Collect Banana
+	dw .seq_2D2D	;09: Collect Banana Bunch (UNUSED)
 	dw .seq_2CE9	;0A: Stars around Diddy's head
 	dw .seq_2CD4	;0B: Rambi scuffing foot on ground (readying to charge)
 	dw .seq_2CC2	;0C: 
@@ -50,10 +50,10 @@ base !snd_loc
 	dw .seq_2AAD	;24: Neek squeaking
 	dw .seq_2A9D	;25: Dixie sipping through straw
 	dw .seq_2A89	;26: Dixie blowing bubble
-	dw .seq_2A07	;27: KONG letter K
-	dw .seq_29FF	;28: KONG letter O
-	dw .seq_29F7	;29: KONG letter N
-	dw .seq_29EF	;2A: KONG letter G
+	dw .seq_2A07	;27: Collect KONG letter K
+	dw .seq_29FF	;28: Collect KONG letter O
+	dw .seq_29F7	;29: Collect KONG letter N
+	dw .seq_29EF	;2A: Collect KONG letter G
 	dw .seq_29DD	;2B: Balloon popping
 	dw .seq_29A9	;2C: Extra Life Balloon collection
 	dw .seq_297F	;2D: Banana Coin collection
@@ -62,19 +62,23 @@ base !snd_loc
 	dw .seq_2942	;30: Squawks flapping wings
 	dw .seq_2933	;31: Flapping wings (deeper)
 	dw .seq_291F	;32: Necky ready to dive
-	dw .seq_2910	;33: Menu cursor movement
-	dw .seq_28FB	;34: Menu confirmation
+;START OF PATCH (remove/replace sound effects 33 and 34)
+	dw .seq_2DDA	;33: -Nothing-
+	dw .seq_2DDA	;34: -Nothing-
+;	dw .seq_2910	;33: Menu cursor movement
+;	dw .seq_28FB	;34: Menu confirmation
+;END OF PATCH
 	dw .seq_28CF	;35: Kremkoin appearing
-	dw .seq_28C9	;36: Kremkoin collection
-	dw .seq_28B0	;37: Click Clack flipping over
+	dw .seq_28C9	;36: Collect Kremkoin
+	dw .seq_28B0	;37: Click Clack recovering
 	dw .seq_289F	;38: Extra life point
 	dw .seq_2857	;39: Animal Crate busted (channel 1)
 	dw .seq_2806	;3A: Animal Crate busted (channel 2)
 	dw .seq_27EF	;3B: Animal Crate busted (channel 3)
 	dw .seq_27D8	;3C: Animal Crate busted (channel 4)
-	dw .seq_27C3	;3D: Zinger drone
+	dw .seq_27C3	;3D: Zinger droning
 	dw .seq_27C0	;3E: Increase music tempo by 5 units (used in bonus areas)
-	dw .seq_27AB	;3F: Flitter drone
+	dw .seq_27AB	;3F: Flitter droning
 	dw .seq_279D	;40: Kongs teaming up
 	dw .seq_2787	;41: Animal buddy becoming item (channel 1)
 	dw .seq_2775	;42: Animal buddy becoming item (channel 2)
@@ -92,34 +96,45 @@ base !snd_loc
 	dw .seq_2665	;4E: Spiny walking
 	dw .seq_2656	;4F: Squawks hit
 	dw .seq_2628	;50: Invincibility
-	dw .seq_2621	;51: Kruncha roar
+	dw .seq_2621	;51: Kruncha angered
 	dw .seq_2609	;52: Barrel rolling
 	dw .seq_25F8	;53: Rambi attacking
 	dw .seq_25E9	;54: Rambi footstep
 	dw .seq_258B	;55: Kongs transforming into animal (semi-unused)
-	dw .seq_2580	;56: Hero Coin collection
+	dw .seq_2580	;56: Collect Hero Coin
 	dw .seq_2575	;57: Necky defeated
 	dw .seq_2566	;58: Cat O' 9 Tails defeated
-	dw .seq_2557	;59: Kudgel hit
-	dw .seq_2539	;5A: K. Rool knocked out
-	dw .seq_252F	;5B: K. Rool falling into water
-	dw .seq_2523	;5C: K. Rool falling into water (lower pitch; unused?)
-	dw .seq_2516	;5D: Klinger hit
-	dw .seq_24E5	;5E: Pause/unpause
-	dw .seq_24D2	;5F: Incorrect answer/menu unavailable option
+;START OF PATCH (remove/replace sound effects 59-5C)
+	dw .seq_2DDA	;59: -Nothing-
+	dw .seq_2DDA	;5A: -Nothing-
+	dw .seq_2DDA	;5B: -Nothing-
+	dw .seq_2DDA	;5C: -Nothing-
+;	dw .seq_2557	;59: Kudgel hit
+;	dw .seq_2539	;5A: K. Rool down
+;	dw .seq_252F	;5B: K. Rool/Kudgel falling into water (higher pitch, played with 5C)
+;	dw .seq_2523	;5C: K. Rool/Kudgel falling into water (lower pitch, played with 5B)
+;END OF PATCH
+	dw .seq_2516	;5D: Klinger/Krook defeated
+	dw .seq_24E5	;5E: Pause/unpause game
+;START OF PATCH (remove sound effect 5F)
+	dw .seq_2DDA	;5F: -Nothing-
+;	dw .seq_24D2	;5F: Incorrect answer/unavailable option
+;END OF PATCH
 .pointers_end:
 
-.seq_24D2:
-	db !set_instrument, $8F
-	db !set_vol_single_val, $6E
-	db $85, $09
-	db !set_vol_single_val, $32
-	db $85, $03
-	db !set_vol_single_val, $6E
-	db $81, $10
-	db !set_vol_single_val, $32
-	db $81, $08
-	db !end_sequence
+;START OF PATCH (remove vanilla sound effect 5F)
+;.seq_24D2:
+;	db !set_instrument, $8F
+;	db !set_vol_single_val, $6E
+;	db $85, $09
+;	db !set_vol_single_val, $32
+;	db $85, $03
+;	db !set_vol_single_val, $6E
+;	db $81, $10
+;	db !set_vol_single_val, $32
+;	db $81, $08
+;	db !end_sequence
+;END OF PATCH
 
 .seq_24E5:
 	db !set_instrument, $8B
@@ -155,47 +170,49 @@ base !snd_loc
 	db $90, $20
 	db !end_sequence
 
-.seq_2523:
-	db !set_instrument, $94
-	db !set_vol_single_val, $7F
-	db !set_adsr, $8F, $EB
-	db $80, $08
-	db $8F, $58
-	db !end_sequence
+;START OF PATCH (remove vanilla sound effects 5A-5C)
+;.seq_2523:
+;	db !set_instrument, $94
+;	db !set_vol_single_val, $7F
+;	db !set_adsr, $8F, $EB
+;	db $80, $08
+;	db $8F, $58
+;	db !end_sequence
 
-.seq_252F:
-	db !set_instrument, $94
-	db !set_vol_single_val, $7F
-	db !set_adsr, $8F, $EB
-	db $8E, $60
-	db !end_sequence
+;.seq_252F:
+;	db !set_instrument, $94
+;	db !set_vol_single_val, $7F
+;	db !set_adsr, $8F, $EB
+;	db $8E, $60
+;	db !end_sequence
 
-.seq_2539:
-	db !set_instrument, $08
-	db !set_adsr, $8D, $E0
-	db !set_vol_single_val, $78
-	db $90, $14
-	db !set_vol_single_val, $28
-	db $90, $14
-	db !set_vol_single_val, $14
-	db $90, $14
-	db !set_vol_single_val, $0A
-	db $90, $14
-	db !set_vol_single_val, $06
-	db $90, $14
-	db !set_vol_single_val, $03
-	db $90, $14
-	db !end_sequence
+;.seq_2539:
+;	db !set_instrument, $08
+;	db !set_adsr, $8D, $E0
+;	db !set_vol_single_val, $78
+;	db $90, $14
+;	db !set_vol_single_val, $28
+;	db $90, $14
+;	db !set_vol_single_val, $14
+;	db $90, $14
+;	db !set_vol_single_val, $0A
+;	db $90, $14
+;	db !set_vol_single_val, $06
+;	db $90, $14
+;	db !set_vol_single_val, $03
+;	db $90, $14
+;	db !end_sequence
 
-.seq_2557:
-	db !set_instrument, $9A
-	db !set_vol_single_val, $6E
-	db $81, $2A
-	db !set_vol_single_val, $32
-	db $81, $2A
-	db !set_vol_single_val, $19
-	db $81, $2A
-	db !end_sequence
+;.seq_2557:
+;	db !set_instrument, $9A
+;	db !set_vol_single_val, $6E
+;	db $81, $2A
+;	db !set_vol_single_val, $32
+;	db $81, $2A
+;	db !set_vol_single_val, $19
+;	db $81, $2A
+;	db !end_sequence
+;END OF PATCH
 
 .seq_2566:
 	db !set_instrument, $06
@@ -716,24 +733,26 @@ base !snd_loc
 	db $99, $10
 	db !end_sequence
 
-.seq_28FB:
-	db !set_instrument, $2B
-	db !set_vol_single_val, $19
-	db !set_adsr, $9F, $B3
-	db !vibrato_with_delay, $06, $02, $11, $03
-	db $A0, $05
-	db $A4, $05
-	db $A7, $05
-	db $AC, $23
-	db !end_sequence
+;START OF PATCH (remove vanilla sound effects 33 and 34)
+;.seq_28FB:
+;	db !set_instrument, $2B
+;	db !set_vol_single_val, $19
+;	db !set_adsr, $9F, $B3
+;	db !vibrato_with_delay, $06, $02, $11, $03
+;	db $A0, $05
+;	db $A4, $05
+;	db $A7, $05
+;	db $AC, $23
+;	db !end_sequence
 
-.seq_2910:
-	db !set_instrument, $2B
-	db !set_vol_single_val, $1E
-	db !set_adsr, $9F, $B3
-	db !vibrato_with_delay, $06, $02, $11, $03
-	db $A2, $30
-	db !end_sequence
+;.seq_2910:
+;	db !set_instrument, $2B
+;	db !set_vol_single_val, $1E
+;	db !set_adsr, $9F, $B3
+;	db !vibrato_with_delay, $06, $02, $11, $03
+;	db $A2, $30
+;	db !end_sequence
+;END OF PATCH
 
 .seq_291F:
 	db !set_instrument, $C4
@@ -889,7 +908,9 @@ base !snd_loc
 .seq_2A07:
 	db !change_instr_pitch, $11
 	db !fine_tune, $E9
-	db !jump_to_sequence : dw .loop_point_2A0E
+;START OF PATCH (remove redundant jump command)
+;	db !jump_to_sequence : dw .loop_point_2A0E
+;END OF PATCH
 
 .loop_point_2A0E:
 	db !pitch_slide_off

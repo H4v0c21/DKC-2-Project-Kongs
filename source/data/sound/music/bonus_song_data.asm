@@ -1,13 +1,13 @@
 ;0F,20,22,23,25 Token Tango
 ;2EBDBD
 bonus_song_data:
-	dw $1300, $0851
+	dw !bgm_loc, $0851
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1350, .seq_17B6, .seq_1428, .seq_16E5, .seq_1633, .seq_14CA, .seq_158F, .seq_13E0
