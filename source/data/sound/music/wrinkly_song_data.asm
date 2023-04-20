@@ -1,13 +1,13 @@
 ;0C School House Harmony
 ;2E9BE0
 wrinkly_song_data:
-	dw $1300, $0236
+	dw !bgm_loc, $0236
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1314, .seq_138C, .seq_15F0, .seq_1546, .seq_1681, .seq_14E9, .seq_15B3, .seq_16EE

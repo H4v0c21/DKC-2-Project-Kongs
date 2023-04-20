@@ -1,13 +1,13 @@
 ;1E Donkey Kong Rescued
 ;32CFE4
 credits_song_data:
-	dw $1300, $0332
+	dw !bgm_loc, $0332
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1337, .seq_13D3, .seq_15CB, .seq_14F7, .seq_1431, .seq_1826, .seq_188B, .seq_1492

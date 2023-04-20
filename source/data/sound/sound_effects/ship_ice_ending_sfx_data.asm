@@ -1,13 +1,13 @@
 ;Sound Effects: Ship Deck/2, Ship Hold, Ice, Rigging, Credits, Secret Ending
 ;32F2F1
 ship_ice_ending_sfx_data:
-	dw $2E94, $0134
+	dw !dyn_snd_loc, $0134
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $2E94, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !dyn_snd_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $2E94
+base !dyn_snd_loc
 	dw (.pointers_end-.pointers_start)>>1	;quantity of sound effects (default $0017)
 ;sound effect pointers
 .pointers_start:

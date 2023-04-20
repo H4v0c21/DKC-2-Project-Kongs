@@ -1,13 +1,13 @@
 ;05 Forest Interlude
 ;2E421F
 forest_song_data:
-	dw $1300, $086D
+	dw !bgm_loc, $086D
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1A55, .seq_1BC5, .seq_1CB2, .seq_20A1, .seq_1DF0, .seq_22DD, .seq_1E8A, .seq_1F24
