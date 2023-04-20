@@ -1,13 +1,13 @@
 ;14 Game Over
 ;325D1A
 game_over_song_data:
-	dw $1300, $0152
+	dw !bgm_loc, $0152
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1314, .seq_14EA, .seq_1406, .seq_1469, .seq_1448, .seq_150E, .seq_13BD, .seq_1427

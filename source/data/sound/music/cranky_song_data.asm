@@ -1,13 +1,13 @@
 ;19 Cranky's Conga
 ;329654
 cranky_song_data:
-	dw $1300, $0495
+	dw !bgm_loc, $0495
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1317, .seq_13D9, .seq_1A0B, .seq_1484, .seq_1B84, .seq_1849, .seq_1392, .seq_1679
