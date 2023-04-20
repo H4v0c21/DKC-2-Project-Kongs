@@ -1,13 +1,13 @@
 ;10 Lockjaw's Saga
 ;32357A
 ship_hold_song_data:
-	dw $1300, $07AB
+	dw !bgm_loc, $07AB
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1AE0, .seq_1BA1, .seq_1CA2, .seq_1FEC, .seq_1D8C, .seq_20C8, .seq_1F82, .seq_2180

@@ -418,10 +418,10 @@ endif						;	   | |/
 	STA $0E					;$B582AC   | |
 	LDA.w #global_sample_map>>16		;$B582AE   | |
 	STA $10					;$B582B1   |/
-	LDA #$3100				;$B582B3   |\ Source directory ARAM destination
+	LDA #!src_dir_loc			;$B582B3   |\ Source directory ARAM destination
 	STA $02					;$B582B6   |/
 	STZ $0A					;$B582B8   |
-	LDA #$3400				;$B582BA   |\ Sample data ARAM destination
+	LDA #!brr_data_loc			;$B582BA   |\ Sample data ARAM destination
 	STA $06					;$B582BD   |/
 	STZ $0A					;$B582BF   | Reset the sample counter
 	JSR .sample_uploader			;$B582C1   |

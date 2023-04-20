@@ -1,13 +1,13 @@
 ;01 Welcome to Crocodile Isle
 ;2E195F
 island_map_song_data:
-	dw $1300, $0306
+	dw !bgm_loc, $0306
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1317, .seq_1754, .seq_1604, .seq_17F8, .seq_141C, .seq_170A, .seq_152B, .seq_1488

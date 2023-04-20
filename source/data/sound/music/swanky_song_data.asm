@@ -1,13 +1,13 @@
 ;04 Swanky's Swing
 ;2E3D78
 swanky_song_data:
-	dw $1300, $0252
+	dw !bgm_loc, $0252
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_133E, .seq_14B4, .seq_140B, .seq_16C0, .seq_1615, .seq_1761, .seq_1575, .seq_13C4

@@ -1,13 +1,13 @@
 ;Sound Effects: NULL, Island Map, Main Theme, Funky, Wrinkly, Fanfare, Game Over, File Select, Cranky, Lost World
 ;32F107
 dummy_sfx_data:
-	dw $2E94, $0014
+	dw !dyn_snd_loc, $0014
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $2E94, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !dyn_snd_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $2E94
+base !dyn_snd_loc
 	dw (.pointers_end-.pointers_start)>>1	;quantity of sound effects (default $0002)
 ;sound effect pointers
 .pointers_start:
