@@ -3160,9 +3160,9 @@ CODE_809C6F:					;	   |
 	STA.l CPU.enable_interrupts		;$809C73   |
 	REP #$20				;$809C77   |
 	LDA $84					;$809C79   |
-	CMP #$000F				;$809C7B   |
+	CMP #!music_bonus			;$809C7B   |
 	BNE CODE_809C83				;$809C7E   |
-	LDA #$030F				;$809C80   |
+	LDA #sound(3, !music_bonus)		;$809C80   |
 CODE_809C83:					;	   |
 	JSL play_song_with_transition		;$809C83   |
 	JMP CODE_8099A7				;$809C87  /
@@ -3448,7 +3448,7 @@ CODE_809FA2:					;	   |
 	INX					;$809FA4   |
 	CPX #$00D1				;$809FA5   |
 	BNE CODE_809FA2				;$809FA8   |
-	LDA #$0024				;$809FAA   |
+	LDA #!music_secret_ending		;$809FAA   |
 	JSL play_song				;$809FAD   |
 	LDA #$AA55				;$809FB1   |
 	STA rng_result				;$809FB4   |
@@ -12888,7 +12888,7 @@ CODE_80F3FB:
 	JSL clear_noncritical_wram		;$80F409   |
 	JSL set_all_oam_offscreen		;$80F40D   |
 	JSL init_sprite_render_order_global	;$80F411   |
-	LDA #$001E				;$80F415   |
+	LDA #!music_credits			;$80F415   |
 	JSL play_song				;$80F418   |
 	STZ $1730				;$80F41C   |
 	LDA #$000E				;$80F41F   |
@@ -13473,7 +13473,7 @@ CODE_80FA7C:
 	JSL VRAM_payload_handler_global		;$80FA8D   |
 	LDA #$001F				;$80FA91   |
 	JSL set_PPU_registers_global		;$80FA94   |
-	LDA #$0014				;$80FA98   |
+	LDA #!music_game_over			;$80FA98   |
 	JSL play_song				;$80FA9B   |
 	LDA #$0100				;$80FA9F   |
 	JSR set_fade				;$80FAA2   |
