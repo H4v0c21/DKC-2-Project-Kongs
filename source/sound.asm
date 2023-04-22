@@ -2145,57 +2145,67 @@ DATA_EE1179:
 
 DATA_EE117B:
 	%offset(DATA_EE117D, 2)
-	dl dummy_sfx_data
+	dl dummy_sfx_data				;00
 ;START OF PATCH (change which sound effect blocks are loaded with Island Map and Main Theme songs)
-	dl boss_1_sfx_data
-	dl menus_sfx_data
+	dl boss_1_sfx_data				;01
+	dl menus_sfx_data				;02
 ;	dl dummy_sfx_data
 ;	dl dummy_sfx_data
 ;END OF PATCH
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-;START OF PATCH (change which sound effect blocks are loaded with the Funky song)
-	dl menus_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data	;03
+;START OF PATCH (change which sound effect block is loaded with the Swanky song)
+	dl menus_sfx_data				;04
+;	dl swamp_forest_mine_brambles_hive_sfx_data
+;END OF PATCH
+	dl swamp_forest_mine_brambles_hive_sfx_data	;05
+	dl ship_ice_ending_sfx_data			;06
+	dl swamp_forest_mine_brambles_hive_sfx_data	;07
+;START OF PATCH (change which sound effect block is loaded with the Funky song)
+	dl menus_sfx_data				;08
 ;	dl dummy_sfx_data
 ;END OF PATCH
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl boss_1_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-;START OF PATCH (change which sound effect blocks are loaded with the Wrinkly song)
-	dl menus_sfx_data
+	dl swamp_forest_mine_brambles_hive_sfx_data	;09
+;START OF PATCH (change which sound effect block is loaded with the Klubba song)
+	dl menus_sfx_data				;0A
+;	dl boss_1_sfx_data
+;END OF PATCH
+	dl swamp_forest_mine_brambles_hive_sfx_data	;0B
+;START OF PATCH (change which sound effect block is loaded with the Wrinkly song)
+	dl menus_sfx_data				;0C
 ;	dl dummy_sfx_data
 ;END OF PATCH
-	dl lava_castle_boss_2_sfx_data
-	dl roller_coaster_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl dummy_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl boss_1_sfx_data
-	dl dummy_sfx_data
-	dl boss_1_sfx_data
-	dl lava_castle_boss_2_sfx_data
-	dl roller_coaster_sfx_data
-	dl dummy_sfx_data
-	dl dummy_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl jungle_sfx_data
-	dl dummy_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl boss_1_sfx_data
-	dl roller_coaster_sfx_data
-	dl lava_castle_boss_2_sfx_data
-	dl lava_castle_boss_2_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl dummy_sfx_data
-	dl dummy_sfx_data
-	dl dummy_sfx_data
+	dl lava_castle_boss_2_sfx_data			;0D
+	dl roller_coaster_sfx_data			;0E
+	dl swamp_forest_mine_brambles_hive_sfx_data	;0F
+	dl ship_ice_ending_sfx_data			;10
+	dl dummy_sfx_data				;11
+	dl ship_ice_ending_sfx_data			;12
+	dl boss_1_sfx_data				;13
+	dl dummy_sfx_data				;14
+	dl boss_1_sfx_data				;15
+	dl lava_castle_boss_2_sfx_data			;16
+	dl roller_coaster_sfx_data			;17
+;START OF PATCH (change which sound effect blocks are loaded with Select and Cranky songs)
+	dl menus_sfx_data				;18
+	dl menus_sfx_data				;19
+;	dl dummy_sfx_data
+;	dl dummy_sfx_data
+;END OF PATCH
+	dl ship_ice_ending_sfx_data			;1A
+	dl jungle_sfx_data				;1B
+	dl dummy_sfx_data				;1C
+	dl ship_ice_ending_sfx_data			;1D
+	dl ship_ice_ending_sfx_data			;1E
+	dl boss_1_sfx_data				;1F
+	dl roller_coaster_sfx_data			;20
+	dl lava_castle_boss_2_sfx_data			;21
+	dl lava_castle_boss_2_sfx_data			;22
+	dl ship_ice_ending_sfx_data			;23
+	dl ship_ice_ending_sfx_data			;24
+	dl ship_ice_ending_sfx_data			;25
+	dl dummy_sfx_data				;26
+	dl dummy_sfx_data				;27
+	dl dummy_sfx_data				;28
 
 DATA_EE11F6:
 	db $00, $00, $00

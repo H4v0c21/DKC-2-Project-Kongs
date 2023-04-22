@@ -1957,7 +1957,7 @@ CODE_B9DA81:
 	RTS					;$B9DA93  /
 
 CODE_B9DA94:
-	LDA #$050A				;$B9DA94  \
+	%lda_sound(5, diddy_dizzy)		;$B9DA94  \
 	JSL queue_sound_effect			;$B9DA97   |
 	LDY #$0016				;$B9DA9B   |
 	JSL CODE_BB842C				;$B9DA9E   |
@@ -2241,7 +2241,7 @@ CODE_B9DC54:
 	CLC					;$B9DC5B   |
 	ADC $20,x				;$B9DC5C   |
 	STA $20,x				;$B9DC5E   |
-	LDA #$052F				;$B9DC60   |
+	%lda_sound(5, squawks_spit)		;$B9DC60   |
 	JSL queue_sound_effect			;$B9DC63   |
 	RTS					;$B9DC67  /
 
@@ -2381,7 +2381,7 @@ CODE_B9DD21:
 	RTS					;$B9DD2A  /
 
 CODE_B9DD2B:
-	LDA #$0520				;$B9DD2B  \
+	%lda_sound(5, dixie_cry)		;$B9DD2B  \
 	JSL queue_sound_effect			;$B9DD2E   |
 	LDY #$0014				;$B9DD32   |
 	JSL CODE_BB842C				;$B9DD35   |
@@ -3379,7 +3379,7 @@ CODE_B9E357:
 	RTS					;$B9E35E  /
 
 CODE_B9E35F:
-	LDA #$0565				;$B9E35F  \
+	%lda_sound(5, enguarde_charge)		;$B9E35F  \
 	JSL queue_sound_effect			;$B9E362   |
 	LDX current_sprite			;$B9E366   |
 	LDY #$0400				;$B9E368   |
@@ -3438,7 +3438,7 @@ CODE_B9E3AF:
 	STA $0012,y				;$B9E3C1   |
 	LDA #$0072				;$B9E3C4   |
 	JSL CODE_B9D08C				;$B9E3C7   |
-	LDA #$0549				;$B9E3CB   |
+	%lda_sound(5, rattly_leap)		;$B9E3CB   |
 	JSL queue_sound_effect			;$B9E3CE   |
 	RTS					;$B9E3D2  /
 
@@ -3792,9 +3792,9 @@ CODE_B9E592:
 CODE_B9E594:
 	LDA $46,x				;$B9E594  \
 	LSR A					;$B9E596   |
-	LDA #$0560				;$B9E597   |
+	%lda_sound(5, splash_1)			;$B9E597   |
 	BCC CODE_B9E59F				;$B9E59A   |
-	LDA #$0561				;$B9E59C   |
+	%lda_sound(5, splash_2)			;$B9E59C   |
 CODE_B9E59F:					;	   |
 	JSL queue_sound_effect			;$B9E59F   |
 	LDX current_sprite			;$B9E5A3   |
@@ -3806,7 +3806,7 @@ CODE_B9E5AB:
 	LDA global_frame_counter		;$B9E5AB  \
 	AND #$003F				;$B9E5AD   |
 	BNE CODE_B9E5B9				;$B9E5B0   |
-	LDA #$0524				;$B9E5B2   |
+	%lda_sound(5, neek_squeak)		;$B9E5B2   |
 	JSL CODE_B3A3FC				;$B9E5B5   |
 CODE_B9E5B9:					;	   |
 	LDY #$0170				;$B9E5B9   |
@@ -3832,7 +3832,7 @@ CODE_B9E5DF:
 	LDA $1E,x				;$B9E5DF  \
 	AND #$0001				;$B9E5E1   |
 	BEQ CODE_B9E5ED				;$B9E5E4   |
-	LDA #$060F				;$B9E5E6   |
+	%lda_sound(6, click_clack_walk)		;$B9E5E6   |
 	JSL CODE_B3A3FC				;$B9E5E9   |
 CODE_B9E5ED:					;	   |
 	RTS					;$B9E5ED  /
@@ -3910,7 +3910,7 @@ CODE_B9E667:					;	   |
 	LDX current_sprite			;$B9E66B   |
 	DEC $50,x				;$B9E66D   |
 	BNE CODE_B9E613				;$B9E66F   |
-	LDA #$0711				;$B9E671   |
+	%lda_sound(7, klobber_skid)		;$B9E671   |
 	JSL queue_sound_effect			;$B9E674   |
 	RTS					;$B9E678  /
 
@@ -4192,7 +4192,7 @@ CODE_B9E824:					;	   |
 	RTS					;$B9E824  /
 
 CODE_B9E825:
-	LDA #$0502				;$B9E825  \
+	%lda_sound(5, knock)			;$B9E825  \
 	JSL queue_sound_effect			;$B9E828   |
 	LDX current_sprite			;$B9E82C   |
 	LDA $2A,x				;$B9E82E   |
@@ -4221,7 +4221,7 @@ CODE_B9E825:
 	RTS					;$B9E85F  /
 
 CODE_B9E860:
-	LDA #$0502				;$B9E860  \
+	%lda_sound(5, knock)			;$B9E860  \
 	JSL queue_sound_effect			;$B9E863   |
 	LDX current_sprite			;$B9E867   |
 	LDA #$0100				;$B9E869   |
@@ -4695,7 +4695,7 @@ CODE_B9EB39:
 	JSL CODE_B8D8BA				;$B9EB4D   |
 	PLB					;$B9EB51   |
 	BCS CODE_B9EB93				;$B9EB52   |
-	LDA #$056F				;$B9EB54   |
+	%lda_sound(5, krockhead_brown)		;$B9EB54   |
 	JSL queue_sound_effect			;$B9EB57   |
 	LDX current_sprite			;$B9EB5B   |
 	LDA $46,x				;$B9EB5D   |
@@ -4748,7 +4748,7 @@ CODE_B9EBA4:
 	AND #$0003				;$B9EBA6   |
 	CMP #$0003				;$B9EBA9   |
 	BNE CODE_B9EBD6				;$B9EBAC   |
-	LDA #$066E				;$B9EBAE   |
+	%lda_sound(6, krockhead_green)		;$B9EBAE   |
 	JSL queue_sound_effect			;$B9EBB1   |
 	LDX current_sprite			;$B9EBB5   |
 	LDA $3C,x				;$B9EBB7   |
@@ -5155,8 +5155,8 @@ CODE_B9EE4B:
 ;END OF PATCH
 
 CODE_B9EE54:
-	LDX #$051B				;$B9EE54  \
-	LDY #$051B				;$B9EE57   |
+	LDX #sound(5, !sound_kong_dk_barrel)	;$B9EE54  \	Kong held captive in DK barrel sound is Kong-specific, but set to the same ID for both
+	LDY #sound(5, !sound_kong_dk_barrel)	;$B9EE57   |
 	JSL CODE_B89182				;$B9EE5A   |
 	RTS					;$B9EE5E  /
 
@@ -5268,7 +5268,7 @@ if !version == 1				;	   |
 endif						;	   |
 	STA $0915				;$B9EF07   |
 CODE_B9EF0A:					;	   |
-	LDA #$066E				;$B9EF0A   |
+	%lda_sound(6, clapper_spit)		;$B9EF0A   |
 	JSL queue_sound_effect			;$B9EF0D   |
 	RTS					;$B9EF11  /
 

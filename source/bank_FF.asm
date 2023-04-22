@@ -13737,20 +13737,20 @@ DATA_FFAB90:
 DATA_FFAB9A:
 	dw sprite.number, $00A4
 	dw sprite.action, $0000
-	dw sprite.unknown_42, $0606
+	dw sprite.unknown_42, sound(6, !sound_diddy_hit)
 	dw !initcommand_success
 
 DATA_FFABA8:
 	dw sprite.number, $00A4
 	dw sprite.action, $0001
 	dw sprite.unknown_44, $003C
-	dw sprite.unknown_42, $0606
+	dw sprite.unknown_42, sound(6, !sound_diddy_hit)
 	dw !initcommand_success
 
 DATA_FFABBA:
 	dw sprite.number, $00A4
 	dw sprite.action, $0002
-	dw sprite.unknown_42, $0606
+	dw sprite.unknown_42, sound(6, !sound_diddy_hit)
 	dw !initcommand_success
 
 DATA_FFABC8:

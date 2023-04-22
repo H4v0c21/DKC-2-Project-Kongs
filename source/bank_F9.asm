@@ -928,89 +928,89 @@ diddy_idle:
 	db $06 : dw $1CC4
 	db $04 : dw $1C8C
 	db $04 : dw $1C90
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C94
 	db $04 : dw $1C98
 	db $04 : dw $1C9C
 	db $04 : dw $1CA0
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1CA4
 	db $04 : dw $1C4C
 	db $04 : dw $1C50
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C54
 	db $04 : dw $1C58
 	db $04 : dw $1C5C
 	db $04 : dw $1C60
 	db $04 : dw $1C64
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C68
 	db $04 : dw $1C6C
 	db $04 : dw $1C70
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C74
 	db $04 : dw $1C78
 	db $04 : dw $1C7C
 	db $04 : dw $1C80
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C84
 	db $04 : dw $1C88
 	db $04 : dw $1C8C
 	db $04 : dw $1C90
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C94
 	db $04 : dw $1C98
 	db $04 : dw $1C9C
 	db $04 : dw $1CA0
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1CA4
 	db $04 : dw $1C4C
 	db $04 : dw $1C50
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C54
 	db $04 : dw $1C58
 	db $04 : dw $1C5C
 	db $04 : dw $1C60
 	db $04 : dw $1C64
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C68
 	db $04 : dw $1C6C
 	db $04 : dw $1C70
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C74
 	db $04 : dw $1C78
 	db $04 : dw $1C7C
 	db $04 : dw $1C80
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C84
 	db $04 : dw $1C88
 	db $04 : dw $1C8C
 	db $04 : dw $1C90
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C94
 	db $04 : dw $1C98
 	db $04 : dw $1C9C
 	db $04 : dw $1CA0
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1CA4
 	db $04 : dw $1C4C
 	db $04 : dw $1C50
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C54
 	db $04 : dw $1C58
 	db $04 : dw $1C5C
 	db $04 : dw $1C60
 	db $04 : dw $1C64
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C68
 	db $04 : dw $1C6C
 	db $04 : dw $1C70
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C74
 	db $04 : dw $1C78
 	db $04 : dw $1C7C
 	db $04 : dw $1C80
-	db !animation_command_8E, $23, $07
+	db !animation_command_8E : dw sound(7, !sound_diddy_juggle)
 	db $04 : dw $1C84
 	db $04 : dw $1C88
 	db $06 : dw $1CC4
@@ -1068,7 +1068,7 @@ diddy_carry_krockhead_bounce:
 	db !animation_command_80, $00
 
 diddy_scared:
-	db !animation_command_8E, $78, $06
+	db !animation_command_8E : dw sound(6, !sound_kongs_scared)
 	db $02 : dw $2234
 	db $03 : dw $2238
 	db $02 : dw $223C
@@ -1560,13 +1560,13 @@ DATA_F91C1C:
 	db !animation_command_80, $00
 
 diddy_stunned:
-	db !animation_command_8E, $06, $06
+	db !animation_command_8E : dw sound(6, !sound_diddy_hit)
 	db $12 : dw $07A4
 	db !animation_command_83 : dw CODE_B9D12B
 	db !animation_command_80, $00
 
 diddy_hurt:
-	db !animation_command_8E, $06, $06
+	db !animation_command_8E : dw sound(6, !sound_diddy_hit)
 	db $02 : dw $07A4
 	db $02 : dw $07A4
 	db !animation_command_83 : dw CODE_B9D55A
@@ -1747,7 +1747,7 @@ DATA_F91DFD:
 	db !animation_command_80, $00
 
 diddy_death:
-	db !animation_command_8E, $06, $06
+	db !animation_command_8E : dw sound(6, !sound_diddy_hit)
 	db $01 : dw $07A4
 	db !animation_command_81 : dw CODE_B9DA5C
 	db $0B : dw $07A4
@@ -1759,14 +1759,14 @@ diddy_death:
 	db $05 : dw $0770
 	db $05 : dw $0774
 	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_8E, $13, $06
+	db !animation_command_8E : dw sound(6, !sound_hit_ground)
 	db !animation_command_81 : dw CODE_B9DD21
 	db $05 : dw $0778
 	db $05 : dw $077C
 	db $05 : dw $0780
 	db $06 : dw $0784
 	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_8E, $13, $06
+	db !animation_command_8E : dw sound(6, !sound_hit_ground)
 	db !animation_command_81 : dw CODE_B9DA75
 	db $0C : dw $0788
 	db !animation_command_81 : dw CODE_B9DEBE
@@ -2253,7 +2253,7 @@ squitter_jump:
 	db !animation_command_88 : dw $0000, $0000
 	db $02 : dw $07F4
 	db $02 : dw $07F8
-	db !animation_command_8E, $4D, $05
+	db !animation_command_8E : dw sound(5, !sound_squitter_jump)
 	db !animation_command_81 : dw CODE_B9DF51
 	db !animation_command_80, $00
 
@@ -2334,7 +2334,7 @@ DATA_F924B3:
 	db !animation_command_86, $01 : dw $0D60, $0DA0, $0000, $FFF7
 	db !animation_command_86, $01 : dw $0D60, $0DA0, $0000, $FFF7
 	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_8E, $48, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_hop)
 	db !animation_command_86, $01 : dw $0D60, $0DA0, $0000, $FFF7
 	db !animation_command_86, $01 : dw $0D5C, $0DA0, $0000, $FFFA
 	db !animation_command_86, $01 : dw $0D58, $0DA0, $0000, $FFFC
@@ -2351,7 +2351,7 @@ DATA_F924B3:
 
 DATA_F92583:
 	db !animation_command_83 : dw CODE_B9D589
-	db !animation_command_8E, $48, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_hop)
 	db !animation_command_86, $02 : dw $0D60, $0DA0, $0000, $FFF7
 	db !animation_command_86, $02 : dw $0D5C, $0DA0, $0000, $FFFA
 	db !animation_command_86, $02 : dw $0D58, $0DA0, $0000, $FFFC
@@ -2367,7 +2367,7 @@ DATA_F925D2:
 
 rattly_dixie_jump:
 	db !animation_command_86, $02 : dw $0D4C, $0DA0, $0000, $0000
-	db !animation_command_8E, $49, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_leap)
 	db !animation_command_81 : dw CODE_B9DF51
 	db !animation_command_80, $00
 
@@ -2512,7 +2512,7 @@ DATA_F9286A:
 	db !animation_command_86, $01 : dw $0D60, $1F08, $0000, $FFF6
 	db !animation_command_86, $01 : dw $0D60, $1F08, $0000, $FFF6
 	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_8E, $48, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_hop)
 	db !animation_command_86, $01 : dw $0D60, $1F08, $0000, $FFF6
 	db !animation_command_86, $01 : dw $0D5C, $1F08, $0000, $FFF8
 	db !animation_command_86, $01 : dw $0D58, $1F08, $0000, $FFFA
@@ -2529,7 +2529,7 @@ DATA_F9286A:
 
 DATA_F9293A:
 	db !animation_command_83 : dw CODE_B9D589
-	db !animation_command_8E, $48, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_hop)
 	db !animation_command_86, $02 : dw $0D60, $1F08, $0000, $FFF6
 	db !animation_command_86, $02 : dw $0D5C, $1F08, $0000, $FFF8
 	db !animation_command_86, $02 : dw $0D58, $1F08, $0000, $FFFA
@@ -2544,7 +2544,7 @@ DATA_F92989:
 
 rattly_diddy_jump:
 	db !animation_command_86, $02 : dw $0D4C, $1F08, $0000, $0000
-	db !animation_command_8E, $49, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_leap)
 	db !animation_command_81 : dw CODE_B9DF51
 	db !animation_command_80, $00
 
@@ -2798,11 +2798,11 @@ rambi_walk:
 	db !animation_command_87, $03 : dw $1D54, $0001, $0000
 	db !animation_command_87, $03 : dw $1D58, $0000, $0000
 	db !animation_command_87, $03 : dw $1D5C, $FFFF, $FFFF
-	db !animation_command_8E, $54, $05
+	db !animation_command_8E : dw sound(5, !sound_rambi_footstep)
 	db !animation_command_87, $03 : dw $1D60, $FFFE, $FFFE
 	db !animation_command_87, $03 : dw $1D64, $FFFD, $FFFE
 	db !animation_command_87, $03 : dw $1D68, $FFFD, $FFFE
-	db !animation_command_8E, $54, $05
+	db !animation_command_8E : dw sound(5, !sound_rambi_footstep)
 	db !animation_command_81 : dw CODE_B9DC68
 	db !animation_command_87, $03 : dw $1D6C, $FFFD, $FFFF
 	db !animation_command_87, $03 : dw $1D70, $FFFE, $FFFF
@@ -2829,11 +2829,11 @@ DATA_F92F71:
 	db !animation_command_87, $03 : dw $1D54, $0001, $0000
 	db !animation_command_87, $03 : dw $1D58, $0000, $0000
 	db !animation_command_87, $03 : dw $1D5C, $FFFF, $FFFF
-	db !animation_command_8E, $54, $05
+	db !animation_command_8E : dw sound(5, !sound_rambi_footstep)
 	db !animation_command_87, $03 : dw $1D60, $FFFE, $FFFE
 	db !animation_command_87, $03 : dw $1D64, $FFFD, $FFFE
 	db !animation_command_87, $03 : dw $1D68, $FFFD, $FFFE
-	db !animation_command_8E, $54, $05
+	db !animation_command_8E : dw sound(5, !sound_rambi_footstep)
 	db !animation_command_87, $03 : dw $1D6C, $FFFD, $FFFF
 	db !animation_command_87, $03 : dw $1D70, $FFFE, $FFFF
 	db !animation_command_87, $03 : dw $1D38, $0000, $FFFF
@@ -2859,7 +2859,7 @@ rambi_diddy_mount:
 
 rambi_diddy_jump:
 	db !animation_command_86, $06 : dw $1DD4, $2108, $0000, $0002
-	db !animation_command_8E, $1D, $05
+	db !animation_command_8E : dw sound(5, !sound_rambi_jump)
 	db !animation_command_81 : dw CODE_B9DF51
 	db !animation_command_80, $00
 
@@ -2899,7 +2899,7 @@ rambi_diddy_fall:
 
 rambi_dixie_jump:
 	db !animation_command_87, $06 : dw $1DD4, $0000, $0001
-	db !animation_command_8E, $1D, $05
+	db !animation_command_8E : dw sound(5, !sound_rambi_jump)
 	db !animation_command_81 : dw CODE_B9DF51
 	db !animation_command_80, $00
 
@@ -2987,7 +2987,7 @@ dixie_idle:
 	db $05 : dw $06F4
 	db $05 : dw $06F8
 	db $05 : dw $06FC
-	db !animation_command_8E, $26, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_bubble)
 	db $05 : dw $0700
 	db $05 : dw $0704
 	db $0A : dw $0708
@@ -3003,14 +3003,14 @@ dixie_idle:
 	db $05 : dw $06F4
 	db $05 : dw $06F8
 	db $05 : dw $06FC
-	db !animation_command_8E, $26, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_bubble)
 	db $05 : dw $0700
 	db $05 : dw $0704
 	db $0A : dw $0708
 	db $05 : dw $0704
 	db $05 : dw $0700
 	db $0A : dw $06FC
-	db !animation_command_8E, $26, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_bubble)
 	db $05 : dw $0700
 	db $05 : dw $0704
 	db $05 : dw $0708
@@ -3062,7 +3062,7 @@ dixie_idle:
 	db $03 : dw $04D0
 	db $03 : dw $04D4
 	db $0C : dw $04D8
-	db !animation_command_8E, $25, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_sip)
 	db $25 : dw $04DC
 	db $03 : dw $04D4
 	db $03 : dw $04D0
@@ -3073,13 +3073,13 @@ dixie_idle:
 	db $03 : dw $04D4
 	db $18 : dw $04D8
 	db $05 : dw $04DC
-	db !animation_command_8E, $25, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_sip)
 	db $05 : dw $04D8
 	db $08 : dw $04DC
-	db !animation_command_8E, $25, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_sip)
 	db $08 : dw $04D8
 	db $0C : dw $04DC
-	db !animation_command_8E, $25, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_sip)
 	db $1C : dw $04D8
 	db $03 : dw $04D8
 	db $03 : dw $04D4
@@ -3161,7 +3161,7 @@ dixie_carry_krockhead_bounce:
 	db !animation_command_80, $00
 
 dixie_scared:
-	db !animation_command_8E, $78, $06
+	db !animation_command_8E : dw sound(6, !sound_kongs_scared)
 	db $03 : dw $220C
 	db $03 : dw $2210
 	db $03 : dw $2214
@@ -3525,13 +3525,13 @@ DATA_F9389B:
 	db !animation_command_80, $00
 
 dixie_stunned:
-	db !animation_command_8E, $07, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_hit)
 	db $12 : dw $0568
 	db !animation_command_83 : dw CODE_B9D12B
 	db !animation_command_80, $00
 
 dixie_hurt:
-	db !animation_command_8E, $07, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_hit)
 	db $02 : dw $0568
 	db $02 : dw $0568
 	db !animation_command_83 : dw CODE_B9D55A
@@ -3924,7 +3924,7 @@ dixie_carry_land:
 	db !animation_command_80, $00
 
 dixie_death:
-	db !animation_command_8E, $07, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_hit)
 	db $01 : dw $0568
 	db !animation_command_81 : dw CODE_B9DA5C
 	db $0B : dw $0568
@@ -4553,7 +4553,7 @@ rambi_attack:
 	db !animation_command_81 : dw CODE_B9E331
 	db !animation_command_81 : dw CODE_B9E20F
 	db !animation_command_87, $03 : dw $1D20, $0000, $0004
-	db !animation_command_8E, $53, $05
+	db !animation_command_8E : dw sound(5, !sound_rambi_attack)
 	db !animation_command_84 : dw CODE_B9E219
 	db !animation_command_87, $08 : dw $1D20, $0000, $0004
 	db !animation_command_81 : dw CODE_B9E221
@@ -4571,13 +4571,13 @@ rambi_charge:
 	db !animation_command_84 : dw CODE_B9E23F
 	db !animation_command_87, $09 : dw $1D04, $FFFE, $FFFD
 	db !animation_command_87, $09 : dw $1D08, $FFFF, $FFFF
-	db !animation_command_8E, $0B, $06
+	db !animation_command_8E : dw sound(6, !sound_rambi_charge)
 	db !animation_command_87, $08 : dw $1D0C, $FFFE, $0000
 	db !animation_command_87, $08 : dw $1D10, $FFFD, $FFFF
 	db !animation_command_87, $07 : dw $1D14, $FFFD, $FFFE
 	db !animation_command_87, $07 : dw $1D04, $FFFE, $FFFD
 	db !animation_command_87, $06 : dw $1D08, $FFFF, $FFFF
-	db !animation_command_8E, $0B, $06
+	db !animation_command_8E : dw sound(6, !sound_rambi_charge)
 	db !animation_command_87, $06 : dw $1D0C, $FFFE, $0000
 	db !animation_command_81 : dw CODE_B9E237
 	db !animation_command_84 : dw CODE_B9E252
@@ -4585,7 +4585,7 @@ rambi_charge:
 	db !animation_command_87, $05 : dw $1D14, $FFFD, $FFFE
 	db !animation_command_87, $04 : dw $1D04, $FFFE, $FFFD
 	db !animation_command_87, $04 : dw $1D08, $FFFF, $FFFF
-	db !animation_command_8E, $0B, $06
+	db !animation_command_8E : dw sound(6, !sound_rambi_charge)
 	db !animation_command_87, $03 : dw $1D0C, $FFFE, $0000
 	db !animation_command_81 : dw CODE_B9E237
 	db !animation_command_87, $03 : dw $1D10, $FFFD, $FFFF
@@ -4594,7 +4594,7 @@ rambi_charge:
 DATA_F948B3:
 	db !animation_command_87, $03 : dw $1D04, $FFFE, $FFFD
 	db !animation_command_87, $03 : dw $1D08, $FFFF, $FFFF
-	db !animation_command_8E, $0B, $06
+	db !animation_command_8E : dw sound(6, !sound_rambi_charge)
 	db !animation_command_87, $03 : dw $1D0C, $FFFE, $0000
 	db !animation_command_81 : dw CODE_B9E237
 	db !animation_command_87, $03 : dw $1D10, $FFFD, $FFFF
@@ -4703,14 +4703,14 @@ DATA_F94A0D:
 	db !animation_command_87, $07 : dw $26C8, $FFF6, $FFFF
 	db !animation_command_81 : dw CODE_B9DBC5
 	db !animation_command_87, $03 : dw $26D4, $0000, $FFFF
-	db !animation_command_8E, $65, $05
+	db !animation_command_8E : dw sound(5, !sound_enguarde_charge)
 	db !animation_command_87, $02 : dw $26BC, $FFFE, $FFFF
 	db !animation_command_87, $01 : dw $26C0, $FFFC, $FFFF
 	db !animation_command_87, $01 : dw $26C4, $FFF9, $FFFF
 	db !animation_command_87, $05 : dw $26C8, $FFF6, $FFFF
 	db !animation_command_84 : dw CODE_B9E252
 	db !animation_command_87, $02 : dw $26D4, $0000, $FFFF
-	db !animation_command_8E, $65, $05
+	db !animation_command_8E : dw sound(5, !sound_enguarde_charge)
 
 DATA_F94A6C:
 	db !animation_command_87, $01 : dw $26BC, $FFFE, $FFFF
@@ -4718,7 +4718,7 @@ DATA_F94A6C:
 	db !animation_command_87, $01 : dw $26C4, $FFF9, $FFFF
 	db !animation_command_87, $02 : dw $26C8, $FFF6, $FFFF
 	db !animation_command_87, $01 : dw $26D4, $0000, $FFFF
-	db !animation_command_8E, $65, $05
+	db !animation_command_8E : dw sound(5, !sound_enguarde_charge)
 	db !animation_command_82 : dw DATA_F94A6C
 	db !animation_command_80, $00
 
@@ -4727,7 +4727,7 @@ rattly_diddy_charge:
 	db !animation_command_86, $02 : dw $0D50, $1F08, $0000, $FFFE
 	db !animation_command_86, $02 : dw $0D54, $1F08, $0000, $FFFC
 	db !animation_command_86, $02 : dw $0D58, $1F08, $0000, $FFFA
-	db !animation_command_8E, $48, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_hop)
 	db !animation_command_86, $02 : dw $0D5C, $1F08, $0000, $FFF8
 	db !animation_command_86, $02 : dw $0D60, $1F08, $0000, $FFF6
 	db !animation_command_86, $02 : dw $0D64, $1F08, $0000, $FFF1
@@ -4754,7 +4754,7 @@ rattly_dixie_charge:
 	db !animation_command_86, $02 : dw $0D50, $0DA0, $0000, $0000
 	db !animation_command_86, $02 : dw $0D54, $0DA0, $0000, $FFFE
 	db !animation_command_86, $02 : dw $0D58, $0DA0, $0000, $FFFC
-	db !animation_command_8E, $48, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_hop)
 	db !animation_command_86, $02 : dw $0D5C, $0DA0, $0000, $FFFA
 	db !animation_command_86, $02 : dw $0D60, $0DA0, $0000, $FFF8
 	db !animation_command_86, $02 : dw $0D64, $0DA0, $0000, $FFF3
@@ -5099,7 +5099,7 @@ neek_turn:
 	db !animation_command_80, $00
 
 neek_death:
-	db !animation_command_8E, $04, $05
+	db !animation_command_8E : dw sound(5, !sound_neek_hit)
 	db $04 : dw $117C
 	db !animation_command_83 : dw CODE_B9E551
 	db $03 : dw $1180
@@ -5170,7 +5170,7 @@ click_clack_recover:
 	db $02 : dw $0EC8
 	db $02 : dw $0ECC
 	db !animation_command_81 : dw CODE_B9E5C5
-	db !animation_command_8E, $37, $06
+	db !animation_command_8E : dw sound(6, !sound_click_clack_recover)
 	db $02 : dw $0ECC
 	db $02 : dw $0EC8
 	db $02 : dw $0EC4
@@ -5244,7 +5244,7 @@ DATA_F950AA:
 
 klobber_wake:
 	db !animation_command_8F : dw CODE_B9E5EE, DATA_F95125
-	db !animation_command_8E, $12, $04
+	db !animation_command_8E : dw sound(4, !sound_klobber_awaken)
 	db !animation_command_8D, $03 : dw $1204, $1234, $0000
 	db !animation_command_8D, $03 : dw $1208, $1234, $0000
 	db !animation_command_8D, $03 : dw $120C, $1234, $0000
@@ -5262,7 +5262,7 @@ klobber_wake:
 	db !animation_command_90 : dw CODE_B9E614, $01F5
 
 DATA_F95125:
-	db !animation_command_8E, $12, $04
+	db !animation_command_8E : dw sound(4, !sound_klobber_awaken)
 	db !animation_command_8D, $03 : dw $1204, $1694, $0000
 	db !animation_command_8D, $03 : dw $1208, $1694, $0000
 	db !animation_command_8D, $03 : dw $120C, $1694, $0000
@@ -5299,7 +5299,7 @@ DATA_F951C2:
 	db !animation_command_80, $00
 
 klobber_hide:
-	db !animation_command_8E, $02, $05
+	db !animation_command_8E : dw sound(5, !sound_knock)
 	db !animation_command_81 : dw CODE_B9E62E
 	db !animation_command_8F : dw CODE_B9E5EE, DATA_F9526A
 	db !animation_command_8D, $12 : dw $1548, $1234, $00F5
@@ -5395,7 +5395,7 @@ klomp_walk:
 	db $04 : dw $0920
 	db $04 : dw $0924
 	db !animation_command_81 : dw CODE_B9E679
-	db !animation_command_8E, $02, $05
+	db !animation_command_8E : dw sound(5, !sound_knock)
 	db $06 : dw $0928
 	db $05 : dw $092C
 	db $04 : dw $090C
@@ -5418,7 +5418,7 @@ klomp_turn:
 	db !animation_command_80, $00
 
 klomp_death:
-	db !animation_command_8E, $18, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_1)
 	db $04 : dw $1198
 	db !animation_command_83 : dw CODE_B9E551
 	db $03 : dw $119C
@@ -5431,14 +5431,14 @@ kruncha_walk:
 	db $04 : dw $0AFC
 	db !animation_command_84 : dw CODE_B9E698
 	db $04 : dw $0B00
-	db !animation_command_93, $02, $05
+	db !animation_command_93 : dw sound(5, !sound_knock)
 	db $04 : dw $0B04
 	db $04 : dw $0B08
 	db $04 : dw $0B0C
 	db $04 : dw $0AE4
 	db $04 : dw $0AE8
 	db $04 : dw $0AEC
-	db !animation_command_93, $02, $05
+	db !animation_command_93 : dw sound(5, !sound_knock)
 	db $04 : dw $0AF0
 	db $04 : dw $0AF4
 	db $04 : dw $0AF8
@@ -5455,7 +5455,7 @@ kruncha_turn:
 	db !animation_command_80, $00
 
 kruncha_death:
-	db !animation_command_8E, $18, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_1)
 	db $04 : dw $163C
 	db !animation_command_83 : dw CODE_B9E551
 	db $05 : dw $1640
@@ -5467,7 +5467,7 @@ kruncha_death:
 	db !animation_command_80, $00
 
 kruncha_angry:
-	db !animation_command_8E, $51, $06
+	db !animation_command_8E : dw sound(6, !sound_kruncha_angry)
 	db !animation_command_84 : dw CODE_B9D891
 	db $02 : dw $1654
 	db $02 : dw $1658
@@ -5505,7 +5505,7 @@ kruncha_angry:
 	db !animation_command_80, $00
 
 kruncha_calm:
-	db !animation_command_8E, $02, $05
+	db !animation_command_8E : dw sound(5, !sound_knock)
 	db !animation_command_84 : dw CODE_B9D891
 	db $04 : dw $1654
 	db $04 : dw $1658
@@ -5547,7 +5547,7 @@ mini_necky_swoop:
 	db $04 : dw $1240
 	db $0F : dw $1244
 	db !animation_command_81 : dw CODE_B9E535
-	db !animation_command_8E, $32, $06
+	db !animation_command_8E : dw sound(6, !sound_necky_attack)
 	db $04 : dw $1248
 	db $04 : dw $124C
 	db $04 : dw $1250
@@ -5562,7 +5562,7 @@ mini_necky_swoop:
 	db !animation_command_80, $00
 
 mini_necky_death:
-	db !animation_command_8E, $57, $05
+	db !animation_command_8E : dw sound(5, !sound_necky_hit)
 	db $04 : dw $2430
 	db $04 : dw $2434
 	db $04 : dw $2438
@@ -5575,7 +5575,7 @@ klampon_walk:
 	db $03 : dw $20E4
 	db !animation_command_84 : dw !null_pointer
 	db $03 : dw $20E8
-	db !animation_command_8E, $17, $07
+	db !animation_command_8E : dw sound(7, !sound_klampon_lockjaw_snap)
 	db $03 : dw $20C0
 	db $03 : dw $20C4
 	db $03 : dw $20C8
@@ -5599,7 +5599,7 @@ klampon_turn:
 	db !animation_command_80, $00
 
 klampon_death:
-	db !animation_command_8E, $18, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_1)
 	db $04 : dw $20F4
 	db !animation_command_83 : dw CODE_B9E551
 	db $04 : dw $20F8
@@ -5621,7 +5621,7 @@ klampon_bite:
 DATA_F95621:
 	db $03 : dw $20E4
 	db $03 : dw $20E8
-	db !animation_command_8E, $16, $05
+	db !animation_command_8E : dw sound(5, !sound_klampon_lockjaw_bite)
 	db $03 : dw $20C0
 
 DATA_F9562D:
@@ -5630,7 +5630,7 @@ DATA_F9562D:
 	db $02 : dw $20E0
 	db $02 : dw $20E4
 	db $02 : dw $20E8
-	db !animation_command_8E, $16, $05
+	db !animation_command_8E : dw sound(5, !sound_klampon_lockjaw_bite)
 	db $02 : dw $20C0
 	db $02 : dw $20C4
 	db !animation_command_8F : dw CODE_B9E6C6, DATA_F9562D
@@ -5648,11 +5648,11 @@ DATA_F9562D:
 spiny_walk:
 	db $04 : dw $1F1C
 	db !animation_command_84 : dw CODE_B9E6D2
-	db !animation_command_93, $4E, $05
+	db !animation_command_93 : dw sound(5, !sound_spiny_walk)
 	db $04 : dw $1F20
 	db $04 : dw $1F24
 	db $04 : dw $1F28
-	db !animation_command_93, $4E, $05
+	db !animation_command_93 : dw sound(5, !sound_spiny_walk)
 	db $04 : dw $1F2C
 	db $04 : dw $1F30
 	db $04 : dw $1F34
@@ -5669,7 +5669,7 @@ spiny_turn:
 	db !animation_command_80, $00
 
 spiny_death:
-	db !animation_command_8E, $02, $05
+	db !animation_command_8E : dw sound(5, !sound_knock)
 	db $04 : dw $201C
 	db !animation_command_83 : dw CODE_B9E551
 	db $04 : dw $2020
@@ -5702,7 +5702,7 @@ DATA_F956E6:
 	db $02 : dw $2C78
 	db $02 : dw $2C7C
 	db $10 : dw $2C80
-	db !animation_command_8E, $16, $05
+	db !animation_command_8E : dw sound(5, !sound_klampon_lockjaw_bite)
 	db $03 : dw $2C84
 	db $0C : dw $2C88
 	db $03 : dw $2C84
@@ -5770,7 +5770,7 @@ DATA_F95798:
 	db $02 : dw $0E0C
 	db $03 : dw $0E10
 	db $02 : dw $0E0C
-	db !animation_command_8E, $17, $05
+	db !animation_command_8E : dw sound(5, !sound_klampon_lockjaw_snap)
 	db !animation_command_82 : dw DATA_F95798
 DATA_F957AA:
 	db $01 : dw $0E08
@@ -5780,7 +5780,7 @@ DATA_F957AA:
 	db $01 : dw $0E18
 	db !animation_command_83 : dw CODE_B9E713
 	db $06 : dw $0E18
-	db !animation_command_8E, $16, $05
+	db !animation_command_8E : dw sound(5, !sound_klampon_lockjaw_bite)
 	db $02 : dw $0E1C
 	db $02 : dw $0E20
 	db $0C : dw $0E24
@@ -5803,7 +5803,7 @@ DATA_F957CE:
 	db !animation_command_80, $00
 
 lockjaw_death:
-	db !animation_command_8E, $02, $05
+	db !animation_command_8E : dw sound(5, !sound_knock)
 	db $04 : dw $1154
 	db !animation_command_83 : dw CODE_B9D12B
 	db !animation_command_80, $00
@@ -5825,12 +5825,12 @@ DATA_F9581F:
 	db $02 : dw $0E0C
 	db $03 : dw $0E10
 	db $02 : dw $0E0C
-	db !animation_command_8E, $17, $05
+	db !animation_command_8E : dw sound(5, !sound_klampon_lockjaw_snap)
 	db $08 : dw $0E08
 	db $02 : dw $0E0C
 	db $03 : dw $0E10
 	db $02 : dw $0E0C
-	db !animation_command_8E, $17, $05
+	db !animation_command_8E : dw sound(5, !sound_klampon_lockjaw_snap)
 
 DATA_F95842:
 	db !animation_command_90 : dw CODE_B9E53E, $017C
@@ -5854,7 +5854,7 @@ DATA_F95866:
 	db $02 : dw $2C7C
 	db $02 : dw $2C80
 	db !animation_command_83 : dw CODE_B9E794
-	db !animation_command_8E, $16, $05
+	db !animation_command_8E : dw sound(5, !sound_klampon_lockjaw_bite)
 	db $03 : dw $2C84
 	db $0C : dw $2C88
 	db $03 : dw $2C84
@@ -5896,7 +5896,7 @@ flotsam_turn:
 	db !animation_command_80, $00
 
 flotsam_death:
-	db !animation_command_8E, $02, $05
+	db !animation_command_8E : dw sound(5, !sound_knock)
 	db $04 : dw $1B80
 	db $04 : dw $1B84
 	db $04 : dw $1B88
@@ -5916,7 +5916,7 @@ shuri_idle:
 	db !animation_command_80, $00
 
 shuri_spin:
-	db !animation_command_8E, $6C, $05
+	db !animation_command_8E : dw sound(5, !sound_shuri_spin)
 	db $03 : dw $0AAC
 	db $03 : dw $0AB0
 	db $03 : dw $0AB4
@@ -5935,7 +5935,7 @@ shuri_spin:
 	db !animation_command_80, $00
 
 shuri_death:
-	db !animation_command_8E, $1A, $05
+	db !animation_command_8E : dw sound(5, !sound_barrel_blast)
 	db $04 : dw $1158
 	db !animation_command_83 : dw CODE_B9D12B
 	db !animation_command_80, $00
@@ -6038,7 +6038,7 @@ DATA_F95A33:
 	db !animation_command_80, $00
 
 kaboing_death:
-	db !animation_command_8E, $18, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_1)
 	db $04 : dw $1B6C
 	db !animation_command_83 : dw CODE_B9E551
 	db $05 : dw $1B70
@@ -6081,7 +6081,7 @@ zinger_turn:
 	db !animation_command_80, $00
 
 zinger_death:
-	db !animation_command_8E, $0E, $05
+	db !animation_command_8E : dw sound(5, !sound_zinger_flitter_hit)
 	db $04 : dw $1AAC
 	db !animation_command_83 : dw CODE_B9E551
 	db $05 : dw $1AB0
@@ -6148,7 +6148,7 @@ flitter_turn:
 	db !animation_command_80, $00
 
 flitter_death:
-	db !animation_command_8E, $0E, $05
+	db !animation_command_8E : dw sound(5, !sound_zinger_flitter_hit)
 	db $02 : dw $1A08
 	db !animation_command_83 : dw CODE_B9E551
 	db $02 : dw $1A0C
@@ -6206,7 +6206,7 @@ DATA_F95B99:
 DATA_F95BE3:
 	db $04 : dw $19E8
 	db $04 : dw $19EC
-	db !animation_command_8E, $1F, $06
+	db !animation_command_8E : dw sound(6, !sound_klinger_slide)
 	db $04 : dw $19F0
 	db $04 : dw $19F4
 	db !animation_command_84 : dw CODE_B9E913
@@ -6230,7 +6230,7 @@ DATA_F95C18:
 	db !animation_command_80, $00
 
 klinger_death:
-	db !animation_command_8E, $5D, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_2)
 	db $04 : dw $1A24
 	db !animation_command_83 : dw CODE_B9E551
 	db $06 : dw $1A28
@@ -6240,7 +6240,7 @@ klinger_death:
 	db !animation_command_80, $00
 
 kannon_death:
-	db !animation_command_8E, $18, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_1)
 	db $04 : dw $1608
 	db !animation_command_83 : dw CODE_B9E551
 	db $04 : dw $160C
@@ -6401,12 +6401,12 @@ kutlass_attack:
 	db $03 : dw $1070
 	db $03 : dw $1074
 	db $03 : dw $1078
-	db !animation_command_8E, $1E, $05
+	db !animation_command_8E : dw sound(5, !sound_blade_swing)
 	db $03 : dw $107C
 	db $03 : dw $1080
 	db $03 : dw $1084
 	db !animation_command_81 : dw CODE_B9E535
-	db !animation_command_8E, $1E, $05
+	db !animation_command_8E : dw sound(5, !sound_blade_swing)
 	db !animation_command_81 : dw CODE_B9D891
 	db $06 : dw $1088
 	db !animation_command_81 : dw CODE_B9E535
@@ -6442,7 +6442,7 @@ DATA_F95E0E:
 	db !animation_command_80, $00
 
 kutlass_death:
-	db !animation_command_8E, $18, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_1)
 	db $04 : dw $16CC
 	db !animation_command_83 : dw CODE_B9E551
 	db $04 : dw $16D0
@@ -6512,13 +6512,13 @@ krook_throw:
 	db !animation_command_84 : dw CODE_B9E9E1
 
 DATA_F95EE0:
-	db !animation_command_8E, $26, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_bubble)
 	db $04 : dw $21D8
 	db $04 : dw $21DC
 	db $04 : dw $21E0
 	db $04 : dw $21DC
 	db !animation_command_82 : dw DATA_F95EE0
-	db !animation_command_8E, $02, $05
+	db !animation_command_8E : dw sound(5, !sound_knock)
 krook_anim_fix_pointer:
 	db $04 : dw $21E4
 	db $04 : dw $21E8
@@ -6528,7 +6528,7 @@ krook_anim_fix_pointer:
 	db !animation_command_80, $00
 
 krook_death:
-	db !animation_command_8E, $5D, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_2)
 	db $06 : dw $21F0
 	db !animation_command_83 : dw CODE_B9E551
 	db $06 : dw $21F4
@@ -6600,7 +6600,7 @@ puftup_turn_deflate:
 
 puftup_inflate:
 	db $04 : dw $1914
-	db !animation_command_8E, $69, $05
+	db !animation_command_8E : dw sound(5, !sound_puftup_inflate)
 	db $04 : dw $1918
 	db $04 : dw $191C
 	db $04 : dw $1920
@@ -6645,12 +6645,12 @@ DATA_F96027:
 	db $02 : dw $1940
 	db !animation_command_8F : dw CODE_B9E9FA, DATA_F96027
 	db !animation_command_81 : dw CODE_B9E535
-	db !animation_command_8E, $6A, $06
+	db !animation_command_8E : dw sound(6, !sound_puftup_burst)
 	db $08 : dw $1914
 	db !animation_command_80, $00
 
 puftup_death:
-	db !animation_command_8E, $1A, $05
+	db !animation_command_8E : dw sound(5, !sound_barrel_blast)
 	db $03 : dw $18D0
 	db $03 : dw $18D4
 	db $03 : dw $18D8
@@ -6726,7 +6726,7 @@ DATA_F96103:
 
 cat_o_9_tails_chase:
 	db !animation_command_81 : dw CODE_B9EA4E
-	db !animation_command_8E, $26, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_bubble)
 	db $03 : dw $24C4
 	db $03 : dw $24C8
 	db $03 : dw $24CC
@@ -6753,7 +6753,7 @@ cat_o_9_tails_spin:
 	db !animation_command_84 : dw CODE_B9EA9E
 
 DATA_F96155:
-	db !animation_command_8E, $26, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_bubble)
 	db $01 : dw $24C4
 	db $01 : dw $24C8
 	db $01 : dw $24CC
@@ -6767,7 +6767,7 @@ DATA_F96155:
 
 cat_o_9_tails_death:
 	db !animation_command_81 : dw CODE_B9EA4E
-	db !animation_command_8E, $58, $05
+	db !animation_command_8E : dw sound(5, !sound_cat_o_9_tails_hit)
 	db $06 : dw $2538
 	db !animation_command_83 : dw CODE_B9E551
 	db $08 : dw $253C
@@ -6802,7 +6802,7 @@ kloak_turn:
 	db !animation_command_80, $00
 
 kloak_throw:
-	db !animation_command_8E, $64, $06
+	db !animation_command_8E : dw sound(6, !sound_kloak_laugh)
 	db $04 : dw $2578
 	db $04 : dw $257C
 	db $04 : dw $2580
@@ -6826,7 +6826,7 @@ kloak_throw:
 	db !animation_command_80, $00
 
 kloak_death:
-	db !animation_command_8E, $5D, $05
+	db !animation_command_8E : dw sound(5, !sound_kremling_hit_2)
 	db $04 : dw $25C4
 	db !animation_command_83 : dw CODE_B9E551
 	db $04 : dw $25C8
@@ -6963,7 +6963,7 @@ DATA_F96360:
 krockhead_green_rise_from_barrel:
 	db $01 : dw $0000
 	db !animation_command_83 : dw CODE_B9EB96
-	db !animation_command_93, $6D, $05
+	db !animation_command_93 : dw sound(5, !sound_krockhead_rise_sink)
 	db $04 : dw $22C0
 	db $04 : dw $22C4
 	db $04 : dw $22C8
@@ -6981,7 +6981,7 @@ krockhead_sink:
 	db !animation_command_91, $5C : dw DATA_F96360
 	db $01 : dw $22DC
 	db !animation_command_83 : dw CODE_B9EB9D
-	db !animation_command_93, $6D, $05
+	db !animation_command_93 : dw sound(5, !sound_krockhead_rise_sink)
 	db $04 : dw $22D8
 	db $04 : dw $22D4
 	db $04 : dw $22D0
@@ -6993,7 +6993,7 @@ krockhead_sink:
 	db !animation_command_80, $00
 
 krockhead_rise:
-	db !animation_command_93, $6D, $05
+	db !animation_command_93 : dw sound(5, !sound_krockhead_rise_sink)
 	db $04 : dw $22C0
 	db $04 : dw $22C4
 	db $04 : dw $22C8
@@ -7005,7 +7005,7 @@ krockhead_rise:
 	db !animation_command_81 : dw CODE_B9EB6C
 	db $01 : dw $22DC
 	db !animation_command_83 : dw CODE_B9EB88
-	db !animation_command_93, $6D, $05
+	db !animation_command_93 : dw sound(5, !sound_krockhead_rise_sink)
 	db $04 : dw $22D8
 	db $04 : dw $22D4
 	db $04 : dw $22D0
@@ -7151,7 +7151,7 @@ DATA_F9654C:
 	db !animation_command_80, $00
 
 klank_death:
-	db !animation_command_8E, $18, $06
+	db !animation_command_8E : dw sound(6, !sound_kremling_hit_1)
 	db $01 : dw $2B88
 	db !animation_command_83 : dw CODE_B9E551
 	db $03 : dw $2B8C
@@ -7467,7 +7467,7 @@ rattly_no_player_idle:
 	db $01 : dw $0D74
 	db !animation_command_83 : dw CODE_B9D55A
 	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_8E, $13, $05
+	db !animation_command_8E : dw sound(5, !sound_hit_ground)
 	db $01 : dw $0D70
 	db $01 : dw $0D6C
 	db $01 : dw $0D68
@@ -7495,7 +7495,7 @@ rattly_credits:
 	db $01 : dw $0D6C
 	db $01 : dw $0D70
 	db $01 : dw $0D74
-	db !animation_command_8E, $48, $05
+	db !animation_command_8E : dw sound(5, !sound_rattly_hop)
 	db $01 : dw $0D70
 	db $01 : dw $0D6C
 	db $01 : dw $0D68
@@ -7532,7 +7532,7 @@ DATA_F968B4:
 	db $01 : dw $0D74
 	db !animation_command_83 : dw CODE_B9D55A
 	db !animation_command_83 : dw CODE_B9D5A4
-	db !animation_command_8E, $13, $05
+	db !animation_command_8E : dw sound(5, !sound_hit_ground)
 	db $01 : dw $0D70
 	db $01 : dw $0D6C
 	db $01 : dw $0D68
@@ -7797,7 +7797,7 @@ barrel_fragment_2:
 
 firework_1:
 	db $04 : dw $1030
-	db !animation_command_8E, $66, $07
+	db !animation_command_8E : dw sound(7, !sound_firework_fizz)
 	db $04 : dw $1034
 	db $04 : dw $1038
 	db $04 : dw $103C
@@ -7809,7 +7809,7 @@ firework_1:
 	db $04 : dw $1728
 	db $04 : dw $172C
 	db !animation_command_81 : dw CODE_B9EDD4
-	db !animation_command_8E, $69, $07
+	db !animation_command_8E : dw sound(7, !sound_firework_blast)
 	db $04 : dw $1730
 	db $04 : dw $1734
 	db $04 : dw $1738
@@ -7823,7 +7823,7 @@ firework_1:
 
 firework_2:
 	db $04 : dw $1030
-	db !animation_command_8E, $68, $07
+	db !animation_command_8E : dw sound(7, !sound_firework_whistle)
 	db $04 : dw $1034
 	db $04 : dw $1038
 	db $04 : dw $103C
@@ -7835,7 +7835,7 @@ firework_2:
 	db $04 : dw $1750
 	db $04 : dw $1754
 	db !animation_command_81 : dw CODE_B9EDD4
-	db !animation_command_8E, $67, $07
+	db !animation_command_8E : dw sound(7, !sound_firework_pop)
 	db $04 : dw $1758
 	db $04 : dw $175C
 	db $04 : dw $1760
@@ -7863,8 +7863,8 @@ ghost_rope_disappear:
 	db $04 : dw $1864
 	db $04 : dw $1860
 	db !animation_command_81 : dw CODE_B9EDF9
-	db !animation_command_8E, $72, $04
-	db !animation_command_8E, $73, $07
+	db !animation_command_8E : dw sound(4, !sound_ghost_rope_vanish)
+	db !animation_command_8E : dw sound(7, !sound_ghost_rope_vanish_echo)
 	db $04 : dw $185C
 	db $04 : dw $1858
 	db $04 : dw $1854
@@ -7881,8 +7881,8 @@ ghost_rope_appear:
 	db !animation_command_80, $00
 
 ghost_rope_hidden:
-	db !animation_command_8E, $70, $04
-	db !animation_command_8E, $71, $07
+	db !animation_command_8E : dw sound(4, !sound_ghost_rope_appear)
+	db !animation_command_8E : dw sound(7, !sound_ghost_rope_appear_echo)
 	db $03 : dw $1828
 	db $03 : dw $182C
 	db $03 : dw $1830
@@ -8296,7 +8296,7 @@ DATA_F9701B:
 	db !animation_command_80, $00
 
 DATA_F97026:
-	db !animation_command_8E, $20, $05
+	db !animation_command_8E : dw sound(5, !sound_dixie_cry)
 	db $03 : dw $05C4
 	db $03 : dw $05C8
 	db $03 : dw $05CC
@@ -8378,17 +8378,17 @@ clapper_idle:
 	db $04 : dw $2BE4
 	db $04 : dw $2BE8
 	db $04 : dw $2BEC
-	db !animation_command_8E, $63, $06
+	db !animation_command_8E : dw sound(6, !sound_clapper_bark)
 	db $0E : dw $2BF0
 	db $04 : dw $2BEC
 	db $04 : dw $2BE8
 	db $04 : dw $2BEC
-	db !animation_command_8E, $63, $06
+	db !animation_command_8E : dw sound(6, !sound_clapper_bark)
 	db $0E : dw $2BF0
 	db $04 : dw $2BEC
 	db $04 : dw $2BE8
 	db $04 : dw $2BEC
-	db !animation_command_8E, $63, $06
+	db !animation_command_8E : dw sound(6, !sound_clapper_bark)
 	db $18 : dw $2BF0
 	db $04 : dw $2BEC
 	db $04 : dw $2BE8
@@ -8402,7 +8402,7 @@ clapper_idle:
 
 clapper_interact:
 	db $02 : dw $2C3C
-	db !animation_command_8E, $63, $06
+	db !animation_command_8E : dw sound(6, !sound_clapper_bark)
 	db $01 : dw $2C40
 	db $01 : dw $2C44
 	db $03 : dw $2C48
@@ -8434,21 +8434,21 @@ clapper_interact:
 	db $02 : dw $2BC0
 	db $01 : dw $2BC4
 	db $01 : dw $2BC8
-	db !animation_command_8E, $6D, $07
+	db !animation_command_8E : dw sound(7, !sound_clapper_clap)
 	db $02 : dw $2BCC
 	db $01 : dw $2BC8
 	db $01 : dw $2BC4
 	db $02 : dw $2BC0
 	db $01 : dw $2BC4
 	db $01 : dw $2BC8
-	db !animation_command_8E, $6D, $07
+	db !animation_command_8E : dw sound(7, !sound_clapper_clap)
 	db $02 : dw $2BCC
 	db $01 : dw $2BC8
 	db $01 : dw $2BC4
 	db $02 : dw $2BC0
 	db $01 : dw $2BC4
 	db $01 : dw $2BC8
-	db !animation_command_8E, $6D, $07
+	db !animation_command_8E : dw sound(7, !sound_clapper_clap)
 	db $02 : dw $2BCC
 	db $01 : dw $2BC8
 	db $04 : dw $2BC4
@@ -8554,7 +8554,7 @@ kudgel_attack_land:
 kudgel_idle:
 	db $0A : dw $2684
 	db $04 : dw $2688
-	db !animation_command_8E, $4C, $06
+	db !animation_command_8E : dw sound(6, !sound_cannonball_drop)
 	db $28 : dw $268C
 	db $0A : dw $2688
 	db !animation_command_80, $00
@@ -8567,7 +8567,7 @@ kudgel_club_idle:
 	db !animation_command_80, $00
 
 klubba_attack:
-	db !animation_command_8E, $6F, $05
+	db !animation_command_8E : dw sound(5, !sound_klubba_kudgel_swing)
 	db $05 : dw $2F3C
 	db $05 : dw $2F40
 	db $04 : dw $2F44
@@ -8635,7 +8635,7 @@ kudgel_club_land:
 	db !animation_command_80, $00
 
 kudgel_attack_long:
-	db !animation_command_8E, $6F, $05
+	db !animation_command_8E : dw sound(5, !sound_klubba_kudgel_swing)
 	db $05 : dw $2F3C
 	db $05 : dw $2F40
 	db $04 : dw $2F44
@@ -8671,7 +8671,7 @@ kudgel_club_attack_long:
 	db !animation_command_80, $00
 
 kudgel_fall_attack:
-	db !animation_command_8E, $6F, $05
+	db !animation_command_8E : dw sound(5, !sound_klubba_kudgel_swing)
 	db $02 : dw $2F54
 	db $03 : dw $2F58
 	db $03 : dw $2F5C
@@ -8690,7 +8690,7 @@ kudgel_club_fall_attack:
 	db !animation_command_80, $00
 
 kudgel_hurt:
-	db !animation_command_8E, $59, $06
+	db !animation_command_8E : dw sound(6, !sound_kudgel_hit)
 	db $04 : dw $2EF4
 	db $04 : dw $2EFC
 	db $04 : dw $2EF4
@@ -8825,7 +8825,7 @@ kudgel_dust:
 	db !animation_command_80, $00
 
 krool_lost_final_hit:
-	db !animation_command_8E, $4A, $05
+	db !animation_command_8E : dw sound(5, !sound_cannon_load)
 	db !animation_command_81 : dw CODE_B9EF5A
 	db $08 : dw $2760
 	db $04 : dw $2764
@@ -8844,7 +8844,7 @@ krool_lost_final_hit:
 	db $0D : dw $2760
 	db !animation_command_81 : dw CODE_B9EFBB
 	db $1A : dw $2760
-	db !animation_command_8E, $15, $05
+	db !animation_command_8E : dw sound(5, !sound_explosion)
 	db !animation_command_81 : dw CODE_B9EF3C
 	db $07 : dw $280C
 	db !animation_command_83 : dw CODE_B9D12B
@@ -8937,7 +8937,7 @@ krool_lost_soaked:
 	db $0B : dw $346C
 	db !animation_command_81 : dw CODE_B9EF44
 	db $01 : dw $346C
-	db !animation_command_8E, $68, $07
+	db !animation_command_8E : dw sound(7, !sound_k_rool_gun_exhaust)
 	db !animation_command_81 : dw CODE_B9EFD9
 	db $1A : dw $3468
 	db !animation_command_81 : dw CODE_B9EF50
@@ -8987,7 +8987,7 @@ krool_fish:
 	db !animation_command_80, $00
 
 dk_shot_by_krool:
-	db !animation_command_8E, $72, $06
+	db !animation_command_8E : dw sound(6, !sound_dk_oof)
 	db $02 : dw $3388
 	db $02 : dw $3384
 	db $02 : dw $3380
@@ -9065,7 +9065,7 @@ krool_blunderbuss_melee_dk_heavy:
 
 donkey_captured_idle:
 	db $04 : dw $338C
-	db !animation_command_8E, $75, $07
+	db !animation_command_8E : dw sound(7, !sound_dk_grunt)
 	db $04 : dw $3390
 	db $04 : dw $3394
 	db $04 : dw $3398
@@ -9092,7 +9092,7 @@ donkey_rope_idle:
 	db !animation_command_80, $00
 
 donkey_captured_hurt:
-	db !animation_command_8E, $72, $06
+	db !animation_command_8E : dw sound(6, !sound_dk_oof)
 	db $02 : dw $335C
 	db $02 : dw $3360
 	db $02 : dw $3364
@@ -9147,7 +9147,7 @@ donkey_captured_scared:
 	db $02 : dw $333C
 	db $02 : dw $3338
 	db $02 : dw $333C
-	db !animation_command_8E, $78, $06
+	db !animation_command_8E : dw sound(6, !sound_kongs_scared)
 	db $02 : dw $3340
 	db $03 : dw $3344
 	db $03 : dw $3348
@@ -9267,7 +9267,7 @@ donkey_punch:
 	db $01 : dw $3450
 	db $02 : dw $3454
 	db $01 : dw $3458
-	db !animation_command_8E, $71, $05
+	db !animation_command_8E : dw sound(5, !sound_dk_punch_k_rool)
 	db $02 : dw $345C
 	db !animation_command_81 : dw CODE_B9EF8B
 	db $04 : dw $3460
@@ -9416,7 +9416,7 @@ krool_blunderbuss_shoot_fish:
 	db !animation_command_80, $00
 
 krool_cannon_ball_spikes_expanded:
-	db !animation_command_8E, $69, $05
+	db !animation_command_8E : dw sound(5, !sound_k_rool_cannonball_spikes)
 	db $04 : dw $2984
 	db $04 : dw $2988
 	db !animation_command_81 : dw CODE_B9EF90
@@ -9439,7 +9439,7 @@ krool_cannon_ball_spiked:
 	db !animation_command_80, $00
 
 krool_cannon_ball_spikes_removed:
-	db !animation_command_8E, $69, $05
+	db !animation_command_8E : dw sound(5, !sound_k_rool_cannonball_spikes)
 	db $04 : dw $298C
 	db $04 : dw $2988
 	db !animation_command_81 : dw CODE_B9EF95
@@ -9535,7 +9535,7 @@ smoke_cloud_4:
 	db !animation_command_80, $00
 
 krool_backfire:
-	db !animation_command_8E, $4A, $05
+	db !animation_command_8E : dw sound(5, !sound_cannon_load)
 	db $08 : dw $2760
 	db $04 : dw $2764
 	db $0D : dw $2768
@@ -9546,12 +9546,12 @@ krool_backfire:
 	db $18 : dw $2760
 	db !animation_command_81 : dw CODE_B9EFBB
 	db $23 : dw $2C2C
-	db !animation_command_8E, $15, $05
+	db !animation_command_8E : dw sound(5, !sound_explosion)
 	db !animation_command_81 : dw CODE_B9EFA7
 	db $17 : dw $2C2C
 	db !animation_command_81 : dw CODE_B9EFDE
 	db $78 : dw $27A0
-	db !animation_command_8E, $68, $07
+	db !animation_command_8E : dw sound(7, !sound_k_rool_gun_exhaust)
 	db !animation_command_81 : dw CODE_B9EFD9
 	db $1A : dw $27A0
 	db !animation_command_81 : dw CODE_B9EFAC
@@ -9573,7 +9573,7 @@ krool_blunderbuss_backfire:
 	db !animation_command_80, $00
 
 krool_backfire_final:
-	db !animation_command_8E, $4A, $05
+	db !animation_command_8E : dw sound(5, !sound_cannon_load)
 	db $08 : dw $2760
 	db $04 : dw $2764
 	db $0D : dw $2768
@@ -9591,12 +9591,12 @@ krool_backfire_final:
 	db $0D : dw $2760
 	db !animation_command_81 : dw CODE_B9EFBB
 	db $1A : dw $2760
-	db !animation_command_8E, $15, $05
+	db !animation_command_8E : dw sound(5, !sound_explosion)
 	db !animation_command_81 : dw CODE_B9EFA7
 	db $17 : dw $2C2C
 	db !animation_command_81 : dw CODE_B9EFDE
 	db $78 : dw $27A0
-	db !animation_command_8E, $68, $07
+	db !animation_command_8E : dw sound(7, !sound_k_rool_gun_exhaust)
 	db !animation_command_81 : dw CODE_B9EFD9
 	db $1A : dw $27A0
 	db !animation_command_81 : dw CODE_B9EFAC
@@ -9645,21 +9645,21 @@ krool_fireball:
 
 krool_soot_eyes_blink:
 	db $46 : dw $27A4
-	db !animation_command_8E, $73, $06
+	db !animation_command_8E : dw sound(6, !sound_k_rool_blink)
 	db $03 : dw $27A8
 	db !animation_command_81 : dw CODE_B9EFB1
 	db $03 : dw $27A8
 	db !animation_command_81 : dw CODE_B9EFB6
 	db $03 : dw $27A8
 	db $0E : dw $27A4
-	db !animation_command_8E, $73, $06
+	db !animation_command_8E : dw sound(6, !sound_k_rool_blink)
 	db $03 : dw $27A8
 	db !animation_command_81 : dw CODE_B9EFB1
 	db $03 : dw $27A8
 	db !animation_command_81 : dw CODE_B9EFB6
 	db $03 : dw $27A8
 	db $0E : dw $27A4
-	db !animation_command_8E, $73, $06
+	db !animation_command_8E : dw sound(6, !sound_k_rool_blink)
 	db $03 : dw $27A8
 	db !animation_command_81 : dw CODE_B9EFB1
 	db $03 : dw $27A8
@@ -9713,7 +9713,7 @@ krool_backfire_sparks:
 	db !animation_command_80, $00
 
 krool_stun:
-	db !animation_command_8E, $5A, $05
+	db !animation_command_8E : dw sound(5, !sound_k_rool_down)
 	db $0C : dw $2760
 	db $07 : dw $2808
 	db $07 : dw $280C
@@ -9745,7 +9745,7 @@ krool_blunderbuss_stun:
 	db !animation_command_80, $00
 
 krool_stun_recover:
-	db !animation_command_8E, $73, $05
+	db !animation_command_8E : dw sound(5, !sound_k_rool_blink)
 	db !animation_command_81 : dw CODE_B9EF77
 	db $05 : dw $2824
 	db $05 : dw $2820
@@ -9772,7 +9772,7 @@ krool_blunderbuss_stun_recover:
 	db !animation_command_80, $00
 
 krool_stun_2:
-	db !animation_command_8E, $5A, $05
+	db !animation_command_8E : dw sound(5, !sound_k_rool_down)
 	db $0C : dw $2760
 	db $07 : dw $2808
 	db $07 : dw $280C
@@ -9808,7 +9808,7 @@ krool_blunderbuss_stun_2:
 	db !animation_command_80, $00
 
 krool_stun_recover_2:
-	db !animation_command_8E, $73, $05
+	db !animation_command_8E : dw sound(5, !sound_k_rool_blink)
 	db !animation_command_81 : dw CODE_B9EF77
 	db $0A : dw $2824
 	db $05 : dw $2828
@@ -9842,7 +9842,7 @@ krool_blunderbuss_stun_recover_2:
 	db !animation_command_80, $00
 
 krool_stun_3:
-	db !animation_command_8E, $5A, $05
+	db !animation_command_8E : dw sound(5, !sound_k_rool_down)
 	db !animation_command_81 : dw CODE_B9EF5A
 	db $0C : dw $2760
 	db $07 : dw $2808
@@ -10241,7 +10241,7 @@ kleever_shoot_fireball:
 	db !animation_command_81 : dw CODE_B9F001
 	db $03 : dw $1F3C
 	db !animation_command_81 : dw CODE_B9F001
-	db !animation_command_8E, $1E, $05
+	db !animation_command_8E : dw sound(5, !sound_blade_swing)
 	db $03 : dw $1F3C
 	db !animation_command_81 : dw CODE_B9F001
 	db $03 : dw $1F40
@@ -10351,7 +10351,7 @@ kleever_charge_wait:
 	db !animation_command_80, $00
 
 kleever_charge_attack:
-	db !animation_command_8E, $1E, $05
+	db !animation_command_8E : dw sound(5, !sound_blade_swing)
 	db $01 : dw $1F44
 	db $01 : dw $1F48
 	db $01 : dw $1F4C
@@ -10380,7 +10380,7 @@ kleever_charge_attack:
 	db !animation_command_80, $00
 
 kleever_attack:
-	db !animation_command_8E, $1E, $05
+	db !animation_command_8E : dw sound(5, !sound_blade_swing)
 	db $02 : dw $1F48
 	db $02 : dw $1F44
 	db $02 : dw $1F40
@@ -10576,7 +10576,7 @@ DATA_F98687:
 	db !animation_command_80, $00
 
 krow_head_yell:
-	db !animation_command_8E, $79, $05
+	db !animation_command_8E : dw sound(5, !sound_krow_caw)
 	db $03 : dw $13B4
 	db $04 : dw $13B8
 	db $20 : dw $13BC
@@ -10586,7 +10586,7 @@ krow_head_yell:
 	db !animation_command_80, $00
 
 krow_head_hurt:
-	db !animation_command_8E, $62, $04
+	db !animation_command_8E : dw sound(4, !sound_krow_hit)
 	db $03 : dw $13B4
 	db $04 : dw $13B8
 	db $20 : dw $13BC
@@ -10597,7 +10597,7 @@ krow_head_hurt:
 	db !animation_command_80, $00
 
 kreepy_krow_head_yell:
-	db !animation_command_8E, $79, $05
+	db !animation_command_8E : dw sound(5, !sound_krow_caw)
 	db $03 : dw $13B4
 	db $04 : dw $13B8
 	db $20 : dw $13BC
@@ -10607,7 +10607,7 @@ kreepy_krow_head_yell:
 	db !animation_command_80, $00
 
 krow_body_hurt:
-	db !animation_command_8E, $61, $07
+	db !animation_command_8E : dw sound(7, !sound_krow_flap)
 	db $02 : dw $1384
 	db $02 : dw $138C
 	db $02 : dw $1370
@@ -10618,7 +10618,7 @@ krow_body_hurt:
 	db !animation_command_80, $00
 
 krow_body_idle:
-	db !animation_command_8E, $61, $07
+	db !animation_command_8E : dw sound(7, !sound_krow_flap)
 	db !animation_command_81 : dw CODE_B9F033
 	db $03 : dw $1380
 	db !animation_command_81 : dw CODE_B9F029
@@ -10639,7 +10639,10 @@ krow_body_idle:
 	db !animation_command_80, $00
 
 krow_body_credits:
-	db !animation_command_8E, $61, $07
+;START OF PATCH (replace Krow wing flap sound in credits)
+	db !animation_command_8E : dw sound(7, !sound_squawks_flap_2)
+;	db !animation_command_8E : dw sound(7, !sound_krow_flap)
+;END OF PATCH
 	db $03 : dw $1380
 	db $03 : dw $1384
 	db $03 : dw $1388
@@ -10651,7 +10654,7 @@ krow_body_credits:
 	db !animation_command_80, $00
 
 krow_body_fly:
-	db !animation_command_8E, $61, $07
+	db !animation_command_8E : dw sound(7, !sound_krow_flap)
 	db $02 : dw $1384
 	db $02 : dw $138C
 	db $02 : dw $1370
@@ -10662,7 +10665,7 @@ krow_body_fly:
 	db !animation_command_80, $00
 
 krow_body_final_hit:
-	db !animation_command_8E, $61, $07
+	db !animation_command_8E : dw sound(7, !sound_krow_flap)
 	db $04 : dw $1380
 	db $04 : dw $1384
 	db $04 : dw $1388
@@ -10895,7 +10898,7 @@ krow_egg_right_fall:
 	db !animation_command_80, $00
 
 krow_egg_crack:
-	db !animation_command_8E, $60, $04
+	db !animation_command_8E : dw sound(4, !sound_egg_crack)
 	db $0C : dw $1300
 	db $0C : dw $1304
 	db $0C : dw $1308
@@ -10907,17 +10910,17 @@ krow_egg_crack:
 
 kreepy_krow_head_final_hit:
 	db $06 : dw $13B4
-	db !animation_command_8E, $79, $05
+	db !animation_command_8E : dw sound(5, !sound_krow_caw)
 	db $08 : dw $13B8
 	db $14 : dw $13BC
 	db $08 : dw $13B8
 	db $03 : dw $13B4
-	db !animation_command_8E, $79, $05
+	db !animation_command_8E : dw sound(5, !sound_krow_caw)
 	db $04 : dw $13B8
 	db $0B : dw $13BC
 	db $06 : dw $13B8
 	db $03 : dw $13B4
-	db !animation_command_8E, $79, $05
+	db !animation_command_8E : dw sound(5, !sound_krow_caw)
 	db $04 : dw $13B8
 	db $12 : dw $13BC
 	db $0B : dw $13B8
@@ -10925,19 +10928,19 @@ kreepy_krow_head_final_hit:
 	db !animation_command_80, $00
 
 krow_head_final_hit:
-	db !animation_command_8E, $1A, $04
+	db !animation_command_8E : dw sound(4, !sound_barrel_blast)
 	db $06 : dw $13B4
-	db !animation_command_8E, $79, $05
+	db !animation_command_8E : dw sound(5, !sound_krow_caw)
 	db $08 : dw $13B8
 	db $14 : dw $13BC
 	db $08 : dw $13B8
 	db $03 : dw $13B4
-	db !animation_command_8E, $79, $05
+	db !animation_command_8E : dw sound(5, !sound_krow_caw)
 	db $04 : dw $13B8
 	db $0B : dw $13BC
 	db $06 : dw $13B8
 	db $03 : dw $13B4
-	db !animation_command_8E, $79, $05
+	db !animation_command_8E : dw sound(5, !sound_krow_caw)
 	db $04 : dw $13B8
 	db $12 : dw $13BC
 	db $0B : dw $13B8
@@ -10970,7 +10973,7 @@ krow_head_defeat:
 	db !animation_command_80, $00
 
 krow_body_struggle:
-	db !animation_command_8E, $63, $04
+	db !animation_command_8E : dw sound(4, !sound_krow_defeated)
 DATA_F98A91:
 	db $3C : dw $1A7C
 	db $07 : dw $1CC8

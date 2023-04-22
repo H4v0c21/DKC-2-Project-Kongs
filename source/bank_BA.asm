@@ -805,7 +805,7 @@ CODE_BA9274:
 	BEQ CODE_BA92F1				;$BA9281   |
 	DEC $070D				;$BA9283   |
 	BNE CODE_BA92F1				;$BA9286   |
-	LDA #$077C				;$BA9288   |
+	%lda_sound(7, king_zing_spike_shot)	;$BA9288   |
 	JSL queue_sound_effect			;$BA928B   |
 	LDA.l $00070F				;$BA928F   |
 	STA $00070D				;$BA9293   |
@@ -1112,7 +1112,7 @@ CODE_BA94FF:					;	   |
 
 CODE_BA9502:
 	PHY					;$BA9502  \
-	LDA #$067A				;$BA9503   |
+	%lda_sound(6, king_zing_hit)		;$BA9503   |
 	JSL queue_sound_effect			;$BA9506   |
 	LDX current_sprite			;$BA950A   |
 	PHX					;$BA950C   |
@@ -1222,7 +1222,7 @@ CODE_BA9603:					;	   |
 	RTS					;$BA960E  /
 
 CODE_BA960F:
-	LDA #$067A				;$BA960F  \
+	%lda_sound(6, king_zing_hit)		;$BA960F  \	King Zing hit when small
 	JSL queue_sound_effect			;$BA9612   |
 	JSR CODE_BA92F6				;$BA9616   |
 	LDX $0654				;$BA9619   |
@@ -1250,7 +1250,7 @@ CODE_BA960F:
 	STA alternate_sprite			;$BA9657   |
 	LDA #$02A1				;$BA9659   |
 	JSL CODE_B9D09B				;$BA965C   |
-	LDA #$047F				;$BA9660   |
+	%lda_sound(4, king_zing_defeated)	;$BA9660   |
 	JSL queue_sound_effect			;$BA9663   |
 	LDY #$0196				;$BA9667   |
 	JSL CODE_BB842C				;$BA966A   |
@@ -1422,7 +1422,7 @@ CODE_BA97F3:
 	TYX					;$BA97F3  \
 	DEC $1E,x				;$BA97F4   |
 	BNE CODE_BA97F0				;$BA97F6   |
-	LDA #$067B				;$BA97F8   |
+	%lda_sound(6, king_zing_spawn_zingers)	;$BA97F8   |
 	JSL queue_sound_effect			;$BA97FB   |
 	LDX current_sprite			;$BA97FF   |
 	INC $2E,x				;$BA9801   |
@@ -1455,7 +1455,7 @@ CODE_BA9845:					;	   |
 	BNE CODE_BA987A				;$BA9849   |
 	LDA #$0199				;$BA984B   |
 	JSL CODE_B3A623				;$BA984E   |
-	LDA #$050E				;$BA9852   |
+	%lda_sound(5, zinger_flitter_hit)	;$BA9852   |
 	JSL queue_sound_effect			;$BA9855   |
 	LDX $6A					;$BA9859   |
 	LDA #$0100				;$BA985B   |
@@ -1913,7 +1913,7 @@ else						;	   |
 endif						;	   |
 	PLB					;$BA9C39   |
 	JSL CODE_BB82B8				;$BA9C3A   |
-	LDA #$041A				;$BA9C3E   |
+	%lda_sound(4, barrel_blast)		;$BA9C3E   |
 	JSL queue_sound_effect			;$BA9C41   |
 	BRA CODE_BA9C61				;$BA9C45  /
 
@@ -2022,13 +2022,13 @@ CODE_BA9D0A:
 	BRL CODE_BA9D96				;$BA9D11  /
 
 CODE_BA9D14:
-	LDA #$0439				;$BA9D14  \
+	%lda_sound(4,animal_crate_break_a)	;$BA9D14  \
 	JSL queue_sound_effect			;$BA9D17   |
-	LDA #$053B				;$BA9D1B   |
+	%lda_sound(5, animal_crate_break_c)	;$BA9D1B   |
 	JSL queue_sound_effect			;$BA9D1E   |
-	LDA #$063C				;$BA9D22   |
+	%lda_sound(6, animal_crate_break_d)	;$BA9D22   |
 	JSL queue_sound_effect			;$BA9D25   |
-	LDA #$073A				;$BA9D29   |
+	%lda_sound(7, animal_crate_break_b)	;$BA9D29   |
 	JSL queue_sound_effect			;$BA9D2C   |
 	LDY.w #DATA_FF1E74			;$BA9D30   |
 	JSL CODE_BB8432				;$BA9D33   |
@@ -2149,7 +2149,7 @@ CODE_BA9DD9:					;	   |
 	STY current_sprite			;$BA9E3D   |
 	LDX $0654				;$BA9E3F   |
 	STX current_sprite			;$BA9E42   |
-	LDA #$0532				;$BA9E44   |
+	%lda_sound(5, necky_attack)		;$BA9E44   |
 	JSL queue_sound_effect			;$BA9E47   |
 	BRA CODE_BA9E68				;$BA9E4B  /
 
@@ -2161,7 +2161,7 @@ CODE_BA9E4D:
 	TYX					;$BA9E59   |
 	LDA #$0061				;$BA9E5A   |
 	JSL CODE_BB8C44				;$BA9E5D   |
-	LDA #$0532				;$BA9E61   |
+	%lda_sound(5, necky_attack)		;$BA9E61   |
 	JSL queue_sound_effect			;$BA9E64   |
 CODE_BA9E68:					;	   |
 	DEC $06F9				;$BA9E68   |
@@ -2305,7 +2305,7 @@ CODE_BA9F88:					;	   |
 	RTS					;$BA9F8B  /
 
 CODE_BA9F8C:
-	LDA #$0565				;$BA9F8C  \
+	%lda_sound(5, egg_kudgel_fall)		;$BA9F8C  \	Kreepy Krow dropping an egg
 	JSL queue_sound_effect			;$BA9F8F   |
 	LDY #$00A4				;$BA9F93   |
 	JSL CODE_BB842C				;$BA9F96   |
@@ -2351,7 +2351,7 @@ CODE_BA9FDF:					;	   |
 
 CODE_BA9FE2:
 	INC $065C				;$BA9FE2  \
-	LDA #$057C				;$BA9FE5   |
+	%lda_sound(5, kreepy_krow_defeated)	;$BA9FE5   |
 	JSL queue_sound_effect			;$BA9FE8   |
 	LDY #$0138				;$BA9FEC   |
 	JSL CODE_BB842C				;$BA9FEF   |
@@ -3446,7 +3446,7 @@ CODE_BAB11C:
 	ASL A					;$BAB11E   |
 CODE_BAB11F:					;	   |
 	STA $0020,y				;$BAB11F   |
-	LDA #$0768				;$BAB122   |
+	%lda_sound(7, k_rool_gun_exhaust)	;$BAB122   |	Sound: Krocodile Kore power source destroyed by K. Rool falling into it
 	JSL queue_sound_effect			;$BAB125   |
 CODE_BAB129:					;	   |
 	JML [$05A9]				;$BAB129  /
@@ -4481,9 +4481,9 @@ CODE_BAC142:
 	STA $2A,x				;$BAC15F   |
 	LDA #$0003				;$BAC161   |
 	STA $44,x				;$BAC164   |
-	LDA #$055B				;$BAC166   |
+	%lda_sound(5, k_rool_splash_1)		;$BAC166   |
 	JSL queue_sound_effect			;$BAC169   |
-	LDA #$065C				;$BAC16D   |
+	%lda_sound(6, k_rool_splash_2)		;$BAC16D   |
 	JSL queue_sound_effect			;$BAC170   |
 	BRL CODE_BAC1AD				;$BAC174  /
 
@@ -4498,9 +4498,9 @@ CODE_BAC177:
 	SBC $000650				;$BAC18D   |
 	LDX current_sprite			;$BAC191   |
 	STA $24,x				;$BAC193   |
-	LDA #$055B				;$BAC195   |
+	%lda_sound(5, k_rool_splash_1)		;$BAC195   |
 	JSL queue_sound_effect			;$BAC198   |
-	LDA #$065C				;$BAC19C   |
+	%lda_sound(6, k_rool_splash_2)		;$BAC19C   |
 	JSL queue_sound_effect			;$BAC19F   |
 	LDX current_sprite			;$BAC1A3   |
 	INC $42,x				;$BAC1A5   |
@@ -4702,7 +4702,7 @@ CODE_BAC36A:
 	INC $2E,x				;$BAC375   |
 	LDA #$0258				;$BAC377   |
 	STA $4E,x				;$BAC37A   |
-	LDA #$062E				;$BAC37C   |
+	%lda_sound(6, k_rool_note)		;$BAC37C   |
 	JSL queue_sound_effect			;$BAC37F   |
 	JML [$05A9]				;$BAC383  /
 
