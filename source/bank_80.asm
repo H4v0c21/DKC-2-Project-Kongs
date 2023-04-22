@@ -1052,13 +1052,13 @@ if !version == 1
 CODE_808A8D:
 	LDA #$0040				;$808A8D  \
 	TSB $08C2				;$808A90   |
-	LDA #$075E				;$808A93   |
+	%lda_sound(7, pause)			;$808A93   |
 	JSL play_high_priority_sound		;$808A96   |
-	LDA #$065E				;$808A9A   |
+	%lda_sound(6, pause)			;$808A9A   |
 	JSL play_high_priority_sound		;$808A9D   |
-	LDA #$055E				;$808AA1   |
+	%lda_sound(5, pause)			;$808AA1   |
 	JSL play_high_priority_sound		;$808AA4   |
-	LDA #$045E				;$808AA8   |
+	%lda_sound(4, pause)			;$808AA8   |
 	JSL play_high_priority_sound		;$808AAB   |
 	LDA global_frame_counter		;$808AAF   |
 	STA $0636				;$808AB1   |
@@ -1090,13 +1090,13 @@ CODE_808AE6:
 	RTS					;$808AEC  /
 
 CODE_808AED:
-	LDA #$075E				;$808AED  \
+	%lda_sound(7, pause)			;$808AED  \
 	JSL play_high_priority_sound		;$808AF0   |
-	LDA #$065E				;$808AF4   |
+	%lda_sound(6, pause)			;$808AF4   |
 	JSL play_high_priority_sound		;$808AF7   |
-	LDA #$055E				;$808AFB   |
+	%lda_sound(5, pause)			;$808AFB   |
 	JSL play_high_priority_sound		;$808AFE   |
-	LDA #$045E				;$808B02   |
+	%lda_sound(4, pause)			;$808B02   |
 	JSL play_high_priority_sound		;$808B05   |
 	LDA #$00FF				;$808B09   |
 	TRB $0621				;$808B0C   |
@@ -1132,7 +1132,7 @@ CODE_808B41:
 	CMP #$1000				;$808B4C   |
 	BNE CODE_808B40				;$808B4F   |
 	JSL disable_screen			;$808B51   |
-	LDA #$0505				;$808B55   |
+	%lda_sound(5, swap_kongs)		;$808B55   |
 	JSL play_high_priority_sound		;$808B58   |
 	LDA #$0000				;$808B5C   |
 CODE_808B5F:					;	   |
@@ -2906,12 +2906,12 @@ CODE_809A13:
 	JSL play_song_with_transition		;$809A36   |
 	STZ $84					;$809A3A   |
 	DEC $060D				;$809A3C   |
-	LDA #$0633				;$809A3F   |
+	%lda_sound(6, menu_move)		;$809A3F   |
 	JSL play_high_priority_sound		;$809A42   |
 	JMP CODE_8099A7				;$809A46  /
 
 CODE_809A49:
-	LDA #$0633				;$809A49  \
+	%lda_sound(6, menu_move)		;$809A49  \
 	JSL play_high_priority_sound		;$809A4C   |
 	DEC $060D				;$809A50   |
 CODE_809A53:					;	   |
@@ -2922,7 +2922,7 @@ CODE_809A53:					;	   |
 	CMP #$0002				;$809A5E   |
 	BCS CODE_809A6F				;$809A61   |
 	INC $060D				;$809A63   |
-	LDA #$0633				;$809A66   |
+	%lda_sound(6, menu_move)		;$809A66   |
 	JSL play_high_priority_sound		;$809A69   |
 	BRA CODE_809ADC				;$809A6D  /
 
@@ -2965,12 +2965,12 @@ CODE_809A84:					;	   |
 	JSL play_song_with_transition		;$809ABF   |
 	STZ $84					;$809AC3   |
 	INC $060D				;$809AC5   |
-	LDA #$0633				;$809AC8   |
+	%lda_sound(6, menu_move)		;$809AC8   |
 	JSL play_high_priority_sound		;$809ACB   |
 	JMP CODE_8099A7				;$809ACF  /
 
 CODE_809AD2:
-	LDA #$0633				;$809AD2  \
+	%lda_sound(6, menu_move)		;$809AD2  \
 	JSL play_high_priority_sound		;$809AD5   |
 	INC $060D				;$809AD9   |
 CODE_809ADC:					;	   |
@@ -3067,7 +3067,7 @@ CODE_809B82:					;	   |
 	LDA $3A					;$809BA3   |
 	CMP #$0010				;$809BA5   |
 	BNE CODE_809BC2				;$809BA8   |
-	LDA #$0505				;$809BAA   |
+	%lda_sound(5, swap_kongs)		;$809BAA   |
 	JSL play_high_priority_sound		;$809BAD   |
 	LDA #$0001				;$809BB1   |
 	TSB $060B				;$809BB4   |
@@ -3095,7 +3095,7 @@ CODE_809BC2:					;	   |
 	LDA $3C					;$809BE3   |
 	CMP #$0010				;$809BE5   |
 	BNE CODE_809C02				;$809BE8   |
-	LDA #$0505				;$809BEA   |
+	%lda_sound(5, swap_kongs)		;$809BEA   |
 	JSL play_high_priority_sound		;$809BED   |
 	LDA #$0002				;$809BF1   |
 	TSB $060B				;$809BF4   |
@@ -3126,7 +3126,7 @@ CODE_809C02:					;	   |
 	BNE CODE_809C38				;$809C29   |
 	LDA #$820F				;$809C2B   |
 	STA screen_brightness			;$809C2E   |
-	LDA #$0634				;$809C31   |
+	%lda_sound(6, menu_select)		;$809C31   |
 	JSL play_high_priority_sound		;$809C34   |
 CODE_809C38:					;	   |
 	JSL set_all_oam_offscreen		;$809C38   |
@@ -3789,9 +3789,9 @@ CODE_80A35B:
 	CMP #$0080				;$80A362   |
 	BNE CODE_80A375				;$80A365   |
 CODE_80A367:					;	   |
-	LDA #$056F				;$80A367   |
+	%lda_sound(5, ending_boom)		;$80A367   |
 	JSL play_high_priority_sound		;$80A36A   |
-	LDA #$0670				;$80A36E   |
+	%lda_sound(6, ending_boom_shake)	;$80A36E   |
 	JSL play_high_priority_sound		;$80A371   |
 CODE_80A375:					;	   |
 	LDA global_frame_counter		;$80A375   |
@@ -3820,17 +3820,17 @@ CODE_80A399:					;	   |
 	CMP #$00F0				;$80A3A7   |
 	BNE CODE_80A3BA				;$80A3AA   |
 CODE_80A3AC:					;	   |
-	LDA #$0515				;$80A3AC   |
+	%lda_sound(5, explosion)		;$80A3AC   |
 	JSL play_high_priority_sound		;$80A3AF   |
-	LDA #$0619				;$80A3B3   |
+	%lda_sound(6, wall_break)		;$80A3B3   |
 	JSL play_high_priority_sound		;$80A3B6   |
 CODE_80A3BA:					;	   |
 	LDA global_frame_counter		;$80A3BA   |
 	CMP #$00B2				;$80A3BC   |
 	BNE CODE_80A3CF				;$80A3BF   |
-	LDA #$0771				;$80A3C1   |
+	%lda_sound(7, ending_beam)		;$80A3C1   |
 	JSL play_high_priority_sound		;$80A3C4   |
-	LDA #$0472				;$80A3C8   |
+	%lda_sound(4, ending_fire)		;$80A3C8   |
 	JSL play_high_priority_sound		;$80A3CB   |
 CODE_80A3CF:					;	   |
 	LDA global_frame_counter		;$80A3CF   |
@@ -3944,9 +3944,9 @@ CODE_80A4B7:
 	LDA global_frame_counter		;$80A4B7  \
 	CMP #$0340				;$80A4B9   |
 	BNE CODE_80A4CC				;$80A4BC   |
-	LDA #$0675				;$80A4BE   |
+	%lda_sound(6, ending_k_rool_laugh)	;$80A4BE   |
 	JSL play_high_priority_sound		;$80A4C1   |
-	LDA #$0776				;$80A4C5   |
+	%lda_sound(7, ending_k_rool_laugh_echo)	;$80A4C5   |
 	JSL play_high_priority_sound		;$80A4C8   |
 CODE_80A4CC:					;	   |
 	LDA global_frame_counter		;$80A4CC   |
@@ -4059,9 +4059,9 @@ CODE_80A57F:					;	   |
 	LDA $32					;$80A58F   |
 	CMP #$0000				;$80A591   |
 	BEQ CODE_80A5C2				;$80A594   |
-	LDA #$0700				;$80A596   |
+	%lda_sound(7, nothing)			;$80A596   |
 	JSL play_high_priority_sound		;$80A599   |
-	LDA #$0400				;$80A59D   |
+	%lda_sound(4, nothing)			;$80A59D   |
 	JSL play_high_priority_sound		;$80A5A0   |
 	BRA CODE_80A5C2				;$80A5A4  /
 
@@ -4072,9 +4072,9 @@ CODE_80A5A6:
 	LDA $32					;$80A5AD   |
 	CMP #$0000				;$80A5AF   |
 	BNE CODE_80A5C2				;$80A5B2   |
-	LDA #$0773				;$80A5B4   |
+	%lda_sound(7, ending_beam_die)		;$80A5B4   |
 	JSL play_high_priority_sound		;$80A5B7   |
-	LDA #$0474				;$80A5BB   |
+	%lda_sound(4, ending_fire_die)		;$80A5BB   |
 	JSL play_high_priority_sound		;$80A5BE   |
 CODE_80A5C2:					;	   |
 	RTS					;$80A5C2  /
@@ -9260,7 +9260,7 @@ CODE_80D4B7:
 	STX current_sprite			;$80D4CC   |
 	LDY #$0018				;$80D4CE   |
 	JSL CODE_BB842C				;$80D4D1   |
-	LDA #$0662				;$80D4D5   |
+	%lda_sound(6, kong_enter_water)		;$80D4D5   |
 	JSL queue_sound_effect			;$80D4D8   |
 	BRA CODE_80D4F9				;$80D4DC  /
 
@@ -9272,7 +9272,7 @@ CODE_80D4DE:
 	STX current_sprite			;$80D4E9   |
 	LDY #$001A				;$80D4EB   |
 	JSL CODE_BB842C				;$80D4EE   |
-	LDA #$0662				;$80D4F2   |
+	%lda_sound(6, kong_enter_water)		;$80D4F2   |
 	JSL queue_sound_effect			;$80D4F5   |
 CODE_80D4F9:					;	   |
 	RTS					;$80D4F9  /

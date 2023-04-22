@@ -143,8 +143,9 @@
 !boss_command_set_projectiles = $48
 !boss_command_shoot_fish = $49
 
+;Sound effect constants
 ;global sounds
-!sound_00			= $00	;00: -Nothing-
+!sound_nothing			= $00	;00: -Nothing-
 !sound_01			= $01	;01: -Nothing?-
 !sound_knock			= $02	;02: Klomp walking, bumped by Klobber
 !sound_get_kong			= $03	;03: Kong chant (unused)
@@ -156,7 +157,7 @@
 !sound_banana_bunch		= $09	;09: Collect Banana Bunch (unused)
 !sound_diddy_dizzy		= $0A	;0A: Dizzy stars spinning around Diddy's head
 !sound_rambi_charge		= $0B	;0B: Rambi scuffing foot on ground (readying to charge)
-!sound_0C			= $0C	;0C: Something breaking (investigate)
+!sound_0C			= $0C	;0C: Something breaking (unused?)
 !sound_0D			= $0D	;0D: Jumping sound? (unused?)
 !sound_zinger_flitter_hit	= $0E	;0E: Zinger defeated
 !sound_click_clack_walk		= $0F	;0F: Click Clack walking
@@ -235,186 +236,136 @@
 !sound_cat_o_9_tails_hit	= $58	;58: Cat O' 9 Tails defeated
 ;!sound_kudgel_hit		= $59	;59: Kudgel hit
 ;!sound_k_rool_down		= $5A	;5A: K. Rool down
-;!sound_k_rool_splash_1		= $5B	;5B: K. Rool falling into water
-;!sound_k_rool_splash_2		= $5C	;5C: K. Rool falling into water (lower pitch; unused?)
-!sound_kremling_hit_2 		= $5D	;5D: Klinger/Krook defeated
+;!sound_k_rool_splash_1		= $5B	;5B: Kudgel/K. Rool falling into water (channel 1)
+;!sound_k_rool_splash_2		= $5C	;5C: Kudgel/K. Rool falling into water (channel 2)
+!sound_kremling_hit_2 		= $5D	;5D: Klinger/Krook/Kloak defeated
 !sound_pause			= $5E	;5E: Pause/unpause game
 ;!sound_wrong_answer 	 	= $5F	;5F: Incorrect answer/unavailable option
 
-;non-global sounds
+;Non-global sounds
 ;Roller Coaster/Kackle "Coaster"
-!sound_coaster_move 		= $60
-!sound_check_barrel 		= $61
-!sound_x_barrel			= $62
-!sound_rank_up			= $63
-!sound_coaster_land		= $64
-!sound_coaster_move_echo	= $65
-!sound_firework_fizz		= $66
-!sound_firework_pop		= $67
-!sound_firework_whistle		= $68
-!sound_firework_blast		= $69
-!sound_coaster_jump		= $6A
-!sound_kackle			= $6D
-!sound_coaster_gate_open	= $6E
-
-;Roller Coaster/Kackle/Swamp/Enchanted Wood/Mine/Brambles/Wasp Hive
-!sound_starting_light_1		= $6B
-!sound_starting_light_2		= $6C
+!sound_coaster_move 		= $60	;60: Roller coaster moving
+!sound_barrel_good 		= $61	;61: Breaking Check/+ Barrel
+!sound_barrel_bad		= $62	;62: Breaking X/- Barrel
+!sound_coaster_race_rank_up	= $63	;63: Climbing in rank (Rickety Race)
+!sound_coaster_land		= $64	;64: Roller coaster landing on track
+!sound_coaster_move_echo	= $65	;65: Roller coaster moving (echo?)
+!sound_firework_fizz		= $66	;66: Firework fizz
+!sound_firework_pop		= $67	;67: Firework pop
+!sound_firework_whistle		= $68	;68: Firework whistle
+!sound_firework_blast		= $69	;69: Firework blast
+!sound_coaster_jump		= $6A	;6A: Roller coaster jumping off track
+!sound_kackle			= $6D	;6D: Kackle doing what he's named for
+!sound_coaster_gate_open	= $6E	;6E: Gate opening (Haunted Hall)
 
 ;Ship/Ice/Endings "Aquatic"
-!sound_kong_enter_water		= $62
-!sound_clapper_bark		= $63
-!aquatic_sound_64		= $64
-!sound_enguarde_charge		= $65
-!sound_enguarde_hit		= $66
-!sound_clock_tick_copy		= $67
-!sound_flotsam_move		= $68
-!sound_puftup_inflate		= $69
-!sound_puftup_burst		= $6A
-!sound_kong_swim		= $6B
-!sound_shuri_spin		= $6C
-!sound_clapper_clap		= $6D
-!sound_clapper_spit		= $6E
-!sound_ending_boom		= $6F
-!sound_ending_boom_shake	= $70
-!sound_ending_beam		= $71
-!sound_ending_fire		= $72
-!sound_ending_beam_die		= $73
-!sound_ending_fire_die		= $74
-!sound_ending_k_rool_laugh	= $75
-!sound_ending_k_rool_laugh_echo = $76
-
-;Ship/Swamp/Enchanted Wood/Mine/Brambles/Wasp Hive/Ice/Secret Ending
-!sound_splash_1 		= $60
-!sound_splash_2 		= $61
+!sound_kong_enter_water		= $62	;62: Kong jumping into water
+!sound_clapper_bark		= $63	;63: Clapper barking
+!sound_enguarde_charge		= $65	;65: Enguarde bill attack 
+!sound_enguarde_hit		= $66	;66: Enguarde hit
+!sound_clock_tick_copy		= $67	;67: Clock ticking (nearly identical to $1C)
+!sound_flotsam_move		= $68	;68: Flotsam moving
+!sound_puftup_inflate		= $69	;69: Puftup puffing up
+!sound_puftup_burst		= $6A	;6A: Puftup bursting
+!sound_kong_swim		= $6B	;6B: Kong paddling
+!sound_shuri_spin		= $6C	;6C: Shuri spinning
+!sound_clapper_clap		= $6D	;6D: Clapper clapping/hurt by lava (Lava Lagoon)
+!sound_clapper_spit		= $6E	;6E: Clapper spitting ice
+!sound_ending_boom		= $6F	;6F: Crocodile Isle sinking (channel 1)
+!sound_ending_boom_shake	= $70	;70: Crocodile Isle sinking (channel 2)
+!sound_ending_beam		= $71	;71: Krocodile Kore beam
+!sound_ending_fire		= $72	;72: Krocodile Kore beam (noise channel)
+!sound_ending_beam_die		= $73	;73: Krocodile Kore beam dying
+!sound_ending_fire_die		= $74	;74: Krocodile Kore beam dying (noise channel)
+!sound_ending_k_rool_laugh	= $75	;75: K. Rool laughing
+!sound_ending_k_rool_laugh_echo = $76	;76: K. Rool laughing (echo)
 
 ;Swamp/Enchanted Wood/Mine/Brambles/Wasp Hive "Nature"
-!nature_sound_62 		= $62
-!nature_sound_63 		= $63
-!sound_kloak_laugh 		= $64
-!sound_wind 			= $65
-!sound_splash_1_copy 		= $66
-!sound_splash_2_copy 		= $67
-!sound_stick_honey 		= $68
-!nature_sound_69 		= $69
-!nature_sound_6A 		= $6A
-!sound_krockhead_rise 		= $6D
-!sound_ghost_rope_appear 	= $70
-!sound_ghost_rope_appear_echo 	= $71
-!sound_ghost_rope_vanish 	= $72
-!sound_ghost_rope_vanish_echo 	= $73
+!sound_kloak_laugh 		= $64	;64: Kloak laughing
+!sound_wind 			= $65	;65: Wind
+!sound_splash_1_copy 		= $66	;66: Identical to 60
+!sound_splash_2_copy 		= $67	;67: Identical to 61
+!sound_stick_honey 		= $68	;68: Sticking to honey
+!sound_krockhead_rise_sink	= $6D	;6D: Krockhead rising/sinking
+!sound_ghost_rope_appear 	= $70	;70: Ghost rope appearing
+!sound_ghost_rope_appear_echo 	= $71	;71: Ghost rope appearing (echo)
+!sound_ghost_rope_vanish 	= $72	;72: Ghost rope disappearing
+!sound_ghost_rope_vanish_echo 	= $73	;73: Ghost rope disappearing (echo)
 
-;Swamp/Enchanted Wood/Mine/Brambles/Wasp Hive/Lava/Castle/Boss 2
-!sound_krockhead_green 		= $6E
-!sound_krockhead_brown 		= $6F
+;Coaster/Nature
+!sound_starting_light_1		= $6B	;6B: Red starting light (Rickety Race/)
+!sound_starting_light_2		= $6C	;6C: Green starting light
+
+;Aquatic/Nature
+!sound_splash_1 		= $60	;60: Splash
+!sound_splash_2 		= $61	;61: Splash (deeper)
 
 ;Jungle
-!sound_kong_tire_bounce 	= $60
-!sound_tire_wall_bounce 	= $61
-!sound_tire_appear 		= $62
-!sound_tire_roll		= $63
+!sound_kong_tire_bounce 	= $60	;60: Kong bouncing off of tire
+!sound_tire_wall_bounce 	= $61	;61: Tire deflected off of a wall
+!sound_tire_appear 		= $62	;62: Tire spawning
+!sound_tire_roll		= $63	;63: Tire rolling
 
 ;Krow/Kudgel/Kreepy Krow/K. Rool "Boss 1"
-!sound_egg_crack		= $60
-!sound_krow_flap		= $61
-!sound_krow_hit			= $62
-!sound_krow_defeated		= $63
-!sound_krow_grab_egg		= $64
-!sound_egg_kudgel_fall		= $65
-!sound_k_rool_gun_exhaust	= $68
-!sound_k_rool_cannonball_spikes	= $69
-!sound_k_rool_ammo_swirl	= $6A
-!sound_k_rool_ammo_bounce	= $6B
-!sound_k_rool_gun_exhaust_loop	= $6C
-!sound_kudgel_land		= $6D
-!sound_kudgel_hit		= $6E	;59: Kudgel hit
-;!boss_1_sound_6E		= $6E	;6E: -Nothing-
-;!sound_klubba_kudgel_swing	= $6F	;6F: Klubba/Kudgel swinging club
-!sound_k_rool_gun_suck_whoosh	= $70
-!sound_dk_punch_k_rool		= $71
-!sound_dk_oof			= $72
-!sound_k_rool_blink		= $73
-!sound_k_rool_gun_backfire	= $74
-!sound_dk_grunt			= $75
-!sound_k_rool_gun_suck_vroom	= $76
-!sound_k_rool_down		= $77	;77: K. Rool down
-;!boss_1_sound_77		= $77	;77: -Nothing?-
-!sound_krow_caw			= $79
-!sound_kudgel_defeat_airborne	= $7A
-!boss_1_sound_7B		= $7B
-!sound_kreepy_krow_defeated	= $7C
-!sound_k_rool_splash_1		= $7D	;7D: K. Rool falling into water
-!sound_k_rool_splash_2		= $7E	;7E: K. Rool falling into water (lower pitch; unused?)
-
-;Boss 1/Boss 2
-!sound_hooks_appear		= $66
-!sound_debris_fall		= $67
-!sound_kongs_scared		= $78
-
-;Boss 1/Menus
+!sound_egg_crack		= $60	;60: Egg cracking
+!sound_krow_flap		= $61	;61: Krow flapping wings
+!sound_krow_hit			= $62	;62: Krow hit with egg
+!sound_krow_defeated		= $63	;63: Krow defeated
+!sound_krow_grab_egg		= $64	;64: Krow pulling egg from nest
+!sound_egg_kudgel_fall		= $65	;65: Egg/Kudgel falling
+!sound_k_rool_gun_exhaust	= $68	;68: Blunderbuss flame (short)
+!sound_k_rool_cannonball_spikes	= $69	;69: Spikes protruding from/retracting into cannonball
+!sound_k_rool_ammo_swirl	= $6A	;6A: K.Rool projectile swirling
+!sound_k_rool_ammo_bounce	= $6B	;6B: K.Rool projectile bouncing
+!sound_k_rool_gun_exhaust_loop	= $6C	;6C: Blunderbuss flame (repeats indefinitely)
+!sound_kudgel_land		= $6D	;6D: Kudgel landing
 !sound_klubba_kudgel_swing	= $6F	;6F: Klubba/Kudgel swinging club
-
-;Menus (Kong Hack only)
-!sound_menu_move 		= $60	;60: Menu cursor movement
-!sound_menu_select 		= $61	;61: Menu confirmation
-!sound_wrong_answer 		= $62	;62: Incorrect answer/unavailable option
+!sound_k_rool_gun_suck_whoosh	= $70	;70: K. Rool using blunderbuss as a vacuum (whoosh channel)
+!sound_dk_punch_k_rool		= $71	;71: D.K. punching K. Rool
+!sound_dk_oof			= $72	;72: D.K. hit
+!sound_k_rool_blink		= $73	;73: K. Rool blinking eyes
+!sound_k_rool_gun_backfire	= $74	;74: K. Rool's blunderbuss backfiring
+!sound_dk_grunt			= $75	;75: Donkey Kong struggling
+!sound_k_rool_gun_suck_vroom	= $76	;76: K. Rool using blunderbuss as a vacuum (vroom channel)
+!sound_krow_caw			= $79	;79: Krow cawing
+!sound_kudgel_defeat_airborne	= $7A	;7A: Kudgel/K. Rool (Krocodile Kore) airborne after defeat
+!sound_boss_1_7B		= $7B	;7B: Similar to 1A (unused?)
+!sound_kreepy_krow_defeated	= $7C	;7C: Kreepy Krow destroyed
 
 ;Lava/Castle/Kleever/King Zing "Boss 2"
-!sound_kleever_defeat_spin	= $68
-!sound_lava_bubble_1		= $69
-!sound_lava_bubble_2		= $6A
-!sound_kleever_hit		= $6B
-!sound_kleever_fireball_1	= $6B
-!sound_lava_bubble_3		= $6D
-!boss_2_sound_70		= $70
-!boss_2_sound_71		= $71
-!boss_2_sound_72		= $72
-!boss_2_sound_73		= $73
-!boss_2_sound_74		= $74
-!boss_2_sound_75		= $75
-!boss_2_sound_76		= $76
-!boss_2_sound_77		= $77
-!sound_kleever_fireball_2	= $79
-!sound_king_zing_hit		= $7A
-!sound_kleever_fireball_3	= $7B
-!sound_king_zing_spike_shot	= $7C
-!sound_king_zing_egg_bounce	= $7D
-!sound_lava_bubble_4		= $7E
-!sound_king_zing_defeated	= $7F
+!sound_kleever_defeat_spin	= $68	;68: Broken Kleever spiraling to his demise
+!sound_lava_bubble_1		= $69	;69: Lava bubbling 1
+!sound_lava_bubble_2		= $6A	;6A: Lava bubbling 2
+!sound_kleever_hit		= $6B	;6B: Kleever hit with cannonball
+!sound_kleever_fireball_1	= $6C	;6C: Fireball flying
+!sound_lava_bubble_3		= $6D	;6D: Lava bubbling 3
+!sound_kleever_fireball_2	= $79	;79: Fireball sound
+!sound_king_zing_hit		= $7A	;7A: King Zing hit
+!sound_king_zing_spawn_zingers	= $7B	;7B: King Zing spawning Zingers
+!sound_king_zing_spike_shot	= $7C	;7C: King Zing firing spikes
+!sound_king_zing_egg_bounce	= $7D	;7D: Squawks egg bouncing off King Zing
+!sound_lava_bubble_4		= $7E	;7E: Lava bubbling 4
+!sound_king_zing_defeated	= $7F	;7F: King Zing defeated
 
-;!sound_60 = $60				;0x60, "Egg cracking sound"
-;!sound_61 = $61				;0x61, "Krow flapping"
-;!sound_62 = $62				;0x62, "Jumping in and out of water, or krow getting hit"
-;!sound_63 = $63				;0x63, "Clapper arf"
-;!sound_64 = $64				;0x64, "Krow grabbing egg"
-;!sound_65 = $65				;0x65, "Enguard jab, or egg falling"
-;!sound_66 = $66				;0x66, "Lost Enguard, Kleaver hooks"
-;!sound_67 = $67				;0x67, "Time running out in bonus"
-;!sound_68 = $68				;0x68, "Ambient in water"
-;!sound_69 = $69				;0x69, "Puft up inflating, Kleaver sinking"
-;!sound_6A = $6A				;0x6A, "Puft up exploding, Kleaver sinking 2"
-;!sound_6B = $6B				;0x6B, "Swimming, Kleaver vibrating, Race count down"
-;!sound_6C = $6C				;0x6C, "Shuri spinning, Kleaver boiling, Race go"
-;!sound_6D = $6D				;0x6D, "Clapper clap"
-;!sound_6E = $6E				;0x6E, "Jump on green kroc head/Klapper blowing"
-;!sound_6F = $6F				;0x6F, "Jump on brown kroc head"
-;!sound_70 = $70				;0x70, "(unknown)"
-;!sound_71 = $71				;0x71, "(unknown)"
-;!sound_72 = $72				;0x72, "(unknown)"
-;!sound_73 = $73				;0x73, "(unknown)"
-;!sound_74 = $74				;0x74, "(unknown)"
-;!sound_75 = $75				;0x75, "(unknown)"
-;!sound_76 = $76				;0x76, "(unknown)"
-;!sound_77 = $77				;0x77, "(unknown)"
-;!sound_78 = $78				;0x78, "Scared by boss"
-;!sound_79 = $79				;0x79, "Caw of Krow"
-;!sound_7A = $7A				;
-;!sound_7B = $7B				;
-;!sound_7C = $7C				;
-;!sound_7D = $7D				;
-;!sound_7E = $7E				;
-;!sound_7F = $7F				;
+;Nature/Boss 2
+!sound_krockhead_green 		= $6E	;6E: Landing on a Green Krockhead
+!sound_krockhead_brown 		= $6F	;6F: Bouncing on a Brown Krockhead
 
+;Boss 1/Boss 2
+!sound_hooks_appear		= $66	;66: Hanging hooks appearing (Kleever's Kiln/Kreepy Krow)
+!sound_debris_fall		= $67	;67: Piece of debris falling (Kleever's Kiln/K. Rool Duel)
+!sound_kongs_scared		= $78	;78: Kongs scared
+
+;Changed for Kong Hack
+!sound_menu_move 		= $60	;60: Menu cursor movement					**Relocated for kong_hack; previously global sound 33**
+!sound_menu_select 		= $61	;61: Menu confirmation						**Relocated for kong_hack; previously global sound 34**
+!sound_wrong_answer 		= $62	;62: Incorrect answer/unavailable option			**Relocated for kong_hack; previously global sound 5F**
+!sound_kudgel_hit		= $6E	;6E: Kudgel hit							**Relocated for kong_hack; previously global sound 59**
+!sound_k_rool_down		= $77	;77: K. Rool down						**Relocated for kong_hack; previously global sound 5A**
+!sound_k_rool_splash_1		= $7D	;7D: Kudgel/K. Rool falling into water (channel 1)		**Relocated for kong_hack; previously global sound 5B**
+!sound_k_rool_splash_2		= $7E	;7E: Kudgel/K. Rool falling into water (channel 2)		**Relocated for kong_hack; previously global sound 5C**
+
+;music track constants
 !music_null		= $0000
 !music_island_map	= $0001
 !music_main_theme	= $0002
