@@ -3161,7 +3161,7 @@ CODE_BB93E7:
 	LDA $08FC				;$BB93EE   |
 	AND #$0003				;$BB93F1   |
 	BEQ CODE_BB93FE				;$BB93F4   |
-	LDA #$0016				;$BB93F6   |
+	LDA #!music_castle			;$BB93F6   |
 	JSL play_song				;$BB93F9   |
 	RTS					;$BB93FD  /
 
@@ -3220,12 +3220,12 @@ CODE_BB9457:
 	BEQ CODE_BB946B				;$BB945C   |
 	CMP #$006B				;$BB945E   |
 	BEQ CODE_BB946B				;$BB9461   |
-	LDA #$0015				;$BB9463   |
+	LDA #!music_big_boss			;$BB9463   |
 	JSL play_song_with_transition		;$BB9466   |
 	RTS					;$BB946A  /
 
 CODE_BB946B:
-	LDA #$001F				;$BB946B  \
+	LDA #!music_krool			;$BB946B  \
 	JSL play_song_with_transition		;$BB946E   |
 	RTS					;$BB9472  /
 

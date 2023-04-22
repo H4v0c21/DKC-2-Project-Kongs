@@ -7605,7 +7605,7 @@ CODE_B4BEEF:
 	BEQ CODE_B4BF3A				;$B4BF2C   |
 	CMP #CODE_B491C5			;$B4BF2E   |
 	BEQ CODE_B4BF3A				;$B4BF31   |
-	LDA #$0019				;$B4BF33   |
+	LDA #!music_cranky			;$B4BF33   |
 	JSL play_song				;$B4BF36   |
 CODE_B4BF3A:					;	   |
 	JSL disable_screen			;$B4BF3A   |
@@ -9170,8 +9170,11 @@ DATA_B4CD51:
 
 ;block 1?
 DATA_B4CD5B:
-	db $19, $00, $08, $00, $04, $00, $0C, $00
-	db $0A, $00
+	dw !music_cranky
+	dw !music_funky
+	dw !music_swanky
+	dw !music_wrinkly
+	dw !music_klubba
 
 DATA_B4CD65:
 	db $08, $07 : dw monkey_museum_palette : db $E0, $FF, $AB, $00
