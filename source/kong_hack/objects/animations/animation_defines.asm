@@ -8,6 +8,10 @@
 !anim_id_kong_team_air = $0022 		;DKC3: $0030
 !anim_id_kong_follow_walk = $003B 	;DKC3: $007D
 
+!donkey_animation_offset = $030D
+!kiddy_animation_offset = $030D+$A4
+!teamup_animation_offset = !kiddy_animation_offset+$A4
+
 !diddy_team_top_idle_anim_id = !teamup_animation_offset
 !dixie_team_top_idle_anim_id = !teamup_animation_offset+1
 !donkey_team_top_idle_anim_id = !teamup_animation_offset+2
@@ -27,3 +31,6 @@
 !dixie_team_top_throw_anim_id = !teamup_animation_offset+13
 !donkey_team_top_throw_anim_id = !teamup_animation_offset+14
 !kiddy_team_top_throw_anim_id = !teamup_animation_offset+15
+
+!dkc1_swap_air_anim_offset = !kiddy_team_top_throw_anim_id+1
+!dkc3_swap_air_anim_offset = !dkc1_swap_air_anim_offset+4

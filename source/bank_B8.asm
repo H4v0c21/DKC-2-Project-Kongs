@@ -2440,9 +2440,9 @@ else						;	   |
 endif						;	   |
 	JSR CODE_B8D1E8				;$B89308   |
 	JSL CODE_BB8C19				;$B8930B   |
-	LDX #sound(5, !sound_swap_kongs)	;$B8930F   |	Swap Kongs sound is Kong-specific, but set to the same ID for both
-	LDY #sound(5, !sound_swap_kongs)	;$B89312   |
-	JSR CODE_B89186				;$B89315   |
+	;LDX #sound(5, !sound_swap_kongs)	;$B8930F   |	Swap Kongs sound is Kong-specific, but set to the same ID for both
+	;LDY #sound(5, !sound_swap_kongs)	;$B89312   |
+	;JSR CODE_B89186			;$B89315   |	disable play sound for kong swap (now handled by animation scripts)
 	RTS					;$B89318  /
 
 CODE_B89319:

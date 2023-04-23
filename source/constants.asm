@@ -2,10 +2,6 @@
 !donkey_variables_address = $19F0
 !kiddy_variables_address = $1A20
 
-!donkey_animation_offset = $030D
-!kiddy_animation_offset = $030D+$A4
-!teamup_animation_offset = !kiddy_animation_offset+$A4
-
 !kong_dk_barrel_palette_index = $0088
 
 !dixie_life_icon_graphic_number = $4220
