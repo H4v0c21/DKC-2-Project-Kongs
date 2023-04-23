@@ -1,9 +1,9 @@
 ;Sound Effects: Klubba, Rescue Kong, Big Boss(Krow/Kudgel/Kreepy Krow), K.Rool
 ;32F723
 boss_1_sfx_data:
-	dw !dyn_snd_loc, $012B
+;	dw !dyn_snd_loc, $012B
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw !dyn_snd_loc, ((.end-.start)+((.end-.start)&$0001))>>1
+	dw !dyn_snd_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
@@ -25,7 +25,10 @@ base !dyn_snd_loc
 	dw .seq_2F49	;6B: Cannonball bouncing
 	dw .seq_3002	;6C: Blunderbuss flame (repeats indefinitely)
 	dw .seq_2FEC	;6D: Kudgel landing
-	dw .seq_2FEB	;6E: -Nothing-
+;START OF PATCH (replace empty sound 6E with Kudgel hit sound)
+	dw .kudgel_hit	;6E: Kudgel hit
+;	dw .seq_2FEB	;6E: -Nothing-
+;END OF PATCH
 	dw .seq_2FD5	;6F: Kudgel swinging cudgel
 	dw .seq_2FC9	;70: K. Rool using blunderbuss as a vacuum (whoosh channel)
 	dw .seq_2FB8	;71: D.K. punching K. Rool
@@ -34,53 +37,126 @@ base !dyn_snd_loc
 	dw .seq_2F9C	;74: K. Rool's blunderbuss backfiring
 	dw .seq_2F8B	;75: D.K. grunt
 	dw .seq_2F72	;76: K. Rool using blunderbuss as a vacuum (vroom channel)
-	dw .seq_2F71	;77: -Nothing-
+;START OF PATCH (replace empty sound 77 with K. Rool knocked out sound)
+	dw .k_rool_down	;77: K. Rool knocked out
+;	dw .seq_2F71	;77: -Nothing-
+;END OF PATCH
 	dw .seq_2F1F	;78: Kongs panicking
-	dw .seq_309E	;79: Krow cawing
+	dw .seq_309E	;79: Krow cawing (end of $62)
 	dw .seq_2F0F	;7A: Kudgel flying into background
-	dw .seq_30D3	;7B: Slam
+	dw .seq_30D3	;7B: Slam (end of $60)
 	dw .seq_2ED0	;7C: Kreepy Krow destroyed
+;START OF PATCH (Add splash sounds previously in global sound effects data)
+	dw .splash_1	;7D: K. Rool/Kudgel falling into water (higher pitch, played with 7E)
+	dw .splash_2	;7E: K. Rool/Kudgel falling into water (lower pitch, played with 7D)
+;END OF PATCH
 .pointers_end:
 
-.seq_2ED0:
+;START OF PATCH (add sequence data for Kudgel hit, K. Rool knocked out, and two splashing sounds)
+.splash_2:
+	db !set_instrument, $94
+	db !set_vol_single_val, $7F
+	db !set_adsr, $8F, $EB
+	db $80, $08
+	db $8F, $58
+	db !end_sequence
+
+.splash_1:
+	db !set_instrument, $94
+	db !set_vol_single_val, $7F
+	db !set_adsr, $8F, $EB
+	db $8E, $60
+	db !end_sequence
+
+.k_rool_down:
+	db !set_instrument, $08
+	db !set_adsr, $8D, $E0
 	db !set_vol_single_val, $78
+	db !set_default_duration, $14
+	db $90
+	db !set_vol_single_val, $28
+	db $90
+	db !set_vol_single_val, $14
+	db $90
+	db !set_vol_single_val, $0A
+	db $90
+	db !set_vol_single_val, $06
+	db $90
+	db !set_vol_single_val, $03
+	db $90
+	db !end_sequence
+
+.kudgel_hit:
+	db !set_instrument, $9A
+	db !set_vol_single_val, $6E
+	db !set_default_duration, $2A
+	db $81
+	db !set_vol_single_val, $32
+	db $81
+	db !set_vol_single_val, $19
+	db $81
+	db !end_sequence
+;END OF PATCH
+
+.seq_2ED0:
+;START OF PATCH (Add optimizations to save space, Kreepy Krow defeated)
+	;db !set_vol_single_val, $78
 	db !set_adsr, $8E, $F4
 	db !set_instrument, $0A
 	db !set_vol_single_val, $78
+	db !set_default_duration, $10	;Part of patch
 	db !set_adsr, $8F, $EA
-	db $81, $10
-	db $85, $10
+	db $81
+	db $85
+	;db $81, $10
+	;db $85, $10
 	db !set_adsr, $8F, $E0
-	db $81, $10
+	db $81
+	;db $81, $10
 	db !change_instr_pitch_rel, $FE
 	db !set_vol_single_val, $50
-	db $81, $10
-	db $85, $10
+	db $81
+	db $85
+	;db $81, $10
+	;db $85, $10
+	db !default_duration_off	;Part of patch
 	db !set_adsr, $8F, $E0
 	db $81, $25
 	db !set_instrument, $2B
 	db !set_default_duration, $08
 	db !set_vol_single_val, $32
-	db $AA
-	db $A8
-	db $AA
-	db $AC
+	db !play_subsequence : dw .subseq_kreepy_krow_defeat
+	;db $AA
+	;db $A8
+	;db $AA
+	;db $AC
 	db !set_vol_single_val, $14
-	db $AA
-	db $A8
-	db $AA
-	db $AC
+	db !play_subsequence : dw .subseq_kreepy_krow_defeat
+	;db $AA
+	;db $A8
+	;db $AA
+	;db $AC
 	db !set_vol_single_val, $0A
-	db $AA
-	db $A8
-	db $AA
-	db $AC
+	db !play_subsequence : dw .subseq_kreepy_krow_defeat
+	;db $AA
+	;db $A8
+	;db $AA
+	;db $AC
 	db !set_vol_single_val, $05
+	db !play_subsequence : dw .subseq_kreepy_krow_defeat
+	;db $AA
+	;db $A8
+	;db $AA
+	;db $AC
+	db !end_sequence
+
+.subseq_kreepy_krow_defeat:
 	db $AA
 	db $A8
 	db $AA
 	db $AC
-	db !end_sequence
+	db !return_from_sub
+;END OF PATCH
 
 .seq_2F0F:
 	db !set_vol_single_val, $30
@@ -140,8 +216,10 @@ base !dyn_snd_loc
 	db $9A, $20
 	db !end_sequence
 
-.seq_2F71:
-	db !end_sequence
+;START OF PATCH (remove blank sound)
+;.seq_2F71:
+;	db !end_sequence
+;END OF PATCH
 
 .seq_2F72:
 	db !set_adsr, $87, $E0
@@ -239,7 +317,9 @@ base !dyn_snd_loc
 	db !set_instrument, $D9
 	db !set_vol_single_val, $50
 	db !set_adsr, $8B, $E0
-	db !change_instr_pitch, $00
+;START OF PATCH (remove unnecessary pitch command for looping blunderbuss flame sound)
+;	db !change_instr_pitch, $00
+;END OF PATCH
 	db !long_duration_on
 	db !vibrato_with_delay, $02, $02, $02, $02
 	db $94, $FF, $FF
@@ -281,49 +361,74 @@ base !dyn_snd_loc
 	db !end_sequence
 
 .seq_304A:
-	db !set_instrument, $0A
-	db !set_vol_single_val, $64
-	db !set_vol_single_val, $28
-	db $8E, $04
-	db !set_vol_single_val, $64
+;START OF PATCH (Optimize Krow death sound to save space)
+	db !play_subsequence : dw .subseq_egg_slam_common
+;	db !set_instrument, $0A
+;	db !set_vol_single_val, $64
+;	db !set_vol_single_val, $28
+;	db $8E, $04
+;	db !set_vol_single_val, $64
 	db $8A, $18
 	db !set_instrument, $C4
 	db !set_adsr, $8E, $F4
-	db !set_vol_single_val, $78
-	db $8B, $15
-	db !set_vol_single_val, $28
-	db $8B, $15
-	db !set_vol_single_val, $14
-	db $8B, $17
+	db !play_subsequence : dw .subseq_krow_death
+;	db !set_vol_single_val, $78
+;	db $8B, $15
+;	db !set_vol_single_val, $28
+;	db $8B, $15
+;	db !set_vol_single_val, $14
+;	db $8B, $17
 	db !fine_tune, $E2
-	db !set_vol_single_val, $78
-	db $8B, $15
-	db !set_vol_single_val, $28
-	db $8B, $15
-	db !set_vol_single_val, $14
-	db $8B, $17
+	db !play_subsequence : dw .subseq_krow_death
+;	db !set_vol_single_val, $78
+;	db $8B, $15
+;	db !set_vol_single_val, $28
+;	db $8B, $15
+;	db !set_vol_single_val, $14
+;	db $8B, $17
 	db !fine_tune, $C4
-	db !set_vol_single_val, $78
-	db $8B, $15
-	db !set_vol_single_val, $28
-	db $8B, $15
-	db !set_vol_single_val, $14
-	db $8B, $17
+	db !play_subsequence : dw .subseq_krow_death
+;	db !set_vol_single_val, $78
+;	db $8B, $15
+;	db !set_vol_single_val, $28
+;	db $8B, $15
+;	db !set_vol_single_val, $14
+;	db $8B, $17
 	db !fine_tune, $A6
-	db !set_vol_single_val, $78
-	db $8B, $15
-	db !set_vol_single_val, $28
-	db $8B, $15
-	db !set_vol_single_val, $14
-	db $8B, $17
+	db !play_subsequence : dw .subseq_krow_death
+;	db !set_vol_single_val, $78
+;	db $8B, $15
+;	db !set_vol_single_val, $28
+;	db $8B, $15
+;	db !set_vol_single_val, $14
+;	db $8B, $17
 	db !end_sequence
 
-.seq_3092:
+.subseq_egg_slam_common:
 	db !set_instrument, $0A
-	db !set_vol_single_val, $64
 	db !set_vol_single_val, $28
 	db $8E, $04
 	db !set_vol_single_val, $64
+	db !return_from_sub
+
+.subseq_krow_death:
+	db !set_vol_single_val, $78
+	db $8B, $15
+	db !set_vol_single_val, $28
+	db $8B, $15
+	db !set_vol_single_val, $14
+	db $8B, $17
+	db !return_from_sub
+;END OF PATCH
+
+.seq_3092:
+;START OF PATCH (replace common portion of Krow hit with egg sound/Krow death sound with a subsequence call)
+	db !play_subsequence : dw .subseq_egg_slam_common
+;	db !set_instrument, $0A
+;	db !set_vol_single_val, $64
+;	db !set_vol_single_val, $28
+;	db $8E, $04
+;	db !set_vol_single_val, $64
 	db $8A, $18
 .seq_309E:
 	db !set_instrument, $C4
@@ -358,10 +463,12 @@ base !dyn_snd_loc
 	db !set_vol_single_val, $28
 	db $98, $0A
 .seq_30D3:
-	db !set_instrument, $0A
-	db !set_vol_single_val, $28
-	db $8E, $04
-	db !set_vol_single_val, $64
+;START OF PATCH (replace common portion of egg slam sound with a subsequence call)
+	db !play_subsequence : dw .subseq_egg_slam_common
+;	db !set_instrument, $0A
+;	db !set_vol_single_val, $28
+;	db $8E, $04
+;	db !set_vol_single_val, $64
 	db $8A, $12
 	db !set_vol_single_val, $1E
 	db $8A, $12

@@ -1,13 +1,13 @@
 ;1C Lost World Anthem
 ;32BAD2
 lost_world_song_data:
-	dw $1300, $026D
+	dw !bgm_loc, $026D
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1317, .seq_13C7, .seq_14D5, .seq_158D, .seq_1456, .seq_1719, .seq_16E3, .seq_1754

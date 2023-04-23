@@ -1,13 +1,13 @@
 ;1A In a Snow-Bound Land
 ;329F81
 ice_song_data:
-	dw $1300, $0609
+	dw !bgm_loc, $0609
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_19C8, .seq_1A6E, .seq_1B0E, .seq_1DA4, .seq_1CD5, .seq_1E96, .seq_1C34, .seq_1E17

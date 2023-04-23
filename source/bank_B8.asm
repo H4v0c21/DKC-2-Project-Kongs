@@ -461,20 +461,20 @@ CODE_B88379:
 	JSR CODE_B880BC				;$B88379  \
 	JSR CODE_B88092				;$B8837C   |
 	LDA current_song			;$B8837F   |
-	CMP #$000D				;$B88381   |
+	CMP #!music_lava			;$B88381   |
 	BNE CODE_B8838D				;$B88384   |
-	LDA #$077E				;$B88386   |
+	%lda_sound(7, lava_bubble_4)		;$B88386   |
 	JSL queue_sound_effect			;$B88389   |
 CODE_B8838D:					;	   |
 	LDA current_song			;$B8838D   |
-	CMP #$0003				;$B8838F   |
+	CMP #!music_swamp			;$B8838F   |
 	BNE CODE_B883AA				;$B88392   |
 	LDY #$0018				;$B88394   |
 	JSL CODE_BB842C				;$B88397   |
 	LDY alternate_sprite			;$B8839B   |
 	LDA #$02C0				;$B8839D   |
 	STA $000A,y				;$B883A0   |
-	LDA #$0766				;$B883A3   |
+	%lda_sound(7, splash_1_copy)		;$B883A3   |
 	JSL queue_sound_effect			;$B883A6   |
 CODE_B883AA:					;	   |
 	LDA current_player_mount		;$B883AA   |
@@ -504,25 +504,25 @@ CODE_B883D5:
 	BNE CODE_B8841B				;$B883DB   |
 	JSL CODE_BEC66F				;$B883DD   |
 	LDA current_song			;$B883E1   |
-	CMP #$001F				;$B883E3   |
-	BEQ CODE_B8841B				;$B883E6   |
-	BRA CODE_B88414				;$B883E8  /
+	CMP #!music_krool			;$B883E3   |
+	BEQ CODE_B8841B				;$B883E6   |	If current song is K. Rool (Crocodile Cacophony), skip transition to lost life music (Why?)
+	BRA CODE_B88414				;$B883E8  /	Otherwise, branch to transition
 
-	CMP #$0012				;$B883EA   |
-	BEQ CODE_B88414				;$B883ED   |
-	CMP #$001D				;$B883EF   |
-	BEQ CODE_B88414				;$B883F2   |
-	CMP #$0006				;$B883F4   |
+	CMP #!music_ship_deck_2			;$B883EA   |	Dead code, appears to check all songs used in levels to determine where a lost life music transition should occur.
+	BEQ CODE_B88414				;$B883ED   |	Interestingly, this isn't complete, as the checks for the following are missing:
+	CMP #!music_rigging			;$B883EF   |	Brambles, Roller Coaster, Big Boss, Castle, Haunted, Ice, Jungle
+	BEQ CODE_B88414				;$B883F2   |	The track IDs are checked in an odd order too.
+	CMP #!music_ship_deck			;$B883F4   |
 	BEQ CODE_B88414				;$B883F7   |
-	CMP #$0010				;$B883F9   |
+	CMP #!music_ship_hold			;$B883F9   |
 	BEQ CODE_B88414				;$B883FC   |
-	CMP #$000D				;$B883FE   |
+	CMP #!music_lava			;$B883FE   |
 	BEQ CODE_B88414				;$B88401   |
-	CMP #$0003				;$B88403   |
+	CMP #!music_swamp			;$B88403   |
 	BEQ CODE_B88414				;$B88406   |
-	CMP #$0005				;$B88408   |
+	CMP #!music_forest			;$B88408   |
 	BEQ CODE_B88414				;$B8840B   |
-	CMP #$0007				;$B8840D   |
+	CMP #!music_mine			;$B8840D   |
 	BEQ CODE_B88414				;$B88410   |
 	BRA CODE_B8841B				;$B88412  /
 
@@ -544,8 +544,8 @@ CODE_B88421:
 CODE_B8842B:
 	JSR CODE_B8C87C				;$B8842B  \
 	BCS CODE_B8848D				;$B8842E   |
-	LDX #$0540				;$B88430   |
-	LDY #$0540				;$B88433   |
+	LDX #sound(5, !sound_team_up_mount_animal)	;$B88430   |	Team-up sound is Kong-specific, but set to the same ID for both
+	LDY #sound(5, !sound_team_up_mount_animal)	;$B88433   |
 	JSR CODE_B89186				;$B88436   |
 	LDA $0597				;$B88439   |
 	STA $0D7A				;$B8843C   |
@@ -801,7 +801,7 @@ CODE_B88633:					;	   |
 	STZ $20,x				;$B88637   |
 	STZ $24,x				;$B88639   |
 	JSR CODE_B88646				;$B8863B   |
-	LDA #$0668				;$B8863E   |
+	%lda_sound(6, stick_honey)		;$B8863E   |	Sound of sticking to honey on the ground
 	JSL queue_sound_effect			;$B88641   |
 	RTS					;$B88645  /
 
@@ -1555,13 +1555,13 @@ CODE_B88C23:					;	   |
 	RTS					;$B88C32  /
 
 CODE_B88C33:
-	LDA #$0441				;$B88C33  \
+	%lda_sound(4, morph_from_animal_a)	;$B88C33  \
 	JSL queue_sound_effect			;$B88C36   |
-	LDA #$0542				;$B88C3A   |
+	%lda_sound(5, morph_from_animal_b)	;$B88C3A   |
 	JSL queue_sound_effect			;$B88C3D   |
-	LDA #$0643				;$B88C41   |
+	%lda_sound(6, morph_from_animal_c)	;$B88C41   |
 	JSL queue_sound_effect			;$B88C44   |
-	LDA #$0744				;$B88C48   |
+	%lda_sound(7, morph_from_animal_d)	;$B88C48   |
 	JSL queue_sound_effect			;$B88C4B   |
 	RTS					;$B88C4F  /
 
@@ -1792,8 +1792,11 @@ CODE_B88DF7:
 	RTS					;$B88E0A  /
 
 DATA_B88E0B:
-	db $45, $05, $45, $05, $4F, $05, $18, $05
-	db $66, $05
+	dw sound(5, !sound_squitter_rattly_hit)	;Squitter
+	dw sound(5, !sound_squitter_rattly_hit)	;Rattly
+	dw sound(5, !sound_squawks_hit)		;Squawks
+	dw sound(5, !sound_kremling_hit_1)	;Rambi
+	dw sound(5, !sound_enguarde_hit)	;Enguarde
 
 CODE_B88E15:
 	LDA $6E					;$B88E15  \
@@ -1946,8 +1949,11 @@ CODE_B88F14:
 	RTL					;$B88F2E  /
 
 DATA_B88F2F:
-	db $45, $05, $45, $05, $4F, $05, $18, $05
-	db $66, $05
+	dw sound(5, !sound_squitter_rattly_hit)	;Squitter
+	dw sound(5, !sound_squitter_rattly_hit)	;Rattly
+	dw sound(5, !sound_squawks_hit)		;Squawks
+	dw sound(5, !sound_kremling_hit_1)	;Rambi
+	dw sound(5, !sound_enguarde_hit)	;Enguarde
 
 CODE_B88F39:
 	LDA current_player_mount		;$B88F39  \
@@ -2220,15 +2226,16 @@ DATA_B8914E:
 	RTS					;$B89170  /
 
 CODE_B89171:
-	LDA $08A4				;$B89171  \
-	BEQ CODE_B8917C				;$B89174   |
-	TYA					;$B89176   |
-	JSL transition_song			;$B89177   |
+	LDA $08A4				;$B89171  \ current kong number
+	BEQ CODE_B8917C				;$B89174   | if current kong is diddy, branch
+	TYA					;$B89176   | otherwise use value in y as sub-track number
+	JSL transition_song			;$B89177   | transition to sub-track
 	RTS					;$B8917B  /
 
+;if diddy is playing
 CODE_B8917C:
-	TXA					;$B8917C  \
-	JSL transition_song			;$B8917D   |
+	TXA					;$B8917C  \ use value in x as sound effect number
+	JSL transition_song			;$B8917D   | transition to sub-track
 	RTS					;$B89181  /
 
 CODE_B89182:
@@ -2288,8 +2295,8 @@ CODE_B891A0:
 	STA $2E,x				;$B891EE   |
 	LDA #$0043				;$B891F0   |
 	JSL CODE_B9D0B8				;$B891F3   |
-	LDX #$0505				;$B891F7   |
-	LDY #$0505				;$B891FA   |
+	LDX #sound(5, !sound_swap_kongs)	;$B891F7   |	Swap Kongs sound is Kong-specific, but set to the same ID for both
+	LDY #sound(5, !sound_swap_kongs)	;$B891FA   |
 	JSR CODE_B89186				;$B891FD   |
 	RTS					;$B89200  /
 
@@ -2433,8 +2440,8 @@ else						;	   |
 endif						;	   |
 	JSR CODE_B8D1E8				;$B89308   |
 	JSL CODE_BB8C19				;$B8930B   |
-	LDX #$0505				;$B8930F   |
-	LDY #$0505				;$B89312   |
+	LDX #sound(5, !sound_swap_kongs)	;$B8930F   |	Swap Kongs sound is Kong-specific, but set to the same ID for both
+	LDY #sound(5, !sound_swap_kongs)	;$B89312   |
 	JSR CODE_B89186				;$B89315   |
 	RTS					;$B89318  /
 
@@ -2514,8 +2521,8 @@ CODE_B893AA:
 
 CODE_B893B0:
 	JSR CODE_B8939C				;$B893B0  \
-	LDX #$0540				;$B893B3   |
-	LDY #$0540				;$B893B6   |
+	LDX #sound(5, !sound_team_up_mount_animal)	;$B893B3   |	Mount animal sound is Kong-specific, but set to the same ID for both
+	LDY #sound(5, !sound_team_up_mount_animal)	;$B893B6   |
 	JSR CODE_B89186				;$B893B9   |
 	STZ $0AEE				;$B893BC   |
 	STZ $0AF2				;$B893BF   |
@@ -2681,8 +2688,8 @@ CODE_B894C2:
 	RTS					;$B894C6  /
 
 CODE_B894C7:
-	LDX #$0502				;$B894C7  \
-	LDY #$0502				;$B894CA   |
+	LDX #sound(5, !sound_knock)		;$B894C7  \
+	LDY #sound(5, !sound_knock)		;$B894CA   |
 	JSR CODE_B89186				;$B894CD   |
 	JSR CODE_B88092				;$B894D0   |
 	LDA $2E,x				;$B894D3   |
@@ -3653,7 +3660,7 @@ CODE_B89C26:
 	STA $2E,x				;$B89C2B   |
 	LDA #$005A				;$B89C2D   |
 	STA $42,x				;$B89C30   |
-	LDA #$052F				;$B89C32   |
+	%lda_sound(5, squawks_spit)		;$B89C32   |
 	JSL queue_sound_effect			;$B89C35   |
 	JMP CODE_B8AAE5				;$B89C39  /
 
@@ -6639,7 +6646,7 @@ CODE_B8B237:
 	BRA CODE_B8B234				;$B8B243  /
 
 CODE_B8B245:
-	LDA #$075E				;$B8B245  \
+	%lda_sound(7, pause)			;$B8B245  \
 	JSL play_high_priority_sound		;$B8B248   |
 CODE_B8B24C:					;	   |
 	LDX current_sprite			;$B8B24C   |
@@ -6647,7 +6654,7 @@ CODE_B8B24C:					;	   |
 	BRA CODE_B8B234				;$B8B250  /
 
 CODE_B8B252:
-	LDA #$0700				;$B8B252  \
+	%lda_sound(7, nothing)			;$B8B252  \
 	JSL play_high_priority_sound		;$B8B255   |
 	BRA CODE_B8B24C				;$B8B259  /
 
@@ -6848,11 +6855,11 @@ CODE_B8B3EC:
 
 CODE_B8B3F0:
 	LDA level_number			;$B8B3F0  \
-	CMP #$0061				;$B8B3F2   |
+	CMP #$0061				;$B8B3F2   |	;K. Rool Duel
 	BEQ CODE_B8B40A				;$B8B3F5   |
-	CMP #$00B9				;$B8B3F7   |
+	CMP #$00B9				;$B8B3F7   |	;Stronghold Showdown
 	BEQ CODE_B8B40A				;$B8B3FA   |
-	CMP #$006B				;$B8B3FC   |
+	CMP #$006B				;$B8B3FC   |	;Krocodile Kore
 	BEQ CODE_B8B435				;$B8B3FF   |
 	LDX #$0002				;$B8B401   |
 	LDY #$0003				;$B8B404   |
@@ -7154,7 +7161,7 @@ CODE_B8B62D:
 	JSL CODE_BB842C				;$B8B630   |
 	LDA #$0023				;$B8B634   |
 	JSL CODE_B8D8BA				;$B8B637   |
-	LDA #$066D				;$B8B63B   |
+	%lda_sound(6, clapper_clap)		;$B8B63B   |	Lava Lagoon water burning
 	JSL queue_sound_effect			;$B8B63E   |
 	SEC					;$B8B642   |
 	RTS					;$B8B643  /
@@ -9563,7 +9570,7 @@ CODE_B8C623:					;	   |
 	CLC					;$B8C634   |
 	ADC #$0340				;$B8C635   |
 	STA $3A,x				;$B8C638   |
-	LDA #$0530				;$B8C63A   |
+	%lda_sound(5, squawks_flap_1)		;$B8C63A   |
 	JSL queue_sound_effect			;$B8C63D   |
 CODE_B8C641:					;	   |
 	RTS					;$B8C641  /
@@ -9725,7 +9732,7 @@ CODE_B8C778:
 	JSR CODE_B8B6A7				;$B8C778  \
 	CMP #$0002				;$B8C77B   |
 	BMI CODE_B8C79A				;$B8C77E   |
-	LDA #$056B				;$B8C780   |
+	%lda_sound(5, kong_swim)		;$B8C780   |
 	JSL queue_sound_effect			;$B8C783   |
 	LDX current_sprite			;$B8C787   |
 	JSR CODE_B8C7C0				;$B8C789   |
@@ -9982,7 +9989,7 @@ CODE_B8C949:					;	   |
 	TSB $0B02				;$B8C955   |
 	LDA #$02D6				;$B8C958   |
 	JSL CODE_B9D09B				;$B8C95B   |
-	LDA #$0547				;$B8C95F   |
+	%lda_sound(5, squitter_platform_web)	;$B8C95F   |
 	JSL queue_sound_effect			;$B8C962   |
 	JSR CODE_B8C96A				;$B8C966   |
 CODE_B8C969:					;	   |
@@ -10190,7 +10197,7 @@ CODE_B8CA93:
 	JSL CODE_BB8432				;$B8CAC5   |
 	BCS CODE_B8CA92				;$B8CAC9   |
 	INC $19A6				;$B8CACB   |
-	LDA #$0546				;$B8CACE   |
+	%lda_sound(5, squitter_attack_web)	;$B8CACE   |
 	JSL queue_sound_effect			;$B8CAD1   |
 	LDY #$008C				;$B8CAD5   |
 	LDA [$8E],y				;$B8CAD8   |

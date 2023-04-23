@@ -129,15 +129,15 @@ CODE_0660:
 	MOV A, $055D				;$0660   |
 	ASL A					;$0663   |
 	MOV Y, A				;$0664   |
-	MOV A, $1312+Y				;$0665   |
+	MOV A, !bgm_ptr_loc+Y			;$0665   |
 	MOV $E5, A				;$0668   |
-	MOV A, $1313+Y				;$066A   |
+	MOV A, !bgm_ptr_loc+1+Y			;$066A   |
 	MOV $E6, A				;$066D   |
 	JMP CODE_0678				;$066F   |
 
 CODE_0672:
-	MOV $E6, #$13				;$0672   |
-	MOV $E5, #$00				;$0675   |
+	MOV $E6, #!bgm_loc>>8			;$0672   |
+	MOV $E5, #!bgm_loc&$00FF		;$0675   |
 CODE_0678:					;   |
 	CALL CODE_100B				;$0678   |
 	MOV A, #$00				;$067B   |
@@ -1646,18 +1646,18 @@ CODE_10F0:					;   |
 
 CODE_10F7:
 	PUSH A					;$10F7   |
-	CMP A, #$60				;$10F8   |
+	CMP A, #!dyn_snd_base_id		;$10F8   |
 	BPL CODE_1104				;$10FA   |
 	SETC					;$10FC   |
-	SBC A, $2410				;$10FD   |
+	SBC A, !snd_loc				;$10FD   |
 	BPL CODE_110D				;$1100   |
 	BRA CODE_1111				;$1102   |
 
 CODE_1104:
 	SETC					;$1104   |
-	SBC A, #$60				;$1105   |
+	SBC A, #!dyn_snd_base_id		;$1105   |
 	SETC					;$1107   |
-	SBC A, $2E94				;$1108   |
+	SBC A, !dyn_snd_loc			;$1108   |
 	BMI CODE_1111				;$110B   |
 CODE_110D:					;   |
 	POP A					;$110D   |
@@ -1707,10 +1707,10 @@ CODE_1111:					;   |
 	CMP A, #$C0				;$1167   |
 	BCS CODE_1179				;$1169   |
 	MOV Y, A				;$116B   |
-	MOV A, $2412+Y				;$116C   |
+	MOV A, !snd_ptr_loc+Y			;$116C   |
 	MOV $44+X, A				;$116F   |
 	INC Y					;$1171   |
-	MOV A, $2412+Y				;$1172   |
+	MOV A, !snd_ptr_loc+Y			;$1172   |
 	MOV $54+X, A				;$1175   |
 	BRA CODE_1188				;$1177   |
 
@@ -1718,10 +1718,10 @@ CODE_1179:
 	SETC					;$1179   |
 	SBC A, #$C0				;$117A   |
 	MOV Y, A				;$117C   |
-	MOV A, $2E96+Y				;$117D   |
+	MOV A, !dyn_snd_ptr_loc+Y		;$117D   |
 	MOV $44+X, A				;$1180   |
 	INC Y					;$1182   |
-	MOV A, $2E96+Y				;$1183   |
+	MOV A, !dyn_snd_ptr_loc+Y		;$1183   |
 	MOV $54+X, A				;$1186   |
 CODE_1188:					;   |
 	MOV A, #$02				;$1188   |
@@ -2145,47 +2145,67 @@ DATA_EE1179:
 
 DATA_EE117B:
 	%offset(DATA_EE117D, 2)
-	dl dummy_sfx_data
-	dl dummy_sfx_data
-	dl dummy_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl dummy_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl boss_1_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl dummy_sfx_data
-	dl lava_castle_boss_2_sfx_data
-	dl roller_coaster_sfx_data
-	dl swamp_forest_mine_brambles_hive_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl dummy_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl boss_1_sfx_data
-	dl dummy_sfx_data
-	dl boss_1_sfx_data
-	dl lava_castle_boss_2_sfx_data
-	dl roller_coaster_sfx_data
-	dl dummy_sfx_data
-	dl dummy_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl jungle_sfx_data
-	dl dummy_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl boss_1_sfx_data
-	dl roller_coaster_sfx_data
-	dl lava_castle_boss_2_sfx_data
-	dl lava_castle_boss_2_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl ship_ice_ending_sfx_data
-	dl dummy_sfx_data
-	dl dummy_sfx_data
-	dl dummy_sfx_data
+	dl dummy_sfx_data				;00
+;START OF PATCH (change which sound effect blocks are loaded with Island Map and Main Theme songs)
+	dl boss_1_sfx_data				;01
+	dl menus_sfx_data				;02
+;	dl dummy_sfx_data
+;	dl dummy_sfx_data
+;END OF PATCH
+	dl swamp_forest_mine_brambles_hive_sfx_data	;03
+;START OF PATCH (change which sound effect block is loaded with the Swanky song)
+	dl menus_sfx_data				;04
+;	dl swamp_forest_mine_brambles_hive_sfx_data
+;END OF PATCH
+	dl swamp_forest_mine_brambles_hive_sfx_data	;05
+	dl ship_ice_ending_sfx_data			;06
+	dl swamp_forest_mine_brambles_hive_sfx_data	;07
+;START OF PATCH (change which sound effect block is loaded with the Funky song)
+	dl menus_sfx_data				;08
+;	dl dummy_sfx_data
+;END OF PATCH
+	dl swamp_forest_mine_brambles_hive_sfx_data	;09
+;START OF PATCH (change which sound effect block is loaded with the Klubba song)
+	dl menus_sfx_data				;0A
+;	dl boss_1_sfx_data
+;END OF PATCH
+	dl swamp_forest_mine_brambles_hive_sfx_data	;0B
+;START OF PATCH (change which sound effect block is loaded with the Wrinkly song)
+	dl menus_sfx_data				;0C
+;	dl dummy_sfx_data
+;END OF PATCH
+	dl lava_castle_boss_2_sfx_data			;0D
+	dl roller_coaster_sfx_data			;0E
+	dl swamp_forest_mine_brambles_hive_sfx_data	;0F
+	dl ship_ice_ending_sfx_data			;10
+	dl dummy_sfx_data				;11
+	dl ship_ice_ending_sfx_data			;12
+	dl boss_1_sfx_data				;13
+	dl dummy_sfx_data				;14
+	dl boss_1_sfx_data				;15
+	dl lava_castle_boss_2_sfx_data			;16
+	dl roller_coaster_sfx_data			;17
+;START OF PATCH (change which sound effect blocks are loaded with Select and Cranky songs)
+	dl menus_sfx_data				;18
+	dl menus_sfx_data				;19
+;	dl dummy_sfx_data
+;	dl dummy_sfx_data
+;END OF PATCH
+	dl ship_ice_ending_sfx_data			;1A
+	dl jungle_sfx_data				;1B
+	dl dummy_sfx_data				;1C
+	dl ship_ice_ending_sfx_data			;1D
+	dl ship_ice_ending_sfx_data			;1E
+	dl boss_1_sfx_data				;1F
+	dl roller_coaster_sfx_data			;20
+	dl lava_castle_boss_2_sfx_data			;21
+	dl lava_castle_boss_2_sfx_data			;22
+	dl ship_ice_ending_sfx_data			;23
+	dl ship_ice_ending_sfx_data			;24
+	dl ship_ice_ending_sfx_data			;25
+	dl dummy_sfx_data				;26
+	dl dummy_sfx_data				;27
+	dl dummy_sfx_data				;28
 
 DATA_EE11F6:
 	db $00, $00, $00
@@ -2222,7 +2242,10 @@ swamp_sample_set:
 	dw $0017, $0026, $0027, $001C
 	dw $0025, $0029, $0022, $002B
 	dw $0028, $002A, $002C, $0050
-	dw $0015, $0018, $008F, $000E
+;START OF PATCH (remove duplicate sample)
+;	dw $0015
+;END OF PATCH
+	dw $0018, $008F, $000E
 	dw $000B, $009A, $000D, $000F
 	dw $009F, $00C6, $00D3, $00C4
 	dw $00A1, $00D7, $00D8, $0094
@@ -2251,17 +2274,41 @@ ship_deck_sample_set:
 	dw $009E, $00A8, $00A7, $008F
 	dw $001E, $0013, $00A0, $0021
 	dw $0022, $0024, $0094, $009F
-	dw $000B, $009A, $000D, $009F
+	dw $000B, $009A, $000D
+;START OF PATCH (remove duplicate sample)
+;	dw $009F
+;END OF PATCH
 	dw $00C6, $0053, $00D8, $FFFF
 
 mine_sample_set:
 	dw $00B3, $002F, $00B2, $00AD
-	dw $00AE, $008B, $0018, $0014
+	dw $00AE
+;START OF PATCH (remove duplicate sample)
+;	dw $008B
+;END OF PATCH
+	dw $0018, $0014
 	dw $00B4, $001A, $002B, $0039
 	dw $003B, $003D, $003F, $0041
-	dw $0043, $0045, $0047, $0048
-	dw $0049, $004A, $004B, $004C
-	dw $004D, $004E, $004F, $008F
+;START OF PATCH (remove duplicate sample)
+;	dw $0043
+;END OF PATCH
+	dw $0045
+;START OF PATCH (remove duplicate sample)
+;	dw $0047
+;END OF PATCH
+	dw $0048
+;START OF PATCH (remove duplicate sample)
+;	dw $0049
+;END OF PATCH
+	dw $004A
+;START OF PATCH (remove duplicate sample)
+;	dw $004B
+;END OF PATCH
+	dw $004C
+;START OF PATCH (remove duplicate sample)
+;	dw $004D
+;END OF PATCH
+	dw $004E, $004F, $008F
 	dw $009F, $000F, $0010, $00A1
 	dw $00BC, $00C6, $000E, $00C4
 	dw $00D7, $000B, $009A, $000D
@@ -2290,7 +2337,11 @@ brambles_sample_set:
 
 klubba_sample_set:
 	dw $00A2, $0021, $0014, $001E
-	dw $00B6, $00A4, $00A5, $002B
+	dw $00B6, $00A4
+;START OF PATCH (remove duplicate sample)
+;	dw $00A5
+;END OF PATCH
+	dw $002B
 	dw $008F, $FFFF
 
 wasp_hive_sample_set:
@@ -2298,7 +2349,11 @@ wasp_hive_sample_set:
 	dw $008F, $008E, $0091, $0092
 	dw $0093, $002E, $00D5, $00B5
 	dw $001C, $000E, $000D, $000F
-	dw $00C6, $0010, $00C6, $00A1
+	dw $00C6, $0010
+;START OF PATCH (remove duplicate sample)
+;	dw $00C6
+;END OF PATCH
+	dw $00A1
 	dw $00D7, $009F, $00A9, $00D8
 	dw $00BC, $FFFF
 
@@ -2309,7 +2364,11 @@ wrinkly_sample_set:
 
 lava_sample_set:
 	dw $008D, $0019, $0018, $00D4
-	dw $00A0, $0014, $008D, $00AF
+	dw $00A0, $0014
+;START OF PATCH (remove duplicate sample)
+;	dw $008D
+;END OF PATCH
+	dw $00AF
 	dw $008E, $0021, $0039, $003B
 	dw $003D, $003F, $0041, $0045
 	dw $0048, $004A, $004C, $004E
@@ -2337,7 +2396,10 @@ roller_coaster_sample_set:
 bonus_sample_set:
 	dw $00B5, $00B6, $00B7, $00B3
 	dw $00B8, $0033, $008D, $0036
-	dw $008D, $00A2, $0019, $0036
+	dw $008D, $00A2, $0019
+;START OF PATCH (remove duplicate sample)
+;	dw $0036
+;END OF PATCH
 	dw $002B, $000D, $000B, $009A
 	dw $00C6, $000F, $0010, $0053
 	dw $000E, $0015, $00A1, $00BC
@@ -2347,7 +2409,14 @@ ship_hold_sample_set:
 	dw $0015, $0014, $001D, $0024
 	dw $001E, $001C, $00A6, $0037
 	dw $0039, $003B, $003D, $003F
-	dw $0041, $0043, $0045, $0047
+	dw $0041
+;START OF PATCH (remove duplicate sample)
+;	dw $0043
+;END OF PATCH
+	dw $0045
+;START OF PATCH (remove duplicate sample)
+;	dw $0047
+;END OF PATCH
 	dw $004F, $0018, $002E, $008F
 	dw $000B, $009A, $000E, $000D
 	dw $0053, $00CD, $0099, $000F
@@ -2360,16 +2429,28 @@ fanfare_sample_set:
 	dw $FFFF
 
 ship_deck_2_sample_set:
-	dw $0014, $008E, $00A5, $0018
+	dw $0014, $008E
+;START OF PATCH (remove duplicate sample)
+;	dw $00A5
+;END OF PATCH
+	dw $0018
 	dw $0021, $0034, $001B, $0033
 	dw $0036, $008D, $002E, $0024
 	dw $008F, $0094, $009F, $000B
-	dw $009A, $000D, $009F, $00C6
+	dw $009A, $000D
+;START OF PATCH (remove duplicate sample)
+;	dw $009F
+;END OF PATCH
+	dw $00C6
 	dw $0053, $FFFF
 
 rescue_kong_sample_set:
 	dw $001D, $0014, $00AF, $00B5
-	dw $001C, $00A5, $0033, $00BC
+	dw $001C
+;START OF PATCH (remove duplicate sample)
+;	dw $00A5
+;END OF PATCH
+	dw $0033, $00BC
 	dw $FFFF
 
 game_over_sample_set:
@@ -2377,11 +2458,18 @@ game_over_sample_set:
 	dw $0033, $002B, $008F, $FFFF
 
 big_boss_sample_set:
-	dw $0014, $00A5, $00A2, $0021
+	dw $0014
+;START OF PATCH (remove duplicate sample)
+;	dw $00A5
+;END OF PATCH
+	dw $00A2, $0021
 	dw $0022, $0023, $001D, $0024
 	dw $00A3, $00A4, $001E, $008F
 	dw $002E, $002B, $000D, $00AB
-	dw $00A1, $00C4, $00BC, $002B
+	dw $00A1, $00C4, $00BC
+;START OF PATCH (remove duplicate sample)
+;	dw $002B
+;END OF PATCH
 	dw $00D7, $0086, $009A, $0094
 	dw $FFFF
 
@@ -2404,20 +2492,34 @@ haunted_sample_set:
 	dw $FFFF
 
 file_select_sample_set:
-	dw $000C, $0017, $000D, $0019
+;START OF PATCH (remove duplicate sample)
+;	dw $000C
+;END OF PATCH
+	dw $0017, $000D, $0019
 	dw $0018, $00B7, $0028, $0087
 	dw $002B, $008F, $FFFF
 
 cranky_sample_set:
 	dw $00B8, $0028, $0029, $00AF
 	dw $002B, $0016, $0017, $0019
-	dw $0015, $009F, $002B, $008F
+	dw $0015, $009F
+;START OF PATCH (remove duplicate sample)
+;	dw $002B
+;END OF PATCH
+	dw $008F
 	dw $FFFF
 
 ice_sample_set:
 	dw $0012, $0088, $0037, $0039
-	dw $003B, $003F, $0041, $0043
-	dw $0045, $0047, $0048, $004A
+	dw $003B, $003F, $0041
+;START OF PATCH (remove duplicate sample)
+;	dw $0043
+;END OF PATCH
+	dw $0045
+;START OF PATCH (remove duplicate sample)
+;	dw $0047
+;END OF PATCH
+	dw $0048, $004A
 	dw $00AF, $002C, $00C5, $0014
 	dw $00C0, $008F, $002E, $000B
 	dw $009A, $000E, $000F, $0010
@@ -2429,8 +2531,15 @@ jungle_sample_set:
 	dw $00C8, $00C9, $00CA, $000D
 	dw $0031, $0029, $00CB, $0086
 	dw $00C7, $0028, $00C0, $00A6
-	dw $0031, $0096, $008F, $000F
-	dw $0010, $000E, $000D, $00C6
+;START OF PATCH (remove duplicate sample)
+;	dw $0031
+;END OF PATCH
+	dw $0096, $008F, $000F
+	dw $0010, $000E
+;START OF PATCH (remove duplicate sample)
+;	dw $000D
+;END OF PATCH
+	dw $00C6
 	dw $00D7, $000B, $009A, $009F
 	dw $00D8, $0053, $00B8, $FFFF
 
@@ -2477,14 +2586,24 @@ k_rool_sample_set:
 bonus_sample_set_2:
 	dw $00B5, $00B6, $00B7, $00B3
 	dw $00B8, $0033, $008D, $0036
-	dw $008D, $00A2, $0019, $0036
+;START OF PATCH (remove duplicate sample)
+;	dw $008D
+;END OF PATCH
+	dw $00A2, $0019
+;START OF PATCH (remove duplicate sample)
+;	dw $0036
+;END OF PATCH
 	dw $008F, $000D, $00C6, $00CC
 	dw $00D0, $00D1, $00D2, $0067
 	dw $00C1, $00C2, $00C3, $008E
 	dw $FFFF
 
 big_boss_sample_set_2:
-	dw $0014, $00A5, $00A2, $0021
+	dw $0014
+;START OF PATCH (remove duplicate sample)
+;	dw $00A5
+;END OF PATCH
+	dw $00A2, $0021
 	dw $0022, $0023, $001D, $0024
 	dw $00A3, $00A4, $001E, $008F
 	dw $002E, $000D, $00D7, $0086
@@ -2495,7 +2614,13 @@ big_boss_sample_set_2:
 bonus_sample_set_3:
 	dw $00B5, $00B6, $00B7, $00B3
 	dw $00B8, $0033, $008D, $0036
-	dw $008D, $00A2, $0019, $0036
+;START OF PATCH (remove duplicate sample)
+;	dw $008D
+;END OF PATCH
+	dw $00A2, $0019
+;START OF PATCH (remove duplicate sample)
+;	dw $0036
+;END OF PATCH
 	dw $000D, $00C6, $008F, $0050
 	dw $0099, $00DA, $FFFF
 
@@ -2507,7 +2632,10 @@ secret_ending_sample_set:
 bonus_sample_set_4:
 	dw $00B5, $00B6, $00B7, $00B3
 	dw $00B8, $0033, $008D, $0036
-	dw $008D, $00A2, $0019, $0036
+;START OF PATCH (remove duplicate sample)
+;	dw $008D
+;END OF PATCH
+	dw $00A2, $0019, $0036
 	dw $000D, $000B, $009A, $00C6
 	dw $000F, $0010, $0053, $000E
 	dw $008F, $009F, $00D8, $0094
@@ -3891,18 +4019,27 @@ DATA_F2E728:
 DATA_F2E72C:
 	dw $1300, $0000		;Placeholder for track $27
 
-	incsrc "data/sound/sound_effects/global_sfx_data.asm"
+;START OF PATCH (replace global sound effect block with a modified version)
+	incsrc "kong_hack/sound/sound_effects/global_sfx_data.asm"
+;	incsrc "data/sound/sound_effects/global_sfx_data.asm"
+;END OF PATCH
 	incsrc "data/sound/sound_effects/dummy_sfx_data.asm"
 	incsrc "data/sound/sound_effects/roller_coaster_sfx_data.asm"
 	incsrc "data/sound/sound_effects/ship_ice_ending_sfx_data.asm"
 	incsrc "data/sound/sound_effects/swamp_forest_mine_brambles_hive_sfx_data.asm"
 	incsrc "data/sound/sound_effects/unused_krockhead_sfx_data.asm"
 	incsrc "data/sound/sound_effects/jungle_sfx_data.asm"
-	incsrc "data/sound/sound_effects/boss_1_sfx_data.asm"
+;START OF PATCH (replace boss 1 sound effect block with a modified version)
+	incsrc "kong_hack/sound/sound_effects/boss_1_sfx_data.asm"
+;	incsrc "data/sound/sound_effects/boss_1_sfx_data.asm"
+;END OF PATCH
 	incsrc "data/sound/sound_effects/lava_castle_boss_2_sfx_data.asm"
 
-DATA_F2FB66:
-	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $08
+;START OF PATCH (add sound effect block for menus)
+	incsrc "kong_hack/sound/sound_effects/menus_sfx_data.asm"
+;DATA_F2FB66:
+;	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $08
+;END OF PATCH
 	
 DATA_F2FB6A:
 	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $09
