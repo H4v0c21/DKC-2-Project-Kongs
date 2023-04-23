@@ -220,11 +220,11 @@ if !version == 1				;	  \
 	CMP #$0003				;$BEB998   |
 	BNE CODE_BEB9B2				;$BEB99B   |
 endif						;	   |
-	LDA #$0621				;$BEB99D   |
+	%lda_sound(6, kremkoin_appear_fizz)	;$BEB99D   |
 	JSL queue_sound_effect			;$BEB9A0   |
-	LDA #$0522				;$BEB9A4   |
+	%lda_sound(5, kremkoin_appear_echo)	;$BEB9A4   |
 	JSL queue_sound_effect			;$BEB9A7   |
-	LDA #$0735				;$BEB9AB   |
+	%lda_sound(7, kremkoin_appear)		;$BEB9AB   |
 	JSL queue_sound_effect			;$BEB9AE   |
 CODE_BEB9B2:					;	   |
 	JSL CODE_BB8114				;$BEB9B2   |
@@ -311,11 +311,11 @@ CODE_BEBA57:
 	JMP CODE_BEB849				;$BEBA57  /
 
 CODE_BEBA5A:
-	LDA #$0621				;$BEBA5A  \
+	%lda_sound(6, kremkoin_appear_fizz)	;$BEBA5A  \
 	JSL queue_sound_effect			;$BEBA5D   |
-	LDA #$0522				;$BEBA61   |
+	%lda_sound(5, kremkoin_appear_echo)	;$BEBA61   |
 	JSL queue_sound_effect			;$BEBA64   |
-	LDA #$0735				;$BEBA68   |
+	%lda_sound(7, kremkoin_appear)		;$BEBA68   |
 	JSL queue_sound_effect			;$BEBA6B   |
 	LDY #$00CE				;$BEBA6F   |
 	JSL CODE_BB842C				;$BEBA72   |
@@ -569,7 +569,7 @@ CODE_BEBC31:
 	CMP #$0083				;$BEBC41   |
 	BCC CODE_BEBC65				;$BEBC44   |
 	BNE CODE_BEBC4F				;$BEBC46   |
-	LDA #$042A				;$BEBC48   |
+	%lda_sound(4, letter_g)			;$BEBC48   |
 	JSL queue_sound_effect			;$BEBC4B   |
 CODE_BEBC4F:					;	   |
 	LDA #$0003				;$BEBC4F   |
@@ -581,7 +581,7 @@ CODE_BEBC4F:					;	   |
 	BRA CODE_BEBC92				;$BEBC5C  /
 
 CODE_BEBC5E:
-	LDA #$0529				;$BEBC5E  \
+	%lda_sound(5, letter_n)			;$BEBC5E  \
 	JSL queue_sound_effect			;$BEBC61   |
 CODE_BEBC65:					;	   |
 	LDA #$0002				;$BEBC65   |
@@ -591,7 +591,7 @@ CODE_BEBC65:					;	   |
 	BRA CODE_BEBC92				;$BEBC6E  /
 
 CODE_BEBC70:
-	LDA #$0628				;$BEBC70  \
+	%lda_sound(6, letter_o)			;$BEBC70  \
 	JSL queue_sound_effect			;$BEBC73   |
 CODE_BEBC77:					;	   |
 	LDA #$0001				;$BEBC77   |
@@ -601,7 +601,7 @@ CODE_BEBC77:					;	   |
 	BRA CODE_BEBC92				;$BEBC80  /
 
 CODE_BEBC82:
-	LDA #$0727				;$BEBC82  \
+	%lda_sound(7, letter_k)			;$BEBC82  \
 	JSL queue_sound_effect			;$BEBC85   |
 CODE_BEBC89:					;	   |
 	LDA #$0000				;$BEBC89   |
@@ -1687,7 +1687,7 @@ CODE_BEC420:
 	LDA #$000E				;$BEC420  \
 	JSL CODE_B8D8BA				;$BEC423   |
 	BCS CODE_BEC43F				;$BEC427   |
-	LDA #$0560				;$BEC429   |
+	%lda_sound(5, kong_tire_bounce)		;$BEC429   |
 	JSL queue_sound_effect			;$BEC42C   |
 	LDX current_sprite			;$BEC430   |
 	LDY $6A					;$BEC432   |
@@ -1868,7 +1868,7 @@ CODE_BEC56A:					;	   |
 	STA $0012,y				;$BEC577   |
 CODE_BEC57A:					;	   |
 	JSR CODE_BEC5A4				;$BEC57A   |
-	LDA #$0502				;$BEC57D   |
+	%lda_sound(5, knock)			;$BEC57D   |
 	JSL queue_sound_effect			;$BEC580   |
 	LDX current_sprite			;$BEC584   |
 	LDY $6A					;$BEC586   |
@@ -2188,7 +2188,7 @@ CODE_BEC783:					;	   |
 	BCS CODE_BEC7A8				;$BEC790   |
 	DEC $0972				;$BEC792   |
 	DEC $08C0				;$BEC795   |
-	LDA #$052B				;$BEC798   |
+	%lda_sound(5, lose_life)		;$BEC798   |
 	JSL queue_sound_effect			;$BEC79B   |
 	STZ $0979				;$BEC79F   |
 	LDA #$005A				;$BEC7A2   |
@@ -2200,7 +2200,7 @@ CODE_BEC7A9:
 	INC $08C0				;$BEC7A9  \
 	LDA #$003C				;$BEC7AC   |
 	STA $0973				;$BEC7AF   |
-	LDA #$0538				;$BEC7B2   |
+	%lda_sound(5, gain_life)		;$BEC7B2   |
 	JSL queue_sound_effect			;$BEC7B5   |
 CODE_BEC7B9:					;	   |
 	LDA $08C0				;$BEC7B9   |
@@ -2801,7 +2801,7 @@ CODE_BECBE2:					;	   |
 	LDA $42,x				;$BECBF9   |
 	TAX					;$BECBFB   |
 	INC $46,x				;$BECBFC   |
-	LDA #$076E				;$BECBFE   |
+	%lda_sound(7, coaster_gate_open)	;$BECBFE   |
 	JSL queue_sound_effect			;$BECC01   |
 	LDY $0D5A				;$BECC05   |
 	BEQ CODE_BECC1C				;$BECC08   |
@@ -2867,7 +2867,7 @@ CODE_BECC6D:
 	LDA $42,x				;$BECC71   |
 	TAX					;$BECC73   |
 	INC $2F,x				;$BECC74   |
-	LDA #$076E				;$BECC76   |
+	%lda_sound(7, coaster_gate_open)	;$BECC76   |
 	JSL queue_sound_effect			;$BECC79   |
 	LDX current_sprite			;$BECC7D   |
 	LDY $44,x				;$BECC7F   |
@@ -3002,7 +3002,7 @@ CODE_BECD71:
 	JMP CODE_BEB849				;$BECD77  /
 
 CODE_BECD7A:
-	LDA #$041A				;$BECD7A  \
+	%lda_sound(4, barrel_blast)		;$BECD7A  \
 	JSL queue_sound_effect			;$BECD7D   |
 	LDX $6A					;$BECD81   |
 	LDA #$FE00				;$BECD83   |
@@ -3098,10 +3098,10 @@ CODE_BECE1B:
 	STA $00,x				;$BECE37   |
 	JSR CODE_BECE7E				;$BECE39   |
 	LDX current_sprite			;$BECE3C   |
-	LDA #$0461				;$BECE3E   |
+	%lda_sound(4, barrel_good)		;$BECE3E   |	Sound: Break Check Barrel
 	LDY $4E,x				;$BECE41   |
 	BNE CODE_BECE48				;$BECE43   |
-	LDA #$0462				;$BECE45   |
+	%lda_sound(4, barrel_bad)		;$BECE45   |	Sound: Break X Barrel
 CODE_BECE48:					;	   |
 	JSL queue_sound_effect			;$BECE48   |
 CODE_BECE4C:					;	   |
@@ -3524,7 +3524,7 @@ CODE_BED189:
 	LDY $42,x				;$BED193   |
 	LDA #$0000				;$BED195   |
 	STA $0040,y				;$BED198   |
-	LDA #$0664				;$BED19B   |
+	%lda_sound(6, coaster_land)		;$BED19B   |
 	JSL queue_sound_effect			;$BED19E   |
 CODE_BED1A2:					;	   |
 	JSR CODE_BED956				;$BED1A2   |
@@ -3639,7 +3639,7 @@ CODE_BED26D:
 	LDY $42,x				;$BED277   |
 	LDA #$0000				;$BED279   |
 	STA $0040,y				;$BED27C   |
-	LDA #$0664				;$BED27F   |
+	%lda_sound(6, coaster_land)		;$BED27F   |
 	JSL queue_sound_effect			;$BED282   |
 CODE_BED286:					;	   |
 	JSR CODE_BED956				;$BED286   |
@@ -4089,7 +4089,7 @@ CODE_BED5E1:					;	   |
 	STA $003E,y				;$BED5ED   |
 	LDA $34					;$BED5F0   |
 	STA $0020,y				;$BED5F2   |
-	LDA #$0702				;$BED5F5   |
+	%lda_sound(7, knock)			;$BED5F5   |
 	JSL queue_sound_effect			;$BED5F8   |
 	LDA #$0019				;$BED5FC   |
 	JSR CODE_BEE691				;$BED5FF   |
@@ -4850,7 +4850,7 @@ CODE_BEDBC8:					;	   |
 	LDA global_frame_counter		;$BEDBD2   |
 	SBC #$0020				;$BEDBD4   |
 	STA $0022,y				;$BEDBD7   |
-	LDA #$066A				;$BEDBDA   |
+	%lda_sound(6, coaster_jump)		;$BEDBDA   |
 	JSL queue_sound_effect			;$BEDBDD   |
 CODE_BEDBE1:					;	   |
 	RTS					;$BEDBE1  /
@@ -5714,7 +5714,7 @@ CODE_BEE1E4:					;	   |
 	STA $0046,y				;$BEE1E4   |
 	LDA #$0006				;$BEE1E7   |
 	STA $002E,y				;$BEE1EA   |
-	LDA #$076D				;$BEE1ED   |
+	%lda_sound(7, kackle)			;$BEE1ED   |	INVESTIGATE
 	JSL queue_sound_effect			;$BEE1F0   |
 	LDX current_sprite			;$BEE1F4   |
 	BRA CODE_BEE187				;$BEE1F6  /
@@ -5732,7 +5732,7 @@ CODE_BEE206:
 	LDA $08C2				;$BEE20C   |
 	AND #$2000				;$BEE20F   |
 	BEQ CODE_BEE21D				;$BEE212   |
-	LDA #$076D				;$BEE214   |
+	%lda_sound(7, kackle)			;$BEE214   |
 	JSL queue_sound_effect			;$BEE217   |
 	LDX current_sprite			;$BEE21B   |
 CODE_BEE21D:					;	   |
@@ -6509,7 +6509,7 @@ CODE_BEE76A:
 	BEQ CODE_BEE787				;$BEE779   |
 	JSR CODE_BEE7ED				;$BEE77B   |
 	BCS CODE_BEE787				;$BEE77E   |
-	LDA #$0763				;$BEE780   |
+	%lda_sound(7, coaster_race_rank_up)	;$BEE780   |
 	JSL queue_sound_effect			;$BEE783   |
 CODE_BEE787:					;	   |
 	LDA $0923				;$BEE787   |
@@ -6772,7 +6772,7 @@ CODE_BEE93B:
 	LDX current_sprite			;$BEE947   |
 	LDA $46,x				;$BEE949   |
 	BEQ CODE_BEE957				;$BEE94B   |
-	LDA #$066B				;$BEE94D   |
+	%lda_sound(6, starting_light_1)		;$BEE94D   |
 	JSL queue_sound_effect			;$BEE950   |
 	JML [$05A9]				;$BEE954  /
 
@@ -6784,7 +6784,7 @@ CODE_BEE95E:					;	   |
 	LDA #$0003				;$BEE95E   |
 	TRB $0A36				;$BEE961   |
 	INC $2F,x				;$BEE964   |
-	LDA #$066C				;$BEE966   |
+	%lda_sound(6, starting_light_2)		;$BEE966   |
 	JSL queue_sound_effect			;$BEE969   |
 CODE_BEE96D:					;	   |
 	JML [$05A9]				;$BEE96D  /
@@ -7288,7 +7288,7 @@ CODE_BEECFD:
 	STA $0026,y				;$BEED1C   |
 	LDA $24,x				;$BEED1F   |
 	STA $0024,y				;$BEED21   |
-	LDA #$0562				;$BEED24   |
+	%lda_sound(5, tire_appear)		;$BEED24   |
 	JSL queue_sound_effect			;$BEED27   |
 CODE_BEED2B:					;	   |
 	LDX current_sprite			;$BEED2B   |

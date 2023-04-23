@@ -418,10 +418,10 @@ endif						;	   | |/
 	STA $0E					;$B582AC   | |
 	LDA.w #global_sample_map>>16		;$B582AE   | |
 	STA $10					;$B582B1   |/
-	LDA #$3100				;$B582B3   |\ Source directory ARAM destination
+	LDA #!src_dir_loc			;$B582B3   |\ Source directory ARAM destination
 	STA $02					;$B582B6   |/
 	STZ $0A					;$B582B8   |
-	LDA #$3400				;$B582BA   |\ Sample data ARAM destination
+	LDA #!brr_data_loc			;$B582BA   |\ Sample data ARAM destination
 	STA $06					;$B582BD   |/
 	STZ $0A					;$B582BF   | Reset the sample counter
 	JSR .sample_uploader			;$B582C1   |
@@ -9577,31 +9577,31 @@ CODE_B5DCFF:
 	LDA global_frame_counter		;$B5DCFF  \
 	CMP #$00F0				;$B5DD01   |
 	BNE CODE_B5DD0D				;$B5DD04   |
-	LDA #$0716				;$B5DD06   |
+	%lda_sound(7, klampon_lockjaw_bite)	;$B5DD06   |
 	JSL queue_sound_effect			;$B5DD09   |
 CODE_B5DD0D:					;	   |
 	LDA global_frame_counter		;$B5DD0D   |
 	CMP #$0100				;$B5DD0F   |
 	BNE CODE_B5DD1B				;$B5DD12   |
-	LDA #$0716				;$B5DD14   |
+	%lda_sound(7, klampon_lockjaw_bite)	;$B5DD14   |
 	JSL queue_sound_effect			;$B5DD17   |
 CODE_B5DD1B:					;	   |
 	LDA global_frame_counter		;$B5DD1B   |
 	CMP #$0125				;$B5DD1D   |
 	BNE CODE_B5DD29				;$B5DD20   |
-	LDA #$0716				;$B5DD22   |
+	%lda_sound(7, klampon_lockjaw_bite)	;$B5DD22   |
 	JSL queue_sound_effect			;$B5DD25   |
 CODE_B5DD29:					;	   |
 	LDA global_frame_counter		;$B5DD29   |
 	CMP #$0130				;$B5DD2B   |
 	BNE CODE_B5DD37				;$B5DD2E   |
-	LDA #$0716				;$B5DD30   |
+	%lda_sound(7, klampon_lockjaw_bite)	;$B5DD30   |
 	JSL queue_sound_effect			;$B5DD33   |
 CODE_B5DD37:					;	   |
 	LDA global_frame_counter		;$B5DD37   |
 	CMP #$0160				;$B5DD39   |
 	BNE CODE_B5DD45				;$B5DD3C   |
-	LDA #$0716				;$B5DD3E   |
+	%lda_sound(7, klampon_lockjaw_bite)	;$B5DD3E   |
 	JSL queue_sound_effect			;$B5DD41   |
 CODE_B5DD45:					;	   |
 	LDA global_frame_counter		;$B5DD45   |
@@ -9727,9 +9727,9 @@ CODE_B5DE28:
 	CMP #$01D0				;$B5DE2A   |
 	BCC CODE_B5DE8D				;$B5DE2D   |
 	PHX					;$B5DE2F   |
-	LDA #$055B				;$B5DE30   |
+	%lda_sound(5, k_rool_splash_1)		;$B5DE30   |
 	JSL queue_sound_effect			;$B5DE33   |
-	LDA #$065C				;$B5DE37   |
+	%lda_sound(6, k_rool_splash_2)		;$B5DE37   |
 	JSL queue_sound_effect			;$B5DE3A   |
 	PLX					;$B5DE3E   |
 	INC $08FE				;$B5DE3F   |
@@ -9745,7 +9745,7 @@ CODE_B5DE51:
 	CMP #$0140				;$B5DE53   |
 	BCC CODE_B5DE8D				;$B5DE56   |
 	PHX					;$B5DE58   |
-	LDA #$055A				;$B5DE59   |
+	%lda_sound(5, k_rool_down)		;$B5DE59   |
 	JSL play_high_priority_sound		;$B5DE5C   |
 	PLX					;$B5DE60   |
 	INC $08FE				;$B5DE61   |
@@ -9760,7 +9760,7 @@ CODE_B5DE70:
 	CMP #$00C0				;$B5DE72   |
 	BCC CODE_B5DE8D				;$B5DE75   |
 	PHX					;$B5DE77   |
-	LDA #$055A				;$B5DE78   |
+	%lda_sound(5, k_rool_down)		;$B5DE78   |
 	JSL play_high_priority_sound		;$B5DE7B   |
 	PLX					;$B5DE7F   |
 	INC $08FE				;$B5DE80   |
@@ -13638,7 +13638,7 @@ CODE_B5F8A4:
 	PHX					;$B5F8A4  \
 	PHA					;$B5F8A5   |
 	REP #$10				;$B5F8A6   |
-	LDA #$0608				;$B5F8A8   |
+	%lda_sound(6, banana)			;$B5F8A8   |
 	JSL queue_sound_effect			;$B5F8AB   |
 	LDA.l $7FD734				;$B5F8AF   |
 	SEP #$09				;$B5F8B3   |
@@ -13726,7 +13726,7 @@ CODE_B5F945:					;	   |
 
 CODE_B5F94C:
 	STX $32					;$B5F94C  \
-	LDA #$0608				;$B5F94E   |
+	%lda_sound(6, banana)			;$B5F94E   |
 	JSL queue_sound_effect			;$B5F951   |
 	LDA #$003C				;$B5F955   |
 	STA $096F				;$B5F958   |

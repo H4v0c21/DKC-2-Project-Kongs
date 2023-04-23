@@ -872,7 +872,7 @@ CODE_B68A60:					;	   |
 	RTS					;$B68A60  /
 
 CODE_B68A61:
-	LDA #$0559				;$B68A61  \
+	%lda_sound(5, kudgel_hit)		;$B68A61  \
 	JSL queue_sound_effect			;$B68A64   |
 	STZ $0652				;$B68A68   |
 	LDX $0654				;$B68A6B   |
@@ -1019,7 +1019,7 @@ CODE_B68BBB:
 	STA alternate_sprite			;$B68BF7   |
 	LDA #$029D				;$B68BF9   |
 	JSL CODE_B9D09B				;$B68BFC   |
-	LDA #$077A				;$B68C00   |
+	%lda_sound(7, kudgel_defeat_airborne)	;$B68C00   |
 	JSL queue_sound_effect			;$B68C03   |
 	LDX current_sprite			;$B68C07   |
 	LDY $0656				;$B68C09   |
@@ -1049,9 +1049,9 @@ CODE_B68C27:
 	STA $000747				;$B68C3F   |
 	LDY #$017A				;$B68C43   |
 	JSL CODE_BB842C				;$B68C46   |
-	LDA #$055B				;$B68C4A   |
+	%lda_sound(5, k_rool_splash_1)		;$B68C4A   |
 	JSL queue_sound_effect			;$B68C4D   |
-	LDA #$065C				;$B68C51   |
+	%lda_sound(6, k_rool_splash_2)		;$B68C51   |
 	JSL queue_sound_effect			;$B68C54   |
 	LDX current_sprite			;$B68C58   |
 	LDY alternate_sprite			;$B68C5A   |
@@ -1869,7 +1869,7 @@ CODE_B69499:
 	RTL					;$B6949B  /
 
 CODE_B6949C:
-	LDA #$051A				;$B6949C  \
+	%lda_sound(5, barrel_blast)		;$B6949C  \
 	JSL queue_sound_effect			;$B6949F   |
 	LDY.w #DATA_FF1F8A			;$B694A3   |
 	JSL CODE_BB8432				;$B694A6   |
@@ -1904,7 +1904,7 @@ CODE_B694D1:					;	   |
 	RTS					;$B694F2  /
 
 CODE_B694F3:
-	LDA #$051A				;$B694F3  \
+	%lda_sound(5, barrel_blast)		;$B694F3  \
 	JSL queue_sound_effect			;$B694F6   |
 	LDY.w #DATA_FF1F8A			;$B694FA   |
 	JSL CODE_BB8432				;$B694FD   |
@@ -1958,7 +1958,7 @@ CODE_B69570:					;	   |
 	BRA CODE_B695AC				;$B69570  /
 
 CODE_B69572:
-	LDA #$051A				;$B69572  \
+	%lda_sound(5, barrel_blast)		;$B69572  \
 	JSL queue_sound_effect			;$B69575   |
 	LDY.w #DATA_FF1F8A			;$B69579   |
 	JSL CODE_BB8432				;$B6957C   |
@@ -2012,7 +2012,7 @@ CODE_B695ED:
 	JSR CODE_B69687				;$B695F6   |
 	BCC CODE_B69610				;$B695F9   |
 CODE_B695FB:					;	   |
-	LDA #$051A				;$B695FB   |
+	%lda_sound(5, barrel_blast)		;$B695FB   |
 	JSL queue_sound_effect			;$B695FE   |
 	LDY #$0186				;$B69602   |
 	JSL CODE_BB842C				;$B69605   |
@@ -2075,7 +2075,7 @@ CODE_B69687:
 	BNE CODE_B696B3				;$B6968B   |
 	LDY #$0184				;$B6968D   |
 	JSL CODE_BB842C				;$B69690   |
-	LDA #$051A				;$B69694   |
+	%lda_sound(5, barrel_blast)		;$B69694   |
 	JSL queue_sound_effect			;$B69697   |
 	LDY alternate_sprite			;$B6969B   |
 	STY $0735				;$B6969D   |
@@ -2102,7 +2102,7 @@ CODE_B696B5:
 	JSR CODE_B69687				;$B696BE   |
 	BCC CODE_B696D8				;$B696C1   |
 CODE_B696C3:					;	   |
-	LDA #$051A				;$B696C3   |
+	%lda_sound(5, barrel_blast)		;$B696C3   |
 	JSL queue_sound_effect			;$B696C6   |
 	LDY #$0186				;$B696CA   |
 	JSL CODE_BB842C				;$B696CD   |
@@ -2162,7 +2162,7 @@ CODE_B69747:
 	JSR CODE_B69687				;$B69750   |
 	BCC CODE_B6976A				;$B69753   |
 CODE_B69755:					;	   |
-	LDA #$051A				;$B69755   |
+	%lda_sound(5, barrel_blast)		;$B69755   |
 	JSL queue_sound_effect			;$B69758   |
 	LDY #$0186				;$B6975C   |
 	JSL CODE_BB842C				;$B6975F   |
@@ -2229,7 +2229,7 @@ CODE_B697AF:					;	   |
 	RTS					;$B697FB  /
 
 CODE_B697FC:
-	LDA #$051A				;$B697FC  \
+	%lda_sound(5, barrel_blast)		;$B697FC  \
 	JSL queue_sound_effect			;$B697FF   |
 	LDY #$0182				;$B69803   |
 	JSL CODE_BB842C				;$B69806   |
@@ -2281,7 +2281,7 @@ CODE_B6983F:					;	   |
 	RTS					;$B69876  /
 
 CODE_B69877:
-	LDA #$051A				;$B69877  \
+	%lda_sound(5, barrel_blast)		;$B69877  \
 	JSL queue_sound_effect			;$B6987A   |
 	LDY #$017E				;$B6987E   |
 	JSL CODE_BB842C				;$B69881   |
@@ -2345,7 +2345,7 @@ CODE_B698CA:					;	   |
 	RTS					;$B69916  /
 
 CODE_B69917:
-	LDA #$051A				;$B69917  \
+	%lda_sound(5, barrel_blast)		;$B69917  \
 	JSL queue_sound_effect			;$B6991A   |
 	LDY #$0186				;$B6991E   |
 	JSL CODE_BB842C				;$B69921   |
@@ -2402,7 +2402,7 @@ CODE_B6995A:					;	   |
 	PLB					;$B699A6   |
 	RTS					;$B699A7  /
 
-	LDA #$051A				;$B699A8   |
+	%lda_sound(5, barrel_blast)		;$B699A8   |
 	JSL queue_sound_effect			;$B699AB   |
 	LDY #$017E				;$B699AF   |
 	JSL CODE_BB842C				;$B699B2   |
@@ -2550,7 +2550,7 @@ CODE_B69AE8:					;	   |
 	CMP #$0264				;$B69AE8   |
 	BNE CODE_B69B1B				;$B69AEB   |
 if !version == 0				;	   |
-	LDA #$056B				;$B69AED   |
+	%lda_sound(5, kleever_hit)		;$B69AED   |
 	JSL queue_sound_effect			;$B69AF0   |
 	JSR CODE_B6800D				;$B69AF4   |
 	LDY $0654				;$B69AF7   |
@@ -2562,7 +2562,7 @@ else						;	   |
 	LDA $001C,y				;$B69AF0   |
 	AND #$C000				;$B69AF3   |
 	BNE CODE_B69B16				;$B69AF6   |
-	LDA #$056B				;$B69AF8   |
+	%lda_sound(5, kleever_hit)		;$B69AF8   |
 	JSL queue_sound_effect			;$B69AFB   |
 	JSR CODE_B6800D				;$B69AFF   |
 endif						;	   |
@@ -2661,7 +2661,7 @@ CODE_B69B9E:					;	   |
 CODE_B69BB7:
 	CMP #$0001				;$B69BB7  \
 	BNE CODE_B69BC5				;$B69BBA   |
-	LDA #$056B				;$B69BBC   |
+	%lda_sound(5, kleever_hit)		;$B69BBC   |
 	JSL queue_sound_effect			;$B69BBF   |
 	LDX current_sprite			;$B69BC3   |
 CODE_B69BC5:					;	   |
@@ -2810,7 +2810,7 @@ CODE_B69CBD:					;	   |
 CODE_B69CD4:
 	LDA.l $00072D				;$B69CD4  \
 	BNE CODE_B69CEC				;$B69CD8   |
-	LDA #$056B				;$B69CDA   |
+	%lda_sound(5, kleever_hit)		;$B69CDA   |
 	JSL queue_sound_effect			;$B69CDD   |
 	JSR CODE_B6800D				;$B69CE1   |
 	LDX current_sprite			;$B69CE4   |
@@ -2822,7 +2822,7 @@ CODE_B69CEC:
 	BRL CODE_B69C24				;$B69CEF  /
 
 CODE_B69CF2:
-	LDA #$0768				;$B69CF2  \
+	%lda_sound(7, kleever_defeat_spin)	;$B69CF2  \
 	JSL queue_sound_effect			;$B69CF5   |
 	LDY $073B				;$B69CF9   |
 	BEQ CODE_B69D0E				;$B69CFC   |
@@ -2902,7 +2902,7 @@ CODE_B69D96:
 	STA $000751				;$B69DAF   |
 	LDA #DATA_B68AFB			;$B69DB3   |
 	STA $000753				;$B69DB6   |
-	LDA #$055A				;$B69DBA   |
+	%lda_sound(5, k_rool_down)		;$B69DBA   |
 	JSL queue_sound_effect			;$B69DBD   |
 	RTL					;$B69DC1  /
 
@@ -2944,7 +2944,7 @@ CODE_B69DC2:
 	LDA $12,x				;$B69E21   |
 	EOR #$1000				;$B69E23   |
 	STA $12,x				;$B69E26   |
-	LDA #$077A				;$B69E28   |
+	%lda_sound(7, kudgel_defeat_airborne)	;$B69E28   |
 	JSL queue_sound_effect			;$B69E2B   |
 CODE_B69E2F:					;	   |
 	JSR CODE_B68D5D				;$B69E2F   |
@@ -3244,7 +3244,7 @@ CODE_B6A076:					;	   |
 	CMP #$0264				;$B6A076   |
 	BNE CODE_B6A09D				;$B6A079   |
 if !version == 0				;	   |
-	LDA #$056B				;$B6A07B   |
+	%lda_sound(5, k_rool_ammo_bounce)	;$B6A07B   |	Sound: K. Rool's body deflects cannonball
 	JSL queue_sound_effect			;$B6A07E   |
 	JSR CODE_B6800D				;$B6A082   |
 	LDY $0654				;$B6A085   |
@@ -3256,7 +3256,7 @@ else						;	   |
 	LDA $001C,y				;$B6A07E   |
 	AND #$C000				;$B6A081   |
 	BNE CODE_B6A098				;$B6A084   |
-	LDA #$056B				;$B6A086   |
+	%lda_sound(5, k_rool_ammo_bounce)	;$B6A086   |	Sound: K. Rool's body deflects cannonball
 	JSL queue_sound_effect			;$B6A089   |
 	JSR CODE_B6800D				;$B6A08D   |
 endif						;	   |
@@ -3337,7 +3337,7 @@ CODE_B6A109:					;	   |
 CODE_B6A122:
 	CMP #$0001				;$B6A122  \
 	BNE CODE_B6A130				;$B6A125   |
-	LDA #$056B				;$B6A127   |
+	%lda_sound(5, k_rool_ammo_bounce)	;$B6A127   |	Sound: Cannonball hitting ground after broken free from barrel (K. Rool battles)
 	JSL queue_sound_effect			;$B6A12A   |
 	LDX current_sprite			;$B6A12E   |
 CODE_B6A130:					;	   |
@@ -3528,7 +3528,7 @@ CODE_B6A2A5:
 	LDA $0A,x				;$B6A2A5  \
 	CMP #$01C1				;$B6A2A7   |
 	BCC CODE_B6A2BD				;$B6A2AA   |
-	LDA #$056B				;$B6A2AC   |
+	%lda_sound(5, k_rool_ammo_bounce)	;$B6A2AC   |	Sound: Bouncing projectile shot out of gun (K. Rool)
 	JSL queue_sound_effect			;$B6A2AF   |
 	LDX current_sprite			;$B6A2B3   |
 	LDA $46,x				;$B6A2B5   |
@@ -3771,7 +3771,7 @@ CODE_B6A3A1:
 CODE_B6A3B0:
 	LDA.l $00072D				;$B6A3B0  \
 	BNE CODE_B6A3C8				;$B6A3B4   |
-	LDA #$056B				;$B6A3B6   |
+	%lda_sound(5, k_rool_ammo_bounce)	;$B6A3B6   |	Sound: K. Rool's gun deflects cannonball
 	JSL queue_sound_effect			;$B6A3B9   |
 	JSR CODE_B6800D				;$B6A3BD   |
 	LDX current_sprite			;$B6A3C0   |
@@ -4219,9 +4219,9 @@ CODE_B6A739:
 	CMP #$0100				;$B6A742   |
 	BCS CODE_B6A77E				;$B6A745   |
 	PHX					;$B6A747   |
-	LDA #$0615				;$B6A748   |
+	%lda_sound(6, explosion)		;$B6A748   |
 	JSL queue_sound_effect			;$B6A74B   |
-	LDA #$0719				;$B6A74F   |
+	%lda_sound(7, wall_break)		;$B6A74F   |
 	JSL queue_sound_effect			;$B6A752   |
 	LDA.l $000656				;$B6A756   |
 	STA current_sprite			;$B6A75A   |
@@ -4348,7 +4348,7 @@ CODE_B6A877:
 	JML [$05A9]				;$B6A88F  /
 
 CODE_B6A892:
-	LDA #$0774				;$B6A892  \
+	%lda_sound(7, k_rool_gun_backfire)	;$B6A892  \
 	JSL queue_sound_effect			;$B6A895   |
 	LDY #$016E				;$B6A899   |
 	JSL CODE_BB842C				;$B6A89C   |
@@ -4871,7 +4871,7 @@ CODE_B6AD0D:
 	RTL					;$B6AD28  /
 
 CODE_B6AD29:
-	LDA #$0774				;$B6AD29  \
+	%lda_sound(7, k_rool_gun_backfire)	;$B6AD29  \
 	JSL queue_sound_effect			;$B6AD2C   |
 	LDX #DATA_B6D14B			;$B6AD30   |
 	LDA $0000,x				;$B6AD33   |
@@ -5642,7 +5642,7 @@ CODE_B6B7C8:
 	JSR CODE_B6C28F				;$B6B7CB   |
 	LDA #$027F				;$B6B7CE   |
 	JSL CODE_B9D09B				;$B6B7D1   |
-	LDA #$0774				;$B6B7D5   |
+	%lda_sound(7, k_rool_gun_backfire)	;$B6B7D5   |	Sound: K. Rool's gun backfires when shooting fish (Krocodile Kore)
 	JSL queue_sound_effect			;$B6B7D8   |
 	LDA #$0266				;$B6B7DC   |
 	JSL set_sprite_animation		;$B6B7DF   |
@@ -5743,7 +5743,7 @@ CODE_B6B8BD:
 	PHY					;$B6B8BF   |
 	LDA #$0250				;$B6B8C0   |
 	JSL set_sprite_animation		;$B6B8C3   |
-	LDA #$051A				;$B6B8C7   |
+	%lda_sound(5, barrel_blast)		;$B6B8C7   |
 	JSL queue_sound_effect			;$B6B8CA   |
 	LDA.l $000656				;$B6B8CE   |
 	STA alternate_sprite			;$B6B8D2   |
@@ -5923,7 +5923,7 @@ CODE_B6BA4A:					;	   |
 	LDA $0A,x				;$B6BA58   |
 	CMP #$0225				;$B6BA5A   |
 	BCC CODE_B6BA93				;$B6BA5D   |
-	LDA #$056D				;$B6BA5F   |
+	%lda_sound(5, kudgel_land)		;$B6BA5F   |	Sound: Kudgel landing after smaller jump
 	JSL queue_sound_effect			;$B6BA62   |
 	LDX current_sprite			;$B6BA66   |
 	STZ $44,x				;$B6BA68   |
@@ -6045,7 +6045,7 @@ CODE_B6BB36:					;	   |
 	STZ $44,x				;$B6BB4B   |
 	LDA #$0290				;$B6BB4D   |
 	JSL set_sprite_animation		;$B6BB50   |
-	LDA #$056D				;$B6BB54   |
+	%lda_sound(5, kudgel_land)		;$B6BB54   |	Sound: Kudgel stamping ground when spawning a TNT Barrel
 	JSL queue_sound_effect			;$B6BB57   |
 	LDA.l $000656				;$B6BB5B   |
 	STA alternate_sprite			;$B6BB5F   |
@@ -6238,7 +6238,7 @@ CODE_B6BCCF:
 CODE_B6BCDD:
 	LDX current_sprite			;$B6BCDD  \
 	JSR CODE_B6BBAA				;$B6BCDF   |
-	LDA #$0565				;$B6BCE2   |
+	%lda_sound(5, egg_kudgel_fall)		;$B6BCE2   |	Sound: Kudgel dropping in from top of screen
 	JSL queue_sound_effect			;$B6BCE5   |
 CODE_B6BCE9:					;	   |
 	LDA.l $000749				;$B6BCE9   |
@@ -6249,7 +6249,7 @@ CODE_B6BCE9:					;	   |
 	CMP #$0225				;$B6BCF9   |
 	BCC CODE_B6BD32				;$B6BCFC   |
 	STZ $44,x				;$B6BCFE   |
-	LDA #$056D				;$B6BD00   |
+	%lda_sound(5, kudgel_land)		;$B6BD00   |	Sound: Kudgel landing after dropping in from top of screen
 	JSL queue_sound_effect			;$B6BD03   |
 	LDX current_sprite			;$B6BD07   |
 	LDA $2E,x				;$B6BD09   |
@@ -7307,7 +7307,7 @@ CODE_B6C543:					;	   |
 	LDA $2E,x				;$B6C57B   |
 	AND #$DFFF				;$B6C57D   |
 	STA $2E,x				;$B6C580   |
-	LDA #$0566				;$B6C582   |
+	%lda_sound(5, hooks_appear)		;$B6C582   |	Sound: Hooks appear, Kreepy Krow
 	JSL queue_sound_effect			;$B6C585   |
 	LDX current_sprite			;$B6C589   |
 	PLY					;$B6C58B   |
@@ -7426,7 +7426,7 @@ CODE_B6C64F:
 CODE_B6C657:
 	PHY					;$B6C657  \
 	PHX					;$B6C658   |
-	LDA #$0402				;$B6C659   |
+	%lda_sound(4, knock)			;$B6C659   |
 	JSL queue_sound_effect			;$B6C65C   |
 	LDY #$0016				;$B6C660   |
 	JSL CODE_BB842C				;$B6C663   |
@@ -7682,7 +7682,7 @@ CODE_B6C7FF:
 
 CODE_B6C816:
 	PHY					;$B6C816  \
-	LDA #$0564				;$B6C817   |
+	%lda_sound(5, krow_grab_egg)		;$B6C817   |
 	JSL queue_sound_effect			;$B6C81A   |
 	LDY #$00A2				;$B6C81E   |
 	JSL CODE_BB842C				;$B6C821   |
@@ -7705,7 +7705,7 @@ CODE_B6C816:
 
 CODE_B6C848:
 	PHY					;$B6C848  \
-	LDA #$0565				;$B6C849   |
+	%lda_sound(5, egg_kudgel_fall)		;$B6C849   |
 	JSL queue_sound_effect			;$B6C84C   |
 	SEP #$20				;$B6C850   |
 	PHK					;$B6C852   |
@@ -9894,7 +9894,7 @@ CODE_B6D9DD:
 	LDA #$0001				;$B6D9FF   |
 	STA $0006DB				;$B6DA02   |
 	STA $0006DD				;$B6DA06   |
-	LDA #$0769				;$B6DA0A   |
+	%lda_sound(7, lava_bubble_1)		;$B6DA0A   |	Kleever emerging at beginning of battle
 	JSL queue_sound_effect			;$B6DA0D   |
 CODE_B6DA11:					;	   |
 	RTS					;$B6DA11  /
@@ -10296,7 +10296,7 @@ CODE_B6DCB8:
 	BEQ CODE_B6DCBF				;$B6DCBA   |
 	JSR CODE_B6DB52				;$B6DCBC   |
 CODE_B6DCBF:					;	   |
-	LDA #$0768				;$B6DCBF   |
+	%lda_sound(7, kleever_defeat_spin)	;$B6DCBF   |
 	JSL queue_sound_effect			;$B6DCC2   |
 	LDA.l $0006A3				;$B6DCC6   |
 	ORA #$0010				;$B6DCCA   |
@@ -10493,7 +10493,7 @@ CODE_B6DE34:
 	LDA #$066C				;$B6DE3A   |
 	CLC					;$B6DE3D   |
 	JSL CODE_B3814F				;$B6DE3E   |
-	LDA #$0679				;$B6DE42   |
+	%lda_sound(6, kleever_fireball_2)	;$B6DE42   |
 	JSL queue_sound_effect			;$B6DE45   |
 	BRL CODE_B6DF9C				;$B6DE49  /
 
@@ -10662,7 +10662,7 @@ CODE_B6DF5C:					;	   |
 	LDA #$066C				;$B6DF5C   |
 	CLC					;$B6DF5F   |
 	JSL CODE_B3814F				;$B6DF60   |
-	LDA #$0679				;$B6DF64   |
+	%lda_sound(6, kleever_fireball_2)	;$B6DF64   |
 	JSL queue_sound_effect			;$B6DF67   |
 	LDY.w #DATA_FF1528			;$B6DF6B   |
 	JSL CODE_BB8432				;$B6DF6E   |
@@ -10888,7 +10888,7 @@ CODE_B6E149:
 	LDA $0A,x				;$B6E14B   |
 	CMP $46,x				;$B6E14D   |
 	BCC CODE_B6E178				;$B6E14F   |
-	LDA #$0566				;$B6E151   |
+	%lda_sound(5, hooks_appear)		;$B6E151   |	Hooks spawning, Kleever battle
 	JSL queue_sound_effect			;$B6E154   |
 	LDX current_sprite			;$B6E158   |
 	LDA $46,x				;$B6E15A   |
@@ -11034,7 +11034,7 @@ CODE_B6E275:
 	LDA #$0211				;$B6E287   |
 	JSL set_sprite_animation		;$B6E28A   |
 CODE_B6E28E:					;	   |
-	LDA #$066B				;$B6E28E   |
+	%lda_sound(6, kleever_hit)		;$B6E28E   |
 	JSL queue_sound_effect			;$B6E291   |
 	PLX					;$B6E295   |
 	STX current_sprite			;$B6E296   |
@@ -11298,7 +11298,7 @@ CODE_B6E4CF:
 	JSL CODE_BB82B8				;$B6E4EE   |
 	LDY #$0152				;$B6E4F2   |
 	JSL CODE_BB842C				;$B6E4F5   |
-	LDA #$077E				;$B6E4F9   |
+	%lda_sound(7, lava_bubble_4)		;$B6E4F9   |	Bubbling sound that accompanies lava splash
 	JSL queue_sound_effect			;$B6E4FC   |
 CODE_B6E500:					;	   |
 	PLB					;$B6E500   |
@@ -11775,7 +11775,7 @@ CODE_B6E85D:					;	   |
 	JSL CODE_BB842C				;$B6E8B2   |
 	LDY #$0156				;$B6E8B6   |
 	JSL CODE_BB842C				;$B6E8B9   |
-	LDA #$051E				;$B6E8BD   |
+	%lda_sound(5, blade_swing)		;$B6E8BD   |
 	JSL queue_sound_effect			;$B6E8C0   |
 CODE_B6E8C4:					;	   |
 	RTS					;$B6E8C4  /
@@ -11849,7 +11849,7 @@ CODE_B6E994:
 	LDA #$FE00				;$B6E9A1   |
 	STA $24,x				;$B6E9A4   |
 	INC $2E,x				;$B6E9A6   |
-	LDA #$064C				;$B6E9A8   |
+	%lda_sound(6, cannonball_drop)		;$B6E9A8   |
 	JSL queue_sound_effect			;$B6E9AB   |
 CODE_B6E9AF:					;	   |
 	JSL CODE_B9D100				;$B6E9AF   |
@@ -11862,7 +11862,7 @@ CODE_B6E9B6:
 	BIT #$0001				;$B6E9BE   |
 	BEQ CODE_B6E9CC				;$B6E9C1   |
 	INC $2E,x				;$B6E9C3   |
-	LDA #$064C				;$B6E9C5   |
+	%lda_sound(6, cannonball_drop)		;$B6E9C5   |
 	JSL queue_sound_effect			;$B6E9C8   |
 CODE_B6E9CC:					;	   |
 	JSL CODE_B9D100				;$B6E9CC   |
@@ -11931,7 +11931,7 @@ CODE_B6EA11:					;	   |
 	JSL CODE_BB842C				;$B6EA56   |
 	LDY #$0156				;$B6EA5A   |
 	JSL CODE_BB842C				;$B6EA5D   |
-	LDA #$076A				;$B6EA61   |
+	%lda_sound(7, lava_bubble_2)		;$B6EA61   |	Kleever sinking into lava at end of battle
 	JSL queue_sound_effect			;$B6EA64   |
 	LDX current_sprite			;$B6EA68   |
 	STZ $0A,x				;$B6EA6A   |
@@ -12019,14 +12019,14 @@ CODE_B6EAE2:
 	BCC CODE_B6EB17				;$B6EB07   |
 CODE_B6EB09:					;	   |
 	INC $48,x				;$B6EB09   |
-	LDA #$0567				;$B6EB0B   |
+	%lda_sound(5, debris_fall)		;$B6EB0B   |
 	JSL queue_sound_effect			;$B6EB0E   |
 	LDX current_sprite			;$B6EB12   |
 	BRL CODE_B6EBAC				;$B6EB14  /
 
 CODE_B6EB17:
 	STA $24,x				;$B6EB17  \
-	LDA #$0567				;$B6EB19   |
+	%lda_sound(5, debris_fall)		;$B6EB19   |
 	JSL queue_sound_effect			;$B6EB1C   |
 	LDX current_sprite			;$B6EB20   |
 	LDA #$0287				;$B6EB22   |
@@ -12051,7 +12051,7 @@ CODE_B6EB27:					;	   |
 	CMP #$FFC0				;$B6EB4C   |
 	BCC CODE_B6EB5C				;$B6EB4F   |
 	INC $48,x				;$B6EB51   |
-	LDA #$0567				;$B6EB53   |
+	%lda_sound(5, debris_fall)		;$B6EB53   |
 	JSL queue_sound_effect			;$B6EB56   |
 	BRA CODE_B6EBAC				;$B6EB5A  /
 
@@ -12113,14 +12113,14 @@ CODE_B6EBAF:
 	BCC CODE_B6EBDB				;$B6EBCC   |
 CODE_B6EBCE:					;	   |
 	INC $48,x				;$B6EBCE   |
-	LDA #$0567				;$B6EBD0   |
+	%lda_sound(5, debris_fall)		;$B6EBD0   |	Sound made by piece of the Flying Krock's roof falling (K. Rool Duel)
 	JSL queue_sound_effect			;$B6EBD3   |
 	LDX current_sprite			;$B6EBD7   |
 	BRA CODE_B6EC07				;$B6EBD9  /
 
 CODE_B6EBDB:
 	STA $24,x				;$B6EBDB  \
-	LDA #$0567				;$B6EBDD   |
+	%lda_sound(5, debris_fall)		;$B6EBDD   |	Sound made by piece of the Flying Krock's roof falling (K. Rool Duel)
 	JSL queue_sound_effect			;$B6EBE0   |
 	LDX current_sprite			;$B6EBE4   |
 CODE_B6EBE6:					;	   |
@@ -12302,7 +12302,7 @@ CODE_B6ED54:
 	STX current_sprite			;$B6ED7C   |
 	LDA #$0006				;$B6ED7E   |
 	JSR CODE_B6F266				;$B6ED81   |
-	LDA #$041A				;$B6ED84   |
+	%lda_sound(4, barrel_blast)		;$B6ED84   |
 	JSL queue_sound_effect			;$B6ED87   |
 CODE_B6ED8B:					;	   |
 	JSL CODE_BB82B8				;$B6ED8B   |
@@ -12545,7 +12545,7 @@ CODE_B6EF3E:
 CODE_B6EF48:
 	PHX					;$B6EF48  \
 	PHY					;$B6EF49   |
-	LDA #$0502				;$B6EF4A   |
+	%lda_sound(5, knock)			;$B6EF4A   |
 	JSL queue_sound_effect			;$B6EF4D   |
 	PLY					;$B6EF51   |
 	PLX					;$B6EF52   |
@@ -12713,7 +12713,7 @@ CODE_B6F09A:
 	LDA #$0002				;$B6F09A  \
 CODE_B6F09D:					;	   |
 	JSR CODE_B6F266				;$B6F09D   |
-	LDA #$041A				;$B6F0A0   |
+	%lda_sound(4, barrel_blast)		;$B6F0A0   |
 	JSL queue_sound_effect			;$B6F0A3   |
 	JSL CODE_BB82B8				;$B6F0A7   |
 	LDA $2E,x				;$B6F0AB   |
@@ -12808,7 +12808,7 @@ CODE_B6F12C:					;	   |
 	STX current_sprite			;$B6F16B   |
 	LDA #$0006				;$B6F16D   |
 	JSR CODE_B6F266				;$B6F170   |
-	LDA #$041A				;$B6F173   |
+	%lda_sound(4, barrel_blast)		;$B6F173   |
 	JSL queue_sound_effect			;$B6F176   |
 	JSL CODE_BB82B8				;$B6F17A   |
 	JSR CODE_B6FEA2				;$B6F17E   |
@@ -13056,7 +13056,7 @@ CODE_B6F34A:
 	TRB $06A1				;$B6F35E   |
 	LDY #$00A2				;$B6F361   |
 	JSL CODE_BB842C				;$B6F364   |
-	LDA #$0565				;$B6F368   |
+	%lda_sound(5, egg_kudgel_fall)		;$B6F368   |
 	JSL queue_sound_effect			;$B6F36B   |
 	JSL CODE_B4C175				;$B6F36F   |
 	STA $000650				;$B6F373   |
@@ -13462,7 +13462,7 @@ CODE_B6F6A6:
 	LDA #$FFFC				;$B6F6C8   |
 	STA $0C,x				;$B6F6CB   |
 	PHX					;$B6F6CD   |
-	LDA #$0402				;$B6F6CE   |
+	%lda_sound(4, knock)			;$B6F6CE   |
 	JSL queue_sound_effect			;$B6F6D1   |
 	PLX					;$B6F6D5   |
 	BRA CODE_B6F6EA				;$B6F6D6  /
@@ -13472,7 +13472,7 @@ CODE_B6F6D8:
 	ORA #$0800				;$B6F6DA   |
 	STA $2E,x				;$B6F6DD   |
 	PHX					;$B6F6DF   |
-	LDA #$0402				;$B6F6E0   |
+	%lda_sound(4, knock)			;$B6F6E0   |
 	JSL queue_sound_effect			;$B6F6E3   |
 	PLX					;$B6F6E7   |
 	BRA CODE_B6F70A				;$B6F6E8  /

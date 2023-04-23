@@ -1,13 +1,13 @@
 ;Sound Effects: Roller Coaster, Haunted
 ;32F12F
 roller_coaster_sfx_data:
-	dw $2E94, $00E1
+	dw !dyn_snd_loc, $00E1
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $2E94, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !dyn_snd_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $2E94
+base !dyn_snd_loc
 	dw (.pointers_end-.pointers_start)>>1	;quantity of sound effects (default $000F)
 ;sound effect pointers
 .pointers_start:

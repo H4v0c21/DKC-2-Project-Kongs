@@ -1,13 +1,13 @@
 ;1B Primal Rave
 ;32AB97
 jungle_song_data:
-	dw $1300, $079C
+	dw !bgm_loc, $079C
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_19F5, .seq_1B38, .seq_1CA4, .seq_2131, .seq_2004, .seq_1D6C, .seq_1EC9, .seq_21A6

@@ -1,13 +1,13 @@
 ;07 Kannon's Klaim
 ;2E6007
 mine_song_data:
-	dw $1300, $079E
+	dw !bgm_loc, $079E
 ;If modifying this file, comment out the line above and uncomment the line below
-;	dw $1300, ((.end-.start)+((.end-.start)&$0001))>>1
+;	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
 
 .start:
 arch spc700
-base $1300
+base !bgm_loc
 ;sub-track 00 channel pointers
 .chn_ptrs_1300:
 	dw .seq_1971, .seq_1AE0, .seq_1CE2, .seq_1F47, .seq_1DDA, .seq_2010, .seq_20C0, .seq_2178
