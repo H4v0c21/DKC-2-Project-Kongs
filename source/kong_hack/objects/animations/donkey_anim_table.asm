@@ -71,7 +71,7 @@
 	dw donkey_level_end_run : db $00, $00
 	dw DONKEY_ANIM_47 : db $00, $00
 	dw DONKEY_ANIM_48 : db $00, $00
-	dw diddy_swap_to : db $00, $00
+	dw kong_swap_animation : db $00, $00
 	dw donkey_swap_idle : db $00, $00
 	dw donkey_barrel_cannon_air : db $00, $00
 	dw donkey_krockhead_bounce : db $00, $00

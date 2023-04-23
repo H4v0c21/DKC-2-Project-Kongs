@@ -1360,6 +1360,14 @@ CODE_BEC1C2:
 	BRL CODE_BEC4F2				;$BEC1CA  /
 
 CODE_BEC1CD:
+;START OF PATCH (no click clack knockback for big kongs)
+	LDA $08A4
+	AND #$0002
+	BEQ .not_big
+	LDA #$001B
+	BRL CODE_BEC52D
+.not_big:
+;END OF PATCH
 	LDA #$001E				;$BEC1CD  \
 	BRL CODE_BEC52D				;$BEC1D0  /
 

@@ -5673,6 +5673,178 @@ CUST_CODE_B9F107:
 	RTS
 ;END OF PATCH
 
+kong_swap_animation_table:
+	dw !null_pointer
+	dw dixie_swap_to_diddy_animation
+	dw donkey_swap_to_diddy_animation
+	dw kiddy_swap_to_diddy_animation
+
+	dw diddy_swap_to_dixie_animation
+	dw !null_pointer
+	dw donkey_swap_to_dixie_animation
+	dw kiddy_swap_to_dixie_animation
+	
+	dw diddy_swap_to_donkey_animation
+	dw dixie_swap_to_donkey_animation
+	dw !null_pointer
+	dw kiddy_swap_to_donkey_animation
+	
+	dw diddy_swap_to_kiddy_animation
+	dw dixie_swap_to_kiddy_animation
+	dw donkey_swap_to_kiddy_animation
+	dw !null_pointer
+
+kong_swap_animation_update:
+	LDA kong_status
+	AND #$00FF
+	ASL
+	ASL
+	ASL
+	STA $32
+	LDA kong_status
+	XBA
+	AND #$00FF
+	ASL
+	ADC $32
+	TAX
+	LDA kong_swap_animation_table,x
+	LDX current_sprite
+	STA $3C,x
+	RTS
+
+;set_dkc1_swap_velocity:
+;	LDA $0D66				;$B9E198  \
+;	SEC					;$B9E19B   |
+;	SBC $06,x				;$B9E19C   |
+;	JSR .check_facing			;$B9E19E   |
+;	STA $20,x				;$B9E1A1   |
+;	LDA $0D6A				;$B9E1A3   |
+;	SEC					;$B9E1A6   |
+;	SBC $0A,x				;$B9E1A7   |
+;	JSR .check_facing			;$B9E1A9   |
+;	STA $24,x				;$B9E1AC   |
+;	LDA #$004B				;$B9E1AE   |
+;	STA $2E,x				;$B9E1B1   |
+;	RTS					;$B9E1B3  /
+
+.check_facing:
+	BPL .calculate_velocity			;$B9E1B4  \
+	EOR #$FFFF				;$B9E1B6   |
+	INC A					;$B9E1B9   |
+	JSR .calculate_velocity			;$B9E1BA   |
+	EOR #$FFFF				;$B9E1BD   |
+	INC A					;$B9E1C0   |
+	RTS					;$B9E1C1  /
+
+.calculate_velocity:
+	ASL A					;$B9E1C2  \
+	ASL A					;$B9E1C3   |
+	ASL A					;$B9E1C4   |
+	ASL A					;$B9E1C5   |
+	CMP #$0004				;$B9E1C6   |
+	BPL .return				;$B9E1C9   |
+	LDA #$0004				;$B9E1CB   |
+.return:					;	   |
+	RTS					;$B9E1CE  /
+
+dkc1_swap:
+	STZ $0D7A				;$B9E162  \
+	LDX $0597				;$B9E165   |
+	LDY $0593				;$B9E168   |
+	LDA $000A,y				;$B9E16B   |
+	SEC					;$B9E16E   |
+	SBC #$0008				;$B9E16F   |
+	STA $0A,x				;$B9E172   |
+	;LDA $0006,y				;$B9E174   |
+	;STA $06,x				;$B9E177   |
+	LDA #$FE80				;$B9E179   |
+	STA $24,x				;$B9E17C   |
+	STA $0024,y
+	LDA #$FE40				;$B9E17E   |
+	BIT $12,x				;$B9E181   |
+	BVC .not_flipped			;$B9E183   |
+	EOR #$FFFF				;$B9E185   |
+	INC A					;$B9E188   |
+.not_flipped:					;	   |
+	STA $20,x				;$B9E189   |
+	;LDA $0024,y
+	;STA $24,x
+	;LDA $0020,y
+	;EOR #$FFFF
+	;INC A
+	;STA $20,x
+	;EOR #$FFFF
+	;INC A
+	;STA $0020,y
+	LDA #$004D
+	STA $2E,x
+	;TXA
+	;TYX
+	;TAY
+	;JSR set_dkc1_swap_velocity
+	LDA kong_status
+	XBA
+	AND #$00FF
+	CLC
+	ADC #!dkc1_swap_air_anim_offset
+	JSL CODE_B9D01D
+	RTS
+
+dkc3_swap_a:
+	STZ $0D7A				;$B9E1E2  \
+	LDX $0597				;$B9E1E5   |
+	LDA $0A,x				;$B9E1E8   |
+	SEC					;$B9E1EA   |
+	SBC #$001D				;$B9E1EB   |
+	STA $0A,x				;$B9E1EE   |
+	LDA #$FD00				;$B9E1F0   |
+	STA $24,x				;$B9E1F3   |
+	LDA #$FF40				;$B9E1F5   |
+	BIT $12,x				;$B9E1F8   |
+	BVC .not_flipped			;$B9E1FA   |
+	EOR #$FFFF				;$B9E1FC   |
+	INC A					;$B9E1FF   |
+.not_flipped:					;	   |
+	STA $20,x				;$B9E200   |
+	LDA #$004D				;$B9E202   |
+	STA $2E,x				;$B9E205   |
+	LDA kong_status
+	XBA
+	AND #$00FF
+	CLC
+	ADC #!dkc3_swap_air_anim_offset
+	JSL CODE_B9D01D
+	RTS
+
+dkc3_swap_b:
+	STZ $0D7A
+	LDX $0597
+	LDY $0593
+;	LDA $0006,y
+;	STA $06,x
+;	LDA $0A,x				;$B9E1E8   |
+;	SEC					;$B9E1EA   |
+;	SBC #$001F				;$B9E1EB   |
+;	STA $0A,x				;$B9E1EE   |
+;	LDA #$FB00				;$B9E1F0   |
+;	STA $24,x				;$B9E1F3   |
+;	LDA #$FF40				;$B9E1F5   |
+;	BIT $12,x				;$B9E1F8   |
+;	BVC .not_flipped			;$B9E1FA   |
+;	EOR #$FFFF				;$B9E1FC   |
+;	INC A					;$B9E1FF   |
+;.not_flipped:					;	   |
+;	STA $20,x				;$B9E200   |
+	LDA #$004D				;$B9E202   |
+	STA $2E,x				;$B9E205   |
+	LDA kong_status
+	XBA
+	AND #$00FF
+	CLC
+	ADC #!dkc3_swap_air_anim_offset
+	JSL CODE_B9D01D
+	RTS
+
 ;;START OF PATCH (swap animations)
 ;;animation id defines
 ;	!diddy_swap_from_anim_id = !swap_animation_offset

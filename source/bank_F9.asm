@@ -73,7 +73,7 @@ DATA_F90000:
 	dw diddy_level_end_run : db $00, $00
 	dw DATA_F91309 : db $00, $00
 	dw DATA_F9130E : db $00, $00
-	dw diddy_swap_to : db $00, $00
+	dw kong_swap_animation : db $00, $00
 	dw diddy_swap_idle : db $00, $00
 	dw diddy_barrel_cannon_air : db $00, $00
 	dw diddy_krockhead_bounce : db $00, $00
@@ -241,7 +241,7 @@ endif
 	dw dixie_level_end_run : db $00, $00
 	dw DATA_F9372B : db $00, $00
 	dw DATA_F93730 : db $00, $00
-	dw dixie_swap_to : db $00, $00
+	dw kong_swap_animation : db $00, $00
 	dw dixie_swap_idle : db $00, $00
 	dw diddy_swap_air : db $00, $00
 	dw dixie_krockhead_bounce : db $00, $00
@@ -798,6 +798,7 @@ endif
 	incsrc "kong_hack/objects/animations/donkey_anim_table.asm"
 	incsrc "kong_hack/objects/animations/kiddy_anim_table.asm"
 	incsrc "kong_hack/objects/animations/teamup_anim_table.asm"
+	incsrc "kong_hack/objects/animations/swap_anim_table.asm"
 ;END OF PATCH
 
 diddy_idle:
@@ -4452,101 +4453,6 @@ dixie_swim_turn:
 
 DATA_F94668:
 	db $01 : dw $02C4
-	db !animation_command_80, $00
-
-diddy_swap_to:
-	db $02 : dw $2620
-	db $0C : dw $261C
-	db $02 : dw $2620
-	db $02 : dw $25F0
-	db $02 : dw $25F4
-	db !animation_command_8A, $02 : dw $25F8, $06D4, $001C, $0000
-	db !animation_command_8A, $02 : dw $25FC, $06D4, $001C, $0000
-	db !animation_command_8A, $02 : dw $2600, $265C, $001C, $0000
-	db !animation_command_8A, $02 : dw $2604, $2660, $001C, $0000
-	db !animation_command_8A, $02 : dw $2608, $2664, $001C, $0000
-	db !animation_command_8A, $02 : dw $260C, $2668, $001C, $0000
-	db !animation_command_8A, $02 : dw $2610, $266C, $001C, $0000
-	db !animation_command_8A, $02 : dw $2614, $2670, $001C, $0000
-	db !animation_command_8A, $02 : dw $2618, $2674, $001C, $0000
-	db !animation_command_8A, $02 : dw $2618, $2678, $001C, $0000
-	db !animation_command_8A, $02 : dw $2618, $267C, $001C, $0000
-	db !animation_command_8A, $02 : dw $2618, $2680, $001C, $0000
-	db !animation_command_81 : dw CODE_B9E162
-	db $01 : dw $2618
-	db $01 : dw $2614
-	db $01 : dw $2610
-	db $01 : dw $260C
-	db $01 : dw $2608
-	db $01 : dw $2604
-	db $01 : dw $2600
-	db $01 : dw $25FC
-	db $01 : dw $25F8
-	db $01 : dw $25F4
-	db $01 : dw $25F0
-	db !animation_command_81 : dw CODE_B9E198
-
-DATA_F9471B:
-	db $02 : dw $02C4
-	db $02 : dw $02C8
-	db $02 : dw $02CC
-	db $02 : dw $02D0
-	db $02 : dw $02D4
-	db $02 : dw $02D8
-	db $02 : dw $02DC
-	db $02 : dw $02E0
-	db $02 : dw $02E4
-	db $02 : dw $02E8
-	db $02 : dw $02EC
-	db $02 : dw $02F0
-	db $02 : dw $02F4
-	db !animation_command_82 : dw DATA_F9471B
-	db !animation_command_80, $00
-
-dixie_swap_to:
-	db !animation_command_89, $02 : dw $2624, $05DC
-	db !animation_command_89, $02 : dw $2628, $05DC
-	db !animation_command_89, $02 : dw $262C, $05E0
-	db !animation_command_89, $02 : dw $2630, $05E0
-	db !animation_command_89, $02 : dw $2634, $05E4
-	db !animation_command_89, $08 : dw $2638, $05E4
-	db !animation_command_89, $02 : dw $263C, $05E8
-	db !animation_command_89, $02 : dw $2640, $05E8
-	db !animation_command_89, $02 : dw $2644, $05EC
-	db !animation_command_89, $02 : dw $2648, $05EC
-	db !animation_command_81 : dw CODE_B9E1E2
-	db $0A : dw $264C
-	db $02 : dw $2650
-	db $02 : dw $2654
-	db $02 : dw $2658
-	db !animation_command_81 : dw CODE_B9E1CF
-
-DATA_F94795:
-	db $03 : dw $0378
-	db $03 : dw $037C
-	db $03 : dw $0380
-	db $03 : dw $0384
-	db $03 : dw $0388
-	db $03 : dw $038C
-	db $03 : dw $0390
-	db $03 : dw $0394
-	db $03 : dw $0398
-	db $03 : dw $039C
-	db $03 : dw $03A0
-	db $03 : dw $03A4
-	db $03 : dw $03A8
-	db $03 : dw $03AC
-	db $03 : dw $03B0
-	db $03 : dw $03B4
-	db !animation_command_82 : dw DATA_F94795
-	db !animation_command_80, $00
-
-diddy_swap_idle:
-	db $04 : dw $05DC
-	db !animation_command_80, $00
-
-dixie_swap_idle:
-	db $04 : dw $06D4
 	db !animation_command_80, $00
 
 rambi_attack:
@@ -11550,6 +11456,7 @@ kiddy_map:
 ;END OF PATCH
 
 incsrc "kong_hack/objects/animations/teamup_animations.asm"
+incsrc "kong_hack/objects/animations/swap_animations.asm"
 
 print "Animation Script End Address: ",pc
 padbyte $00

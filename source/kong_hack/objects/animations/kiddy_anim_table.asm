@@ -71,8 +71,8 @@
 	dw kiddy_level_end_run : db $00, $00
 	dw DATA_F91309 : db $00, $00
 	dw DATA_F9130E : db $00, $00
-	dw diddy_swap_to : db $00, $00
-	dw diddy_swap_idle : db $00, $00
+	dw kong_swap_animation : db $00, $00
+	dw kiddy_swap_idle : db $00, $00
 	dw kiddy_barrel_cannon_air : db $00, $00
 	dw kiddy_krockhead_bounce : db $00, $00
 	dw kiddy_carry_krockhead_bounce : db $00, $00

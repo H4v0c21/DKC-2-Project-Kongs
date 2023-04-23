@@ -1405,12 +1405,6 @@ donkey_swim_turn:
 	db !animation_command_81 : dw CODE_B9DB64		;394663
 	db !animation_command_80, $00		;394666
 
-;00ED donkey_swap_idle
-;DONKEY_ANIM_F947CF:
-donkey_swap_idle:
-	db $04 : dw $35C8		;3947CF
-	db !animation_command_80, $00		;3947D2
-
 ;0128 enguarde_donkey_mount
 ;DONKEY_ANIM_F93B38:
 enguarde_donkey_mount:

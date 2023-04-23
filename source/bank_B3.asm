@@ -2608,7 +2608,6 @@ kong_barrel_check_done:
 	BRA kong_barrel_swap_logic_done
 	
 a_more_than_b:
-
 	inactive_kong_alive_barrel_check_b:
 		LDA #$4000
 		BIT $08C2
@@ -2628,7 +2627,6 @@ a_more_than_b:
 		CMP $4C,x
 		BNE kong_barrel_check_done
 		JSR update_kong_barrel_number
-	
 		BRA kong_barrel_check_done
 
 ;END OF PATCH
@@ -2637,13 +2635,11 @@ dkbarrel_main:
 	LDX current_sprite			;$B39376  \
 
 ;START OF PATCH (update kong in dk barrel)
-	
 	JSL check_if_kong_is_animal
-	BCS kong_barrel_swap_logic_done
-	
+	BCS use_default_dk_barrel_palette
 	LDA $4E,x
 	BNE kong_dk_barrel_check_logic
-;END OF PATCH
+
 kong_barrel_swap_logic_done:
 	LDA $54,x				;$B39378   |
 	STA $8E					;$B3937A   |
@@ -2651,6 +2647,12 @@ kong_barrel_swap_logic_done:
 	ASL A					;$B3937E   |
 	TAX					;$B3937F   |
 	JMP (DATA_B39383,x)			;$B39380  /
+
+use_default_dk_barrel_palette:
+	LDA #$00D5				;use default barrel palette
+	JSL CODE_BB8C44
+	BRA kong_barrel_swap_logic_done
+;END OF PATCH
 
 DATA_B39383:
 	dw CODE_B39396
@@ -5366,16 +5368,19 @@ CODE_B3A76B:					;	   |
 	JSL CODE_B9D100				;$B3A76F   |
 	JMP CODE_B38000				;$B3A773  /
 
-CODE_B3A776:
 ;START OF PATCH (click clack 1 hit kill as big kongs)
-	;LDY $08A4				;load active kong variable
-	;CPY #$0002
-	;BCS CODE_B3A7AD
-;END OF PATCH
+click_clack_big_kong_stomp_check_long:
+	BRL click_clack_big_kong_stomp_check
 
+CODE_B3A776:
 	BEQ CODE_B3A7AD				;$B3A776  \
 	CMP #$0001				;$B3A778   |
 	BEQ CODE_B3A76B				;$B3A77B   |
+	
+	LDA $08A4				;load active kong variable
+	CMP #$0002
+	BCS click_clack_big_kong_stomp_check_long
+;END OF PATCH
 	%lda_sound(5, click_clack_hit)		;$B3A77D   |
 	JSL queue_sound_effect			;$B3A780   |	click clack stomp 1
 	LDX $6A					;$B3A784   |
@@ -5744,6 +5749,30 @@ CODE_B3AA6E:					;	   |
 	STA $26,x				;$B3AA70   |
 	STZ $20,x				;$B3AA72   |
 	STY $24,x				;$B3AA74   |
+	LDA #$0004				;$B3AA76   |
+	STA $52,x				;$B3AA79   |
+	STZ $30,x				;$B3AA7B   |
+	LDA #$0008				;$B3AA7D   |
+	STA $2E,x				;$B3AA80   |
+	LDA #$0164				;$B3AA82   |
+	JSR CODE_B3A627				;$B3AA85   |
+	%lda_sound(5, click_clack_hit)		;$B3AA88   |
+	JSL queue_sound_effect			;$B3AA8B   |	click clack stomp 2
+	JMP CODE_B38000				;$B3AA8F  /
+
+click_clack_big_kong_stomp_check:
+	LDX $0593				;$B3AA64  \
+	BIT $12,x				;$B3AA66   |
+	BVC .not_flipped			;$B3AA68   |
+	EOR #$FFFF				;$B3AA6A   |
+	INC A					;$B3AA6D   |
+.not_flipped:					;	   |
+	LDX current_sprite			;$B3AA6E   |
+	LDA #$FF00
+	STA $26,x				;$B3AA70   |
+	STZ $20,x				;$B3AA72   |
+	LDA #$FA00	
+	STA $24,x
 	LDA #$0004				;$B3AA76   |
 	STA $52,x				;$B3AA79   |
 	STZ $30,x				;$B3AA7B   |
