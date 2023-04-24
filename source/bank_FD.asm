@@ -4092,7 +4092,7 @@ DATA_FD5FEE:
 DATA_FD6044:
 	dw DATA_FD7166						; 002B
 	dw k_rool_letter_sprite_palette				; 002C
-	dw roller_coaster_gate_sprite_palette			; 002D
+	dw roller_coaster_gate_sprite_palette			; 002D **NOW UNUSED**
 	dw ghost_rope_sprite_palette				; 002E
 	dw kaboing_grey_sprite_palette				; 002F
 	dw haunted_hall_door_sprite_palette			; 0030

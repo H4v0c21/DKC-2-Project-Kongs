@@ -20654,7 +20654,10 @@ DATA_FFFB7B:
 	dw sprite.render_order, $00C4
 	dw sprite.unknown_54, $021C
 	dw !initcommand_set_oam, $2000
-	dw !initcommand_set_alt_palette, $002D
+;START OF PATCH (change roller coaster gate to use barrel sprite palette instead of a unique one)
+;	dw !initcommand_set_alt_palette, $002D
+	dw !initcommand_set_alt_palette, $0002
+;END OF PATCH
 	dw !initcommand_set_animation, $01AE
 	dw sprite.action, $0002
 	dw sprite.unknown_46, $0050
