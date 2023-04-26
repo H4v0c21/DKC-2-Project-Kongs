@@ -697,8 +697,8 @@ CODE_808837:
 	RTL					;$80883A  /
 
 ;START OF PATCH
-get_kong_spr_and_var_addrs_kong_fam_scr_global:
-	JSR get_kong_spr_and_var_addrs_kong_fam_scrns
+get_kong_spr_and_var_addrs_npc_scr_global:
+	JSR get_kong_spr_and_var_addrs_npc_scrns
 	RTL
 
 kong_sprite_addresses:
@@ -764,7 +764,7 @@ get_kong_spr_and_var_addrs_common:
 	
 	RTS
 
-get_kong_spr_and_var_addrs_kong_fam_scrns:
+get_kong_spr_and_var_addrs_npc_scrns:
 	PHX
 
 	LDA #$0DE2
@@ -1459,18 +1459,18 @@ CODE_808D8A:
 	LDA #$8000				;$808D8A  \
 	ORA $08C2				;$808D8D   |
 	STA $08C2				;$808D90   |
-;START OF PATCH (adjustments for Kong Family/Klubba screens)
+;START OF PATCH (adjustments for NPC screens)
 	LDA kong_status
 	STA kong_palette_order
-	JSR get_kong_spr_and_var_addrs_kong_fam_scrns
+	JSR get_kong_spr_and_var_addrs_npc_scrns
 ;	LDA $08A4				;$808D93   |
 ;	JSL CODE_808837				;$808D96   |
 ;END OF PATCH
 	LDA #$0020				;$808D9A   |
 	ORA $30,x				;$808D9D   |
 	STA $30,x				;$808D9F   |
-	JSR CODE_808E29				;$808DA1   |	Subroutine: Set Diddy attributes for Kong Family screens (now first Kong)
-;START OF PATCH (make code to load Dixie's data for Kong Family screens handle the second Kong instead, part 1 of 2)
+	JSR CODE_808E29				;$808DA1   |	Subroutine: Set Diddy attributes for NPC screens (now first Kong)
+;START OF PATCH (make code to load Dixie's data for NPC screens handle the second Kong instead, part 1 of 2)
 	LDA $0599
 	;LDA #$16D8				;$808DA4   |
 	STA $66					;$808DA7   |
@@ -1488,8 +1488,8 @@ CODE_808D8A:
 	STX current_sprite			;$808DB2   |
 	LDA #$0004				;$808DB4   |
 	JSL CODE_B9D0B8				;$808DB7   |
-;START OF PATCH (make code to load Dixie's data for Kong Family screens handle the second Kong instead, part 2 of 2)
-	JSL kong_pal_load_kong_fam_screens_global
+;START OF PATCH (make code to load Dixie's data for NPC screens handle the second Kong instead, part 2 of 2)
+	JSL kong_pal_load_npc_screens_global
 	LDA kong_status
 	XBA
 	AND #$00FF
@@ -1554,7 +1554,7 @@ CODE_808DFB:
 	RTL					;$808E28  /
 
 CODE_808E29:
-;START OF PATCH (make code to load Diddy's data for Kong Family screens dynamic, part 1 of 2)
+;START OF PATCH (make code to load Diddy's data for NPC screens dynamic, part 1 of 2)
 	LDA $0595
 	;LDA #main_sprite_table_end		;$808E29  \
 	STA $66					;$808E2C   |
@@ -1571,8 +1571,8 @@ CODE_808E29:
 	STX current_sprite			;$808E37   |
 	LDA #$0001				;$808E39   |
 	JSL CODE_B9D0B8				;$808E3C   |
-;START OF PATCH (make code to load Diddy's data for Kong Family screens dynamic, part 2 of 2)
-	JSL kong_pal_load_kong_fam_screens_global
+;START OF PATCH (make code to load Diddy's data for NPC screens dynamic, part 2 of 2)
+	JSL kong_pal_load_npc_screens_global
 	LDA kong_status
 	AND #$00FF
 	JSR load_current_kong_phys_const

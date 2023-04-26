@@ -1809,14 +1809,31 @@ store_lower_word_of_sprite_pal_into_upload_queue:
 	CLC					;$BB8B64   |
 	RTS					;$BB8B65  /
 
-;START OF PATCH (kong palettes)
+;START OF PATCH (add routine to check NMI pointer variable ($20) to determine how Kong palettes should be chosen)
+kong_pal_load_npc_area_check:
+	PHX
+	LDX NMI_pointer
+	CPX #incomplete_frame_nmi	;This NMI is only run in a normal level
+	BEQ .is_false			;Not in an NPC area
+	CPX #CODE_808CF1		;This is the NMI value when sprite palette values are stored during a normal level load
+	BEQ .is_false
+;Otherwise, we are in an NPC area
+	PLX				
+	SEC				;set Carry flag
+	RTS
+.is_false:
+	PLX
+	CLC				;clear Carry flag
+	RTS
+;END OF PATCH
 
+;START OF PATCH (create kong palette pointer table)
 kong_palette_addresses:
-dw diddy_active_sprite_palette
-dw dixie_active_sprite_palette
-dw donkey_player_palette
-dw kiddy_player_palette
-
+	dw diddy_active_sprite_palette
+	dw dixie_active_sprite_palette
+	dw donkey_player_palette
+	dw kiddy_player_palette
+;END OF PATCH
 
 CODE_BB8B66:
 	STZ $60					;$BB8B66  \
@@ -1854,12 +1871,11 @@ palette_is_first_kong_palette:
 	LDA.l kong_palette_addresses,x
 	STA temp_32
 	PLA
-	LDX $0662
-	CPX #$0000				;Non-zero if in Kong family/Klubba's kiosk area, zero if not
-	BNE .in_kong_family_area
+	JSR kong_pal_load_npc_area_check
+	BCS .in_npc_area
 	JSL get_kong_sprite_address		;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
 	BRA .skip_load
-.in_kong_family_area:
+.in_npc_area:
 	LDA #$0DE2
 .skip_load:
 	PLX
@@ -1900,12 +1916,11 @@ palette_is_second_kong_palette:
 	LDA.l kong_palette_addresses,x
 	STA temp_32
 	PLA
-	LDX $0662
-	CPX #$0000				;Non-zero if in Kong family/Klubba's kiosk area, zero if not
-	BNE .in_kong_family_area
+	JSR kong_pal_load_npc_area_check
+	BCS .in_npc_area
 	JSL get_kong_sprite_address		;$0DE2 = Diddy, $0E40 = Dixie, $0E9E = Donkey, $0EFC = Kiddy
 	BRA .skip_load
-.in_kong_family_area:
+.in_npc_area:
 	LDA #$0E40
 .skip_load:
 	PLX
@@ -5654,11 +5669,11 @@ CODE_BBAEB0:
 	RTS					;$BBAEBC  /
 
 ;START OF PATCH (added Kong palette loading code for Kong Family screens)
-kong_pal_load_kong_fam_screens_global:
-	JSR kong_pal_load_kong_fam_screens
+kong_pal_load_npc_screens_global:
+	JSR kong_pal_load_npc_screens
 	RTL
 
-kong_pal_load_kong_fam_screens:
+kong_pal_load_npc_screens:
 	LDA current_sprite
 	CMP $0593
 	BNE .handle_second_kong_pal_ID
