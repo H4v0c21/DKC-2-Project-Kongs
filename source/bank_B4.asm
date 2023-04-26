@@ -1715,7 +1715,7 @@ CODE_B48DFA:
 	TSB $08C2				;$B48E19   |
 	JSR set_diddy_to_1st_and_leader_to_2nd
 	LDA kong_status
-	JSL get_kong_spr_and_var_addrs_kong_fam_scr_global
+	JSL get_kong_spr_and_var_addrs_npc_scr_global
 ;	LDA #$0000				;$B48E1C   |
 ;	JSL CODE_808837				;$B48E1F   |
 ;END OF PATCH
@@ -2058,7 +2058,7 @@ CODE_B49126:
 	TSB $08C2				;$B49129   |
 	JSR set_diddy_to_1st_and_leader_to_2nd
 	LDA kong_status
-	JSL get_kong_spr_and_var_addrs_kong_fam_scr_global
+	JSL get_kong_spr_and_var_addrs_npc_scr_global
 ;	LDA #$0000				;$B4912C   |
 ;	JSL CODE_808837				;$B4912F   |
 ;END OF PATCH
@@ -7744,7 +7744,7 @@ CODE_B4C07B:					;	   |
 	LDA #CODE_B48E6C			;$B4C08A   |
 	STA $067D				;$B4C08D   |
 ;START OF PATCH (hero screen fix: properly restore kong_status value)
-	JSL get_kong_spr_and_var_addrs_kong_fam_scr_global
+	JSL get_kong_spr_and_var_addrs_npc_scr_global
 	LDA $0660				;$B4C090   |	$0660 should contain backup of kong_status
 	STA kong_status						;restore this to kong_status
 	;JSL CODE_808837			;$B4C093   |

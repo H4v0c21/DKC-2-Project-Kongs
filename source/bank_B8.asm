@@ -2894,6 +2894,25 @@ CODE_B8966C:					;	   |
 	STA $0024,y				;$B8966C   |
 	RTS					;$B8966F  /
 
+;START OF PATCH (add routine to check if in NPC areas)
+npc_area_check:
+	PHX
+	LDX NMI_pointer
+	CPX #CODE_808CD9	;NMI for Cranky's Video Game Heroes and the Monkey Museum ending screens
+	BNE .is_false
+.is_true:
+	PLX
+	SEC
+	RTS
+.check_gamemode_submode:
+	LDX gamemode_submode
+	CPX #$000B		;Check if in submap (Should cover all Kong Family areas/Klubba's Kiosk, as gamemode_submode isn't changed when entering these areas)
+	BEQ .is_true
+.is_false:
+	PLX
+	CLC
+	RTS
+;END OF PATCH
 
 ;PATCH (major changes to kong code)
 
@@ -2913,8 +2932,8 @@ clear_kong_data:
 
 ;donkey main sprite
 donkey_kong_main_b8:
-	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
-	BNE process_donkey	;If non-zero, skip code which checks for Kong status to suspend Donkey
+	JSR npc_area_check
+	BCS process_donkey	;If carry flag is set from previous subroutine, skip code which checks for Kong status to suspend Donkey
 	
 	LDA kong_status
 	AND #$00FF
@@ -2941,8 +2960,8 @@ process_donkey:
 
 ;kiddy main sprite
 kiddy_kong_main_b8:
-	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
-	BNE process_kiddy	;If non-zero, skip code which checks for Kong status to suspend Kiddy
+	JSR npc_area_check
+	BCS process_kiddy	;If carry flag is set from previous subroutine, skip code which checks for Kong status to suspend Kiddy
 	
 	LDA kong_status
 	AND #$00FF
@@ -2969,8 +2988,8 @@ process_kiddy:
 
 ;dixie main sprite
 CODE_B89670:
-	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
-	BNE process_dixie	;If non-zero, skip code which checks for Kong status to suspend Dixie
+	JSR npc_area_check
+	BCS process_dixie	;If carry flag is set from previous subroutine, skip code which checks for Kong status to suspend Dixie
 	
 	LDA kong_status
 	AND #$00FF
@@ -2997,8 +3016,8 @@ process_dixie:
 
 ;diddy main sprite
 CODE_B8967D:
-	LDA $0662		;This address is non-zero when at a Kong Family, Klubba's Kiosk, or Cranky's Video Game Heroes screen
-	BNE process_diddy	;If non-zero, skip code which checks for Kong status to suspend Diddy
+	JSR npc_area_check
+	BCS process_diddy	;If carry flag is set from previous subroutine, skip code which checks for Kong status to suspend Diddy
 	
 	LDA kong_status
 	AND #$00FF
