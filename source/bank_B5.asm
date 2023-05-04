@@ -366,8 +366,11 @@ endif						;	   | |/
 	CPX APU.IO1				;$B5824D   | |
 	BNE -					;$B58250   |/
 	STZ spc_transaction			;$B58252   | Reset the SPC transaction id
-	LDA #$0001				;$B58254   |\ Default to mono audio
-	STA stereo_select			;$B58257   |/
+;START OF PATCH (default to stereo audio)
+	STZ stereo_select
+;	LDA #$0001				;$B58254   |\ Default to mono audio
+;	STA stereo_select			;$B58257   |/
+;END OF PATCH
 	REP #$30				;$B58259   |
 	RTS					;$B5825B  / All done, new SPC base engine set up.
 
@@ -492,7 +495,7 @@ endif						;	   | |/
 	STA $34					;$B5833B   |/
 	LDA $42					;$B5833D   |\ Set ARAM destination
 	STA $35					;$B5833F   |/
-	LDA #$3400				;$B58341   |\ Calculate and set upload size
+	LDA #!brr_data_loc			;$B58341   |\ Calculate and set upload size
 	SEC					;$B58344   | |
 	SBC $42					;$B58345   | | word count = ($3400 - ARAM dest + 1) / 2
 	CLC					;$B58347   | |
