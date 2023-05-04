@@ -14750,8 +14750,10 @@ CODE_B3EC4A:					;	   |
 
 CODE_B3EC55:
 	STZ $2C,x				;$B3EC55  \
-	%lda_sound(5, morph_to_animal)		;$B3EC57   |
-	JSL queue_sound_effect			;$B3EC5A   |
+;START OF PATCH (disable obscure morphing into animal sound)
+;	%lda_sound(5, morph_to_animal)		;$B3EC57   |
+;	JSL queue_sound_effect			;$B3EC5A   |
+;END OF PATCH
 	BRL CODE_B3E9E4				;$B3EC5E  /
 
 CODE_B3EC61:

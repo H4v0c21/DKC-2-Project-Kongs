@@ -2057,10 +2057,16 @@ sample_table:
 	dl brr_sample_F225B6
 	dl brr_sample_F22C44
 	dl brr_sample_F232D2
-	dl !null_pointer
-	dl !null_pointer
-	dl !null_pointer
-	dl !null_pointer
+;START OF PATCH (add four samples to pointer table)
+	dl brr_sample_dkc_C788B5
+	dl brr_sample_dkc_C7A56D
+	dl brr_sample_dkc3_EFECEC
+	dl brr_sample_dkc3_F04FF8
+;	dl !null_pointer
+;	dl !null_pointer
+;	dl !null_pointer
+;	dl !null_pointer
+;END OF PATCH
 	dl !null_pointer
 	dl !null_pointer
 	dl !null_pointer
@@ -2149,30 +2155,30 @@ DATA_EE117B:
 ;START OF PATCH (change which sound effect blocks are loaded with Island Map and Main Theme songs)
 	dl boss_1_sfx_data				;01
 	dl menus_sfx_data				;02
-;	dl dummy_sfx_data
-;	dl dummy_sfx_data
+;	dl dummy_sfx_data				;01
+;	dl dummy_sfx_data				;02
 ;END OF PATCH
 	dl swamp_forest_mine_brambles_hive_sfx_data	;03
 ;START OF PATCH (change which sound effect block is loaded with the Swanky song)
 	dl menus_sfx_data				;04
-;	dl swamp_forest_mine_brambles_hive_sfx_data
+;	dl dummy_sfx_data				;04
 ;END OF PATCH
 	dl swamp_forest_mine_brambles_hive_sfx_data	;05
 	dl ship_ice_ending_sfx_data			;06
 	dl swamp_forest_mine_brambles_hive_sfx_data	;07
 ;START OF PATCH (change which sound effect block is loaded with the Funky song)
 	dl menus_sfx_data				;08
-;	dl dummy_sfx_data
+;	dl dummy_sfx_data				;08
 ;END OF PATCH
 	dl swamp_forest_mine_brambles_hive_sfx_data	;09
 ;START OF PATCH (change which sound effect block is loaded with the Klubba song)
 	dl menus_sfx_data				;0A
-;	dl boss_1_sfx_data
+;	dl boss_1_sfx_data				;0A
 ;END OF PATCH
 	dl swamp_forest_mine_brambles_hive_sfx_data	;0B
 ;START OF PATCH (change which sound effect block is loaded with the Wrinkly song)
 	dl menus_sfx_data				;0C
-;	dl dummy_sfx_data
+;	dl dummy_sfx_data				;0C
 ;END OF PATCH
 	dl lava_castle_boss_2_sfx_data			;0D
 	dl roller_coaster_sfx_data			;0E
@@ -2188,8 +2194,8 @@ DATA_EE117B:
 ;START OF PATCH (change which sound effect blocks are loaded with Select and Cranky songs)
 	dl menus_sfx_data				;18
 	dl menus_sfx_data				;19
-;	dl dummy_sfx_data
-;	dl dummy_sfx_data
+;	dl dummy_sfx_data				;18
+;	dl dummy_sfx_data				;19
 ;END OF PATCH
 	dl ship_ice_ending_sfx_data			;1A
 	dl jungle_sfx_data				;1B
@@ -2650,19 +2656,35 @@ DATA_EE1937:
 	incsrc "data/sound/music/null_song_data.asm"
 	incsrc "data/sound/music/island_map_song_data.asm"
 	incsrc "data/sound/music/main_theme_song_data.asm"
-	incsrc "data/sound/music/swamp_song_data.asm"
-	incsrc "data/sound/music/swanky_song_data.asm"
-	incsrc "data/sound/music/forest_song_data.asm"
-	incsrc "data/sound/music/ship_deck_song_data.asm"
+;START OF PATCH (replace swamp, swanky, forest, and ship deck song data blocks with modified versions)
+	incsrc "kong_hack/sound/music/swamp_song_data.asm"
+	incsrc "kong_hack/sound/music/swanky_song_data.asm"
+	incsrc "kong_hack/sound/music/forest_song_data.asm"
+	incsrc "kong_hack/sound/music/ship_deck_song_data.asm"
+;	incsrc "data/sound/music/swamp_song_data.asm"
+;	incsrc "data/sound/music/swanky_song_data.asm"
+;	incsrc "data/sound/music/forest_song_data.asm"
+;	incsrc "data/sound/music/ship_deck_song_data.asm"
+;END OF PATCH
 	incsrc "data/sound/music/mine_song_data.asm"
 	incsrc "data/sound/music/funky_song_data.asm"
-	incsrc "data/sound/music/brambles_song_data.asm"
-	incsrc "data/sound/music/klubba_song_data.asm"
-	incsrc "data/sound/music/wasp_hive_song_data.asm"
+;START OF PATCH (replace brambles, klubba, and wasp hive song data blocks with modified versions)
+	incsrc "kong_hack/sound/music/brambles_song_data.asm"
+	incsrc "kong_hack/sound/music/klubba_song_data.asm"
+	incsrc "kong_hack/sound/music/wasp_hive_song_data.asm"
+;	incsrc "data/sound/music/brambles_song_data.asm"
+;	incsrc "data/sound/music/klubba_song_data.asm"
+;	incsrc "data/sound/music/wasp_hive_song_data.asm"
+;END OF PATCH
 	incsrc "data/sound/music/wrinkly_song_data.asm"
-	incsrc "data/sound/music/lava_song_data.asm"
-	incsrc "data/sound/music/roller_coaster_song_data.asm"
-	incsrc "data/sound/music/bonus_song_data.asm"
+;START OF PATCH (replace lava, roller coaster, and bonus song data blocks with modified versions)
+	incsrc "kong_hack/sound/music/lava_song_data.asm"
+	incsrc "kong_hack/sound/music/roller_coaster_song_data.asm"
+	incsrc "kong_hack/sound/music/bonus_song_data.asm"
+;	incsrc "data/sound/music/lava_song_data.asm"
+;	incsrc "data/sound/music/roller_coaster_song_data.asm"
+;	incsrc "data/sound/music/bonus_song_data.asm"
+;END OF PATCH
 
 check bankcross off
 ;$EECE62
@@ -2735,13 +2757,19 @@ brr_sample_EEE9A2:
 brr_sample_EEEE4B:
 	dw $0000
 	dw datasize(brr_sample_EEEE4B)-4
-	incbin "data/sound/samples/sample_EEEE4B.brr"
+;START OF PATCH (replace Klobber skidding sample with shortened version to save ARAM space)
+	incbin "kong_hack/sound/samples/sample_EEEE4B_shorter.brr"
+;	incbin "data/sound/samples/sample_EEEE4B.brr"
+;END OF PATCH
 
 ;$EEF6B6
 brr_sample_EEF6B6:
 	dw $0000
 	dw datasize(brr_sample_EEF6B6)-4
-	incbin "data/sound/samples/sample_EEF6B6.brr"
+;START OF PATCH (replace banana sample with DKC1 version to save ARAM space)
+	incbin "kong_hack/sound/samples/sample_dkc_C7280C.brr"
+;	incbin "data/sound/samples/sample_EEF6B6.brr"
+;END OF PATCH
 
 ;$EEF8C5
 brr_sample_EEF8C5:
@@ -2753,7 +2781,10 @@ brr_sample_EEF8C5:
 brr_sample_EEFDC8:
 	dw $0000
 	dw datasize(brr_sample_EEFDC8)-4
-	incbin "data/sound/samples/sample_EEFDC8.brr"
+;START OF PATCH (replace Squitter web shooting sample with shortened version to save ARAM space)
+	incbin "kong_hack/sound/samples/sample_EEFDC8_shorter.brr"
+;	incbin "data/sound/samples/sample_EEFDC8.brr"
+;END OF PATCH
 
 ;$EEFFDF
 brr_sample_EEFFDF:
@@ -2817,9 +2848,13 @@ brr_sample_EF335C:
 
 ;$EF35BC
 brr_sample_EF35BC:
-	dw $018C
+;START OF PATCH (replace bongo sample with DKC1 version to save ARAM space)
+	dw $0000
+	;dw $018C
 	dw datasize(brr_sample_EF35BC)-4
-	incbin "data/sound/samples/sample_EF35BC.brr"
+	incbin "kong_hack/sound/samples/sample_dkc_C81E24.brr"
+	;incbin "data/sound/samples/sample_EF35BC.brr"
+;END OF PATCH
 
 ;$EF37B0
 brr_sample_EF37B0:
@@ -3593,7 +3628,10 @@ brr_sample_F04854:
 brr_sample_F057E3:
 	dw $0000
 	dw datasize(brr_sample_F057E3)-4
-	incbin "data/sound/samples/sample_F057E3.brr"
+;START OF PATCH (replace Klobber/Kruncha/Kudgel roar sample with shortened version to save ARAM space)
+	incbin "kong_hack/sound/samples/sample_F057E3_shorter.brr"
+;	incbin "data/sound/samples/sample_F057E3.brr"
+;END OF PATCH
 
 ;$F05FFD
 brr_sample_F05FFD:
@@ -3979,7 +4017,10 @@ brr_sample_F232D2:
 	dw datasize(brr_sample_F232D2)-4
 	incbin "data/sound/samples/sample_F232D2.brr"
 
-	incsrc "data/sound/music/ship_hold_song_data.asm"
+;START OF PATCH (replace ship hold song data block with modified version)
+	incsrc "kong_hack/sound/music/ship_hold_song_data.asm"
+;	incsrc "data/sound/music/ship_hold_song_data.asm"
+;END OF PATCH
 	incsrc "data/sound/music/fanfare_song_data.asm"
 	incsrc "data/sound/music/ship_deck_2_song_data.asm"
 	incsrc "data/sound/music/rescue_kong_song_data.asm"
@@ -3987,12 +4028,21 @@ brr_sample_F232D2:
 	incsrc "data/sound/music/big_boss_song_data.asm"
 	incsrc "data/sound/music/castle_song_data.asm"
 	incsrc "data/sound/music/haunted_song_data.asm"
-	incsrc "data/sound/music/file_select_song_data.asm"
-	incsrc "data/sound/music/cranky_song_data.asm"
+;START OF PATCH (replace file select and cranky song data blocks with modified versions)
+	incsrc "kong_hack/sound/music/file_select_song_data.asm"
+	incsrc "kong_hack/sound/music/cranky_song_data.asm"
+;	incsrc "data/sound/music/file_select_song_data.asm"
+;	incsrc "data/sound/music/cranky_song_data.asm"
+;END OF PATCH
 	incsrc "data/sound/music/ice_song_data.asm"
-	incsrc "data/sound/music/jungle_song_data.asm"
-	incsrc "data/sound/music/lost_world_song_data.asm"
-	incsrc "data/sound/music/rigging_song_data.asm"
+;START OF PATCH (replace jungle, lost world, and rigging song data blocks with modified versions)
+	incsrc "kong_hack/sound/music/jungle_song_data.asm"
+	incsrc "kong_hack/sound/music/lost_world_song_data.asm"
+	incsrc "kong_hack/sound/music/rigging_song_data.asm"
+;	incsrc "data/sound/music/jungle_song_data.asm"
+;	incsrc "data/sound/music/lost_world_song_data.asm"
+;	incsrc "data/sound/music/rigging_song_data.asm"
+;END OF PATCH
 	incsrc "data/sound/music/credits_song_data.asm"
 	incsrc "data/sound/music/k_rool_song_data.asm"
 
@@ -4025,7 +4075,10 @@ DATA_F2E72C:
 ;END OF PATCH
 	incsrc "data/sound/sound_effects/dummy_sfx_data.asm"
 	incsrc "data/sound/sound_effects/roller_coaster_sfx_data.asm"
-	incsrc "data/sound/sound_effects/ship_ice_ending_sfx_data.asm"
+;START OF PATCH (replace aquatic sound effect block with a modified version)
+	incsrc "kong_hack/sound/sound_effects/ship_ice_ending_sfx_data.asm"
+;	incsrc "data/sound/sound_effects/ship_ice_ending_sfx_data.asm"
+;END OF PATCH
 	incsrc "data/sound/sound_effects/swamp_forest_mine_brambles_hive_sfx_data.asm"
 	incsrc "data/sound/sound_effects/unused_krockhead_sfx_data.asm"
 	incsrc "data/sound/sound_effects/jungle_sfx_data.asm"

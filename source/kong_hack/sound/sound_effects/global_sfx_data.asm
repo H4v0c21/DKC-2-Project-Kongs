@@ -11,116 +11,282 @@ base !snd_loc
 	dw (.pointers_end-.pointers_start)>>1	;quantity of sound effects (default $0060)
 ;sound effect pointers
 .pointers_start:
-	dw .seq_2DDA	;00: -Nothing-
-	dw .seq_2DDB	;01: 
-	dw .seq_2DCB	;02: Klomp walking, bumped by Klobber
-	dw .seq_2DB6	;03: Kong chant (unused)
-	dw .seq_2DA1	;04: Neek hit
-	dw .seq_2D75	;05: Tagging partner
-	dw .seq_2D6E	;06: Diddy hit
-	dw .seq_2D67	;07: Dixie hit
-	dw .seq_2D56	;08: Collect Banana
-	dw .seq_2D2D	;09: Collect Banana Bunch (UNUSED)
-	dw .seq_2CE9	;0A: Stars around Diddy's head
-	dw .seq_2CD4	;0B: Rambi scuffing foot on ground (readying to charge)
-	dw .seq_2CC2	;0C: 
-	dw .seq_2CB2	;0D: Jumping sound? 
-	dw .seq_2C9C	;0E: Zinger hit
-	dw .seq_2C8E	;0F: Click Clack walking
-	dw .seq_2C7E	;10: Click Clack defeated
-	dw .seq_2C77	;11: Klobber skidding
-	dw .seq_2C60	;12: Klobber popping out of barrel
-	dw .seq_2C52	;13: Diddy/Dixie hitting ground when defeated/Rattly bouncing while idle
-	dw .seq_2C40	;14: Boom
-	dw .seq_2C0E	;15: Explosion
-	dw .seq_2C07	;16: Chomping
-	dw .seq_2BFD	;17: Teeth clamping
-	dw .seq_2BF6	;18: Klomp/Klobber hit
-	dw .seq_2BAA	;19: Wall breaking (usually played with 15)
-	dw .seq_2B9C	;1A: Busting Barrel, Barrel Cannon shot, Klobber slamming into walls
-	dw .seq_2B60	;1B: Kong held captive in DK barrel
-	dw .seq_2B48	;1C: Clock ticking
-	dw .seq_2B36	;1D: Rambi jump
-	dw .seq_2B28	;1E: Kutlass swinging cutlass/Kleever swinging
-	dw .seq_2B18	;1F: Klinger sliding down rope
-	dw .seq_2B0B	;20: Dixie crying
-	dw .seq_2AFB	;21: Kremkoin appearing (fizz)
-	dw .seq_2AC9	;22: Kremkoin appearing (echo)
-	dw .seq_2AB9	;23: Diddy juggling
-	dw .seq_2AAD	;24: Neek squeaking
-	dw .seq_2A9D	;25: Dixie sipping through straw
-	dw .seq_2A89	;26: Dixie blowing bubble
-	dw .seq_2A07	;27: Collect KONG letter K
-	dw .seq_29FF	;28: Collect KONG letter O
-	dw .seq_29F7	;29: Collect KONG letter N
-	dw .seq_29EF	;2A: Collect KONG letter G
-	dw .seq_29DD	;2B: Balloon popping
-	dw .seq_29A9	;2C: Extra Life Balloon collection
-	dw .seq_297F	;2D: Banana Coin collection
-	dw .seq_295F	;2E: Reading K. Rool's note
-	dw .seq_2951	;2F: Squawks spitting
-	dw .seq_2942	;30: Squawks flapping wings
-	dw .seq_2933	;31: Flapping wings (deeper)
-	dw .seq_291F	;32: Necky ready to dive
+	dw .seq_2DDA		;00: -Nothing-
+	dw .seq_2DDB		;01: Looping silence?
+	dw .seq_2DCB		;02: Klomp walking, bumped by Klobber
+;START OF PATCH (remove/replace sound effect 03)
+	dw .swap_to_donkey	;03: Swap to Donkey Kong (DKC2 version)
+;	dw .seq_2DB6		;03: Kong chant (unused)
+;END OF PATCH
+	dw .seq_2DA1		;04: Neek hit
+	dw .seq_2D75		;05: Tagging partner
+	dw .seq_2D6E		;06: Diddy hit
+	dw .seq_2D67		;07: Dixie hit
+	dw .seq_2D56		;08: Collect Banana
+	dw .seq_2D2D		;09: Collect Banana Bunch (UNUSED in vanilla DKC2)
+	dw .seq_2CE9		;0A: Stars around Diddy's head
+	dw .seq_2CD4		;0B: Rambi scuffing foot on ground (readying to charge)
+;START OF PATCH (remove/replace sound effects 0C and 0D)
+	dw .swap_to_donkey_dkc1	;0C: Swap to Donkey Kong (DKC1 version)
+	dw .swap_to_diddy_dkc1	;0D: Swap to Diddy Kong (DKC1 version)
+;	dw .seq_2CC2		;0C: Explosion sound? (UNUSED)
+;	dw .seq_2CB2		;0D: Jumping sound? (UNUSED)
+;END OF PATCH
+	dw .seq_2C9C		;0E: Zinger hit
+	dw .seq_2C8E		;0F: Click Clack walking
+	dw .seq_2C7E		;10: Click Clack defeated
+	dw .seq_2C77		;11: Klobber skidding
+	dw .seq_2C60		;12: Klobber popping out of barrel
+	dw .seq_2C52		;13: Diddy/Dixie hitting ground when defeated/Rattly bouncing while idle
+	dw .seq_2C40		;14: Boom
+	dw .seq_2C0E		;15: Explosion
+	dw .seq_2C07		;16: Chomping
+	dw .seq_2BFD		;17: Teeth clamping
+	dw .seq_2BF6		;18: Klomp/Klobber hit
+	dw .seq_2BAA		;19: Wall breaking (usually played with 15)
+	dw .seq_2B9C		;1A: Busting Barrel, Barrel Cannon shot, Klobber slamming into walls
+	dw .seq_2B60		;1B: Kong held captive in DK barrel
+	dw .seq_2B48		;1C: Clock ticking
+	dw .seq_2B36		;1D: Rambi jump
+	dw .seq_2B28		;1E: Kutlass swinging cutlass/Kleever swinging
+	dw .seq_2B18		;1F: Klinger sliding down rope
+	dw .seq_2B0B		;20: Dixie crying
+	dw .seq_2AFB		;21: Kremkoin appearing (fizz)
+	dw .seq_2AC9		;22: Kremkoin appearing (echo)
+	dw .seq_2AB9		;23: Diddy juggling
+	dw .seq_2AAD		;24: Neek squeaking
+	dw .seq_2A9D		;25: Dixie sipping through straw
+	dw .seq_2A89		;26: Dixie blowing bubble
+	dw .seq_2A07		;27: Collect KONG letter K
+	dw .seq_29FF		;28: Collect KONG letter O
+	dw .seq_29F7		;29: Collect KONG letter N
+	dw .seq_29EF		;2A: Collect KONG letter G
+	dw .seq_29DD		;2B: Balloon popping
+	dw .seq_29A9		;2C: Extra Life Balloon collection
+	dw .seq_297F		;2D: Banana Coin collection
+;START OF PATCH (remove/replace sound effect 2E)
+	dw .swap_to_dixie_gba	;2E: Swap to Dixie Kong (GBA version)
+;	dw .seq_295F		;2E: Read K. Rool's note
+;END OF PATCH
+	dw .seq_2951		;2F: Squawks spitting
+	dw .seq_2942		;30: Squawks flapping wings
+	dw .seq_2933		;31: Flapping wings (deeper)
+	dw .seq_291F		;32: Necky ready to dive
 ;START OF PATCH (remove/replace sound effects 33 and 34)
-	dw .seq_2DDA	;33: -Nothing-
-	dw .seq_2DDA	;34: -Nothing-
-;	dw .seq_2910	;33: Menu cursor movement
-;	dw .seq_28FB	;34: Menu confirmation
+	dw .donkey_dk_barrel	;33: Donkey Kong held captive in DK barrel
+	dw .donkey_hit		;34: Donkey hit
+;	dw .seq_2910		;33: Menu cursor movement
+;	dw .seq_28FB		;34: Menu confirmation
 ;END OF PATCH
-	dw .seq_28CF	;35: Kremkoin appearing
-	dw .seq_28C9	;36: Collect Kremkoin
-	dw .seq_28B0	;37: Click Clack recovering
-	dw .seq_289F	;38: Extra life point
-	dw .seq_2857	;39: Animal Crate busted (channel 1)
-	dw .seq_2806	;3A: Animal Crate busted (channel 2)
-	dw .seq_27EF	;3B: Animal Crate busted (channel 3)
-	dw .seq_27D8	;3C: Animal Crate busted (channel 4)
-	dw .seq_27C3	;3D: Zinger droning
-	dw .seq_27C0	;3E: Increase music tempo by 5 units (used in bonus areas)
-	dw .seq_27AB	;3F: Flitter droning
-	dw .seq_279D	;40: Kongs teaming up
-	dw .seq_2787	;41: Animal buddy becoming item (channel 1)
-	dw .seq_2775	;42: Animal buddy becoming item (channel 2)
-	dw .seq_275D	;43: Animal buddy becoming item (channel 3)
-	dw .seq_2747	;44: Animal buddy becoming item (channel 4)
-	dw .seq_2738	;45: Squitter/Rattly hit
-	dw .seq_2730	;46: Squitter shooting an attack web
-	dw .seq_271F	;47: Squitter shooting a platform web
-	dw .seq_2705	;48: Rattly hopping
-	dw .seq_26EB	;49: Rattly leaping
-	dw .seq_26D3	;4A: Loading Cannon
-	dw .seq_26B1	;4B: Firing Cannon
-	dw .seq_26A2	;4C: Dropping Cannonball
-	dw .seq_2681	;4D: Squitter jumping
-	dw .seq_2665	;4E: Spiny walking
-	dw .seq_2656	;4F: Squawks hit
-	dw .seq_2628	;50: Invincibility
-	dw .seq_2621	;51: Kruncha angered
-	dw .seq_2609	;52: Barrel rolling
-	dw .seq_25F8	;53: Rambi attacking
-	dw .seq_25E9	;54: Rambi footstep
-	dw .seq_258B	;55: Kongs transforming into animal (semi-unused)
-	dw .seq_2580	;56: Collect Hero Coin
-	dw .seq_2575	;57: Necky defeated
-	dw .seq_2566	;58: Cat O' 9 Tails defeated
+	dw .seq_28CF		;35: Kremkoin appearing
+	dw .seq_28C9		;36: Collect Kremkoin
+	dw .seq_28B0		;37: Click Clack recovering
+	dw .seq_289F		;38: Extra life point
+	dw .seq_2857		;39: Animal Crate busted (channel 1)
+	dw .seq_2806		;3A: Animal Crate busted (channel 2)
+	dw .seq_27EF		;3B: Animal Crate busted (channel 3)
+	dw .seq_27D8		;3C: Animal Crate busted (channel 4)
+	dw .seq_27C3		;3D: Zinger droning
+	dw .seq_27C0		;3E: Increase music tempo by 5 units (used in bonus areas)
+	dw .seq_27AB		;3F: Flitter droning
+	dw .seq_279D		;40: Kongs teaming up/mounting animal
+	dw .seq_2787		;41: Animal buddy becoming item (channel 1)
+	dw .seq_2775		;42: Animal buddy becoming item (channel 2)
+	dw .seq_275D		;43: Animal buddy becoming item (channel 3)
+	dw .seq_2747		;44: Animal buddy becoming item (channel 4)
+	dw .seq_2738		;45: Squitter/Rattly hit
+	dw .seq_2730		;46: Squitter shooting an attack web
+	dw .seq_271F		;47: Squitter shooting a platform web
+	dw .seq_2705		;48: Rattly hopping
+	dw .seq_26EB		;49: Rattly leaping
+	dw .seq_26D3		;4A: Loading Cannon
+	dw .seq_26B1		;4B: Firing Cannon
+	dw .seq_26A2		;4C: Dropping Cannonball
+	dw .seq_2681		;4D: Squitter jumping
+	dw .seq_2665		;4E: Spiny walking
+	dw .seq_2656		;4F: Squawks hit
+	dw .seq_2628		;50: Invincibility
+	dw .seq_2621		;51: Kruncha angered
+	dw .seq_2609		;52: Barrel rolling
+	dw .seq_25F8		;53: Rambi attacking
+	dw .seq_25E9		;54: Rambi footstep
+;START OF PATCH (remove/replace sound effect 55)
+	dw .donkey_idle		;55: Donkey idle
+;	dw .seq_258B		;55: Kongs transforming into animal (semi-unused)
+;END OF PATCH
+	dw .seq_2580		;56: Collect Hero Coin
+	dw .seq_2575		;57: Necky defeated
+	dw .seq_2566		;58: Cat O' 9 Tails defeated
 ;START OF PATCH (remove/replace sound effects 59-5C)
-	dw .seq_2DDA	;59: -Nothing-
-	dw .seq_2DDA	;5A: -Nothing-
-	dw .seq_2DDA	;5B: -Nothing-
-	dw .seq_2DDA	;5C: -Nothing-
-;	dw .seq_2557	;59: Kudgel hit
-;	dw .seq_2539	;5A: K. Rool down
-;	dw .seq_252F	;5B: K. Rool/Kudgel falling into water (higher pitch, played with 5C)
-;	dw .seq_2523	;5C: K. Rool/Kudgel falling into water (lower pitch, played with 5B)
+	dw .donkey_teamup	;59: Donkey teamup/mount animal
+	dw .kiddy_cry		;5A: Kiddy crying
+	dw .kiddy_idle		;5B: Kiddy idle
+	dw .seq_2DDA		;5C: -Nothing-
+;	dw .seq_2557		;59: Kudgel hit
+;	dw .seq_2539		;5A: K. Rool down
+;	dw .seq_252F		;5B: K. Rool/Kudgel falling into water (higher pitch, played with 5C)
+;	dw .seq_2523		;5C: K. Rool/Kudgel falling into water (lower pitch, played with 5B)
 ;END OF PATCH
-	dw .seq_2516	;5D: Klinger/Krook defeated
-	dw .seq_24E5	;5E: Pause/unpause game
+	dw .seq_2516		;5D: Klinger/Krook defeated
+	dw .seq_24E5		;5E: Pause/unpause game
 ;START OF PATCH (remove sound effect 5F)
-	dw .seq_2DDA	;5F: -Nothing-
-;	dw .seq_24D2	;5F: Incorrect answer/unavailable option
+	dw .seq_2DDA		;5F: -Nothing-
+;	dw .seq_24D2		;5F: Incorrect answer/unavailable option
 ;END OF PATCH
 .pointers_end:
+
+;START OF PATCH (add new sound effects 03, 0C, 0D, 2E, 33, 34, 55, 59, 5A, 5B, and 5C)
+.kiddy_idle:
+	db !set_instrument, $83
+	db !set_vol_single_val, $DE
+	db !set_adsr, $8E, $E0
+	db $8A, $28
+	db !end_sequence
+
+
+.kiddy_cry:
+	db !set_vol_single_val, $DD
+	db !set_instrument, $6A
+	db !set_adsr, $FF, $EB
+	db !pitch_slide_down, $10, $06, $40, $09, $00
+	db $8B, $90
+	db !end_sequence
+
+
+.donkey_teamup:
+	db !change_instr_pitch, $F9
+	db !jump_to_sequence : dw .seq_279D
+
+
+.donkey_idle:
+	db !set_instrument, $DB
+	db !set_vol_single_val, $50
+	db !set_adsr, $8F, $E0
+	db !note_94, $0D
+	db !set_default_duration, $1D
+	db !note_95
+	db !note_95
+	db !note_95
+	db !note_95
+	db !set_vol_single_val, $20
+	db !note_95
+	db !set_vol_single_val, $18
+	db !note_95
+	db !set_vol_single_val, $0E
+	db !note_95
+	db !set_vol_single_val, $06
+	db !note_95
+	db !default_duration_off
+	db !end_sequence
+
+
+.donkey_hit:
+	db !set_instrument, $05
+	db !set_vol_single_val, $78
+	db $90, $14
+	db !end_sequence
+
+
+.donkey_dk_barrel:
+	db !echo_on
+	db !set_instrument, $00
+	db !change_instr_pitch, $FB
+	db !set_default_duration, $05
+	db !loop_subsequence, $02 : dw ..subseq
+	db !default_duration_off
+	db $80, $0E
+	db !set_instrument, $DC
+	db !change_instr_pitch, $00
+	db !set_vol_single_val, $32
+	db !set_default_duration, $09
+	db $89
+	db !set_vol_single_val, $14
+	db $89
+	db !set_vol_single_val, $32
+	db $88
+	db !set_vol_single_val, $14
+	db $88
+	db !set_vol_single_val, $32
+	db $89
+	db !set_vol_single_val, $14
+	db $89
+	db !set_vol_single_val, $32
+	db $8A
+	db !set_vol_single_val, $14
+	db $8A
+	db !set_vol_single_val, $23
+	db $8A
+	db !set_vol_single_val, $0F
+	db $8A
+	db !set_vol_single_val, $14
+	db $8A
+	db !set_vol_single_val, $0A
+	db $8A
+	db !default_duration_off
+	db !end_sequence
+
+..subseq:
+	db !set_vol_single_val, $3C
+	db $AE
+	db !set_vol_single_val, $14
+	db $AE
+	db !set_vol_single_val, $3C
+	db $A5
+	db !set_vol_single_val, $14
+	db $A5
+	db !return_from_sub
+
+
+.swap_to_dixie_gba:
+	db !change_instr_pitch, $0B
+	db !play_subsequence : dw .dkc1_swap_common_1
+	db !change_instr_pitch, $0A
+	db !set_default_duration, $12
+	db !jump_to_sequence : dw .dkc1_swap_common_2
+
+.swap_to_diddy_dkc1:
+	db !change_instr_pitch, $06
+	db !play_subsequence : dw .dkc1_swap_common_1
+	db !change_instr_pitch, $05
+	db !set_default_duration, $12
+	db !jump_to_sequence : dw .dkc1_swap_common_2
+
+.swap_to_donkey_dkc1:
+	db !play_subsequence : dw .dkc1_swap_common_1
+	db !set_default_duration, $13
+	db !jump_to_sequence : dw .dkc1_swap_common_2
+
+.dkc1_swap_common_1:
+	db !set_instrument, $01
+	db !set_vol_single_val, $40
+	db !set_adsr, $8E, $E0
+	db !set_default_duration, $1A
+	db !note_8E
+	db !set_instrument, $02
+	db !note_8E
+	db !set_instrument, $03
+	db !note_8E
+	db !return_from_sub
+
+.dkc1_swap_common_2:
+	db !set_instrument, $04
+	db !set_adsr, $8B, $F8
+	db !fine_tune, $32
+	db !note_90
+	db !fine_tune, $00
+	db !note_90
+	db !fine_tune, $CE
+	db !note_90
+	db !fine_tune, $9C
+	db !note_90
+	db !end_sequence
+
+
+.swap_to_donkey:
+	db !play_subsequence : dw .kongs_swap_sub_1
+	db !change_instr_pitch, $F9
+	db !jump_to_sequence : dw .kongs_swap_sub_2
+;END OF PATCH
 
 ;START OF PATCH (remove vanilla sound effect 5F)
 ;.seq_24D2:
@@ -237,55 +403,57 @@ base !snd_loc
 	db !play_subsequence : dw .subseq_2985
 	db !end_sequence
 
-.seq_258B:
-	db !echo_on
-	db !set_vol_single_val, $14
-	db !set_instrument, $01
-	db $99, $06
-	db !set_instrument, $00
-	db $91, $06
-	db !set_vol_single_val, $1E
-	db !set_instrument, $06
-	db $90, $06
-	db !set_instrument, $00
-	db $8E, $06
-	db !set_vol_single_val, $28
-	db !set_instrument, $02
-	db $99, $06
-	db !set_instrument, $00
-	db $8E, $06
-	db !set_vol_single_val, $32
-	db !set_instrument, $03
-	db $99, $06
-	db !set_instrument, $00
-	db $8E, $06
-	db !set_vol_single_val, $3C
-	db !set_instrument, $02
-	db $99, $06
-	db !set_instrument, $00
-	db $8E, $06
-	db !set_vol_single_val, $46
-	db !set_instrument, $01
-	db $99, $06
-	db !set_instrument, $00
-	db $91, $06
-	db !set_instrument, $04
-	db $99, $08
-	db $98, $08
-	db !set_instrument, $00
-	db $90, $06
-	db $91, $06
-	db !set_instrument, $04
-	db $98, $08
-	db $97, $08
-	db !set_instrument, $00
-	db $90, $06
-	db $8F, $06
-	db !set_instrument, $04
-	db $9A, $08
-	db $99, $08
-	db $98, $08
-	db !end_sequence
+;START OF PATCH (remove vanilla sound effect 55)
+;.seq_258B:
+;	db !echo_on
+;	db !set_vol_single_val, $14
+;	db !set_instrument, $01
+;	db $99, $06
+;	db !set_instrument, $00
+;	db $91, $06
+;	db !set_vol_single_val, $1E
+;	db !set_instrument, $06
+;	db $90, $06
+;	db !set_instrument, $00
+;	db $8E, $06
+;	db !set_vol_single_val, $28
+;	db !set_instrument, $02
+;	db $99, $06
+;	db !set_instrument, $00
+;	db $8E, $06
+;	db !set_vol_single_val, $32
+;	db !set_instrument, $03
+;	db $99, $06
+;	db !set_instrument, $00
+;	db $8E, $06
+;	db !set_vol_single_val, $3C
+;	db !set_instrument, $02
+;	db $99, $06
+;	db !set_instrument, $00
+;	db $8E, $06
+;	db !set_vol_single_val, $46
+;	db !set_instrument, $01
+;	db $99, $06
+;	db !set_instrument, $00
+;	db $91, $06
+;	db !set_instrument, $04
+;	db $99, $08
+;	db $98, $08
+;	db !set_instrument, $00
+;	db $90, $06
+;	db $91, $06
+;	db !set_instrument, $04
+;	db $98, $08
+;	db $97, $08
+;	db !set_instrument, $00
+;	db $90, $06
+;	db $8F, $06
+;	db !set_instrument, $04
+;	db $9A, $08
+;	db $99, $08
+;	db $98, $08
+;	db !end_sequence
+;END OF PATCH
 
 .seq_25E9:
 	db !set_instrument, $00
@@ -795,22 +963,24 @@ base !snd_loc
 	db $8E, $0A
 	db !end_sequence
 
-.seq_295F:
-	db !set_instrument, $8F
-	db !change_instr_pitch, $F8
-	db !fine_tune, $FC
-	db !set_vol_single_val, $28
-	db !set_adsr, $8D, $E1
-	db !vibrato_with_delay, $03, $01, $02, $0F
-	db !echo_on
-	db $A2, $0B
-	db $80, $01
-	db $9F, $07
-	db $80, $01
-	db $A2, $03
-	db $80, $01
-	db $A7, $10
-	db !end_sequence
+;START OF PATCH (remove vanilla sound effect 2E)
+;.seq_295F:
+;	db !set_instrument, $8F
+;	db !change_instr_pitch, $F8
+;	db !fine_tune, $FC
+;	db !set_vol_single_val, $28
+;	db !set_adsr, $8D, $E1
+;	db !vibrato_with_delay, $03, $01, $02, $0F
+;	db !echo_on
+;	db $A2, $0B
+;	db $80, $01
+;	db $9F, $07
+;	db $80, $01
+;	db $A2, $03
+;	db $80, $01
+;	db $A7, $10
+;	db !end_sequence
+;END OF PATCH
 
 .seq_297F:
 	db !change_instr_pitch, $08
@@ -1171,7 +1341,10 @@ base !snd_loc
 	db !change_instr_pitch, $00
 	db !set_vol_single_val, $64
 	db !set_instrument, $0C
-	db $81, $06
+;START OF PATCH (change notes for wall break sound effect to compensate for change in banana sample, 1/3)
+	db $97, $06
+;	db $81, $06
+;END OF PATCH
 	db !set_instrument, $0D
 	db $81, $06
 	db !set_instrument, $00
@@ -1180,8 +1353,12 @@ base !snd_loc
 	db $81, $06
 	db !set_vol_single_val, $3C
 	db !set_instrument, $0C
-	db $85, $04
-	db $82, $04
+;START OF PATCH (change notes for wall break sound effect to compensate for change in banana sample, 2/3)
+	db $9B, $04
+	db $98, $04
+;	db $85, $04
+;	db $82, $04
+;END OF PATCH
 	db !set_instrument, $0D
 	db $81, $06
 	db !set_instrument, $00
@@ -1190,7 +1367,10 @@ base !snd_loc
 	db $82, $06
 	db !set_vol_single_val, $1E
 	db !set_instrument, $0C
-	db $81, $06
+;START OF PATCH (change notes for wall break sound effect to compensate for change in banana sample, 3/3)
+	db $97, $06
+;	db $81, $06
+;END OF PATCH
 	db !set_instrument, $0D
 	db $84, $06
 	db !set_instrument, $00
@@ -1308,22 +1488,24 @@ base !snd_loc
 	db $91, $28
 	db !end_sequence
 
-.seq_2CB2:
-	db !set_instrument, $43
-	db !set_vol_single_val, $7F
-	db !pitch_slide_up, $00, $01, $2C, $2C, $03
-	db !set_adsr, $AE, $F5
-	db $92, $1A
-	db !end_sequence
+;START OF PATCH (remove vanilla sound effects 0C and 0D)
+;.seq_2CB2:
+;	db !set_instrument, $43
+;	db !set_vol_single_val, $7F
+;	db !pitch_slide_up, $00, $01, $2C, $2C, $03
+;	db !set_adsr, $AE, $F5
+;	db $92, $1A
+;	db !end_sequence
 
-.seq_2CC2:
-	db !set_instrument, $0A
-	db !set_vol_single_val, $78
-	db !set_adsr, $8F, $EF
-	db !pitch_slide_up, $0C, $01, $0B, $17, $01
-	db $85, $06
-	db $81, $30
-	db !end_sequence
+;.seq_2CC2:
+;	db !set_instrument, $0A
+;	db !set_vol_single_val, $78
+;	db !set_adsr, $8F, $EF
+;	db !pitch_slide_up, $0C, $01, $0B, $17, $01
+;	db $85, $06
+;	db $81, $30
+;	db !end_sequence
+;END OF PATCH
 
 .seq_2CD4:
 	db !set_instrument, $43
@@ -1392,51 +1574,92 @@ base !snd_loc
 
 .seq_2D2D:
 	db !set_instrument, $0C
-	db !set_vol_single_val, $60
+;START OF PATCH (change volumes and notes for banana bunch sound effect to compensate for change in banana sample, 1/5)
+	db !set_vol_single_val, $7F
+;	db !set_vol_single_val, $60
 	db !set_default_duration, $04
-	db $8F
-	db $96
-	db $9B
-	db $A2
-	db $A7
-	db !set_vol_single_val, $28
-	db $8F
-	db $96
-	db $9B
-	db $A2
-	db $A7
-	db !set_vol_single_val, $14
-	db $8F
-	db $96
-	db $9B
-	db $A2
-	db $A7
-	db !set_vol_single_val, $0A
-	db $8F
-	db $96
-	db $9B
-	db $A2
-	db $A7
+	db $A5
+	db $AC
+	db $B1
+	db $B8
+	db $BD
+;	db $8F
+;	db $96
+;	db $9B
+;	db $A2
+;	db $A7
+	db !set_vol_single_val, $34
+;	db !set_vol_single_val, $28
+	db $A5
+	db $AC
+	db $B1
+	db $B8
+	db $BD
+;	db $8F
+;	db $96
+;	db $9B
+;	db $A2
+;	db $A7
+	db !set_vol_single_val, $1A
+;	db !set_vol_single_val, $14
+	db $A5
+	db $AC
+	db $B1
+	db $B8
+	db $BD
+;	db $8F
+;	db $96
+;	db $9B
+;	db $A2
+;	db $A7
+	db !set_vol_single_val, $0D
+;	db !set_vol_single_val, $0A
+	db $A5
+	db $AC
+	db $B1
+	db $B8
+	db $BD
+;	db $8F
+;	db $96
+;	db $9B
+;	db $A2
+;	db $A7
 	db !set_vol_single_val, $05
-	db $8F
-	db $96
-	db $9B
-	db $A2
-	db $A7
+	db $A5
+	db $AC
+	db $B1
+	db $B8
+	db $BD
+;	db $8F
+;	db $96
+;	db $9B
+;	db $A2
+;	db $A7
+;END OF PATCH
 	db !default_duration_off
 	db !end_sequence
 
 .seq_2D56:
 	db !set_instrument, $0C
-	db !set_vol_single_val, $3C
+;START OF PATCH (change volume and notes for banana sound effect to compensate for change in banana sample)
+	db !set_vol_single_val, $4E
+;	db !set_vol_single_val, $3C
 	db !set_default_duration, $04
-	db $8D
-	db !set_vol_single_val, $5A
-	db $99
-	db $A5
-	db !set_vol_single_val, $19
-	db $99
-	db $A5
+	db $A3
+;	db $8D
+	db !set_vol_single_val, $75
+;	db !set_vol_single_val, $5A
+	db $AF
+	db $BB
+;	db $99
+;	db $A5
+	db !set_vol_single_val, $21
+;	db !set_vol_single_val, $19
+	db $AF
+	db $BB
+;	db $99
+;	db $A5
+;END OF PATCH
 	db !default_duration_off
 	db !end_sequence
 
@@ -1453,6 +1676,12 @@ base !snd_loc
 	db !end_sequence
 
 .seq_2D75:
+;START OF PATCH (change how vanilla swap sound is structured so that a pitch-shifted version can be created, part 1/2)
+	db !play_subsequence : dw .kongs_swap_sub_1
+	db !jump_to_sequence : dw .kongs_swap_sub_2
+
+.kongs_swap_sub_1:
+;END OF PATCH
 	db !set_instrument, $0D
 	db !set_vol_single_val, $28
 	db !set_adsr, $8F, $F4
@@ -1467,6 +1696,11 @@ base !snd_loc
 	db !set_adsr, $8F, $E0
 	db !set_instrument, $00
 	db $92, $02
+;START OF PATCH (change how vanilla swap sound is structured so that a pitch-shifted version can be created, part 2/2)
+	db !return_from_sub
+
+.kongs_swap_sub_2:
+;END OF PATCH
 	db !set_instrument, $01
 	db $90, $0C
 	db $80, $0C
@@ -1489,22 +1723,24 @@ base !snd_loc
 	db !pitch_slide_off
 	db !end_sequence
 
-.seq_2DB6:
-	db !set_vol_single_val, $3C
-	db !set_default_duration, $10
-	db !set_instrument, $01
-	db $99
-	db $99
-	db !set_instrument, $02
-	db $99
-	db !set_instrument, $03
-	db $99
-	db !set_instrument, $04
-	db $99
-	db $98
-	db $98
-	db !default_duration_off
-	db !end_sequence
+;START OF PATCH (remove vanilla sound effect 03)
+;.seq_2DB6:
+;	db !set_vol_single_val, $3C
+;	db !set_default_duration, $10
+;	db !set_instrument, $01
+;	db $99
+;	db $99
+;	db !set_instrument, $02
+;	db $99
+;	db !set_instrument, $03
+;	db $99
+;	db !set_instrument, $04
+;	db $99
+;	db $98
+;	db $98
+;	db !default_duration_off
+;	db !end_sequence
+;END OF PATCH
 
 .seq_2DCB:
 	db !set_instrument, $A5
