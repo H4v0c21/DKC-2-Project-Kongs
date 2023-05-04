@@ -13729,7 +13729,7 @@ CODE_B5F945:					;	   |
 
 CODE_B5F94C:
 	STX $32					;$B5F94C  \
-	%lda_sound(6, banana)			;$B5F94E   |
+	%lda_sound(6, banana_bunch)		;$B5F94E   |
 	JSL queue_sound_effect			;$B5F951   |
 	LDA #$003C				;$B5F955   |
 	STA $096F				;$B5F958   |

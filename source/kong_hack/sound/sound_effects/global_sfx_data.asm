@@ -162,20 +162,20 @@ base !snd_loc
 	db !set_instrument, $DB
 	db !set_vol_single_val, $50
 	db !set_adsr, $8F, $E0
-	db !note_94, $0D
+	db $94, $0D
 	db !set_default_duration, $1D
-	db !note_95
-	db !note_95
-	db !note_95
-	db !note_95
+	db $95
+	db $95
+	db $95
+	db $95
 	db !set_vol_single_val, $20
-	db !note_95
+	db $95
 	db !set_vol_single_val, $18
-	db !note_95
+	db $95
 	db !set_vol_single_val, $0E
-	db !note_95
+	db $95
 	db !set_vol_single_val, $06
-	db !note_95
+	db $95
 	db !default_duration_off
 	db !end_sequence
 
@@ -261,24 +261,24 @@ base !snd_loc
 	db !set_vol_single_val, $40
 	db !set_adsr, $8E, $E0
 	db !set_default_duration, $1A
-	db !note_8E
+	db $8E
 	db !set_instrument, $02
-	db !note_8E
+	db $8E
 	db !set_instrument, $03
-	db !note_8E
+	db $8E
 	db !return_from_sub
 
 .dkc1_swap_common_2:
 	db !set_instrument, $04
 	db !set_adsr, $8B, $F8
 	db !fine_tune, $32
-	db !note_90
+	db $90
 	db !fine_tune, $00
-	db !note_90
+	db $90
 	db !fine_tune, $CE
-	db !note_90
+	db $90
 	db !fine_tune, $9C
-	db !note_90
+	db $90
 	db !end_sequence
 
 
