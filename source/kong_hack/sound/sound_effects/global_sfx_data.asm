@@ -1574,9 +1574,8 @@ base !snd_loc
 
 .seq_2D2D:
 	db !set_instrument, $0C
-;START OF PATCH (change volumes and notes for banana bunch sound effect to compensate for change in banana sample, 1/5)
-	db !set_vol_single_val, $7F
-;	db !set_vol_single_val, $60
+;START OF PATCH (change notes for banana bunch sound effect to compensate for change in banana sample)
+	db !set_vol_single_val, $60
 	db !set_default_duration, $04
 	db $A5
 	db $AC
@@ -1588,8 +1587,7 @@ base !snd_loc
 ;	db $9B
 ;	db $A2
 ;	db $A7
-	db !set_vol_single_val, $34
-;	db !set_vol_single_val, $28
+	db !set_vol_single_val, $28
 	db $A5
 	db $AC
 	db $B1
@@ -1600,8 +1598,8 @@ base !snd_loc
 ;	db $9B
 ;	db $A2
 ;	db $A7
-	db !set_vol_single_val, $1A
-;	db !set_vol_single_val, $14
+;	db !set_vol_single_val, $1A
+	db !set_vol_single_val, $14
 	db $A5
 	db $AC
 	db $B1
@@ -1612,8 +1610,8 @@ base !snd_loc
 ;	db $9B
 ;	db $A2
 ;	db $A7
-	db !set_vol_single_val, $0D
-;	db !set_vol_single_val, $0A
+;	db !set_vol_single_val, $0D
+	db !set_vol_single_val, $0A
 	db $A5
 	db $AC
 	db $B1
@@ -1641,20 +1639,17 @@ base !snd_loc
 
 .seq_2D56:
 	db !set_instrument, $0C
-;START OF PATCH (change volume and notes for banana sound effect to compensate for change in banana sample)
-	db !set_vol_single_val, $4E
-;	db !set_vol_single_val, $3C
+;START OF PATCH (change notes for banana sound effect to compensate for change in banana sample)
+	db !set_vol_single_val, $3C
 	db !set_default_duration, $04
 	db $A3
 ;	db $8D
-	db !set_vol_single_val, $75
-;	db !set_vol_single_val, $5A
+	db !set_vol_single_val, $5A
 	db $AF
 	db $BB
 ;	db $99
 ;	db $A5
-	db !set_vol_single_val, $21
-;	db !set_vol_single_val, $19
+	db !set_vol_single_val, $19
 	db $AF
 	db $BB
 ;	db $99
