@@ -1,9 +1,7 @@
-	incsrc audio_constants.asm
-
 spc_base_engine:
 
 arch spc700
-base $04D8
+base !spc_base_eng_loc
 
 CODE_04D8:
 	CLRP					;$04D8   |
@@ -91,6 +89,8 @@ arch 65816
 
 spc_sound_engine:
 arch spc700
+base !spc_sound_eng_loc
+DATA_0560:
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
@@ -119,12 +119,13 @@ arch spc700
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00
+;START OF PATCH (reduce space allocated in ARAM for sample source number map to $E0 bytes)
+;	db $00, $00, $00, $00, $00, $00, $00, $00
+;	db $00, $00, $00, $00, $00, $00, $00, $00
+;	db $00, $00, $00, $00, $00, $00, $00, $00
+;	db $00, $00, $00, $00, $00, $00, $00, $00
 
-base $0660
+;base $0660
 CODE_0660:
 	MOV A, $055D				;$0660   |
 	ASL A					;$0663   |
@@ -408,7 +409,7 @@ CODE_0839:
 	BNE CODE_084A				;$083B   |
 	MOV A, $01E0+X				;$083D   |
 	BNE CODE_084A				;$0840   |
-	MOV A, $0F95+X				;$0842   |
+	MOV A, DATA_0F95+X			;$0842   |
 	MOV $F2, #$5C				;$0845   |
 	MOV $F3, A				;$0848   |
 CODE_084A:					;   |
@@ -437,7 +438,7 @@ CODE_0867:
 	BNE CODE_088B				;$0869   |
 	MOV A, $01E0+X				;$086B   |
 	BNE CODE_0888				;$086E   |
-	MOV A, $0F95+X				;$0870   |
+	MOV A, DATA_0F95+X			;$0870   |
 	MOV $F2, #$5C				;$0873   |
 	MOV $F3, A				;$0876   |
 	MOV A, X				;$0878   |
@@ -479,12 +480,12 @@ CODE_0899:					;   |
 CODE_08AE:					;   |
 	MOV Y, A				;$08AE   |
 	PUSH Y					;$08AF   |
-	MOV A, $1199+X				;$08B0   |
+	MOV A, DATA_1199+X			;$08B0   |
 	MUL YA					;$08B3   |
 	MOV $02, Y				;$08B4   |
 	MOV $03, #$00				;$08B6   |
 	POP Y					;$08B9   |
-	MOV A, $119A+X				;$08BA   |
+	MOV A, DATA_119A+X			;$08BA   |
 	MUL YA					;$08BD   |
 	ADDW YA, $02				;$08BE   |
 	MOV $03, Y				;$08C0   |
@@ -493,9 +494,9 @@ CODE_08AE:					;   |
 	LSR $03					;$08C5   |
 	ROR A					;$08C7   |
 	MOV $02, A				;$08C8   |
-	MOV A, $119A+X				;$08CA   |
+	MOV A, DATA_119A+X			;$08CA   |
 	MOV Y, A				;$08CD   |
-	MOV A, $1199+X				;$08CE   |
+	MOV A, DATA_1199+X			;$08CE   |
 	MOV X, $04				;$08D1   |
 	BMI CODE_08D9				;$08D3   |
 	ADDW YA, $02				;$08D5   |
@@ -509,9 +510,9 @@ CODE_08DB:					;   |
 
 CODE_08DF:
 	MOV X, A				;$08DF   |
-	MOV A, $1199+X				;$08E0   |
+	MOV A, DATA_1199+X			;$08E0   |
 	MOV $02, A				;$08E3   |
-	MOV A, $119A+X				;$08E5   |
+	MOV A, DATA_119A+X			;$08E5   |
 	MOV $03, A				;$08E8   |
 CODE_08EA:					;   |
 	POP A					;$08EA   |
@@ -582,7 +583,7 @@ CODE_094D:					;   |
 	MOV $F2, #$5C				;$0975   |
 	MOV $F3, #$00				;$0978   |
 	MOV $F2, #$4C				;$097B   |
-	MOV A, $0F95+X				;$097E   |
+	MOV A, DATA_0F95+X			;$097E   |
 	MOV $F3, A				;$0981   |
 CODE_0983:					;   |
 	MOV A, $0120+X				;$0983   |
@@ -819,7 +820,7 @@ CODE_0B18:					;   |
 	MOV A, $01E0+X				;$0B1E   |
 	BNE CODE_0B2B				;$0B21   |
 	MOV $F2, #$5C				;$0B23   |
-	MOV A, $0F95+X				;$0B26   |
+	MOV A, DATA_0F95+X			;$0B26   |
 	MOV $F3, A				;$0B29   |
 CODE_0B2B:					;   |
 	MOV A, X				;$0B2B   |
@@ -832,20 +833,20 @@ CODE_0B2B:					;   |
 	MOV A, #$00				;$0B35   |
 	MOV $01E0+X, A				;$0B37   |
 	MOV $F2, #$3D				;$0B3A   |
-	MOV A, $0F95+X				;$0B3D   |
+	MOV A, DATA_0F95+X			;$0B3D   |
 	EOR A, #$FF				;$0B40   |
 	AND A, $F3				;$0B42   |
 	MOV $F3, A				;$0B44   |
 	MOV $F2, #$4D				;$0B46   |
 	MOV A, $0294+X				;$0B49   |
 	BEQ CODE_0B57				;$0B4C   |
-	MOV A, $0F95+X				;$0B4E   |
+	MOV A, DATA_0F95+X			;$0B4E   |
 	OR A, $F3				;$0B51   |
 	MOV $F3, A				;$0B53   |
 	BRA CODE_0B60				;$0B55   |
 
 CODE_0B57:
-	MOV A, $0F95+X				;$0B57   |
+	MOV A, DATA_0F95+X			;$0B57   |
 	EOR A, #$FF				;$0B5A   |
 	AND A, $F3				;$0B5C   |
 	MOV $F3, A				;$0B5E   |
@@ -887,7 +888,7 @@ CODE_0B8B:
 	PUSH X					;$0B8B   |
 	MOV A, ($00)+Y				;$0B8C   |
 	MOV X, A				;$0B8E   |
-	MOV A, $0560+X				;$0B8F   |
+	MOV A, DATA_0560+X			;$0B8F   |
 	POP X					;$0B92   |
 	MOV $0244+X, A				;$0B93   |
 	RET					;$0B96   |
@@ -1368,7 +1369,7 @@ CODE_0E97:					;   |
 CODE_0EC4:					;   |
 	CALL CODE_0B64				;$0EC4   |
 	MOV $F2, #$4D				;$0EC7   |
-	MOV A, $0F95+X				;$0ECA   |
+	MOV A, DATA_0F95+X			;$0ECA   |
 	OR A, $F3				;$0ECD   |
 	MOV $F3, A				;$0ECF   |
 	MOV A, #$01				;$0ED1   |
@@ -1380,7 +1381,7 @@ CODE_0ED6:					;   |
 CODE_0EDC:					;   |
 	POP X					;$0EDC   |
 	MOV $F2, #$4D				;$0EDD   |
-	MOV A, $0F95+X				;$0EE0   |
+	MOV A, DATA_0F95+X			;$0EE0   |
 	EOR A, #$FF				;$0EE3   |
 	AND A, $F3				;$0EE5   |
 	MOV $F3, A				;$0EE7   |
@@ -1417,7 +1418,7 @@ CODE_0F10:					;   |
 CODE_0F23:					;   |
 	POP X					;$0F23   |
 	MOV $F2, #$3D				;$0F24   |
-	MOV A, $0F95+X				;$0F27   |
+	MOV A, DATA_0F95+X			;$0F27   |
 	OR A, $F3				;$0F2A   |
 	MOV $F3, A				;$0F2C   |
 CODE_0F2E:					;   |
@@ -1427,7 +1428,7 @@ CODE_0F2E:					;   |
 CODE_0F34:					;   |
 	POP X					;$0F34   |
 	MOV $F2, #$3D				;$0F35   |
-	MOV A, $0F95+X				;$0F38   |
+	MOV A, DATA_0F95+X			;$0F38   |
 	EOR A, #$FF				;$0F3B   |
 	AND A, $F3				;$0F3D   |
 	MOV $F3, A				;$0F3F   |
@@ -1485,57 +1486,66 @@ DATA_0F95:
 	db $01, $02, $04, $08, $10, $20, $40, $80
 
 DATA_0FA5:
-	dw CODE_0B18
-	dw CODE_0B72
-	dw CODE_0BB6
-	dw CODE_0CD7
-	dw CODE_0CE6
-	dw CODE_0D34
-	dw CODE_0D70
-	dw CODE_0D8F
-	dw CODE_0D9B
-	dw CODE_0DA2
-	dw CODE_0DD6
-	dw CODE_0DEB
-	dw CODE_0DF8
-	dw CODE_0E11
-	dw CODE_0E05
-	dw CODE_0E1A
-	dw CODE_0E45
-	dw !null_pointer
-	dw CODE_0E71
-	dw CODE_0E7B
-	dw CODE_0E88
-	dw CODE_0E97
-	dw CODE_0EC4
-	dw CODE_0EDC
-	dw CODE_0EF6
-	dw CODE_0F10
-	dw CODE_0F23
-	dw CODE_0F34
-	dw CODE_0E5A
-	dw CODE_0E64
-	dw CODE_0C83
-	dw CODE_0CA0
-	dw CODE_0C02
-	dw CODE_0CFF
-	dw CODE_0B97
-	dw CODE_0BF0
-	dw CODE_0C4E
-	dw !null_pointer
-	dw CODE_0F44
-	dw CODE_0F4E
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw CODE_0F7C
-	dw CODE_0F86
-	dw !null_pointer
-	dw !null_pointer
-	dw !null_pointer
-	dw CODE_0EDC
-	dw CODE_0C18
-	dw CODE_0EDC
+	dw CODE_0B18		;00: end_sequence
+	dw CODE_0B72		;01: set_instrument
+	dw CODE_0BB6		;02: set_volume_l_and_r
+	dw CODE_0CD7		;03: jump_to_sequence
+	dw CODE_0CE6		;04: loop_subsequence
+	dw CODE_0D34		;05: return_from_sub
+	dw CODE_0D70		;06: set_default_duration
+	dw CODE_0D8F		;07: default_duration_off
+	dw CODE_0D9B		;08: pitch_slide_up
+	dw CODE_0DA2		;09: pitch_slide_down
+	dw CODE_0DD6		;0A: pitch_slide_off
+	dw CODE_0DEB		;0B: change_tempo
+	dw CODE_0DF8		;0C: change_tempo_rel
+	dw CODE_0E11		;0D: vibrato
+	dw CODE_0E05		;0E: vibrato_off
+	dw CODE_0E1A		;0F: vibrato_with_delay
+	dw CODE_0E45		;10: set_adsr
+	dw !null_pointer	;11: unimplemented command
+	dw CODE_0E71		;12: fine_tune
+	dw CODE_0E7B		;13: change_instr_pitch
+	dw CODE_0E88		;14: change_instr_pitch_rel
+	dw CODE_0E97		;15: set_echo
+	dw CODE_0EC4		;16: echo_on
+	dw CODE_0EDC		;17: echo_off
+	dw CODE_0EF6		;18: set_fir
+	dw CODE_0F10		;19: dsp_flag
+	dw CODE_0F23		;1A: noise_on
+	dw CODE_0F34		;1B: noise_off
+	dw CODE_0E5A		;1C: set_variable_note_1
+	dw CODE_0E64		;1D: set_variable_note_2
+	dw CODE_0C83		;1E: set_volume_presets
+	dw CODE_0CA0		;1F: echo_delay
+	dw CODE_0C02		;20: load_volume_preset_1
+	dw CODE_0CFF		;21: play_subsequence 
+	dw CODE_0B97		;22: set_voice_parameters
+	dw CODE_0BF0		;23: set_vol_single_val
+	dw CODE_0C4E		;24: set_master_volume_indirect
+
+;START OF PATCH (remove unused command pointers, shift used pointers up)
+	dw CODE_0F44		;25: simple_pitch_slide_down
+	dw CODE_0F4E		;26: simple_pitch_slide_up
+	dw CODE_0F7C		;27: long_duration_on
+	dw CODE_0F86		;28: long_duration_off
+	dw CODE_0C18		;29: load_volume_preset_2
+
+;	dw !null_pointer	;25: unimplemented command
+;	dw CODE_0F44		;26: simple_pitch_slide_down
+;	dw CODE_0F4E		;27: simple_pitch_slide_up
+;	dw !null_pointer	;28: unimplemented command
+;	dw !null_pointer	;29: unimplemented command
+;	dw !null_pointer	;2A: unimplemented command
+;	dw CODE_0F7C		;2B: long_duration_on
+;	dw CODE_0F86		;2C: long_duration_off
+;	dw !null_pointer	;2D: unimplemented command
+;	dw !null_pointer	;2E: unimplemented command
+;	dw !null_pointer	;2F: unimplemented command
+;	dw CODE_0EDC		;30: echo_off (copy)
+;	dw CODE_0C18		;31: load_volume_preset_2
+;	dw CODE_0EDC		;32: echo_off (copy)
+;END OF PATCH
 
 CODE_100B:
 	MOV A, #$00				;$100B   |
@@ -1670,7 +1680,7 @@ CODE_1111:					;   |
 	MOV A, #$01				;$1114   |
 	MOV $01E0+X, A				;$1116   |
 	MOV $F2, #$3D				;$1119   |
-	MOV A, $0F95+X				;$111C   |
+	MOV A, DATA_0F95+X			;$111C   |
 	EOR A, #$FF				;$111F   |
 	AND A, $F3				;$1121   |
 	MOV $F3, A				;$1123   |
@@ -1727,13 +1737,14 @@ CODE_1188:					;   |
 	MOV A, #$02				;$1188   |
 	MOV $34+X, A				;$118A   |
 	MOV $F2, #$4D				;$118C   |
-	MOV A, $0F95+X				;$118F   |
+	MOV A, DATA_0F95+X			;$118F   |
 	EOR A, #$FF				;$1192   |
 	AND A, $F3				;$1194   |
 	MOV $F3, A				;$1196   |
 	RET					;$1198   |
 
 DATA_1199:
+	%offset(DATA_119A, 1)
 	dw $0000
 	dw $0040
 	dw $0044
@@ -2654,9 +2665,12 @@ DATA_EE1937:
 	dw $FFFF
 
 	incsrc "data/sound/music/null_song_data.asm"
-	incsrc "data/sound/music/island_map_song_data.asm"
+;START OF PATCH (replace song data blocks with modified versions, 1/8)
+	incsrc "kong_hack/sound/music/island_map_song_data.asm"
+;	incsrc "data/sound/music/island_map_song_data.asm"
+;END OF PATCH
 	incsrc "data/sound/music/main_theme_song_data.asm"
-;START OF PATCH (replace swamp, swanky, forest, and ship deck song data blocks with modified versions)
+;START OF PATCH (replace song data blocks with modified versions, 2/8)
 	incsrc "kong_hack/sound/music/swamp_song_data.asm"
 	incsrc "kong_hack/sound/music/swanky_song_data.asm"
 	incsrc "kong_hack/sound/music/forest_song_data.asm"
@@ -2667,17 +2681,18 @@ DATA_EE1937:
 ;	incsrc "data/sound/music/ship_deck_song_data.asm"
 ;END OF PATCH
 	incsrc "data/sound/music/mine_song_data.asm"
-	incsrc "data/sound/music/funky_song_data.asm"
-;START OF PATCH (replace brambles, klubba, and wasp hive song data blocks with modified versions)
+;START OF PATCH (replace song data blocks with modified versions, 3/8)
+	incsrc "kong_hack/sound/music/funky_song_data.asm"
 	incsrc "kong_hack/sound/music/brambles_song_data.asm"
 	incsrc "kong_hack/sound/music/klubba_song_data.asm"
 	incsrc "kong_hack/sound/music/wasp_hive_song_data.asm"
+;	incsrc "data/sound/music/funky_song_data.asm"
 ;	incsrc "data/sound/music/brambles_song_data.asm"
 ;	incsrc "data/sound/music/klubba_song_data.asm"
 ;	incsrc "data/sound/music/wasp_hive_song_data.asm"
 ;END OF PATCH
 	incsrc "data/sound/music/wrinkly_song_data.asm"
-;START OF PATCH (replace lava, roller coaster, and bonus song data blocks with modified versions)
+;START OF PATCH (replace song data blocks with modified versions, 4/8)
 	incsrc "kong_hack/sound/music/lava_song_data.asm"
 	incsrc "kong_hack/sound/music/roller_coaster_song_data.asm"
 	incsrc "kong_hack/sound/music/bonus_song_data.asm"
@@ -4017,34 +4032,43 @@ brr_sample_F232D2:
 	dw datasize(brr_sample_F232D2)-4
 	incbin "data/sound/samples/sample_F232D2.brr"
 
-;START OF PATCH (replace ship hold song data block with modified version)
+;START OF PATCH (replace song data blocks with modified versions, 5/8)
 	incsrc "kong_hack/sound/music/ship_hold_song_data.asm"
+	incsrc "kong_hack/sound/music/fanfare_song_data.asm"
 ;	incsrc "data/sound/music/ship_hold_song_data.asm"
+;	incsrc "data/sound/music/fanfare_song_data.asm"
 ;END OF PATCH
-	incsrc "data/sound/music/fanfare_song_data.asm"
 	incsrc "data/sound/music/ship_deck_2_song_data.asm"
-	incsrc "data/sound/music/rescue_kong_song_data.asm"
-	incsrc "data/sound/music/game_over_song_data.asm"
+;START OF PATCH (replace song data blocks with modified versions, 6/8)
+	incsrc "kong_hack/sound/music/rescue_kong_song_data.asm"
+	incsrc "kong_hack/sound/music/game_over_song_data.asm"
+;	incsrc "data/sound/music/rescue_kong_song_data.asm"
+;	incsrc "data/sound/music/game_over_song_data.asm"
+;END OF PATCH
 	incsrc "data/sound/music/big_boss_song_data.asm"
-	incsrc "data/sound/music/castle_song_data.asm"
-	incsrc "data/sound/music/haunted_song_data.asm"
-;START OF PATCH (replace file select and cranky song data blocks with modified versions)
+;START OF PATCH (replace song data blocks with modified versions, 7/8)
+	incsrc "kong_hack/sound/music/castle_song_data.asm"
+	incsrc "kong_hack/sound/music/haunted_song_data.asm"
 	incsrc "kong_hack/sound/music/file_select_song_data.asm"
 	incsrc "kong_hack/sound/music/cranky_song_data.asm"
-;	incsrc "data/sound/music/file_select_song_data.asm"
-;	incsrc "data/sound/music/cranky_song_data.asm"
-;END OF PATCH
-	incsrc "data/sound/music/ice_song_data.asm"
-;START OF PATCH (replace jungle, lost world, and rigging song data blocks with modified versions)
+	incsrc "kong_hack/sound/music/ice_song_data.asm"
 	incsrc "kong_hack/sound/music/jungle_song_data.asm"
 	incsrc "kong_hack/sound/music/lost_world_song_data.asm"
 	incsrc "kong_hack/sound/music/rigging_song_data.asm"
+;	incsrc "data/sound/music/castle_song_data.asm"
+;	incsrc "data/sound/music/haunted_song_data.asm"
+;	incsrc "data/sound/music/file_select_song_data.asm"
+;	incsrc "data/sound/music/cranky_song_data.asm"
+;	incsrc "data/sound/music/ice_song_data.asm"
 ;	incsrc "data/sound/music/jungle_song_data.asm"
 ;	incsrc "data/sound/music/lost_world_song_data.asm"
 ;	incsrc "data/sound/music/rigging_song_data.asm"
 ;END OF PATCH
 	incsrc "data/sound/music/credits_song_data.asm"
-	incsrc "data/sound/music/k_rool_song_data.asm"
+;START OF PATCH (replace song data blocks with modified versions, 8/8)
+	incsrc "kong_hack/sound/music/k_rool_song_data.asm"
+;	incsrc "data/sound/music/k_rool_song_data.asm"
+;END OF PATCH
 
 DATA_F2E691:
 	dw $1300, $0000		;Unused placeholder for track $20 (reuses track $0F data instead)
@@ -4075,11 +4099,12 @@ DATA_F2E72C:
 ;END OF PATCH
 	incsrc "data/sound/sound_effects/dummy_sfx_data.asm"
 	incsrc "data/sound/sound_effects/roller_coaster_sfx_data.asm"
-;START OF PATCH (replace aquatic sound effect block with a modified version)
+;START OF PATCH (replace aquatic and nature sound effect block with a modified versions)
 	incsrc "kong_hack/sound/sound_effects/ship_ice_ending_sfx_data.asm"
+	incsrc "kong_hack/sound/sound_effects/swamp_forest_mine_brambles_hive_sfx_data.asm"
 ;	incsrc "data/sound/sound_effects/ship_ice_ending_sfx_data.asm"
+;	incsrc "data/sound/sound_effects/swamp_forest_mine_brambles_hive_sfx_data.asm"
 ;END OF PATCH
-	incsrc "data/sound/sound_effects/swamp_forest_mine_brambles_hive_sfx_data.asm"
 	incsrc "data/sound/sound_effects/unused_krockhead_sfx_data.asm"
 	incsrc "data/sound/sound_effects/jungle_sfx_data.asm"
 ;START OF PATCH (replace boss 1 sound effect block with a modified version)

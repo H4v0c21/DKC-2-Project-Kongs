@@ -1026,7 +1026,10 @@ base !bgm_loc
 	db !fine_tune, $18
 	db !pitch_slide_off
 	db !echo_on
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !set_adsr, $81, $E0
 	db !vibrato_with_delay, $03, $02, $0E, $08
 	db !long_duration_on
@@ -1576,7 +1579,10 @@ base !bgm_loc
 	db !fine_tune, $18
 	db !pitch_slide_off
 	db !echo_on
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !set_adsr, $83, $E0
 	db !vibrato_with_delay, $04, $03, $0B, $08
 	db !long_duration_on
@@ -1716,7 +1722,10 @@ base !bgm_loc
 	db !fine_tune, $18
 	db !pitch_slide_off
 	db !echo_on
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !set_adsr, $85, $E0
 	db !vibrato_with_delay, $04, $02, $11, $08
 	db !long_duration_on
@@ -1848,16 +1857,25 @@ base !bgm_loc
 	db !set_instrument, $C0
 	db !change_instr_pitch, $E4
 	db !fine_tune, $18
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db !set_adsr, $88, $E0
 	db !long_duration_on
 	db $81, $02, $00
 	db $80, $00, $C0
 	db $81, $05, $40
-	db !set_volume_l_and_r, $46, $46
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $46
+;	db !set_volume_l_and_r, $46, $46
+;END OF PATCH
 	db $86, $01, $00
 	db $89, $01, $00
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db $83, $01, $00
 	db $81, $02, $00
 	db !long_duration_off

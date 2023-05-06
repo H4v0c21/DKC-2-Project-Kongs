@@ -184,7 +184,10 @@ base !bgm_loc
 	db !fine_tune, $AE
 	db !vibrato_with_delay, $02, $02, $0B, $03
 	db !set_adsr, $8E, $67
-	db !set_volume_l_and_r, $28, $28
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $28
+;	db !set_volume_l_and_r, $28, $28
+;END OF PATCH
 	db !set_adsr, $8E, $C1
 	db !loop_subsequence, $01 : dw .subseq_1369
 	db !echo_on
@@ -502,7 +505,10 @@ base !bgm_loc
 	db $8A, $0C
 	db $A2, $24
 	db !loop_subsequence, $02 : dw .subseq_1724
-	db !set_volume_l_and_r, $1E, $1E
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1E
+;	db !set_volume_l_and_r, $1E, $1E
+;END OF PATCH
 	db !set_adsr, $89, $E0
 	db $A3, $30
 	db $A3, $30
@@ -590,7 +596,10 @@ base !bgm_loc
 	db !fine_tune, $AE
 	db !vibrato_with_delay, $02, $02, $0B, $03
 	db !set_adsr, $8E, $67
-	db !set_volume_l_and_r, $32, $32
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $32
+;	db !set_volume_l_and_r, $32, $32
+;END OF PATCH
 	db !set_adsr, $8E, $C1
 	db !loop_subsequence, $01 : dw .subseq_137C
 	db !set_instrument, $14
@@ -621,11 +630,17 @@ base !bgm_loc
 	db !play_subsequence : dw .subseq_182C
 	db !echo_off
 	db !set_instrument, $A4
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db $88, $0C
 	db !loop_subsequence, $01 : dw .subseq_1924
 	db !set_instrument, $A4
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db $8B, $08
 	db $8A, $0C
 	db !echo_on
@@ -639,7 +654,10 @@ base !bgm_loc
 .subseq_182C:
 	db !echo_off
 	db !set_instrument, $A4
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db !change_instr_pitch, $00
 	db !fine_tune, $AD
 	db $E0, $0C
@@ -649,21 +667,33 @@ base !bgm_loc
 
 .subseq_183E:
 	db !set_instrument, $A4
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db !change_instr_pitch, $00
 	db !fine_tune, $AD
 	db $8F, $0C
 	db !loop_subsequence, $01 : dw .subseq_18F9
 	db !set_instrument, $A4
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db $92, $0C
 	db !loop_subsequence, $01 : dw .subseq_18F9
 	db !set_instrument, $A4
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db $8F, $0C
 	db !loop_subsequence, $01 : dw .subseq_1924
 	db !set_instrument, $A4
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db $8B, $08
 	db $8A, $0C
 	db !loop_subsequence, $01 : dw .subseq_18F9
@@ -732,39 +762,84 @@ base !bgm_loc
 
 .subseq_18F9:
 	db !set_instrument, $A5
-	db !set_volume_l_and_r, $10, $10
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $10
+;	db !set_volume_l_and_r, $10, $10
+;END OF PATCH
 	db $9E, $03
-	db !set_volume_l_and_r, $1A, $1A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1A
+;	db !set_volume_l_and_r, $1A, $1A
+;END OF PATCH
 	db $9E, $03
-	db !set_volume_l_and_r, $20, $20
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $20
+;	db !set_volume_l_and_r, $20, $20
+;END OF PATCH
 	db $9E, $03
-	db !set_volume_l_and_r, $2A, $2A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $2A
+;	db !set_volume_l_and_r, $2A, $2A
+;END OF PATCH
 	db $9E, $03
-	db !set_volume_l_and_r, $30, $30
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $30
+;	db !set_volume_l_and_r, $30, $30
+;END OF PATCH
 	db $9E, $06
-	db !set_volume_l_and_r, $10, $10
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $10
+;	db !set_volume_l_and_r, $10, $10
+;END OF PATCH
 	db $9E, $06
-	db !set_volume_l_and_r, $08, $08
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $08
+;	db !set_volume_l_and_r, $08, $08
+;END OF PATCH
 	db $9E, $06
-	db !set_volume_l_and_r, $04, $04
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $04
+;	db !set_volume_l_and_r, $04, $04
+;END OF PATCH
 	db $9E, $06
 	db !return_from_sub
 
 .subseq_1924:
 	db !set_instrument, $A5
-	db !set_volume_l_and_r, $10, $10
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $10
+;	db !set_volume_l_and_r, $10, $10
+;END OF PATCH
 	db $9E, $03
-	db !set_volume_l_and_r, $1A, $1A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1A
+;	db !set_volume_l_and_r, $1A, $1A
+;END OF PATCH
 	db $9E, $03
-	db !set_volume_l_and_r, $20, $20
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $20
+;	db !set_volume_l_and_r, $20, $20
+;END OF PATCH
 	db $9E, $03
-	db !set_volume_l_and_r, $2A, $2A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $2A
+;	db !set_volume_l_and_r, $2A, $2A
+;END OF PATCH
 	db $9E, $03
-	db !set_volume_l_and_r, $30, $30
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $30
+;	db !set_volume_l_and_r, $30, $30
+;END OF PATCH
 	db $9E, $06
-	db !set_volume_l_and_r, $10, $10
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $10
+;	db !set_volume_l_and_r, $10, $10
+;END OF PATCH
 	db $9E, $06
-	db !set_volume_l_and_r, $08, $08
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $08
+;	db !set_volume_l_and_r, $08, $08
+;END OF PATCH
 	db $9E, $04
 	db !return_from_sub
 

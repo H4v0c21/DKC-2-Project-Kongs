@@ -29,7 +29,10 @@ base !bgm_loc
 	db !echo_off
 	db !set_instrument, $00
 	db !set_adsr, $8F, $E0
-	db !set_volume_l_and_r, $3B, $3B
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $3B
+;	db !set_volume_l_and_r, $3B, $3B
+;END OF PATCH
 	db $96, $10
 	db !echo_on
 	db !set_instrument, $0C
@@ -42,9 +45,15 @@ base !bgm_loc
 	db !echo_off
 	db !set_instrument, $00
 	db !set_adsr, $8F, $E0
-	db !set_volume_l_and_r, $28, $28
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $28
+;	db !set_volume_l_and_r, $28, $28
+;END OF PATCH
 	db $96, $08
-	db !set_volume_l_and_r, $3B, $3B
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $3B
+;	db !set_volume_l_and_r, $3B, $3B
+;END OF PATCH
 	db $96, $08
 	db !echo_on
 	db !set_instrument, $0C
@@ -59,7 +68,10 @@ base !bgm_loc
 	db !echo_off
 	db !set_instrument, $00
 	db !set_adsr, $8F, $E0
-	db !set_volume_l_and_r, $3B, $3B
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $3B
+;	db !set_volume_l_and_r, $3B, $3B
+;END OF PATCH
 	db $96, $10
 	db !echo_on
 	db !set_instrument, $0C
@@ -72,9 +84,15 @@ base !bgm_loc
 	db !echo_off
 	db !set_instrument, $00
 	db !set_adsr, $8F, $E0
-	db !set_volume_l_and_r, $28, $28
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $28
+;	db !set_volume_l_and_r, $28, $28
+;END OF PATCH
 	db $96, $08
-	db !set_volume_l_and_r, $3B, $3B
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $3B
+;	db !set_volume_l_and_r, $3B, $3B
+;END OF PATCH
 	db $96, $08
 	db !echo_on
 	db !set_instrument, $0C

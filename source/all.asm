@@ -9,6 +9,7 @@ optimize address mirrors
 org $008000			;dummy org so functions work
 	incsrc macros.asm
 	incsrc constants.asm
+	incsrc audio_constants.asm	;added for kong hack
 	incsrc ram.asm
 	incsrc sram.asm
 	incsrc vram.asm
