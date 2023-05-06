@@ -179,6 +179,12 @@ base !snd_loc
 	db !default_duration_off
 	db !end_sequence
 
+.donkey_idle_c:
+
+.donkey_idle_b:
+
+.donkey_idle_a:
+
 
 .donkey_hit:
 	db !set_instrument, $05
@@ -534,7 +540,9 @@ base !snd_loc
 
 .seq_2665:
 	db !set_instrument, $01
-	db !change_instr_pitch, $00
+;START OF PATCH (remove redundant pitch command from Spiny walking sound)
+;	db !change_instr_pitch, $00
+;END OF PATCH
 	db !set_vol_single_val, $7E
 	db !set_adsr, $85, $C0
 .loop_point_266E:
@@ -586,7 +594,10 @@ base !snd_loc
 	db $8F, $04
 	db $8C, $06
 	db $86, $06
-	db !set_volume_l_and_r, $64, $64
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $64
+;	db !set_volume_l_and_r, $64, $64
+;END OF PATCH
 	db !set_adsr, $8F, $E0
 	db $81, $40
 	db !end_sequence
@@ -688,7 +699,9 @@ base !snd_loc
 	db !set_instrument, $A5
 	db !set_vol_single_val, $5A
 	db !set_adsr, $8D, $E0
-	db !change_instr_pitch, $00
+;START OF PATCH (remove redundant pitch command from Animal becoming item (channel 1) sound)
+;	db !change_instr_pitch, $00
+;END OF PATCH
 	db $80, $04
 	db $8D, $06
 	db $8E, $08
@@ -762,7 +775,10 @@ base !snd_loc
 
 .seq_2806:
 	db !set_instrument, $0A
-	db !set_volume_l_and_r, $64, $64
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $64
+;	db !set_volume_l_and_r, $64, $64
+;END OF PATCH
 	db $92, $02
 	db $81, $0E
 	db !change_instr_pitch, $05
@@ -843,12 +859,14 @@ base !snd_loc
 	db !end_sequence
 
 .seq_289F:
-	db !set_instrument, $8B
-	db !set_adsr, $8F, $FA
-	db !change_instr_pitch, $08
-	db !fine_tune, $F2
+;START OF PATCH (remove redundant commands from Extra Life point sound to save space)
+;	db !set_instrument, $8B
+;	db !set_adsr, $8F, $FA
+;	db !change_instr_pitch, $08
+;	db !fine_tune, $F2
 	db !change_instr_pitch, $0C
-	db !fine_tune, $E9
+;	db !fine_tune, $E9
+;END OF PATCH
 	db !play_subsequence : dw .subseq_29BA
 	db !end_sequence
 
@@ -1015,31 +1033,48 @@ base !snd_loc
 	db !return_from_sub
 
 .seq_29A9:
-	db !set_instrument, $8B
-	db !set_adsr, $8F, $FA
-	db !change_instr_pitch, $08
-	db !fine_tune, $F2
+;START OF PATCH (remove redundant commands from Extra Life Balloon collection sound to save space)
+;	db !set_instrument, $8B
+;	db !set_adsr, $8F, $FA
+;	db !change_instr_pitch, $08
+;	db !fine_tune, $F2
 	db !change_instr_pitch, $07
-	db !fine_tune, $E9
+;	db !fine_tune, $E9
+;END OF PATCH
 	db !play_subsequence : dw .subseq_29BA
 	db !end_sequence
 
 .subseq_29BA:
+;START OF PATCH (add common fine tune command to Extra Life Balloon collection/Extra Life point subsequence)
+	db !fine_tune, $E9
+;END OF PATCH
 	db !set_adsr, $AF, $91
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db !set_instrument, $43
 	db !set_default_duration, $07
 	db $A0
 	db $AC
-	db !set_volume_l_and_r, $1E, $1E
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1E
+;	db !set_volume_l_and_r, $1E, $1E
+;END OF PATCH
 	db !set_instrument, $47
 	db $A0
 	db $AC
-	db !set_volume_l_and_r, $14, $14
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $14
+;	db !set_volume_l_and_r, $14, $14
+;END OF PATCH
 	db !set_instrument, $49
 	db $A0
 	db $AC
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !set_instrument, $4B
 	db $A0
 	db $AC
@@ -1059,30 +1094,39 @@ base !snd_loc
 
 .seq_29EF:
 	db !change_instr_pitch, $1A
-	db !fine_tune, $E9
+;START OF PATCH (remove redundant fine tune command)
+;	db !fine_tune, $E9
+;END OF PATCH
 	db !jump_to_sequence : dw .loop_point_2A0E
 	db !end_sequence
 
 .seq_29F7:
 	db !change_instr_pitch, $17
-	db !fine_tune, $E9
+;START OF PATCH (remove redundant fine tune command)
+;	db !fine_tune, $E9
+;END OF PATCH
 	db !jump_to_sequence : dw .loop_point_2A0E
 	db !end_sequence
 
 .seq_29FF:
 	db !change_instr_pitch, $14
-	db !fine_tune, $E9
+;START OF PATCH (remove redundant fine tune command)
+;	db !fine_tune, $E9
+;END OF PATCH
 	db !jump_to_sequence : dw .loop_point_2A0E
 	db !end_sequence
 
 .seq_2A07:
 	db !change_instr_pitch, $11
-	db !fine_tune, $E9
-;START OF PATCH (remove redundant jump command)
+;START OF PATCH (remove redundant fine tune and jump commands)
+;	db !fine_tune, $E9
 ;	db !jump_to_sequence : dw .loop_point_2A0E
 ;END OF PATCH
 
 .loop_point_2A0E:
+;START OF PATCH (add fine tune command to common jump location of KONG letter sounds)
+	db !fine_tune, $E9
+;END OF PATCH
 	db !pitch_slide_off
 	db !vibrato_off
 	db !set_vol_single_val, $28
@@ -1215,8 +1259,10 @@ base !snd_loc
 	db $99, $10
 	db !end_sequence
 
-.unreached_2AFA:
-	db !end_sequence
+;START OF PATCH (remove unreached sequence data)
+;.unreached_2AFA:
+;	db !end_sequence
+;END OF PATCH
 
 .seq_2AFB:
 	db !set_instrument, $43
@@ -1229,8 +1275,10 @@ base !snd_loc
 	db !noise_off
 	db !end_sequence
 
-.unreached_2B0A:
-	db !end_sequence
+;START OF PATCH (remove unreached sequence data)
+;.unreached_2B0A:
+;	db !end_sequence
+;END OF PATCH
 
 .seq_2B0B:
 	db !set_instrument, $11
@@ -1414,7 +1462,10 @@ base !snd_loc
 	db $8D, $04
 	db $8A, $06
 	db $89, $06
-	db !set_volume_l_and_r, $64, $64
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $64
+;	db !set_volume_l_and_r, $64, $64
+;END OF PATCH
 	db !set_adsr, $8F, $EA
 	db $81, $10
 	db $85, $10
@@ -1522,7 +1573,10 @@ base !snd_loc
 
 .seq_2CE9:
 	db !set_instrument, $09
-	db !set_volume_l_and_r, $7F, $7F
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $7F
+;	db !set_volume_l_and_r, $7F, $7F
+;END OF PATCH
 	db !set_adsr, $9E, $D7
 	db !pitch_slide_up, $00, $01, $07, $0B, $00
 	db !set_default_duration, $04
@@ -1750,7 +1804,10 @@ base !snd_loc
 	db !end_sequence
 
 .seq_2DDB:
-	db !set_volume_l_and_r, $00, $00
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $00
+;	db !set_volume_l_and_r, $00, $00
+;END OF PATCH
 .loop_point_2DDE:
 	db $80, $08
 	db !jump_to_sequence : dw .loop_point_2DDE

@@ -304,7 +304,10 @@ base !bgm_loc
 	db !set_instrument, $18
 	db !change_instr_pitch, $07
 	db !fine_tune, $D4
-	db !set_volume_l_and_r, $50, $50
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $50
+;	db !set_volume_l_and_r, $50, $50
+;END OF PATCH
 	db !set_adsr, $AE, $B4
 	db !loop_subsequence, $01 : dw .subseq_15A9
 .loop_point_1591:

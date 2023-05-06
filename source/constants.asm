@@ -259,7 +259,7 @@
 !sound_clapper_bark		= $63	;63: Clapper barking
 !sound_enguarde_charge		= $65	;65: Enguarde bill attack 
 !sound_enguarde_hit		= $66	;66: Enguarde hit
-!sound_clock_tick_copy		= $67	;67: Clock ticking (nearly identical to $1C)
+;!sound_clock_tick_copy		= $67	;67: Clock ticking (identical to $1C)
 !sound_flotsam_move		= $68	;68: Flotsam moving
 !sound_puftup_inflate		= $69	;69: Puftup puffing up
 !sound_puftup_burst		= $6A	;6A: Puftup bursting
@@ -325,7 +325,7 @@
 !sound_k_rool_gun_suck_vroom	= $76	;76: K. Rool using blunderbuss as a vacuum (vroom channel)
 !sound_krow_caw			= $79	;79: Krow cawing
 !sound_kudgel_defeat_airborne	= $7A	;7A: Kudgel/K. Rool (Krocodile Kore) airborne after defeat
-!sound_boss_1_7B		= $7B	;7B: Similar to 1A (unused?)
+;!sound_boss_1_7B		= $7B	;7B: Similar to 1A (unused?)
 !sound_kreepy_krow_defeated	= $7C	;7C: Kreepy Krow destroyed
 
 ;Lava/Castle/Kleever/King Zing "Boss 2"
@@ -356,8 +356,8 @@
 !sound_k_rool_note		= $64	;64: Read K. Rool's note					**Relocated to Aquatic sound set for kong_hack; previously global sound 2E**
 !sound_kudgel_hit		= $6E	;6E: Kudgel hit							**Relocated to Boss 1 sound set for kong_hack; previously global sound 59**
 !sound_k_rool_down		= $77	;77: K. Rool down						**Relocated to Boss 1 sound set for kong_hack; previously global sound 5A**
-!sound_k_rool_splash_1		= $7D	;7D: Kudgel/K. Rool falling into water (channel 1)		**Relocated to Boss 1 sound set for kong_hack; previously global sound 5B**
-!sound_k_rool_splash_2		= $7E	;7E: Kudgel/K. Rool falling into water (channel 2)		**Relocated to Boss 1 sound set for kong_hack; previously global sound 5C**
+!sound_k_rool_splash_1		= $7B	;7B: Kudgel/K. Rool falling into water (channel 1)		**Relocated to Boss 1 sound set for kong_hack; previously global sound 5B**
+!sound_k_rool_splash_2		= $7D	;7D: Kudgel/K. Rool falling into water (channel 2)		**Relocated to Boss 1 sound set for kong_hack; previously global sound 5C**
 !sound_menu_move 		= $60	;60: Menu cursor movement					**Relocated to Menus sound set for kong_hack; previously global sound 33**
 !sound_menu_select 		= $61	;61: Menu confirmation						**Relocated to Menus sound set for kong_hack; previously global sound 34**
 !sound_wrong_answer 		= $62	;62: Incorrect answer/unavailable option			**Relocated to Menus sound set for kong_hack; previously global sound 5F**

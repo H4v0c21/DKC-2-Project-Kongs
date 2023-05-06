@@ -44,11 +44,13 @@ base !dyn_snd_loc
 	dw .seq_2F1F	;78: Kongs panicking
 	dw .seq_309E	;79: Krow cawing (end of $62)
 	dw .seq_2F0F	;7A: Kudgel flying into background
-	dw .seq_30D3	;7B: Slam (end of $60)
+;START OF PATCH (replace unused sound 7B with K. Rool/Kudgel splash sound 1)
+	dw .splash_1	;7B: K. Rool/Kudgel falling into water (higher pitch, played with 7D)
+;	dw .seq_30D3	;7B: Slam (end of $60, unused)
+;END OF PATCH
 	dw .seq_2ED0	;7C: Kreepy Krow destroyed
-;START OF PATCH (Add splash sounds previously in global sound effects data)
-	dw .splash_1	;7D: K. Rool/Kudgel falling into water (higher pitch, played with 7E)
-	dw .splash_2	;7E: K. Rool/Kudgel falling into water (lower pitch, played with 7D)
+;START OF PATCH (Add splash sound previously in global sound effects data)
+	dw .splash_2	;7D: K. Rool/Kudgel falling into water (lower pitch, played with 7B)
 ;END OF PATCH
 .pointers_end:
 

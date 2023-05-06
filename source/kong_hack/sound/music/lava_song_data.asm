@@ -168,7 +168,10 @@ base !bgm_loc
 
 .seq_143E:
 	db !play_subsequence : dw .subseq_1378
-	db !set_volume_l_and_r, $23, $23
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $23
+;	db !set_volume_l_and_r, $23, $23
+;END OF PATCH
 	db !set_adsr, $AF, $AE
 	db $98, $19
 	db $99, $17
@@ -211,7 +214,10 @@ base !bgm_loc
 .seq_1482:
 	db !play_subsequence : dw .subseq_1A46
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $1E, $1E
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1E
+;	db !set_volume_l_and_r, $1E, $1E
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $2B, $00
 	db $9D, $25
 	db !pitch_slide_off
@@ -244,7 +250,10 @@ base !bgm_loc
 
 .seq_14CB:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $1E, $1E
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1E
+;	db !set_volume_l_and_r, $1E, $1E
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $20, $00
 	db $98, $25
 	db !pitch_slide_off
@@ -264,7 +273,10 @@ base !bgm_loc
 
 .seq_14F7:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $1E, $1E
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1E
+;	db !set_volume_l_and_r, $1E, $1E
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $1F, $00
 	db $94, $25
 	db !pitch_slide_off
@@ -324,7 +336,10 @@ base !bgm_loc
 
 .seq_1543:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $64, $64
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $64
+;	db !set_volume_l_and_r, $64, $64
+;END OF PATCH
 	db !pitch_slide_down, $00, $04, $05, $22, $00
 	db $91, $25
 	db !pitch_slide_off
@@ -375,7 +390,10 @@ base !bgm_loc
 
 .seq_15C1:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $2B, $00
 	db $80, $05
 	db $9D, $20
@@ -390,7 +408,10 @@ base !bgm_loc
 
 .seq_15E1:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $20, $00
 	db $80, $05
 	db $98, $20
@@ -405,7 +426,10 @@ base !bgm_loc
 
 .seq_1601:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $1F, $00
 	db $80, $05
 	db $94, $30
@@ -414,7 +438,10 @@ base !bgm_loc
 
 .seq_1613:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $28, $28
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $28
+;	db !set_volume_l_and_r, $28, $28
+;END OF PATCH
 	db !pitch_slide_down, $00, $04, $05, $22, $00
 	db $80, $05
 	db $91, $30
@@ -424,7 +451,10 @@ base !bgm_loc
 .seq_1625:
 	db !play_subsequence : dw .subseq_1A46
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $1E, $1E
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1E
+;	db !set_volume_l_and_r, $1E, $1E
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $2D, $00
 	db $9E, $20
 	db !pitch_slide_off
@@ -471,7 +501,10 @@ base !bgm_loc
 
 .seq_168E:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $1E, $1E
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1E
+;	db !set_volume_l_and_r, $1E, $1E
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $1D, $00
 	db $9A, $20
 	db !pitch_slide_off
@@ -483,7 +516,10 @@ base !bgm_loc
 
 .seq_16A9:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $1E, $1E
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $1E
+;	db !set_volume_l_and_r, $1E, $1E
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $11, $00
 	db $97, $20
 	db !pitch_slide_off
@@ -552,7 +588,10 @@ base !bgm_loc
 
 .seq_172D:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $64, $64
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $64
+;	db !set_volume_l_and_r, $64, $64
+;END OF PATCH
 	db !pitch_slide_down, $00, $03, $05, $2B, $00
 	db $93, $20
 	db !pitch_slide_off
@@ -599,7 +638,10 @@ base !bgm_loc
 
 .seq_1794:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $2D, $00
 	db $80, $05
 	db $9E, $1B
@@ -644,7 +686,10 @@ base !bgm_loc
 
 .seq_17F3:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $1D, $00
 	db $80, $05
 	db $9A, $1B
@@ -744,7 +789,10 @@ base !bgm_loc
 
 .seq_18B7:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $0A, $0A
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $0A
+;	db !set_volume_l_and_r, $0A, $0A
+;END OF PATCH
 	db !pitch_slide_up, $00, $04, $08, $11, $00
 	db $80, $05
 	db $97, $1B
@@ -763,7 +811,10 @@ base !bgm_loc
 
 .seq_18E4:
 	db !play_subsequence : dw .subseq_137F
-	db !set_volume_l_and_r, $28, $28
+;START OF PATCH (change volume command to save space)
+	db !set_vol_single_val, $28
+;	db !set_volume_l_and_r, $28, $28
+;END OF PATCH
 	db !pitch_slide_down, $00, $03, $05, $2B, $00
 	db $80, $05
 	db $93, $1B
