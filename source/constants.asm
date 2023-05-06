@@ -144,7 +144,7 @@
 !sound_nothing			= $00	;00: -Nothing-
 !sound_01			= $01	;01: -Nothing?-
 !sound_knock			= $02	;02: Klomp walking, bumped by Klobber
-!sound_get_kong			= $03	;03: Kong chant (unused)
+;!sound_get_kong		= $03	;03: Kong chant (unused)
 !sound_neek_hit			= $04	;04: Neek defeated
 !sound_swap_kongs		= $05	;05: Swap Kongs
 !sound_diddy_hit		= $06	;06: Diddy hit
@@ -153,8 +153,8 @@
 !sound_banana_bunch		= $09	;09: Collect Banana Bunch (unused)
 !sound_diddy_dizzy		= $0A	;0A: Dizzy stars spinning around Diddy's head
 !sound_rambi_charge		= $0B	;0B: Rambi scuffing foot on ground (readying to charge)
-!sound_0C			= $0C	;0C: Something breaking (unused?)
-!sound_0D			= $0D	;0D: Jumping sound? (unused?)
+;!sound_0C			= $0C	;0C: Something breaking (unused?)
+;!sound_0D			= $0D	;0D: Jumping sound? (unused?)
 !sound_zinger_flitter_hit	= $0E	;0E: Zinger defeated
 !sound_click_clack_walk		= $0F	;0F: Click Clack walking
 !sound_click_clack_hit		= $10	;10: Click Clack defeated
@@ -187,7 +187,7 @@
 !sound_lose_life		= $2B	;2B: Lose life/balloon popping
 !sound_life_balloon		= $2C	;2C: Collect Extra Life Balloon
 !sound_banana_coin		= $2D	;2D: Collect Banana Coin
-!sound_k_rool_note		= $2E	;2E: Read K. Rool's note
+;!sound_k_rool_note		= $2E	;2E: Read K. Rool's note
 !sound_squawks_spit		= $2F	;2F: Squawks spitting
 !sound_squawks_flap_1		= $30	;30: Squawks flapping wings 1
 !sound_squawks_flap_2		= $31	;31: Squawks flapping wings 2 (lower pitch)
@@ -226,7 +226,7 @@
 !sound_barrel_roll		= $52	;52: Barrel rolling
 !sound_rambi_attack		= $53	;53: Rambi attacking
 !sound_rambi_footstep		= $54	;54: Rambi footstep
-!sound_morph_to_animal		= $55	;55: Kongs transforming into animal (semi-unused)
+;!sound_morph_to_animal		= $55	;55: Kongs transforming into animal (semi-unused)
 !sound_hero_coin		= $56	;56: Collect Hero Coin
 !sound_necky_hit		= $57	;57: Necky defeated
 !sound_cat_o_9_tails_hit	= $58	;58: Cat O' 9 Tails defeated
@@ -259,7 +259,7 @@
 !sound_clapper_bark		= $63	;63: Clapper barking
 !sound_enguarde_charge		= $65	;65: Enguarde bill attack 
 !sound_enguarde_hit		= $66	;66: Enguarde hit
-!sound_clock_tick_copy		= $67	;67: Clock ticking (nearly identical to $1C)
+;!sound_clock_tick_copy		= $67	;67: Clock ticking (identical to $1C)
 !sound_flotsam_move		= $68	;68: Flotsam moving
 !sound_puftup_inflate		= $69	;69: Puftup puffing up
 !sound_puftup_burst		= $6A	;6A: Puftup bursting
@@ -325,7 +325,7 @@
 !sound_k_rool_gun_suck_vroom	= $76	;76: K. Rool using blunderbuss as a vacuum (vroom channel)
 !sound_krow_caw			= $79	;79: Krow cawing
 !sound_kudgel_defeat_airborne	= $7A	;7A: Kudgel/K. Rool (Krocodile Kore) airborne after defeat
-!sound_boss_1_7B		= $7B	;7B: Similar to 1A (unused?)
+;!sound_boss_1_7B		= $7B	;7B: Similar to 1A (unused?)
 !sound_kreepy_krow_defeated	= $7C	;7C: Kreepy Krow destroyed
 
 ;Lava/Castle/Kleever/King Zing "Boss 2"
@@ -353,13 +353,36 @@
 !sound_kongs_scared		= $78	;78: Kongs scared
 
 ;Changed for Kong Hack
-!sound_menu_move 		= $60	;60: Menu cursor movement					**Relocated for kong_hack; previously global sound 33**
-!sound_menu_select 		= $61	;61: Menu confirmation						**Relocated for kong_hack; previously global sound 34**
-!sound_wrong_answer 		= $62	;62: Incorrect answer/unavailable option			**Relocated for kong_hack; previously global sound 5F**
-!sound_kudgel_hit		= $6E	;6E: Kudgel hit							**Relocated for kong_hack; previously global sound 59**
-!sound_k_rool_down		= $77	;77: K. Rool down						**Relocated for kong_hack; previously global sound 5A**
-!sound_k_rool_splash_1		= $7D	;7D: Kudgel/K. Rool falling into water (channel 1)		**Relocated for kong_hack; previously global sound 5B**
-!sound_k_rool_splash_2		= $7E	;7E: Kudgel/K. Rool falling into water (channel 2)		**Relocated for kong_hack; previously global sound 5C**
+!sound_k_rool_note		= $64	;64: Read K. Rool's note					**Relocated to Aquatic sound set for kong_hack; previously global sound 2E**
+!sound_kudgel_hit		= $6E	;6E: Kudgel hit							**Relocated to Boss 1 sound set for kong_hack; previously global sound 59**
+!sound_k_rool_down		= $77	;77: K. Rool down						**Relocated to Boss 1 sound set for kong_hack; previously global sound 5A**
+!sound_k_rool_splash_1		= $7B	;7B: Kudgel/K. Rool falling into water (channel 1)		**Relocated to Boss 1 sound set for kong_hack; previously global sound 5B**
+!sound_k_rool_splash_2		= $7D	;7D: Kudgel/K. Rool falling into water (channel 2)		**Relocated to Boss 1 sound set for kong_hack; previously global sound 5C**
+!sound_menu_move 		= $60	;60: Menu cursor movement					**Relocated to Menus sound set for kong_hack; previously global sound 33**
+!sound_menu_select 		= $61	;61: Menu confirmation						**Relocated to Menus sound set for kong_hack; previously global sound 34**
+!sound_wrong_answer 		= $62	;62: Incorrect answer/unavailable option			**Relocated to Menus sound set for kong_hack; previously global sound 5F**
+
+;Custom sound defines added for Kong Hack
+!sound_swap_to_donkey		= $03	;03: Swap to Donkey Kong (DKC2 version)
+!sound_dkc_swap_to_donkey	= $0C	;0C: Swap to Donkey Kong (DKC1 version)
+!sound_dkc_swap_to_diddy	= $0D	;0D: Swap to Diddy Kong (DKC1 version)
+!sound_gba_swap_to_dixie	= $2E	;2E: Swap to Dixie Kong (GBA version)
+!sound_donkey_dk_barrel		= $33	;33: Donkey Kong held captive in DK barrel
+!sound_donkey_hit		= $34	;34: Donkey hit
+!sound_donkey_idle		= $55	;55: Donkey idle
+!sound_donkey_team_up_mount_aml	= $59	;59: Donkey teamup/mount animal
+!sound_kiddy_cry		= $5A	;5A: Kiddy crying
+!sound_kiddy_idle		= $5B	;5B: Kiddy idle
+;!sound_swap_to_donkey		= $05	;03: Swap to Donkey Kong (DKC2 version)
+;!sound_dkc_swap_to_donkey	= $03	;0C: Swap to Donkey Kong (DKC1 version)
+;!sound_dkc_swap_to_diddy	= $03	;0D: Swap to Diddy Kong (DKC1 version)
+;!sound_gba_swap_to_dixie	= $03	;2E: Swap to Dixie Kong (GBA version)
+;!sound_donkey_dk_barrel	= $1B	;33: Donkey Kong held captive in DK barrel
+;!sound_donkey_hit		= $06	;34: Donkey hit
+;!sound_donkey_idle		= $00	;55: Donkey idle
+;!sound_donkey_team_up_mount_aml= $40	;59: Donkey teamup/mount animal
+;!sound_kiddy_cry		= $20	;5A: Kiddy crying
+;!sound_kiddy_idle		= $00	;5B: Kiddy idle
 
 ;music track constants
 !music_null		= $0000

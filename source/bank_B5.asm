@@ -266,7 +266,7 @@ endif						;	   | |/
 	RTS					;$B581AB  > Dead code
 
 .execute_spc_sound_engine			;	  \
-	LDA #$0672				;$B581AC   |\ Load the sound engine entry point
+	LDA #CODE_0672				;$B581AC   |\ Load the sound engine entry point
 	STA $35					;$B581AF   |/
 	STZ $37					;$B581B1   | Zero size transfer means execute jump
 	JSR .upload_spc_block			;$B581B3   | Call the upload routine
@@ -339,7 +339,7 @@ endif						;	   | |/
 -						;	   |\ Wait for the SPC 700 to be ready
 	CMP APU.IO1				;$B5821A   | |
 	BNE -					;$B5821D   |/
-	LDA #$04D8				;$B5821F   |\ Set ARAM address for data transfer
+	LDA #!spc_base_eng_loc			;$B5821F   |\ Set ARAM address for data transfer
 	STA APU.IO3				;$B58222   |/
 	LDA #$01CC				;$B58225   |\ Acknowledge the SPC-700 IPL and initiate a data transfer
 	STA APU.IO1				;$B58228   |/
@@ -357,7 +357,7 @@ endif						;	   | |/
 	CPX APU.IO1				;$B5823E   | | |
 	BNE -					;$B58241   | |/
 	INX					;$B58243   | | Increment the counter
-	CPX #$88				;$B58244   | | Compare against the engine size
+	CPX.b #!spc_base_eng_len		;$B58244   | | Compare against the engine size
 	BNE ..next_byte				;$B58246   |/ If we haven't hit the engine size, load the next byte
 	INX					;$B58248   |\ Increment counter by two to end transfer
 	TXA					;$B58249   | | Use A to write the counter for 16 bit (high byte = 00)
@@ -366,8 +366,11 @@ endif						;	   | |/
 	CPX APU.IO1				;$B5824D   | |
 	BNE -					;$B58250   |/
 	STZ spc_transaction			;$B58252   | Reset the SPC transaction id
-	LDA #$0001				;$B58254   |\ Default to mono audio
-	STA stereo_select			;$B58257   |/
+;START OF PATCH (default to stereo audio)
+	STZ stereo_select
+;	LDA #$0001				;$B58254   |\ Default to mono audio
+;	STA stereo_select			;$B58257   |/
+;END OF PATCH
 	REP #$30				;$B58259   |
 	RTS					;$B5825B  / All done, new SPC base engine set up.
 
@@ -406,9 +409,9 @@ endif						;	   | |/
 	STA $32					;$B58294   | |
 	LDA.w #spc_sound_engine>>16		;$B58296   | |
 	STA $34					;$B58299   |/
-	LDA #$0560				;$B5829B   |\ Set the ARAM destination
+	LDA #!spc_sound_eng_loc			;$B5829B   |\ Set the ARAM destination
 	STA $35					;$B5829E   |/
-	LDA #$067F				;$B582A0   |\ Set the number of words to transfer
+	LDA #!spc_sound_eng_len			;$B582A0   |\ Set the number of words to transfer
 	STA $37					;$B582A3   |/
 	JSR .upload_spc_block			;$B582A5   | Upload SPC block
 	RTS					;$B582A8  /
@@ -492,7 +495,7 @@ endif						;	   | |/
 	STA $34					;$B5833B   |/
 	LDA $42					;$B5833D   |\ Set ARAM destination
 	STA $35					;$B5833F   |/
-	LDA #$3400				;$B58341   |\ Calculate and set upload size
+	LDA #!brr_data_loc			;$B58341   |\ Calculate and set upload size
 	SEC					;$B58344   | |
 	SBC $42					;$B58345   | | word count = ($3400 - ARAM dest + 1) / 2
 	CLC					;$B58347   | |
@@ -548,9 +551,12 @@ endif						;	   | |/
 	STA $32					;$B583A4   | |
 	LDA #$007E				;$B583A6   | |
 	STA $34					;$B583A9   |/
-	LDA #$0560				;$B583AB   |\ Set ARAM Destination to $0560
+	LDA #!spc_sound_eng_loc			;$B583AB   |\ Set ARAM Destination to $0560
 	STA $35					;$B583AE   |/
-	LDA #$0080				;$B583B0   |\ Set transfer size to 128 words
+;START OF PATCH (change source number map to 112 words = #$E0 samples)
+	LDA #$0070				;	   |\ Set transfer size to 112 words
+;	LDA #$0080				;$B583B0   |\ Set transfer size to 128 words
+;END OF PATCH
 	STA $37					;$B583B3   |/
 	JSR .upload_spc_block			;$B583B5   | Upload the source number table
 .upload_samples					;	   |
@@ -13726,7 +13732,7 @@ CODE_B5F945:					;	   |
 
 CODE_B5F94C:
 	STX $32					;$B5F94C  \
-	%lda_sound(6, banana)			;$B5F94E   |
+	%lda_sound(6, banana_bunch)		;$B5F94E   |
 	JSL queue_sound_effect			;$B5F951   |
 	LDA #$003C				;$B5F955   |
 	STA $096F				;$B5F958   |

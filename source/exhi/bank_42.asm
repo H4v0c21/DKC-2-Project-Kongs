@@ -41,3 +41,31 @@ DATA_FA7A01:
 	incbin "../data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame8.bin"
 
 print "Relocated Game Data End Address: ",pc
+
+;Kong samples from other games
+;Donkey idle sample (shortened version)
+brr_sample_dkc_C788B5:
+	dw $0000
+	dw datasize(brr_sample_dkc_C788B5)-4
+	incbin "../kong_hack/sound/samples/sample_dkc_C788B5_shorter.brr"
+
+;Kong eep sample
+brr_sample_dkc_C7A56D:
+	dw $0000
+	dw datasize(brr_sample_dkc_C7A56D)-4
+	incbin "../kong_hack/sound/samples/sample_dkc_C7A56D.brr"
+
+;Kiddy crying sample (shortened version)
+brr_sample_dkc3_EFECEC:
+	dw $0000
+	dw datasize(brr_sample_dkc3_EFECEC)-4
+	incbin "../kong_hack/sound/samples/sample_dkc3_EFECEC_shorter.brr"
+
+;Kiddy idle sample (shortened version)
+brr_sample_dkc3_F04FF8:
+	dw $0000
+	dw datasize(brr_sample_dkc3_F04FF8)-4
+	incbin "../kong_hack/sound/samples/sample_dkc3_F04FF8_shorter.brr"
+brr_sample_dkc3_F04FF8_end:
+
+print "Imported Samples End Address: ",pc
