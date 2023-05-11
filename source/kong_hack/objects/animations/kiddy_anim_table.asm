@@ -8,7 +8,7 @@
 	dw kiddy_fall : db $00, $30
 	dw kiddy_land : db $00, $00
 	dw kiddy_roll : db $02, $58
-	dw diddy_death : db $00, $00
+	dw kiddy_death : db $00, $00
 	dw DATA_F91EB2 : db $00, $00
 	dw kiddy_crouch_start : db $00, $00
 	dw kiddy_crouch_loop : db $00, $00
@@ -39,7 +39,7 @@
 	dw kiddy_team_bottom_throw : db $00, $00
 	dw kiddy_team_top_thrown : db $00, $98
 	dw diddy_team_top_stunned : db $00, $00
-	dw diddy_hurt : db $00, $00
+	dw kiddy_hurt : db $00, $00
 	dw kiddy_hurt_jump_off_screen : db $00, $00
 	dw diddy_honey_wall_idle : db $00, $00
 	dw kiddy_honey_floor_idle : db $00, $00
@@ -77,16 +77,16 @@
 	dw kiddy_krockhead_bounce : db $00, $00
 	dw kiddy_carry_krockhead_bounce : db $00, $00
 	dw diddy_skull_cart : db $00, $00
-	dw diddy_squitter_mount : db $00, $00
-	dw diddy_rattly_idle : db $00, $00
-	dw diddy_squawks_idle : db $00, $00
-	dw diddy_animal_mount : db $00, $00
-	dw diddy_animal_mount : db $00, $00
-	dw diddy_animal_idle : db $00, $00
-	dw diddy_animal_idle : db $00, $00
-	dw diddy_animal_idle : db $00, $00
-	dw diddy_animal_idle : db $00, $00
-	dw diddy_animal_idle : db $00, $00
+	dw kiddy_squitter_mount : db $00, $00
+	dw kiddy_rattly_idle : db $00, $00
+	dw kiddy_squawks_idle : db $00, $00
+	dw kiddy_animal_mount : db $00, $00
+	dw kiddy_animal_mount : db $00, $00
+	dw kiddy_animal_idle : db $00, $00
+	dw kiddy_animal_idle : db $00, $00
+	dw kiddy_animal_idle : db $00, $00
+	dw kiddy_animal_idle : db $00, $00
+	dw kiddy_animal_idle : db $00, $00
 	dw animal_attack : db $00, $00
 	dw animal_attack : db $00, $00
 	dw animal_attack : db $00, $00
@@ -111,31 +111,31 @@
 	dw rattly_diddy_jump : db $01, $C0
 	dw squawks_idle : db $00, $00
 if !version == 0
-	dw rambi_diddy_jump : db $01, $00
+	dw rambi_kiddy_jump : db $01, $00
 else
-	dw rambi_diddy_jump : db $01, $C0
+	dw rambi_kiddy_jump : db $01, $C0
 endif
 	dw enguarde_idle : db $00, $00
 	dw squitter_air : db $00, $00
 	dw rattly_diddy_air : db $00, $C0
 	dw squawks_idle : db $00, $00
-	dw rambi_diddy_air : db $00, $C0
+	dw rambi_kiddy_air : db $00, $C0
 	dw enguarde_idle : db $00, $00
 	dw squitter_fall : db $00, $00
 	dw DATA_F927F3 : db $00, $C0
 	dw squawks_idle : db $00, $00
-	dw rambi_diddy_fall : db $00, $C8
+	dw rambi_kiddy_fall : db $00, $C8
 	dw enguarde_idle : db $00, $00
 	dw squitter_land : db $00, $00
 	dw rattly_diddy_land : db $00, $00
 	dw squawks_idle : db $00, $00
-	dw rambi_diddy_land : db $00, $C8
+	dw rambi_kiddy_land : db $00, $C8
 	dw enguarde_idle : db $00, $00
 	dw squitter_mount : db $00, $00
 	dw rattly_mount : db $00, $00
 	dw squawks_mount : db $00, $00
-	dw rambi_diddy_mount : db $00, $00
-	dw enguarde_diddy_mount : db $00, $00
+	dw rambi_kiddy_mount : db $00, $00
+	dw enguarde_kiddy_mount : db $00, $00
 	dw squawks_attack : db $08, $00
 	dw rattly_diddy_charge : db $08, $00
 	dw squawks_attack : db $08, $00
@@ -162,7 +162,7 @@ endif
 	dw rambi_exit : db $00, $00
 	dw enguarde_exit : db $00, $00
 	dw diddy_scared : db $00, $00
-	dw diddy_stunned : db $00, $00
+	dw kiddy_stunned : db $00, $00
 	dw kiddy_bonus_exit : db $00, $00
 	dw diddy_wind_float : db $00, $00
 	dw kiddy_bonus_exit_swim : db $00, $00

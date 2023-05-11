@@ -5940,8 +5940,10 @@ CODE_B8AC69:
 
 CODE_B8AC80:
 	LDX current_sprite			;$B8AC80  \
-	LDA #$00E4				;$B8AC82   |
-	STA $02,x				;$B8AC85   |
+;START OF PATCH (move swap kong draw priority to animation code)
+	;LDA #$00E4				;$B8AC82   |
+	;STA $02,x				;$B8AC85   |
+;END OF PATCH
 	STZ $2E,x				;$B8AC87   |
 	STZ $20,x				;$B8AC89   |
 	STZ $26,x				;$B8AC8B   |
@@ -5954,8 +5956,10 @@ CODE_B8AC80:
 	LDA #$0001				;$B8AC9B   |
 	JSL CODE_B9D0B8				;$B8AC9E   |
 	LDX $0597				;$B8ACA2   |
-	LDA #$00D8				;$B8ACA5   |
-	STA $02,x				;$B8ACA8   |
+;START OF PATCH (move swap kong draw priority to animation code)
+	;LDA #$00D8				;$B8ACA5   |
+	;STA $02,x				;$B8ACA8   |
+;END OF PATCH
 	LDA #$0022				;$B8ACAA   |
 	STA $2E,x				;$B8ACAD   |
 	LDA #$001F				;$B8ACAF   |

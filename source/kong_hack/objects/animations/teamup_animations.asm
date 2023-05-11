@@ -88,12 +88,30 @@ diddy_team_bottom_idle:
 	db !animation_command_80, $00
 
 dixie_team_bottom_idle:
+	db !animation_command_8F : dw check_for_alt_team, dixie_team_bottom_idle_big_kong
 	db !animation_command_84 : dw CODE_B9E0A8
 	db !animation_command_8B, $07 : dw $13F0, $0000, $0007
 	db !animation_command_8B, $07 : dw $13F4, $0000, $0006
 	db !animation_command_8B, $07 : dw $13F8, $0000, $0005
 	db !animation_command_8B, $07 : dw $13F4, $0000, $0006
 	db !animation_command_80, $00
+
+dixie_team_bottom_idle_big_kong:
+	db !animation_command_84 : dw CODE_B9E0A8
+	;db !animation_command_8B, $07 : dw $13F0, $0000, $0007
+	;db !animation_command_8B, $07 : dw $13F4, $0000, $0006
+	;db !animation_command_8B, $07 : dw $13F8, $0000, $0005
+	;db !animation_command_8B, $07 : dw $13F4, $0000, $0006
+	db $07 : dw $46E4
+	db $07 : dw $46E8
+	db $07 : dw $46EC
+	db $07 : dw $46F0
+	db $07 : dw $46EC
+	db $07 : dw $46E8
+	db !animation_command_82 : dw dixie_team_bottom_idle_big_kong
+	db !animation_command_80, $00
+
+
 
 donkey_team_bottom_idle:
 	db !animation_command_84 : dw CODE_B9E0A8
@@ -140,6 +158,7 @@ diddy_team_bottom_walk:
 	db !animation_command_80, $00
 
 dixie_team_bottom_walk:
+	db !animation_command_8F : dw check_for_alt_team, dixie_team_bottom_walk_big_kong
 	db !animation_command_84 : dw CODE_B9E021
 	db !animation_command_8B, $03 : dw $1320, $0000, $0003
 	db !animation_command_81 : dw CODE_B9E0E0
@@ -155,6 +174,37 @@ dixie_team_bottom_walk:
 	db !animation_command_8B, $03 : dw $1318, $0000, $0001
 	db !animation_command_8B, $03 : dw $131C, $0000, $0002
 	db !animation_command_80, $00
+
+dixie_team_bottom_walk_big_kong:
+	db !animation_command_84 : dw CODE_B9E021
+	db !animation_command_81 : dw CODE_B9E0E0
+	db $03 : dw $46A4
+	db $03 : dw $46A8
+	db $03 : dw $46AC
+	db $03 : dw $46B0
+	db $03 : dw $46B4
+	db $03 : dw $46B8
+	db $03 : dw $46BC
+	db $03 : dw $46C0
+	db $03 : dw $46C4
+	db $03 : dw $46C8
+	db $03 : dw $46CC
+	db $03 : dw $46D0
+	db !animation_command_81 : dw CODE_B9E0E0
+	db $03 : dw $46D4
+	db $03 : dw $46D8
+	db $03 : dw $46DC
+	db $03 : dw $46E0
+	db !animation_command_82 : dw dixie_team_bottom_walk_big_kong
+	db !animation_command_80, $00
+
+
+
+
+
+
+
+
 
 donkey_team_bottom_walk:
 	db !animation_command_84 : dw CODE_B9E021

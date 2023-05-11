@@ -5154,11 +5154,20 @@ CODE_B9EE4B:
 	RTS
 ;END OF PATCH
 
+;START OF PATCH (play new kong trapped in barrel sounds)
 CODE_B9EE54:
-	LDX #sound(5, !sound_kong_dk_barrel)	;$B9EE54  \	Kong held captive in DK barrel sound is Kong-specific, but set to the same ID for both
-	LDY #sound(5, !sound_kong_dk_barrel)	;$B9EE57   |
-	JSL CODE_B89182				;$B9EE5A   |
-	RTS					;$B9EE5E  /
+	LDA $4C,x				;kong in barrel number
+	CMP #$0002				;check if donkey
+	BEQ .donkey_in_barrel			;if kong is donkey
+	LDA #sound(5, !sound_kong_dk_barrel)
+	JSL queue_sound_effect			;play sound
+	RTS
+
+.donkey_in_barrel:
+	LDA #sound(5, !sound_donkey_dk_barrel)
+	JSL queue_sound_effect
+	RTS
+;END OF PATCH
 
 CODE_B9EE5F:
 	LDA $1C,x				;$B9EE5F  \
@@ -5727,25 +5736,25 @@ kong_swap_animation_update:
 ;	STA $2E,x				;$B9E1B1   |
 ;	RTS					;$B9E1B3  /
 
-.check_facing:
-	BPL .calculate_velocity			;$B9E1B4  \
-	EOR #$FFFF				;$B9E1B6   |
-	INC A					;$B9E1B9   |
-	JSR .calculate_velocity			;$B9E1BA   |
-	EOR #$FFFF				;$B9E1BD   |
-	INC A					;$B9E1C0   |
-	RTS					;$B9E1C1  /
-
-.calculate_velocity:
-	ASL A					;$B9E1C2  \
-	ASL A					;$B9E1C3   |
-	ASL A					;$B9E1C4   |
-	ASL A					;$B9E1C5   |
-	CMP #$0004				;$B9E1C6   |
-	BPL .return				;$B9E1C9   |
-	LDA #$0004				;$B9E1CB   |
-.return:					;	   |
-	RTS					;$B9E1CE  /
+;.check_facing:
+;	BPL .calculate_velocity			;$B9E1B4  \
+;	EOR #$FFFF				;$B9E1B6   |
+;	INC A					;$B9E1B9   |
+;	JSR .calculate_velocity			;$B9E1BA   |
+;	EOR #$FFFF				;$B9E1BD   |
+;	INC A					;$B9E1C0   |
+;	RTS					;$B9E1C1  /
+;
+;.calculate_velocity:
+;	ASL A					;$B9E1C2  \
+;	ASL A					;$B9E1C3   |
+;	ASL A					;$B9E1C4   |
+;	ASL A					;$B9E1C5   |
+;	CMP #$0004				;$B9E1C6   |
+;	BPL .return				;$B9E1C9   |
+;	LDA #$0004				;$B9E1CB   |
+;.return:					;	   |
+;	RTS					;$B9E1CE  /
 
 dkc1_swap:
 	STZ $0D7A				;$B9E162  \
@@ -5843,6 +5852,67 @@ dkc3_swap_b:
 	CLC
 	ADC #!dkc3_swap_air_anim_offset
 	JSL CODE_B9D01D
+	RTS
+
+
+
+donkey_kiddy_swap:
+	LDA $0D66				;$B9E198  \
+	SEC					;$B9E19B   |
+	SBC $06,x				;$B9E19C   |
+	JSR .update_velocity			;$B9E19E   |
+	STA $20,x				;$B9E1A1   |
+	LDA $0D6A				;$B9E1A3   |
+	SEC					;$B9E1A6   |
+	SBC $0A,x				;$B9E1A7   |
+	JSR .update_velocity			;$B9E1A9   |
+	STA $24,x				;$B9E1AC   |
+	RTS					;$B9E1B3  /
+
+.update_velocity:
+	BPL .calculate_velocity			;$B9E1B4  \
+	EOR #$FFFF				;$B9E1B6   |
+	INC A					;$B9E1B9   |
+	JSR .calculate_velocity			;$B9E1BA   |
+	EOR #$FFFF				;$B9E1BD   |
+	INC A					;$B9E1C0   |
+	RTS					;$B9E1C1  /
+
+.calculate_velocity:
+	ASL A					;$B9E1C2  \
+	ASL A					;$B9E1C3   |
+	ASL A					;$B9E1C4   |
+	ASL A					;$B9E1C5   |
+	CMP #$0004				;$B9E1C6   |
+	BPL .return				;$B9E1C9   |
+	LDA #$0004				;$B9E1CB   |
+.return:					;	   |
+	RTS					;$B9E1CE  /
+
+update_swap_action:
+	LDA #$004B
+	STA $2E,x
+	RTS
+
+check_for_alt_team:
+	LDA kong_status
+	AND #$0200
+	BEQ .not_carrying_big_kong
+	SEC
+	RTS
+	
+.not_carrying_big_kong:
+	CLC
+	RTS
+
+swap_kong_render_order:
+	LDX $0593
+	LDA #$00E4
+	STA $02,x
+	
+	LDX $0597
+	LDA #$00D8
+	STA $02,x
 	RTS
 
 ;;START OF PATCH (swap animations)

@@ -272,82 +272,82 @@ donkey_idle_sub_2:
 	db $04 : dw $3720		;39324E
 	db $04 : dw $3724		;393251
 	db $04 : dw $3728		;393254
-	db !animation_command_8E, $5A, $07		;393257
+	db !animation_command_8E : dw sound(7, !sound_donkey_idle)
 	db $02 : dw $372C		;39325A
 	db $02 : dw $3730		;39325D
 	db $02 : dw $3734		;393260
 	db $02 : dw $3738		;393263
 	db $02 : dw $373C		;393266
-	db !animation_command_8E, $4C, $05		;393269
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3740		;39326C
 	db $02 : dw $3744		;39326F
 	db $02 : dw $3748		;393272
 	db $02 : dw $374C		;393275
 	db $02 : dw $3750		;393278
-	db !animation_command_8E, $4C, $05		;39327B
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $374C		;39327E
 	db $02 : dw $3748		;393281
 	db $02 : dw $3744		;393284
 	db $02 : dw $3740		;393287
 	db $02 : dw $373C		;39328A
-	db !animation_command_8E, $4C, $05		;39328D
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3738		;393290
 	db $02 : dw $3734		;393293
 	db $02 : dw $3730		;393296
 	db $02 : dw $372C		;393299
-	db !animation_command_8E, $4C, $05		;39329C
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3730		;39329F
 	db $02 : dw $3734		;3932A2
 	db $02 : dw $3738		;3932A5
 	db $02 : dw $373C		;3932A8
-	db !animation_command_8E, $4C, $05		;3932AB
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3740		;3932AE
 	db $02 : dw $3744		;3932B1
 	db $02 : dw $3748		;3932B4
 	db $02 : dw $374C		;3932B7
 	db $02 : dw $3750		;3932BA
-	db !animation_command_8E, $4C, $05		;3932BD
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $374C		;3932C0
 	db $02 : dw $3748		;3932C3
 	db $02 : dw $3744		;3932C6
 	db $02 : dw $3740		;3932C9
 	db $02 : dw $373C		;3932CC
-	db !animation_command_8E, $4C, $05		;3932CF
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3738		;3932D2
 	db $02 : dw $3734		;3932D5
 	db $02 : dw $3730		;3932D8
 	db $02 : dw $372C		;3932DB
-	db !animation_command_8E, $4C, $05		;3932DE
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3730		;3932E1
 	db $02 : dw $3734		;3932E4
 	db $02 : dw $3738		;3932E7
 	db $02 : dw $373C		;3932EA
-	db !animation_command_8E, $4C, $05		;3932ED
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3740		;3932F0
 	db $02 : dw $3744		;3932F3
 	db $02 : dw $3748		;3932F6
 	db $02 : dw $374C		;3932F9
 	db $02 : dw $3750		;3932FC
-	db !animation_command_8E, $4C, $05		;3932FF
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $374C		;393302
 	db $02 : dw $3748		;393305
 	db $02 : dw $3744		;393308
 	db $02 : dw $3740		;39330B
 	db $02 : dw $373C		;39330E
-	db !animation_command_8E, $4C, $05		;393311
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3738		;393314
 	db $02 : dw $3734		;393317
 	db $02 : dw $3730		;39331A
 	db $02 : dw $3734		;39331D
 	db $02 : dw $3738		;393320
 	db $02 : dw $373C		;393323
-	db !animation_command_8E, $4C, $05		;393326
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $02 : dw $3740		;393329
 	db $02 : dw $3744		;39332C
 	db $02 : dw $3748		;39332F
 	db $02 : dw $374C		;393332
 	db $02 : dw $3750		;393335
-	db !animation_command_8E, $4C, $05		;393338
+	db !animation_command_8E : dw sound(5, !sound_cannonball_drop)
 	db $04 : dw $3754		;39333B
 	db $04 : dw $3758		;39333E
 	db $04 : dw $375C		;393341
@@ -704,7 +704,7 @@ donkey_bonus_exit_swim_loop:
 ;0143 donkey_stunned
 ;DONKEY_ANIM_F938D0:
 donkey_stunned:
-	db !animation_command_8E, $5D, $05		;3938D0
+	db !animation_command_8E : dw sound(5, !sound_donkey_hit)
 	db $12 : dw $3980		;3938D3
 	db !animation_command_83 : dw CODE_B9D12B		;3938D6
 	db !animation_command_80, $00		;3938D9
@@ -712,7 +712,7 @@ donkey_stunned:
 ;00CC donkey_hurt
 ;DONKEY_ANIM_F938DB:
 donkey_hurt:
-	db !animation_command_8E, $5D, $05		;3938DB
+	db !animation_command_8E : dw sound(5, !sound_donkey_hit)
 	db $02 : dw $3980		;3938DE
 	db $02 : dw $3980		;3938E1
 	db !animation_command_83 : dw CODE_B9D55A		;3938E4
@@ -1113,7 +1113,7 @@ donkey_carry_land:
 ;00AD donkey_death
 ;DONKEY_ANIM_F940F3:
 donkey_death:
-	db !animation_command_8E, $5D, $05		;3940F3
+	db !animation_command_8E : dw sound(6, !sound_donkey_hit)		;3940F3
 	db $01 : dw $3980		;3940F6
 	db !animation_command_81 : dw CODE_B9DA5C		;3940F9
 	db $08 : dw $3980		;3940FC
@@ -1125,14 +1125,14 @@ donkey_death:
 	db $05 : dw $3958		;39410E
 	db $05 : dw $395C		;394111
 	db !animation_command_83 : dw CODE_B9D5A4		;394114
-	db !animation_command_8E, $13, $06		;394117
+	db !animation_command_8E : dw sound(6, !sound_hit_ground)
 	db !animation_command_81 : dw CODE_B9DD21		;39411A
 	db $05 : dw $3960		;39411D
 	db $05 : dw $3964		;394120
 	db $05 : dw $3968		;394123
 	db $06 : dw $396C		;394126
 	db !animation_command_83 : dw CODE_B9D5A4		;394129
-	db !animation_command_8E, $13, $06		;39412C
+	db !animation_command_8E : dw sound(6, !sound_hit_ground)
 	db !animation_command_81 : dw CODE_B9DA75		;39412F
 	db $1C : dw $3970		;394132
 	db !animation_command_81 : dw CODE_B9DEBE		;394135
@@ -1140,35 +1140,35 @@ donkey_death:
 	db $06 : dw $3978		;39413B
 	db $06 : dw $397C		;39413E
 	db $03 : dw $3790		;394141
-	db !animation_command_8E, $25, $06		;394144
+	db !animation_command_8E : dw sound(6, !sound_dixie_sip)
 	db $03 : dw $3794		;394147
 	db $03 : dw $3798		;39414A
 	db $03 : dw $379C		;39414D
 	db $03 : dw $3798		;394150
 	db $03 : dw $3794		;394153
 	db $03 : dw $3790		;394156
-	db !animation_command_8E, $25, $06		;394159
+	db !animation_command_8E : dw sound(6, !sound_dixie_sip)
 	db $03 : dw $3794		;39415C
 	db $03 : dw $3798		;39415F
 	db $03 : dw $379C		;394162
 	db $03 : dw $3798		;394165
 	db $03 : dw $3794		;394168
 	db $03 : dw $3790		;39416B
-	db !animation_command_8E, $25, $06		;39416E
+	db !animation_command_8E : dw sound(6, !sound_dixie_sip)
 	db $03 : dw $3794		;394171
 	db $03 : dw $3798		;394174
 	db $03 : dw $379C		;394177
 	db $03 : dw $3798		;39417A
 	db $03 : dw $3794		;39417D
 	db $03 : dw $3790		;394180
-	db !animation_command_8E, $25, $06		;394183
+	db !animation_command_8E : dw sound(6, !sound_dixie_sip)
 	db $03 : dw $3794		;394186
 	db $03 : dw $3798		;394189
 	db $03 : dw $379C		;39418C
 	db $03 : dw $3798		;39418F
 	db $03 : dw $3794		;394192
 	db $03 : dw $3790		;394195
-	db !animation_command_8E, $25, $06		;394198
+	db !animation_command_8E : dw sound(6, !sound_dixie_sip)
 	db $03 : dw $3794		;39419B
 	db !animation_command_81 : dw CODE_B9DA61		;39419E
 	db $03 : dw $3798		;3941A1
@@ -1477,5 +1477,7 @@ donkey_scared_loop:
 	db $04 : dw $44C8
 	db $04 : dw $44CC
 	db $04 : dw $44D0
+	db $04 : dw $44C8
+	db $04 : dw $44C4
 	db !animation_command_82 : dw donkey_scared_loop
 	db !animation_command_80, $00

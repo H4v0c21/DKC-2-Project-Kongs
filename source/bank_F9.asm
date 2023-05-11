@@ -8008,7 +8008,7 @@ dk_barrel_idle:
 	db $05 : dw $0894
 	db $05 : dw $0898
 	db $05 : dw $089C
-	db !animation_command_81 : dw CODE_B9EE4B
+	db !animation_command_81 : dw CODE_B9EE4B	;play trapped sound
 	db $05 : dw $08A0
 	db $05 : dw $08A4
 	db $05 : dw $08A8

@@ -286,3 +286,17 @@ donkey_cart_duck_frame_6:
 	incbin "custom_sprite_graphics/ingame/donkey/donkey_cart_duck_frame_6.bin"
 donkey_cart_duck_frame_7:
 	incbin "custom_sprite_graphics/ingame/donkey/donkey_cart_duck_frame_7.bin"
+
+dixie_swap_donkey_frame_1:
+	incbin "custom_sprite_graphics/ingame/dixie/dixie_swap_donkey_frame_1.bin"
+dixie_swap_donkey_frame_2:
+	incbin "custom_sprite_graphics/ingame/dixie/dixie_swap_donkey_frame_2.bin"
+dixie_swap_donkey_frame_3:
+	incbin "custom_sprite_graphics/ingame/dixie/dixie_swap_donkey_frame_3.bin"
+dixie_swap_donkey_frame_4:
+	incbin "custom_sprite_graphics/ingame/dixie/dixie_swap_donkey_frame_4.bin"
+	
+org $550000
+
+dixie_swap_donkey_frame_5:
+	incbin "custom_sprite_graphics/ingame/dixie/dixie_swap_donkey_frame_5.bin"
