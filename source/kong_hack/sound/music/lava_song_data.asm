@@ -1406,44 +1406,27 @@ base !bgm_loc
 .subseq_1D99:
 	db !echo_off
 	db !set_instrument, $19
-;START OF PATCH (adjust volume for changed bongo sample)
-	db !set_volume_l_and_r, $2B, $3E
-;	db !set_volume_l_and_r, $21, $30
-;END OF PATCH
+	db !set_volume_l_and_r, $21, $30
 	db !set_adsr, $8E, $F2
 	db !return_from_sub
 
 .subseq_1DA3:
-;START OF PATCH (add fine tune command for bongos at start of loop, change instrument pitch command parameters to compensate for base pitch change in bongo sample)
-	db !fine_tune, $08
-	db !change_instr_pitch, $11
-;	db !change_instr_pitch, $18
+	db !change_instr_pitch, $18
 	db $84, $09
-	db !change_instr_pitch, $F2
-;	db !change_instr_pitch, $F9
+	db !change_instr_pitch, $F9
 	db $84, $07
-	db !change_instr_pitch, $00
-;	db !change_instr_pitch, $07
-	db $84, $09
-	db !change_instr_pitch, $05
-;	db !change_instr_pitch, $0C
-	db $84, $07
-	db !change_instr_pitch, $ED
-;	db !change_instr_pitch, $F4
+	db !change_instr_pitch, $07
 	db $84, $09
 	db !change_instr_pitch, $0C
-;	db !change_instr_pitch, $13
 	db $84, $07
-	db !change_instr_pitch, $FE
-;	db !change_instr_pitch, $05
+	db !change_instr_pitch, $F4
 	db $84, $09
-	db !change_instr_pitch, $00
-;	db !change_instr_pitch, $07
-;END OF PATCH
+	db !change_instr_pitch, $13
 	db $84, $07
-;START OF PATCH (add fine tune command when bongos finish playing)
-	db !fine_tune, $00
-;END OF PATCH
+	db !change_instr_pitch, $05
+	db $84, $09
+	db !change_instr_pitch, $07
+	db $84, $07
 	db !return_from_sub
 
 .seq_1DC4:

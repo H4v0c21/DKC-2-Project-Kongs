@@ -6,15 +6,15 @@
 !bgm_loc 		= $122C			;Starting ARAM location of music block (default: $1300)
 !bgm_ptr_loc		= !bgm_loc+$12		;Starting ARAM location of music pointers (default: $1312)
 
-!snd_loc 		= $2410			;Starting ARAM location of global sound effect block (default: $2410)
+!snd_loc 		= $2420			;Starting ARAM location of global sound effect block (default: $2410)
 !snd_ptr_loc		= !snd_loc+$2		;Starting ARAM location of global sound effect pointers (default: $2412)
 
-!dyn_snd_loc 		= $2E10			;Starting ARAM location of track-specific sound effect block (default: $2E94)
+!dyn_snd_loc 		= $2D94			;Starting ARAM location of track-specific sound effect block (default: $2E94)
 !dyn_snd_ptr_loc	= !dyn_snd_loc+$2	;Starting ARAM location of track-specific sound effect pointers (default: $2E96)
 !dyn_snd_base_id	= $60			;Base ID of track-specific sound effects (default: $60)
 
-!src_dir_loc		= $3100			;Starting ARAM destination of BRR sample source directory (default: $3100)
-!brr_data_loc		= $3268			;Starting ARAM destination of BRR sample uploads (default: $3400)
+!src_dir_loc		= $3000			;Starting ARAM destination of BRR sample source directory (default: $3100)
+!brr_data_loc		= $314C			;Starting ARAM destination of BRR sample uploads (default: $3400)
 
 !end_sequence 			= $00	;00				End of sequence
 !set_instrument 		= $01	;01 ??				Set instrument

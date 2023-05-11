@@ -43,29 +43,33 @@ DATA_FA7A01:
 print "Relocated Game Data End Address: ",pc
 
 ;Kong samples from other games
-;Donkey idle sample (shortened version)
-brr_sample_dkc_C788B5:
-	dw $0000
-	dw datasize(brr_sample_dkc_C788B5)-4
-	incbin "../kong_hack/sound/samples/sample_dkc_C788B5_shorter.brr"
-
-;Kong eep sample
+;DB: Kong eep sample
 brr_sample_dkc_C7A56D:
 	dw $0000
 	dw datasize(brr_sample_dkc_C7A56D)-4
 	incbin "../kong_hack/sound/samples/sample_dkc_C7A56D.brr"
 
-;Kiddy crying sample (shortened version)
+;DC: Kiddy crying sample (shortened version)
 brr_sample_dkc3_EFECEC:
 	dw $0000
 	dw datasize(brr_sample_dkc3_EFECEC)-4
 	incbin "../kong_hack/sound/samples/sample_dkc3_EFECEC_shorter.brr"
 
-;Kiddy idle sample (shortened version)
+;DD: Kiddy idle sample (shortened version)
 brr_sample_dkc3_F04FF8:
-	dw $0000
+	dw $02E2
 	dw datasize(brr_sample_dkc3_F04FF8)-4
 	incbin "../kong_hack/sound/samples/sample_dkc3_F04FF8_shorter.brr"
-brr_sample_dkc3_F04FF8_end:
 
-print "Imported Samples End Address: ",pc
+;Samples loaded for Slime Climb rigging music variant
+rigging_no_rain_sample_set:
+	dw $0013, $001E, $0036, $0024
+	dw $0021, $0086, $00A1, $009D
+	dw $0014, $008F, $000B, $009A
+	dw $0099, $000F, $0010, $000E
+	dw $000D, $00C6, $0053, $00D8
+	dw $009F, $00DA, $FFFF
+
+	incsrc "../kong_hack/sound/music/rigging_no_rain_song_data.asm"
+
+print "Custom Audio Data End Address: ",pc

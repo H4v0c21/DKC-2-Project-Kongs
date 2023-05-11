@@ -1583,9 +1583,9 @@ CODE_100B:
 	MOV A, #$64				;$105C   |
 	MOV $04B6, A				;$105E   |
 	MOV $F2, #$5D				;$1061   |
-	MOV $F3, #$31				;$1064   |
+	MOV $F3, #!src_dir_loc>>8		;$1064   |
 	MOV Y, #$08				;$1067   |
-	MOV $F2, #$00				;$1069   |
+	MOV $F2, #!src_dir_loc&$00FF		;$1069   |
 CODE_106C:					;   |
 	MOV A, #$7F				;$106C   |
 	MOV $F3, A				;$106E   |
@@ -2068,16 +2068,15 @@ sample_table:
 	dl brr_sample_F225B6
 	dl brr_sample_F22C44
 	dl brr_sample_F232D2
-;START OF PATCH (add four samples to pointer table)
-	dl brr_sample_dkc_C788B5
-	dl brr_sample_dkc_C7A56D
-	dl brr_sample_dkc3_EFECEC
-	dl brr_sample_dkc3_F04FF8
-;	dl !null_pointer
+;START OF PATCH (add three samples to pointer table)
+	dl brr_sample_dkc_C7A56D	;DB: Kong "Eep!" (DKC1)
+	dl brr_sample_dkc3_EFECEC	;DC: Kiddy crying (DKC3)
+	dl brr_sample_dkc3_F04FF8	;DD: Kiddy idle babble (DKC3)
 ;	dl !null_pointer
 ;	dl !null_pointer
 ;	dl !null_pointer
 ;END OF PATCH
+	dl !null_pointer
 	dl !null_pointer
 	dl !null_pointer
 	dl !null_pointer
@@ -2152,7 +2151,10 @@ song_data:
 	dl bonus_song_data, bonus_sample_set_3
 	dl secret_ending_song_data, secret_ending_sample_set
 	dl bonus_song_data, bonus_sample_set_4
-	dl DATA_F2E728, DATA_EE1935
+;START OF PATCH (change which song data and sample map block is loaded with track $26; Rigging variant for Slime Climb)
+	dl rigging_no_rain_song_data, rigging_no_rain_sample_set
+;	dl DATA_F2E728, DATA_EE1935
+;END OF PATCH
 	dl DATA_F2E72C, DATA_EE1937
 
 	db $00, $00, $00
@@ -2220,7 +2222,10 @@ DATA_EE117B:
 	dl ship_ice_ending_sfx_data			;23
 	dl ship_ice_ending_sfx_data			;24
 	dl ship_ice_ending_sfx_data			;25
-	dl dummy_sfx_data				;26
+;START OF PATCH (change which sound effect block is loaded with track $26; Rigging variant)
+	dl ship_ice_ending_sfx_data			;26
+;	dl dummy_sfx_data				;26
+;END OF PATCH
 	dl dummy_sfx_data				;27
 	dl dummy_sfx_data				;28
 
@@ -2233,6 +2238,9 @@ global_sample_map:
 	dw $0000, $00A5, $000C, $0009
 	dw $0011, $000A, $008B, $0043
 	dw $0047, $0049, $004B, $004D
+;START OF PATCH (add Donkey/Kiddy samples to global sample map)
+	dw $00DB, $00DC, $00DD
+;END OF PATCH
 	dw $FFFF
 
 null_sample_set:
@@ -2392,6 +2400,9 @@ lava_sample_set:
 	dw $008F, $00A9, $00AA, $000E
 	dw $000D, $000B, $009A, $000F
 	dw $00C6, $0010, $00D7, $009F
+;START OF PATCH (add sample for Rambi jumping to lava sample set)
+	dw $00D8
+;END OF PATCH
 	dw $FFFF
 
 roller_coaster_sample_set:
@@ -2437,7 +2448,10 @@ ship_hold_sample_set:
 	dw $004F, $0018, $002E, $008F
 	dw $000B, $009A, $000E, $000D
 	dw $0053, $00CD, $0099, $000F
-	dw $0010, $009B, $009F, $00BC
+	dw $0010, $009B, $009F
+;START OF PATCH (remove unused sample)
+;	dw $00BC
+;END OF PATCH
 	dw $0050, $00DA, $FFFF
 
 fanfare_sample_set:
@@ -2504,7 +2518,11 @@ haunted_sample_set:
 	dw $00B6, $00A2, $00B9, $00BD
 	dw $001E, $00A4, $003F, $0028
 	dw $00BB, $008F, $002E, $00C6
-	dw $00CC, $00D0, $00D1, $00D2
+	dw $00CC, $00D0
+;START OF PATCH (remove unused sample)
+;	dw $00D1
+;END OF PATCH
+	dw $00D2
 	dw $00C1, $00C2, $00C3, $008E
 	dw $FFFF
 
@@ -2569,9 +2587,16 @@ rigging_sample_set:
 	dw $0013, $001E, $0036, $0024
 	dw $0021, $0086, $00A1, $009C
 	dw $009D, $0014, $008F, $000B
-	dw $009A, $0099, $000F, $0010
+	dw $009A
+;START OF PATCH (remove small splash and Snapjaw samples)
+;	dw $0099, $000F, $0010
+;END OF PATCH
 	dw $000E, $000D, $00C6, $0053
-	dw $00D8, $009F, $00DA, $FFFF
+	dw $00D8, $009F
+;START OF PATCH (remove Kong swimming sample)
+;	dw $00DA
+;END OF PATCH
+	dw $FFFF
 
 credits_sample_set:
 	dw $00CE, $00CF, $00C0, $00A6
@@ -2587,17 +2612,31 @@ credits_sample_set:
 	dw $0078, $0079, $0037, $0039
 	dw $003B, $003D, $003F, $0041
 	dw $0045, $0048, $004A, $004C
-	dw $004E, $004F, $002B, $000D
-	dw $0050, $0053, $00A1, $00C6
+	dw $004E, $004F
+;START OF PATCH (remove unused sample)
+;	dw $002B
+;END OF PATCH
+	dw $000D
+;START OF PATCH (remove unused sample)
+;	dw $0050
+;END OF PATCH
+	db $0053, $00A1, $00C6
 	dw $009F, $000F, $0010, $00CD
-	dw $00D7, $0099, $FFFF
+	dw $00D7
+;START OF PATCH (remove unused sample)
+;	dw $0099
+;END OF PATCH
+	dw $FFFF
 
 k_rool_sample_set:
 	dw $00CE, $00CF, $0021, $00A2
 	dw $00BE, $002E, $0090, $00A6
 	dw $0096, $008F, $0014, $000D
 	dw $00D9, $009D, $0053, $00BC
-	dw $00D2, $0086, $00AD, $0088
+	dw $00D2, $0086, $00AD
+;START OF PATCH (remove unused sample)
+;	dw $0088
+;END OF PATCH
 	dw $0094, $FFFF
 
 bonus_sample_set_2:
@@ -2624,7 +2663,10 @@ big_boss_sample_set_2:
 	dw $0022, $0023, $001D, $0024
 	dw $00A3, $00A4, $001E, $008F
 	dw $002E, $000D, $00D7, $0086
-	dw $00BD, $00A9, $00AA, $002B
+	dw $00BD, $00A9, $00AA
+;START OF PATCH (remove unused sample)
+;	dw $002B
+;END OF PATCH
 	dw $00C6, $00A1, $002F, $00D9
 	dw $00BC, $FFFF, $FFFF
 
@@ -2658,8 +2700,10 @@ bonus_sample_set_4:
 	dw $008F, $009F, $00D8, $0094
 	dw $FFFF
 
-DATA_EE1935:
-	dw $FFFF
+;START OF PATCH (remove placeholder track $26 sample map)
+;DATA_EE1935:
+;	dw $FFFF
+;END OF PATCH
 
 DATA_EE1937:
 	dw $FFFF
@@ -2781,9 +2825,7 @@ brr_sample_EEEE4B:
 brr_sample_EEF6B6:
 	dw $0000
 	dw datasize(brr_sample_EEF6B6)-4
-;START OF PATCH (replace banana sample with DKC1 version to save ARAM space)
-	incbin "kong_hack/sound/samples/sample_dkc_C7280C.brr"
-;	incbin "data/sound/samples/sample_EEF6B6.brr"
+	incbin "data/sound/samples/sample_EEF6B6.brr"
 ;END OF PATCH
 
 ;$EEF8C5
@@ -2796,10 +2838,7 @@ brr_sample_EEF8C5:
 brr_sample_EEFDC8:
 	dw $0000
 	dw datasize(brr_sample_EEFDC8)-4
-;START OF PATCH (replace Squitter web shooting sample with shortened version to save ARAM space)
-	incbin "kong_hack/sound/samples/sample_EEFDC8_shorter.brr"
-;	incbin "data/sound/samples/sample_EEFDC8.brr"
-;END OF PATCH
+	incbin "data/sound/samples/sample_EEFDC8.brr"
 
 ;$EEFFDF
 brr_sample_EEFFDF:
@@ -2811,7 +2850,10 @@ brr_sample_EEFFDF:
 brr_sample_EF001A:
 	dw $0000
 	dw datasize(brr_sample_EF001A)-4
-	incbin "data/sound/samples/sample_EF001A.brr"
+;START OF PATCH (replace chomping sample with shortened version to save ARAM space)
+	incbin "kong_hack/sound/samples/sample_EF001A_shorter.brr"
+;	incbin "data/sound/samples/sample_EF001A.brr"
+;END OF PATCH
 
 ;$EF05BE
 brr_sample_EF05BE:
@@ -2863,13 +2905,9 @@ brr_sample_EF335C:
 
 ;$EF35BC
 brr_sample_EF35BC:
-;START OF PATCH (replace bongo sample with DKC1 version to save ARAM space)
-	dw $0000
-	;dw $018C
+	dw $018C
 	dw datasize(brr_sample_EF35BC)-4
-	incbin "kong_hack/sound/samples/sample_dkc_C81E24.brr"
-	;incbin "data/sound/samples/sample_EF35BC.brr"
-;END OF PATCH
+	incbin "data/sound/samples/sample_EF35BC.brr"
 
 ;$EF37B0
 brr_sample_EF37B0:
@@ -3952,7 +3990,10 @@ brr_sample_F1DF7C:
 brr_sample_F1E973:
 	dw $0000
 	dw datasize(brr_sample_F1E973)-4
-	incbin "data/sound/samples/sample_F1E973.brr"
+;START OF PATCH (replace Clapper bark sample with shortened version to save ARAM space)
+	incbin "kong_hack/sound/samples/sample_F1E973_shorter.brr"
+;	incbin "data/sound/samples/sample_F1E973.brr"
+;END OF PATCH
 
 ;$F1EDA6
 brr_sample_F1EDA6:
@@ -4070,28 +4111,32 @@ brr_sample_F232D2:
 ;	incsrc "data/sound/music/k_rool_song_data.asm"
 ;END OF PATCH
 
-DATA_F2E691:
-	dw $1300, $0000		;Unused placeholder for track $20 (reuses track $0F data instead)
+;START OF PATCH (remove placeholder music blocks, 1/2)
+;DATA_F2E691:
+;	dw !bgm_loc, $0000	;Unused placeholder for track $20 (reuses track $0F data instead)
 
-DATA_F2E695:
-	dw $1300, $0000		;Unused placeholder for track $21 (reuses track $15 data instead)
+;DATA_F2E695:
+;	dw !bgm_loc, $0000	;Unused placeholder for track $21 (reuses track $15 data instead)
 
-DATA_F2E699:
-	dw $1300, $0000		;Unused placeholder for track $22 (reuses track $0F data instead)
+;DATA_F2E699:
+;	dw !bgm_loc, $0000	;Unused placeholder for track $22 (reuses track $0F data instead)
 
-DATA_F2E69D:
-	dw $1300, $0000		;Unused placeholder for track $23 (reuses track $0F data instead)
+;DATA_F2E69D:
+;	dw !bgm_loc, $0000	;Unused placeholder for track $23 (reuses track $0F data instead)
+;END OF PATCH
 
 	incsrc "data/sound/music/secret_ending_song_data.asm"
 
-DATA_F2E724:
-	dw $1300, $0000		;Unused placeholder for track $25 (reuses track $0F data instead)
+;START OF PATCH (remove placeholder music blocks, 2/2)
+;DATA_F2E724:
+;	dw !bgm_loc, $0000	;Unused placeholder for track $25 (reuses track $0F data instead)
 
-DATA_F2E728:
-	dw $1300, $0000		;Placeholder for track $26
+;DATA_F2E728:
+;	dw !bgm_loc, $0000	;Placeholder for track $26
+;END OF PATCH
 
 DATA_F2E72C:
-	dw $1300, $0000		;Placeholder for track $27
+	dw !bgm_loc, $0000	;Placeholder for track $27
 
 ;START OF PATCH (replace global sound effect block with a modified version)
 	incsrc "kong_hack/sound/sound_effects/global_sfx_data.asm"
@@ -4099,13 +4144,13 @@ DATA_F2E72C:
 ;END OF PATCH
 	incsrc "data/sound/sound_effects/dummy_sfx_data.asm"
 	incsrc "data/sound/sound_effects/roller_coaster_sfx_data.asm"
-;START OF PATCH (replace aquatic and nature sound effect block with a modified versions)
+;START OF PATCH (replace aquatic and nature sound effect blocks with modified versions, remove unused Krockhead sound block)
 	incsrc "kong_hack/sound/sound_effects/ship_ice_ending_sfx_data.asm"
 	incsrc "kong_hack/sound/sound_effects/swamp_forest_mine_brambles_hive_sfx_data.asm"
 ;	incsrc "data/sound/sound_effects/ship_ice_ending_sfx_data.asm"
 ;	incsrc "data/sound/sound_effects/swamp_forest_mine_brambles_hive_sfx_data.asm"
+;	incsrc "data/sound/sound_effects/unused_krockhead_sfx_data.asm"
 ;END OF PATCH
-	incsrc "data/sound/sound_effects/unused_krockhead_sfx_data.asm"
 	incsrc "data/sound/sound_effects/jungle_sfx_data.asm"
 ;START OF PATCH (replace boss 1 sound effect block with a modified version)
 	incsrc "kong_hack/sound/sound_effects/boss_1_sfx_data.asm"
@@ -4113,32 +4158,32 @@ DATA_F2E72C:
 ;END OF PATCH
 	incsrc "data/sound/sound_effects/lava_castle_boss_2_sfx_data.asm"
 
-;START OF PATCH (add sound effect block for menus)
+;START OF PATCH (add sound effect block for menus, remove placeholder sound effect blocks)
 	incsrc "kong_hack/sound/sound_effects/menus_sfx_data.asm"
 ;DATA_F2FB66:
-;	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $08
+;	dw !dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $08
+
+;DATA_F2FB6A:
+;	dw !dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $09
+
+;DATA_F2FB6E:
+;	dw !dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $0A
+
+;DATA_F2FB72:
+;	dw !dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $0B
+
+;DATA_F2FB76:
+;	dw !dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $0C
+
+;DATA_F2FB7A:
+;	dw !dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $0D
+
+;DATA_F2FB7E:
+;	dw $!dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $0E
+
+;DATA_F2FB82:
+;	dw !dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $0F
 ;END OF PATCH
-	
-DATA_F2FB6A:
-	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $09
-
-DATA_F2FB6E:
-	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0A
-
-DATA_F2FB72:
-	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0B
-
-DATA_F2FB76:
-	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0C
-
-DATA_F2FB7A:
-	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0D
-
-DATA_F2FB7E:
-	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0E
-
-DATA_F2FB82:
-	dw $2E94, $0002		;Unused placeholder for song-specific sound effect set $0F
 
 	padbyte $00 : pad $F30000
 

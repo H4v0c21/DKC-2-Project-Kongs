@@ -25,10 +25,7 @@ base !bgm_loc
 	db !set_echo, $3A, $23, $23
 	db !set_fir, $7F, $0A, $01, $01, $01, $01, $01, $01
 	db !set_instrument, $0C
-;START OF PATCH (change instrument pitch command parameter to compensate for base pitch change in banana sample)
-	db !change_instr_pitch, $16
-;	db !change_instr_pitch, $00
-;END OF PATCH
+	db !change_instr_pitch, $00
 	db !fine_tune, $00
 	db !set_volume_l_and_r, $1E, $32
 	db !set_adsr, $8F, $E0
@@ -232,14 +229,9 @@ base !bgm_loc
 
 .seq_14F3:
 	db !set_instrument, $19
-;START OF PATCH (alter change pitch, fine tune, and volume commands to compensate for change in bongo sample)
-	db !change_instr_pitch, $F9
-	db !fine_tune, $08
-	db !set_volume_l_and_r, $0E, $1D
-;	db !change_instr_pitch, $00
-;	db !fine_tune, $00
-;	db !set_volume_l_and_r, $0B, $16
-;END OF PATCH
+	db !change_instr_pitch, $00
+	db !fine_tune, $00
+	db !set_volume_l_and_r, $0B, $16
 	db !loop_subsequence, $01 : dw .subseq_1518
 .loop_point_1500:
 	db !loop_subsequence, $07 : dw .subseq_1545
