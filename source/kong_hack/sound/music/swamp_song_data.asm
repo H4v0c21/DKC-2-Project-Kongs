@@ -1541,10 +1541,7 @@ base !bgm_loc
 	db !pitch_slide_up, $01, $03, $17, $6F, $02
 	db $81, $0A
 	db !set_instrument, $0C
-;START OF PATCH (change instument pitch command parameter to compensate for base pitch change in banana sample)
-	db !change_instr_pitch, $16
-;	db !change_instr_pitch, $00
-;END OF PATCH
+	db !change_instr_pitch, $00
 	db !fine_tune, $00
 	db !set_volume_l_and_r, $40, $08
 	db !set_adsr, $9F, $EF

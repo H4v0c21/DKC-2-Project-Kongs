@@ -1,6 +1,6 @@
-;1D Jib Jig
+;26 Jib Jig (no rain)
 ;32BFAF
-rigging_song_data:
+rigging_no_rain_song_data:
 ;	dw !bgm_loc, $0819
 ;If modifying this file, comment out the line above and uncomment the line below
 	dw !bgm_loc, ((.end-.start)+((.end-.start)&$0001))>>1
@@ -14,7 +14,7 @@ base !bgm_loc
 	db $A0, $FF	;music tempo, sound effect tempo
 
 ;sub-track pointers
-	dw .chn_ptrs_1300	;00: Jib Jig
+	dw .chn_ptrs_1300	;00: Jib Jig (no rain)
 	dw .chn_ptrs_131C	;01: Lost Life
 	dw .chn_ptrs_132E	;02: Diddy Victory
 	dw .chn_ptrs_1340	;03: Dixie Victory
@@ -1366,16 +1366,21 @@ base !bgm_loc
 	db !play_subsequence : dw .subseq_19D4
 	db $80, $08
 .loop_point_1CEF:
-	db !set_instrument, $9C
-	db !change_instr_pitch, $00
-	db !fine_tune, $00
-	db !set_volume_l_and_r, $C8, $0F
-	db !set_adsr, $80, $E6
-	db !vibrato_with_delay, $0F, $08, $0E, $02
+;START OF PATCH (replace rain with silence, 1/4)
 	db !long_duration_on
-	db $9C, $03, $00
+	db $80, $03, $00
 	db !long_duration_off
-	db !vibrato_off
+;	db !set_instrument, $9C
+;	db !change_instr_pitch, $00
+;	db !fine_tune, $00
+;	db !set_volume_l_and_r, $C8, $0F
+;	db !set_adsr, $80, $E6
+;	db !vibrato_with_delay, $0F, $08, $0E, $02
+;	db !long_duration_on
+;	db $9C, $03, $00
+;	db !long_duration_off
+;	db !vibrato_off
+;END OF PATCH
 	db !set_instrument, $24
 	db !change_instr_pitch, $00
 	db !fine_tune, $A9
@@ -1572,16 +1577,20 @@ base !bgm_loc
 	db !play_subsequence : dw .subseq_19D4
 	db $80, $08
 .loop_point_1EA5:
-	db !set_instrument, $9C
-	db !change_instr_pitch, $00
-	db !fine_tune, $00
-	db !set_volume_l_and_r, $14, $C2
-	db !set_adsr, $80, $E6
-	db !vibrato_with_delay, $0B, $0B, $1C, $02
+;START OF PATCH (replace rain with silence, 2/4)
 	db !long_duration_on
-	db $9A, $03, $00
+	db $80, $03, $00
 	db !long_duration_off
-	db !vibrato_off
+;	db !set_instrument, $9C
+;	db !change_instr_pitch, $00
+;	db !fine_tune, $00
+;	db !set_volume_l_and_r, $14, $C2
+;	db !set_adsr, $80, $E6
+;	db !vibrato_with_delay, $0B, $0B, $1C, $02
+;	db !long_duration_on
+;	db $9A, $03, $00
+;	db !long_duration_off
+;	db !vibrato_off
 	db !set_instrument, $24
 	db !change_instr_pitch, $00
 	db !fine_tune, $A9
@@ -1776,16 +1785,20 @@ base !bgm_loc
 	db !set_adsr, $98, $92
 	db !play_subsequence : dw .subseq_20E4
 	db $96, $20
-	db !set_instrument, $9C
-	db !change_instr_pitch, $00
-	db !fine_tune, $00
-	db !set_volume_l_and_r, $C8, $0F
-	db !vibrato_with_delay, $0F, $08, $0E, $02
+;START OF PATCH (replace rain with silence, 3/4)
 	db !long_duration_on
-	db !set_adsr, $80, $E2
-	db $9C, $03, $A0
+	db $80, $03, $A0
 	db !long_duration_off
-	db !vibrato_off
+;	db !set_instrument, $9C
+;	db !change_instr_pitch, $00
+;	db !fine_tune, $00
+;	db !set_volume_l_and_r, $C8, $0F
+;	db !vibrato_with_delay, $0F, $08, $0E, $02
+;	db !long_duration_on
+;	db !set_adsr, $80, $E2
+;	db $9C, $03, $A0
+;	db !long_duration_off
+;	db !vibrato_off
 	db !set_instrument, $24
 	db !change_instr_pitch, $00
 	db !fine_tune, $A9
@@ -2096,15 +2109,19 @@ base !bgm_loc
 	db $84, $18
 	db $84, $08
 	db $84, $10
-	db !set_instrument, $9C
-	db !change_instr_pitch, $00
-	db !fine_tune, $00
-	db !set_volume_l_and_r, $14, $C2
-	db !vibrato_with_delay, $0B, $0B, $1C, $02
+;START OF PATCH (replace rain with silence, 4/4)
 	db !long_duration_on
-	db !set_adsr, $80, $E2
-	db $9A, $03, $80
+	db $80, $03, $80
 	db !long_duration_off
+;	db !set_instrument, $9C
+;	db !change_instr_pitch, $00
+;	db !fine_tune, $00
+;	db !set_volume_l_and_r, $14, $C2
+;	db !vibrato_with_delay, $0B, $0B, $1C, $02
+;	db !long_duration_on
+;	db !set_adsr, $80, $E2
+;	db $9A, $03, $80
+;	db !long_duration_off
 	db !change_instr_pitch, $00
 	db !fine_tune, $00
 	db !set_instrument, $36

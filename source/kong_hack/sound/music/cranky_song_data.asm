@@ -38,10 +38,7 @@ base !bgm_loc
 	db !set_instrument, $0C
 	db !set_volume_l_and_r, $18, $04
 	db !set_adsr, $FF, $E0
-;START OF PATCH (change notes to compensate for base pitch change in banana sample)
-	db $B4, $08
-;	db $9E, $08	
-;END OF PATCH
+	db $9E, $08	
 	db !echo_off
 	db !set_instrument, $00
 	db !set_adsr, $8F, $E0
@@ -59,12 +56,8 @@ base !bgm_loc
 	db !set_instrument, $0C
 	db !set_volume_l_and_r, $18, $04
 	db !set_adsr, $FF, $E0
-;START OF PATCH (change notes to compensate for base pitch change in banana sample)
-	db $B4, $10
-	db $B4, $08
-;	db $9E, $10
-;	db $9E, $08
-;END OF PATCH
+	db $9E, $10
+	db $9E, $08
 	db !echo_off
 	db !set_instrument, $00
 	db !set_adsr, $8F, $E0
@@ -77,10 +70,7 @@ base !bgm_loc
 	db !set_instrument, $0C
 	db !set_volume_l_and_r, $18, $04
 	db !set_adsr, $FF, $E0
-;START OF PATCH (change notes to compensate for base pitch change in banana sample)
-	db $B4, $08
-;	db $9E, $08
-;END OF PATCH
+	db $9E, $08
 	db !echo_off
 	db !set_instrument, $00
 	db !set_adsr, $8F, $E0
@@ -98,12 +88,8 @@ base !bgm_loc
 	db !set_instrument, $0C
 	db !set_volume_l_and_r, $18, $04
 	db !set_adsr, $FF, $E0
-;START OF PATCH (change notes to compensate for base pitch change in banana sample)
-	db $B4, $08
-	db $B4, $10
-;	db $9E, $08
-;	db $9E, $10
-;END OF PATCH
+	db $9E, $08
+	db $9E, $10
 	db !jump_to_sequence : dw .loop_point_1329
 
 .seq_1392:
@@ -118,16 +104,9 @@ base !bgm_loc
 	db $9A, $0A
 	db !pitch_slide_off
 	db !echo_off
-;START OF PATCH (alter change pitch command, add fine tune command before bongos start playing)
-	db !change_instr_pitch, $FE
-;	db !change_instr_pitch, $05
-	db !fine_tune, $08
-;END OF PATCH
+	db !change_instr_pitch, $05
 	db !set_instrument, $19
-;START OF PATCH (adjust volume for changed bongo sample)
-	db !set_volume_l_and_r, $1F, $0D
-;	db !set_volume_l_and_r, $18, $0A
-;END OF PATCH
+	db !set_volume_l_and_r, $18, $0A
 	db !set_adsr, $8F, $A0
 	db $99, $03
 	db $99, $03
@@ -146,9 +125,6 @@ base !bgm_loc
 	db $99, $08
 	db $92, $08
 	db $92, $08
-;START OF PATCH (reset fine tune command when bongos finish playing)
-	db !fine_tune, $00
-;END OF PATCH
 	db !jump_to_sequence : dw .loop_point_1395
 
 .seq_13D9:

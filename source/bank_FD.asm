@@ -2750,7 +2750,12 @@ DATA_FD49FF:
 	db $29, $29, $13, $00, $12, $00, $06, $00, $01
 
 DATA_FD4A14:
-	db $05, $00, $06, $00, $1D, $00, $00, $00 : dw CODE_BBACE2, CODE_BBAD34
+	db $05, $00, $06, $00
+;START OF PATCH (replace Slime Climb music track with Rigging music variant)
+	db $26, 00
+	;db $1D, $00
+;END OF PATCH
+	db $00, $00 : dw CODE_BBACE2, CODE_BBAD34
 	db $2D, $2D, $17, $00, $16, $00, $04, $42, $00
 
 DATA_FD4A29:

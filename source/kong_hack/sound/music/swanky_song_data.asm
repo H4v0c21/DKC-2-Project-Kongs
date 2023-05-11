@@ -67,38 +67,19 @@ base !bgm_loc
 	db $8E, $0A
 	db !echo_on
 	db !set_instrument, $19
-;START OF PATCH (adjust volume for changed bongo sample)
-	db !set_volume_l_and_r, $2F, $15
-;	db !set_volume_l_and_r, $24, $10
-;END OF PATCH
+	db !set_volume_l_and_r, $24, $10
 	db !set_adsr, $CF, $96
-;START OF PATCH (add fine tune command, change notes to compensate for base pitch change in bongo sample)
-	db !fine_tune, $08
-	db $89, $10
-	db $89, $06
-;	db $90, $10
-;	db $90, $06
-;END OF PATCH
+	db $90, $10
+	db $90, $06
 	db !set_instrument, $A5
 	db !set_volume_l_and_r, $3A, $40
 	db !set_adsr, $AF, $EB
-;START OF PATCH (reset fine tune)
-	db !fine_tune, $00
-;END OF PATCH
 	db $99, $10
 	db !set_instrument, $19
-;START OF PATCH (adjust volume for changed bongo sample)
-	db !set_volume_l_and_r, $24, $1F
-;	db !set_volume_l_and_r, $1C, $18
-;END OF PATCH
+	db !set_volume_l_and_r, $1C, $18
 	db !set_adsr, $CF, $96
-;START OF PATCH (add fine tune command, change notes to compensate for base pitch change in bongo sample)
-	db !fine_tune, $08
-	db $8E, $0A
-	db $8E, $06
-;	db $95, $0A
-;	db $95, $06
-;END OF PATCH
+	db $95, $0A
+	db $95, $06
 	db !echo_off
 	db !set_instrument, $00
 ;START OF PATCH (change set volume command to space-saving equivalent)
@@ -106,50 +87,24 @@ base !bgm_loc
 ;	db !set_volume_l_and_r, $50, $50
 ;END OF PATCH
 	db !set_adsr, $CF, $96
-;START OF PATCH (reset fine tune)
-	db !fine_tune, $00
-;END OF PATCH
 	db $8E, $0A
 	db !echo_on
 	db !set_instrument, $19
-;START OF PATCH (adjust volume for changed bongo sample)
-	db !set_volume_l_and_r, $10, $34
-;	db !set_volume_l_and_r, $0C, $28
-;END OF PATCH
+	db !set_volume_l_and_r, $0C, $28
 	db !set_adsr, $DF, $99
-;START OF PATCH (add fine tune command, change notes to compensate for base pitch change in bongo sample)
-	db !fine_tune, $08
-	db $9D, $10
-	db $9D, $06
-;	db $A4, $10
-;	db $A4, $06
-;END OF PATCH
+	db $A4, $10
+	db $A4, $06
 	db !set_instrument, $A5
 	db !set_volume_l_and_r, $3A, $40
 	db !set_adsr, $AF, $EB
-;START OF PATCH (reset fine tune)
-	db !fine_tune, $00
-;END OF PATCH
 	db $99, $10
 	db !set_instrument, $19
-;START OF PATCH (adjust volume for changed bongo sample)
-	db !set_volume_l_and_r, $2F, $15
-;	db !set_volume_l_and_r, $24, $10
-;END OF PATCH
+	db !set_volume_l_and_r, $24, $10
 	db !set_adsr, $CF, $96
-;START OF PATCH (add fine tune command, change notes to compensate for base pitch change in bongo sample)
-	db !fine_tune, $08
-	db $8E, $05
-	db $8E, $05
-	db $8E, $06
-;	db $95, $05
-;	db $95, $05
-;	db $95, $06
-;END OF PATCH
+	db $95, $05
+	db $95, $05
+	db $95, $06
 	db !echo_off
-;START OF PATCH (add fine tune command to reset before loop)
-	db !fine_tune, $00
-;END OF PATCH
 	db !jump_to_sequence : dw .loop_point_1363
 
 .seq_13C4:

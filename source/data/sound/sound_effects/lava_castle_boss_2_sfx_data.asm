@@ -17,16 +17,16 @@ base !dyn_snd_loc
 	dw .seq_2F46	;63: 
 	dw .seq_2F46	;64: 
 	dw .seq_2F46	;65: 
-	dw .seq_306F	;66: 
-	dw .seq_305D	;67: 
-	dw .seq_3042	;68: 
-	dw .seq_302E	;69: 
-	dw .seq_300E	;6A: 
-	dw .seq_2FEA	;6B: 
-	dw .seq_2FD6	;6C: 
-	dw .seq_2ED6	;6D: 
-	dw .seq_2F12	;6E: 
-	dw .seq_2F01	;6F: 
+	dw .seq_306F	;66: Hanging hooks appearing (Kleever's Kiln/Kreepy Krow)
+	dw .seq_305D	;67: Piece of debris falling (Kleever's Kiln/K. Rool Duel)
+	dw .seq_3042	;68: Broken Kleever spiraling to his demise
+	dw .seq_302E	;69: Lava bubbling 1
+	dw .seq_300E	;6A: Lava bubbling 2
+	dw .seq_2FEA	;6B: Kleever hit with cannonball
+	dw .seq_2FD6	;6C: Fireball flying
+	dw .seq_2ED6	;6D: Lava bubbling 3
+	dw .seq_2F12	;6E: Landing on a Green Krockhead
+	dw .seq_2F01	;6F: Bouncing on a Brown Krockhead
 	dw .seq_2F46	;70: 
 	dw .seq_2F46	;71: 
 	dw .seq_2F46	;72: 
@@ -35,14 +35,14 @@ base !dyn_snd_loc
 	dw .seq_2F46	;75: 
 	dw .seq_2F46	;76: 
 	dw .seq_2F46	;77: 
-	dw .seq_2F23	;78: 
-	dw .seq_2FB1	;79: 
-	dw .seq_2F9D	;7A: 
-	dw .seq_2F90	;7B: 
-	dw .seq_2F57	;7C: 
-	dw .seq_2F47	;7D: 
-	dw .seq_2FC1	;7E: 
-	dw .seq_2EEB	;7F: 
+	dw .seq_2F23	;78: Kongs scared
+	dw .seq_2FB1	;79: Fireball sound
+	dw .seq_2F9D	;7A: King Zing hit
+	dw .seq_2F90	;7B: King Zing spawning Zingers
+	dw .seq_2F57	;7C: King Zing firing spikes
+	dw .seq_2F47	;7D: Squawks egg bouncing off King Zing
+	dw .seq_2FC1	;7E: Lava bubbling 4
+	dw .seq_2EEB	;7F: King Zing defeated
 .pointers_end:
 
 .seq_2ED6:

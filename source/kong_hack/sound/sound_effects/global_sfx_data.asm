@@ -135,18 +135,27 @@ base !snd_loc
 ;END OF PATCH
 .pointers_end:
 
-;START OF PATCH (add new sound effects 03, 0C, 0D, 2E, 33, 34, 55, 59, 5A, 5B, and 5C)
+;START OF PATCH (add new sound effects 03, 0C, 0D, 2E, 33, 34, 55, 59, 5A, and 5B)
 .kiddy_idle:
-	db !set_instrument, $83
-	db !set_vol_single_val, $DE
-	db !set_adsr, $8E, $E0
+;Direct Kiddy Kong idle sound port from DKC3 (vanilla sample doesn't exist in the ROM)
+;	db !set_instrument, $FF
+;	db !set_vol_single_val, $60
+;	db !set_adsr, $8E, $E0
+;	db $8A, $28
+;	db !end_sequence
+
+;.kiddy_idle_a:
+;A: Modified Kiddy Kong idle sound to compensate for shortened sample
+	db !set_instrument, $DD
+	db !set_vol_single_val, $60
+	db !set_adsr, $8E, $EF
+	db !pitch_slide_up, $1E, $02, $06, $18, $00
 	db $8A, $28
 	db !end_sequence
 
-
 .kiddy_cry:
-	db !set_vol_single_val, $DD
-	db !set_instrument, $6A
+	db !set_vol_single_val, $60
+	db !set_instrument, $DC
 	db !set_adsr, $FF, $EB
 	db !pitch_slide_down, $10, $06, $40, $09, $00
 	db $8B, $90
@@ -159,31 +168,126 @@ base !snd_loc
 
 
 .donkey_idle:
-	db !set_instrument, $DB
-	db !set_vol_single_val, $50
-	db !set_adsr, $8F, $E0
-	db $94, $0D
-	db !set_default_duration, $1D
-	db $95
-	db $95
-	db $95
-	db $95
-	db !set_vol_single_val, $20
-	db $95
-	db !set_vol_single_val, $18
-	db $95
-	db !set_vol_single_val, $0E
-	db $95
-	db !set_vol_single_val, $06
-	db $95
-	db !default_duration_off
-	db !end_sequence
+;Direct Donkey Kong idle sound port from DKC1 (sample doesn't exist in the ROM)
+;	db !set_instrument, $FF
+;	db !set_vol_single_val, $50
+;	db !set_adsr, $8F, $E0
+;	db $94, $0D
+;	db !set_default_duration, $1D
+;	db $95
+;	db $95
+;	db $95
+;	db $95
+;	db !set_vol_single_val, $20
+;	db $95
+;	db !set_vol_single_val, $18
+;	db $95
+;	db !set_vol_single_val, $0E
+;	db $95
+;	db !set_vol_single_val, $06
+;	db $95
+;	db !default_duration_off
+;	db !end_sequence
 
-.donkey_idle_c:
+;.donkey_idle_c:
+;C: Donkey Kong idle sound based on Donkey Kong's teetering sound from DKC1
+	db !set_instrument, $DB			;01 27 
+	db !set_adsr, $8B, $FA			;10 8B FA 
+	db !set_default_duration, $0E		;06 09 
+	db !play_subsequence : dw ..subseq	;04 01 DC 2D 
+	db !fine_tune, $0A			;12 0A 
+	db !play_subsequence : dw ..subseq	;04 01 DC 2D 
+	db !fine_tune, $14			;12 14 
+	db !loop_subsequence, $02 : dw ..subseq	;04 02 DC 2D
+	db !set_vol_single_val, $20		;02 20 20 
+	db $8E					;8E 
+	db !set_vol_single_val, $10		;02 10 10 
+	db $8E					;8E 
+	db !set_vol_single_val, $18		;02 18 18 
+	db $8E					;8E 
+	db !set_vol_single_val, $0C		;02 0C 0C 
+	db $8E					;8E 
+	db !set_vol_single_val, $0E		;02 0E 0E 
+	db $8E					;8E 
+	db !set_vol_single_val, $07		;02 07 07 
+	db $8E					;8E 
+	db !set_vol_single_val, $06		;02 06 06 
+	db $8E					;8E 
+	db !set_vol_single_val, $03		;02 03 03 
+	db $8E					;8E 
+	db !default_duration_off		;07 
+	db !end_sequence			;00 
 
-.donkey_idle_b:
+..subseq:
+	db !set_vol_single_val, $50		;02 50 50 
+	db $8E					;8E 
+	db !set_vol_single_val, $28		;02 28 28 
+	db $8E					;8E 
+	db !return_from_sub			;05
 
-.donkey_idle_a:
+;.donkey_idle_b:
+;B: Donkey Kong idle sound based on Donkey Kong's grunt when tied up, but modified to resemble the DKC1 idle sound
+;	db !set_instrument, $01			;01 24 
+;	db !set_vol_single_val, $50		;02 50 50 
+;	db $87, $06				;87 04 
+;	db !set_instrument, $07			;01 29 
+;	db $87, $06				;87 04 
+;	db !loop_subsequence, $04 : dw ..subseq	;04 04 CC 2D 
+;	db !set_vol_single_val, $20		;02 20 20 
+;	db !play_subsequence : dw ..subseq	;04 01 CC 2D 
+;	db !set_vol_single_val, $18		;02 18 18 
+;	db !play_subsequence : dw ..subseq	;04 01 CC 2D 
+;	db !set_vol_single_val, $0E		;02 0E 0E 
+;	db !play_subsequence : dw ..subseq	;04 01 CC 2D 
+;	db !set_vol_single_val, $06		;02 06 06 
+;	db !play_subsequence : dw ..subseq	;04 01 CC 2D 
+;	db !end_sequence			;00 
+
+;..subseq:
+;	db !set_instrument, $01			;01 24 
+;	db !set_default_duration, $06		;06 04 
+;	db $88					;88 
+;	db !set_instrument, $07			;01 29 
+;	db $88					;88 
+;	db !set_instrument, $BC			;01 01 
+;	db $88					;88 
+;	db !default_duration_off		;07 
+;	db !set_instrument, $DB			;01 27 
+;	db $8C, $08				;8C 05 
+;	db $80, $02				;80 01 
+;	db !return_from_sub			;05
+
+;.donkey_idle_a:
+;A: Donkey Kong idle sound based on Donkey Kong's grunt when tied up
+;	db !set_instrument, $05			;01 2A
+;	db !set_vol_single_val, $50		;02 50 50 
+;	db $87 06				;87 04
+;	db !set_instrument, $BC			;01 01
+;	db $87 06				;87 04
+;	db !loop_subsequence, $04 : dw ..subseq	;04 04 CC 2D
+;	db !set_vol_single_val, $20		;02 20 20
+;	db !play_subsequence : dw ..subseq	;04 01 CC 2D
+;	db !set_vol_single_val, $18		;02 18 18
+;	db !play_subsequence : dw ..subseq	;04 01 CC 2D
+;	db !set_vol_single_val, $0E		;02 0E 0E
+;	db !play_subsequence : dw ..subseq	;04 01 CC 2D
+;	db !set_vol_single_val, $06		;02 06 06
+;	db !play_subsequence : dw ..subseq	;04 01 CC 2D
+;	db !end_sequence			;00
+
+;..subseq:
+;	db !set_instrument, $05			;01 2A
+;	db !set_default_duration, $06		;06 04
+;	db $88					;88
+;	db !set_instrument, $BC			;01 01
+;	db $88					;88
+;	db !set_instrument, $07			;01 29
+;	db $88					;88
+;	db !set_instrument, $01			;01 24
+;	db $88					;88
+;	db !default_duration_off		;07
+;	db $80, $03				;80 02
+;	db return_from_sub			;05
 
 
 .donkey_hit:
@@ -201,7 +305,7 @@ base !snd_loc
 	db !loop_subsequence, $02 : dw ..subseq
 	db !default_duration_off
 	db $80, $0E
-	db !set_instrument, $DC
+	db !set_instrument, $DB
 	db !change_instr_pitch, $00
 	db !set_vol_single_val, $32
 	db !set_default_duration, $09
@@ -1389,10 +1493,7 @@ base !snd_loc
 	db !change_instr_pitch, $00
 	db !set_vol_single_val, $64
 	db !set_instrument, $0C
-;START OF PATCH (change notes for wall break sound effect to compensate for change in banana sample, 1/3)
-	db $97, $06
-;	db $81, $06
-;END OF PATCH
+	db $81, $06
 	db !set_instrument, $0D
 	db $81, $06
 	db !set_instrument, $00
@@ -1401,12 +1502,8 @@ base !snd_loc
 	db $81, $06
 	db !set_vol_single_val, $3C
 	db !set_instrument, $0C
-;START OF PATCH (change notes for wall break sound effect to compensate for change in banana sample, 2/3)
-	db $9B, $04
-	db $98, $04
-;	db $85, $04
-;	db $82, $04
-;END OF PATCH
+	db $85, $04
+	db $82, $04
 	db !set_instrument, $0D
 	db $81, $06
 	db !set_instrument, $00
@@ -1415,10 +1512,7 @@ base !snd_loc
 	db $82, $06
 	db !set_vol_single_val, $1E
 	db !set_instrument, $0C
-;START OF PATCH (change notes for wall break sound effect to compensate for change in banana sample, 3/3)
-	db $97, $06
-;	db $81, $06
-;END OF PATCH
+	db $81, $06
 	db !set_instrument, $0D
 	db $84, $06
 	db !set_instrument, $00
@@ -1628,87 +1722,51 @@ base !snd_loc
 
 .seq_2D2D:
 	db !set_instrument, $0C
-;START OF PATCH (change notes for banana bunch sound effect to compensate for change in banana sample)
 	db !set_vol_single_val, $60
 	db !set_default_duration, $04
-	db $A5
-	db $AC
-	db $B1
-	db $B8
-	db $BD
-;	db $8F
-;	db $96
-;	db $9B
-;	db $A2
-;	db $A7
+	db $8F
+	db $96
+	db $9B
+	db $A2
+	db $A7
 	db !set_vol_single_val, $28
-	db $A5
-	db $AC
-	db $B1
-	db $B8
-	db $BD
-;	db $8F
-;	db $96
-;	db $9B
-;	db $A2
-;	db $A7
-;	db !set_vol_single_val, $1A
+	db $8F
+	db $96
+	db $9B
+	db $A2
+	db $A7
 	db !set_vol_single_val, $14
-	db $A5
-	db $AC
-	db $B1
-	db $B8
-	db $BD
-;	db $8F
-;	db $96
-;	db $9B
-;	db $A2
-;	db $A7
-;	db !set_vol_single_val, $0D
+	db $8F
+	db $96
+	db $9B
+	db $A2
+	db $A7
 	db !set_vol_single_val, $0A
-	db $A5
-	db $AC
-	db $B1
-	db $B8
-	db $BD
-;	db $8F
-;	db $96
-;	db $9B
-;	db $A2
-;	db $A7
+	db $8F
+	db $96
+	db $9B
+	db $A2
+	db $A7
 	db !set_vol_single_val, $05
-	db $A5
-	db $AC
-	db $B1
-	db $B8
-	db $BD
-;	db $8F
-;	db $96
-;	db $9B
-;	db $A2
-;	db $A7
-;END OF PATCH
+	db $8F
+	db $96
+	db $9B
+	db $A2
+	db $A7
 	db !default_duration_off
 	db !end_sequence
 
 .seq_2D56:
 	db !set_instrument, $0C
-;START OF PATCH (change notes for banana sound effect to compensate for change in banana sample)
 	db !set_vol_single_val, $3C
 	db !set_default_duration, $04
-	db $A3
-;	db $8D
+	db $8D
 	db !set_vol_single_val, $5A
-	db $AF
-	db $BB
-;	db $99
-;	db $A5
+	db $99
+	db $A5
 	db !set_vol_single_val, $19
-	db $AF
-	db $BB
-;	db $99
-;	db $A5
-;END OF PATCH
+	db $99
+	db $A5
 	db !default_duration_off
 	db !end_sequence
 
