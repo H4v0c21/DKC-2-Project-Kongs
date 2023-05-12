@@ -1,4 +1,4 @@
-;Sound Effects: Ship Deck/2, Ship Hold, Ice, Rigging, Credits, Secret Ending
+;Sound Effects: Ship Deck/2, Ice, Rigging, Credits, Secret Ending
 ;32F2F1
 ship_ice_ending_sfx_data:
 ;	dw !dyn_snd_loc, $0134

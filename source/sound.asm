@@ -2196,7 +2196,10 @@ DATA_EE117B:
 	dl lava_castle_boss_2_sfx_data			;0D
 	dl roller_coaster_sfx_data			;0E
 	dl swamp_forest_mine_brambles_hive_sfx_data	;0F
-	dl ship_ice_ending_sfx_data			;10
+;START OF PATCH (change which sound effect block is loaded with Ship Hold song)
+	dl ship_hold_sfx_data				;10
+;	dl ship_ice_ending_sfx_data			;10
+;END OF PATCH
 	dl dummy_sfx_data				;11
 	dl ship_ice_ending_sfx_data			;12
 	dl boss_1_sfx_data				;13
@@ -4158,8 +4161,10 @@ DATA_F2E72C:
 ;END OF PATCH
 	incsrc "data/sound/sound_effects/lava_castle_boss_2_sfx_data.asm"
 
-;START OF PATCH (add sound effect block for menus, remove placeholder sound effect blocks)
+;START OF PATCH (add sound effect blocks for menus and ship hold, remove placeholder sound effect blocks)
 	incsrc "kong_hack/sound/sound_effects/menus_sfx_data.asm"
+	incsrc "kong_hack/sound/sound_effects/ship_hold_sfx_data.asm"
+
 ;DATA_F2FB66:
 ;	dw !dyn_snd_loc, $0002		;Unused placeholder for song-specific sound effect set $08
 
