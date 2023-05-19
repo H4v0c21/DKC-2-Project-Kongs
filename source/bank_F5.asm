@@ -7,7 +7,8 @@ endif
 
 ;$F50004	compressed
 DATA_F50004:
-	incbin "data/screens/8x8_tilemaps/rareware_logo_layer_2_8x8_tilemap.bin"
+	;incbin "data/screens/8x8_tilemaps/rareware_logo_layer_2_8x8_tilemap.bin"
+	incbin "kong_hack/screens/8x8_tilemaps/h4v0c21_logo_layer_2_8x8_tilemap_comp.bin"
 
 ;$F50147
 DATA_F50147:
@@ -123,15 +124,20 @@ ship_deck_rigging_layer_3_tiledata:
 
 ;$F52FC7	compressed
 DATA_F52FC7:
-	incbin "data/screens/8x8_tilemaps/nintendo_logo_layer_1_8x8_tilemap.bin"
+	;incbin "data/screens/8x8_tilemaps/nintendo_logo_layer_1_8x8_tilemap.bin"
+	incbin "kong_hack/screens/8x8_tilemaps/mattrizzle_logo_layer_1_8x8_tilemap_comp.bin"
 
 ;$F5325B	compressed
 DATA_F5325B:
-	incbin "data/screens/graphics/nintendo_logo_layer_1_tiledata.bin"
+	;incbin "data/screens/graphics/nintendo_logo_layer_1_tiledata.bin"
+	incbin "kong_hack/screens/graphics/mattrizzle_logo_layer_1_tiledata_comp.bin"
 
 ;$F547BC
 DATA_F547BC:
-	incbin "data/screens/8x8_tilemaps/rareware_logo_mode_7_8x8_tilemap.bin"
+	;incbin "data/screens/8x8_tilemaps/rareware_logo_mode_7_8x8_tilemap.bin"
+	
+	db $0A, $0E	;tilemap dimensions
+	incbin "kong_hack/screens/8x8_tilemaps/h4v0c21_logo_mode_7_8x8_tilemap_nocomp.bin"
 
 ;$F5484A
 DATA_F5484A:
@@ -159,7 +165,8 @@ DATA_F559CA:
 
 ;$F55D4A	compressed
 DATA_F55D4A:
-	incbin "data/screens/graphics/rareware_logo_wireframe_layer_1_tiledata.bin"
+	;incbin "data/screens/graphics/rareware_logo_wireframe_layer_1_tiledata.bin"
+	incbin "kong_hack/screens/graphics/h4v0c21_logo_wireframe_layer_1_tiledata_comp.bin"
 
 ;$F56AC9	compressed
 DATA_F56AC9:
@@ -202,4 +209,4 @@ DATA_F57D13:
 	incbin "data/screens/8x8_tilemaps/the_end_text_8x8_tilemap.bin"
 	
 padbyte $00
-pad $F60000
+pad $F58000

@@ -87,7 +87,8 @@ DATA_FA443E:
 
 ;$FA4C3E	compressed
 DATA_FA4C3E:
-	incbin "data/screens/graphics/rareware_logo_mode_7_tiledata.bin"
+	;incbin "data/screens/graphics/rareware_logo_mode_7_tiledata.bin"
+	incbin "kong_hack/screens/graphics/h4v0c21_logo_mode_7_tiledata_comp.bin"
 
 ;$FA56C1
 gameover_screen_8x8_tilemap:
