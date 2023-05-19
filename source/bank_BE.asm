@@ -1361,14 +1361,18 @@ CODE_BEC1C2:
 
 CODE_BEC1CD:
 ;START OF PATCH (no click clack knockback for big kongs)
-	LDA $08A4
-	AND #$0002
-	BEQ .not_big
-	LDA #$001B
+	LDY current_sprite
+	LDA.w sprite.number,y			;Load object's type
+	CMP #$01DC				;Check if Click-Clack
+	BNE .normal_knockback			;Branch to normal knockback behavior if not
+	LDA $08A4				;Otherwise, load value of leader Kong
+	AND #$0002				;Bit $0002 is set if Donkey or Kiddy
+	BEQ .normal_knockback			;If not one of the big Kongs, branch to normal knockback behavior
+	LDA #$001B				;Kong-to-object interaction: Defeating enemy by stomping
 	BRL CODE_BEC52D
-.not_big:
+.normal_knockback:
 ;END OF PATCH
-	LDA #$001E				;$BEC1CD  \
+	LDA #$001E				;$BEC1CD  \	Kong-to-object interaction: Knocked back by enemy
 	BRL CODE_BEC52D				;$BEC1D0  /
 
 CODE_BEC1D3:

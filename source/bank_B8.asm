@@ -544,9 +544,13 @@ CODE_B88421:
 CODE_B8842B:
 	JSR CODE_B8C87C				;$B8842B  \
 	BCS CODE_B8848D				;$B8842E   |
-	LDX #sound(5, !sound_team_up_mount_animal)	;$B88430   |	Team-up sound is Kong-specific, but set to the same ID for both
+;START OF PATCH (change one possible sound to Donkey Kong's for teaming up, and change entry point to subroutine)
+	LDX #sound(5, !sound_donkey_team_up_mount_aml)
+;	LDX #sound(5, !sound_team_up_mount_animal)	;$B88430   |	Team-up sound is Kong-specific, but set to the same ID for both
 	LDY #sound(5, !sound_team_up_mount_animal)	;$B88433   |
-	JSR CODE_B89186				;$B88436   |
+	JSR play_kong_sound_follower
+;	JSR CODE_B89186				;$B88436   |
+;END OF PATCH
 	LDA $0597				;$B88439   |
 	STA $0D7A				;$B8843C   |
 	STZ $0D7C				;$B8843F   |
@@ -2242,14 +2246,33 @@ CODE_B89182:
 	JSR CODE_B89186				;$B89182  \
 	RTL					;$B89185  /
 
+;START OF PATCH (add global wrapper, alternate starting point for CODE_B89186 to check for the follower kong instead of the leader)
+play_kong_snd_follower_global:
+	JSR play_kong_sound_follower
+	RTL
+
+play_kong_sound_follower:
+	LDA kong_status				;Load values of Kongs not in stasis
+	XBA					;Swap upper and lower bytes (lower byte will contain follower Kong value)
+	BRA play_kong_sound_common
+
 CODE_B89186:
-	LDA $08A4				;$B89186  \ current kong number
-	BEQ CODE_B89191				;$B89189   | if current kong is diddy
+;START OF PATCH (change code to load kong_status instead of $08A4, and check Donkey instead of Diddy)
+	LDA kong_status				;Load values of Kongs not in stasis
+play_kong_sound_common:
+	AND #$00FF				;Clear the upper 8 bits
+	CMP #$0002				;Compare value to $02 (Donkey)
+;	LDA $08A4				;$B89186  \ current kong number
+;END OF PATCH
+	BEQ CODE_B89191				;$B89189   | if current kong is donkey (previously diddy)
+;START OF PATCH (add label for possible branch destination of play_follower_kong_sound routine below)
+transfer_non_donkey_sound:
+;END OF PATCH
 	TYA					;$B8918B   | otherwise use value in y as sound effect number
 	JSL queue_sound_effect			;$B8918C   | play sound
 	RTS					;$B89190  /
 
-;if diddy is playing
+;if donkey is playing (previously diddy)
 CODE_B89191:
 	TXA					;$B89191  \ use value in x as sound effect number
 	JSL queue_sound_effect			;$B89192   | play sound
@@ -2295,9 +2318,13 @@ CODE_B891A0:
 	STA $2E,x				;$B891EE   |
 	LDA #$0043				;$B891F0   |
 	JSL CODE_B9D0B8				;$B891F3   |
-	LDX #sound(5, !sound_swap_kongs)	;$B891F7   |	Swap Kongs sound is Kong-specific, but set to the same ID for both
+;START OF PATCH (change one possible sound to Donkey Kong's for swapping underwater, and change entry point to subroutine)
+	LDX #sound(5, !sound_swap_to_donkey)
+;	LDX #sound(5, !sound_swap_kongs)	;$B891F7   |	Swap Kongs sound is Kong-specific, but set to the same ID for both
 	LDY #sound(5, !sound_swap_kongs)	;$B891FA   |
-	JSR CODE_B89186				;$B891FD   |
+	JSR play_kong_sound_follower
+;	JSR CODE_B89186				;$B891FD   |
+;END OF PATCH
 	RTS					;$B89200  /
 
 CODE_B89201:
@@ -2440,9 +2467,11 @@ else						;	   |
 endif						;	   |
 	JSR CODE_B8D1E8				;$B89308   |
 	JSL CODE_BB8C19				;$B8930B   |
+;START OF PATCH (disable play sound for kong swap (now handled by animation scripts)
 	;LDX #sound(5, !sound_swap_kongs)	;$B8930F   |	Swap Kongs sound is Kong-specific, but set to the same ID for both
 	;LDY #sound(5, !sound_swap_kongs)	;$B89312   |
-	;JSR CODE_B89186			;$B89315   |	disable play sound for kong swap (now handled by animation scripts)
+	;JSR CODE_B89186			;$B89315   |
+;END OF PATCH
 	RTS					;$B89318  /
 
 CODE_B89319:
@@ -2521,7 +2550,10 @@ CODE_B893AA:
 
 CODE_B893B0:
 	JSR CODE_B8939C				;$B893B0  \
-	LDX #sound(5, !sound_team_up_mount_animal)	;$B893B3   |	Mount animal sound is Kong-specific, but set to the same ID for both
+;START OF PATCH (change one possible sound to Donkey Kong's for mounting an animal)
+	LDX #sound(5, !sound_donkey_team_up_mount_aml)
+;	LDX #sound(5, !sound_team_up_mount_animal)	;$B893B3   |	Mount animal sound is Kong-specific, but set to the same ID for both
+;END OF PATCH
 	LDY #sound(5, !sound_team_up_mount_animal)	;$B893B6   |
 	JSR CODE_B89186				;$B893B9   |
 	STZ $0AEE				;$B893BC   |
