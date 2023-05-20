@@ -5892,29 +5892,63 @@ init_nintendo_copyright:
 	JSL init_sprite_render_order_global	;$80B606   |
 	LDA #$0001				;$80B60A   |\ Enable mode 1 and place layer 1 on the mainscreen
 	STA PPU.layer_mode			;$80B60D   | |
+;START OF PATCH (place layers 1 and 3 on mainscreen instead of just layer 1)
+	LDA #$0005
+;END OF PATCH
 	STA PPU.screens				;$80B610   |/
-	LDA #$0000				;$80B613   |\ Set all layers to have tile data address of $0000
+;START OF PATCH (change tile data address for layer 3)
+	LDA #$0200				;	      Set tile data address of layers 1, 2, and 4 to $0000, layer 3 to $4000
+;	LDA #$0000				;$80B613   |\ Set all layers to have tile data address of $0000
+;END OF PATCH
 	STA PPU.layer_all_tiledata_base		;$80B616   |/
 	LDA #$787C				;$80B619   |\ Set layer 1 and 2 tile map address
-	STA PPU.layer_1_2_tilemap_base		;$80B61C   |/ Addresses: $F800, $F000
+	STA PPU.layer_1_2_tilemap_base		;$80B61C   |/ Addresses: $F800, $F000 (unused)
+;START OF PATCH (set address for layers 3 and 4)
+	LDA #$7878				;	   |\ Set layer 3 and 4 tile map address
+	STA PPU.layer_3_4_tilemap_base		;	   |/ Addresses: $F000, $F000 (unused)
+;END OF PATCH
 	STZ PPU.vram_address			;$80B61F   | Set VRAM address to zero
 	LDX.w #nintendo_copyright_tiledata>>16	;$80B622   |\ DMA tiledata for Nintendo copyright message
 	LDA #nintendo_copyright_tiledata	;$80B625   | |
-	LDY #$2000				;$80B628   | |
+;START OF PATCH (change length of VRAM upload for copyright tiledata)
+	LDY #datasize(nintendo_copyright_tiledata)
+;	LDY #$2000				;$80B628   | |
+;END OF PATCH
 	JSL DMA_to_VRAM				;$80B62B   |/
 	LDA #vram_intro_block_4			;$80B62F   |\ Clear the $0800 block at $F800
 	JSR clear_VRAM_block			;$80B632   |/
 namespace vram					;	   |\
-	LDA #intro_nintendo_copyright_tilemap	;$80B635   | | Set the VRAM address to $FA00
+	LDA #intro_nintendo_copyright_tilemap	;$80B635   | | Set the VRAM address to $FA00 ($F9A0 for 4-Kong hack)
 namespace off					;	   | |
 	STA PPU.vram_address			;$80B638   |/
 	LDX.w #nintendo_copyright_tilemap>>16	;$80B63B   |\ DMA the Nintendo copyright tilemap
 	LDA #nintendo_copyright_tilemap		;$80B63E   | |
-	LDY #$0240				;$80B641   | |
+;START OF PATCH (change length of VRAM upload for copyright 8x8 tilemap)
+	LDY #datasize(nintendo_copyright_tilemap)
+;	LDY #$0240				;$80B641   | |
+;END OF PATCH
 	JSL DMA_to_VRAM				;$80B644   |/
-	LDA #nintendo_copyright_palette		;$80B648   |\ DMA nintendo copyright palette to the first row
-	LDY #$0000				;$80B64B   | | This one isn't actually used
-	LDX #$0004				;$80B64E   | |
+;START OF PATCH (Add upload for 8x8 font and timestamp text on layer 3; replace unused copy of copyright palette with a new one for layer 3)
+	LDA #$2100				;	      Set the VRAM address to $4200 for the layer 3 text tiledata upload (starts a couple of rows down to align with ASCII)
+	STA PPU.vram_address			;	      Store to VRAM destination register
+	LDX.w #text_tiledata>>16		;	      X = Lower word of data source
+	LDA #text_tiledata			;	      A = Bank (upper) byte of data source
+	LDY #datasize(text_tiledata)		;	      Y = Size of VRAM upload
+	JSL DMA_to_VRAM
+	LDA #vram_intro_block_3			;	      Clear $800 of VRAM at $F000 (this will be used for the layer 3 tilemap)
+	JSR clear_VRAM_block
+	LDA #$7B23				;	   |\ Load initial VRAM address for timestamp text ($F646)
+	STA $32					;	   |/
+	LDA #build_timestamp_text		;	   |\ Load pointer to the timestamp
+	LDX.w #build_timestamp_text>>16		;	   |/
+	JSR upload_mode_7_tilemap		;	   | Reuse upload mode 7 tilemap routine to upload text
+	LDA #copyright_layer_3_palette		;	      A = Lower word of source address in bank $FD (Custom copyright layer 3 palette)
+	LDY #$0000				;	      Y = CGRAM destination (Upload to start of CGRAM)
+	LDX #$0001				;	      X = Number of colors to upload divided by 4 (Upload 4 colors)
+;	LDA #nintendo_copyright_palette		;$80B648   |\ DMA nintendo copyright palette to the first row
+;	LDY #$0000				;$80B64B   | | This one isn't actually used
+;	LDX #$0004				;$80B64E   | |
+;END OF PATCH
 	JSL DMA_palette				;$80B651   |/
 	LDA #nintendo_copyright_palette		;$80B655   |\ DMA nintendo copyright palette to the seventh row
 	LDY #$0070				;$80B658   | | This is the viewable palette
@@ -5940,9 +5974,17 @@ run_nintendo_copyright:				;	  \
 	SEP #$20				;$80B688   |\ Reset the screen position
 	STZ PPU.layer_1_scroll_x		;$80B68A   | |
 	STZ PPU.layer_1_scroll_x		;$80B68D   | |
+;START OF PATCH (set layer 3 horizontal scroll registers)
+	STZ PPU.layer_3_scroll_x
+	STZ PPU.layer_3_scroll_x
+;END OF PATCH
 	LDA #$FF				;$80B690   | |
 	STA PPU.layer_1_scroll_y		;$80B692   | |
 	STZ PPU.layer_1_scroll_y		;$80B695   |/
+;START OF PATCH (set layer 3 vertical scroll registers)
+	STA PPU.layer_3_scroll_y
+	STZ PPU.layer_3_scroll_y
+;END OF PATCH
 	LDA screen_brightness			;$80B698   |\ And the developers said let there be brightness!
 	STA PPU.screen				;$80B69B   |/
 	REP #$20				;$80B69E   |\ Return to the 16 bit realm and increment the frame counter
@@ -5950,7 +5992,10 @@ run_nintendo_copyright:				;	  \
 	JSR intro_controller_read		;$80B6A2   | Read the autojoy registers
 	JSR fade_screen				;$80B6A5   | Run the screen fade routine
 	LDA global_frame_counter		;$80B6A8   |\ Check if we are on frame $0070 to start fade out
-	CMP #$0070				;$80B6AA   | |
+;START OF PATCH (increase length of time before fade out of copyright screen to compensate for additional text)
+	CMP #$010E				;	      $10E = 270 frames (4.5 seconds)
+;	CMP #$0070				;$80B6AA   | |
+;END OF PATCH
 	BNE .skip_fadeout_start			;$80B6AD   |/
 	LDA #$0082				;$80B6AF   |\ Set the screen to fade out with speed 2
 	STA screen_fade_speed			;$80B6B2   |/

@@ -7,7 +7,8 @@ namespace vram
 		nintendo_presents_tilemap = $74A0
 		mini_rare_logo_tilemap = $76BA
 		sparkle_tilemap = $3000
-		nintendo_copyright_tilemap = $7D00
+		nintendo_copyright_tilemap = $7CA0	;Change made to vertically center longer copyright tilemap
+		;nintendo_copyright_tilemap = $7D00
 		title_screen_tilemap = $1C00
 
 		;todo fix this missed documentation
