@@ -9721,6 +9721,8 @@ kiddy_dk_barrel_palette:
 	incbin "kong_hack/objects/palettes/kiddy_dk_barrel_palette.bin"
 
 rom_palette_block_2_end_for_ram_mirror:
+copyright_layer_3_palette:
+	incbin "kong_hack/screens/palettes/copyright_layer_3_palette.bin"
 ;END OF PATCH
 
 padbyte $00

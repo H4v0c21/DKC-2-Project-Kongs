@@ -14,7 +14,7 @@
 !dyn_snd_base_id	= $60			;Base ID of track-specific sound effects (default: $60)
 
 !src_dir_loc		= $3000			;Starting ARAM destination of BRR sample source directory (default: $3100)
-!brr_data_loc		= $314C			;Starting ARAM destination of BRR sample uploads (default: $3400)
+!brr_data_loc		= $3158			;Starting ARAM destination of BRR sample uploads (default: $3400)
 
 !end_sequence 			= $00	;00				End of sequence
 !set_instrument 		= $01	;01 ??				Set instrument

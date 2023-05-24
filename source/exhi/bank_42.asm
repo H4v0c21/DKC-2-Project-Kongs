@@ -40,8 +40,6 @@ DATA_FA7641:
 DATA_FA7A01:
 	incbin "../data/backgrounds/animated_graphics/ship_mast_level_flag_tiledata_frame8.bin"
 
-print "Relocated Game Data End Address: ",pc
-
 ;Kong samples from other games
 ;DB: Kong eep sample
 brr_sample_dkc_C7A56D:
@@ -72,4 +70,14 @@ rigging_no_rain_sample_set:
 
 	incsrc "../kong_hack/sound/music/rigging_no_rain_song_data.asm"
 
-print "Custom Audio Data End Address: ",pc
+;$F80FA6
+nintendo_copyright_tiledata:
+	incbin "../kong_hack/screens/graphics/copyright_layer_1_tiledata_nocomp.bin"
+
+build_timestamp_text:
+	db datasize(build_timestamp_text)-2, $01, "Built ", "!timestamp", " UTC"
+
+;Label to make datasize of above work
+bank_42_end:
+
+print "Relocated/Custom Data End Address: ",pc

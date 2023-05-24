@@ -14,11 +14,12 @@ DATA_F80D10:
 
 ;$F80D66
 nintendo_copyright_tilemap:
-	incbin "data/screens/8x8_tilemaps/nintendo_copyright_layer_1_8x8_tilemap.bin"
+	;incbin "data/screens/8x8_tilemaps/nintendo_copyright_layer_1_8x8_tilemap.bin"
+	incbin "kong_hack/screens/8x8_tilemaps/copyright_layer_1_8x8_tilemap_nocomp.bin"
 
-;$F80FA6
-nintendo_copyright_tiledata:
-	incbin "data/screens/graphics/nintendo_copyright_layer_1_tiledata.bin"
+;$F80FA6 (moved to ExHi bank $42)
+;nintendo_copyright_tiledata:
+;	incbin "data/screens/graphics/nintendo_copyright_layer_1_tiledata.bin"
 
 ;$F82106
 k_rools_keep_tiledata:

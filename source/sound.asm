@@ -2623,7 +2623,7 @@ credits_sample_set:
 ;START OF PATCH (remove unused sample)
 ;	dw $0050
 ;END OF PATCH
-	db $0053, $00A1, $00C6
+	dw $0053, $00A1, $00C6
 	dw $009F, $000F, $0010, $00CD
 	dw $00D7
 ;START OF PATCH (remove unused sample)
