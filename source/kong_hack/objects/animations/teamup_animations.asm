@@ -300,7 +300,7 @@ dixie_team_bottom_jump:
 	db !animation_command_80, $00
 
 donkey_team_bottom_jump:
-	db $03 : dw $43E0
+	db $03 : dw $43B8
 	db !animation_command_81 : dw CODE_B9DF51
 	db !animation_command_80, $00
 
@@ -325,7 +325,7 @@ dixie_team_bottom_air:
 	db !animation_command_80, $00
 
 donkey_team_bottom_air:
-	db $03 : dw $43E0
+	db $03 : dw $43B8
 	db !animation_command_83 : dw CODE_B9D5A4
 	db !animation_command_81 : dw CODE_B9DEEF
 	db !animation_command_80, $00
@@ -356,7 +356,7 @@ dixie_team_bottom_fall:
 
 donkey_team_bottom_fall:
 	db !animation_command_84 : dw CODE_B9DECC
-	db $03 : dw $43E0
+	db $03 : dw $43B8
 	db !animation_command_84 : dw !null_pointer
 	db !animation_command_83 : dw CODE_B9D5A4
 	db !animation_command_81 : dw CODE_B9DEEF
@@ -384,7 +384,7 @@ dixie_team_bottom_land:
 	db !animation_command_80, $00
 
 donkey_team_bottom_land:
-	db $03 : dw $43E0
+	db $03 : dw $43B8
 	db !animation_command_81 : dw CODE_B9DA5B
 	db !animation_command_81 : dw CODE_B9DFE1
 	db !animation_command_80, $00
@@ -417,7 +417,7 @@ dixie_team_bottom_bounce_up:
 	db !animation_command_80, $00
 
 donkey_team_bottom_bounce_up:
-	db $03 : dw $43E0
+	db $03 : dw $43B8
 	db !animation_command_83 : dw CODE_B9D5A4
 	db !animation_command_81 : dw CODE_B9DEEF
 	db !animation_command_80, $00
@@ -487,11 +487,11 @@ dixie_team_bottom_throw:
 	db !animation_command_80, $00
 
 donkey_team_bottom_throw:
-	db $03 : dw $43E4
-	db $03 : dw $43E8
-	db $03 : dw $43EC
-	db $03 : dw $43F0
-	db $03 : dw $43F4
+	db $03 : dw $37A8
+	db $03 : dw $37AC
+	db $03 : dw $37B0
+	db $03 : dw $37B4
+	db $03 : dw $37F8
 	db !animation_command_81 : dw CODE_B9DCE8
 	db !animation_command_81 : dw CODE_B9D8BC
 	db $02 : dw $3824

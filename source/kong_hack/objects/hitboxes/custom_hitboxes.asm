@@ -30,9 +30,9 @@ donkey_h_rope_move_hitbox:
 	dw -16, -32
 	dw 24, 32
 
-donkey_team_bottom_hitbox:
-	dw -16, -32
-	dw 24, 32
+;donkey_team_bottom_hitbox:
+;	dw -16, -32
+;	dw 24, 32
 
 donkey_squawks_idle_hitbox:
 	dw -24, -16
@@ -73,3 +73,7 @@ dixie_team_bottom_big_kong_hitbox:
 dixie_swap_kiddy_hitbox:
 	dw $FFF7, $FFE2
 	dw $0011, $001B
+
+blank_hitbox:
+	dw 0, 0
+	dw 0, 0

@@ -108,25 +108,32 @@ dl donkey_h_rope_move_frame_13 : db $00			;43A0
 dl donkey_h_rope_move_frame_14 : db $00			;43A4
 dl donkey_h_rope_move_frame_15 : db $00			;43A8
 
-dl donkey_team_bottom_idle_frame_1 : db $00		;43AC
-dl donkey_team_bottom_idle_frame_2 : db $00		;43B0
-dl donkey_team_bottom_idle_frame_3 : db $00		;43B4
-dl donkey_team_bottom_walk_frame_1 : db $00		;43B8
-dl donkey_team_bottom_walk_frame_2 : db $00		;43BC
-dl donkey_team_bottom_walk_frame_3 : db $00		;43C0
-dl donkey_team_bottom_walk_frame_4 : db $00		;43C4
-dl donkey_team_bottom_walk_frame_5 : db $00		;43C8
-dl donkey_team_bottom_walk_frame_6 : db $00		;43CC
-dl donkey_team_bottom_walk_frame_7 : db $00		;43D0
-dl donkey_team_bottom_walk_frame_8 : db $00		;43D4
-dl donkey_team_bottom_walk_frame_9 : db $00		;43D8
-dl donkey_team_bottom_walk_frame_10 : db $00		;43DC
-dl donkey_team_bottom_air_frame_1 : db $00		;43E0
-dl donkey_team_bottom_throw_frame_1 : db $00		;43E4
-dl donkey_team_bottom_throw_frame_2 : db $00		;43E8
-dl donkey_team_bottom_throw_frame_3 : db $00		;43EC
-dl donkey_team_bottom_throw_frame_4 : db $00		;43F0
-dl donkey_team_bottom_throw_frame_5 : db $00		;43F4
+dl donkey_team_bottom_idle_frame_1 : db $00		;43AC	Based on 3BCC				5,-1	DONE
+dl donkey_team_bottom_idle_frame_2 : db $00		;43B0	Based on 3BD0				5,-1
+dl donkey_team_bottom_idle_frame_3 : db $00		;43B4	Based on 3BD4				5,-1
+dl donkey_team_bottom_walk_frame_1 : db $00		;43B8	Based on 37D0; similar to 43E0		4,-1
+dl donkey_team_bottom_walk_frame_2 : db $00		;43BC	Based on 37D4				4,-2
+dl donkey_team_bottom_walk_frame_3 : db $00		;43C0	Based on 37D8				3,-2
+dl donkey_team_bottom_walk_frame_4 : db $00		;43C4	Based on 37DC				3, 0
+dl donkey_team_bottom_walk_frame_5 : db $00		;43C8	Based on 37E0				3,-1
+dl donkey_team_bottom_walk_frame_6 : db $00		;43CC	Based on 37E4				3, 0
+dl donkey_team_bottom_walk_frame_7 : db $00		;43D0	Based on 37E8				3,-1
+dl donkey_team_bottom_walk_frame_8 : db $00		;43D4	Based on 37EC				2,-1
+dl donkey_team_bottom_walk_frame_9 : db $00		;43D8	Based on 37F0				2,-2
+dl donkey_team_bottom_walk_frame_10 : db $00		;43DC	Based on 37F4				2,-2
+dl dummy_frame : db $00					;43E0
+dl dummy_frame : db $00					;43E4
+dl dummy_frame : db $00					;43E8
+dl dummy_frame : db $00					;43EC
+dl dummy_frame : db $00					;43F0
+dl dummy_frame : db $00					;43F4
+
+;dl donkey_team_bottom_air_frame_1 : db $00		;43E0	Based on 37D0; similar to 43B8		DELETE
+;dl donkey_team_bottom_throw_frame_1 : db $00		;43E4	Identical to 37A8 aside from offset	DELETE
+;dl donkey_team_bottom_throw_frame_2 : db $00		;43E8	Identical to 37AC aside from offset	DELETE
+;dl donkey_team_bottom_throw_frame_3 : db $00		;43EC	Identical to 37B0 aside from offset	DELETE
+;dl donkey_team_bottom_throw_frame_4 : db $00		;43F0	Identical to 37B4 aside from offset	DELETE
+;dl donkey_team_bottom_throw_frame_5 : db $00		;43F4	Identical to 37F8 aside from offset	DELETE
 
 dl donkey_squawks_idle_frame_1 : db $00			;43F8
 dl donkey_squawks_idle_frame_2 : db $00			;43FC
@@ -377,8 +384,8 @@ dl DIXIE_SPRITE_D7653F : db $00				;4768
 dl DIXIE_SPRITE_D76777 : db $00				;476C
 dl DIXIE_SPRITE_D7698D : db $00				;4770
 
-dl dixie_swap_donkey_frame_1 : db $00			;4774
-dl dixie_swap_donkey_frame_2 : db $00			;4778
+dl dixie_swap_donkey_frame_1 : db $00			;4774	Based on 0478
+dl dixie_swap_donkey_frame_2 : db $00			;4778	Based on 047C
 dl dixie_swap_donkey_frame_3 : db $00			;477C
 dl dixie_swap_donkey_frame_4 : db $00			;4780
 dl dixie_swap_donkey_frame_5 : db $00			;4784
