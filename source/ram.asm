@@ -8,11 +8,18 @@
 
 ;custom quad kong variables
 kong_status = $19E0			;byte 0 = Leader Kong, byte 1 = Follower Kong.  Values: $00 = Diddy, $01 = Dixie, $02 = Donkey, $03 = Kiddy
-kong_palette_order = $19E2	;byte 0 = value of Kong whose sprite palette will be loaded on line 1, byte 1 = value of Kong whose sprite palette will be loaded on line 2 . Values match kong_status
+kong_palette_order = $19E2	;byte 0 = value of Kong whose sprite palette will be loaded on line 1, byte 1 = value of Kong whose sprite palette will be loaded on line 2. Values match kong_status, but order differs.
 map_icon_buffer_b = $1A50
 map_icon_upper_bits = $1A70
 map_icon_full = $1A72
 map_icon_upper_temp = $1A74
+
+;custom sprite viewer variables
+spr_view_pal1_loc = $1A76			;holds lower word of current palette 1 location
+spr_view_pal1_val = spr_view_pal1_loc+2		;holds value for palette 1 used as index into sprite_viewer_pal_ptrs table
+spr_view_pal2_loc = spr_view_pal1_loc+4		;holds lower word of current palette 2 location
+spr_view_pal2_val = spr_view_pal1_loc+6		;holds value for palette 2 used as index into sprite_viewer_pal_ptrs table
+spr_view_layer_toggle = spr_view_pal1_loc+8	;mirror of/buffer for PPU.screens ($212C)
 
 spc_transaction = $00
 
