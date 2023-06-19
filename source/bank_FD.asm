@@ -9723,6 +9723,9 @@ kiddy_dk_barrel_palette:
 rom_palette_block_2_end_for_ram_mirror:
 copyright_layer_3_palette:
 	incbin "kong_hack/screens/palettes/copyright_layer_3_palette.bin"
+
+sprite_viewer_gui_palette:
+	incbin "sprite_viewer/sprite_viewer_gui_palette.bin"
 ;END OF PATCH
 
 padbyte $00

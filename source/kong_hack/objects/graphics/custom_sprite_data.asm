@@ -197,19 +197,22 @@ donkey_team_bottom_walk_frame_9:
 donkey_team_bottom_walk_frame_10:
 	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_walk_frame_10.bin"
 
-donkey_team_bottom_air_frame_1:
-	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_air_frame_1.bin"
+dummy_frame:
+	incbin "custom_sprite_graphics/other/dummy_frame.bin"
 
-donkey_team_bottom_throw_frame_1:
-	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_1.bin"
-donkey_team_bottom_throw_frame_2:
-	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_2.bin"
-donkey_team_bottom_throw_frame_3:
-	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_3.bin"
-donkey_team_bottom_throw_frame_4:
-	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_4.bin"
-donkey_team_bottom_throw_frame_5:
-	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_5.bin"
+;donkey_team_bottom_air_frame_1:
+;	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_air_frame_1.bin"
+
+;donkey_team_bottom_throw_frame_1:
+;	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_1.bin"
+;donkey_team_bottom_throw_frame_2:
+;	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_2.bin"
+;donkey_team_bottom_throw_frame_3:
+;	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_3.bin"
+;donkey_team_bottom_throw_frame_4:
+;	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_4.bin"
+;donkey_team_bottom_throw_frame_5:
+;	incbin "custom_sprite_graphics/ingame/donkey/donkey_team_bottom_throw_frame_5.bin"
 
 donkey_squawks_idle_frame_1:
 	incbin "custom_sprite_graphics/ingame/donkey/donkey_squawks_idle_frame_1.bin"

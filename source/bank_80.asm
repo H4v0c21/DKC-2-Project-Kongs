@@ -4609,7 +4609,24 @@ namespace off					;	   |/
 .skip_erase_windowing				;	   |
 	LDA player_active_pressed		;$80AA79   |\ Check if B, Y, Start, A, or X were pressed
 	BIT #$D0C0				;$80AA7C   | |
-	BEQ .frame_finish_trampoline		;$80AA7F   |/ If not, skip processing menu options and finish the frame
+;START OF PATCH (check if L and R are pressed)
+	BNE .abxy_start_pressed			;	   |> If so, skip to handling B, Y, Start, A, or X
+	LDA player_active_held			;	   
+	AND #$0030				;	   ; | Isolate bits for L and R
+	CMP #$0030				;	   ; | Check if L and R are held together
+	BNE .frame_finish_trampoline		;   	   |/ If not, finish the frame
+	LDA screen_brightness
+	CMP #$000F
+	BNE .frame_finish_trampoline
+	LDA file_select_action
+	CMP #$0001				;	   |\ Check if saving game
+	BEQ .frame_finish_trampoline		;	   |/ If so, skip setting transition action. We don't want the sprite viewer to be accessible during gameplay!
+	LDA #$0200				;	   |\ If not, set transition action ($200 is unused in the original game)
+	STA file_select_action
+	JMP .handle_debug_selection
+;	BEQ .frame_finish_trampoline		;$80AA7F   |/ If not, skip processing menu options and finish the frame
+.abxy_start_pressed
+;END OF PATCH
 	LDA screen_brightness			;$80AA81   |\
 	CMP #$000F				;$80AA84   | |
 	BEQ .check_menu_selection		;$80AA87   |/
@@ -4716,11 +4733,30 @@ namespace off					;	   |/
 	CMP #$8201				;$80AB60   | |
 	BNE .prepare_file_select_nmi		;$80AB63   |/ If not, setup NMI for the next frame
 	LDA file_select_action			;$80AB65   |\ At this point if the file select action is 1
-	BNE .return_to_game			;$80AB68   |/ then we are returning to the game
+;START OF PATCH (additional logic to handle transitions to other screens)
+	CMP #$0001				;1 if saving game
+	BEQ .return_to_game
+	CMP #$0200
+	BEQ .open_debug_menu
+;	BNE .return_to_game			;$80AB68   |/ then we are returning to the game
+;END OF PATCH
 	JMP .load_selected_file			;$80AB6A  / Otherwise load the file that is selected
 
 .return_to_game
-	JMP CODE_8090BB				;$80AB6D  >
+	JMP CODE_8090BB				;$80AB6D  > Kong Kollege after saving game
+
+.open_debug_menu
+	STZ file_select_action
+	JML sprite_viewer_init			;	  > Go to sprite viewer
+
+;START OF PATCH
+.handle_debug_selection				;\
+	%lda_sound(6, menu_select)		; |\ Play the menu selection sound
+	JSL play_high_priority_sound		; |/
+	LDA #$0082
+	STA screen_fade_speed
+	JMP .finish_file_select_frame		;/ Finish off the frame
+;END OF PATCH
 
 .prepare_file_select_nmi			;	  \
 	JSR prepare_oam_dma_channel		;$80AB70   | Prepare the OAM DMA channel for DMA next frame
@@ -13642,6 +13678,8 @@ CODE_80FB93:					;	   |
 
 CODE_80FB9E:
 	JML CODE_BBBEA0				;$80FB9E  /
+
+incsrc "sprite_viewer/sprite_viewer_main.asm"
 
 DATA_80FBA2:
 padbyte $00
