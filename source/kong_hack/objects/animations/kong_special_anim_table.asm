@@ -1,0 +1,1 @@
+dw donkey_hand_slap_animation : db $00, $00

@@ -521,52 +521,52 @@ diddy_swap_dkc3_loop:
 
 
 ;kiddy_swap_to_donkey_animation:
-;	db !animation_command_8E : dw sound(5, !sound_swap_to_donkey)
-;	
-;	;db !animation_command_81 : dw donkey_kiddy_swap
-;	db !animation_command_81 : dw swap_kong_render_order
-;	;db !animation_command_81 : dw CODE_B9E198
-;	db !animation_command_8A, $02 : dw $4788, $3E98, $001C, $0000
-;	db !animation_command_8A, $02 : dw $478C, $3E94, $001C, $0000
-;	db !animation_command_8A, $02 : dw $4790, $3E88, $001C, $0000
-;	db !animation_command_8A, $02 : dw $4794, $3E8C, $001C, $0000
-;	db !animation_command_8A, $02 : dw $4798, $3E90, $001C, $0000
-;	db !animation_command_8A, $02 : dw $479C, $3E8C, $001A, $0000
-;	db !animation_command_8A, $02 : dw $47A0, $3E88, $0018, $0000
-;	db !animation_command_8A, $02 : dw $47A4, $3E84, $0016, $0000
-;	db !animation_command_8A, $02 : dw $47A8, $3E80, $0014, $0000
-;	db !animation_command_8A, $02 : dw $47AC, $3E7C, $0012, $0000
-;	db !animation_command_8A, $02 : dw $47B0, $3E78, $0010, $0000
-;	db !animation_command_8A, $02 : dw $47B4, $3E74, $0008, $0000
-;	db !animation_command_8A, $02 : dw $47B8, $3E70, $0006, $0000
-;	db !animation_command_8A, $02 : dw $47BC, $3E6C, $0004, $0000
-;	db !animation_command_8A, $02 : dw $47C0, $3E68, $0002, $0000
-;	db !animation_command_8A, $02 : dw $47C4, $3E64, $0000, $0000
-;	db !animation_command_8A, $02 : dw $47C8, $3E60, $FFFE, $0000
-;	db !animation_command_8A, $02 : dw $47CC, $3E5C, $FFFC, $0000
-;	db !animation_command_8A, $02 : dw $47D0, $3E58, $FFFA, $0000
-;	db !animation_command_8A, $02 : dw $47D4, $3E84, $FFF8, $0000
-;	db !animation_command_8A, $02 : dw $47D8, $3E80, $FFF6, $0000
-;	db !animation_command_8A, $02 : dw $47DC, $3E7C, $FFF4, $0000
-;	db !animation_command_8A, $02 : dw $47E0, $3E78, $FFF2, $0000
-;	db !animation_command_8A, $02 : dw $47E4, $3E74, $FFF0, $0000
-;	db !animation_command_8A, $02 : dw $47E8, $3E70, $FFEE, $0000
-;	db !animation_command_8A, $02 : dw $47EC, $3E6C, $FFEC, $0000
-;	db !animation_command_8A, $02 : dw $47F0, $3E68, $FFEA, $0000
-;	db !animation_command_8A, $02 : dw $47F4, $3E64, $FFE8, $0000
-;	db !animation_command_8A, $02 : dw $47F8, $3E60, $FFE6, $0000
-;	db !animation_command_8A, $02 : dw $47FC, $3E5C, $FFE4, $0000
-;	
-;	db !animation_command_81 : dw donkey_kiddy_swap
-;	db $02 : dw $47FC
-;	db !animation_command_81 : dw CODE_B9E198
-;	;db !animation_command_81 : dw swap_kong_render_order
-;	;db !animation_command_82 : dw diddy_swap_dkc1_air
-;	
-;	
-;	;db !animation_command_81 : dw update_swap_action
-;	;db !animation_command_81 : dw CODE_B9E162
-;kiddy_swap_to_donkey_loop:
-;	db $02 : dw $47FC
-;	db !animation_command_82 : dw kiddy_swap_to_donkey_loop
-;	db !animation_command_80, $00
+	db !animation_command_8E : dw sound(5, !sound_swap_to_donkey)
+	
+	;db !animation_command_81 : dw donkey_kiddy_swap
+	db !animation_command_81 : dw swap_kong_render_order
+	;db !animation_command_81 : dw CODE_B9E198
+	db !animation_command_8A, $02 : dw $4788, $3E98, $001C, $0000
+	db !animation_command_8A, $02 : dw $478C, $3E94, $001C, $0000
+	db !animation_command_8A, $02 : dw $4790, $3E88, $001C, $0000
+	db !animation_command_8A, $02 : dw $4794, $3E8C, $001C, $0000
+	db !animation_command_8A, $02 : dw $4798, $3E90, $001C, $0000
+	db !animation_command_8A, $02 : dw $479C, $3E8C, $001A, $0000
+	db !animation_command_8A, $02 : dw $47A0, $3E88, $0018, $0000
+	db !animation_command_8A, $02 : dw $47A4, $3E84, $0016, $0000
+	db !animation_command_8A, $02 : dw $47A8, $3E80, $0014, $0000
+	db !animation_command_8A, $02 : dw $47AC, $3E7C, $0012, $0000
+	db !animation_command_8A, $02 : dw $47B0, $3E78, $0010, $0000
+	db !animation_command_8A, $02 : dw $47B4, $3E74, $0008, $0000
+	db !animation_command_8A, $02 : dw $47B8, $3E70, $0006, $0000
+	db !animation_command_8A, $02 : dw $47BC, $3E6C, $0004, $0000
+	db !animation_command_8A, $02 : dw $47C0, $3E68, $0002, $0000
+	db !animation_command_8A, $02 : dw $47C4, $3E64, $0000, $0000
+	db !animation_command_8A, $02 : dw $47C8, $3E60, $FFFE, $0000
+	db !animation_command_8A, $02 : dw $47CC, $3E5C, $FFFC, $0000
+	db !animation_command_8A, $02 : dw $47D0, $3E58, $FFFA, $0000
+	db !animation_command_8A, $02 : dw $47D4, $3E84, $FFF8, $0000
+	db !animation_command_8A, $02 : dw $47D8, $3E80, $FFF6, $0000
+	db !animation_command_8A, $02 : dw $47DC, $3E7C, $FFF4, $0000
+	db !animation_command_8A, $02 : dw $47E0, $3E78, $FFF2, $0000
+	db !animation_command_8A, $02 : dw $47E4, $3E74, $FFF0, $0000
+	db !animation_command_8A, $02 : dw $47E8, $3E70, $FFEE, $0000
+	db !animation_command_8A, $02 : dw $47EC, $3E6C, $FFEC, $0000
+	db !animation_command_8A, $02 : dw $47F0, $3E68, $FFEA, $0000
+	db !animation_command_8A, $02 : dw $47F4, $3E64, $FFE8, $0000
+	db !animation_command_8A, $02 : dw $47F8, $3E60, $FFE6, $0000
+	db !animation_command_8A, $02 : dw $47FC, $3E5C, $FFE4, $0000
+	
+	db !animation_command_81 : dw donkey_kiddy_swap
+	db $02 : dw $47FC
+	db !animation_command_81 : dw CODE_B9E198
+	;db !animation_command_81 : dw swap_kong_render_order
+	;db !animation_command_82 : dw diddy_swap_dkc1_air
+	
+	
+	;db !animation_command_81 : dw update_swap_action
+	;db !animation_command_81 : dw CODE_B9E162
+kiddy_swap_to_donkey_loop:
+	db $02 : dw $47FC
+	db !animation_command_82 : dw kiddy_swap_to_donkey_loop
+	db !animation_command_80, $00

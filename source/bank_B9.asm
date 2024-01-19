@@ -5939,4 +5939,36 @@ swap_kong_render_order:
 ;	RTS
 ;;END OF PATCH
 
+hand_slap_done:
+	LDX current_sprite
+	STZ $2E,x
+	LDA #$0001
+	JSL CODE_B9D0B8
+	RTS
+
+hand_slap_shake_screen:
+	LDA #$0400
+	STA $0AF8
+	RTS
+
+hand_slap_check_hit:
+	LDX current_sprite
+	LDA #$000F				;$B8CBA7   |
+	JSL CODE_BCFB69				;$B8CBAA   |
+	LDA #$0001				;$B8CBAE   |
+	JSL CODE_BCFE0A				;$B8CBB1   |
+	
+	LDA #$0020
+	LDY #$0008
+	JSL CODE_BEBD8E
+	
+	BCS .defeat_enemy
+	RTS
+
+.defeat_enemy
+	LDA #$0100
+	ORA $10,x
+	STA $10,x
+	RTS
+
 print "Animation Code End Address: ",pc

@@ -5908,6 +5908,7 @@ padbyte $00
 pad $BCFA00
 
 org $BCFA00
+DATA_BCFA00:
 	dw $FFFD, $FFF0, $0019, $0010
 	dw $FFF3, $FFF1, $0013, $0010
 	dw $FFF7, $FFE5, $000A, $001D
@@ -5923,6 +5924,9 @@ org $BCFA00
 	dw $FFEE, $FFF1, $001B, $0014
 	dw $0008, $FFF8, $0024, $0010
 	dw $FFD0, $FFA8, $0050, $0060
+;START OF PATCH (hand slap hitbox)
+	dw $0000, $FFCC, $0035, $003C
+;END OF PATCH
 
 CODE_BCFA78:
 	STZ $09A7				;$BCFA78  \
@@ -6051,6 +6055,18 @@ CODE_BCFB69:
 	STZ $09DF				;$BCFB76   |
 	RTL					;$BCFB79  /
 
+;START OF PATCH (hand slap hit detection)
+hand_slap_hit_detection:
+	PHD
+	LDX current_sprite
+	LDY #$09D3
+	JSR CODE_BCFC40
+	JSR CODE_BCFBCC
+	PLD
+	STZ $09DF
+	RTL
+;END OF PATCH
+
 CODE_BCFB7A:
 	PHD					;$BCFB7A  \
 	LDX current_sprite			;$BCFB7B   |
@@ -6178,7 +6194,7 @@ CODE_BCFC40:
 	ASL A					;$BCFC40  \
 	ASL A					;$BCFC41   |
 	ASL A					;$BCFC42   |
-	ADC #$FA00				;$BCFC43   |
+	ADC #DATA_BCFA00			;$BCFC43   |
 	BRA CODE_BCFC59				;$BCFC46  /
 
 CODE_BCFC48:

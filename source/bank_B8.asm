@@ -3098,138 +3098,140 @@ CODE_B896A0:
 
 DATA_B896B5:
 	%offset(DATA_B896B7, 2)
-	dw CODE_B899ED : db $00, $00
-	dw CODE_B899FF : db $00, $00
-	dw CODE_B89A17 : db $00, $00
-	dw CODE_B89A62 : db $00, $00
-	dw CODE_B89A64 : db $00, $00
-	dw CODE_B89A73 : db $01, $00
-	dw CODE_B89A83 : db $00, $00
-	dw CODE_B89A86 : db $00, $00
-	dw CODE_B89A92 : db $04, $00
-	dw CODE_B89AA2 : db $00, $00
-	dw CODE_B89B02 : db $00, $00
-	dw CODE_B89B27 : db $00, $00
-	dw CODE_B89B9C : db $00, $00
-	dw CODE_B89BD3 : db $00, $00
-	dw CODE_B89BE4 : db $00, $00
-	dw CODE_B89BE7 : db $00, $00
-	dw CODE_B89BF6 : db $00, $00
-	dw CODE_B89D1A : db $48, $00
-	dw CODE_B89D69 : db $40, $00
-	dw CODE_B89E64 : db $04, $02
-	dw CODE_B89E6B : db $00, $00
-	dw CODE_B89E7A : db $00, $00
-	dw CODE_B89E98 : db $00, $00
-	dw CODE_B89EB9 : db $00, $00
-	dw CODE_B89ECE : db $00, $00
-	dw CODE_B89ED8 : db $00, $00
-	dw CODE_B89EDB : db $00, $00
-	dw CODE_B89EF3 : db $00, $00
-	dw CODE_B89EF6 : db $00, $00
-	dw CODE_B89F09 : db $00, $00
-	dw CODE_B89FD4 : db $00, $00
-	dw CODE_B89FEA : db $00, $00
-	dw CODE_B8A07C : db $04, $02
-	dw CODE_B8A085 : db $00, $00
-	dw CODE_B8A164 : db $10, $00
-	dw CODE_B8A174 : db $08, $00
-	dw CODE_B8A19E : db $01, $02
-	dw CODE_B8A1B0 : db $04, $02
-	dw CODE_B8A21F : db $04, $02
-	dw CODE_B8A23E : db $04, $02
-	dw CODE_B8A312 : db $04, $02
-	dw CODE_B8A32D : db $00, $00
-	dw CODE_B8A352 : db $10, $00
-	dw CODE_B8A3B3 : db $00, $00
-	dw CODE_B8A4DC : db $88, $02
-	dw CODE_B8A4F1 : db $00, $00
-if !version == 0
-	dw CODE_B8A4F4 : db $00, $02
+	dw CODE_B899ED : db $00, $00		;00
+	dw CODE_B899FF : db $00, $00		;01
+	dw CODE_B89A17 : db $00, $00		;02
+	dw CODE_B89A62 : db $00, $00		;03
+	dw CODE_B89A64 : db $00, $00		;04
+	dw CODE_B89A73 : db $01, $00		;05
+	dw CODE_B89A83 : db $00, $00		;06
+	dw CODE_B89A86 : db $00, $00		;07
+	dw CODE_B89A92 : db $04, $00		;08
+	dw CODE_B89AA2 : db $00, $00		;09
+	dw CODE_B89B02 : db $00, $00		;0A
+	dw CODE_B89B27 : db $00, $00		;0B
+	dw CODE_B89B9C : db $00, $00		;0C
+	dw CODE_B89BD3 : db $00, $00		;0D
+	dw CODE_B89BE4 : db $00, $00		;0E
+	dw CODE_B89BE7 : db $00, $00		;0F
+	dw CODE_B89BF6 : db $00, $00		;10
+	dw CODE_B89D1A : db $48, $00		;11
+	dw CODE_B89D69 : db $40, $00		;12
+	dw CODE_B89E64 : db $04, $02		;13
+	dw CODE_B89E6B : db $00, $00		;14
+	dw CODE_B89E7A : db $00, $00		;15
+	dw CODE_B89E98 : db $00, $00		;16
+	dw CODE_B89EB9 : db $00, $00		;17
+	dw CODE_B89ECE : db $00, $00		;18
+	dw CODE_B89ED8 : db $00, $00		;19
+	dw CODE_B89EDB : db $00, $00		;1A
+	dw CODE_B89EF3 : db $00, $00		;1B
+	dw CODE_B89EF6 : db $00, $00		;1C
+	dw CODE_B89F09 : db $00, $00		;1D
+	dw CODE_B89FD4 : db $00, $00		;1E
+	dw CODE_B89FEA : db $00, $00		;1F
+	dw CODE_B8A07C : db $04, $02		;20
+	dw CODE_B8A085 : db $00, $00		;21
+	dw CODE_B8A164 : db $10, $00		;22
+	dw CODE_B8A174 : db $08, $00		;23
+	dw CODE_B8A19E : db $01, $02		;24
+	dw CODE_B8A1B0 : db $04, $02		;25
+	dw CODE_B8A21F : db $04, $02		;26
+	dw CODE_B8A23E : db $04, $02		;27
+	dw CODE_B8A312 : db $04, $02		;28
+	dw CODE_B8A32D : db $00, $00		;29
+	dw CODE_B8A352 : db $10, $00		;2A
+	dw CODE_B8A3B3 : db $00, $00		;2B
+	dw CODE_B8A4DC : db $88, $02		;2C
+	dw CODE_B8A4F1 : db $00, $00		;2D
+if !version == 0                    		
+	dw CODE_B8A4F4 : db $00, $02		;2E
 else
-	dw CODE_B8A4F4 : db $04, $02
+	dw CODE_B8A4F4 : db $04, $02		;2E
 endif
-	dw CODE_B8A55B : db $00, $00
-	dw CODE_B8A56C : db $6C, $00
-	dw CODE_B8A62D : db $00, $02
-	dw CODE_B8A63F : db $00, $02
-	dw CODE_B8A66E : db $20, $00
-	dw CODE_B8A6B7 : db $20, $00
-	dw CODE_B8A6BD : db $00, $00
-	dw CODE_B8A733 : db $00, $00
-	dw CODE_B8A746 : db $00, $00
-	dw CODE_B8A807 : db $00, $00
-	dw CODE_B8A860 : db $00, $00
-	dw CODE_B8A86C : db $00, $00
-	dw CODE_B8A88C : db $04, $00
-	dw CODE_B8A8A8 : db $04, $00
-	dw CODE_B8A8CC : db $00, $00
-	dw CODE_B8A8DA : db $00, $00
-	dw CODE_B8AA3E : db $00, $00
-	dw CODE_B8AA50 : db $00, $00
-	dw CODE_B8AA77 : db $00, $00
-	dw CODE_B8AAA2 : db $00, $00
-	dw CODE_B8AAD5 : db $00, $00
-	dw CODE_B8AAE5 : db $00, $00
-	dw CODE_B8AB11 : db $00, $00
-	dw CODE_B8AB78 : db $20, $00
-	dw CODE_B8ABE6 : db $24, $00
-	dw CODE_B8ABF6 : db $00, $00
-	dw CODE_B8AC06 : db $0C, $02
-	dw CODE_B8AC19 : db $0C, $02
-	dw CODE_B8AC28 : db $0C, $02
-	dw CODE_B8AC69 : db $08, $02
-	dw CODE_B8ACC1 : db $00, $00
-	dw CODE_B8AD02 : db $00, $00
-	dw CODE_B8AD0F : db $00, $00
-	dw CODE_B8AD2A : db $00, $00
-	dw CODE_B8AD92 : db $00, $00
-	dw CODE_B8ADAF : db $00, $00
-	dw CODE_B8ADF0 : db $00, $00
-	dw CODE_B8AD2A : db $00, $00
-	dw CODE_B8AE11 : db $00, $00
-	dw CODE_B8AE18 : db $00, $00
-	dw CODE_B8AE51 : db $00, $00
-	dw CODE_B8AE63 : db $00, $00
-	dw CODE_B8AE83 : db $00, $00
-	dw CODE_B8AEA4 : db $00, $00
-	dw CODE_B8AEB0 : db $02, $00
-	dw CODE_B8AEB0 : db $02, $00
-	dw CODE_B8AEE9 : db $00, $00
-	dw CODE_B8AFBC : db $00, $00
-	dw CODE_B8AFE2 : db $00, $00
-	dw CODE_B8B008 : db $00, $00
-	dw CODE_B8B022 : db $00, $00
-	dw CODE_B8B031 : db $00, $00
-	dw CODE_B8B051 : db $00, $00
-	dw CODE_B8B08F : db $20, $00
-	dw CODE_B8B0B1 : db $20, $00
-	dw CODE_B8B0E6 : db $20, $00
-	dw CODE_B8B0EC : db $02, $00
-	dw CODE_B8B101 : db $00, $00
-	dw CODE_B8B137 : db $04, $00
-	dw CODE_B8B178 : db $00, $00
-	dw CODE_B8B187 : db $00, $00
-	dw CODE_B8B199 : db $00, $00
-	dw CODE_B8B1CE : db $00, $00
-	dw CODE_B8B1E5 : db $00, $00
-	dw CODE_B8B211 : db $04, $02
-	dw CODE_B8AEC0 : db $00, $00
-	dw CODE_B8B25B : db $00, $00
-	dw CODE_B8B262 : db $00, $00
-	dw CODE_B8B27B : db $00, $01
-	dw CODE_B8B282 : db $00, $01
-	dw CODE_B8B28D : db $00, $01
-	dw CODE_B8B2A1 : db $00, $00
-	dw CODE_B8B2FE : db $0C, $02
-	dw CODE_B8B307 : db $0C, $02
-	dw CODE_B8B378 : db $08, $00
-	dw CODE_B8B388 : db $08, $00
-	dw CODE_B8B398 : db $08, $00
-	dw CODE_B8B467 : db $00, $01
-	dw CODE_B8B488 : db $06, $02
-	dw CODE_B8B4A4 : db $04, $02
-	dw CODE_B8B4AE : db $06, $02
+	dw CODE_B8A55B : db $00, $00		;2F
+	dw CODE_B8A56C : db $6C, $00		;30
+	dw CODE_B8A62D : db $00, $02		;31
+	dw CODE_B8A63F : db $00, $02		;32
+	dw CODE_B8A66E : db $20, $00		;33
+	dw CODE_B8A6B7 : db $20, $00		;34
+	dw CODE_B8A6BD : db $00, $00		;35
+	dw CODE_B8A733 : db $00, $00		;36
+	dw CODE_B8A746 : db $00, $00		;37
+	dw CODE_B8A807 : db $00, $00		;38
+	dw CODE_B8A860 : db $00, $00		;39
+	dw CODE_B8A86C : db $00, $00		;3A
+	dw CODE_B8A88C : db $04, $00		;3B
+	dw CODE_B8A8A8 : db $04, $00		;3C
+	dw CODE_B8A8CC : db $00, $00		;3D
+	dw CODE_B8A8DA : db $00, $00		;3E
+	dw CODE_B8AA3E : db $00, $00		;3F
+	dw CODE_B8AA50 : db $00, $00		;40
+	dw CODE_B8AA77 : db $00, $00		;41
+	dw CODE_B8AAA2 : db $00, $00		;42
+	dw CODE_B8AAD5 : db $00, $00		;43
+	dw CODE_B8AAE5 : db $00, $00		;44
+	dw CODE_B8AB11 : db $00, $00		;45
+	dw CODE_B8AB78 : db $20, $00		;46
+	dw CODE_B8ABE6 : db $24, $00		;47
+	dw CODE_B8ABF6 : db $00, $00		;48
+	dw CODE_B8AC06 : db $0C, $02		;49
+	dw CODE_B8AC19 : db $0C, $02		;4A
+	dw CODE_B8AC28 : db $0C, $02		;4B
+	dw CODE_B8AC69 : db $08, $02		;4C
+	dw CODE_B8ACC1 : db $00, $00		;4D
+	dw CODE_B8AD02 : db $00, $00		;4E
+	dw CODE_B8AD0F : db $00, $00		;4F
+	dw CODE_B8AD2A : db $00, $00		;50
+	dw CODE_B8AD92 : db $00, $00		;51
+	dw CODE_B8ADAF : db $00, $00		;52
+	dw CODE_B8ADF0 : db $00, $00		;53
+	dw CODE_B8AD2A : db $00, $00		;54
+	dw CODE_B8AE11 : db $00, $00		;55
+	dw CODE_B8AE18 : db $00, $00		;56
+	dw CODE_B8AE51 : db $00, $00		;57
+	dw CODE_B8AE63 : db $00, $00		;58
+	dw CODE_B8AE83 : db $00, $00		;59
+	dw CODE_B8AEA4 : db $00, $00		;5A
+	dw CODE_B8AEB0 : db $02, $00		;5B
+	dw CODE_B8AEB0 : db $02, $00		;5C
+	dw CODE_B8AEE9 : db $00, $00		;5D
+	dw CODE_B8AFBC : db $00, $00		;5E
+	dw CODE_B8AFE2 : db $00, $00		;5F
+	dw CODE_B8B008 : db $00, $00		;60
+	dw CODE_B8B022 : db $00, $00		;61
+	dw CODE_B8B031 : db $00, $00		;62
+	dw CODE_B8B051 : db $00, $00		;63
+	dw CODE_B8B08F : db $20, $00		;64
+	dw CODE_B8B0B1 : db $20, $00		;65
+	dw CODE_B8B0E6 : db $20, $00		;66
+	dw CODE_B8B0EC : db $02, $00		;67
+	dw CODE_B8B101 : db $00, $00		;68
+	dw CODE_B8B137 : db $04, $00		;69
+	dw CODE_B8B178 : db $00, $00		;6A
+	dw CODE_B8B187 : db $00, $00		;6B
+	dw CODE_B8B199 : db $00, $00		;6C
+	dw CODE_B8B1CE : db $00, $00		;6D
+	dw CODE_B8B1E5 : db $00, $00		;6E
+	dw CODE_B8B211 : db $04, $02		;6F
+	dw CODE_B8AEC0 : db $00, $00		;70
+	dw CODE_B8B25B : db $00, $00		;71
+	dw CODE_B8B262 : db $00, $00		;72
+	dw CODE_B8B27B : db $00, $01		;73
+	dw CODE_B8B282 : db $00, $01		;74
+	dw CODE_B8B28D : db $00, $01		;75
+	dw CODE_B8B2A1 : db $00, $00		;76
+	dw CODE_B8B2FE : db $0C, $02		;77
+	dw CODE_B8B307 : db $0C, $02		;78
+	dw CODE_B8B378 : db $08, $00		;79
+	dw CODE_B8B388 : db $08, $00		;7A
+	dw CODE_B8B398 : db $08, $00		;7B
+	dw CODE_B8B467 : db $00, $01		;7C
+	dw CODE_B8B488 : db $06, $02		;7D
+	dw CODE_B8B4A4 : db $04, $02		;7E
+	dw CODE_B8B4AE : db $06, $02		;7F
+	dw hand_slap_behavior : db $00, $00	;80 hand slap 2E,x action
+	dw water_bounce_behavior : db $00, $00	;81 water bounce 2E,x action
 
 
 CODE_B898B5:
@@ -3414,6 +3416,32 @@ CODE_B899E6:
 	ADC #$0002				;$B899E8   |
 	TAY					;$B899EB   |
 	RTS					;$B899EC  /
+
+;START OF PATCH (custom kong behaviors)
+hand_slap_behavior:
+	LDA #$0027
+	JSR CODE_B8B9C7
+	JSR CODE_B8B8DA
+	JSR CODE_B8994C
+	JSR CODE_B8B5C3
+	JMP CODE_B8996E
+
+water_bounce_behavior:
+	LDA #$0028	;get water bounce action id
+	JSR CODE_B8B9C7	;set water bounce action
+	LDA $0D4E	;get water position
+	CMP $0A,x	;check if kong is in water
+	BCS .continue	;if kong is in water
+	LDA $26,x	;get target x velocity
+	ADC #$FA00	;add first bounce y
+	STA $24,x	;update y velocity
+.continue
+	JSR CODE_B8B8DA
+	JSR CODE_B8994C
+	JSR CODE_B8B5C3
+	JMP CODE_B8996E
+
+;END OF PATCH
 
 CODE_B899ED:
 	LDA #$0000				;$B899ED  \
@@ -8006,6 +8034,7 @@ CODE_B8BB38:
 	TAX					;$B8BB3B   |
 	JMP (DATA_B8BFD1,x)			;$B8BB3C  /
 
+;up
 DATA_B8BB3F:
 	dw CODE_B8C020				;00
 	dw CODE_B8C020				;01
@@ -8046,7 +8075,10 @@ DATA_B8BB3F:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;down
 DATA_B8BB8D:
 	dw CODE_B8C0C7				;00
 	dw CODE_B8C01F				;01
@@ -8087,7 +8119,10 @@ DATA_B8BB8D:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;left
 DATA_B8BBDB:
 	dw CODE_B8C1C7				;00
 	dw CODE_B8C1C7				;01
@@ -8128,7 +8163,10 @@ DATA_B8BBDB:
 	dw CODE_B8C368				;24
 	dw CODE_B8C39E				;25
 	dw CODE_B8C3AA				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;right
 DATA_B8BC29:
 	dw CODE_B8C3B6				;00
 	dw CODE_B8C3B6				;01
@@ -8169,7 +8207,10 @@ DATA_B8BC29:
 	dw CODE_B8C4EC				;24
 	dw CODE_B8C51E				;25
 	dw CODE_B8C52B				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;a
 DATA_B8BC77:
 	dw CODE_B8C83D				;00
 	dw CODE_B8C01F				;01
@@ -8210,7 +8251,10 @@ DATA_B8BC77:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;b
 DATA_B8BCC5:
 	dw CODE_B8C55F				;00
 	dw CODE_B8C5FA				;01
@@ -8251,7 +8295,10 @@ DATA_B8BCC5:
 	dw CODE_B8C55F				;24
 	dw CODE_B8C55F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C55F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;x
 DATA_B8BD13:
 	dw CODE_B8C537				;00
 	dw CODE_B8C537				;01
@@ -8292,7 +8339,10 @@ DATA_B8BD13:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;y
 DATA_B8BD61:
 	dw CODE_B8C9C8				;00
 	dw CODE_B8CA16				;01
@@ -8333,7 +8383,10 @@ DATA_B8BD61:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;l
 DATA_B8BDAF:
 	dw CODE_B8CCBE				;00
 	dw CODE_B8CCBE				;01
@@ -8374,7 +8427,10 @@ DATA_B8BDAF:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;r
 DATA_B8BDFD:
 	dw CODE_B8CCC7				;00
 	dw CODE_B8CCC7				;01
@@ -8415,7 +8471,10 @@ DATA_B8BDFD:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;start
 DATA_B8BE4B:
 	dw CODE_B8CCDD				;00
 	dw CODE_B8CCDD				;01
@@ -8456,7 +8515,10 @@ DATA_B8BE4B:
 	dw CODE_B8CCDD				;24
 	dw CODE_B8CCDD				;25
 	dw CODE_B8CCDD				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;select
 DATA_B8BE99:
 	dw CODE_B8CD6F				;00
 	dw CODE_B8C01F				;01
@@ -8497,7 +8559,10 @@ DATA_B8BE99:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;no left right
 DATA_B8BEE7:
 	dw CODE_B8CE09				;00
 	dw CODE_B8CE09				;01
@@ -8538,7 +8603,10 @@ DATA_B8BEE7:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;no up down
 DATA_B8BF35:
 	dw CODE_B8CE19				;00
 	dw CODE_B8CE19				;01
@@ -8579,7 +8647,10 @@ DATA_B8BF35:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;no b
 DATA_B8BF83:
 	dw CODE_B8CE6D				;00
 	dw CODE_B8CE6D				;01
@@ -8620,7 +8691,10 @@ DATA_B8BF83:
 	dw CODE_B8C01F				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
+;no y
 DATA_B8BFD1:
 	dw CODE_B8CF15				;00
 	dw CODE_B8CF15				;01
@@ -8661,6 +8735,8 @@ DATA_B8BFD1:
 	dw CODE_B8CF23				;24
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
+	dw CODE_B8C01F				;27 hand slap
+	dw CODE_B8C01F				;28 water bounce
 
 CODE_B8C01F:
 	RTS					;$B8C01F  /
@@ -9505,6 +9581,17 @@ CODE_B8C55F:
 	LDA $0983				;$B8C561   |
 	AND #$8000				;$B8C564   |
 	BEQ CODE_B8C572				;$B8C567   |
+;START OF PATCH (water bounce behavior trigger)
+;	LDA $0D4E				;get water position
+;	SEC
+;	SBC #$0010
+;	CMP $0A,x				;check if kong is in water
+;	BCS .continue				;if kong is in water
+;	LDA #$0081
+;	STA $2E,x
+;	RTS
+;.continue
+;END OF PATCH
 	LDY $66					;$B8C569   |
 	LDA global_frame_counter		;$B8C56B   |
 	STA $0022,y				;$B8C56D   |
@@ -10105,7 +10192,55 @@ CODE_B8C9BA:					;	   |
 	LDA $32					;$B8C9C5   |
 	RTS					;$B8C9C7  /
 
+;START OF PATCH (hand slap check)
+hand_slap_check:
+	LDX $0593				;get current kong sprite
+	LDA $0981				;get current held buttons
+	AND #$0400				;check if down is held
+	BEQ .no_slap				;if not no slap
+	LDA $0983				;get current pressed buttons this frame
+	AND #$4000				;check if y pressed
+	BEQ .no_slap				;if not no slap
+	LDA $0E,x				;get player ground distance
+	BNE .no_slap				;if not on ground no slap
+	LDA $08A4				;get current kong number
+	CMP #$0002				;check if kong is donkey
+	BNE .no_slap				;if not no slap
+	LDA #$0080
+	STA $2E,x
+	LDA #!donkey_hand_slap_anim_id		;load hand slap animation id
+	CMP $36,x				;check if hand slap animation is playing
+	BEQ .no_slap				;if so no hand slap
+	JSL set_sprite_animation		;play hand slap animation
+	STZ $20,x				;set x velocity to 0
+
+;broken slap slide code attempt
+;	LDA $0981
+;	AND $0300
+;	BEQ .slap
+;	LDA $0983
+;	AND #$0400
+;	BEQ .slap
+;	LDA #$0300
+;	STA $26,x
+;.slap
+	SEC
+	RTS
+
+.no_slap
+	CLC
+	RTS
+;END OF PATCH
+
 CODE_B8C9C8:
+;START OF PATCH (hand slap check)
+	JSR hand_slap_check
+	BCS CODE_B8C9F7				;hand slap was started
+	LDA #!donkey_hand_slap_anim_id		;load hand slap animation id
+	CMP $36,x				;check if hand slap animation is playing
+	BEQ CODE_B8C9F7				;if hand slap already playing stop all other actions by returning
+;END OF PATCH
+
 	JSR CODE_B8CC14				;$B8C9C8  \
 	JSR CODE_B8CB8C				;$B8C9CB   |
 	BCS CODE_B8C9F7				;$B8C9CE   |
@@ -10141,6 +10276,9 @@ CODE_B8C9F8:
 
 CODE_B8CA07:
 	LDX current_sprite			;$B8CA07  \
+		
+
+
 	LDA #$0001				;$B8CA09   |
 	STA $24,x				;$B8CA0C   |
 	LDA #$0009				;$B8CA0E   |

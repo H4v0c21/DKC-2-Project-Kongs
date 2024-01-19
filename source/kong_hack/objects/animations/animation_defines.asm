@@ -34,3 +34,5 @@
 
 !dkc1_swap_air_anim_offset = !kiddy_team_top_throw_anim_id+1
 !dkc3_swap_air_anim_offset = !dkc1_swap_air_anim_offset+4
+
+!donkey_hand_slap_anim_id = !dkc3_swap_air_anim_offset+4

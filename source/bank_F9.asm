@@ -799,6 +799,7 @@ endif
 	incsrc "kong_hack/objects/animations/kiddy_anim_table.asm"
 	incsrc "kong_hack/objects/animations/teamup_anim_table.asm"
 	incsrc "kong_hack/objects/animations/swap_anim_table.asm"
+	incsrc "kong_hack/objects/animations/kong_special_anim_table.asm"
 ;END OF PATCH
 
 diddy_idle:
@@ -11457,6 +11458,7 @@ kiddy_map:
 
 incsrc "kong_hack/objects/animations/teamup_animations.asm"
 incsrc "kong_hack/objects/animations/swap_animations.asm"
+incsrc "kong_hack/objects/animations/kong_special_animations.asm"
 
 print "Animation Script End Address: ",pc
 padbyte $00
