@@ -5957,18 +5957,25 @@ hand_slap_check_hit:
 	JSL CODE_BCFB69				;$B8CBAA   |
 	LDA #$0001				;$B8CBAE   |
 	JSL CODE_BCFE0A				;$B8CBB1   |
-	
-	LDA #$0020
-	LDY #$0008
-	JSL CODE_BEBD8E
-	
+	LDA #$0020				;$B38929   |
+	LDY #$0008				;$B3892C   |
+	JSL CODE_BEBD8E				;$B3892F   |
 	BCS .defeat_enemy
 	RTS
 
 .defeat_enemy
+ ;	LDY $6A
+ ;	LDA $0054,y
+ ;	AND #$0400
+ ;	BEQ +
+ ;	LDA #$0000
+ ;	STA $0032,y     ;unkill enemy
+ ;+:
 	LDA #$0100
 	ORA $10,x
 	STA $10,x
+	LDY #DATA_FF1A64
+	JSL CODE_BB8432      ;spawn banana
 	RTS
 
 print "Animation Code End Address: ",pc
