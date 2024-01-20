@@ -5953,29 +5953,39 @@ hand_slap_shake_screen:
 
 hand_slap_check_hit:
 	LDX current_sprite
-	LDA #$000F				;$B8CBA7   |
-	JSL CODE_BCFB69				;$B8CBAA   |
-	LDA #$0001				;$B8CBAE   |
-	JSL CODE_BCFE0A				;$B8CBB1   |
-	LDA #$0020				;$B38929   |
-	LDY #$0008				;$B3892C   |
-	JSL CODE_BEBD8E				;$B3892F   |
+	LDA #$000F
+	JSL CODE_BCFB69
+	LDA #$0001
+	JSL CODE_BCFE0A
+	LDA #$0020
+	LDY #$0008
+	JSL CODE_BEBD8E
 	BCS .defeat_enemy
 	RTS
 
 .defeat_enemy
- ;	LDY $6A
- ;	LDA $0054,y
- ;	AND #$0400
- ;	BEQ +
- ;	LDA #$0000
- ;	STA $0032,y     ;unkill enemy
- ;+:
-	LDA #$0100
-	ORA $10,x
-	STA $10,x
-	LDY #DATA_FF1A64
-	JSL CODE_BB8432      ;spawn banana
+	PHX					; preserve donkey
+	LDX $6A					; get sprite we slapped
+	LDA $54,x				;\
+	STA $8E					; |
+	LDY #$0008				; | MIGHT NEED TO TWEAK this value doesn't work for all sprites
+	LDA [$8E],y				;/ get kill flags for sprite we slapped
+	AND #$0500				;\ MIGHT NEED TO TWEAK this value doesn't work for all sprites
+	BNE .can_slap_kill			;/ check if sprite can be killed with slap
+	STZ $32,x				; unkill enemy
+	PLX
+	RTS
+	
+.can_slap_kill
+	LDY #hidden_cache_banana_init
+	JSL CODE_BB8432				;spawn banana
+	LDX alternate_sprite
+	LDY $6A
+	LDA $0006,y
+	STA $06,x
+	LDA $000A,y
+	STA $0A,x
+	PLX					;rescue donkey
 	RTS
 
 print "Animation Code End Address: ",pc

@@ -956,6 +956,8 @@ DATA_FF0EC2:
 	dw !initcommand_success
 
 ;dixie init (in-game)
+
+;NOTE: CAN INHERIT FROM DIDDY TO SAVE SPACE
 DATA_FF0EE4:
 	dw sprite.number, $00E8
 	dw sprite.render_order, $00E4
@@ -1796,7 +1798,7 @@ DATA_FF188C:
 	dw sprite.x_sub_position, $000A
 	dw !initcommand_success
 
-DATA_FF189A:
+DATA_FF189A:  ;Klank banana?
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.number, $02DC
 	dw sprite.render_order, $00C4
@@ -1811,6 +1813,8 @@ DATA_FF189A:
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_success
 
+
+;table for chest drops?
 DATA_FF18CE:
 	dw DATA_FF1906
 	dw DATA_FF1914
@@ -1830,6 +1834,7 @@ DATA_FF18CE:
 	dw DATA_FF19D8
 	dw DATA_FF19E6
 
+;same?
 DATA_FF18F0:
 	dw DATA_FF19F4
 	dw DATA_FF1A02
@@ -1842,6 +1847,7 @@ DATA_FF18F0:
 	dw DATA_FF1A64
 	dw DATA_FF1A72
 
+;same again? this drops a kremcoin
 DATA_FF1904:
 	dw DATA_FF1A80
 
@@ -1995,6 +2001,7 @@ DATA_FF1A56:
 	dw !initcommand_set_animation, $02B2
 	dw !initcommand_success
 
+;klank banana?
 DATA_FF1A64:
 	dw !initcommand_load_subconfig, DATA_FF189A
 	dw !initcommand_set_alt_palette, $0000
@@ -21018,6 +21025,8 @@ DATA_FFFF4C:
 endif
 
 ;START OF PATCH (new kong init scripts)
+
+;NOTE: CAN INHERIT FROM DIDDY TO SAVE SPACE
 donkey_ingame_init:
 	dw sprite.number, $0320
 	dw sprite.render_order, $00D8
@@ -21029,6 +21038,7 @@ donkey_ingame_init:
 	dw !initcommand_set_oam_special, $2000
 	dw !initcommand_success
 
+;NOTE: CAN INHERIT FROM DIDDY TO SAVE SPACE
 kiddy_ingame_init:
 	dw sprite.number, $0324
 	dw sprite.render_order, $00D8
@@ -21038,6 +21048,21 @@ kiddy_ingame_init:
 	dw sprite.action, $0000
 	dw sprite.unknown_30, $001C
 	dw !initcommand_set_oam_special, $2000
+	dw !initcommand_success
+
+hidden_cache_banana_init:
+	dw sprite.number, $0328
+	dw sprite.render_order, $00C8
+	dw sprite.action, $0000
+	dw sprite.unknown_52, $0107	;movement routine (move to home position)
+	dw sprite.unknown_54, $02EC	;random zinger constants (might not need)
+	dw sprite.unknown_46, $0101	;lr deviation
+	dw sprite.unknown_48, $0280	;x velocity
+	dw sprite.unknown_4A, $0101	;ud deviation
+	dw sprite.unknown_4C, $0480	;y velocity
+	dw !initcommand_set_oam, $2000
+	dw !initcommand_set_palette, global_sprite_palette
+	dw !initcommand_set_animation, $02DF
 	dw !initcommand_success
 ;END OF PATCH
 

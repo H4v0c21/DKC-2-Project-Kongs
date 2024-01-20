@@ -635,6 +635,7 @@ DATA_B38348:
 ;START OF PATCH
 	dw donkey_kong_main,$0001			;0320
 	dw kiddy_kong_main,$0001			;0324
+	dw slap_banana_main,$0000			;0328
 ;END OF PATCH
 
 kudgel_main:
@@ -15979,4 +15980,84 @@ donkey_kong_main:
 
 kiddy_kong_main:
 	JML kiddy_kong_main_b8
+
+
+slap_banana_main:
+	JSR CODE_B3A369
+
+slap_banana_state_table:
+	dw slap_banana_state_0
+	dw slap_banana_state_1
+	dw slap_banana_state_2
+
+slap_banana_state_0:
+	LDX current_sprite
+	JSL CODE_B9D100				;process animations
+	JSR slap_banana_collision
+	
+	LDX current_sprite			;get current sprite
+	LDY $0593				;get current kong
+	LDA $0006,y				;\
+	SEC					; | get x distance from kong
+	SBC $06,x				; |
+	BPL .not_negative			;/ if the distance isn't negative no need to invert
+	EOR #$FFFF				;\ invert distance so we can compare to distance threshold
+	INC					;/
+.not_negative
+	CMP #$0004				;x distance threshold
+	BCS .continue_state_0			;if distance isn't within threshold continue state 0 homing
+	INC $2E,x				;otherwise set state 1 (downward homing state)
+	BRA slap_banana_done
+.continue_state_0
+	LDA $0006,y				;\
+	STA $42,x				;/ set home x position to kong x
+	LDA $000A,y
+	SEC
+	SBC #$0050				;distance above kong
+	STA $44,x				;update home y position to above kong
+	JSL CODE_BEF039				;process movement
+	BRA slap_banana_done
+
+slap_banana_state_1:
+	LDX current_sprite
+	JSL CODE_B9D100				;process animations
+	JSR slap_banana_collision		;check if banana collided with kong
+	LDX current_sprite			; get current sprite
+	LDY $0593				; get current kong
+	LDA $0006,y				;\
+	STA $42,x				;/ set home x position to kong x
+	STA $06,x				; snap banana to kong's x position
+	LDA $000A,y				;\
+	STA $44,x				;/ set home y position to kong y
+	JSL CODE_BEF039	;process movement
+	BRA slap_banana_done
+
+;spawn real banana and copy positions
+slap_banana_state_2:
+	LDY #DATA_FF1AC6			;\ spawn real banana
+	JSL CODE_BB8432				;/
+	LDX current_sprite			;get old fake banana sprite
+	LDY alternate_sprite			;get new real banana sprite
+	LDA $06,x				;\
+	STA $0006,y				; | copy positions to real banana
+	LDA $0A,x				; |
+	STA $000A,y				;/
+	LDA $1A,x				;\ copy animation frame to real banana
+	STA $001A,y				;/
+	STZ $00,x				;send self to banana shadow realm
+slap_banana_done:
+	JML [$05A9]
+
+slap_banana_collision:
+	JSL CODE_BCFB58
+	JSL CODE_BEBE6D				;check collision with kong
+	BCS .set_state_2
+	CLC
+	RTS
+
+.set_state_2:
+	LDA #$0002				;\
+	STA $2E,x				; | set banana state as being collected and return
+	RTS					;/
+
 ;END OF PATCH
