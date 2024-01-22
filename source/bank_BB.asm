@@ -5448,9 +5448,9 @@ CODE_BBAD34:
 	LDA #$0004				;$BBAD4E   |
 	JSL CODE_B9D0B8				;$BBAD51   | animation entry point
 ;	JSR CODE_BBAEBD				;$BBAD55   | animal buddy related?
-	LDA.l DATA_FF0040			;$BBAD58   |
+	LDA.l diddy_constants			;$BBAD58   |
 	STA $16BA				;$BBAD5C   | +8
-	LDA.l DATA_FF0042			;$BBAD5F   |
+	LDA.l diddy_constants+2			;$BBAD5F   |
 	STA $16BC				;$BBAD63   | +A
 ;dixie
 	LDA #$16D8				;$BBAD66   |
@@ -5463,9 +5463,9 @@ CODE_BBAD34:
 	LDA #$0004				;$BBAD79   |
 	JSL CODE_B9D0B8				;$BBAD7C   |
 ;	JSR CODE_BBAEBD				;$BBAD80   |
-	LDA.l DATA_FF012A			;$BBAD83   |
+	LDA.l dixie_constants			;$BBAD83   |
 	STA $16E0				;$BBAD87   | +8
-	LDA.l DATA_FF012C			;$BBAD8A   |
+	LDA.l dixie_constants+2			;$BBAD8A   |
 	STA $16E2				;$BBAD8E   | +A
 ;donkey
 	LDA #!donkey_variables_address
@@ -5481,9 +5481,9 @@ CODE_BBAD34:
 	LDA #$0004
 	JSL CODE_B9D0B8
 ;	JSR CODE_BBAEBD
-	LDA.l donkey_physics_constant_a
+	LDA.l donkey_constants
 	STA !donkey_variables_address+8
-	LDA.l donkey_physics_constants
+	LDA.l donkey_constants+2
 	STA !donkey_variables_address+10
 ;kiddy
 	LDA #!kiddy_variables_address
@@ -5499,9 +5499,9 @@ CODE_BBAD34:
 	LDA #$0004
 	JSL CODE_B9D0B8
 ;	JSR CODE_BBAEBD
-	LDA.l kiddy_physics_constant_a
+	LDA.l kiddy_constants
 	STA !kiddy_variables_address+8
-	LDA.l kiddy_physics_constants
+	LDA.l kiddy_constants+2
 	STA !kiddy_variables_address+10
 
 ;Kong palette loading moved here so that palettes load in a consistent order

@@ -1438,10 +1438,10 @@ kong_init_script_addresses:
 	dw kiddy_ingame_init
 
 kong_physics_const_base_addresses:
-	dw DATA_FF0040
-	dw DATA_FF012A
-	dw donkey_physics_constant_a
-	dw kiddy_physics_constant_a
+	dw diddy_constants
+	dw dixie_constants
+	dw donkey_constants
+	dw kiddy_constants
 
 load_current_kong_phys_const:
 	ASL A

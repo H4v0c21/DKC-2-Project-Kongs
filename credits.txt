@@ -13,6 +13,7 @@ Additional scripts created by H4v0c21
 
 Hack Contributors:
 Programmers and Designers: H4v0c21, Mattrizzle
+Additional Programming: BlueImp
 
 Custom Sprite Graphics: Phyreburnz
 

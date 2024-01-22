@@ -800,6 +800,9 @@ endif
 	incsrc "kong_hack/objects/animations/teamup_anim_table.asm"
 	incsrc "kong_hack/objects/animations/swap_anim_table.asm"
 	incsrc "kong_hack/objects/animations/kong_special_anim_table.asm"
+	;WARNING: DO NOT ADD ANY NEW ANIMATION ENTRIES HERE UNTIL KONG SPECIAL ANIMATIONS ARE DONE
+	;IF YOU ABSOLUTELY NEED TO ADD NEW ANIMATIONS TALK TO H4v0c ABOUT ADDING DUMMY ENTRIES FOR KONG SPECIALS FIRST
+	;THIS IS BECAUSE ANY ANIMATION ENTRIES ADDED TO KONG SPECIALS LATER WILL OFFSET AND BREAK YOUR ANIMATION IDS
 ;END OF PATCH
 
 diddy_idle:
