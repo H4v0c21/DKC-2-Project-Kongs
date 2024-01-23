@@ -6980,7 +6980,10 @@ CODE_B5C800:
 
 CODE_B5C80D:
 	LDA current_sprite			;$B5C80D  \
-	LDA #$0E40				;$B5C80F   |
+;START OF PATCH (Fix for Donkey and Kiddy having collision with kart tracks)
+	;LDA #$0E40				;$B5C80F   |
+	LDA #$0EFC
+;END OF PATCH
 	CMP current_sprite			;$B5C812   |
 	BCC CODE_B5C82C				;$B5C814   |
 	JSL CODE_B5C82C				;$B5C816   |
