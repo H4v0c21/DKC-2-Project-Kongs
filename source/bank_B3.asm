@@ -2551,7 +2551,7 @@ update_kong_barrel_number:
 	BEQ .active_diddy_overflow
 	LDA kong_status
 	XBA
-	AND #$00FF
+	AND #$FF00
 	BEQ .active_diddy_overflow
 
 .no_diddy_overflow

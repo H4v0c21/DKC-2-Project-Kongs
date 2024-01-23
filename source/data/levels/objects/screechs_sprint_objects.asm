@@ -29,7 +29,10 @@
 %sprite($0001, $05B0, $01A6, $0592)
 %sprite($0001, $05B1, $01D2, $070A)
 %sprite($0001, $05B2, $017A, $058C)
-%sprite($0002, $0660, $09E0, $0C7C)
+;START OF PATCH (Fix for kloak crash)
+%sprite($00062, $0660, $09E0, $0C7C) ;(change param to 62 to make him spawn/throw kaboom earlier)
+;%sprite($0002, $0660, $09E0, $0C7C)
+;END OF PATCH
 %sprite($0101, $06BF, $0A48, $09B2)
 %sprite($0001, $06CE, $063C, $070A)
 %sprite($0001, $06CF, $0694, $0590)
