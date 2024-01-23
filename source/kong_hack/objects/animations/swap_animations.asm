@@ -233,8 +233,9 @@ dixie_swap_to_kiddy_animation:
 	db $03 : dw $3DB0
 	db $03 : dw $3DB4
 	db $03 : dw $3DB8
-	db $03 : dw $3DBC
 	db !animation_command_81 : dw swap_kong_render_order
+	db $03 : dw $3DBC
+	;db !animation_command_81 : dw swap_kong_render_order
 kiddy_swap_dkc3_loop:
 	db $03 : dw $3D80
 	db $03 : dw $3D84
@@ -460,8 +461,9 @@ diddy_swap_to_kiddy_animation:
 	db $03 : dw $3DB0
 	db $03 : dw $3DB4
 	db $03 : dw $3DB8
-	db $03 : dw $3DBC
 	db !animation_command_81 : dw swap_kong_render_order
+	db $03 : dw $3DBC
+	;db !animation_command_81 : dw swap_kong_render_order
 	db !animation_command_82 : dw kiddy_swap_dkc3_loop
 	db !animation_command_80, $00
 

@@ -2931,11 +2931,25 @@ npc_area_check:
 	PHX
 	LDX NMI_pointer
 	CPX #CODE_808CD9	;NMI for Cranky's Video Game Heroes and the Monkey Museum ending screens
-	BNE .is_false
+	;BNE .is_false  (this was causing the check_gamemode_submode branch to never be taken)
+	BNE .check_gamemode_submode
 .is_true:
+	;check if we have an extra kong or not
+	LDA $08C2
+	AND $4000
+	BEQ .mute_hidden_kong
+
+.set_carry:
 	PLX
 	SEC
 	RTS
+
+;STZ the hidden kong's animation number to stop them from playing idle sounds
+.mute_hidden_kong:
+	LDX $0597
+	STZ $36,x
+	BRA .set_carry
+
 .check_gamemode_submode:
 	LDX gamemode_submode
 	CPX #$000B		;Check if in submap (Should cover all Kong Family areas/Klubba's Kiosk, as gamemode_submode isn't changed when entering these areas)
