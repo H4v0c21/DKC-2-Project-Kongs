@@ -5611,6 +5611,26 @@ kong_pal_order_check_1_2_match:
 kong_pal_order_check_done:
 ;End of code to assist with loading palettes
 	REP #$20
+
+;force cycle all currently loaded dk barrels to prevent "obtaining self from barrel softlock"
+	PHX					;preserve x
+	LDX #main_sprite_table			;load sprite base pointer
+.next_slot
+	LDA $00,x				;get sprite id
+	CMP #$01A8				;dk barrel
+	BNE .get_next_slot			;if sprite isn't dk barrel move to next slot
+;found a dk barrel
+	LDA #$0001				;else found a dk barrel
+	STA $4E,x				;force dk barrel to cycle kong number
+.get_next_slot
+	TXA					;
+	CLC					;
+	ADC #sizeof(sprite)			;move to next sprite slot
+	TAX					;
+	CPX #main_sprite_table_end		;
+	BNE .next_slot				;if not at the end of sprite table continue to scan next slot
+	PLX					;restore x
+
 	LDY $0597				;$B8A9BD   |
 ;Start of code to get palette attribute from follower Kong to be "replaced" by Kong released from DK Barrel
 	LDA $0012,y				;Load OAM attributes of old follower Kong

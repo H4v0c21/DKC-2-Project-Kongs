@@ -2541,95 +2541,63 @@ check_if_kong_is_animal:
 
 ;START OF PATCH (dk barrel kong number logic)
 update_kong_barrel_number:
-	LDA $4C,x
-	INC
-	CMP #$0004
-	BCC .no_overflow
-
-	LDA kong_status
-	AND #$00FF
-	BEQ .active_diddy_overflow
-	LDA kong_status
-	XBA
-	AND #$FF00
-	BEQ .active_diddy_overflow
-
-.no_diddy_overflow
-	LDA #$0000
-	BRA .no_overflow
+;check if new kong number is main kong
+	LDA $4C,x			;get kong number in barrel
+	INC				;increment kong number number
+	AND #$0003			;handle overflow
+	STA temp_32			;preserve new kong number
+	LDA kong_status			;get kong status
+	AND #$00FF			;get main kong number from kong status
+	CMP temp_32			;
+	BNE .check_follower_kong	;if main kong number doesn't match new kong number continue to follower kong check
+;new kong number is main kong
+	LDA temp_32			;else get new kong number
+	INC				;increment kong number again
+	AND #$0003			;handle overflow
+	STA temp_32			;preserve new kong number
+.check_follower_kong
+;check if follower kong is alive
+	LDA #$4000			;get follower kong flag
+	BIT $08C2			;
+	BEQ .update_barrel_number	;if no follower kong exists use new kong number for barrel and return
+;check if new kong number is follower kong
+	LDA kong_status			;get kong status
+	XBA				;
+	AND #$00FF			;get follower kong number from kong status
+	CMP temp_32			;
+	BNE .update_barrel_number	;if follower kong number doesn't match new kong number use new kong number for barrel and return
+;new kong number is follower kong
+	LDA temp_32			;get new kong number
+	INC				;increment kong number again
+	AND #$0003			;handle overflow
+	STA temp_32			;preserve new kong number
+;one last check for if kong number is main kong
+	LDA kong_status			;get kong status
+	AND #$00FF			;get main kong number from kong status
+	CMP temp_32			;
+	BNE .update_barrel_number	;if main kong number doesn't match new kong number use new kong number for barrel and return
+;new kong number is main kong
+	LDA temp_32			;else get new kong number
+	INC				;increment kong number again
+	AND #$0003			;handle overflow
+	STA temp_32			;preserve new kong number
 	
-.active_diddy_overflow
-	LDA #$0001
-
-.no_overflow
-	STA $4C,x
-	RTS
+.update_barrel_number
+	LDA temp_32			;get new kong number
+	STA $4C,x			;update kong number in barrel
+	RTS				;return
 
 kong_dk_barrel_check_logic:
 	%lda_sound(6, clock_tick)
 	JSL queue_sound_effect
 	LDX $64
 	JSR update_kong_barrel_number
-	
-	SEP #$20
-	LDA kong_status
-	CMP kong_status+1
-	REP #$20
-	BCC a_less_than_b
-	BRA a_more_than_b
-
-a_less_than_b:
-	active_kong_barrel_check_a:
-		LDA kong_status
-		AND #$00FF
-		CMP $4C,x
-		BNE inactive_kong_alive_barrel_check_a
-		JSR update_kong_barrel_number
-
-	inactive_kong_alive_barrel_check_a:
-		LDA #$4000
-		BIT $08C2
-		BEQ kong_barrel_check_done
-		
-	inactive_kong_barrel_check_a:
-		LDA kong_status
-		XBA
-		AND #$00FF
-		CMP $4C,x
-		BNE kong_barrel_check_done
-		JSR update_kong_barrel_number
-
-kong_barrel_check_done:
 	LDA $4C,x
 	CLC
 	ADC #!kong_dk_barrel_palette_index
 	JSL CODE_BB8C44
-	
 	STZ $4E,x
 	BRA kong_barrel_swap_logic_done
-	
-a_more_than_b:
-	inactive_kong_alive_barrel_check_b:
-		LDA #$4000
-		BIT $08C2
-		BEQ active_kong_barrel_check_b
-		
-	inactive_kong_barrel_check_b:
-		LDA kong_status
-		XBA
-		AND #$00FF
-		CMP $4C,x
-		BNE active_kong_barrel_check_b
-		JSR update_kong_barrel_number
-	
-	active_kong_barrel_check_b:
-		LDA kong_status
-		AND #$00FF
-		CMP $4C,x
-		BNE kong_barrel_check_done
-		JSR update_kong_barrel_number
-		BRA kong_barrel_check_done
-
 ;END OF PATCH
 
 dkbarrel_main:
