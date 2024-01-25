@@ -5414,6 +5414,7 @@ DATA_FF45DA:
 	dw $0080, $001A, $000C, $0016, $0000, $0800, $00E7
 	dw !initcommand_success
 
+;dixie only
 DATA_FF45FC:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6121,6 +6122,7 @@ DATA_FF5344:
 	dw $0080, $0014, $0020, $0020, $0000, $0800, $0000
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5366:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6205,6 +6207,7 @@ DATA_FF54DC:
 	dw $0080, $001F, $0080, $0080, $0000, $0800, $D800
 	dw !initcommand_success
 
+;diddy only
 DATA_FF54FE:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6360,6 +6363,7 @@ DATA_FF57CC:
 	dw $0080, $0018, $0000, $0040, $0000, $0A00, $0000
 	dw !initcommand_success
 
+;dixie only
 DATA_FF57EE:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6367,6 +6371,7 @@ DATA_FF57EE:
 	dw $0080, $001C, $0040, $0040, $0000, $0800, $00E2
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5810:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6374,6 +6379,7 @@ DATA_FF5810:
 	dw $0080, $001C, $0020, $0020, $0000, $0800, $0000
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5832:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6381,6 +6387,7 @@ DATA_FF5832:
 	dw $0080, $001C, $0020, $0020, $0000, $0800, $00E2
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5854:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6388,6 +6395,7 @@ DATA_FF5854:
 	dw $0080, $001C, $0008, $0008, $0000, $0800, $0000
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5876:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6395,6 +6403,7 @@ DATA_FF5876:
 	dw $0080, $001C, $0008, $0008, $0000, $0800, $0000
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5898:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6402,6 +6411,7 @@ DATA_FF5898:
 	dw $0080, $001C, $0010, $0010, $0000, $0800, $0000
 	dw !initcommand_success
 
+;dixie only
 DATA_FF58BA:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6409,6 +6419,7 @@ DATA_FF58BA:
 	dw $0080, $001C, $0020, $0020, $0000, $0800, $E7E7
 	dw !initcommand_success
 
+;diddy only
 DATA_FF58DC:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6430,6 +6441,7 @@ DATA_FF5920:
 	dw $0080, $001C, $0010, $0010, $0000, $0300, $19E7
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5942:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6437,6 +6449,7 @@ DATA_FF5942:
 	dw $0080, $001C, $0020, $0020, $0000, $0800, $1E00
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5964:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6451,6 +6464,7 @@ DATA_FF5986:
 	dw $0080, $001C, $0040, $0040, $0000, $0800, $00E2
 	dw !initcommand_success
 
+;diddy only
 DATA_FF59A8:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6458,6 +6472,7 @@ DATA_FF59A8:
 	dw $0080, $001C, $0020, $0020, $0000, $0800, $1E00
 	dw !initcommand_success
 
+;dixie only
 DATA_FF59CA:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6472,6 +6487,7 @@ DATA_FF59EC:
 	dw $0080, $001C, $0040, $0040, $0000, $0800, $0000
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5A0E:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6479,6 +6495,7 @@ DATA_FF5A0E:
 	dw $0080, $001C, $0020, $0020, $0000, $0800, $0000
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5A30:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6493,6 +6510,7 @@ DATA_FF5A52:
 	dw $0080, $001C, $0008, $0008, $0000, $0400, $0000
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5A74:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6602,6 +6620,7 @@ DATA_FF5C50:
 	dw $0080, $001C, $000C, $000C, $0000, $0380, $23E2
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5C72:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6746,6 +6765,7 @@ DATA_FF5EF8:
 	dw $0060, $0018, $0018, $0018, $0000, $0800, $1400
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5F1A:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6753,6 +6773,7 @@ DATA_FF5F1A:
 	dw $0060, $001C, $0020, $0020, $0000, $0800, $00E7
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5F3C:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6760,6 +6781,7 @@ DATA_FF5F3C:
 	dw $0080, $0018, $0018, $0028, $0000, $0400, $2800
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5F5E:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6767,6 +6789,7 @@ DATA_FF5F5E:
 	dw $0080, $0018, $0036, $0038, $0000, $0400, $2800
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5F80:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6774,6 +6797,7 @@ DATA_FF5F80:
 	dw $0080, $0018, $0037, $0038, $0000, $0400, $2800
 	dw !initcommand_success
 
+;dixie only
 DATA_FF5FA2:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6781,6 +6805,7 @@ DATA_FF5FA2:
 	dw $0080, $0018, $0018, $0028, $0000, $0400, $2800
 	dw !initcommand_success
 
+;diddy only
 DATA_FF5FC4:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set
@@ -6970,6 +6995,7 @@ DATA_FF6338:
 	dw $0080, $0020, $0028, $0001, $0000, $0300, $1E28
 	dw !initcommand_success
 
+;diddy only
 DATA_FF635A:
 	dw !initcommand_load_subconfig, DATA_FF360E
 	dw !initcommand_bulk_set

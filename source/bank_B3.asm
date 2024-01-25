@@ -12087,17 +12087,17 @@ CODE_B3D91D:
 	JMP (DATA_B3D923,x)			;$B3D920  /
 
 DATA_B3D923:
-	dw CODE_B3D939
-	dw CODE_B3D9CD
-	dw CODE_B3DAD6
-	dw CODE_B3DC21
-	dw CODE_B3DF48
-	dw CODE_B3DF48
-	dw CODE_B3E3AF
-	dw CODE_B3E4D9
-	dw CODE_B3E65C
-	dw CODE_B3E682
-	dw CODE_B3E768
+	dw CODE_B3D939				;00
+	dw CODE_B3D9CD				;02
+	dw CODE_B3DAD6				;04
+	dw CODE_B3DC21				;06
+	dw CODE_B3DF48				;08
+	dw CODE_B3DF48				;0A
+	dw CODE_B3E3AF				;0C
+	dw CODE_B3E4D9				;0E
+	dw CODE_B3E65C				;10
+	dw CODE_B3E682				;12
+	dw CODE_B3E768				;14
 
 
 CODE_B3D939:
@@ -14063,21 +14063,21 @@ CODE_B3E768:
 	JMP (DATA_B3E771,x)			;$B3E76E  /
 
 DATA_B3E771:
-	dw CODE_B3E78F
-	dw CODE_B3E8DD
-	dw CODE_B3E917
-	dw CODE_B3E979
-	dw CODE_B3E9C5
-	dw CODE_B3EACE
-	dw CODE_B3EAF5
-	dw CODE_B3EB2E
-	dw CODE_B3EB34
-	dw CODE_B3EB84
-	dw CODE_B3EBD8
-	dw CODE_B3EC1A
-	dw CODE_B3EC3C
-	dw CODE_B3EC61
-	dw CODE_B3EC72
+	dw CODE_B3E78F				;00
+	dw CODE_B3E8DD				;01
+	dw CODE_B3E917				;02
+	dw CODE_B3E979				;03
+	dw CODE_B3E9C5				;04
+	dw CODE_B3EACE				;05
+	dw CODE_B3EAF5				;06
+	dw CODE_B3EB2E				;07
+	dw CODE_B3EB34				;08
+	dw CODE_B3EB84				;09
+	dw CODE_B3EBD8				;0A
+	dw CODE_B3EC1A				;0B
+	dw CODE_B3EC3C				;0C
+	dw CODE_B3EC61				;0D
+	dw CODE_B3EC72				;0E
 
 
 CODE_B3E78F:
@@ -15103,44 +15103,102 @@ CODE_B3EEC5:
 	LDX $0597				;$B3EEC5  \
 	LDA $2E,x				;$B3EEC8   |
 	CMP #$002F				;$B3EECA   |
-	BEQ CODE_B3EF46				;$B3EECD   |
+	BEQ CODE_B3EF46_LONG			;$B3EECD   | PATCH: convert to BRL because BRA doesn't reach anymore
 	JSL CODE_BCFB58				;$B3EECF   |
 	LDA #$0008				;$B3EED3   |
 	PHK					;$B3EED6   |
 	%return(CODE_B3EEDD)			;$B3EED7   |
 	JML [$09F9]				;$B3EEDA  /
 
+;START OF PATCH (add support for donkey and kiddy barrel cannons)
+
+CODE_B3EF46_LONG:
+	BRL CODE_B3EF46				;this only exists because our new code makes certain branches too far
+
+check_if_kong_can_enter_barrel:
+	AND $46,x				;compare our current kong flag in A to blacklist kong flags of barrel
+	AND #$000F				;only get last 4 bits (1 for each kong)
+	BNE .cannot_enter			;if any bits made it through that means we're not allowed to enter as this kong
+	CLC					;else tell the routine caller we can enter the barrel
+	RTS					;return
+	
+.cannot_enter
+	SEC					;tell the routine caller we can NOT enter the barrel
+	RTS					;return
+
 CODE_B3EEDD:
-	BCC CODE_B3EF44				;$B3EEDD  \
+	BCC .cannot_enter_barrel		;$B3EEDD  \
 	LDA $09F5				;$B3EEDF   |
 	AND #$0406				;$B3EEE2   |
-	BEQ CODE_B3EF44				;$B3EEE5   |
+	BEQ .cannot_enter_barrel		;$B3EEE5   |
 	LDX current_sprite			;$B3EEE7   |
-	LDA $46,x				;$B3EEE9   |
-	AND #$0003				;$B3EEEB   |
-	BEQ CODE_B3EF0E				;$B3EEEE   |
-	CMP #$0003				;$B3EEF0   |
-	BEQ CODE_B3EF44				;$B3EEF3   |
-	LDY $6A					;$B3EEF5   |
-	AND #$0001				;$B3EEF7   |
-	BNE CODE_B3EF06				;$B3EEFA   |
-	LDA $0000,y				;$B3EEFC   |
-	CMP #$00E8				;$B3EEFF   |
-	BNE CODE_B3EF0E				;$B3EF02   |
-	BRA CODE_B3EF44				;$B3EF04  /
 
-CODE_B3EF06:
-	LDA $0000,y				;$B3EF06  \
-	CMP #$00E4				;$B3EF09   |
-	BEQ CODE_B3EF44				;$B3EF0C   |
-CODE_B3EF0E:					;	   |
-	LDA $6A					;$B3EF0E   |
-	CMP $0597				;$B3EF10   |
-	BEQ CODE_B3EF6A				;$B3EF13   |
+;NOTE: THIS BLOCK IS PROBABLY REDUNDAND NOW
+	LDA $46,x				;$B3EEE9   |
+	AND #$000F				;$B3EEEB   | mask all bits that aren't blacklist kong flags
+	BEQ .can_enter_barrel			;$B3EEEE   | if no blacklist kong flags are set enter the barrel
+	CMP #$000F				;$B3EEF0   |
+	BEQ .cannot_enter_barrel		;$B3EEF3   | if all blacklist kong flags are set don't enter the barrel
+;END OF PROBABLY REDUNDAND BLOCK
+	LDY $6A					;$B3EEF5   | get sprite that the barrel collided with
+	;AND #$0001				;$B3EEF7   |
+	;BNE .dixie_barrel			;$B3EEFA   |
+	;LDA $0000,y				;$B3EEFC   |
+	;CMP #$00E8				;$B3EEFF   |
+	;BNE .check_if_collision_was_follower	;$B3EF02   |
+	;BRA clc_rts_B3EF44			;$B3EF04  /
+	LDA $0000,y				;get id of collided sprite
+	CMP #$0324
+	BEQ .collide_with_kiddy			;if barrel collided with kiddy
+	CMP #$0320
+	BEQ .collide_with_donkey		;if barrel collided with donkey
+	CMP #$00E8
+	BEQ .collide_with_dixie			;if barrel collided with dixie
+.collide_with_diddy				;since no other kong was detected it was probably diddy
+	LDA #$0001				;load diddy's blacklist bit
+	BRA .next_check
+	
+.collide_with_dixie
+	LDA #$0002				;load dixie's blacklist bit
+	BRA .next_check
+	
+.collide_with_donkey
+	LDA #$0004				;load donkey's blacklist bit
+	BRA .next_check
+	
+.collide_with_kiddy
+	LDA #$0008				;load kiddy's blacklist bit
+.next_check
+	JSR check_if_kong_can_enter_barrel	;check if kong is blacklisted from barrel entry
+	BCC .can_enter_barrel			;if kong can't enter barrel
+.cannot_enter_barrel
+	CLC					;the kong didn't enter the barrel
+	RTS					;return
+
+.can_enter_barrel
+;check if kong collision was second kong
+	SEP #$20
+	CMP kong_status+1			;get follower kong number
+	REP #$20
+	BEQ .collide_with_follower
+	BRA CODE_B3EF15				;redirect back to vanilla code for handling barrel entry
+	
+.collide_with_follower
+	BRA CODE_B3EF6A				;redirect back to vanilla code for handling follower barrel entry
+	
+;.dixie_barrel
+;	LDA $0000,y				;$B3EF06  \
+;	CMP #$00E4				;$B3EF09   |
+;	BEQ clc_rts_B3EF44			;$B3EF0C   |
+;.check_if_collision_was_follower		;	   |
+;	LDA $6A					;$B3EF0E   |\
+;	CMP $0597				;$B3EF10   | | check if collided kong is follower kong
+;	BEQ CODE_B3EF6A				;$B3EF13   |/
+
 CODE_B3EF15:					;	   |
 	LDA #$0010				;$B3EF15   |
 	JSL CODE_B8D8BA				;$B3EF18   |
-	BCS CODE_B3EF44				;$B3EF1C   |
+	BCS clc_rts_B3EF44			;$B3EF1C   |
 	LDA #CODE_B3EF84			;$B3EF1E   |
 	STA $0A8A				;$B3EF21   |
 	LDA.w #CODE_B3EF84>>16			;$B3EF24   |
@@ -15156,7 +15214,7 @@ CODE_B3EF2A:					;	   |
 	SEC					;$B3EF42   |
 	RTS					;$B3EF43  /
 
-CODE_B3EF44:
+clc_rts_B3EF44:
 	CLC					;$B3EF44  \
 	RTS					;$B3EF45  /
 
@@ -15164,7 +15222,7 @@ CODE_B3EF46:
 	LDX $0597				;$B3EF46  \
 	LDA $42,x				;$B3EF49   |
 	CMP current_sprite			;$B3EF4B   |
-	BNE CODE_B3EF44				;$B3EF4D   |
+	BNE clc_rts_B3EF44			;$B3EF4D   |
 	JSL CODE_BCFB58				;$B3EF4F   |
 	LDA #$0008				;$B3EF53   |
 	PHK					;$B3EF56   |
@@ -15172,16 +15230,16 @@ CODE_B3EF46:
 	JML [$09F9]				;$B3EF5A  /
 
 CODE_B3EF5D:
-	BCC CODE_B3EF44				;$B3EF5D  \
+	BCC clc_rts_B3EF44			;$B3EF5D  \
 	LDA $09F5				;$B3EF5F   |
 	AND #$0406				;$B3EF62   |
-	BEQ CODE_B3EF44				;$B3EF65   |
+	BEQ clc_rts_B3EF44			;$B3EF65   |
 	BRL CODE_B3EF15				;$B3EF67  /
 
 CODE_B3EF6A:
 	LDA #$000F				;$B3EF6A  \
 	JSL CODE_B8D8BA				;$B3EF6D   |
-	BCS CODE_B3EF44				;$B3EF71   |
+	BCS clc_rts_B3EF44			;$B3EF71   |
 	LDA #CODE_B3F069			;$B3EF73   |
 	STA $0A8A				;$B3EF76   |
 	LDA.w #CODE_B3F069>>16			;$B3EF79   |
@@ -15189,7 +15247,7 @@ CODE_B3EF6A:
 	BRA CODE_B3EF2A				;$B3EF7F  /
 
 CODE_B3EF81:
-	BRL CODE_B3EF44				;$B3EF81  /
+	BRL clc_rts_B3EF44			;$B3EF81  /
 
 CODE_B3EF84:
 	JSL CODE_B8808E				;$B3EF84  \
