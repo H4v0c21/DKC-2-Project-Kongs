@@ -420,3 +420,10 @@ dl DONKEY_SPRITE_E86FDE : db $00			;47F0
 dl DONKEY_SPRITE_E8727C : db $00			;47F4
 dl DONKEY_SPRITE_E87514 : db $00			;47F8
 dl DONKEY_SPRITE_E87790 : db $00			;47FC
+
+dl diddy_barrel_icon_gray : db $00			;4800
+dl dixie_barrel_icon_gray : db $00			;4804
+dl donkey_barrel_icon_gray : db $00			;4808
+dl kiddy_barrel_icon_gray : db $00			;480C
+dl donkey_barrel_icon : db $00				;4810
+dl kiddy_barrel_icon : db $00				;4814

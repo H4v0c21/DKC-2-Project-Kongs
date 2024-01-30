@@ -413,3 +413,10 @@ dw blank_hitbox						;47F0
 dw blank_hitbox						;47F4
 dw blank_hitbox						;47F8
 dw blank_hitbox						;47FC
+
+dw DATA_BCEC6C						;4800
+dw DATA_BCEC6C						;4804
+dw DATA_BCEC6C						;4808
+dw DATA_BCEC6C						;480C
+dw DATA_BCEC6C						;4810
+dw DATA_BCEC6C						;4814

@@ -14014,6 +14014,11 @@ CODE_B3E72A:
 	SEC					;$B3E72A  \
 	RTS					;$B3E72B  /
 
+;START OF PATCH (add BRL)
+CODE_B3E746_LONG:
+	BRL CODE_B3E746
+;END OF PATCH
+
 CODE_B3E72C:
 	LDX current_sprite			;$B3E72C  \
 	LDY $42,x				;$B3E72E   |
@@ -14021,11 +14026,95 @@ CODE_B3E72C:
 	BEQ CODE_B3E741				;$B3E733   |
 	LDA $44,x				;$B3E735   |
 	LSR A					;$B3E737   |
-	BCS CODE_B3E746				;$B3E738   |
+	BCS CODE_B3E746_LONG			;$B3E738   | PATCH: convert to BRL
 	LDA $2A,x				;$B3E73A   |
 	AND #$1000				;$B3E73C   |
-	BNE CODE_B3E746				;$B3E73F   |
+	BNE CODE_B3E746_LONG			;$B3E73F   | PATCH: convert to BRL
 CODE_B3E741:					;	   |
+	
+;START OF PATCH (handle kong barrel icons)
+	PHA
+	PHX					;preserve icon sprite
+	PHY					;preserve whatever Y is
+	LDA $42,x				;get barrel sprite
+	TAX
+	LDA $1E,x				;get blacklist kong flags
+	AND #$000F				;only get last 4 bits
+	BEQ .no_blacklist			;no blacklisted kongs, do normal icon behavior
+	LSR
+	BCC .set_diddy_icon			;if no diddy blacklist flag
+	LSR
+	BCC .set_dixie_icon			;if no dixie blacklist flag
+	LSR
+	BCC .set_donkey_icon			;if no donkey blacklist flag
+	LSR
+	BCC .set_kiddy_icon			;if no kiddy blacklist flag
+.no_blacklist
+	PLY					;retrieve Y
+	PLX					;retrieve X
+	PLA
+	BRA .update_sprite_graphic		;no blacklisted kongs, do normal icon behavior
+
+.set_diddy_icon
+	LDA #$0000				;diddy kong id
+	LDX #$3178				;diddy color icon sprite graphic
+	LDY #$4800				;diddy grayscale icon sprite graphic
+	BRA .choose_icon_color
+	
+.set_dixie_icon
+	LDA #$0001				;dixie kong id
+	LDX #$3174				;dixie color icon sprite graphic
+	LDY #$4804				;dixie grayscale icon sprite graphic
+	BRA .choose_icon_color
+	
+.set_donkey_icon
+	LDA #$0002				;donkey kong id
+	LDX #$4810				;donkey color icon sprite graphic
+	LDY #$4808				;donkey grayscale icon sprite graphic
+	BRA .choose_icon_color
+	
+.set_kiddy_icon
+	LDA #$0003				;kiddy kong id
+	LDX #$4814				;kiddy color icon sprite graphic
+	LDY #$480C				;kiddy grayscale icon sprite graphic
+.choose_icon_color
+	CMP $08A4				;get active kong id
+	BNE .gray_icon				;if the active kong isn't the same as whitelisted kong id for barrel use gray icon
+	TXA					;else use color icon
+	PLY					;retrieve Y
+	PLX					;retrieve X
+	STA $48,x				;write new graphics number to icon sprite
+	LDA $12,x				;get icon OAM
+	AND #$F1FF				;clear palette number from sprite OAM
+	STA $12,x				;save new OAM without palette number
+	LDX $0593				;get current kong
+	LDA $12,x				;get kong OAM
+	AND #$0E00				;extract palette number from kong OAM
+	LDX current_sprite			;get icon sprite
+	ORA $12,x				;apply active kong palette number to icon sprite OAM
+	STA $12,x				;save new OAM
+	PLA
+	BRA .update_sprite_graphic		;return to vanilla behavior
+
+.gray_icon
+	TYA					;use gray icon
+	PLY					;retrieve Y
+	PLX					;retrieve X
+	STA $48,x				;write new graphics number to icon sprite
+	LDA $12,x				;get icon OAM
+	AND #$F1FF				;clear palette number from sprite OAM
+	STA $12,x				;save new OAM without palette number
+	LDA $42,x				;get barrel sprite
+	TAX
+	LDA $12,x				;get barrel OAM
+	AND #$0E00				;extract palette number from barrel OAM
+	LDX current_sprite			;get icon sprite
+	ORA $12,x				;apply barrel palette number to icon sprite OAM
+	STA $12,x				;save new OAM
+	PLA
+.update_sprite_graphic
+;END OF PATCH
+
 	LDA $48,x				;$B3E741   |
 	STA $1A,x				;$B3E743   |
 	RTS					;$B3E745  /
@@ -15116,7 +15205,7 @@ CODE_B3EF46_LONG:
 	BRL CODE_B3EF46				;this only exists because our new code makes certain branches too far
 
 check_if_kong_can_enter_barrel:
-	AND $46,x				;compare our current kong flag in A to blacklist kong flags of barrel
+	AND $1E,x				;compare our current kong flag in A to blacklist kong flags of barrel
 	AND #$000F				;only get last 4 bits (1 for each kong)
 	BNE .cannot_enter			;if any bits made it through that means we're not allowed to enter as this kong
 	CLC					;else tell the routine caller we can enter the barrel
@@ -15134,7 +15223,7 @@ CODE_B3EEDD:
 	LDX current_sprite			;$B3EEE7   |
 
 ;NOTE: THIS BLOCK IS PROBABLY REDUNDAND NOW
-	LDA $46,x				;$B3EEE9   |
+	LDA $1E,x				;$B3EEE9   |
 	AND #$000F				;$B3EEEB   | mask all bits that aren't blacklist kong flags
 	BEQ .can_enter_barrel			;$B3EEEE   | if no blacklist kong flags are set enter the barrel
 	CMP #$000F				;$B3EEF0   |
