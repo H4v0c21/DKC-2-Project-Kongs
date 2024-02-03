@@ -7,6 +7,7 @@ optimize address mirrors
 
 
 org $008000			;dummy org so functions work
+	incsrc "kong_hack/code/debug_overrides.asm"
 	incsrc macros.asm
 	incsrc constants.asm
 	incsrc audio_constants.asm	;added for kong hack

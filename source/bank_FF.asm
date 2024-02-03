@@ -645,27 +645,45 @@ DATA_FF0AFE:
 	dw !initcommand_set_animation, $024F
 	dw !initcommand_success
 
-DATA_FF0B18:
+;START OF PATCH (add kongs to ending parade)
+generic_ending_parade_kong:
 	dw sprite.number, $0314
 	dw sprite.x_position, $00E0
 	dw sprite.max_x_speed, $0180
 	dw sprite.x_speed, $0180
 	dw sprite.y_position, $01A0
-	dw !initcommand_set_alt_palette, $0004
 	dw !initcommand_set_oam, $3000
-	dw !initcommand_set_animation, $00A6
 	dw !initcommand_success
 
+;dixie parade
+DATA_FF0B18:
+	dw !initcommand_load_subconfig, generic_ending_parade_kong
+	dw !initcommand_set_alt_palette, $0004
+	dw !initcommand_set_animation, $0003+$A3
+	dw !initcommand_success
+
+;diddy parade
 DATA_FF0B3A:
-	dw sprite.number, $0314
-	dw sprite.x_position, $00E0
-	dw sprite.max_x_speed, $0180
-	dw sprite.x_speed, $0180
-	dw sprite.y_position, $01A0
+	dw !initcommand_load_subconfig, generic_ending_parade_kong
 	dw !initcommand_set_alt_palette, $0001
-	dw !initcommand_set_oam, $3000
 	dw !initcommand_set_animation, $0003
 	dw !initcommand_success
+	
+;donkey parade
+donkey_parade_init:
+	dw !initcommand_load_subconfig, generic_ending_parade_kong
+	dw !initcommand_set_alt_palette, $008D
+	dw !initcommand_set_animation, $0003+!donkey_animation_offset
+	dw !initcommand_success
+
+;kiddy parade
+kiddy_parade_init:
+	dw !initcommand_load_subconfig, generic_ending_parade_kong
+	dw !initcommand_set_alt_palette, $008E
+	dw !initcommand_set_animation, $0003+!kiddy_animation_offset
+	dw !initcommand_success
+
+;END OF PATCH
 
 DATA_FF0B5C:
 	dw !initcommand_load_subconfig, DATA_FF0690
@@ -1210,25 +1228,39 @@ DATA_FF1142:
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_success
 
-DATA_FF1162:
+;START OF PATCH (merge duplicate data in FF)
+unknown_generic_kong_init:
 	dw sprite.number, $0120
 	dw !initcommand_spawn_relative, $0000, $0000
 	dw sprite.render_order, $00ED
 	dw sprite.action, $0000
 	dw sprite.unknown_4E, $2020
-	dw !initcommand_set_palette, diddy_active_sprite_palette
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_success
 
-DATA_FF1182:
-	dw sprite.number, $0120
-	dw !initcommand_spawn_relative, $0000, $0000
-	dw sprite.render_order, $00ED
-	dw sprite.action, $0000
-	dw sprite.unknown_4E, $2020
-	dw !initcommand_set_palette, dixie_active_sprite_palette
-	dw !initcommand_set_oam, $2000
+DATA_FF1162:
+	dw !initcommand_load_subconfig, unknown_generic_kong_init
+	;dw sprite.number, $0120
+	;dw !initcommand_spawn_relative, $0000, $0000
+	;dw sprite.render_order, $00ED
+	;dw sprite.action, $0000
+	;dw sprite.unknown_4E, $2020
+	dw !initcommand_set_palette, diddy_active_sprite_palette
+	;dw !initcommand_set_oam, $2000
 	dw !initcommand_success
+
+DATA_FF1182:
+	dw !initcommand_load_subconfig, unknown_generic_kong_init
+	;dw sprite.number, $0120
+	;dw !initcommand_spawn_relative, $0000, $0000
+	;dw sprite.render_order, $00ED
+	;dw sprite.action, $0000
+	;dw sprite.unknown_4E, $2020
+	dw !initcommand_set_palette, dixie_active_sprite_palette
+	;dw !initcommand_set_oam, $2000
+	dw !initcommand_success
+
+;END OF PATCH
 
 DATA_FF11A2:
 	dw sprite.number, $0120

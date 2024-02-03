@@ -17,4 +17,6 @@ Additional Programming: BlueImp
 
 Custom Sprite Graphics: Phyreburnz
 
+DKC 1 Researcher:  Rainbow Sprinklez
+
 Verification on real hardware provided by: Sticky_Brush

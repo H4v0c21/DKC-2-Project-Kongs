@@ -4285,6 +4285,46 @@ CODE_BAB8FD:
 
 DATA_BAB90B:
 	db "````", $00, $00, $00
+
+;START OF PATCH (credits)
+	db $0D, $08, "PROJECT KONGS", $00
+	db $0D, $08, "PROJECT KONGS", $00, $00, $00, $00, $00, $00
+	
+	db $19, $08, "HACK DESIGN / PROGRAMMING", $00
+	db $19, $08, "HACK DESIGN / PROGRAMMING", $00, $00
+	db $07, $10, "H4V0C21", $00, $00
+	db $0A, $10, "MATTRIZZLE", $00, $00, $00, $00, $00, $00
+	
+	db $1B, $08, "ADDITIONAL HACK PROGRAMMING", $00
+	db $1B, $08, "ADDITIONAL HACK PROGRAMMING", $00, $00
+	db $07, $10, "BLUEIMP", $00, $00, $00, $00, $00, $00
+	
+	db $11, $08, "DKC 2 DISASSEMBLY", $00
+	db $11, $08, "DKC 2 DISASSEMBLY", $00, $00
+	db $07, $10, "P4PLUS2", $00, $00, $00, $00, $00, $00
+	
+	db $16, $08, "CUSTOM SPRITE GRAPHICS", $00
+	db $16, $08, "CUSTOM SPRITE GRAPHICS", $00, $00
+	db $0A, $10, "PHYREBURNZ", $00, $00, $00, $00, $00, $00
+	
+	db $10, $08, "DKC 1 RESEARCHER", $00
+	db $10, $08, "DKC 1 RESEARCHER", $00, $00
+	db $11, $10, "RAINBOW SPRINKLEZ", $00, $00, $00, $00, $00, $00
+	
+	db $15, $08, "HARDWARE VERIFICATION", $00
+	db $15, $08, "HARDWARE VERIFICATION", $00, $00
+	db $0C, $10, "STICKY BRUSH", $00, $00, $00, $00, $00, $00
+	
+	db $0E, $08, "SPECIAL THANKS", $00
+	db $16, $08, "REMERCIEMENTS SP?CIAUX", $00, $00
+	db $11, $10, "WWW.DKC-ATLAS.COM", $00, $00, $00, $00, $00, $00
+	
+	db $15, $08, "DONKEY KONG COUNTRY 2", $00
+	db $15, $08, "DONKEY KONG COUNTRY 2", $00
+	db $12, $08, "DIDDY'S KONG QUEST", $00
+	db $12, $08, "DIDDY'S KONG QUEST", $00, $00, $00, $00, $00, $00
+;END OF PATCH
+
 	db $0F, $08, "HEAD PROGRAMMER", $00
 	db $13, $08, "PROGRAMMEUR EN CHEF", $00, $00
 	db $0D, $10, "C. SUTHERLAND", $00, $00, $00, $00, $00, $00
