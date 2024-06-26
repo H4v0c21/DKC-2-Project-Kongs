@@ -177,8 +177,8 @@ dixie_team_bottom_walk:
 
 dixie_team_bottom_walk_big_kong:
 	db !animation_command_84 : dw CODE_B9E021
-	db !animation_command_81 : dw CODE_B9E0E0
 	db $03 : dw $46A4
+	db !animation_command_81 : dw CODE_B9E0E0
 	db $03 : dw $46A8
 	db $03 : dw $46AC
 	db $03 : dw $46B0
