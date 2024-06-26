@@ -3350,13 +3350,24 @@ CODE_B9E329:					;	   |
 CODE_B9E331:
 	LDA $08A4				;$B9E331  \
 ;START OF PATCH (Allow Kong animation to play when Animal Buddy is attacking if Diddy OR Donkey; previously $08A4 was only non-zero for Dixie)
-	AND #$0001				;Bit $0001 is set when Dixie or Kiddy and clear when Diddy or Donkey
+	BIT #$0001				;Bit $0001 is set when Dixie or Kiddy and clear when Diddy or Donkey
 ;END OF PATCH
-	BNE CODE_B9E33D				;$B9E334   |
+	BNE .check_kiddy			;$B9E334   |
 	LDA #$0059				;$B9E336   |
+.set_anim:
 	JSL CODE_B9D04B				;$B9E339   |
-CODE_B9E33D:					;	   |
+.done:						;	   |
 	RTS					;$B9E33D  /
+
+;if kiddy + not on ground, set to animal idle anim instead so his animation can resume when landing after the attack.
+.check_kiddy:
+	CMP #$0003
+	BNE .done
+	LDX $0593
+	LDA $0E,x
+	BEQ .done
+	LDA #$0054
+	BRA .set_anim
 
 CODE_B9E33E:
 	LDY $66					;$B9E33E  \
