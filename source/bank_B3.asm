@@ -16109,7 +16109,8 @@ slap_banana_state_0:
 	LDX current_sprite
 	JSL CODE_B9D100				;process animations
 	JSR slap_banana_collision
-	
+	LDA $48,x 				
+	STA $26,x 	
 	LDX current_sprite			;get current sprite
 	LDY $0593				;get current kong
 	LDA $0006,y				;\
