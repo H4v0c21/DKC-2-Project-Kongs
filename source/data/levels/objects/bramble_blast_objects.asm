@@ -1,4 +1,7 @@
-%sprite($0001, $0144, $0884, $0184)
+;START OF PATCH (move first bonus barrel further left so DK doesn't get stuck in a loop after exiting the bonus)
+%sprite($0001, $013C, $0884, $0184)
+;END OF PATCH
+;%sprite($0001, $0144, $0884, $0184)
 %sprite($0001, $0160, $0927, $01AA)
 %sprite($0001, $0160, $0B07, $0C74)
 %sprite($0011, $0170, $07B0, $0EB8)
