@@ -16101,55 +16101,84 @@ slap_banana_main:
 	JSR CODE_B3A369
 
 slap_banana_state_table:
-	dw slap_banana_state_0
-	dw slap_banana_state_1
-	dw slap_banana_state_2
+	dw slap_banana_init_state
+	dw slap_banana_homing_up
+	dw slap_banana_homing_down
 
-slap_banana_state_0:
-	LDX current_sprite
-	JSL CODE_B9D100				;process animations
-	JSR slap_banana_collision
-	LDA $48,x 				
-	STA $26,x 	
+;set initial home X and Y positions
+slap_banana_init_state:
 	LDX current_sprite			;get current sprite
+	LDA $48,x 			     	;\
+	STA $26,x 				;/ initialize X velocity, otherwise homing from the left breaks (for some reason)
 	LDY $0593				;get current kong
 	LDA $0006,y				;\
-	SEC					; | get x distance from kong
-	SBC $06,x				; |
-	BPL .not_negative			;/ if the distance isn't negative no need to invert
-	EOR #$FFFF				;\ invert distance so we can compare to distance threshold
-	INC					;/
-.not_negative
-	CMP #$0004				;x distance threshold
-	BCS .continue_state_0			;if distance isn't within threshold continue state 0 homing
-	INC $2E,x				;otherwise set state 1 (downward homing state)
-	BRA slap_banana_done
-.continue_state_0
-	LDA $0006,y				;\
-	STA $42,x				;/ set home x position to kong x
+	STA $42,x				;/ set home X position to kong X
+	LDA $50,x 				;get sprite we just slapped
+	TAY 
 	LDA $000A,y
 	SEC
-	SBC #$0050				;distance above kong
-	STA $44,x				;update home y position to above kong
-	JSL CODE_BEF039				;process movement
-	BRA slap_banana_done
+	SBC #$0040				
+	STA $44,x				;set home Y position to above the sprite
+	INC $2E,x
+	JML [$05A9]
 
-slap_banana_state_1:
+
+slap_banana_homing_up:
 	LDX current_sprite
 	JSL CODE_B9D100				;process animations
-	JSR slap_banana_collision		;check if banana collided with kong
-	LDX current_sprite			; get current sprite
-	LDY $0593				; get current kong
-	LDA $0006,y				;\
-	STA $42,x				;/ set home x position to kong x
-	STA $06,x				; snap banana to kong's x position
+	JSL CODE_BEF039				;process movement
+	LDA $0A,x
+	CMP $44,x
+	BCS .done 				;if banana hasn't reached its home Y pos yet, return
+	INC $2E,x
+	LDA #$02F0 				;once we're done going up, decrease the banana's Y velocity
+	STA $4C,x
+.done:
+	JML [$05A9]
+
+
+slap_banana_homing_down:
+	LDX current_sprite
+	JSL CODE_B9D100				;process animations
+	JSL CODE_BEF039				;process movement
+	LDY $0593				;get current kong
+	LDA $42,x 				;\
+	SEC  					; |get X distance from home X pos
+	SBC $06,x 				; |
+	BPL .positive 				;/ if the distance isn't negative no need to invert
+	EOR #$FFFF 				;\ invert distance so we can compare to distance threshold
+	INC 					;/
+.positive:
+	CMP #$0006 				;check x distance threshold, if not within, continue updating home pos
+	BCC .home_x_pos_reached 		
+	LDA $0006,y
+	STA $42,x
 	LDA $000A,y				;\
-	STA $44,x				;/ set home y position to kong y
-	JSL CODE_BEF039	;process movement
-	BRA slap_banana_done
+	STA $44,x				;/ set home Y position to kong Y
+	JML [$05A9]
+
+.home_x_pos_reached:
+	LDA #$0500 				
+	STA $24,x 				;speed up the banana's Y velocity
+	LDA $0020,y 				
+	BNE .dk_moving 				;if donkey has X speed during this, keep updating home x pos
+	STZ $20,x 				;\
+	STZ $26,x 				; | if not, kill the banana's X velocities
+	STZ $48,x 				;/
+	BRA .check_collision
+
+.dk_moving:
+	LDA $0006,y
+	STA $42,x 				
+.check_collision:  				;only start checking collision once we reach home X pos
+	JSL CODE_BCFB58 			
+	JSL CODE_BEBE6D				;check collision with main kong
+	BCS .spawn_real_banana
+	JML [$05A9]
+
 
 ;spawn real banana and copy positions
-slap_banana_state_2:
+.spawn_real_banana:
 	LDY #DATA_FF1AC6			;\ spawn real banana
 	JSL CODE_BB8432				;/
 	LDX current_sprite			;get old fake banana sprite
@@ -16161,19 +16190,5 @@ slap_banana_state_2:
 	LDA $1A,x				;\ copy animation frame to real banana
 	STA $001A,y				;/
 	JSL CODE_BB82B8				;send self to banana shadow realm
-slap_banana_done:
-	JML [$05A9]
-
-slap_banana_collision:
-	JSL CODE_BCFB58
-	JSL CODE_BEBE6D				;check collision with kong
-	BCS .set_state_2
-	CLC
-	RTS
-
-.set_state_2:
-	LDA #$0002				;\
-	STA $2E,x				; | set banana state as being collected and return
-	RTS					;/
-
+	JML [$05A9]				;/
 ;END OF PATCH

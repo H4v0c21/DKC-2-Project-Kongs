@@ -3369,6 +3369,7 @@ CODE_B9E331:
 	LDA #$0054
 	BRA .set_anim
 
+
 CODE_B9E33E:
 	LDY $66					;$B9E33E  \
 	LDA $0004,y				;$B9E340   |
@@ -5992,6 +5993,7 @@ hand_slap_check_hit:
 	JSL CODE_BB8432				;spawn banana
 	LDX alternate_sprite
 	LDY $6A
+	STY $50,x 				;store pointer to sprite we slapped for banana to use later
 	LDA $0006,y
 	STA $06,x
 	LDA $000A,y

@@ -21184,12 +21184,17 @@ hidden_cache_banana_init:
 	dw sprite.number, $0328
 	dw sprite.render_order, $00C8
 	dw sprite.action, $0000
+	dw sprite.y_speed, $0000
+	dw sprite.x_speed, $0000
+	dw sprite.max_x_speed, $0000
+	dw sprite.max_y_speed, $0000
+	dw sprite.unknown_30, $0000 	;collision flags (stops the slap from colliding with it)
 	dw sprite.unknown_52, $0107	;movement routine (move to home position)
 	dw sprite.unknown_54, DATA_FF02EC	;random zinger constants (might not need)
-	dw sprite.unknown_46, $0101	;lr deviation
-	dw sprite.unknown_48, $0280	;x velocity
-	dw sprite.unknown_4A, $0101	;ud deviation
-	dw sprite.unknown_4C, $0480	;y velocity
+	dw sprite.unknown_46, $0000	;lr deviation
+	dw sprite.unknown_48, $0210	;x velocity
+	dw sprite.unknown_4A, $0000	;ud deviation
+	dw sprite.unknown_4C, $0600	;y velocity
 	dw !initcommand_set_oam, $2000
 	dw !initcommand_set_palette, global_sprite_palette
 	dw !initcommand_set_animation, $02DF
