@@ -9,7 +9,7 @@ Created by p4plus2
 Branch edits by H4v0c21
 https://github.com/p4plus2/DKC2-disassembly
 
-Additional scripts created by H4v0c21.
+Additional scripts created by H4v0c21. 
 
 Hack Contributors:
 Programmers and Designers: H4v0c21, Mattrizzle
