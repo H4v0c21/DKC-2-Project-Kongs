@@ -23,7 +23,7 @@
 	dw $0400	;2C hurt run x velocity
 	dw $0100	;2E glide max fall y velocity (downward velocity)
 	dw $FF00	;30 glide y velocity (upward velocity)
-	dw $000D	;32 roll coyote timer (used when rolling off ledges)
+	dw $000D	;32 roll gravity delay timer (used when rolling off ledges)
 	dw $0C00	;34 thrown object forward x velocity
 	dw $FF00	;36 thrown object forward y velocity
 	dw $0200	;38 thrown object upward x velocity
@@ -64,8 +64,8 @@
 	dw $0280	;7E swim x velocity (holding y)
 	dw $00C0	;80 squawks max fall y velocity (transformed)
 	dw $0480	;82 squawks max fall y velocity (transformed holding down)
-	dw $FD80	;84 squawks flap y velocity (riding/castle crush)
-	dw $0003	;86 squawks x acceleration (castle crush)
+	dw $FD80	;84 squawks flap y velocity (transformed)
+	dw $0003	;86 squawks x acceleration (transformed)
 	dw $0010	;88 squitter web shot delay
 	dw $0003	;8A squitter max web shots
 	dw $0400	;8C squitter web shot x velocity
@@ -97,7 +97,7 @@
 	dw $0800	;C0 
 	dw $F870	;C2 squitter jump y velocity
 	dw $F870	;C4 rattly jump y velocity
-	dw $FE80	;C6 squawks flap y velocity
+	dw $FE80	;C6 squawks flap y velocity (riding/castle crush)
 	dw $F900	;C8 rambi jump y velocity
 	dw $F900	;CA 
 	dw $0220	;CC squitter walk x velocity
@@ -112,6 +112,6 @@
 	dw $0300	;DE 
 	dw $0009	;E0 squitter x acceleration
 	dw $000A	;E2 rattly x acceleration
-	dw $0002	;E4 squawks x acceleration
+	dw $0002	;E4 squawks x acceleration (riding)
 	dw $0007	;E6 rambi x acceleration
 	dw $0007	;E8 

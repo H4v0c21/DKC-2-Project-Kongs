@@ -1,4 +1,4 @@
-incsrc "../kong_hack/objects/source/sprite_init_script_table.asm"
+incsrc "../kong_hack/objects/source/sprite_spawn_script_table.asm"
 
 ;$F99400
 DATA_F99400:

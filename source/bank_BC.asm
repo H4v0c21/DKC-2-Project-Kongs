@@ -6445,7 +6445,7 @@ CODE_BCFE28:					;	   |
 	SEC					;$BCFE2A   |
 	SBC #sizeof(sprite)			;$BCFE2B   |
 	STA $6A					;$BCFE2E   |
-	CMP #$0E40				;$BCFE30   |
+	CMP #$0E40				;$BCFE30   | MIGHT NEED PATCH
 	BEQ CODE_BCFE07				;$BCFE33   |
 	CMP current_sprite			;$BCFE35   |
 	BEQ CODE_BCFE28				;$BCFE37   |

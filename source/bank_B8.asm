@@ -8110,7 +8110,8 @@ DATA_B8BB3F:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;down
 DATA_B8BB8D:
@@ -8154,7 +8155,8 @@ DATA_B8BB8D:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;left
 DATA_B8BBDB:
@@ -8198,7 +8200,8 @@ DATA_B8BBDB:
 	dw CODE_B8C39E				;25
 	dw CODE_B8C3AA				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;right
 DATA_B8BC29:
@@ -8242,7 +8245,8 @@ DATA_B8BC29:
 	dw CODE_B8C51E				;25
 	dw CODE_B8C52B				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;a
 DATA_B8BC77:
@@ -8286,7 +8290,8 @@ DATA_B8BC77:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;b
 DATA_B8BCC5:
@@ -8330,7 +8335,8 @@ DATA_B8BCC5:
 	dw CODE_B8C55F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C55F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;x
 DATA_B8BD13:
@@ -8374,7 +8380,8 @@ DATA_B8BD13:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;y
 DATA_B8BD61:
@@ -8418,7 +8425,8 @@ DATA_B8BD61:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;l
 DATA_B8BDAF:
@@ -8462,7 +8470,8 @@ DATA_B8BDAF:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;r
 DATA_B8BDFD:
@@ -8506,7 +8515,8 @@ DATA_B8BDFD:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;start
 DATA_B8BE4B:
@@ -8550,7 +8560,8 @@ DATA_B8BE4B:
 	dw CODE_B8CCDD				;25
 	dw CODE_B8CCDD				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;select
 DATA_B8BE99:
@@ -8594,7 +8605,8 @@ DATA_B8BE99:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;no left right
 DATA_B8BEE7:
@@ -8638,7 +8650,8 @@ DATA_B8BEE7:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;no up down
 DATA_B8BF35:
@@ -8682,7 +8695,8 @@ DATA_B8BF35:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;no b
 DATA_B8BF83:
@@ -8726,7 +8740,8 @@ DATA_B8BF83:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 ;no y
 DATA_B8BFD1:
@@ -8770,7 +8785,8 @@ DATA_B8BFD1:
 	dw CODE_B8C01F				;25
 	dw CODE_B8C01F				;26
 	dw CODE_B8C01F				;27 hand slap
-	dw CODE_B8C01F				;28 water bounce
+	dw CODE_B8C01F				;28 water bounce 1
+	dw CODE_B8C01F				;29 water bounce 2
 
 CODE_B8C01F:
 	RTS					;$B8C01F  /
@@ -9616,15 +9632,20 @@ CODE_B8C55F:
 	AND #$8000				;$B8C564   |
 	BEQ CODE_B8C572				;$B8C567   |
 ;START OF PATCH (water bounce behavior trigger)
-;	LDA $0D4E				;get water position
-;	SEC
-;	SBC #$0010
-;	CMP $0A,x				;check if kong is in water
-;	BCS .continue				;if kong is in water
-;	LDA #$0081
-;	STA $2E,x
-;	RTS
-;.continue
+	CPX #!kiddy_sprite_slot
+	BNE .no_water_bounce
+
+	LDA $0D4E				;get water position
+	BMI .no_water_bounce
+	SEC
+	SBC #$0018
+	CMP $0A,x				;check if kong is near water
+	BCS .no_water_bounce			;if kong is in water
+	LDA #$0081
+	STA $2E,x
+	RTS
+	
+.no_water_bounce
 ;END OF PATCH
 	LDY $66					;$B8C569   |
 	LDA global_frame_counter		;$B8C56B   |

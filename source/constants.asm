@@ -1,4 +1,12 @@
 ;custom constants
+
+!project_kongs = 1
+
+!diddy_sprite_slot = $0DE2
+!dixie_sprite_slot = $0E40
+!donkey_sprite_slot = $0E9E
+!kiddy_sprite_slot = $0EFC
+
 !donkey_variables_address = $19F0
 !kiddy_variables_address = $1A20
 

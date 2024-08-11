@@ -1,3 +1,5 @@
 asar.exe
 flips.exe
 *.sfc
+flipscfg.bin
+/build

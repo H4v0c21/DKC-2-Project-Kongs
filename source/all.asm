@@ -139,80 +139,63 @@ org $FF0000
 org $FFFFFF
 	db $00
 
-;org $400000
-;	incsrc "exhi/bank_40.asm"
-;org $408000
-;
-org $410000
-	incsrc "exhi/bank_41.asm"	;sprite graphics table
-org $420000
-	incsrc "exhi/bank_42.asm"	;relocated game data
-org $430000
-	incsrc "exhi/bank_43.asm"	;reserved for relocated/custom game data
-org $440000
-	incsrc "exhi/bank_44.asm"	;reserved for relocated/custom game data
-org $450000
-	incsrc "exhi/bank_45.asm"	;reserved for relocated/custom game data
-org $460000
-	incsrc "exhi/bank_46.asm"	;reserved for relocated/custom game data
-org $470000
-	incsrc "exhi/bank_47.asm"	;reserved for relocated/custom game data
-
-;org $480000
-;	incsrc "exhi/bank_48.asm"
-;org $490000
-;	incsrc "exhi/bank_49.asm"
-;org $4A0000
-;	incsrc "exhi/bank_4A.asm"
-;org $4B0000
-;	incsrc "exhi/bank_4B.asm"
-;org $4C0000
-;	incsrc "exhi/bank_4C.asm"
-;org $4D0000
-;	incsrc "exhi/bank_4D.asm"
-;org $4E0000
-;	incsrc "exhi/bank_4E.asm"
-;org $4F0000
-;	incsrc "exhi/bank_4F.asm"
-;org $500000
-;	incsrc "exhi/bank_50.asm"
-;org $510000
-;	incsrc "exhi/bank_51.asm"
-;org $520000
-;	incsrc "exhi/bank_52.asm"
-;org $530000
-;	incsrc "exhi/bank_53.asm"
-;org $540000
-;	incsrc "exhi/bank_54.asm"
-;org $550000
-;	incsrc "exhi/bank_55.asm"
-;org $560000
-;	incsrc "exhi/bank_56.asm"
-;org $570000
-;	incsrc "exhi/bank_57.asm"
-;org $580000
-;	incsrc "exhi/bank_58.asm"
-;org $590000
-;	incsrc "exhi/bank_59.asm"
-;org $5A0000
-;	incsrc "exhi/bank_5A.asm"
-;org $5B0000
-;	incsrc "exhi/bank_5B.asm"
-;org $5C0000
-;	incsrc "exhi/bank_5C.asm"
-;org $5D0000
-;	incsrc "exhi/bank_5D.asm"
-;org $5E0000
-;	incsrc "exhi/bank_5E.asm"
-;org $5F0000
-;	incsrc "exhi/bank_5F.asm"
+;org $400000	;RESERVED FOR BANK 00 MIRROR
+org $410000	;RESERVED FOR SPRITE GRAPHICS TABLES
+	;WARNING: Always insert new entries AFTER existing ones.
+	incsrc "kong_hack/objects/graphics/dkc2_sprite_graphics_table.asm"
+	incsrc "kong_hack/objects/graphics/donkey_sprite_graphics_table.asm"
+	incsrc "kong_hack/objects/graphics/kiddy_sprite_graphics_table.asm"
+	incsrc "kong_hack/objects/graphics/kong_hack_sprite_graphics_table.asm"
+	print "Sprite Graphics Table End Address: ",pc
+org $420000	;RESERVED FOR RELOCATED/CUSTOM DATA
+	incsrc "exhi/bank_42.asm"
+;org $430000	;RESERVED FOR RELOCATED/CUSTOM DATA
+;org $440000	;RESERVED FOR RELOCATED/CUSTOM DATA
+;org $450000	;RESERVED FOR RELOCATED/CUSTOM DATA
+;org $460000	;RESERVED FOR RELOCATED/CUSTOM DATA
+org $470000	;RESERVED FOR DEBUG FUNCTIONS
+	incsrc "sprite_viewer/sprite_viewer_subs_and_data.asm"
 
 check bankcross full
 org $480000
-	incsrc "kong_hack/objects/graphics/donkey_sprite_data.asm"
-	incsrc "kong_hack/objects/graphics/kiddy_sprite_data.asm"
-	incsrc "kong_hack/objects/graphics/kong_hack_sprite_data.asm"
-	
-	print "Exhi Graphics End Address: ",pc
+	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_1.asm"
+org $4A0000
+	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_2.asm"
+org $4B0000
+	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_3.asm"
+org $4C0000
+	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_4.asm"
+org $4D0000
+	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_5.asm"
+org $4E0000
+	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_6.asm"
+org $4F0000
+	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_7.asm"
+org $500000
+	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_1.asm"
+org $510000
+	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_2.asm"
+org $520000
+	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_3.asm"
+org $530000
+	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_4.asm"
+org $540000
+	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_5.asm"
+org $550000
+	incsrc "kong_hack/objects/graphics/additional_vanilla_graphics.asm"
+org $560000
+	incsrc "kong_hack/objects/graphics/custom_sprite_graphics_1.asm"
+org $570000
+	incsrc "kong_hack/objects/graphics/custom_sprite_graphics_2.asm"
+org $580000
+	incsrc "kong_hack/objects/graphics/custom_sprite_graphics_3.asm"
+;org $590000	;RESERVED FOR SPRITE GRAPHICS
+;org $5A0000	;RESERVED FOR SPRITE GRAPHICS
+;org $5B0000	;RESERVED FOR SPRITE GRAPHICS
+;org $5C0000	;RESERVED FOR SPRITE GRAPHICS
+;org $5D0000	;RESERVED FOR SPRITE GRAPHICS
+;org $5E0000	;RESERVED FOR SPRITE GRAPHICS
+;org $5F0000	;RESERVED FOR SPRITE GRAPHICS
+	print "Sprite Graphics End Address: ",pc
 org $5FFFFF
 	db $00

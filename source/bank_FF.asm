@@ -21203,6 +21203,6 @@ hidden_cache_banana_init:
 
 DATA_FFFF6A:
 
-print "Init Scripts End Address: ",pc
+print "Spawn Scripts End Address: ",pc
 padbyte $00
 pad $FFFFFF
