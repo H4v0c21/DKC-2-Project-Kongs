@@ -1832,7 +1832,11 @@ CODE_BEC508:
 	LDY #$2F5C				;$BEC51A   |
 	ADC [$32],y				;$BEC51D   |
 	SBC #$04C7				;$BEC51F   |
-	BEQ CODE_BEC526				;$BEC522   |
+if !bypass_anti_piracy == 1
+	BRA CODE_BEC526				;$BEC522   |/ Bypass anti piracy
+else
+	BEQ CODE_BEC526				;$BEC522   |/ If reset vector is correct continue as normal
+endif
 	STZ $58,x				;$BEC524   |
 CODE_BEC526:					;	   |
 	LDY $6A					;$BEC526   |

@@ -5,6 +5,8 @@ optimize address mirrors
 !override_pirate_panic = 0
 !pirate_panic_replacement = $23
 
+!bypass_anti_piracy = 1
+
 
 org $008000			;dummy org so functions work
 	incsrc "kong_hack/code/debug_overrides.asm"
@@ -22,6 +24,8 @@ org $C00000
 	incsrc bank_C0.asm
 org $808000
 	incsrc bank_80.asm
+org $80FFB0
+	incsrc "rom_header.asm"
 org $C10000
 	incsrc bank_C1.asm
 ;org $C20000
@@ -139,8 +143,14 @@ org $FF0000
 org $FFFFFF
 	db $00
 
+
+;org $400000
+org $008000
+	check bankcross half
+	incsrc "exhi/bank_00.asm"
+org $00FFB0
+	incsrc "rom_header.asm"
 check bankcross full
-;org $400000	;RESERVED FOR BANK 00 MIRROR
 org $410000	;RESERVED FOR SPRITE GRAPHICS TABLES
 	;WARNING: Always insert new entries AFTER existing ones.
 	incsrc "kong_hack/objects/graphics/dkc2_sprite_graphics_table.asm"

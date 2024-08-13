@@ -7317,7 +7317,13 @@ CODE_BBBA44:					;	   |
 	DEY					;$BBBA47   |
 	BPL CODE_BBBA44				;$BBBA48   |
 	EOR #$9684				;$BBBA4A   |
-	CMP #$FFFF				;$BBBA4D   |
+if !bypass_anti_piracy == 1
+	SEC
+	NOP
+	NOP
+else
+	CMP #$FFFF				;$BBBA4D   |/ Our answer should be FFFF, if so carry will be set
+endif
 	PLY					;$BBBA50   |
 	PLB					;$BBBA51   |
 CODE_BBBA52:					;	   |
@@ -7917,7 +7923,11 @@ CODE_BBBE01:
 	SEC					;$BBBE14   |
 	SBC #$1248				;$BBBE15   |
 	CMP #$71AF				;$BBBE18   |
-	BEQ CODE_BBBE24				;$BBBE1B   |
+if !bypass_anti_piracy == 1
+	BRA CODE_BBBE24				;$BBBE1B   |/ Bypass anti piracy
+else
+	BEQ CODE_BBBE24				;$BBBE1B   |/ If the reset vector matches the one specified continue as normal
+endif
 	LDA.l DATA_BBBE43			;$BBBE1D   |
 	STA $059D				;$BBBE21   |
 CODE_BBBE24:					;	   |

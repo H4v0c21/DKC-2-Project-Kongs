@@ -11878,7 +11878,11 @@ CODE_B5ED61:					;	   |
 
 CODE_B5ED70:
 	LDX $90					;$B5ED70  \
-	BMI CODE_B5ED95				;$B5ED72   |
+if !bypass_anti_piracy == 1
+	BRA CODE_B5ED95				;$B5ED72   |> Bypass anti piracy
+else
+	BMI CODE_B5ED95				;$B5ED72   |> If address is negative the checksum is complete. The checksum is calculated 1 byte per frame
+endif
 	LDA #<:rare_string			;$B5ED74   |
 	STA $92					;$B5ED77   |
 	LDY #rare_string			;$B5ED79   |

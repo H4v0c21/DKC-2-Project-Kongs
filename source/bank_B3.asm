@@ -9170,7 +9170,12 @@ CODE_B3C30B:					;	   |
 	BPL CODE_B3C30B				;$B3C310   |
 	PLB					;$B3C312   |
 	CMP #$20CB				;$B3C313   |
-	BNE CODE_B3C33B				;$B3C316   |
+if !bypass_anti_piracy == 1
+	NOP					;$B3C316   | Bypass anti piracy
+	NOP					;$B3C317   |
+else
+	BNE CODE_B3C33B				;$B3C316   |/ If checksum doesn't match the anti-piracy routine was tampered. Delete water trigger sprite
+endif
 	LDX current_sprite			;$B3C318   |
 	LDA $4E,x				;$B3C31A   |
 	STA $0D52				;$B3C31C   |
@@ -12971,7 +12976,11 @@ CODE_B3DF75:					;	   |
 	XBA					;$B3DF7C   |
 	EOR #$CCAB				;$B3DF7D   |
 	INC A					;$B3DF80   |
-	BEQ CODE_B3DF88				;$B3DF81   |
+if !bypass_anti_piracy == 1
+	BRA CODE_B3DF88				;$B3DF81   |/ Bypass anti piracy
+else
+	BEQ CODE_B3DF88				;$B3DF81   |/ If anti-piracy routine wasn't tampered continue as normal
+endif
 	LDA #$FFFF				;$B3DF83   |
 	STA $42,x				;$B3DF86   |
 CODE_B3DF88:					;	   |
