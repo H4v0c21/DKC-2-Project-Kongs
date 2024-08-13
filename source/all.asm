@@ -139,6 +139,7 @@ org $FF0000
 org $FFFFFF
 	db $00
 
+check bankcross full
 ;org $400000	;RESERVED FOR BANK 00 MIRROR
 org $410000	;RESERVED FOR SPRITE GRAPHICS TABLES
 	;WARNING: Always insert new entries AFTER existing ones.
@@ -155,40 +156,39 @@ org $420000	;RESERVED FOR RELOCATED/CUSTOM DATA
 ;org $460000	;RESERVED FOR RELOCATED/CUSTOM DATA
 org $470000	;RESERVED FOR DEBUG FUNCTIONS
 	incsrc "sprite_viewer/sprite_viewer_subs_and_data.asm"
-
-check bankcross full
-org $480000
+org $480000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_1.asm"
-org $4A0000
+org $490000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_2.asm"
-org $4B0000
+org $4A0000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_3.asm"
-org $4C0000
+org $4B0000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_4.asm"
-org $4D0000
+org $4C0000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_5.asm"
-org $4E0000
+org $4D0000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_6.asm"
-org $4F0000
+org $4E0000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/donkey_vanilla_graphics_7.asm"
-org $500000
+org $4F0000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_1.asm"
-org $510000
+org $500000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_2.asm"
-org $520000
+org $510000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_3.asm"
-org $530000
+org $520000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_4.asm"
-org $540000
+org $530000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/kiddy_vanilla_graphics_5.asm"
-org $550000
+org $540000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/additional_vanilla_graphics.asm"
-org $560000
+org $550000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/custom_sprite_graphics_1.asm"
-org $570000
+org $560000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/custom_sprite_graphics_2.asm"
-org $580000
+org $570000	;RESERVED FOR SPRITE GRAPHICS
 	incsrc "kong_hack/objects/graphics/custom_sprite_graphics_3.asm"
+;org $580000	;RESERVED FOR SPRITE GRAPHICS
 ;org $590000	;RESERVED FOR SPRITE GRAPHICS
 ;org $5A0000	;RESERVED FOR SPRITE GRAPHICS
 ;org $5B0000	;RESERVED FOR SPRITE GRAPHICS
