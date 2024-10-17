@@ -5975,30 +5975,62 @@ hand_slap_check_hit:
 	BCS .defeat_enemy
 	RTS
 
-.defeat_enemy
-	PHX					; preserve donkey
-	LDX $6A					; get sprite we slapped
-	LDA $54,x				;\
-	STA $8E					; |
-	LDY #$0008				; | MIGHT NEED TO TWEAK this value doesn't work for all sprites
-	LDA [$8E],y				;/ get kill flags for sprite we slapped
-	AND #$0500				;\ MIGHT NEED TO TWEAK this value doesn't work for all sprites
-	BNE .can_slap_kill			;/ check if sprite can be killed with slap
-	STZ $32,x				; unkill enemy
-	PLX
-	RTS
-	
+.defeat_enemy					;
+	PHX					;> Preserve donkey sprite
+	LDX $6A					;\ Get sprite donkey just slapped
+	LDA $00,x				;/ Figure out what kind of sprite it is
+	CMP #$01E0				;\
+	BNE .not_kutlass			;/ If the sprite isn't kutlass then skip to normal killable lookup
+	LDA $2E,x				;> Get kutlass state
+	CMP #$0004				;\
+	BEQ .can_slap_kill			; |
+	CMP #$0005				; |
+	BEQ .can_slap_kill			;/ If kutlass is stuck in the ground then kill him
+	BRA .no_slap_kill			;
+
+.not_kutlass
+	CMP #$0204				;\
+	BNE .not_cat_o9tails			;/ If the sprite isn't cat then skip to normal killable lookup
+	LDA $2E,x				;> Get cat state
+	BEQ .can_slap_kill			;> If cat is stunned/idle then kill him
+	BRA .no_slap_kill			;
+
+.not_cat_o9tails
+
+;UNCOMMENT THIS BLOCK TO MESS WITH DONKEY SLAP TO TRIGGER LEVEL END TARGET
+;	CMP #$0160				;\
+;	BNE .not_level_target			;/ If the sprite isn't target then skip to normal killable lookup
+;	;GOAL CHECKING STUFF HERE
+;	BRA .no_slap_kill			;
+;.not_level_target
+
+	LSR					;\ /4 because each entry in the table is a single byte
+	LSR					;/
+	TAX					;\ Use sprite type to index slap killable table
+	SEP #$20				; | 8 bit because our table contains single byte entries
+	LDA.l slap_killable_sprite_table,x	; | Look in the slap killable table to see if it should die
+	BNE .can_slap_kill			;/ If it can die then spawn a banana and do other stuff
+	REP #$20				;> Back to 16 bit
+	LDX $6A					;> Get sprite donkey just slapped
+	BRA .no_slap_kill			;
+
 .can_slap_kill
-	LDY #hidden_cache_banana_init
-	JSL CODE_BB8432				;spawn banana
-	LDX alternate_sprite
-	LDY $6A
-	STY $50,x 				;store pointer to sprite we slapped for banana to use later
-	LDA $0006,y
-	STA $06,x
-	LDA $000A,y
-	STA $0A,x
-	PLX					;rescue donkey
-	RTS
+	REP #$20				;> Back to 16 bit
+	LDY #hidden_cache_banana_init		;\
+	JSL CODE_BB8432				;/ Spawn banana
+	LDX alternate_sprite			;\ Get banana sprite
+	LDY $6A					;/ Get slapped sprite
+	STY $50,x 				;> Store pointer to sprite we slapped for banana to use later
+	LDA $0006,y				;\ Teleport banana to slapped sprite
+	STA $06,x				; |
+	LDA $000A,y				; |
+	STA $0A,x				;/
+	PLX					;\ Rescue donkey and return
+	RTS					;/
+
+.no_slap_kill
+	STZ $32,x				;> We shouldn't have killed you, we're sorry
+	PLX					;\ Rescue donkey and return
+	RTS					;/
 
 print "Animation Code End Address: ",pc
